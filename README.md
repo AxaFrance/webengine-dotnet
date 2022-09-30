@@ -47,8 +47,8 @@ Feel free to reach us if you want to adopt the Framework, report Bugs, or have g
 
 #### Repository of .NET Project and shared components:
 + https://github.com/AxaGuilDEv/webengine-dotnet
-+ Main contributor: Huaxing YUAN [<img src="images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
++ Main contributor: Huaxing YUAN [<img src="AXA.WebEngine.Doc/images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="AXA.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="AXA.WebEngine.Doc/images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 #### Repository Java Project:
 + https://github.com/AxaGuilDEv/webengine-java
-+ Main contributor: Joseph ARUL [<img src="images/github.svg" width="16" />](https://github.com/josepha26)
++ Main contributor: Joseph ARUL [<img src="AXA.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)
