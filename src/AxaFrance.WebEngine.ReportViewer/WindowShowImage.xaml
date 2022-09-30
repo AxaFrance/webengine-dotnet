@@ -1,0 +1,9 @@
+﻿<ui:BasicWindow  xmlns:ui="clr-namespace:Hummingbird.UI;assembly=Hummingbird.UI" x:Class="AxaFrance.WebEngine.ReportViewer.WindowShowImage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AxaFrance.WebEngine.ReportViewer"
+        Title="Image of screenshot" Width="900" Height="550" WindowStartupLocation="CenterScreen" LightIcon="icons\reportViewer.ico" DarkIcon="icons\reportViewer.ico" >
+    <Image x:Name="image" Stretch="Uniform" MouseRightButtonDown="image_MouseRightButtonDown" />
+</ui:BasicWindow>

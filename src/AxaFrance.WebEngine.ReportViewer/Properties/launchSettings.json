@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AxaFrance.WebEngine.ReportViewer": {
+      "commandName": "Project",
+      "commandLineArgs": "ExampleReport.xml",
+      "workingDirectory": ""
+    }
+  }
+}

@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>netstandard2.1;net6.0;net48;netstandard2.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Copyright>AXA France</Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+    <Deterministic>False</Deterministic>
+    <VersionPrefix>1.0</VersionPrefix>
+    <Description>Web Extension to run Keyword Driven automated tests based on Selenium WebDriver.</Description>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="geckodriver.exe" />
+    <None Remove="IEDriverServer.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="geckodriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="IEDriverServer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta01" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
+  </ItemGroup>
+
+</Project>

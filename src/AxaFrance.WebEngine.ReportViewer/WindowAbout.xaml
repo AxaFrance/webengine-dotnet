@@ -1,0 +1,33 @@
+﻿<ui:BasicWindow  xmlns:ui="clr-namespace:Hummingbird.UI;assembly=Hummingbird.UI" x:Class="AxaFrance.WebEngine.ReportViewer.WindowAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AxaFrance.WebEngine.ReportViewer" LightIcon="icons\reportViewer.ico" DarkIcon="icons\reportViewer.ico"
+        mc:Ignorable="d"
+        Title="About WebEngine Framework" Height="350" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="" Style="{DynamicResource TextBlockViewHeaderHighlighted}" Margin="10" />
+        <StackPanel Margin="20,0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Icons/ReportViewer.ico" Height="48" />
+                <TextBlock  VerticalAlignment="Center" Margin="10,0" Text="ReportViewer - AXA WebEngine Framework" Style="{DynamicResource TextBlockViewHeaderHighlighted}" />
+            </StackPanel>
+            <TextBlock Margin="10,5" VerticalAlignment="Center" Text="AXA WebEngine is an Test Automation Framework for Web &amp; Mobile applications." />
+            <TextBlock Margin="10,5" VerticalAlignment="Center" Text="Developed by Huaxing YUAN" />
+            <TextBlock Margin="10,5" VerticalAlignment="Center" Text="Guilde Test, AXA France" />
+        </StackPanel>
+        <Button Style="{DynamicResource FlatButtonStyle}"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Button_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <ui:AppBarIcon IconKey="appbar_close" IsCircleVisible="True" Width="32" />
+                    <TextBlock Text="Close" VerticalAlignment="Center" Style="{DynamicResource TextBlockInformation}" Margin="4" />
+                </StackPanel>
+        </Button>
+    </Grid>
+
+</ui:BasicWindow>

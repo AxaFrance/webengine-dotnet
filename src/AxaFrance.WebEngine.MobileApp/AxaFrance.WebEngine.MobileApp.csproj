@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>netstandard2.1;net6.0;net48;netstandard2.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Copyright>AXA France</Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Deterministic>False</Deterministic>
+    <VersionPrefix>1.0</VersionPrefix>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <Product>AXA WebEngine Automation Framework</Product>
+    <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+    <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
+    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta01" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />
+    <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
+  </ItemGroup>
+
+</Project>

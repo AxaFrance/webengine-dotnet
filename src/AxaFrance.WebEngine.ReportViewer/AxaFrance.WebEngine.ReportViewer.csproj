@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net472;net48;net6.0-windows</TargetFrameworks>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>ReportViewer</AssemblyName>
+    <IsPublishable>False</IsPublishable>
+    <UseWindowsForms>False</UseWindowsForms>
+    <ApplicationIcon>Icons\ReportViewer.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <VersionPrefix>1.0</VersionPrefix>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <PackageId>AxaFrance.WebEngine.ReportViewer</PackageId>
+    <Product>AXA WebEngine Automation Framework</Product>
+    <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\axalogo.png" />
+    <None Remove="Icons\icon_CriticalError.png" />
+    <None Remove="Icons\icon_Failed.png" />
+    <None Remove="Icons\icon_Ignored.png" />
+    <None Remove="Icons\icon_Passed.png" />
+    <None Remove="Icons\ReportViewer.ico" />
+    <None Remove="Icons\ReportViewer.png" />
+    <None Remove="XmlDark.xshd" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Include="XmlDark.xshd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.1.3.50" />
+    <PackageReference Include="Hummingbird.UI" Version="1.2.2327.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\axalogo.png" />
+    <Resource Include="Icons\icon_CriticalError.png" />
+    <Resource Include="Icons\icon_Failed.png" />
+    <Resource Include="Icons\icon_Ignored.png" />
+    <Resource Include="Icons\icon_Passed.png" />
+    <Resource Include="Icons\ReportViewer.ico" />
+    <Resource Include="Icons\ReportViewer.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <Copyright>AXA France </Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyName>WebRunner</AssemblyName>
+    <IsPublishable>False</IsPublishable>
+    <Deterministic>False</Deterministic>
+    <VersionPrefix>1.0</VersionPrefix>
+    <PackageId>AxaFrance.WebEngine.Runner</PackageId>
+    <Description>WebRunner executable to run keyword driven automated tests.</Description>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <Product>AXA WebEngine Automation Framework</Product>
+    <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>
