@@ -514,15 +514,14 @@ namespace AxaFrance.WebEngine.ExcelUI
                 "\tpublic static string {0} {{get; }} = \"{1}\";"
                 );
         }
-
         private void btnHelp_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("http://guilde-test.axa-fr.intraxa/web-engine/html/0e6dacc1-0943-4f90-8222-431b2afb7693.htm");
+            Process.Start("https://github.com/AxaGuilDEv/webengine-dotnet");
         }
 
         private void btnFeedback_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("https://github.AxaFrance.com/AXA-GS-QA/WebEngine-Framework-issues");
+            Process.Start("https://github.com/AxaGuilDEv/webengine-dotnet/issues");
         }
 
         private void btnAbout_Click(object sender, RibbonControlEventArgs e)

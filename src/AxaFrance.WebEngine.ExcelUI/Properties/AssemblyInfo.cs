@@ -15,7 +15,7 @@ using System.Security;
 [assembly: AssemblyCompany("AXA France")]
 [assembly: AssemblyProduct("AXA WebEngine Excel Addin")]
 [assembly: AssemblyCopyright("Copyright © AXA France 2016-2022")]
-[assembly: AssemblyTrademark("Developed By Huaxing YUAN / Guilde de Test / AXA France")]
+[assembly: AssemblyTrademark("AXA France")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

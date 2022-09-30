@@ -111,7 +111,8 @@
     <DefineConstants>DEBUG;VSTO40;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -137,7 +138,8 @@
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
@@ -256,9 +258,6 @@
     <EmbeddedResource Include="Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset">
-      <Link>automateam.axa.webengine.dotnetcsharp.ruleset</Link>
-    </None>
     <None Include="AXA.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

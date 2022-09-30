@@ -103,7 +103,7 @@ namespace AxaFrance.WebEngine
 
             if (string.IsNullOrEmpty(encryptionKey))
             {
-                encryptionKey = "#{EncryptionKey}#";    //<- default EncryptionKey will be replaced during build via DevOps process. You can also use customized encryption key by doing it in appsettings.json
+                encryptionKey = "#{EncryptionKey}#";    //<- default EncryptionKey will be replaced during build via DevOps process. Or to use customized encryption key in appsettings.json or via command-line argument.
             }
             if (this.LogDir == null)
             {
@@ -220,6 +220,10 @@ namespace AxaFrance.WebEngine
         /// Allow any HTTPS Certificate when creating Selenium Grid connection.
         /// </summary>
         public bool AllowAnyCertificate { get; set; }
+        
+        /// <summary>
+        /// Active JavaScript Click. Mainly used for SafariDriver maintained by Apple because native click does not work.
+        /// </summary>
         public bool UseJavaScriptClick { get; internal set; }
     }
 }
