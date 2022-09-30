@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPublishable>False</IsPublishable>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Deterministic>False</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Deterministic>False</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\automateam.axa.webengine.dotnet\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="docfx.console" Version="2.59.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="templates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AXA.WebEngine.MobileApp\AXA.WebEngine.MobileApp.csproj" />
+    <ProjectReference Include="..\AXA.WebEngine.Runner\AXA.WebEngine.Runner.csproj" />
+    <ProjectReference Include="..\AXA.WebEngine.Web\AXA.WebEngine.Web.csproj" />
+    <ProjectReference Include="..\AXA.WebEngine\AXA.WebEngine.csproj" />
+  </ItemGroup>
+
+</Project>

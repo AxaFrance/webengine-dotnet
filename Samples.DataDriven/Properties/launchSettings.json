@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "./WebRunner.exe",
+      "commandLineArgs": "\"-a:Samples.DataDriven.dll\" -browser:Chrome -showReport -data:TEST_SUITE.xml -env:ENV.XML",
+      "workingDirectory": ".\\bin\\Debug\\net6.0-windows"
+    }
+  }
+}

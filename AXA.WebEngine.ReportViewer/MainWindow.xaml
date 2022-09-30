@@ -1,0 +1,166 @@
+﻿<ui:BasicWindow xmlns:ui="clr-namespace:Hummingbird.UI;assembly=Hummingbird.UI" x:Class="AXA.WebEngine.ReportViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Loaded="Window_Loaded"
+        xmlns:local="clr-namespace:AXA.WebEngine.ReportViewer" xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit" LightIcon="icons\reportViewer.ico" DarkIcon="icons\reportViewer.ico"
+                
+        Title="WebEngine Report Viewer" Height="800" Width="1200">
+    <ui:BasicWindow.Resources>
+        <local:ResultToImageSourceConverter x:Key="ResultToImageSourceConverter"/>
+    </ui:BasicWindow.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="300" MaxHeight="500" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Test Cases:" Grid.Row="1" Style="{DynamicResource TextBlockViewHeaderHighlighted}"  Grid.ColumnSpan="5" VerticalAlignment="Center" Margin="8,4" />
+        <StackPanel Orientation="Horizontal"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right">
+            <Button Style="{DynamicResource FlatButtonStyle}" Click="ShowXmlReport_Click">
+                <StackPanel Orientation="Horizontal">
+                    <ui:AppBarIcon IconKey="appbar_page_xml" IsCircleVisible="True" Width="32" />
+                    <TextBlock Text="XML View" VerticalAlignment="Center" Style="{DynamicResource TextBlockInformation}" Margin="4" />
+                </StackPanel>
+            </Button>
+            <Button Style="{DynamicResource FlatButtonStyle}" Click="OpenReport_Click">
+                <StackPanel Orientation="Horizontal">
+                    <ui:AppBarIcon IconKey="appbar_folder_open" IsCircleVisible="True" Width="32" />
+                    <TextBlock Text="Open a report" VerticalAlignment="Center" Style="{DynamicResource TextBlockInformation}" Margin="4" />
+                </StackPanel>
+            </Button>
+            <Button Style="{DynamicResource FlatButtonStyle}" Click="BtnAbout_Click">
+                <StackPanel Orientation="Horizontal">
+                    <ui:AppBarIcon IconKey="appbar_information" IsCircleVisible="True" Width="32" />
+                    <TextBlock Text="About" VerticalAlignment="Center" Style="{DynamicResource TextBlockInformation}" Margin="4" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border >
+                <TextBlock Text="Test Steps" Margin="6,0" Style="{DynamicResource TextBlockViewHeaderHighlighted}" />
+            </Border>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TreeView x:Name="lvTeststeps"  BorderThickness="0" Margin="6,0" SelectedItemChanged="lvTeststeps_SelectedItemChanged" Background="Transparent" >
+
+                </TreeView>
+            </ScrollViewer>
+
+        </Grid>
+
+
+        <TabControl Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Style="{DynamicResource SecondaryTabControlStyle}">
+            <TabItem Header="Detailed Information">
+                <ScrollViewer Margin="6,0" Grid.Row="5" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel  x:Name="grdDetails"  >
+                        <TextBlock Text="Information:" />
+                        <TextBlock Text="Choose a test case or an test step to see the details" Margin="10,2" x:Name="txtInformation" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
+                        <WrapPanel x:Name="spScreenShots" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Context Values">
+                <ListView x:Name="lbContextValues" BorderThickness="0" Background="Transparent" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Margin="10,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Value" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Value}" Tag="{Binding Value}" Grid.Column="1" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Copy" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Tag="{Binding Value}" Grid.Column="1" Click="BtnCopyClipboard_Click" Style="{DynamicResource ToolbarButtonStyle}" >
+                                            <ui:AppBarIcon IconKey="appbar_page_copy" Height="16" />
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Test Data">
+                <ListView x:Name="lbTestData" BorderThickness="0" Background="Transparent" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Margin="10,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Value" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Value}" Tag="{Binding Value}" Grid.Column="1" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Copy" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Tag="{Binding Value}" Grid.Column="1" Click="BtnCopyClipboard_Click" Style="{DynamicResource ToolbarButtonStyle}" >
+                                            <ui:AppBarIcon IconKey="appbar_page_copy" Height="16" />
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="System Message">
+                <avalon:TextEditor x:Name="txtSystemOut" IsReadOnly="True" FontFamily="Consolas" Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" />
+            </TabItem>
+        </TabControl>
+
+
+        <ListBox x:Name="lvTestcases" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" BorderThickness="0,1,0,0" SelectionChanged="lvTestcases_SelectionChanged" Background="Transparent" Margin="0,0,6,0" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Result, Converter={StaticResource ResultToImageSourceConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,4" />
+                        <TextBlock Text="{Binding TestName}" Grid.Column="1" Margin="4" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding DurationText}" Grid.Column="2" Margin="4" VerticalAlignment="Center" Foreground="#CCCCCC" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <GridSplitter Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Width="5" />
+        <GridSplitter Grid.Row="2" Grid.Column="1" Panel.ZIndex="10" Style="{DynamicResource HorizontalGridSplitter}" VerticalAlignment="Bottom"  />
+
+    </Grid>
+</ui:BasicWindow>

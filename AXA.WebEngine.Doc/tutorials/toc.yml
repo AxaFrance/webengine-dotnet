@@ -1,0 +1,40 @@
+- name: Tutorials & Samples
+  href: intro.md
+- name: Basic Concepts
+  href: toc-concepts.md
+  items:
+    - name: Identify Web Elements
+      href: web-elements.md
+    - name: Identify Mobile App Elements
+      href: app-elements.md
+    - name: Organize UI Elements with PageModel
+      href: page-model.md
+    - name: Web Driver for Web Testing
+      href: web-driver.md
+    - name: Web Driver for MobileApp Testing
+      href: appium-driver.md
+- name: Keyword-Driven testing approach
+  href: keyworddriven.md
+- name: Workarounds
+  href: toc-workaround.md
+  items:
+    - name: Linear Scripting Approach (C#)
+      href: linear-script-cs.md
+    - name: Linear Scripting Approach (Java)
+      href: linear-script-java.md
+    - name: Gherkin Approach (C#)
+      href: gherkin-cs.md
+    - name: Gherkin Approach (JAVA)
+      href: gherkin-java.md
+    - name: Keyword Driven Approach (C#)
+      href: keyword-driven-cs.md
+    - name: Keyword Driven Approach (Java)
+      href: keyword-driven-java.md
+    - name: Data-Driven Approach (C#)
+      href: data-driven-cs.md
+    - name: Data Driven Approach (Java)
+      href: data-driven-java.md
+- name: Continious Integration
+  href: ci-cd.md
+- name: Sample Projects
+  href: toc-sample.md

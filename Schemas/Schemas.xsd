@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.axa.fr/WebEngine/2022" elementFormDefault="qualified" targetNamespace="http://www.axa.fr/WebEngine/2022" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EnvironmentVariables" nillable="true" type="tns:EnvironmentVariables" />
+  <xs:complexType name="EnvironmentVariables">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Variable" type="tns:Variable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Variable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestSuiteData" nillable="true" type="tns:TestSuiteData" />
+  <xs:complexType name="TestSuiteData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestData" type="tns:TestData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TestData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="TestName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfVariable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfVariable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Variable" nillable="true" type="tns:Variable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestSuiteReport" nillable="true" type="tns:TestSuiteReport" />
+  <xs:complexType name="TestSuiteReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestResult" type="tns:TestCaseReport" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EnvironmentVariables" type="tns:EnvironmentVariables" />
+      <xs:element minOccurs="1" maxOccurs="1" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="HostName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SystemOut" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SystemError" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TestCaseReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="TestName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Log" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Result" type="tns:Result" />
+      <xs:element minOccurs="1" maxOccurs="1" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TestData" type="tns:ArrayOfVariable" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ContextValues" type="tns:ArrayOfVariable" />
+      <xs:element minOccurs="0" maxOccurs="1" name="GlobalContextValues" type="tns:ArrayOfVariable" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ActionReports" type="tns:ArrayOfActionReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Result">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Passed" />
+      <xs:enumeration value="Failed" />
+      <xs:enumeration value="CriticalError" />
+      <xs:enumeration value="Ignored" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfActionReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActionReport" nillable="true" type="tns:ActionReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Result" type="tns:Result" />
+      <xs:element minOccurs="1" maxOccurs="1" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ContextValues" type="tns:ArrayOfVariable" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubActionReports" type="tns:ArrayOfActionReport" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Screenshots" type="tns:ArrayOfScreenshotReport" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Log" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfScreenshotReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScreenshotReport" nillable="true" type="tns:ScreenshotReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ScreenshotReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Data" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

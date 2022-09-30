@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnExportSelection.Label" xml:space="preserve">
+    <value>Export Selected</value>
+  </data>
+  <data name="btnExportSelection.ScreenTip" xml:space="preserve">
+    <value>Export Selected test cases to XML file</value>
+  </data>
+  <data name="&gt;&gt;btnExportSelection.Name" xml:space="preserve">
+    <value>btnExportSelection</value>
+  </data>
+  <data name="&gt;&gt;btnExportSelection.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnExportAll.Label" xml:space="preserve">
+    <value>Export all (current Tab)</value>
+  </data>
+  <data name="btnExportAll.ScreenTip" xml:space="preserve">
+    <value>Export all test cases or current Tab to XML file</value>
+  </data>
+  <data name="&gt;&gt;btnExportAll.Name" xml:space="preserve">
+    <value>btnExportAll</value>
+  </data>
+  <data name="&gt;&gt;btnExportAll.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnExportAllTabs.Label" xml:space="preserve">
+    <value>Export all (all tabs)</value>
+  </data>
+  <data name="btnExportAllTabs.ScreenTip" xml:space="preserve">
+    <value>Export all test cases of all Tab of current file to XML file</value>
+  </data>
+  <data name="&gt;&gt;btnExportAllTabs.Name" xml:space="preserve">
+    <value>btnExportAllTabs</value>
+  </data>
+  <data name="&gt;&gt;btnExportAllTabs.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BtnExportFilter.Label" xml:space="preserve">
+    <value>Export with filter</value>
+  </data>
+  <data name="BtnExportFilter.ScreenTip" xml:space="preserve">
+    <value>Export Test data using a filter</value>
+  </data>
+  <data name="&gt;&gt;BtnExportFilter.Name" xml:space="preserve">
+    <value>BtnExportFilter</value>
+  </data>
+  <data name="&gt;&gt;BtnExportFilter.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnExportEnvironmentVariable.Label" xml:space="preserve">
+    <value>Export Environment variables</value>
+  </data>
+  <data name="btnExportEnvironmentVariable.ScreenTip" xml:space="preserve">
+    <value>Export Environment Variables to XML File</value>
+  </data>
+  <data name="&gt;&gt;btnExportEnvironmentVariable.Name" xml:space="preserve">
+    <value>btnExportEnvironmentVariable</value>
+  </data>
+  <data name="&gt;&gt;btnExportEnvironmentVariable.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gryExport.Label" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="&gt;&gt;gryExport.Name" xml:space="preserve">
+    <value>gryExport</value>
+  </data>
+  <data name="&gt;&gt;gryExport.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GalleryView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;gryExport.Parent" xml:space="preserve">
+    <value>grpTestData</value>
+  </data>
+  <data name="&gt;&gt;gryExport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnCodeGeneration.Label" xml:space="preserve">
+    <value>Code Generation (C#)</value>
+  </data>
+  <data name="btnCodeGeneration.ScreenTip" xml:space="preserve">
+    <value>Generate parameters class from PARAM tab as C# Code</value>
+  </data>
+  <data name="&gt;&gt;btnCodeGeneration.Name" xml:space="preserve">
+    <value>btnCodeGeneration</value>
+  </data>
+  <data name="&gt;&gt;btnCodeGeneration.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnCodeGenerationJava.Label" xml:space="preserve">
+    <value>Code Generation (Java)</value>
+  </data>
+  <data name="btnCodeGenerationJava.ScreenTip" xml:space="preserve">
+    <value>Generate parameter names from PARAM tab as Java Code</value>
+  </data>
+  <data name="&gt;&gt;btnCodeGenerationJava.Name" xml:space="preserve">
+    <value>btnCodeGenerationJava</value>
+  </data>
+  <data name="&gt;&gt;btnCodeGenerationJava.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnDataCheck.Label" xml:space="preserve">
+    <value>Check test data</value>
+  </data>
+  <data name="btnDataCheck.ScreenTip" xml:space="preserve">
+    <value>Check test data used in the current tab with parameters listed in PARAM tab and report any differences.</value>
+  </data>
+  <data name="&gt;&gt;btnDataCheck.Name" xml:space="preserve">
+    <value>btnDataCheck</value>
+  </data>
+  <data name="&gt;&gt;btnDataCheck.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnDataSync.Label" xml:space="preserve">
+    <value>Sync with Param</value>
+  </data>
+  <data name="btnDataSync.ScreenTip" xml:space="preserve">
+    <value>Compare used parameters in the current tab with PARAM tab and add mission parameters.</value>
+  </data>
+  <data name="&gt;&gt;btnDataSync.Name" xml:space="preserve">
+    <value>btnDataSync</value>
+  </data>
+  <data name="&gt;&gt;btnDataSync.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gryTools.Label" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="&gt;&gt;gryTools.Name" xml:space="preserve">
+    <value>gryTools</value>
+  </data>
+  <data name="&gt;&gt;gryTools.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GalleryView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;gryTools.Parent" xml:space="preserve">
+    <value>grpTestData</value>
+  </data>
+  <data name="&gt;&gt;gryTools.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpTestData.Label" xml:space="preserve">
+    <value>Test data</value>
+  </data>
+  <data name="&gt;&gt;grpTestData.Name" xml:space="preserve">
+    <value>grpTestData</value>
+  </data>
+  <data name="&gt;&gt;grpTestData.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;grpTestData.Parent" xml:space="preserve">
+    <value>tabWebEngine</value>
+  </data>
+  <data name="&gt;&gt;grpTestData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStartNow.Label" xml:space="preserve">
+    <value>Launch test</value>
+  </data>
+  <data name="&gt;&gt;btnStartNow.Name" xml:space="preserve">
+    <value>btnStartNow</value>
+  </data>
+  <data name="&gt;&gt;btnStartNow.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;btnStartNow.Parent" xml:space="preserve">
+    <value>grpExecution</value>
+  </data>
+  <data name="&gt;&gt;btnStartNow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpExecution.Label" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="&gt;&gt;grpExecution.Name" xml:space="preserve">
+    <value>grpExecution</value>
+  </data>
+  <data name="&gt;&gt;grpExecution.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;grpExecution.Parent" xml:space="preserve">
+    <value>tabWebEngine</value>
+  </data>
+  <data name="&gt;&gt;grpExecution.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSettings.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;btnSettings.Name" xml:space="preserve">
+    <value>btnSettings</value>
+  </data>
+  <data name="&gt;&gt;btnSettings.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;btnSettings.Parent" xml:space="preserve">
+    <value>grpHelp</value>
+  </data>
+  <data name="&gt;&gt;btnSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnAbout.Label" xml:space="preserve">
+    <value>About ...</value>
+  </data>
+  <data name="btnAbout.ScreenTip" xml:space="preserve">
+    <value>About WebEngine Framework</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.Name" xml:space="preserve">
+    <value>btnAbout</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnHelp.Label" xml:space="preserve">
+    <value>WebEngine Online Help</value>
+  </data>
+  <data name="btnHelp.ScreenTip" xml:space="preserve">
+    <value>Brings you online help of WebEngine Framework</value>
+  </data>
+  <data name="&gt;&gt;btnHelp.Name" xml:space="preserve">
+    <value>btnHelp</value>
+  </data>
+  <data name="&gt;&gt;btnHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnFeedback.Label" xml:space="preserve">
+    <value>Feedback &amp; Suggestion</value>
+  </data>
+  <data name="btnFeedback.ScreenTip" xml:space="preserve">
+    <value>Give feedback and suggestions to AXA WebEngine Framework</value>
+  </data>
+  <data name="&gt;&gt;btnFeedback.Name" xml:space="preserve">
+    <value>btnFeedback</value>
+  </data>
+  <data name="&gt;&gt;btnFeedback.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gryHelp.Label" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="&gt;&gt;gryHelp.Name" xml:space="preserve">
+    <value>gryHelp</value>
+  </data>
+  <data name="&gt;&gt;gryHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GalleryView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;gryHelp.Parent" xml:space="preserve">
+    <value>grpHelp</value>
+  </data>
+  <data name="&gt;&gt;gryHelp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpHelp.Label" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="&gt;&gt;grpHelp.Name" xml:space="preserve">
+    <value>grpHelp</value>
+  </data>
+  <data name="&gt;&gt;grpHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;grpHelp.Parent" xml:space="preserve">
+    <value>tabWebEngine</value>
+  </data>
+  <data name="&gt;&gt;grpHelp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabWebEngine.Label" xml:space="preserve">
+    <value>WebEngine</value>
+  </data>
+  <data name="&gt;&gt;tabWebEngine.Name" xml:space="preserve">
+    <value>tabWebEngine</value>
+  </data>
+  <data name="&gt;&gt;tabWebEngine.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.TabView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;Ribbon.OfficeMenu.Name" xml:space="preserve">
+    <value>Ribbon.OfficeMenu</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.OfficeMenu.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.OfficeMenuView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.OfficeMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.OfficeMenu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Ribbon</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GenericRibbonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
