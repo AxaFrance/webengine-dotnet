@@ -54,7 +54,11 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (device != null)
             {
-                parameters += $" \"-device:{device}\" \"-platform:{platform}\" \"-appid:{appid}\"";
+                parameters += $" \"-device:{device}\" \"-platform:{platform}\"";
+                if (!string.IsNullOrWhiteSpace(appid))
+                {
+                    parameters += $" \"-appid:{appid}\"";
+                }
                 Ribbon.Settings.Device = device;
                 Ribbon.Settings.AppId = appid;
             }
@@ -174,10 +178,15 @@ namespace AxaFrance.WebEngine.ExcelUI
                 appid = txtAppPackage.Text;
                 platform = "iOS";
             }
+            else if (rbChrome.Checked)
+            {
+                browser = BrowserType.Chrome;
+            }
             else if (rbChromeAndroid.Checked)
             {
                 browser = BrowserType.Chrome;
                 platform = "Android";
+                device = txtDeviceName.Text;
             }
             else if (rbSafari.Checked)
             {
@@ -220,11 +229,20 @@ namespace AxaFrance.WebEngine.ExcelUI
                 case BrowserType.AndroidNative:
                     rbAndroidNative.Checked = true;
                     break;
+                case BrowserType.Safari:
+                    rbSafari.Checked = true;
+                    break;
                 case BrowserType.ChromiumEdge:
                 default:
                     rbEdge.Checked = true;
                     break;
             }
+
+            if(Ribbon.Settings.Device != null && Ribbon.Settings.Browser == BrowserType.Chrome)
+            {
+                rbChromeAndroid.Checked = true;
+            }
         }
+
     }
 }

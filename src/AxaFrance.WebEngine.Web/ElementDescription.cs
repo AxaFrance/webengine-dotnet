@@ -172,6 +172,11 @@ namespace AxaFrance.WebEngine.Web
                     ex = ex1;
                     Thread.Sleep(1000);
                 }
+                catch(ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
+                    Thread.Sleep(1000);
+                }
             }
             throw ex;
         }
@@ -200,6 +205,11 @@ namespace AxaFrance.WebEngine.Web
                 catch (StaleElementReferenceException ex1)
                 {
                     ex = ex1;
+                    Thread.Sleep(1000);
+                }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
                     Thread.Sleep(1000);
                 }
             }
@@ -232,6 +242,11 @@ namespace AxaFrance.WebEngine.Web
                     ex = ex1;
                     Thread.Sleep(1000);
                 }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
+                    Thread.Sleep(1000);
+                }
             }
             throw ex;
         }
@@ -260,6 +275,11 @@ namespace AxaFrance.WebEngine.Web
                 catch (StaleElementReferenceException ex1)
                 {
                     ex = ex1;
+                    Thread.Sleep(1000);
+                }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
                     Thread.Sleep(1000);
                 }
             }
@@ -291,6 +311,11 @@ namespace AxaFrance.WebEngine.Web
                     ex = ex1;
                     Thread.Sleep(1000);
                 }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
+                    Thread.Sleep(1000);
+                }
             }
             throw ex;
         }
@@ -318,6 +343,11 @@ namespace AxaFrance.WebEngine.Web
                 catch (StaleElementReferenceException ex1)
                 {
                     ex = ex1;
+                    Thread.Sleep(1000);
+                }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
                     Thread.Sleep(1000);
                 }
             }
@@ -365,6 +395,11 @@ namespace AxaFrance.WebEngine.Web
                     ex = ex1;
                     Thread.Sleep(1000);
                 }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
+                    Thread.Sleep(1000);
+                }
             }
             throw ex;
         }
@@ -394,6 +429,11 @@ namespace AxaFrance.WebEngine.Web
                 catch (StaleElementReferenceException ex1)
                 {
                     ex = ex1;
+                    Thread.Sleep(1000);
+                }
+                catch (ElementNotInteractableException ex2)
+                {
+                    ex = ex2;
                     Thread.Sleep(1000);
                 }
             }

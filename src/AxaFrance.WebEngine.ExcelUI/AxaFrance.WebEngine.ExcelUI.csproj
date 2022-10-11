@@ -25,8 +25,8 @@
     <ProjectGuid>{679D1D25-0799-4896-9658-4FCC492AAA12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>AXA.WebEngine.ExcelUI</RootNamespace>
-    <AssemblyName>AXA.WebEngine.ExcelUI</AssemblyName>
+    <RootNamespace>AxaFrance.WebEngine.ExcelUI</RootNamespace>
+    <AssemblyName>AxaFrance.WebEngine.ExcelUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <TargetFrameworkProfile />
@@ -39,8 +39,10 @@
     </NuGetPackageImportStamp>
     <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>publish\</PublishUrl>
+    <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.68</ApplicationVersion>
+    <ApplicationVersion>3.0.0.71</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -48,7 +50,7 @@
     <ProductName>WebEngine Excel Addin</ProductName>
     <PublisherName>AXA France</PublisherName>
     <SupportUrl>https://github.com/AxaGuilDEv/webengine-dotnet</SupportUrl>
-    <FriendlyName>AXA.WebEngine.ExcelUI</FriendlyName>
+    <FriendlyName>AxaFrance.WebEngine.ExcelUI</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
@@ -372,7 +374,7 @@
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Excel" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Excel" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Excel\InstallRoot\Path#excel.exe" DebugInfoCommandLine="/x" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
         <Host Name="Excel" GeneratedCodeNamespace="AXA.WebEngine.ExcelUI2016" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="9CF715916B83F39312CC215D1529D95F12FD4A07" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="B2BE5B731F417EF60C397F3EB8136F988615F524" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

@@ -125,6 +125,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Platform == Platform.Android)
             {
+                Settings.Instance.UseJavaScriptClick = true;
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
 
             }
