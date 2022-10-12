@@ -135,7 +135,7 @@ namespace AxaFrance.WebEngine
         }
 
         /// <summary>
-        /// [Mobile Only] The applicationId to be used (System under test)
+        /// [MobileApp Only] The applicationId to be used (System under test)
         /// It can be: 
         /// 1. A Package Name, application already installed and will be started.
         /// 2. A local package fullpath, application will be on the device.
@@ -143,12 +143,12 @@ namespace AxaFrance.WebEngine
         public string AppId { get; set; }
 
         /// <summary>
-        /// [Mobile Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt
+        /// [MobileApp Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt
         /// </summary>
         public string AppPackageName { get; set; }
         
         /// <summary>
-        /// When testing Mobile Application, This url is used to upload app packages such as APK or IPA.
+        /// When testing Mobile Application, This url is used to upload app packages such as APK or IPA. The upload method is implemented according to cloud provider based on this url.
         /// </summary>
         public string PackageUploadUrl { get; set; }
 
