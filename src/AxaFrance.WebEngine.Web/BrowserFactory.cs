@@ -51,10 +51,16 @@ namespace AxaFrance.WebEngine.Web
         {
             Settings.Instance.Platform = platform;
             Settings.Instance.Browser = browserType;
+
+#if NET48_OR_GREATER || NET6_0_OR_GREATER
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls13;
+#else
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
-            
+#endif
+
+
             //Apple Safari driver does not support Click(), we need to active UseJavaScriptClick if target browser is Safari and do JS Click instead.
-            if(browserType == BrowserType.Safari)
+            if (browserType == BrowserType.Safari)
             {
                 Settings.Instance.UseJavaScriptClick = true;
             }

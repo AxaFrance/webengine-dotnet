@@ -84,6 +84,10 @@ namespace AxaFrance.WebEngine
                 {
                     encryptionKey = settings.Value<string>("EncryptionKey");
                 }
+                if (settings.ContainsKey("AllowInsecureCertificate"))
+                {
+                    this.AllowAnyCertificate = settings.Value<bool>("AllowInsecureCertificate");
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, string>();
@@ -222,7 +226,7 @@ namespace AxaFrance.WebEngine
         public bool AllowAnyCertificate { get; set; }
         
         /// <summary>
-        /// Active JavaScript Click. Mainly used for SafariDriver maintained by Apple because native click does not work.
+        /// Active JavaScript Click. Mainly used for SafariDriver and Mobile Chrome based driver because native click may not work.
         /// </summary>
         public bool UseJavaScriptClick { get; internal set; }
     }

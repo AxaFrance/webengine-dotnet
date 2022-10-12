@@ -1,4 +1,5 @@
-﻿using AxaFrance.WebEngine.Web;
+﻿using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 using Samples.DataDriven.Actions;
 
 namespace Samples.DataDriven.TestCases
@@ -9,13 +10,13 @@ namespace Samples.DataDriven.TestCases
         public TC_InsuranceQuote() {
             
             //Define Test steps 
-            TestSteps = new AxaFrance.WebEngine.TestStep[] {
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(Login)},
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(SearchProspect)},
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(Underwriting)},
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(ChooseOfferOptions)},
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(ValidateContract)},
-                new AxaFrance.WebEngine.TestStep{ Action = nameof(Logout)},
+            TestSteps = new TestStep[] {
+                new TestStep{ Action = nameof(Login)},
+                new TestStep{ Action = nameof(SearchProspect)},
+                new TestStep{ Action = nameof(Underwriting)},
+                new TestStep{ Action = nameof(ChooseOfferOptions)},
+                new TestStep{ Action = nameof(ValidateContract)},
+                new TestStep{ Action = nameof(Logout)},
             };
         }
     }
