@@ -51,9 +51,10 @@ namespace AxaFrance.WebEngine
 
         private Settings() {
             string appconfig = Path.Combine(new FileInfo(typeof(Settings).Assembly.Location).DirectoryName, "appsettings.json");
-            
+            DebugLogger.WriteLine($"Search configuration file '{appconfig}'");
             if (File.Exists(appconfig))
             {
+                DebugLogger.WriteLine("Load test parameters from configuration file `appsettings.json`");
                 string content = File.ReadAllText(appconfig);
                 var settings = Newtonsoft.Json.JsonConvert.DeserializeObject(content) as Newtonsoft.Json.Linq.JObject;
                 if (settings.ContainsKey("LogDir"))
@@ -103,6 +104,10 @@ namespace AxaFrance.WebEngine
 
                     }
                 }
+            }
+            else
+            {
+                DebugLogger.WriteWarning("No configuration file `appsettings.json`, please make sure test parameters are provided via WebRunner.exe.");
             }
 
             if (string.IsNullOrEmpty(encryptionKey))

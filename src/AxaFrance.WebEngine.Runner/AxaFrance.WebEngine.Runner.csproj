@@ -2,15 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net472;net48</TargetFrameworks>
+    <TargetFrameworks>net6.0;net472;net48</TargetFrameworks>
     <Nullable>disable</Nullable>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
     <ImplicitUsings>disable</ImplicitUsings>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Copyright>AXA France </Copyright>
+    <Copyright>AXA France</Copyright>
     <Platforms>AnyCPU</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyName>WebRunner</AssemblyName>
-    <IsPublishable>False</IsPublishable>
+    <IsPublishable>True</IsPublishable>
     <Deterministic>False</Deterministic>
     <VersionPrefix>1.0</VersionPrefix>
     <PackageId>AxaFrance.WebEngine.Runner</PackageId>
@@ -25,6 +27,10 @@
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

@@ -51,4 +51,4 @@ Feel free to reach us if you want to adopt the Framework, report Bugs, or have g
 
 #### Repository Java Project:
 + https://github.com/AxaGuilDEv/webengine-java
-+ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)
++ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)D

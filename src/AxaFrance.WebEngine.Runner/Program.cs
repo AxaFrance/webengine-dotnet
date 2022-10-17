@@ -13,46 +13,59 @@ namespace AxaFrance.WebEngine.Runner
     {
         public static void Main(string[] args)
         {
-            if (args[0].Equals("-encrypt"))
+            if (args.Length == 0)
             {
-                Encrypt(args[1]);
-                return;
-            };
-
-            Settings settings = ParameterParser.ParseParameters(args);
-            var testsuite = settings.TestSuite;
-            testsuite.Initialize(settings);
-            var result = testsuite.Run();
-            testsuite.CleanUp(settings);
-            string logFileName = $"{settings.TestSuite.GetType().Name}_{settings.DataSourceName}";
-            result.HostName = Environment.MachineName;
-            result.SystemError = DebugLogger.SystemError.ToString();
-            result.SystemOut = DebugLogger.SystemOutput.ToString();
-            if (settings.ReportSettings.JUnitReport)
-            {
-                var jReport = ReportHelper.GenerateJUnitReport(result, settings.DataSourceName, settings.ReportSettings.JUnitReportPath);
-                DebugLogger.WriteLine("JUnit Report Generated: " + jReport);
+                ShowHelpMessage();
             }
+            else
+            {
+                if (args[0].Equals("-encrypt"))
+                {
+                    Encrypt(args[1]);
+                    return;
+                };
 
-            var reportPath = result.SaveAs(settings.LogDir, logFileName, false);
-            DebugLogger.WriteLine("Report Generated: " + reportPath);
-            try
-            {
-                result.GenereteCSV(Path.Combine(settings.LogDir, "GlobalOutput.csv"), Settings.Instance.Separator, false);
-            }
-            catch { }
-            if (settings.ShowReportAfterTest)
-            {
+                Settings settings = ParameterParser.ParseParameters(args);
+                var testsuite = settings.TestSuite;
+                testsuite.Initialize(settings);
+                var result = testsuite.Run();
+                testsuite.CleanUp(settings);
+                string logFileName = $"{settings.TestSuite.GetType().Name}_{settings.DataSourceName}";
+                result.HostName = Environment.MachineName;
+                result.SystemError = DebugLogger.SystemError.ToString();
+                result.SystemOut = DebugLogger.SystemOutput.ToString();
+                if (settings.ReportSettings.JUnitReport)
+                {
+                    var jReport = ReportHelper.GenerateJUnitReport(result, settings.DataSourceName, settings.ReportSettings.JUnitReportPath);
+                    DebugLogger.WriteLine("JUnit Report Generated: " + jReport);
+                }
+
+                var reportPath = result.SaveAs(settings.LogDir, logFileName, false);
+                DebugLogger.WriteLine("Report Generated: " + reportPath);
                 try
                 {
-                    ShowReport(reportPath);
+                    result.GenereteCSV(Path.Combine(settings.LogDir, "GlobalOutput.csv"), Settings.Instance.Separator, false);
                 }
-                catch (Exception ex)
+                catch { }
+                if (settings.ShowReportAfterTest)
                 {
-                    DebugLogger.WriteError("Error occured when opening the test report.");
-                    DebugLogger.WriteError(ex.Message);
+                    try
+                    {
+                        ShowReport(reportPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLogger.WriteError("Error occured when opening the test report.");
+                        DebugLogger.WriteError(ex.Message);
+                    }
                 }
             }
+        }
+
+        private static void ShowHelpMessage()
+        {
+            Console.WriteLine("Parameter error.");
+            Console.WriteLine("Please refers to documentation: https://xxx.xxx.xxx/articles/webrunner.html");
         }
 
         private static void Encrypt(string data)
@@ -63,13 +76,13 @@ namespace AxaFrance.WebEngine.Runner
 
         private static void ShowReport(string reportPath)
         {
-            string path = Path.GetDirectoryName(Assembly.GetAssembly(typeof(Program)).Location);
+            string path = Path.GetDirectoryName(System.AppContext.BaseDirectory);
             string reportViewerPath = Path.Combine(path, "ReportViewer.exe");
             if (File.Exists(reportViewerPath))
             {
-                System.Diagnostics.Process p = new System.Diagnostics.Process()
+                Process p = new Process()
                 {
-                    StartInfo = new System.Diagnostics.ProcessStartInfo("ReportViewer.exe", $"\"{reportPath}\"")
+                    StartInfo = new ProcessStartInfo("ReportViewer.exe", $"\"{reportPath}\"")
                     {
                         WorkingDirectory = path,
                     }

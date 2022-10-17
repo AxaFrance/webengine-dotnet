@@ -471,12 +471,13 @@ namespace AxaFrance.WebEngine.ExcelUI
                     object value = cell_value.Value2;
                     description = value != null ? value.ToString().Trim() : null;
 
-                    //Ignore all names has Spaces
-                    if (paramname.Contains(' ')) continue;
+                    // End generation 
                     if (string.IsNullOrWhiteSpace(paramname) && string.IsNullOrWhiteSpace(description))
                     {
                         break;
                     }
+                    //Ignore all names has white-spaces
+                    if (paramname.Contains(' ')) continue;
 
                     //Add description in comment;
                     if (description == null)
