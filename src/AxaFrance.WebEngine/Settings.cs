@@ -51,9 +51,10 @@ namespace AxaFrance.WebEngine
 
         private Settings() {
             string appconfig = Path.Combine(new FileInfo(typeof(Settings).Assembly.Location).DirectoryName, "appsettings.json");
-            
+            DebugLogger.WriteLine($"Search configuration file '{appconfig}'");
             if (File.Exists(appconfig))
             {
+                DebugLogger.WriteLine("Load test parameters from configuration file `appsettings.json`");
                 string content = File.ReadAllText(appconfig);
                 var settings = Newtonsoft.Json.JsonConvert.DeserializeObject(content) as Newtonsoft.Json.Linq.JObject;
                 if (settings.ContainsKey("LogDir"))
@@ -84,6 +85,10 @@ namespace AxaFrance.WebEngine
                 {
                     encryptionKey = settings.Value<string>("EncryptionKey");
                 }
+                if (settings.ContainsKey("AllowInsecureCertificate"))
+                {
+                    this.AllowAnyCertificate = settings.Value<bool>("AllowInsecureCertificate");
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, string>();
@@ -100,10 +105,14 @@ namespace AxaFrance.WebEngine
                     }
                 }
             }
+            else
+            {
+                DebugLogger.WriteWarning("No configuration file `appsettings.json`, please make sure test parameters are provided via WebRunner.exe.");
+            }
 
             if (string.IsNullOrEmpty(encryptionKey))
             {
-                encryptionKey = "#{EncryptionKey}#";    //<- default EncryptionKey will be replaced during build via DevOps process. You can also use customized encryption key by doing it in appsettings.json
+                encryptionKey = "#{EncryptionKey}#";    //<- default EncryptionKey will be replaced during build via DevOps process. Or to use customized encryption key in appsettings.json or via command-line argument.
             }
             if (this.LogDir == null)
             {
@@ -131,7 +140,7 @@ namespace AxaFrance.WebEngine
         }
 
         /// <summary>
-        /// [Mobile Only] The applicationId to be used (System under test)
+        /// [MobileApp Only] The applicationId to be used (System under test)
         /// It can be: 
         /// 1. A Package Name, application already installed and will be started.
         /// 2. A local package fullpath, application will be on the device.
@@ -139,12 +148,12 @@ namespace AxaFrance.WebEngine
         public string AppId { get; set; }
 
         /// <summary>
-        /// [Mobile Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt
+        /// [MobileApp Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt
         /// </summary>
         public string AppPackageName { get; set; }
         
         /// <summary>
-        /// When testing Mobile Application, This url is used to upload app packages such as APK or IPA.
+        /// When testing Mobile Application, This url is used to upload app packages such as APK or IPA. The upload method is implemented according to cloud provider based on this url.
         /// </summary>
         public string PackageUploadUrl { get; set; }
 
@@ -220,6 +229,10 @@ namespace AxaFrance.WebEngine
         /// Allow any HTTPS Certificate when creating Selenium Grid connection.
         /// </summary>
         public bool AllowAnyCertificate { get; set; }
+        
+        /// <summary>
+        /// Active JavaScript Click. Mainly used for SafariDriver and Mobile Chrome based driver because native click may not work.
+        /// </summary>
         public bool UseJavaScriptClick { get; internal set; }
     }
 }

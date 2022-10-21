@@ -39,36 +39,11 @@ namespace AxaFrance.WebEngine.ExcelUI
                 return;
             };
 
-            string testdata = Ribbon.TestDataFile;
+            
             BrowserType browser = GetSelectedBrowser(out string platform, out string appid, out string device);
             Ribbon.Settings.Browser = browser;
-
-            string env = Ribbon.EnvironmentVariableFile;
-
-            string parameters = string.Format(@"-a:{0} ""-data:{1}"" ""-env:{2}"" ""-browser:{3}""",
-                assembly,
-                testdata,
-                env,
-                browser
-                );
-
-            if (device != null)
-            {
-                parameters += $" \"-device:{device}\" \"-platform:{platform}\" \"-appid:{appid}\"";
-                Ribbon.Settings.Device = device;
-                Ribbon.Settings.AppId = appid;
-            }
-
-
-            if (cbManual.Checked)
-            {
-                parameters += " -m";
-            }
-
-            if (cbShowReport.Checked)
-            {
-                parameters += " -showreport";
-            }
+            string parameters = BuildParameter(browser, assembly, platform, device, appid);
+            
 
             bool success= DetermineWebRunner(parameters, out string commandline, out string param);
 
@@ -89,6 +64,44 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.Abort;
             }
+        }
+
+        private string BuildParameter(BrowserType browser, string assembly, string platform, string device, string appid)
+        {
+            string env = Ribbon.EnvironmentVariableFile;
+            string testdata = Ribbon.TestDataFile;
+
+
+            string parameters = string.Format(@"-a:{0} ""-data:{1}"" ""-env:{2}"" ""-browser:{3}""",
+                assembly,
+                testdata,
+                env,
+                browser
+                );
+
+            if (device != null)
+            {
+                parameters += $" \"-device:{device}\" \"-platform:{platform}\"";
+                if (!string.IsNullOrWhiteSpace(appid))
+                {
+                    parameters += $" \"-appid:{appid}\"";
+                }
+                Ribbon.Settings.Device = device;
+                Ribbon.Settings.AppId = appid;
+            }
+
+
+            if (cbManual.Checked)
+            {
+                parameters += " -m";
+            }
+
+            if (cbShowReport.Checked)
+            {
+                parameters += " -showreport";
+            }
+
+            return parameters;
         }
 
         private bool DetermineWebRunner(string parameters, out string commandline, out string param)
@@ -125,7 +138,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         /// <summary>
         /// This functions gets the java.exe path.
-        /// If a jre is provided in the webrunner.jar folder, then use that version of java, or use default java specified in the path.
+        /// If a jre is provided in the webrunner.jar folder, that version of jre will be used instead of default jre specified in the path.
         /// </summary>
         /// <param name="webRunnerPath">path of the webrunner.jar</param>
         /// <returns>the commandline of java.exe to be used.</returns>
@@ -164,8 +177,6 @@ namespace AxaFrance.WebEngine.ExcelUI
                 device = txtDeviceName.Text;
                 appid = txtAppPackage.Text;
                 platform = "Android";
-
-
             }
             else if (rbIOSNative.Checked)
             {
@@ -174,10 +185,15 @@ namespace AxaFrance.WebEngine.ExcelUI
                 appid = txtAppPackage.Text;
                 platform = "iOS";
             }
+            else if (rbChrome.Checked)
+            {
+                browser = BrowserType.Chrome;
+            }
             else if (rbChromeAndroid.Checked)
             {
                 browser = BrowserType.Chrome;
                 platform = "Android";
+                device = txtDeviceName.Text;
             }
             else if (rbSafari.Checked)
             {
@@ -220,11 +236,20 @@ namespace AxaFrance.WebEngine.ExcelUI
                 case BrowserType.AndroidNative:
                     rbAndroidNative.Checked = true;
                     break;
+                case BrowserType.Safari:
+                    rbSafari.Checked = true;
+                    break;
                 case BrowserType.ChromiumEdge:
                 default:
                     rbEdge.Checked = true;
                     break;
             }
+
+            if(Ribbon.Settings.Device != null && Ribbon.Settings.Browser == BrowserType.Chrome)
+            {
+                rbChromeAndroid.Checked = true;
+            }
         }
+
     }
 }

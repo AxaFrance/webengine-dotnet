@@ -358,7 +358,7 @@ namespace AxaFrance.WebEngine.Web
 
         /// <summary>
         /// Checks if the WebElement is displayed in the current viewport.
-        /// This function is base on javascript function getBoundingClientRect(), it may not working on older version (67.0) of Chrome on mobile devices.
+        /// This function is based on javascript function getBoundingClientRect(), it may not working on older version (67.0) of Chrome on mobile devices.
         /// </summary>
         public bool IsVisibleInViewPort
         {
@@ -558,13 +558,20 @@ namespace AxaFrance.WebEngine.Web
 
         private void SafeClick(IWebElement element)
         {
-            if(Settings.Instance.UseJavaScriptClick == true)
+            try
+            {
+                if (Settings.Instance.UseJavaScriptClick == true)
+                {
+                    driver.ExecuteScript("arguments[0].click()", element);
+                }
+                else
+                {
+                    element.Click();
+                }
+            }
+            catch (ElementNotInteractableException)
             {
                 driver.ExecuteScript("arguments[0].click()", element);
-            }
-            else
-            {
-                element.Click();
             }
         }
     }

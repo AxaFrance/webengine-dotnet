@@ -62,7 +62,10 @@ In additional of default XML report, generates a JUnit 2.6 compliant test report
 ##### -showReport
 Launches `Report Viewer` after test execution.
 
-### Parameters for Mobile testing
+##### -desktopGrid
+Use Selenium Grid for Desktop Web testing (Grid Settings can be specified in `appsettings.json` or command line parameters)
+
+### Parameters for Selenium Grid or Mobile testing
 To run tests on Mobile device, `-platform` must be specified to `Android` or `iOS`.
 
 ##### -grid:\<gridUrl>

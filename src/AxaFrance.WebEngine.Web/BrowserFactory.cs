@@ -25,6 +25,8 @@ namespace AxaFrance.WebEngine.Web
     /// </summary>
     public static class BrowserFactory
     {
+
+
         static string workingDirectory = System.Environment.GetFolderPath(SpecialFolder.ApplicationData) + "\\AxaFrance.WebEngine";
 
         /// <summary>
@@ -51,10 +53,16 @@ namespace AxaFrance.WebEngine.Web
         {
             Settings.Instance.Platform = platform;
             Settings.Instance.Browser = browserType;
+
+#if NET48_OR_GREATER || NET6_0_OR_GREATER
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls13;
+#else
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
-            
+#endif
+
+
             //Apple Safari driver does not support Click(), we need to active UseJavaScriptClick if target browser is Safari and do JS Click instead.
-            if(browserType == BrowserType.Safari)
+            if (browserType == BrowserType.Safari)
             {
                 Settings.Instance.UseJavaScriptClick = true;
             }
@@ -112,7 +120,7 @@ namespace AxaFrance.WebEngine.Web
             options.AddAdditionalAppiumOption("newCommandTimeout", 90);
             options.AddAdditionalAppiumOption("nativeWebScreenshot", "true");
 
-            DebugLogger.WriteLine($"Connecting to device: {s.Device ?? "Not specified"}, os: {s.OsVersion ?? "Not Specified"} ");
+            DebugLogger.WriteLine($"Connecting to device: {s.Device ?? "Not specified"}, Platform: {s.Platform}, OS Version: {s.OsVersion ?? "Not Specified"} ");
 
             string appiumServerAddress = s.GridServerUrl;
             if (appiumServerAddress == null)
@@ -125,6 +133,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Platform == Platform.Android)
             {
+                Settings.Instance.UseJavaScriptClick = true;
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
 
             }
@@ -140,7 +149,7 @@ namespace AxaFrance.WebEngine.Web
         }
 
         /// <summary>
-        /// Add additional capabilities specified in appsettings.json
+        /// Add additional capabilities specified in <see cref="Settings"/> (loaded from appsettings.json)
         /// </summary>
         /// <param name="options">the appium option object</param>
         /// <param name="s">Settings instance</param>
@@ -154,7 +163,7 @@ namespace AxaFrance.WebEngine.Web
 
         private static void AddPlatformSpecificOptions(string appiumServerAddress, AppiumOptions options, Settings s)
         {
-            if (appiumServerAddress.ToLower().Contains("browserstack.com"))
+            if (appiumServerAddress.IsBrowserStack())
             {
                 AddBrowserStackOptions(options, s);
             }
@@ -306,6 +315,16 @@ namespace AxaFrance.WebEngine.Web
             
             }
             catch(WebDriverTimeoutException) { }
+        }
+
+        /// <summary>
+        /// Determin if the url belongs to BrowserStack
+        /// </summary>
+        /// <param name="url">the Uri to test</param>
+        /// <returns>True or False</returns>
+        internal static bool IsBrowserStack(this string url)
+        {
+            return url?.ToLower().Contains(".browserstack.com") ?? false;
         }
 
     }

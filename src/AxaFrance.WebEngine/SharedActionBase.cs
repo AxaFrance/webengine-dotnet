@@ -138,7 +138,6 @@ namespace AxaFrance.WebEngine
 
 
 
-            bool threadAborted = false;
             Exception ThreadException = null;
             Thread thread = new Thread(new ThreadStart(() =>
             {
@@ -149,9 +148,7 @@ namespace AxaFrance.WebEngine
                 catch (Exception ex)
                 {
                     obj.Screenshot("Exception");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    DebugLogger.WriteLine("[Exception] + " + ex.ToString());
-                    Console.ResetColor();
+                    DebugLogger.WriteError("[Exception] + " + ex.ToString());
                     ThreadException = ex;
                 }
             }));

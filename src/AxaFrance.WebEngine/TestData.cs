@@ -60,7 +60,7 @@ namespace AxaFrance.WebEngine
             {
                 return GetValue(name);
             }
-            catch (WebEngineGeneralException ex)
+            catch (WebEngineGeneralException)
             {
                 return null;
             }

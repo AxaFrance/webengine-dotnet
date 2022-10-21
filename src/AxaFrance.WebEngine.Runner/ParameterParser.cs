@@ -117,6 +117,13 @@ namespace AxaFrance.WebEngine.Runner
                 password = password.Replace(arg, string.Empty);
                 s.Password = password;
             }
+
+            arg = "-desktopGrid";
+            string desktopGridEnabled = args.FirstOrDefault(x => x.StartsWith(arg, StringComparison.InvariantCultureIgnoreCase));
+            if (!string.IsNullOrEmpty(gridSettings))
+            {
+                s.DesktopGridEnabled = true;
+            }
         }
 
         private static void ParseForceClose(string[] args, Settings s)
