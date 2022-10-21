@@ -8,9 +8,13 @@ namespace AxaFrance.WebEngine
 {
     internal static class GlobalConstants
     {
-        internal const string XmlNamespace = "http://www.AxaFrance.fr/WebEngine/2022";
         /// <summary>
-        /// Indicates the loaded assembly (which contains SharedActions and/or TestSuites
+        /// XML Namespace (xmlns) used for XML nodes, such as Test Data and Test Report
+        /// </summary>
+        internal const string XmlNamespace = "http://www.axa.fr/WebEngine/2022";
+        
+        /// <summary>
+        /// Indicates the loaded assembly (which contains SharedActions and/or TestSuites)
         /// </summary>
         public static List<Assembly> LoadedAssemblies { get; internal set; } = new List<Assembly>();
     }
