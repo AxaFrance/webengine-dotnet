@@ -8,7 +8,7 @@
     <title>Data-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -298,8 +298,8 @@ This action can do whatever needed according to the test data provided.</li>
 </li>
 </ul>
 <section id="tabpanel_GxZVkLapNS-2_login-hc" role="tabpanel" data-tab="login-hc">
-<pre><code class="lang-csharp" name="Main" title="Login">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 namespace Samples.KeywordDriven.Actions
 {
@@ -333,8 +333,8 @@ namespace Samples.KeywordDriven.Actions
 }
 </code></pre></section>
 <section id="tabpanel_GxZVkLapNS-2_login-dd" role="tabpanel" data-tab="login-dd" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-csharp" name="Main" title="Login">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 namespace Samples.DataDriven.Actions
 {
@@ -378,8 +378,8 @@ But sometimes it&#39;s not enough, because test procedure may change as test dat
 The forms will be different.</p>
 <p>Our script must implement this logic driven by test data data: when the type is <code>apartment</code>, the script will fill form for apartments, otherwise the script will fill form for houses.</p>
 <p>This logic is implemented in the keyword action <code>HomeDetails</code>, according to the value of home type, different sub-action will be executed.</p>
-<pre><code class="lang-csharp" name="Main" title="Home Details">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Home Details">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 
 namespace Samples.DataDriven.Actions
@@ -440,8 +440,8 @@ namespace Samples.DataDriven.Actions
 <p><img src="../images/dd-antecedent.png" alt="Antecedent WebPage"></p>
 </section>
 <section id="tabpanel_GxZVkLapNS-3_antecedent-code" role="tabpanel" data-tab="antecedent-code" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-csharp" name="Main" title="Login">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 
 namespace Samples.DataDriven.Actions
@@ -498,7 +498,7 @@ But we have on last problem: Test suite is still hard-coded.</p>
 </ul>
 <section id="tabpanel_GxZVkLapNS-4_ts-hardcoded" role="tabpanel" data-tab="ts-hardcoded">
 <p>Previous example uses hard-coded test suite which test data is not used and the list of test case is fixed.</p>
-<pre><code class="lang-csharp" name="Main" title="TestSuite">using AXA.WebEngine;
+<pre><code class="lang-csharp" name="Main" title="TestSuite">using AxaFrance.WebEngine;
 
 namespace Samples.KeywordDriven
 {
@@ -519,7 +519,7 @@ namespace Samples.KeywordDriven
 <section id="tabpanel_GxZVkLapNS-4_ts-dynamic" role="tabpanel" data-tab="ts-dynamic" aria-hidden="true" hidden="hidden">
 <p>In this example, we will initialize test cases with provided data.
 As shown in the example test data file in Excel, the following code should generate 3 case cases during execution.</p>
-<pre><code class="lang-csharp" name="Main" title="TestSuite">using AXA.WebEngine;
+<pre><code class="lang-csharp" name="Main" title="TestSuite">using AxaFrance.WebEngine;
 
 namespace Samples.DataDriven
 {

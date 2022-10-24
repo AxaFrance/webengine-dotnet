@@ -8,7 +8,7 @@
     <title>Test Web Applications | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Test Web Applications | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -69,13 +69,13 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="test-web-applications">Test Web Applications</h1>
 
-<p>With functionalities provided by <a class="xref" href="../api_net/AXA.WebEngine.Web.html">AXA.WebEngine.Web</a>, it is easy to build Selenium WebDriver powered tests running on Desktop and Mobile browsers.
+<p>With functionalities provided by <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a>, it is easy to build Selenium WebDriver powered tests running on Desktop and Mobile browsers.
 To test web application, we usually need to open the web browser and perform two kinds of actions on system under test:</p>
 <ul>
 <li>Perform actions on Web Elements: The button we want to click, the textbox we want to fill, etc.</li>
 <li>Compare the information retrieved from some Web Element with expected value.</li>
 </ul>
-<p>In WebEngine Framework, we have provided <a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> to easily manage web browsers and selenium webdrivers, and <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a> and <a class="xref" href="../api_net/AXA.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> to manage Web Elements.</p>
+<p>In WebEngine Framework, we have provided <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> to easily manage web browsers and selenium webdrivers, and <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a> and <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> to manage Web Elements.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>To test web applications with WebEngine Framework, you&#39;ll need to have follow knowledges as pre-requisites:</p>
 <ul>
@@ -84,8 +84,8 @@ To test web application, we usually need to open the web browser and perform two
 <li>Have basic knowledge on Selenium WebDriver, either in C# or Java</li>
 </ul>
 <h2 id="use-browserfactory-to-manage-selenium-webdriver">Use BrowserFactory to manage Selenium WebDriver</h2>
-<p><a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> is used to open selected browser of which the test suite will execute on. For example, a single line of code:</p>
-<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+<p><a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> is used to open selected browser of which the test suite will execute on. For example, a single line of code:</p>
+<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 </code></pre><p>Will perform following actions:</p>
 <ul>
 <li>Determine the Edge browser installed on your computer</li>
@@ -93,7 +93,7 @@ To test web application, we usually need to open the web browser and perform two
 <li>Initialize the Selenium WebDriver</li>
 </ul>
 <p>For mobile testing, the following line of code:</p>
-<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Android, AXA.WebEngine.BrowserType.Chrome);
+<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
 </code></pre><p>Will perform following actions</p>
 <ul>
 <li>Connect to Selenium Grid or Appium Server</li>
@@ -101,7 +101,7 @@ To test web application, we usually need to open the web browser and perform two
 <li>Returns an AppiumDriver to end user.</li>
 </ul>
 <h2 id="use-elementdescription-to-identify-web-elements">Use ElementDescription to identify Web Elements</h2>
-<p><a class="xref" href="../api_net/AXA.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.
+<p><a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.
 A Web Element can be identified by one or more properties, for example, its Tag Name, Id, Name, CssClass, XPath or other HTML Attributes.</p>
 <p>WebEngine Framework will use provided properties to filter and select element from current web page.
 For example, to identify the <code>&lt;input&gt;</code> tag we may use these two attributes:</p>
@@ -146,7 +146,7 @@ but a descriptor indicating how to identify the element.</p>
 </div>
 <h2 id="use-pagemodel-to-store-test-objects">Use PageModel to store test objects</h2>
 <p>One of the best practices of test automation is to separate the object identification and the logic of the test script.
-In WebEngine Framework, you can store one or more test objects into a <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a>.</p>
+In WebEngine Framework, you can store one or more test objects into a <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>.</p>
 <p>In practice, imagine a login page contains username and password, the submit button and a span containing error messages.
 You can create a PageModel named LoginPage, containing the above 4 test objects which will be used in the script.</p>
 <p><img src="../images/pagemodel.png" alt="Pagemodel"></p>

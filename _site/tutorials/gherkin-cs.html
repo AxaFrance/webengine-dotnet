@@ -8,7 +8,7 @@
     <title>Writing test cases - Gherkin Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Writing test cases - Gherkin Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -120,13 +120,13 @@ Now build the test project again, you can see the variables of the test is highl
 <p>From here, we&#39;ll need to use functionalities provided in WebEngine to implement automated tests. Here we will open the code <code>DrinkMachineStepDefinitions</code> generated from Step 4.</p>
 <p>Make sure following NuGet Packages of WebEngine are installed in the test project:</p>
 <ul>
-<li><code>AXA.WebEngine</code>: for basic data structures</li>
-<li><code>AXA.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices</li>
-<li><code>AXA.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications</li>
+<li><code>AxaFrance.WebEngine</code>: for basic data structures</li>
+<li><code>AxaFrance.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices</li>
+<li><code>AxaFrance.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications</li>
 </ul>
 <p>In this tutorial, the implementation will be as follow:</p>
 <ul>
-<li>In <em>Turn on drink machine</em> step, we initialize Selenium WebDriver via <a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> and navigate to the application.</li>
+<li>In <em>Turn on drink machine</em> step, we initialize Selenium WebDriver via <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> and navigate to the application.</li>
 <li>In <em>select language and order</em> step, we manipulate the SUT via page model</li>
 <li>In <em>then</em> step, we use <code>Assertion</code> to verify expected result</li>
 <li>At last, a <em>Cleanup</em> function tagged with <code>AfterSceario</code> to close the browser and Selenium WebDriver</li>
@@ -135,7 +135,7 @@ Now build the test project again, you can see the variables of the test is highl
 <pre><code class="lang-csharp" name="Main" title="DrinkMachineStepDefinition.cs">// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-2 14:33
-using AXA.WebEngine.Web;
+using AxaFrance.WebEngine.Web;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -158,7 +158,7 @@ namespace Samples.Gherkin.StepDefinitions
         [Given(@&quot;I turn on the drink machine&quot;)]
         public void GivenITurnOnTheDrinkMachine()
         {
-            driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.Chrome);
+            driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
             driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
         }
 

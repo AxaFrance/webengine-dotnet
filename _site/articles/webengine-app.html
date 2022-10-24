@@ -8,7 +8,7 @@
     <title>Test Mobile Applications | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Test Mobile Applications | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -71,11 +71,11 @@
 
 <p>If you are already familiar with web application automation,
 it&#39;s not hard to build test automation solutions for native or hybrid applications.
-Similar to functionalities provided in <a class="xref" href="../api_net/AXA.WebEngine.Web.html">AXA.WebEngine.Web</a>,
-WebEngine framework exposes similar API in the namespace <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.html">AXA.WebEngine.MobileApp</a>.</p>
+Similar to functionalities provided in <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a>,
+WebEngine framework exposes similar API in the namespace <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.html">AxaFrance.WebEngine.MobileApp</a>.</p>
 <p>API provided in MobileApp namespace is based on Appium 5.0.</p>
 <div class="NOTE"><h5>Note</h5><p>The library MobileApp is used to test native mobile applications. And the applications is provided as APK or IPA package.
-To test Web applications on a Web Browser, please use <a class="xref" href="../api_net/AXA.WebEngine.Web.html">AXA.WebEngine.Web</a> library.</p>
+To test Web applications on a Web Browser, please use <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a> library.</p>
 </div>
 <p>To test mobile applications with WebEngine Framework, you&#39;ll need to have follow knowledges as pre-requisites:</p>
 <ul>
@@ -84,18 +84,18 @@ To test Web applications on a Web Browser, please use <a class="xref" href="../a
 <li>Have basic knowledge on Selenium WebDriver, in C# or Java.</li>
 </ul>
 <h2 id="use-appfactory-to-manage-apppackage-and-device-connection">Use AppFactory to manage AppPackage and Device connection</h2>
-<p><a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html">AppFactory</a> is used to initialize Device cloud connection and app package uploading.</p>
+<p><a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html">AppFactory</a> is used to initialize Device cloud connection and app package uploading.</p>
 <p>Before launching the automated tests on Mobile devices, you&#39;ll need to tell Appium Server to start the application under test.
 Or if the application is not yet installed, to install it.
-WebEngine Framework can upload the app package to compatible platforms, by calling the method <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html#AXA_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_">UploadAppPackage(String, String, String, String)</a>, it returns the real <code>AppId</code> to be used to connect to remote devices.</p>
-<p>Then you can use <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html#AXA_WebEngine_MobileApp_AppFactory_GetDriver_AXA_WebEngine_Platform_">GetDriver(Platform)</a> to get AppiumDriver in order to interact with test scripts.
+WebEngine Framework can upload the app package to compatible platforms, by calling the method <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_">UploadAppPackage(String, String, String, String)</a>, it returns the real <code>AppId</code> to be used to connect to remote devices.</p>
+<p>Then you can use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_GetDriver_AxaFrance_WebEngine_Platform_">GetDriver(Platform)</a> to get AppiumDriver in order to interact with test scripts.
 According to your test settings, AppiumDriver can be either:</p>
 <ul>
 <li>&lt;xref:OpenQA.Selenium.Appium.iOS.IOSDriver&gt; if you are testing on iOS devices. In this case, WebEngine uses XCUITest as native automation engine.</li>
 <li>&lt;xref:OpenQA.Selenium.Appium.Android.AndroidDriver&gt; if you are testing on Android devices. In this case, WebEngine uses UIAutomator2 as native automation engine.</li>
 </ul>
 <h2 id="use-elementdescription-to-manage-application-object-identification">Use ElementDescription to manage Application Object Identification</h2>
-<p><a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> inherited from <a class="xref" href="../api_net/AXA.WebEngine.Web.ElementDescription.html">ElementDescription</a> is used to identify test objects (Button, Text Box, Label, or other Elements) of an app easily and efficiently.</p>
+<p><a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> inherited from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.ElementDescription.html">ElementDescription</a> is used to identify test objects (Button, Text Box, Label, or other Elements) of an app easily and efficiently.</p>
 <p>Take an example of the following example, we want to identify the button on the bottom of the screen, as what we got from Appium Inspector
 <img src="../images/app-element.png" alt="App Element"></p>
 <p>This element can be identified with as follows:</p>
@@ -130,11 +130,11 @@ btnCity.click();
 </code></pre></section>
 </div>
 <h2 id="use-pagemodel-to-store-test-objects">Use PageModel to store test objects</h2>
-<p>The same as Web Application Testing, you can store all <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> used in a script into <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a>s.</p>
-<p>If you are working on hybrid applications, you can even mix <a class="xref" href="../api_net/AXA.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> and <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> into the same PageModel.</p>
+<p>The same as Web Application Testing, you can store all <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> used in a script into <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>s.</p>
+<p>If you are working on hybrid applications, you can even mix <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> and <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a> into the same PageModel.</p>
 <h2 id="hybrid-applications">Hybrid applications</h2>
 <p>Hybrid application is an application that contains WebViews. During the test, you may need to switch to web views, do something then switch back.
-To switch context, Use <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html#AXA_WebEngine_MobileApp_AppFactory_SwitchContext_OpenQA_Selenium_Appium_AppiumDriver_System_String_">SwitchContext(AppiumDriver, String)</a>.</p>
+To switch context, Use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_SwitchContext_OpenQA_Selenium_Appium_AppiumDriver_System_String_">SwitchContext(AppiumDriver, String)</a>.</p>
 <h2 id="example-project">Example Project</h2>
 <p>Sample projects are available using different language and test approaches, please follow this link:
 <a href="../tutorials/toc-sample.html">Sample Projects</a></p>

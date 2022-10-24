@@ -8,7 +8,7 @@
     <title>Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,9 +78,9 @@ In this approach, test cases are interpreted directly into test scripts, the met
 </div>
 <h2 id="required-framework-components">Required Framework components</h2>
 <ul>
-<li><code>AXA.WebEngine</code>: for basic data structures.</li>
-<li><code>AXA.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices.</li>
-<li><code>AXA.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications.</li>
+<li><code>AxaFrance.WebEngine</code>: for basic data structures.</li>
+<li><code>AxaFrance.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices.</li>
+<li><code>AxaFrance.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications.</li>
 </ul>
 <p>Other components of WebEngine Framework is not used.</p>
 <h2 id="steps-to-build-test-automation-solution-using-linear-scripting">Steps to build Test Automation Solution using Linear Scripting</h2>
@@ -103,8 +103,8 @@ You can use any recent versions of .NET (<code>.NET Framework 4.8</code> or <cod
 </code></pre><p>Now we can build our test scripts based on Selenium. Our system under test is the application: <a href="http://webengine-test.azurewebsites.net/Step1.html">http://webengine-test.azurewebsites.net/Step1.html</a></p>
 <p>After the project initialization, you need to install the NuGet Package:</p>
 <ul>
-<li>AXA.WebEngine</li>
-<li>AXA.WebEngine.Web</li>
+<li>AxaFrance.WebEngine</li>
+<li>AxaFrance.WebEngine.Web</li>
 <li>Selenium WebDriver (&gt;= 4.1.0)</li>
 <li>Appium.WebDriver (&gt;= 5.0.0-beta01) (for beta version of Appium you&#39;ll need to check &quot;include prerelease&quot; in NuGet Package Manager)</li>
 </ul>
@@ -129,7 +129,7 @@ namespace Samples.LinearScripting
         public void Setup()
         {
             //Initialize the driver by platform and browser type, then open test application
-            driver = AXA.WebEngine.Web.BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.Chrome);
+            driver = AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
             driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
         }
 
@@ -167,7 +167,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AXA.WebEngine.Web;
+using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
 
 namespace Samples.LinearScripting

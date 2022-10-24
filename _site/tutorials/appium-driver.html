@@ -8,7 +8,7 @@
     <title>WebDriver for MobileApp testing | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="WebDriver for MobileApp testing | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -72,7 +72,7 @@
 <p>In this article, we will discuss how to test Mobile applications running on Android and iOS.
 It is easier to test Web based applications, because we can just open the browser and type the URL, then we are able to work on it.
 Mobile App testing is different: Because before launching the test script, we need to install the App package and open it in the first place.</p>
-<p>To pass the App package, in WebEngine Framework, you can set it in <a class="xref" href="../api_net/AXA.WebEngine.Settings.html#AXA_WebEngine_Settings_AppId">AppId</a>.
+<p>To pass the App package, in WebEngine Framework, you can set it in <a class="xref" href="../api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_AppId">AppId</a>.
 There are two different possibilities:</p>
 <ol>
 <li>AppId format that supported by your cloud provider. </li>
@@ -82,10 +82,10 @@ There are two different possibilities:</p>
 If you are connecting to a remote Selenium Grid, make sure the AppId is understandable by remote server.
 All other parameters are exactly the same as <a href="web-driver.html">WebDriver for Web based tests</a>.</p>
 <div class="NOTE"><h5>Note</h5><p>When you are using Keyword driven test approach,
-the class <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.TestSuiteApp.html">TestSuiteApp</a> handles automatically app package upload to supported cloud providers.
+the class <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html">TestSuiteApp</a> handles automatically app package upload to supported cloud providers.
 And converts AppId from local path to cloud provider understandable value.</p>
 </div>
-<p>Instead of using <a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> for web based tests, we will use <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html">AppFactory</a> for mobile app tests.</p>
+<p>Instead of using <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> for web based tests, we will use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html">AppFactory</a> for mobile app tests.</p>
 <h2 id="native-automation-driver">Native automation driver</h2>
 <p>Appium uses native automation drivers to interact with the applications.
 By default, WebEngine Framework uses following automation driver:</p>
@@ -97,26 +97,26 @@ By default, WebEngine Framework uses following automation driver:</p>
 <h2 id="connecting-to-local-appium-server">Connecting to local Appium Server</h2>
 <p>To connect to a local Appium Server which connects to a single device,
 we only need to specify the Server URL and the full path of the app package: </p>
-<pre><code class="lang-csharp">var settings = AXA.WebEngine.Settings.Instance;
+<pre><code class="lang-csharp">var settings = AxaFrance.WebEngine.Settings.Instance;
 settings.GridServerUrl = &quot;http://localhost:4723/wd/hub&quot;;
 settings.AppId = &quot;C:\\app-packages\\myapp-1.0.apk&quot;;
-var driver = AppFactory.GetDriver(AXA.WebEngine.Platform.Android);
+var driver = AppFactory.GetDriver(AxaFrance.WebEngine.Platform.Android);
 </code></pre><p>The above code snippet will install <code>myapp-1.0.apk</code> on the device and returns <code>AndroidDriver</code> so you can write test scripts based on it.</p>
 <h2 id="connecting-to-on-premise-selenium-grid">Connecting to On-Premise Selenium Grid</h2>
 <p>To test on on-premise selenium grid, you&#39;ll need to specify the <code>Settings.Device</code> and/or <code>Settings.OsVersion</code></p>
-<pre><code class="lang-csharp">var settings = AXA.WebEngine.Settings.Instance;
+<pre><code class="lang-csharp">var settings = AxaFrance.WebEngine.Settings.Instance;
 settings.GridServerUrl = &quot;http://remote-server.internal:8080/wd/hub&quot;;
 settings.AppId = &quot;C:\\app-packages\\myapp-1.0.apk&quot;;
 settings.Platform = Platform.Android;
 settings.Device = &quot;Android API 30&quot;;
 //settings.OsVersion = &quot;9.0&quot;;
-var driver = AppFactory.GetDriver(AXA.WebEngine.Platform.Android);
+var driver = AppFactory.GetDriver(AxaFrance.WebEngine.Platform.Android);
 </code></pre><p>When using on-premises selenium grid, you need to copy or upload the app-package to an accessible location for your appium nodes.
 And transform <code>AppId</code> to the understandable form.</p>
 <p>For example, using UNC paths: <code>settings.AppId = &quot;\\\\SeleniumShare\\package\\myapp-1.0.apk&quot;</code>;</p>
 <h2 id="connecting-to-browserstack">Connecting to BrowserStack</h2>
 <p>Browserstack is one of the supported cloud providers by the Framework.
-You can use <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppFactory.html#AXA_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_">UploadAppPackage(String, String, String, String)</a> to upload local app package to the remote server and gets AppId in <code>bs://&lt;id&gt;</code> format.
+You can use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_">UploadAppPackage(String, String, String, String)</a> to upload local app package to the remote server and gets AppId in <code>bs://&lt;id&gt;</code> format.
 If you are working with Keyword driven test approach, the upload and conversation of AppId is automatic.</p>
 </article>
           </div>

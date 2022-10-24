@@ -8,7 +8,7 @@
     <title>Launch Test with Web Runner | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Launch Test with Web Runner | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,9 +115,9 @@ Meanwhile, all behaviors and arguments remain the same.</p>
 </div>
 <h3 id="commun-parameters">Commun parameters</h3>
 <h5 id="-browserbrowser">-browser:&lt;browser&gt;</h5>
-<p>Indicates the browser to run test on. see: <a class="xref" href="../api_net/AXA.WebEngine.BrowserType.html">BrowserType</a>.</p>
+<p>Indicates the browser to run test on. see: <a class="xref" href="../api_net/AxaFrance.WebEngine.BrowserType.html">BrowserType</a>.</p>
 <h5 id="-platformplatform">-platform:&lt;platform&gt;</h5>
-<p>The platform for test execution: see: <a class="xref" href="../api_net/AXA.WebEngine.Platform.html">Platform</a>. Default value is <code>Windows</code> stands for Desktop Browsers.</p>
+<p>The platform for test execution: see: <a class="xref" href="../api_net/AxaFrance.WebEngine.Platform.html">Platform</a>. Default value is <code>Windows</code> stands for Desktop Browsers.</p>
 <h5 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h5>
 <p>Indicates the folder to store output of test execution and test report. This parameter is can be defined in <code>appsetting.json</code>.</p>
 <h5 id="-m">-m</h5>
@@ -126,7 +126,9 @@ Meanwhile, all behaviors and arguments remain the same.</p>
 <p>In additional of default XML report, generates a JUnit 2.6 compliant test report. Useful to publish test result on an Continuous Integration Platform</p>
 <h5 id="-showreport">-showReport</h5>
 <p>Launches <code>Report Viewer</code> after test execution.</p>
-<h3 id="parameters-for-mobile-testing">Parameters for Mobile testing</h3>
+<h5 id="-desktopgrid">-desktopGrid</h5>
+<p>Use Selenium Grid for Desktop Web testing (Grid Settings can be specified in <code>appsettings.json</code> or command line parameters)</p>
+<h3 id="parameters-for-selenium-grid-or-mobile-testing">Parameters for Selenium Grid or Mobile testing</h3>
 <p>To run tests on Mobile device, <code>-platform</code> must be specified to <code>Android</code> or <code>iOS</code>.</p>
 <h5 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h5>
 <p>Indicates the Selenium Grid to connect to device cloud. Default value is <code>http://localhost:4723/wd/hub</code> stands for local Appium Server

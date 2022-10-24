@@ -8,7 +8,7 @@
     <title>Identify Mobile App UI Elements | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Identify Mobile App UI Elements | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -101,13 +101,13 @@ In this case, please refer to service provider&#39;s website and provide necessa
 <p><img src="../images/appium-inspector-observe.png" alt="Appium Inspector Observe"></p>
 <p>You can select element from the screenshot or locate it in App Source. On the right side, there will be a panel which helps you to choose a valid selector, such as <code>id</code> or <code>xpath</code></p>
 <p>In this example, we have selected the digit 5 of the calculator app. And according to the recommendation from right panel, we can use the selector <code>id</code></p>
-<p>Now you can declare this element by using <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a>, and access to its methods, like <code>Click()</code></p>
+<p>Now you can declare this element by using <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a>, and access to its methods, like <code>Click()</code></p>
 <pre><code class="lang-csharp">var digit5 = new AppElementDescription(driver){
     Id = &quot;com.Android.calculator2:id/digit_5&quot;
 }
 
 digit5.Click()
-</code></pre><p>Like web applications, you can organize all UI elements of the same page into <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a>. For example, this class defines some digit buttons, equals, multiply of the calculator app.</p>
+</code></pre><p>Like web applications, you can organize all UI elements of the same page into <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>. For example, this class defines some digit buttons, equals, multiply of the calculator app.</p>
 <pre><code class="lang-csharp">public class CalculatorPage : PageModel
 {
     public AppElementDescription Digit0 = new AppElementDescription

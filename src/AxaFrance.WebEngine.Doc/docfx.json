@@ -61,8 +61,7 @@
       {
         "files": [
           "images/**",
-          "files/**",
-          "**/*.mp4"
+          "files/**"
         ]
       }
     ],
@@ -79,7 +78,7 @@
         ]
       }
     ],
-    "dest": "../_site",
+    "dest": "../../_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [

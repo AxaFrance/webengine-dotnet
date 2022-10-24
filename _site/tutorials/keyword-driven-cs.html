@@ -8,7 +8,7 @@
     <title>Keyword-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Keyword-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -101,11 +101,11 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 <h3 id="22-install-required-nuget-packages">2.2 Install required NuGet Packages</h3>
 <p>To build test automation solutions with keyword-driven testing approach, you&#39;ll need following components:</p>
 <ul>
-<li><code>AXA.WebEngine</code> - Required</li>
-<li><code>AXA.WebEngine.Web</code> - Required</li>
-<li><code>AXA.WebEngine.Runner</code> - Required</li>
-<li><code>AXA.WebEngine.MobileApp</code> - Optional, for Native Android and iOS applications only</li>
-<li><code>AXA.WebEngine.ReportViewer</code> - Optional, make it possible to view the report locally.</li>
+<li><code>AxaFrance.WebEngine</code> - Required</li>
+<li><code>AxaFrance.WebEngine.Web</code> - Required</li>
+<li><code>AxaFrance.WebEngine.Runner</code> - Required</li>
+<li><code>AxaFrance.WebEngine.MobileApp</code> - Optional, for Native Android and iOS applications only</li>
+<li><code>AxaFrance.WebEngine.ReportViewer</code> - Optional, make it possible to view the report locally.</li>
 </ul>
 <h3 id="23-initialize-project-structure">2.3 Initialize project structure</h3>
 <p>A typical WebEngine test project has following structures:
@@ -141,9 +141,9 @@ A test case can be reused multiple times by giving different test data (combinat
 <li>Please refer to section <a href="#implementing-login-keyword">Implementing Login keyword</a></li>
 </ul>
 <h3 id="25-define-test-cases">2.5 Define test cases</h3>
-<p>Test case is inherited from <a class="xref" href="../api_net/AXA.WebEngine.Web.TestCaseWeb.html">TestCaseWeb</a> to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
+<p>Test case is inherited from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html">TestCaseWeb</a> to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
 And defines which keywords will be executed one after another. As per modelling, the test case will like following code snippet: </p>
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine.Web;
 using Samples.KeywordDriven.Actions;
 
 namespace Samples.KeywordDriven.TestCases
@@ -151,13 +151,13 @@ namespace Samples.KeywordDriven.TestCases
     public class TC_InsuranceQuote : TestCaseWeb
     {
         public TC_InsuranceQuote() {
-            TestSteps = new AXA.WebEngine.TestStep[] {
-                new AXA.WebEngine.TestStep{ Action = nameof(Login)},
-                new AXA.WebEngine.TestStep{ Action = nameof(SearchProspect)},
-                new AXA.WebEngine.TestStep{ Action = nameof(Underwriting)},
-                new AXA.WebEngine.TestStep{ Action = nameof(ChooseOfferOptions)},
-                new AXA.WebEngine.TestStep{ Action = nameof(ValidateContract)},
-                new AXA.WebEngine.TestStep{ Action = nameof(Logout)},
+            TestSteps = new AxaFrance.WebEngine.TestStep[] {
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(Login)},
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(SearchProspect)},
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(Underwriting)},
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(ChooseOfferOptions)},
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(ValidateContract)},
+                new AxaFrance.WebEngine.TestStep{ Action = nameof(Logout)},
             };
         }
     }
@@ -199,7 +199,7 @@ namespace Samples.KeywordDriven.TestCases
 </section>
 <section id="tabpanel_+oFYteI1nb_model-login" role="tabpanel" data-tab="model-login" aria-hidden="true" hidden="hidden">
 <p>This is the code snippet of <code>PageLogin.cs</code>. As we can see, by using element description, There is less need to comment everything if the name of the Page Model and the Web Elements are well named. </p>
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
 
 namespace Samples.PageModels
@@ -241,9 +241,9 @@ namespace Samples.PageModels
 <p>In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
 Then fill login, password click login button and verify there is no error message.</p>
-<p>All action keyword must inherent from <a class="xref" href="../api_net/AXA.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherent from <a class="xref" href="../api_net/AXA.WebEngine.Web.SharedActionWeb.html">SharedActionWeb</a>, then implement <code>DoAction</code> and <code>DoCheckpoint</code></p>
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<p>All action keyword must inherent from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherent from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html">SharedActionWeb</a>, then implement <code>DoAction</code> and <code>DoCheckpoint</code></p>
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 namespace Samples.KeywordDriven.Actions
 {
@@ -301,8 +301,8 @@ namespace Samples.KeywordDriven.Actions
 </ul>
 <section id="tabpanel_+oFYteI1nb-1_action-underwriting" role="tabpanel" data-tab="action-underwriting">
 <p>As we can see, the implementation of this underwriting is just to dispatch to sub-actions. Now you can implement each sub-actions which is much more easier to do.</p>
-<pre><code class="lang-csharp" name="Main" title="Unterwriting">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Unterwriting">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 namespace Samples.KeywordDriven.Actions
 {
@@ -333,8 +333,8 @@ namespace Samples.KeywordDriven.Actions
 </code></pre></section>
 <section id="tabpanel_+oFYteI1nb-1_home-location" role="tabpanel" data-tab="home-location" aria-hidden="true" hidden="hidden">
 <p>Home location sub-action is called by Underwriting action. Sub-action can be used when the keyword action is too complexe.</p>
-<pre><code class="lang-csharp" name="Main" title="Home Location">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Home Location">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 
 namespace Samples.KeywordDriven.Actions
@@ -363,8 +363,8 @@ namespace Samples.KeywordDriven.Actions
 </code></pre></section>
 <section id="tabpanel_+oFYteI1nb-1_home-details" role="tabpanel" data-tab="home-details" aria-hidden="true" hidden="hidden">
 <p>Home Details sub-action is called by Underwriting action. Sub-action can be used when the keyword action is too complexe. As you can see, this action calls another sub-action according to the type of home (Apartment or House)</p>
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 
 namespace Samples.KeywordDriven.Actions
@@ -402,8 +402,8 @@ namespace Samples.KeywordDriven.Actions
 }
 </code></pre></section>
 <section id="tabpanel_+oFYteI1nb-1_antecedentes" role="tabpanel" data-tab="antecedentes" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine;
-using AXA.WebEngine.Web;
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 
 namespace Samples.KeywordDriven.Actions
@@ -434,7 +434,7 @@ One Test Case can be used multiple times with different test data.
 Only one <code>TestSuite</code> per project is allowed.</p>
 <p>In this example, We don&#39;t use externalized test data, all test data is hard coded in the keyword action.
 In this case we will provide a hard-coded list of test cases with name:</p>
-<pre><code class="lang-csharp" name="Main" title="Test Case">using AXA.WebEngine;
+<pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 
 namespace Samples.KeywordDriven
 {
