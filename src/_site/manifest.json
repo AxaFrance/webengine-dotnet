@@ -855,17 +855,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "files/run-from-excel.mp4",
-      "output": {
-        "resource": {
-          "relative_path": "files/run-from-excel.mp4"
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/app-element.png",
       "output": {
         "resource": {
@@ -1625,6 +1614,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/run-from-excel.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/run-from-excel.mp4"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/tc-projectstructure.png",
       "output": {
         "resource": {
@@ -1720,7 +1720,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "zdh9CfqN7VUacDGXTERBON05xaQLArGLgQ6R/wTIM4M="
+          "hash": "5Pj2phKvXuYDt6czgaAQWRQUQK2LKgUrZ5O2oNs5KHw="
         }
       },
       "is_incremental": false,

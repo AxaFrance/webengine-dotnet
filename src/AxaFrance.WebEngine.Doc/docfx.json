@@ -61,7 +61,8 @@
       {
         "files": [
           "images/**",
-          "files/**"
+          "files/**",
+          "**/*.mp4"
         ]
       }
     ],
