@@ -28,6 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaFrance.WebEngine.ExcelUI
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366-E518-43DB-8542-8F734BA45DD0}"
 	ProjectSection(SolutionItems) = preProject
+		..\3RD_PARTY_RESOURCES.md = ..\3RD_PARTY_RESOURCES.md
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
 		..\CONTRIBUTING.md = ..\CONTRIBUTING.md
