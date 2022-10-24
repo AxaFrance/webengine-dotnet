@@ -1,0 +1,735 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Settings
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Settings
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AxaFrance.WebEngine.Settings">
+  
+  
+  <h1 id="AxaFrance_WebEngine_Settings" data-uid="AxaFrance.WebEngine.Settings" class="text-break">Class Settings
+  </h1>
+  <div class="markdown level0 summary"><p>Settings of the WebEngine provides global testing parameters and behavior. settings can be loaded from external files, or provided via command line using WebRunner. </p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Settings</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.WebEngine.html">AxaFrance.WebEngine</a></h6>
+  <h6><strong>Assembly</strong>: AxaFrance.WebEngine.dll</h6>
+  <h5 id="AxaFrance_WebEngine_Settings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class Settings</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_AllowAnyCertificate_" data-uid="AxaFrance.WebEngine.Settings.AllowAnyCertificate*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_AllowAnyCertificate" data-uid="AxaFrance.WebEngine.Settings.AllowAnyCertificate">AllowAnyCertificate</h4>
+  <div class="markdown level1 summary"><p>Allow any HTTPS Certificate when creating Selenium Grid connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowAnyCertificate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_AppId_" data-uid="AxaFrance.WebEngine.Settings.AppId*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_AppId" data-uid="AxaFrance.WebEngine.Settings.AppId">AppId</h4>
+  <div class="markdown level1 summary"><p>[MobileApp Only] The applicationId to be used (System under test)
+It can be: </p>
+<ol>
+<li>A Package Name, application already installed and will be started.</li>
+<li>A local package fullpath, application will be on the device.</li>
+</ol>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AppId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_AppPackageName_" data-uid="AxaFrance.WebEngine.Settings.AppPackageName*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_AppPackageName" data-uid="AxaFrance.WebEngine.Settings.AppPackageName">AppPackageName</h4>
+  <div class="markdown level1 summary"><p>[MobileApp Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AppPackageName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Browser_" data-uid="AxaFrance.WebEngine.Settings.Browser*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Browser" data-uid="AxaFrance.WebEngine.Settings.Browser">Browser</h4>
+  <div class="markdown level1 summary"><p>Determine the browser which the test will run.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BrowserType Browser { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.BrowserType.html">BrowserType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Capabilities_" data-uid="AxaFrance.WebEngine.Settings.Capabilities*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Capabilities" data-uid="AxaFrance.WebEngine.Settings.Capabilities">Capabilities</h4>
+  <div class="markdown level1 summary"><p>Additional capabilities for the selenium grid (if running in distance)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; Capabilities { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_DataSourceName_" data-uid="AxaFrance.WebEngine.Settings.DataSourceName*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_DataSourceName" data-uid="AxaFrance.WebEngine.Settings.DataSourceName">DataSourceName</h4>
+  <div class="markdown level1 summary"><p>The filename of the data source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DataSourceName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_DesktopGridEnabled_" data-uid="AxaFrance.WebEngine.Settings.DesktopGridEnabled*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_DesktopGridEnabled" data-uid="AxaFrance.WebEngine.Settings.DesktopGridEnabled">DesktopGridEnabled</h4>
+  <div class="markdown level1 summary"><p>[Grid Only] Run Desktop based Selenium test in the Grid (default value is false, that is always run desktop tests locally)
+When value is true, the framework will create Selenium Grid connection provided by <a class="xref" href="AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_GridServerUrl">GridServerUrl</a> </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DesktopGridEnabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Device_" data-uid="AxaFrance.WebEngine.Settings.Device*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Device" data-uid="AxaFrance.WebEngine.Settings.Device">Device</h4>
+  <div class="markdown level1 summary"><p>[Mobile Only] Device name, Mandatary when running tests on Mobile Devices. This parameter will be passed as appium:device for device selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Device { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_GridServerUrl_" data-uid="AxaFrance.WebEngine.Settings.GridServerUrl*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_GridServerUrl" data-uid="AxaFrance.WebEngine.Settings.GridServerUrl">GridServerUrl</h4>
+  <div class="markdown level1 summary"><p>[Mobile Only] [Grid Only] Remote Selenium Grid Hub to connect.
+If platform is Android and IOS, this value is mandatary (default value = <a href="http://localhost:4723/wd/hub">http://localhost:4723/wd/hub</a>) for running tests on local Appium Server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GridServerUrl { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Instance_" data-uid="AxaFrance.WebEngine.Settings.Instance*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Instance" data-uid="AxaFrance.WebEngine.Settings.Instance">Instance</h4>
+  <div class="markdown level1 summary"><p>Get the active instance of Settings. Settings will be initialized by WebEngine Runner, if you are using another test framework settings should be initialized during Test Setup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Settings Instance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.Settings.html">Settings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_LogDir_" data-uid="AxaFrance.WebEngine.Settings.LogDir*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_LogDir" data-uid="AxaFrance.WebEngine.Settings.LogDir">LogDir</h4>
+  <div class="markdown level1 summary"><p>The directory where the test framework will write the logs. WebEngine will generate a consolated report for the whole execution and may generate detailed report for teach test case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LogDir { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_LogFileName_" data-uid="AxaFrance.WebEngine.Settings.LogFileName*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_LogFileName" data-uid="AxaFrance.WebEngine.Settings.LogFileName">LogFileName</h4>
+  <div class="markdown level1 summary"><p>The filename of the generated WebEngine XML report. not available before the log has been generated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LogFileName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_ManualMode_" data-uid="AxaFrance.WebEngine.Settings.ManualMode*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_ManualMode" data-uid="AxaFrance.WebEngine.Settings.ManualMode">ManualMode</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the test execution should done via manuel mode.
+When manuel mode is active, the execution will be paused before Test Case cleanup. User can do some manual manipuilation on system under test.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ManualMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_OsVersion_" data-uid="AxaFrance.WebEngine.Settings.OsVersion*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_OsVersion" data-uid="AxaFrance.WebEngine.Settings.OsVersion">OsVersion</h4>
+  <div class="markdown level1 summary"><p>[Mobile Only] Version of the OS, Optional when running tests on Mobile Devices. It refers to iOS or Android version during the device selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OsVersion { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_PackageUploadUrl_" data-uid="AxaFrance.WebEngine.Settings.PackageUploadUrl*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_PackageUploadUrl" data-uid="AxaFrance.WebEngine.Settings.PackageUploadUrl">PackageUploadUrl</h4>
+  <div class="markdown level1 summary"><p>When testing Mobile Application, This url is used to upload app packages such as APK or IPA. The upload method is implemented according to cloud provider based on this url.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PackageUploadUrl { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Password_" data-uid="AxaFrance.WebEngine.Settings.Password*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Password" data-uid="AxaFrance.WebEngine.Settings.Password">Password</h4>
+  <div class="markdown level1 summary"><p>[Grid Only] Password or AccessKey used to connect to remote Selenium Grid or compatible cloud based mobile testing platforms</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Password { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Platform_" data-uid="AxaFrance.WebEngine.Settings.Platform*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Platform" data-uid="AxaFrance.WebEngine.Settings.Platform">Platform</h4>
+  <div class="markdown level1 summary"><p>[Mobile Only] The platform for mobile testing. Mandatary for Mobile testing: Possible values Android / iOS</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Platform Platform { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.Platform.html">Platform</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_ReportSettings_" data-uid="AxaFrance.WebEngine.Settings.ReportSettings*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_ReportSettings" data-uid="AxaFrance.WebEngine.Settings.ReportSettings">ReportSettings</h4>
+  <div class="markdown level1 summary"><p>Settings about report generating, including additional formats and locations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReportSettings ReportSettings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.ReportSettings.html">ReportSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Separator_" data-uid="AxaFrance.WebEngine.Settings.Separator*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Separator" data-uid="AxaFrance.WebEngine.Settings.Separator">Separator</h4>
+  <div class="markdown level1 summary"><p>The CSV Seperator used during the data process. default value is semicolon (;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Separator { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_ShowReportAfterTest_" data-uid="AxaFrance.WebEngine.Settings.ShowReportAfterTest*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_ShowReportAfterTest" data-uid="AxaFrance.WebEngine.Settings.ShowReportAfterTest">ShowReportAfterTest</h4>
+  <div class="markdown level1 summary"><p>If webrunner should try to show test report after test execution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowReportAfterTest { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_SynchronzationTimeout_" data-uid="AxaFrance.WebEngine.Settings.SynchronzationTimeout*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_SynchronzationTimeout" data-uid="AxaFrance.WebEngine.Settings.SynchronzationTimeout">SynchronzationTimeout</h4>
+  <div class="markdown level1 summary"><p>Default synchronization timeout during the test. This timeout is used on Browser Synchronziation, Find Test Objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SynchronzationTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_UseJavaScriptClick_" data-uid="AxaFrance.WebEngine.Settings.UseJavaScriptClick*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_UseJavaScriptClick" data-uid="AxaFrance.WebEngine.Settings.UseJavaScriptClick">UseJavaScriptClick</h4>
+  <div class="markdown level1 summary"><p>Active JavaScript Click. Mainly used for SafariDriver and Mobile Chrome based driver because native click may not work.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseJavaScriptClick { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Username_" data-uid="AxaFrance.WebEngine.Settings.Username*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Username" data-uid="AxaFrance.WebEngine.Settings.Username">Username</h4>
+  <div class="markdown level1 summary"><p>[Grid Only] Username used to connect to remote Selenium Grid testing platforms (local Selenium Grid or cloud provider such as BrowserStack)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Username { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

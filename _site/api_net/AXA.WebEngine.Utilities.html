@@ -1,0 +1,631 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Utilities
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Utilities
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AXA.WebEngine.Utilities">
+  
+  
+  <h1 id="AXA_WebEngine_Utilities" data-uid="AXA.WebEngine.Utilities" class="text-break">Class Utilities
+  </h1>
+  <div class="markdown level0 summary"><p>Common utility class contains shared methods to enhance the generic works</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Utilities</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AXA.WebEngine.html">AXA.WebEngine</a></h6>
+  <h6><strong>Assembly</strong>: AXA.WebEngine.dll</h6>
+  <h5 id="AXA_WebEngine_Utilities_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Utilities</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="AXA_WebEngine_Utilities_ExtractDateFromText_" data-uid="AXA.WebEngine.Utilities.ExtractDateFromText*"></a>
+  <h4 id="AXA_WebEngine_Utilities_ExtractDateFromText_System_String_" data-uid="AXA.WebEngine.Utilities.ExtractDateFromText(System.String)">ExtractDateFromText(String)</h4>
+  <div class="markdown level1 summary"><p>Turn the string &quot;JJ/MM/AAAA&quot; into a date</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DateTime ExtractDateFromText(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The string to convert</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><p>The date represented by the String. If no date is contained in the string or wrong format, the current date is returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GenerateEmail_" data-uid="AXA.WebEngine.Utilities.GenerateEmail*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GenerateEmail_System_String_System_String_System_Boolean_System_String_" data-uid="AXA.WebEngine.Utilities.GenerateEmail(System.String,System.String,System.Boolean,System.String)">GenerateEmail(String, String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>Return an email based on first and last name.
+No transformation is done on last name and first names.
+The email is considered unique as the date is injected in the construction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GenerateEmail(string lastname, string firstname, bool isUnique = true, string domain = &quot;test.com&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">lastname</span></td>
+        <td><p>The last name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">firstname</span></td>
+        <td><p>The first name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isUnique</span></td>
+        <td><p>Indicates if the generated email must be unique or not. Default: true</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">domain</span></td>
+        <td><p>The domain of the generated mail. Default: gmail.com</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>An email.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GeneratePhoneNumber_" data-uid="AXA.WebEngine.Utilities.GeneratePhoneNumber*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GeneratePhoneNumber_System_String_" data-uid="AXA.WebEngine.Utilities.GeneratePhoneNumber(System.String)">GeneratePhoneNumber(String)</h4>
+  <div class="markdown level1 summary"><p>Return a phone number composed by a fixed base and the 4 last digits randomly generated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GeneratePhoneNumber(string numberBase = &quot;01000&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">numberBase</span></td>
+        <td><p>The first part of the phone number. Default: 010000 (french format)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A phone number</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GetRandomItemFromEnvironmentVariable_" data-uid="AXA.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GetRandomItemFromEnvironmentVariable_System_String_System_Char_" data-uid="AXA.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(System.String,System.Char)">GetRandomItemFromEnvironmentVariable(String, Char)</h4>
+  <div class="markdown level1 summary"><p>Picks up a random value from an environment variable containing a list of values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetRandomItemFromEnvironmentVariable(string variable, char separator = ';')</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">variable</span></td>
+        <td><p>The name of the environment variable</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><span class="parametername">separator</span></td>
+        <td><p>The list separator used to define the environment variable. Default: &apos;;&apos;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>String</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GetRandomLetter_" data-uid="AXA.WebEngine.Utilities.GetRandomLetter*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GetRandomLetter" data-uid="AXA.WebEngine.Utilities.GetRandomLetter">GetRandomLetter()</h4>
+  <div class="markdown level1 summary"><p>Return a random letter (uppercase).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetRandomLetter()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>String</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GetRandomNumber_" data-uid="AXA.WebEngine.Utilities.GetRandomNumber*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GetRandomNumber_System_Int32_" data-uid="AXA.WebEngine.Utilities.GetRandomNumber(System.Int32)">GetRandomNumber(Int32)</h4>
+  <div class="markdown level1 summary"><p>Generate a random number between 0 and the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetRandomNumber(int val)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">val</span></td>
+        <td><p>The max value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Integer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_GetRandomStringFromList_" data-uid="AXA.WebEngine.Utilities.GetRandomStringFromList*"></a>
+  <h4 id="AXA_WebEngine_Utilities_GetRandomStringFromList_System_Object___" data-uid="AXA.WebEngine.Utilities.GetRandomStringFromList(System.Object[])">GetRandomStringFromList(Object[])</h4>
+  <div class="markdown level1 summary"><p>Randomly select an item from a list.
+If the field has single or double quotes, quotes are removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static object GetRandomStringFromList(object[] items)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">items</span></td>
+        <td><p>List of items</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>Picked-up item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_LoremIpsum_" data-uid="AXA.WebEngine.Utilities.LoremIpsum*"></a>
+  <h4 id="AXA_WebEngine_Utilities_LoremIpsum_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AXA.WebEngine.Utilities.LoremIpsum(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">LoremIpsum(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Generates a Lorem Ipsum text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minWords</span></td>
+        <td><p>The min number of words in the generated text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxWords</span></td>
+        <td><p>The max number of words in the generated text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minSentences</span></td>
+        <td><p>The min number of sentences in the generated text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxSentences</span></td>
+        <td><p>The max number of sentences in the generated text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">numParagraphs</span></td>
+        <td><p>The number of paragraphs in the generated text.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A Lorem Ipsum string of the defined size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_SaveFile_" data-uid="AXA.WebEngine.Utilities.SaveFile*"></a>
+  <h4 id="AXA_WebEngine_Utilities_SaveFile_System_String_System_String_" data-uid="AXA.WebEngine.Utilities.SaveFile(System.String,System.String)">SaveFile(String, String)</h4>
+  <div class="markdown level1 summary"><p>Saves the content into a file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SaveFile(string filename, string content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filename</span></td>
+        <td><p>The file name to be saved.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>The content to save.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AXA_WebEngine_Utilities_ShiftDateByDuration_" data-uid="AXA.WebEngine.Utilities.ShiftDateByDuration*"></a>
+  <h4 id="AXA_WebEngine_Utilities_ShiftDateByDuration__1_System_String___0_" data-uid="AXA.WebEngine.Utilities.ShiftDateByDuration``1(System.String,``0)">ShiftDateByDuration&lt;T&gt;(String, T)</h4>
+  <div class="markdown level1 summary"><p>Returns a new date calculated from a given date and a duration.
+<p>The duration is positive or negative with a unity.</p>
+<p>The unity is (D or J), M or (Y or A) representing respectively : a duration expressed in days, month or year.</p>
+<p>The sign indicates that the calculated date must be in the past (negative) or in the future (positive).</p>
+<p>The start date is optional. If omitted, the current date is considered.</p>
+<p>If passed as argument, the start date must be either a string with the following format &quot;DD/MM/YYYY&quot; or a DateTime or even a &quot;differential&quot; date like the duration itself.</p>
+<p>In this last case, the startDate is recalculated from the current date.</p> 
+<p>Example:</p>
+<p>MoveDateByDuration(&quot;7D&quot;): returns Today+7 days.</p>
+<p>MoveDateByDuration(&quot;-6M&quot;, DateTime(2017, 6, 25)): should return 25th of december 2016</p>
+<p>MoveDateByDuration(&quot;-6M&quot;, &quot;25/06/2017&quot;): should return 25th of december 2016.</p>
+<p>MoveDateByDuration(&quot;2D&quot;, &quot;1D&quot;): the day in 3 days (2 days from tomorrow).</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DateTime ShiftDateByDuration&lt;T&gt;(string duration, T startDate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">duration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><p>The calcuated Date of type <span class="xref">System.DateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

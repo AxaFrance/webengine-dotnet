@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Writing test cases - Gherkin Approach (C#/.NET) | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Writing test cases - Gherkin Approach (C#/.NET) | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="writing-test-cases---gherkin-approach-cnet">Writing test cases - Gherkin Approach (C#/.NET)</h1>
+
+<p>In this article we will show you how to write test cases using Gherkin approach.
+Gherkin approach is often used to test features in Behavior-Driven Development (for example: acceptance criteria of a user story) and in Agile environment. The test cases are represented by test scenarios written in gherkin language, and each sentence is implemented by code-behind. You can reuse the same sentence across the test project so the code-behind can also be reused.</p>
+<p>With this method testers (or business users) and automation engineers can work together: One can maintain the repository of test scenarios in Gherkin and the other can maintain automation implementations. When a scenario is not yet automated, it can still be served for manual execution.</p>
+<div class="NOTE"><h5>Note</h5><p>Gherkin approach is perfect for feature testing combined with BDD (Behavior-Driven Development).</p>
+<p>But it may not be suitable for complex end-to-end tests. For this use cases, Gherkin scenarios may be too long, and the code-behind of each phrase may be difficult to maintain.
+For complex end-to-end tests, you may consider Keyword-driven/Data-driven testing approach.</p>
+</div>
+<h2 id="prerequisites-for-gherkin-approach">Prerequisites for Gherkin Approach</h2>
+<p>Using Visual Studio as development environment, you&#39;ll need to install <code>SpecFlow</code> extension in order to create test projects.</p>
+<p><img src="../images/ga-install-specflow.png" alt="Install SpecFlow"></p>
+<h3 id="step-1-create-specflow-project">Step 1: Create SpecFlow project</h3>
+<p>To initialize a test project using Gherkin, create a SpecFlow project:</p>
+<p><img src="../images/ga-create-project.png" alt="Create Project"></p>
+<p>SpecFlow is based on top of Unit Test framework, so the execution experience will be very similar. Once a SpecFlow project is created, it initializes the structure as follows: </p>
+<p><img src="../images/ga-project-structure.png" alt="Project Structure"></p>
+<ul>
+<li>In <code>Features</code> folder, test scenarios written in Gherkin Language and saved in <code>.features</code> file.</li>
+<li>In <code>StepDefinitions</code>, the implementation of these scenarios by code.
+Let&#39;s delete the files in the folder Features and StepDefinitions and create our scenarios later.</li>
+</ul>
+<h3 id="step-2-observe-sut-and-identify-ui-elements">Step 2: Observe SUT and identify UI Elements</h3>
+<p>Observing system under test via Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a <code>PageModel</code>.</p>
+<p><img src="../images/ls-step3-uielements.png" alt="Step 3 UI Elements"></p>
+<p>This is exactly the same step we&#39;ve discussed in Linear Script Approach. Please refer to
+<a href="linear-script-cs.html#step-3-observe-sut-and-identify-ui-elements">Observe SUT and Identify UI Elements</a> for more information.</p>
+<h3 id="step-3-write-test-scenarios-feature">Step 3: Write test scenarios (.feature)</h3>
+<p>Create a SpecFlow Feature file and name it <code>DrinkMachine.feature</code>, place it under the folder <code>Features</code></p>
+<p><img src="../images/ga-create-feature.png" alt="Create Feature"></p>
+<p>Let&#39;s create our first scenario in Gherkin to order the Tea. </p>
+<pre><code class="lang-gherkin" name="Main" title="DrinkMachine">Feature: DrinkMachine
+
+@tag1
+Scenario: Let&#39;s drink some tea
+	Given I turn on the drink machine
+	When I select &#39;Fran&#231;ais&#39; as language and order a &#39;Tea&#39;
+	Then I got &#39;Tea&#39;
+</code></pre><p>There is no limit how to write the scenario using the keywords given-when-then. But generally, people often use <code>Given</code> to specify the preconditions, <code>When</code> to specify actions and <code>Then</code> to specify expected results. Following the same naming convention across teams can ensure good understanding of scenarios for all stakeholders.</p>
+<h3 id="step-4-generate-test-steps-from-features">Step 4: Generate test steps from features</h3>
+<p>Once the feature is written, <code>Build</code> the project so SpecFlow add-in can generates necessary codes.
+Then, in the feature file, right-click on the scenario and select <code>define steps</code></p>
+<p><img src="../images/ga-generate-steps.png" alt="Generate Steps"></p>
+<p>It will automatically generate code to match each sentence:</p>
+<p><img src="../images/ga-generatestep-dialog.png" alt="Generate step Dialog"></p>
+<p>We can see the <code>Variables</code> of the scenario is automatically recognized. (If that&#39;s not the case, you&#39;ll need to adjust the regular expression above the function and the arguments of the function.)
+Now build the test project again, you can see the variables of the test is highlighted. That means we can reuse the same sentence and changing the test data in other test scenarios without the need to rewrite code-behind.</p>
+<p><img src="../images/ga-scenario-binded.png" alt="Scenario Binded"></p>
+<p>Now we are ready to write test scripts.</p>
+<h3 id="step-5-implementation">Step 5: Implementation</h3>
+<p>From here, we&#39;ll need to use functionalities provided in WebEngine to implement automated tests. Here we will open the code <code>DrinkMachineStepDefinitions</code> generated from Step 4.</p>
+<p>Make sure following NuGet Packages of WebEngine are installed in the test project:</p>
+<ul>
+<li><code>AXA.WebEngine</code>: for basic data structures</li>
+<li><code>AXA.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices</li>
+<li><code>AXA.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications</li>
+</ul>
+<p>In this tutorial, the implementation will be as follow:</p>
+<ul>
+<li>In <em>Turn on drink machine</em> step, we initialize Selenium WebDriver via <a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> and navigate to the application.</li>
+<li>In <em>select language and order</em> step, we manipulate the SUT via page model</li>
+<li>In <em>then</em> step, we use <code>Assertion</code> to verify expected result</li>
+<li>At last, a <em>Cleanup</em> function tagged with <code>AfterSceario</code> to close the browser and Selenium WebDriver</li>
+</ul>
+<p>Code snippets:</p>
+<pre><code class="lang-csharp" name="Main" title="DrinkMachineStepDefinition.cs">// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified By: YUAN Huaxing, at: 2022-8-2 14:33
+using AXA.WebEngine.Web;
+using NUnit.Framework;
+using OpenQA.Selenium;
+
+namespace Samples.Gherkin.StepDefinitions
+{
+    [Binding]
+    public class DrinkMachineStepDefinitions
+    {
+        // local variable to pass driver across scneario
+        WebDriver driver;
+
+        // clean up the driver after each scneario
+        [AfterScenario]
+        public void Cleanup()
+        {
+            driver?.Close();
+            driver?.Dispose();
+        }
+
+        [Given(@&quot;I turn on the drink machine&quot;)]
+        public void GivenITurnOnTheDrinkMachine()
+        {
+            driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.Chrome);
+            driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
+        }
+
+        // Select language and drink, this function can be reused for other language and drinks.
+        [When(@&quot;I select &#39;([^&#39;]*)&#39; as language and order a &#39;([^&#39;]*)&#39;&quot;)]
+        public void WhenISelectAsLanguageAndOrderA(string language, string drink)
+        {
+            MyPageModel pageModel = new MyPageModel(driver);
+            pageModel.SelectLanguage.SelectByText(language);
+            pageModel.RadioChooseToBuy.CheckByValue(drink);
+            pageModel.NextButton.Click();
+        }
+
+        [Then(@&quot;I got &#39;([^&#39;]*)&#39;&quot;)]
+        public void ThenIGot(string tea)
+        {
+            MyPageModel pageModel = new MyPageModel(driver);
+            Assert.IsTrue(pageModel.Page2Title.Exists());
+        }
+    }
+}
+</code></pre><h3 id="step-6-run-test-case">Step 6: Run test case</h3>
+<p>Build your test project and go to <em>Test</em> -&gt; <em>Test Explorer</em>: The scenario is listed in Test Explorer and you can now debug and run this automated test.</p>
+<p><img src="../images/ga-run-test.png" alt="Run Test"></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

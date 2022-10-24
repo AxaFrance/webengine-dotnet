@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Launch Test with Web Runner | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Launch Test with Web Runner | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="launch-test-with-web-runner">Launch Test with Web Runner</h1>
+
+<p><code>WebRunner</code> is the component to run automated test and provided rich XML based report.
+Base on the programming language used to build test automation solution, the command-line has a little difference.
+Meanwhile, all behaviors and arguments remain the same.</p>
+<div class="WARNING"><h5>Warning</h5><p>Spacing characters are not accepted as parameter values. Parameter with space must be enclosed in double-quotes.</p>
+</div>
+<div class="tabGroup" id="tabgroup_8e4t8rYVNM">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_8e4t8rYVNM_netcore" role="tab" aria-controls="tabpanel_8e4t8rYVNM_netcore" data-tab="netcore" tabindex="0" aria-selected="true">.NET</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_8e4t8rYVNM_java" role="tab" aria-controls="tabpanel_8e4t8rYVNM_java" data-tab="java" tabindex="-1">Java</a>
+</li>
+</ul>
+<section id="tabpanel_8e4t8rYVNM_netcore" role="tabpanel" data-tab="netcore">
+<pre><code class="lang-batch">webrunner &quot;-a:&lt;testproject&gt;&quot; [-data:&lt;testdata&gt;] [-env:&lt;env_ariable&gt;] [-browser:&lt;browser-type&gt;] [optional_arguments]
+</code></pre></section>
+<section id="tabpanel_8e4t8rYVNM_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-batch">java -jar webrunner.jar &quot;-a:&lt;testproject&gt;&quot; [-data:&lt;testdata&gt;] [-env:&lt;env_ariable&gt;] [-browser:&lt;browser-type&gt;] [optional_arguments]
+</code></pre></section>
+</div>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To run tests build with WebEngine Framework, is is required to provide compiled test automation solution.</p>
+<ul>
+<li><code>-a:&lt;testproject&gt;</code>: the filename or full path of compiled test project: DLL library for .NET, or a JAR package for Java.</li>
+</ul>
+<p>If the test is Data-Driven, it is required to provide at least one of following files:</p>
+<ul>
+<li><code>-data:&lt;testdata&gt;</code>: Test Data to be used for data-driven test execution, in XML format. The file can be exported via <code>Excel Add-in</code></li>
+<li><code>-env:&lt;env_variable&gt;</code>: Environment Variables in XML format, to store test environment related test data, such as URLs, Hostnames or Credentials.</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="run-test-on-desktop-browsers">Run test on desktop browsers</h4>
+<p>For following command line launches the solution in <code>Firefox</code> browser and generate test reports in <code>C:\Temp</code></p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-a:MyProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; -browser:Firefox &quot;-outputDir:C:\Temp&quot;
+</code></pre><h4 id="run-webapp-test-on-android-emulator">Run webapp test on Android Emulator</h4>
+<p>Following command line launches same test under emulated <code>Android</code> device (requires Android Emulator + Appium Server on local) using <code>Chrome</code> browser.</p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-a:MyProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; -platform:Android -browser:Chrome &quot;-device:Emulator&quot; &quot;-outputDir:C:\Temp&quot;
+</code></pre><h4 id="run-app-test-on-selenium-compatible-device-cloud">Run app test on Selenium compatible Device Cloud</h4>
+<p>Following command line installs the application package, then launches test under <code>iPhone 12</code>, using provided device cloud.</p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-a:AppProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; -platform:iOS -browser:IOSNative &quot;-device:iPhone 12&quot; &quot;-grid:http://seleniumgrid.com/wd/hub&quot; &quot;-appId:C:\app_under_test.ipa&quot;
+</code></pre><h2 id="optional-parameters">Optional parameters</h2>
+<div class="NOTE"><h5>Note</h5><p>Some parameters can be provided in the configuration file <code>appsettings.json</code>. please refer to <a href="appsettings.html">Test Configuration</a></p>
+</div>
+<h3 id="commun-parameters">Commun parameters</h3>
+<h5 id="-browserbrowser">-browser:&lt;browser&gt;</h5>
+<p>Indicates the browser to run test on. see: <a class="xref" href="../api_net/AXA.WebEngine.BrowserType.html">BrowserType</a>.</p>
+<h5 id="-platformplatform">-platform:&lt;platform&gt;</h5>
+<p>The platform for test execution: see: <a class="xref" href="../api_net/AXA.WebEngine.Platform.html">Platform</a>. Default value is <code>Windows</code> stands for Desktop Browsers.</p>
+<h5 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h5>
+<p>Indicates the folder to store output of test execution and test report. This parameter is can be defined in <code>appsetting.json</code>.</p>
+<h5 id="-m">-m</h5>
+<p>Manual debug mode, use to debug test scenarios locally. When the test is failed test will pause for manual intervention before clean-up process.</p>
+<h5 id="junitjunitpath">junit:&lt;junitPath&gt;</h5>
+<p>In additional of default XML report, generates a JUnit 2.6 compliant test report. Useful to publish test result on an Continuous Integration Platform</p>
+<h5 id="-showreport">-showReport</h5>
+<p>Launches <code>Report Viewer</code> after test execution.</p>
+<h3 id="parameters-for-mobile-testing">Parameters for Mobile testing</h3>
+<p>To run tests on Mobile device, <code>-platform</code> must be specified to <code>Android</code> or <code>iOS</code>.</p>
+<h5 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h5>
+<p>Indicates the Selenium Grid to connect to device cloud. Default value is <code>http://localhost:4723/wd/hub</code> stands for local Appium Server
+If you are using cloud-based device cloud, please refer to service providers documentation.</p>
+<h5 id="-usernameusername">-username:&lt;username&gt;</h5>
+<p>Indicates the username to be used for Selenium Grid authentication.</p>
+<h5 id="-passwordpassword">-password:&lt;password&gt;</h5>
+<p>Indicates the password to be used for Selenium Grid authentication.</p>
+<h5 id="-devicedevicename">-device:&lt;deviceName&gt;</h5>
+<p>Indicates the device name for device selection. for example: <code>iPhone Xs</code>, <code>Huawei P30</code>. Refers your cloud provider.</p>
+<h5 id="-osversionversion">-osVersion:&lt;version&gt;</h5>
+<p>Indicate the version of the OS for device selection. for example: <code>14.1</code>, <code>9.0</code>. Refers your cloud provider.</p>
+<h3 id="where-to-find-webrunner-package">Where to find WebRunner package?</h3>
+<p>WebRunner package is installed via NuGet Package (.NET) or Maven (Java).
+After compilation of your test automation project, it will be found in project output folder.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

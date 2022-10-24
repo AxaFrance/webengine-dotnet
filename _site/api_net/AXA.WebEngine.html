@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace AXA.WebEngine
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace AXA.WebEngine
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AXA.WebEngine">
+  
+  <h1 id="AXA_WebEngine" data-uid="AXA.WebEngine" class="text-break">Namespace AXA.WebEngine
+  </h1>
+  <div class="markdown level0 summary"><p>The AXA.WebEngine namespace contains classes and interfaces of basic structure of Test. The classes used in this namespace are platform and underlying tool independent.</p>
+<p>To test Web Based applications, You can use the functionalities provided in <a class="xref" href="AXA.WebEngine.Web.html">AXA.WebEngine.Web</a> namespace. This libaray uses Selenium as underlying tool to preform test on Desktop and Mobile Browsers (using Selenium Grid or local Appium Server)</p>
+<p>To test Native/Hybird Mobile Applications running on <code>Android</code> or <code>iOS</code> devices, You can use functionalities provided in <a class="xref" href="AXA.WebEngine.MobileApp.html">AXA.WebEngine.MobileApp</a>. This library uses Appium as underlying tool.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="AXA.WebEngine.ActionNotFoundException.html">ActionNotFoundException</a></h4>
+      <section><p>The keyword-action is not found.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.DebugLogger.html">DebugLogger</a></h4>
+      <section><p>Log the content to both Console and Debug (showing in visual studio)</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Encrypter.html">Encrypter</a></h4>
+      <section><p>A simple encrypter helps you to avoid storing sensitive test data </p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.EnvironmentVariables.html">EnvironmentVariables</a></h4>
+      <section><p>This class defines the structure of environment variables</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.MethodExtensions.html">MethodExtensions</a></h4>
+      <section><p>The method extension to provide helper functions for List operations</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.ReportSettings.html">ReportSettings</a></h4>
+      <section><p>Settings of the WebEngine privides global</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Settings.html">Settings</a></h4>
+      <section><p>Settings of the WebEngine provides global testing parameters and behavior. settings can be loaded from external files, or provided via command line using WebRunner. </p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.SharedActionBase.html">SharedActionBase</a></h4>
+      <section><p>Base class of the shared actions. All shared actions must be derived from this class and implement DoAction, DoCheckpoint method.
+In order to verify if all parameters are given when calling DoAction() and DoCheckpoint() methods, please specify RequiredParameters Property</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.TestCase.html">TestCase</a></h4>
+      <section><p>A TestCase contains one or several test steps, these steps will be run one after another.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.TestData.html">TestData</a></h4>
+      <section><p>The data for a single test, identified with it&apos;s name.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.TestStep.html">TestStep</a></h4>
+      <section><p>A step within a test case. </p>
+<p>This class for internal use for reflection.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.TestSuite.html">TestSuite</a></h4>
+      <section><p>The structure of a TestSuite.
+<p>When launch tests with WebRunner.exe, WebEngine will scan all the derived classes of TestSuite within your test DLL. 
+Then it will launch every test cases of the test suite, which is defined in the property TestCases</p></p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.TestSuiteData.html">TestSuiteData</a></h4>
+      <section><p>The test data of a test suite, which contains data for one or several test cases.
+Each test data is identified by its name
+Each TestSuiteData are represented in XML file</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Utilities.html">Utilities</a></h4>
+      <section><p>Common utility class contains shared methods to enhance the generic works</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Variable.html">Variable</a></h4>
+      <section><p>A Variable contains a name and it&apos;s value.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.WebEngineGeneralException.html">WebEngineGeneralException</a></h4>
+      <section><p>The generic exception thrown by the framework web engine;</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="AXA.WebEngine.BrowserType.html">BrowserType</a></h4>
+      <section><p>Determine browser type to run the tests. Browser Type is limited according to the platform.</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Platform.html">Platform</a></h4>
+      <section><p>The platform of the test on Noeud Selection</p>
+</section>
+      <h4><a class="xref" href="AXA.WebEngine.Result.html">Result</a></h4>
+      <section><p>Represent the result of a TestStep or an Action</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

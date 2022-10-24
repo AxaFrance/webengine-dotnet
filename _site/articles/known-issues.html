@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Known issues and possible workarounds | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Known issues and possible workarounds | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="known-issues-and-possible-workarounds">Known issues and possible workarounds</h1>
+
+<p>This page resumes some known issues which cannot be resolved at the level of Framework, or maybe you need to change system settings in order to run automated tests.</p>
+<h2 id="getattribute-getinnerhtml-getouterhtml-value-returns-null">GetAttribute, GetInnerHtml, GetOuterHtml, Value returns <code>null</code></h2>
+<p>This issue is caused by a bug in chrome driver pre v92.0. To test your application, you may want to update the Chrome installed on your device so a recent version of chrome driver can be used. </p>
+<h2 id="isvisibleinviewport-throws-an-exception">IsVisibleInViewPort throws an Exception</h2>
+<p>This issue may occur in older version of mobile devices with older version of browser such as Chrome 69. To determine if an element is in the view port, the framework uses a JavaScript function <code>getBoundingClientRect()</code> which is not available in older version of browsers (such as chrome 69 installed with Android 9.0)</p>
+<h2 id="drag-and-drop-does-not-work-on-mobile-browsers">Drag-and-Drop does not work on mobile browsers</h2>
+<p>This issue is known because mobile devices does not have mouse, the drag operation is often initialized by long-press.</p>
+<h2 id="edge-shows-sign-in-popup-during-the-initialization-of-webdriver">Edge shows Sign-in popup during the initialization of WebDriver</h2>
+<p><img src="../images/forced-signin-edge.png" alt="Forced Signin Edge"></p>
+<p>This issue occurs when your enterprise administrator forced users to sign-in while using the chromium-based Edge browser. You may ask the administrator to exclude your test machines from mandatory sign-in by modifying the GPO (Group Policy) or modifying Windows registry of your test machines:</p>
+<ul>
+<li>Key: <code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge</code></li>
+<li>Value: <code>BrowserSignin</code>, Type: <code>DWORD</code></li>
+<li>Data:<ul>
+<li><code>Disabled</code> = 0</li>
+<li><code>Enabled</code> = (remove the value)</li>
+<li><code>Force</code> = 2</li>
+</ul>
+</li>
+</ul>
+<p>Remove the value or modify the data to 0 will disabled the forced sign-in</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

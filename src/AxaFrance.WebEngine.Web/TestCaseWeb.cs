@@ -24,7 +24,6 @@ namespace AxaFrance.WebEngine.Web
             {
                 try
                 {
-                    browser.Close();
                     browser.Quit();
                     this.Context = null;
                 }

@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Development Status of the Framework | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Development Status of the Framework | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="development-status-of-the-framework">Development Status of the Framework</h1>
+
+<h2 id="components-of-webengine-framework">Components of WebEngine Framework</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>.NET</th>
+<th>Java</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AxaFrance.WebEngine</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Provide basic data structure used in an automation project</td>
+</tr>
+<tr>
+<td>AxaFrance.WebEngine.Web</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Provide functionalities to test Web based application on Desktop and Mobile browsers (Based on Selenium 4)</td>
+</tr>
+<tr>
+<td>AxaFrance.WebEngine.MobileApp</td>
+<td>🟢</td>
+<td>🔘</td>
+<td>Provide functionalities to test Native and Hybrid mobile applications on Android and iOS (Based on Appium)</td>
+</tr>
+<tr>
+<td>AxaFrance.WebEngine.WebRunner</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Run automated tests using Keyword driven testing approach</td>
+</tr>
+<tr>
+<td>AxaFrance.WebEngine.ReportViewer</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>View test reports (unique version for both .NET and Java version of the framework)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="actions-for-web-elements-via-xrefaxafrancewebenginewebwebelementdescription">Actions for Web Elements (Via <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a>)</h2>
+<p>These actions are available for WebElementDescription. Please note that some actions have different meaning on Desktop and Mobile browsers.</p>
+<p><code>Synchronized</code> signifies the action is secured by the Framework. If the action failed because of page reloading or DOM updating by JavaScript programs, actions will be automatically retried. This feature significantly improves the readability of the test script (code) and reduces the effort to maintenance.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>.NET</th>
+<th>Java</th>
+<th>Description</th>
+<th>Synchronized</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FindElement()</td>
+<td>✔</td>
+<td></td>
+<td>Find a unique Web Element with current element description.</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>FindElement(By)</td>
+<td>✔</td>
+<td></td>
+<td>Find an sub-element of the current Web Element</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>FindElements()</td>
+<td>✔</td>
+<td></td>
+<td>Find one or more Web Elements with current element description.(for example options of a <code>select</code> element or buttons in the same <code>radio button group</code>)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>FindElements(By)</td>
+<td>✔</td>
+<td></td>
+<td>Find one or more sub-element of the current unique Web Element</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Exists()</td>
+<td>✔</td>
+<td></td>
+<td>Checks if an Web Element exists on the DOM</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Clear()</td>
+<td>✔</td>
+<td></td>
+<td>Clears the value of the element (for text-boxes, text-areas and password-boxes)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Click()</td>
+<td>✔</td>
+<td></td>
+<td>Clicks on the Web Element</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>CheckByValue(String)</td>
+<td>✔</td>
+<td></td>
+<td>Checks an option of radio button group based on html attribute <code>value</code>. The current description correspondents all radio buttons of the same group</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>DragAndDropTo(ElementDescription)</td>
+<td>✔</td>
+<td></td>
+<td>Drag the current element and drop to another element. (works only on desktop browser)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>GetAttribute(string)</td>
+<td>✔</td>
+<td></td>
+<td>Gets the value of the given html attribute</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>GetInnerHtml()</td>
+<td>✔</td>
+<td></td>
+<td>Gets the value of the html attribute <code>innerHTML</code></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>GetOuterHtml()</td>
+<td>✔</td>
+<td></td>
+<td>Gets the value of the html attribute <code>outerHTML</code></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>GetScreenshot()</td>
+<td>✔</td>
+<td></td>
+<td>Generates a screenshot of the current web page</td>
+<td></td>
+</tr>
+<tr>
+<td>MouseHover()</td>
+<td>✔</td>
+<td></td>
+<td>Hovers the mouse on a given element (Desktop only. on mobile devices, a Click will be performed instead.)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>RightClick()</td>
+<td>✔</td>
+<td></td>
+<td>Preforms right-click on an element. On Mobile devices, an long touch will be performed</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>ScrollIntoView()</td>
+<td>✔</td>
+<td></td>
+<td>Scrolls the screen until the element is shown in the current view port</td>
+<td></td>
+</tr>
+<tr>
+<td>SendKeys(string)</td>
+<td>✔</td>
+<td></td>
+<td>Send the text to textbox based elements (for text-box, text-area and password-box)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>SetSecure(String)</td>
+<td>✔</td>
+<td></td>
+<td>Takes a crypted data, and set the value to a password-box (works only on password-box)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>SetValue(string)</td>
+<td>✔</td>
+<td></td>
+<td>Clear the current value of textbox based elements and replace with provided value (for text-box, text-area and password-box)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>GetText()</td>
+<td>✔</td>
+<td></td>
+<td>Gets the text property of the element (for text-box and text-area)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>✔</td>
+<td></td>
+<td>Gets the <code>value</code> attribute of the element (usually in html forms)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>IsSelected</td>
+<td>✔</td>
+<td></td>
+<td>Checks if the Web Element is selected. Applies only on checkboxes, options in a select element and radio buttons</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>IsEnabled</td>
+<td>✔</td>
+<td></td>
+<td>Checks if the Web Element is enabled</td>
+<td></td>
+</tr>
+<tr>
+<td>IsDisplayed</td>
+<td>✔</td>
+<td></td>
+<td>Checks if the Web Element is visible (Either in viewport or not on mobile devices)</td>
+<td></td>
+</tr>
+<tr>
+<td>IsVisibleInViewPort</td>
+<td>✔</td>
+<td></td>
+<td>Checks if the Web Element is visible in the current view port</td>
+<td></td>
+</tr>
+<tr>
+<td>AsSelect()</td>
+<td>✔</td>
+<td></td>
+<td>Converts the Web Element into a <code>SelectElement</code></td>
+<td></td>
+</tr>
+<tr>
+<td>SelectByIndex(Int32)</td>
+<td>✔</td>
+<td></td>
+<td>Considers current Web Element is <code>select</code> and choose an option based on index</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>SelectByText(String)</td>
+<td>✔</td>
+<td></td>
+<td>Considers current Web Element is <code>select</code> and choose an option based on displayed text</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>SelectByValue(String)</td>
+<td>✔</td>
+<td></td>
+<td>Considers current Web Element is <code>select</code> and choose an option based on <code>value</code> attribute</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

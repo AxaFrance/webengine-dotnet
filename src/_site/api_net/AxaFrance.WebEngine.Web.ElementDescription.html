@@ -1,0 +1,1327 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ElementDescription
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ElementDescription
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AxaFrance.WebEngine.Web.ElementDescription">
+  
+  
+  <h1 id="AxaFrance_WebEngine_Web_ElementDescription" data-uid="AxaFrance.WebEngine.Web.ElementDescription" class="text-break">Class ElementDescription
+  </h1>
+  <div class="markdown level0 summary"><p>Describes how to identify an test object by its attributes, like Id, Name, XPath and any conbinations of them. WebEngine Framework can localize test object with multiple attributes.
+For web application testing, use the derived class <a class="xref" href="AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a></p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ElementDescription</span></div>
+      <div class="level2"><a class="xref" href="AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a></div>
+      <div class="level2"><a class="xref" href="AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a></h6>
+  <h6><strong>Assembly</strong>: AxaFrance.WebEngine.Web.dll</h6>
+  <h5 id="AxaFrance_WebEngine_Web_ElementDescription_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ElementDescription</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_driver" data-uid="AxaFrance.WebEngine.Web.ElementDescription.driver">driver</h4>
+  <div class="markdown level1 summary"><p>WebDriver used to identify test objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected WebDriver driver</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.WebDriver</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_IsDisplayed_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsDisplayed*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_IsDisplayed" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsDisplayed">IsDisplayed</h4>
+  <div class="markdown level1 summary"><p>Check if The WebElement is displayed on the screen (In the current viewport or not)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDisplayed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the element exists and is displayed. False if the element exsits but not displayed. <span class="xref">OpenQA.Selenium.NoSuchElementException</span> if the element can&apos;t be find in the DOM.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="AxaFrance_WebEngine_Web_ElementDescription_IsDisplayed_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If it is required to perform actions on non-displayed element, please bring the element into view before the action, using ScrollIntoView method.</p>
+</div>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_IsEnabled_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsEnabled*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_IsEnabled" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsEnabled">IsEnabled</h4>
+  <div class="markdown level1 summary"><p>Get the value indicating whether the current element is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnabled { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the element is enabled, otherwise: False </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_IsSelected_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsSelected*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_IsSelected" data-uid="AxaFrance.WebEngine.Web.ElementDescription.IsSelected">IsSelected</h4>
+  <div class="markdown level1 summary"><p>Check if the WebElement is selected. Applies only on checkboxes, options in a select element and radio buttons</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSelected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True is the element is selected, otherwise, false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Value_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Value*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Value" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Get the Value attribute of the current web element (For Input text box for example)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Clear_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Clear*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Clear" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Clear">Clear()</h4>
+  <div class="markdown level1 summary"><p>Clear the content of the current web element. (for text-box and text areas)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Click_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Click*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Click" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Click">Click()</h4>
+  <div class="markdown level1 summary"><p>Click on Web element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Click()</code></pre>
+  </div>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Exists_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Exists*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Exists" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Exists">Exists()</h4>
+  <div class="markdown level1 summary"><p>Check if the given element exists on the screen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Exists()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the element exists, otherwise: false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Exists_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Exists*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Exists_System_Int32_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Exists(System.Int32)">Exists(Int32)</h4>
+  <div class="markdown level1 summary"><p>Check if the given element exists on the screen, with given sychronization timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Exists(int timeoutSecond)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeoutSecond</span></td>
+        <td><p>object synchronization timeout in second.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True is the element exists in the current web page, Otherwise False</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElement" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement">FindElement()</h4>
+  <div class="markdown level1 summary"><p>Gets The IWebElement with current element description, using default timeout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWebElement FindElement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td><p>The Web element localized by the description.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Default timeout is </p>
+</div>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_OpenQA_Selenium_By_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By)">FindElement(By)</h4>
+  <div class="markdown level1 summary"><p>Find a sub-element of the current element, with default synchronization timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWebElement FindElement(By by)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.By</span></td>
+        <td><span class="parametername">by</span></td>
+        <td><p>Mecanism of find sub-elements</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td><p>The indentified web element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_OpenQA_Selenium_By_System_Int32_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By,System.Int32)">FindElement(By, Int32)</h4>
+  <div class="markdown level1 summary"><p>Find the first element within the context of the current element. with provided synchronization timeout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWebElement FindElement(By by, int timeoutSecond)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.By</span></td>
+        <td><span class="parametername">by</span></td>
+        <td><p>Mecanism of find elements.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeoutSecond</span></td>
+        <td><p>synchronization timeout in second.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElement_System_Int32_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElement(System.Int32)">FindElement(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Web Element using curent element description, with customized timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWebElement FindElement(int timeoutSecond)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeoutSecond</span></td>
+        <td><p>object syncchronization timeout in second.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td><p>The indentified web element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElements_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElements" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements">FindElements()</h4>
+  <div class="markdown level1 summary"><p>This method find all possible elements given the current selection criteria. If there is no element match an <span class="xref">OpenQA.Selenium.NoSuchElementException</span> will be thrown</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;IWebElement&gt; FindElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">OpenQA.Selenium.IWebElement</span>&gt;</td>
+        <td><p>A collection of <span class="xref">OpenQA.Selenium.IWebElement</span> matches the element selection criteria</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElements_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElements_OpenQA_Selenium_By_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements(OpenQA.Selenium.By)">FindElements(By)</h4>
+  <div class="markdown level1 summary"><p>Find elements within the context of the current element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;IWebElement&gt; FindElements(By by)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.By</span></td>
+        <td><span class="parametername">by</span></td>
+        <td><p>Mecanism of find elements</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">OpenQA.Selenium.IWebElement</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_FindElements_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_FindElements_System_Int32_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.FindElements(System.Int32)">FindElements(Int32)</h4>
+  <div class="markdown level1 summary"><p>This method find all possible elements given the current selection criteria. If there is no element match an <span class="xref">OpenQA.Selenium.NoSuchElementException</span> will be thrown</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;IWebElement&gt; FindElements(int timeoutSecond)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeoutSecond</span></td>
+        <td><p>Timeout in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">OpenQA.Selenium.IWebElement</span>&gt;</td>
+        <td><p>A collection of <span class="xref">OpenQA.Selenium.IWebElement</span> matches the element selection criteria</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_GetAttribute_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetAttribute*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_GetAttribute_System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(System.String)">GetAttribute(String)</h4>
+  <div class="markdown level1 summary"><p>Get the value of the specified DOM attribute of this element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetAttribute(string attributeName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">attributeName</span></td>
+        <td><p>the name of Html DOM attribute.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The value of the indicated attribute.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_GetProperty_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetProperty*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_GetProperty_System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetProperty(System.String)">GetProperty(String)</h4>
+  <div class="markdown level1 summary"><p>Get the value of the specified DOM property of this element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetProperty(string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td><p>the name of Html Property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The value of the indicated attribute.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_GetScreenshot_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetScreenshot*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_GetScreenshot" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetScreenshot">GetScreenshot()</h4>
+  <div class="markdown level1 summary"><p>Generates an screenshot of this specific element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetScreenshot()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The screenshot image in RAW Binary data format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_GetText_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetText*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_GetText" data-uid="AxaFrance.WebEngine.Web.ElementDescription.GetText">GetText()</h4>
+  <div class="markdown level1 summary"><p>Get the Text attribute of the current web element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The Text of the current web element</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_InternalClick_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalClick*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_InternalClick" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalClick">InternalClick()</h4>
+  <div class="markdown level1 summary"><p>Default behavior of Click</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void InternalClick()</code></pre>
+  </div>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_InternalFindElement_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalFindElement*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_InternalFindElement" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalFindElement">InternalFindElement()</h4>
+  <div class="markdown level1 summary"><p>Implemente element identifying algorithm, without the need of object synchronization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract IWebElement InternalFindElement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td><p>Identified test object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_InternalFindElements_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalFindElements*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_InternalFindElements" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalFindElements">InternalFindElements()</h4>
+  <div class="markdown level1 summary"><p>Implemente element identifying algorithm, without the need of object synchronization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract IReadOnlyCollection&lt;IWebElement&gt; InternalFindElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">OpenQA.Selenium.IWebElement</span>&gt;</td>
+        <td><p>Identified test objects</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_InternalGetScreenshot_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalGetScreenshot*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_InternalGetScreenshot" data-uid="AxaFrance.WebEngine.Web.ElementDescription.InternalGetScreenshot">InternalGetScreenshot()</h4>
+  <div class="markdown level1 summary"><p>Implemente screenshot generation for the current specific element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract byte[] InternalGetScreenshot()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The screenshot image in RAW Binary data format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Action_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action)">Perform(Action)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Perform(Action action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Action_System_Int32__System_Int32_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.Int32},System.Int32)">Perform(Action&lt;Int32&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Perform(Action&lt;int&gt; action, int param)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">param</span></td>
+        <td><p>The parameter of the delegated method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Action_System_String__System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.String},System.String)">Perform(Action&lt;String&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Perform(Action&lt;string&gt; action, string param)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">param</span></td>
+        <td><p>The parameter of the delegated method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_Boolean__" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Boolean})">Perform(Func&lt;Boolean&gt;)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool Perform(Func&lt;bool&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>value returned by underlying method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_Byte____" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Byte[]})">Perform(Func&lt;Byte[]&gt;)</h4>
+  <div class="markdown level1 summary"><p>Perform an action which returns an screenshot of the given element or context</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected byte[] Perform(Func&lt;byte[]&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Byte</span>[]&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>Delegation which returns an screenshot</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>A screenshot of given element or context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String_OpenQA_Selenium_IWebElement__System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,OpenQA.Selenium.IWebElement},System.String)">Perform(Func&lt;String, IWebElement&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IWebElement Perform(Func&lt;string, IWebElement&gt; action, string param)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">OpenQA.Selenium.IWebElement</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">param</span></td>
+        <td><p>The parameter of the action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String_System_String__System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,System.String},System.String)">Perform(Func&lt;String, String&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string Perform(Func&lt;string, string&gt; action, string param)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">param</span></td>
+        <td><p>The parameter of the delegated method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>value returned by underlying method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_Perform_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String__" data-uid="AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String})">Perform(Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Perform a secured action that may be influnced by web application reload behavoirs to avoid errors, such as <span class="xref">OpenQA.Selenium.StaleElementReferenceException</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string Perform(Func&lt;string&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to be performed. The name of the method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>value returned by underlying method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_SendKeys_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.SendKeys*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_SendKeys_System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.SendKeys(System.String)">SendKeys(String)</h4>
+  <div class="markdown level1 summary"><p>Send keys (text) to the current web element. (for textbox or text areas).
+Sendkeys does not clear the current value in the textbox or text areas. The text will be inserted according to the cursor location.
+If you want to ensure the textbox contains exactly the value you want to set, use the function <a class="xref" href="AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SetValue_System_String_">SetValue(String)</a> </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SendKeys(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>the text to send</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_SetValue_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.SetValue*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_SetValue_System_String_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.SetValue(System.String)">SetValue(String)</h4>
+  <div class="markdown level1 summary"><p>Set the value of the current web element. For textbox or text areas.
+SetValue clears existing value in the textbox or text area before input the text in it. 
+If you want to append or insert the text without clearing current value, use the function <a class="xref" href="AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SendKeys_System_String_">SendKeys(String)</a> </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValue(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text to set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Web_ElementDescription_UseDriver_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.UseDriver*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_ElementDescription_UseDriver_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.WebEngine.Web.ElementDescription.UseDriver(OpenQA.Selenium.WebDriver)">UseDriver(WebDriver)</h4>
+  <div class="markdown level1 summary"><p>Sets the Selenium WebDriver to use for object indentification. If the WebElement is declared within a <a class="xref" href="AxaFrance.WebEngine.Web.PageModel.html">PageModel</a> there is no need to apply the WebDriver to use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementDescription UseDriver(WebDriver driver)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.WebDriver</span></td>
+        <td><span class="parametername">driver</span></td>
+        <td><p>WebDriver to be used to locate objects </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.Web.ElementDescription.html">ElementDescription</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Test Configuration File | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Test Configuration File | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="test-configuration-file">Test Configuration File</h1>
+
+<p>To simplify command line arguments, some parameters can be specified in a configuration file <code>appsettings.json</code>. 
+If a parameter is provided both in <code>appsettings.json</code> file and command-line argument, the value provided in command-line will be taken account.</p>
+<pre><code class="lang-json">{
+  &quot;LogDir&quot;: null,
+  &quot;GridConnection&quot;: &quot;http://localhost:4723/wd/hub&quot;,
+  &quot;Username&quot;: &quot;&quot;,
+  &quot;Password&quot;: &quot;&quot;,
+  &quot;PackageUploadTargetUrl&quot;: &quot;https://api-cloud.browserstack.com/app-automate/upload&quot;,
+  &quot;PackageName&quot;: &quot;my.company.myapplication&quot;,
+  &quot;EncryptionKey&quot;: null,
+  &quot;Capabilities&quot;: {
+    &quot;additionalCapability1&quot;: &quot;value1&quot;,
+    &quot;additionalCapability2&quot;: &quot;value2&quot;
+  }
+}
+</code></pre><ul>
+<li><code>LogDir</code>: The directory to store test report. This parameter is used by reports generated via WebRunner. if the value is null, then the default temporary folder will be used.</li>
+<li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests. </li>
+<li><code>Username</code>: The username of Selenium Grid authentication.</li>
+<li><code>Password</code>: The password of Selenium Grid authentication.</li>
+<li><code>PackageUploadTargetUrl</code>: The url handler to upload the app package (.apk or .ipa)</li>
+<li><code>PackageName</code>: The name of the app package (often in <em>com.company.product</em> format)</li>
+<li><code>EncryptionKey</code>: If you want to secure password used in your script, you can encrypt it via the customized Encryption Key.
+If the value is <code>null</code>, WebEngine will use default encryption key.</li>
+<li><code>Capabilities</code>: To provided necessary Appium capabilities or options for special need.</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it&#39;s necessary.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

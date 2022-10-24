@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Data-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Data-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="data-driven-testing-approach-cnet">Data-Driven testing Approach (C#/.NET)</h1>
+
+<p>This article will show steps to build an Automation solution based on Keyword-Driven testing approach with <code>Externalized test data</code> and <code>Dynamic execution based on test data</code>.
+We will continue from the previous test project for application <a href="http://webengine-test.azurewebsites.net/home-insurance">http://webengine-test.azurewebsites.net/home-insurance</a>.</p>
+<h1 id="prerequisite">Prerequisite:</h1>
+<ul>
+<li>Familiar with <a href="keyworddriven.html">Keyword-Driven testing approach</a></li>
+<li>Have already followed the tutorial <a href="keyword-driven-cs.html">Keyword-Driven testing Approach (C#/.NET)</a> and have a working project.</li>
+</ul>
+<h1 id="step-1-review-modulization-project-structure-and-keywords">Step 1: Review modulization, project structure and keywords</h1>
+<p>The modelling of Home Insurance Underwriting application may look like following diagram:</p>
+<p><img src="../images/kd-schemas.png" alt="Schemas"></p>
+<div class="NOTE"><h5>Note</h5><p>This tutorial is based on the outcome of <a href="keyword-driven-cs.html">Keyword-Driven testing Approach (C#/.NET)</a>. If you don&#39;t have a working keyword-driven test project yet, please follow that article first.</p>
+</div>
+<h1 id="step-2-identify-variables">Step 2: Identify variables</h1>
+<p>In this step, we&#39;ll need to identify variables used in the test automation solution.
+To record and manage test data the most convenient way is to use an Excel spreadsheet under WebEngine format.
+So you can benefit from the functionalities implemented in WebEngine Excel Add-in and launch data-driven test cases directly from Excel.</p>
+<p>For more information about Excel test data</p>
+<ul>
+<li><a href="../articles/excel-addin.html">Excel Add-in</a></li>
+<li><a href="../files/Data-HomeInsurance.xlsx">Download Excel test data for this tutorial</a></li>
+</ul>
+<p>Test data will have 3 sheets:
+<code>PARAMS</code>: All the possible parameters of test case and it&#39;s description.
+<code>ENV</code>: Test environment dependent variables such as URL or the site or the name of the server.
+<code>TEST_SUITE</code>: represents the test suite (including a list of test cases)</p>
+<p>For this test, we developed following test data</p>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS_param" role="tab" aria-controls="tabpanel_GxZVkLapNS_param" data-tab="param" tabindex="0" aria-selected="true">PARAMS</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS_env" role="tab" aria-controls="tabpanel_GxZVkLapNS_env" data-tab="env" tabindex="-1">ENV</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS_testsuite" role="tab" aria-controls="tabpanel_GxZVkLapNS_testsuite" data-tab="testsuite" tabindex="-1">TEST_SUITE</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS_param" role="tabpanel" data-tab="param">
+<p>Describes all the test parameters</p>
+<p><img src="../images/dd-excelparam.png" alt="Test Parameters"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS_env" role="tabpanel" data-tab="env" aria-hidden="true" hidden="hidden">
+<p>Here we lists all test environment dependent variables such as URLs.</p>
+<p>If you have more than one test environment, you can list all data with prefix or postfix</p>
+<p><img src="../images/dd-excelenv.png" alt="Excel ENV"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS_testsuite" role="tabpanel" data-tab="testsuite" aria-hidden="true" hidden="hidden">
+<p>In test data we will specify the test cases and test data used for each test case.</p>
+<p>For example: our test suite will have 3 test cases, covers Apartment, House and Apartment with previous accident.
+From spreadsheet we can clearly see how parameters are used and have an idea about the test coverage of each parameter.
+To increase test coverage, we can simply create new columns without the need to modify the test script.</p>
+<p><img src="../images/dd-exceldata.png" alt="Test Data"></p>
+</section>
+</div>
+<div class="NOTE"><h5>Note</h5><p>There is no need to develop every parameter and the variable for every test case.
+The solution can be improved with the time by increasing test coverage in width (by increasing test cases) and in depth (by increasing test parameters)</p>
+</div>
+<h1 id="step-3-using-test-parameters-in-the-script">Step 3: Using test parameters in the script.</h1>
+<h2 id="31-import-test-parameters-from-excel">3.1: Import test parameters from EXCEL</h2>
+<p>The function of WebEngine Addin -&gt; Tools -&gt; Code Generation can generate a C# class <code>ParameterList</code> for you, including all test parameters with their descriptions as comment</p>
+<p><img src="../images/excel-code-generation.png" alt="Excel Code Generation"></p>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-1_why-parameter-list" role="tab" aria-controls="tabpanel_GxZVkLapNS-1_why-parameter-list" data-tab="why-parameter-list" tabindex="0" aria-selected="true">Why use ParameterList</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-1_content-parameter-list" role="tab" aria-controls="tabpanel_GxZVkLapNS-1_content-parameter-list" data-tab="content-parameter-list" tabindex="-1">Content of ParameterList</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS-1_why-parameter-list" role="tabpanel" data-tab="why-parameter-list">
+<p>Using parameter list are following advantage:</p>
+<ul>
+<li>Benefit from code auto-completion from development tools.</li>
+<li>Understands the meaning of the parameter thanks to the comments.</li>
+<li>Avoid type error in the test script.</li>
+</ul>
+</section>
+<section id="tabpanel_GxZVkLapNS-1_content-parameter-list" role="tabpanel" data-tab="content-parameter-list" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-csharp" name="Main" title="ParameterList">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Samples.DataDriven
+{
+	public static class ParameterList
+	{
+
+		///&lt;Summary&gt;Parameter: Name of the test case &lt;/Summary&gt;
+		public static string TESTCASE { get; } = &quot;TESTCASE&quot;;
+
+		///&lt;Summary&gt;Parameter: Test environment &lt;/Summary&gt;
+		public static string Environment { get; } = &quot;Environment&quot;;
+
+		///&lt;Summary&gt;Parameter: Login &lt;/Summary&gt;
+		public static string Login { get; } = &quot;Login&quot;;
+
+		///&lt;Summary&gt;Parameter: username &lt;/Summary&gt;
+		public static string Username { get; } = &quot;Username&quot;;
+
+		///&lt;Summary&gt;Parameter: Password &lt;/Summary&gt;
+		public static string Password { get; } = &quot;Password&quot;;
+
+		///&lt;Summary&gt;Parameter: provide if search by customer id, or provide customer name &lt;/Summary&gt;
+		public static string CustomerId { get; } = &quot;CustomerId&quot;;
+
+		///&lt;Summary&gt;Parameter: provide if search by customer name. &lt;/Summary&gt;
+		public static string CustomerName { get; } = &quot;CustomerName&quot;;
+
+		///&lt;Summary&gt;Parameter: HomeLocation &lt;/Summary&gt;
+		public static string HomeLocation { get; } = &quot;HomeLocation&quot;;
+
+		///&lt;Summary&gt;Parameter: Street number of home location &lt;/Summary&gt;
+		public static string StreetNumber { get; } = &quot;StreetNumber&quot;;
+
+		///&lt;Summary&gt;Parameter: Street name of home location &lt;/Summary&gt;
+		public static string SteetName { get; } = &quot;SteetName&quot;;
+
+		///&lt;Summary&gt;Parameter: City of home location &lt;/Summary&gt;
+		public static string City { get; } = &quot;City&quot;;
+
+		///&lt;Summary&gt;Parameter: Post code of home location &lt;/Summary&gt;
+		public static string PostCode { get; } = &quot;PostCode&quot;;
+
+		///&lt;Summary&gt;Parameter: Region, State or Province of home location &lt;/Summary&gt;
+		public static string Region { get; } = &quot;Region&quot;;
+
+		///&lt;Summary&gt;Parameter: Name of the country &lt;/Summary&gt;
+		public static string Country { get; } = &quot;Country&quot;;
+
+		///&lt;Summary&gt;Parameter: HomeDetails &lt;/Summary&gt;
+		public static string HomeDetails { get; } = &quot;HomeDetails&quot;;
+
+		///&lt;Summary&gt;Parameter: Type of home, possible values: appartment, house &lt;/Summary&gt;
+		public static string HomeType { get; } = &quot;HomeType&quot;;
+
+		///&lt;Summary&gt;Parameter: Number of rooms. Possible values: 1, 2, 3, 4, 5 (more than 5 rooms, use 5) &lt;/Summary&gt;
+		public static string NumberOfRoom { get; } = &quot;NumberOfRoom&quot;;
+
+		///&lt;Summary&gt;Parameter: the surface of home in sqr meters &lt;/Summary&gt;
+		public static string HomeSurface { get; } = &quot;HomeSurface&quot;;
+
+		///&lt;Summary&gt;Parameter: Apartement only parameters &lt;/Summary&gt;
+		public static string ApartementDetails { get; } = &quot;ApartementDetails&quot;;
+
+		///&lt;Summary&gt;Parameter: Total number of floors of the building &lt;/Summary&gt;
+		public static string ApptTotalFloors { get; } = &quot;ApptTotalFloors&quot;;
+
+		///&lt;Summary&gt;Parameter: Floor number of my appartment &lt;/Summary&gt;
+		public static string ApptMyFloors { get; } = &quot;ApptMyFloors&quot;;
+
+		///&lt;Summary&gt;Parameter: If the building as an elevator &lt;/Summary&gt;
+		public static string ApptHasElevator { get; } = &quot;ApptHasElevator&quot;;
+
+		///&lt;Summary&gt;Parameter: House only parameters &lt;/Summary&gt;
+		public static string HouseDetails { get; } = &quot;HouseDetails&quot;;
+
+		///&lt;Summary&gt;Parameter: Total number of floors of the house &lt;/Summary&gt;
+		public static string HouseFloors { get; } = &quot;HouseFloors&quot;;
+
+		///&lt;Summary&gt;Parameter: the surface of backyard in sqr meters &lt;/Summary&gt;
+		public static string BackyardSurface { get; } = &quot;BackyardSurface&quot;;
+
+		///&lt;Summary&gt;Parameter: If the house has a swimming pool &lt;/Summary&gt;
+		public static string HasSwimmingPool { get; } = &quot;HasSwimmingPool&quot;;
+
+		///&lt;Summary&gt;Parameter: Antecedents &lt;/Summary&gt;
+		public static string Antecedents { get; } = &quot;Antecedents&quot;;
+
+		///&lt;Summary&gt;Parameter: If there are accidents declared &lt;/Summary&gt;
+		public static string HasAntecedents { get; } = &quot;HasAntecedents&quot;;
+
+		///&lt;Summary&gt;Parameter: Type of the accident, possible values: Vandalism, Fire, Floor &lt;/Summary&gt;
+		public static string AccidentType { get; } = &quot;AccidentType&quot;;
+
+		///&lt;Summary&gt;Parameter: Date of the accident &lt;/Summary&gt;
+		public static string AccidentDate { get; } = &quot;AccidentDate&quot;;
+
+		///&lt;Summary&gt;Parameter: If the home owner is responsible for the accident &lt;/Summary&gt;
+		public static string AccidentResponsability { get; } = &quot;AccidentResponsability&quot;;
+
+		///&lt;Summary&gt;Parameter: Offer &lt;/Summary&gt;
+		public static string Offer { get; } = &quot;Offer&quot;;
+
+		///&lt;Summary&gt;Parameter: Choose the offer, Economic, Balanced or Optimized &lt;/Summary&gt;
+		public static string OfferType { get; } = &quot;OfferType&quot;;
+
+		///&lt;Summary&gt;Parameter: If the option 24x7 is selected: yes, no &lt;/Summary&gt;
+		public static string Option24x7 { get; } = &quot;Option24x7&quot;;
+
+		///&lt;Summary&gt;Parameter: If annual payment is selected: yes, no &lt;/Summary&gt;
+		public static string OptionAnnualPayment { get; } = &quot;OptionAnnualPayment&quot;;
+
+		///&lt;Summary&gt;Parameter: If provided, verify the amount of balanced offer &lt;/Summary&gt;
+		public static string VerifyAmountBalanced { get; } = &quot;VerifyAmountBalanced&quot;;
+
+		///&lt;Summary&gt;Parameter: ValidateAndSign &lt;/Summary&gt;
+		public static string ValidateAndSign { get; } = &quot;ValidateAndSign&quot;;
+
+		///&lt;Summary&gt;Parameter: If customer will sign the contract digitally, otherwise the contract will be printed. &lt;/Summary&gt;
+		public static string DigitalSign { get; } = &quot;DigitalSign&quot;;
+
+	}
+
+}
+</code></pre></section>
+</div>
+<h2 id="32-use-variables-in-the-script">3.2: Use variables in the script</h2>
+<p>In actions, you can use <code>EnvironmentVariables.Current.GetValue(&quot;NAME&quot;)</code> to retrieve the value of an Environment Variable (listed in ENV spreadsheet). and use <code>GetParameter(&quot;NAME&quot;)</code> function to retrieve test data.</p>
+<p>For Example, compared to the hard-coded login action, now the keyword action <code>Login</code> looks like following code snippet:</p>
+<ul>
+<li>We get the parameter <code>Environment</code> from test data</li>
+<li>Get <code>URL</code> from Environment Variables.</li>
+<li>Fill <code>username</code> and <code>password</code> with the value from parameter <code>Username</code> and <code>Password</code>
+This action can do whatever needed according to the test data provided.</li>
+</ul>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-2_login-hc" role="tab" aria-controls="tabpanel_GxZVkLapNS-2_login-hc" data-tab="login-hc" tabindex="0" aria-selected="true">Login.cs (Hard Coded)</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-2_login-dd" role="tab" aria-controls="tabpanel_GxZVkLapNS-2_login-dd" data-tab="login-dd" tabindex="-1">Login.cs (Data Driven)</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS-2_login-hc" role="tabpanel" data-tab="login-hc">
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
+
+namespace Samples.KeywordDriven.Actions
+{
+    public class Login : SharedActionWeb
+    {
+        public override Variable[]? RequiredParameters =&gt; null;
+
+        // Runs the action to fill username, password and lick on login button.
+        public override void DoAction()
+        {
+            Browser.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/home-insurance&quot;);
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
+            login.UserName.SetValue(&quot;username&quot;);
+            login.Password.SetValue(&quot;password&quot;);
+            Screenshot();
+            login.ButtonLogin.Click();
+        }
+
+        // Verifies if this action goes well.
+        public override bool DoCheckpoint()
+        {
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
+            if (login.ErrorMessage.Exists(5) &amp;&amp; !string.IsNullOrWhiteSpace(login.ErrorMessage.InnerText))
+            {
+                Information.AppendLine(&quot;Error message is shown, login failed&quot;);
+                return false;
+            }
+            return true;
+        }
+    }
+}
+</code></pre></section>
+<section id="tabpanel_GxZVkLapNS-2_login-dd" role="tabpanel" data-tab="login-dd" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
+
+namespace Samples.DataDriven.Actions
+{
+    public class Login : SharedActionWeb
+    {
+        public override Variable[]? RequiredParameters =&gt; null;
+
+        // Runs the action to fill username, password and lick on login button.
+        public override void DoAction()
+        {
+            var env = GetParameter(ParameterList.Environment);
+            var url = EnvironmentVariables.Current.GetValue($&quot;URL_{env}&quot;);
+            Browser.Navigate().GoToUrl(url);
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
+            login.UserName.SetValue(GetParameter(ParameterList.Username));
+            login.Password.SetValue(GetParameter(ParameterList.Password));
+            Screenshot();
+            login.ButtonLogin.Click();
+        }
+
+        // Verifies if this action goes well.
+        public override bool DoCheckpoint()
+        {
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
+            if (login.ErrorMessage.Exists(5) &amp;&amp; !string.IsNullOrWhiteSpace(login.ErrorMessage.InnerText))
+            {
+                Information.AppendLine(&quot;Error message is shown, login failed&quot;);
+                return false;
+            }
+            return true;
+        }
+    }
+}
+</code></pre></section>
+</div>
+<h1 id="step-4-data-driven-test-script">Step 4: Data-Driven test script</h1>
+<p>Repeat the step 3.2 on every keyword action, you can completely remove hard coded test data.
+But sometimes it&#39;s not enough, because test procedure may change as test data changes.</p>
+<h2 id="41-manages-test-process-driven-by-data">4.1 Manages test process driven by data</h2>
+<p>In our application <code>home type</code> can be <code>apartment</code> or <code>house</code>, according to its value.
+The forms will be different.</p>
+<p>Our script must implement this logic driven by test data data: when the type is <code>apartment</code>, the script will fill form for apartments, otherwise the script will fill form for houses.</p>
+<p>This logic is implemented in the keyword action <code>HomeDetails</code>, according to the value of home type, different sub-action will be executed.</p>
+<pre><code class="lang-csharp" name="Main" title="Home Details">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
+
+
+namespace Samples.DataDriven.Actions
+{
+    public class HomeDetails : SharedActionWeb
+    {
+        public override Variable[]? RequiredParameters =&gt; null;
+
+        public override void DoAction()
+        {
+            var model = new PageModels.PageUnderWriting(Browser);
+            string hometype = GetParameter(ParameterList.HomeType); //Get home type from test data
+            model.TypeOfHomeRadioGroup.CheckByValue(hometype);
+            model.NumberOfRoomSelect.SelectByValue(GetParameter(ParameterList.NumberOfRoom));
+            model.HomeSurface.SetValue(GetParameter(ParameterList.HomeSurface));
+
+            bool result;
+            if (hometype == &quot;house&quot;)
+            {
+                //if hometype is house, run action for House
+                result = DoActionWithCheckpoint(typeof(HomeDetail_House), Browser, ContextValues, this, Parameters);
+            }
+            else
+            {
+                //if hometype is not house, run action for apartment
+                result = DoActionWithCheckpoint(typeof(HomeDetail_Apartment), Browser, ContextValues, this, Parameters);
+            }
+            if (result)
+            {
+                model.NextStep.Click();
+            }
+            else
+            {
+                this.ActionResult = Result.Failed;
+                this.Information.AppendLine(&quot;Action failed&quot;);
+            }
+        }
+
+        public override bool DoCheckpoint()
+        {
+            return true;
+        }
+    }
+}
+</code></pre><h2 id="42-manages-optional-actions-in-the-script">4.2 Manages optional actions in the script</h2>
+<p>Sometimes a part of test script is optional based on test data.</p>
+<p>Let&#39;s take the antecedent page for example: When the user checks <code>no</code>, there is nothing else to do. But when checks <code>yes</code>, user must fill the details. This logic can be coded under a <code>if</code> statement:</p>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS-3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-3_antecedent" role="tab" aria-controls="tabpanel_GxZVkLapNS-3_antecedent" data-tab="antecedent" tabindex="0" aria-selected="true">Antecedent Page</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-3_antecedent-code" role="tab" aria-controls="tabpanel_GxZVkLapNS-3_antecedent-code" data-tab="antecedent-code" tabindex="-1">Keyword Antecedent.cs</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS-3_antecedent" role="tabpanel" data-tab="antecedent">
+<p><img src="../images/dd-antecedent.png" alt="Antecedent WebPage"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS-3_antecedent-code" role="tabpanel" data-tab="antecedent-code" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-csharp" name="Main" title="Login">using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
+
+
+namespace Samples.DataDriven.Actions
+{
+    public class Antecedents : SharedActionWeb
+    {
+        public override Variable[]? RequiredParameters =&gt; null;
+
+        public override void DoAction()
+        {
+            var model = new PageModels.PageUnderWriting(Browser);
+            var antecedent = GetParameter(ParameterList.HasAntecedents);
+            model.AntecedentsRadioGroup.CheckByValue(antecedent);
+
+            // If the data provided by antecedent, there is nothing else to do.
+            // otherwise, fill the details of the antecedent.
+            if(antecedent == &quot;yes&quot;)
+            {
+                model.AntecedentType.SelectByText(GetParameter(ParameterList.AccidentType));
+                model.AntecedentDate.SendKeys(GetParameter(ParameterList.AccidentDate));
+                model.AntecedentResponsability.CheckByValue(GetParameter(ParameterList.AccidentResponsability));
+            }
+
+            model.NextStep.Click();
+        }
+
+        public override bool DoCheckpoint()
+        {
+            return true;
+        }
+    }
+}
+</code></pre></section>
+</div>
+<p>You can also control optional actions like verifications.</p>
+<h2 id="43-resume">4.3 Resume</h2>
+<p>With above technics, you can control the test process or optional actions by external data.
+That means if every keyword action is implemented like above examples,
+you can run tests with any combination of data without the need to modify and update the code.</p>
+<p>In general, simple controls can be implemented with <code>if</code> statement. but when the flow control becomes complex, it is recommended to separate these logics into sub-actions to keep an action at a reasonable complexity.</p>
+<h1 id="step-5-dynamic-test-suite-driven-by-data">Step 5: Dynamic test suite driven by data</h1>
+<p>We have improved every keyword action, and technically we can run test case with any combination of test data.
+But we have on last problem: Test suite is still hard-coded.</p>
+<p>There is only one test case in the Test Suite and we haven&#39;t linked the test case with test data:</p>
+<p>Now we are going to fix it by modifying the function <code>getTestCases</code> so it can dynamically generate test cases by provided test data.</p>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS-4">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-4_ts-hardcoded" role="tab" aria-controls="tabpanel_GxZVkLapNS-4_ts-hardcoded" data-tab="ts-hardcoded" tabindex="0" aria-selected="true">Test Suite (hard coded)</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-4_ts-dynamic" role="tab" aria-controls="tabpanel_GxZVkLapNS-4_ts-dynamic" data-tab="ts-dynamic" tabindex="-1">Test Suite (dynamic)</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS-4_ts-hardcoded" role="tabpanel" data-tab="ts-hardcoded">
+<p>Previous example uses hard-coded test suite which test data is not used and the list of test case is fixed.</p>
+<pre><code class="lang-csharp" name="Main" title="TestSuite">using AxaFrance.WebEngine;
+
+namespace Samples.KeywordDriven
+{
+    public class HomeInsuranceTestSuite : TestSuite
+    {
+        public override KeyValuePair&lt;string, TestCase&gt;[] TestCases =&gt; getTestCases();
+
+        private KeyValuePair&lt;string, TestCase&gt;[] getTestCases()
+        {
+            return new KeyValuePair&lt;string, TestCase&gt;[]
+            {
+                new KeyValuePair&lt;string, TestCase&gt;(&quot;TestCase 1&quot;, new TestCases.TC_InsuranceQuote())
+            };
+        }
+    }
+}
+</code></pre></section>
+<section id="tabpanel_GxZVkLapNS-4_ts-dynamic" role="tabpanel" data-tab="ts-dynamic" aria-hidden="true" hidden="hidden">
+<p>In this example, we will initialize test cases with provided data.
+As shown in the example test data file in Excel, the following code should generate 3 case cases during execution.</p>
+<pre><code class="lang-csharp" name="Main" title="TestSuite">using AxaFrance.WebEngine;
+
+namespace Samples.DataDriven
+{
+    public class HomeInsuranceTestSuite : TestSuite
+    {
+        public override KeyValuePair&lt;string, TestCase&gt;[] TestCases =&gt; getTestCases();
+
+        private KeyValuePair&lt;string, TestCase&gt;[] getTestCases()
+        {
+            List&lt;KeyValuePair&lt;string, TestCase&gt;&gt; testCases = new List&lt;KeyValuePair&lt;string, TestCase&gt;&gt;();
+
+            // TestSuiteData.Current.TestDataList is provided by framework
+            // The test data is provided in XML format and loaded via argument `-data` of WebRunner.
+            foreach (var testdata in TestSuiteData.Current.TestDataList)
+            {
+                var tc = new TestCases.TC_InsuranceQuote()
+                {
+                    Name = testdata.TestName
+                };
+
+                testCases.Add(new KeyValuePair&lt;string, TestCase&gt;(testdata.TestName, tc));
+            }
+
+            return testCases.ToArray();
+        }
+    }
+}
+</code></pre></section>
+</div>
+<h1 id="step-6-export-test-data">Step 6: Export test data</h1>
+<p>Now go back to Excel test data and export Test Data and Environment Variables.
+Save them to the same level of WebRunner.exe and your test assembly.</p>
+<p><img src="../images/dd-exportdata-menu.png" alt="Exportdata Menu"></p>
+<p>We can see these two files are presented in <code>/bin/debug/.net6.0-windows</code> folder along with other files related to the test solution.</p>
+<blockquote><p>When using different version of .NET Framework, the name of the folder may vary.</p>
+</blockquote>
+<p><img src="../images/dd-exportdata.png" alt="Export data"></p>
+<h1 id="step-7-debug-and-execute-test-cases">Step 7: Debug and Execute test cases</h1>
+<p>Similar to previous article, you&#39;ll need to configure the project properties to launch WebRunner with appropriate parameters.</p>
+<p>Right Click on the Project -&gt; Properties -&gt; Debug -&gt; Open debug launch profiles UI
+Delete the exiting profile and create a new <code>Executable profile</code></p>
+<p><img src="../images/dd-debugprofile.png" alt="Debug profile"></p>
+<p>This time, we will provide 2 more parameters:</p>
+<ul>
+<li><code>-data:</code> to provide Test Data</li>
+<li><code>-env:</code> to provide Environment Variables</li>
+</ul>
+<p>Now we are good to go.</p>
+<p>Launch your project and now we can see the test is running until the test report is showing: 
+<img src="../images/dd-report.png" alt="Report"></p>
+<p>If error happens in the test script, you can set breakpoint in the code and debug the script line by line.</p>
+<h1 id="step-8-run-tests-directly-from-excel">Step 8: Run tests directly from EXCEL</h1>
+<p>It is also possible to run tests directly from EXCEL. The advantage is that you can run one or more tests via selection.
+But before launch the test via EXCEL, you must tell WebEngine Add-in where your automate solution is located.</p>
+<p>This can be configured in Settings:
+<code>WebEngine</code> -&gt; <code>Settings</code></p>
+<p><img src="../images/dd-excelsettings.png" alt="Excel Settings"></p>
+<ul>
+<li><strong>Export Directory</strong>: The folder where Test data and Environment variables should be exported.</li>
+<li><strong>WebRunner Directory</strong>: The folder where <code>webrunner.exe</code> or <code>webrunner.jar</code> is located along with your test solution.
+In general, the output folder of your test projet in <code>bin\\debug</code></li>
+<li><strong>Test Assembly</strong>: The compiled library contains your test script. By default, its name is your <code>&lt;project_name&gt;.dll</code></li>
+</ul>
+<p>Once the settings is done, now we can run any and any number of tests directly:
+For example: run <code>TEST_02</code>:</p>
+<div class="tabGroup" id="tabgroup_GxZVkLapNS-5">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-5_run-step-1" role="tab" aria-controls="tabpanel_GxZVkLapNS-5_run-step-1" data-tab="run-step-1" tabindex="0" aria-selected="true">Select Test</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-5_run-step-2" role="tab" aria-controls="tabpanel_GxZVkLapNS-5_run-step-2" data-tab="run-step-2" tabindex="-1">Launch Test</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-5_run-step-3" role="tab" aria-controls="tabpanel_GxZVkLapNS-5_run-step-3" data-tab="run-step-3" tabindex="-1">Select Browser</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_GxZVkLapNS-5_run-step-4" role="tab" aria-controls="tabpanel_GxZVkLapNS-5_run-step-4" data-tab="run-step-4" tabindex="-1">Observe Test Execution</a>
+</li>
+</ul>
+<section id="tabpanel_GxZVkLapNS-5_run-step-1" role="tabpanel" data-tab="run-step-1">
+<p>Select <code>TEST_02_Home_NoAntecedents</code> cell</p>
+<p><img src="../images/dd-step1.png" alt="Dd Step1"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS-5_run-step-2" role="tabpanel" data-tab="run-step-2" aria-hidden="true" hidden="hidden">
+<p>Click <code>Launch Test</code></p>
+<p><img src="../images/dd-step2.png" alt="Dd Step2"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS-5_run-step-3" role="tabpanel" data-tab="run-step-3" aria-hidden="true" hidden="hidden">
+<p>Choose a desktop browser, for example <code>Firefox</code>. Then click <code>Start</code></p>
+<p><img src="../images/dd-step3.png" alt="Dd Step3"></p>
+</section>
+<section id="tabpanel_GxZVkLapNS-5_run-step-4" role="tabpanel" data-tab="run-step-4" aria-hidden="true" hidden="hidden">
+<p>Now you can see the framework is running Test_02 on Firefox:</p>
+<p><img src="../images/dd-step4.png" alt="Dd Step4"></p>
+</section>
+</div>
+<div class="NOTE"><h5>Note</h5><p>By running tests directly from Excel, Webrunner is not attached with Visual Studio debugger. So it&#39;s not possible to debug the code line by line.
+If you want to debug a particular test case or action, you can use Excel Add-in to export that particular test case, then launch the project with-in Visual Studio.</p>
+</div>
+<h1 id="conclusion">Conclusion</h1>
+<p>Congratulations! You�ve reached here and have a dynamic data-driven test solution for your application.</p>
+<p>Now you can study test coverage and develop other test cases, if necessary, in both directions:</p>
+<ul>
+<li>In Width: to develop additional test cases with new combination of test data.
+This can be done exclusively within Excel without the need to motify the code or the test project.</li>
+<li>In Depth: If we want to do more verifications or to cover more functionalities. we&#39;ll need to update appropriate keyword-actions or add new keyword action, then externalize test data for these newly added codes.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

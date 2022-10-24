@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Identify Mobile App UI Elements | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Identify Mobile App UI Elements | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="identify-mobile-app-ui-elements">Identify Mobile App UI Elements</h1>
+
+<p>During the automation activities, you’ll need to identify elements used by the application.
+For Web based testing you can observe HTML/DOM elements via developer tool provided by browsers, but for mobile App testing, you’ll need following tools:</p>
+<ul>
+<li><code>Appium Inspector</code>: An Appium client of which you can observe the application and its UI elements.</li>
+<li><code>Appium Server</code>: provides the interface to connect to a mobile device or emulator.</li>
+<li><code>Device</code>: The emulator or the real devices (connected via USB through the hosting machine), where mobile application is running.</li>
+</ul>
+<p>The following example is based on Android Emulator, for other configuration, please refer to Appium Documentation</p>
+<h2 id="appium-server">Appium server</h2>
+<p><img src="../images/appium-server.png" alt="Appium Server"></p>
+<p>Download and install Appium GUI server and start it. you can also install Appium server via <code>npm</code>.
+please refer to the documentation of Appium <a href="http://appium.io/">http://appium.io/</a></p>
+<h2 id="appium-inspector">Appium Inspector</h2>
+<p>Then install and start Appium inspector, with following configuration:</p>
+<p><img src="../images/appium-inspector.png" alt="Appium Inspector"></p>
+<ul>
+<li><code>Remote Path</code>: /wd/hub</li>
+<li><code>Desired Capabilities</code><ul>
+<li><code>appium:automation</code>: UIAutomator2</li>
+<li><code>platformName</code>: Android</li>
+</ul>
+</li>
+</ul>
+<p>This configuration helps you to connect to a local Appium server <code>http://localhost:4723/wd/hub</code></p>
+<div class="NOTE"><h5>Note</h5><p>You can also connect Appium inspector to your cloud provider. 
+In this case, please refer to service provider&#39;s website and provide necessary capabilities.</p>
+</div>
+<h2 id="observe-the-application">Observe the application</h2>
+<p>Appium inspector looks like the following image:</p>
+<p><img src="../images/appium-inspector-observe.png" alt="Appium Inspector Observe"></p>
+<p>You can select element from the screenshot or locate it in App Source. On the right side, there will be a panel which helps you to choose a valid selector, such as <code>id</code> or <code>xpath</code></p>
+<p>In this example, we have selected the digit 5 of the calculator app. And according to the recommendation from right panel, we can use the selector <code>id</code></p>
+<p>Now you can declare this element by using <a class="xref" href="../api_net/AXA.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a>, and access to its methods, like <code>Click()</code></p>
+<pre><code class="lang-csharp">var digit5 = new AppElementDescription(driver){
+    Id = &quot;com.Android.calculator2:id/digit_5&quot;
+}
+
+digit5.Click()
+</code></pre><p>Like web applications, you can organize all UI elements of the same page into <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a>. For example, this class defines some digit buttons, equals, multiply of the calculator app.</p>
+<pre><code class="lang-csharp">public class CalculatorPage : PageModel
+{
+    public AppElementDescription Digit0 = new AppElementDescription
+    {
+        Id = &quot;com.Android.calculator2:id/digit_0&quot;
+    };
+
+    public AppElementDescription Equals = new AppElementDescription
+    {
+        Id = &quot;com.Android.calculator2:id/eq&quot;
+    };
+
+    public AppElementDescription Multiply = new AppElementDescription
+    {
+        ClassName = &quot;Android.widget.Button&quot;,
+        AccessbilityId = &quot;multiply&quot;
+    };
+
+    public CalculatorPage(WebDriver driver) : base(driver)
+    {
+    }
+}
+</code></pre><p>You can use one or multiple selectors to locate an UI element:</p>
+<ul>
+<li><code>AccessibilityId</code>: the <code>accessibility id</code> property</li>
+<li><code>ClassName</code>: the <code>class</code> property</li>
+<li><code>Id</code>: The <code>id</code> property</li>
+<li><code>XPath</code>: The xpath property</li>
+<li><code>Text</code>: The text property</li>
+<li><code>Content-Description</code>: The <code>content-desc</code> property</li>
+</ul>
+<p>For specific device, you can also use:</p>
+<ul>
+<li><code>UIAutomatorSelector</code>: a native selector using UIAutomator on the Android.</li>
+<li><code>IosClassChain</code>: a native selector provided by iOS device.</li>
+</ul>
+<p>The above two selectors can only be used individually, when they are provided all other selectors will be ignored.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

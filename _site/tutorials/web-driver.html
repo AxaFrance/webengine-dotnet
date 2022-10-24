@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>WebDriver for Web based tests | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="WebDriver for Web based tests | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="webdriver-for-web-based-tests">WebDriver for Web based tests</h1>
+
+<p>With WebEngine there is a unique way to initialize Web Driver for any kind of platforms and any kind of browsers:
+<a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html#AXA_WebEngine_Web_BrowserFactory_GetDriver_AXA_WebEngine_Platform_AXA_WebEngine_BrowserType_">GetDriver(Platform, BrowserType)</a></p>
+<h2 id="test-on-desktop-browsers">Test on desktop browsers</h2>
+<p>WebEngine support following desktop browsers:</p>
+<ul>
+<li><code>Internet Explorer</code>: (deprecated) WebEngine.Web library contains the IE WebDriver to run automated tests on Internet Explorer 11.</li>
+<li><code>Microsoft Edge</code>: WebEngine will automatically download and use Microsoft Edge driver from official repository according to the Edge installed on your computer.</li>
+<li><code>Google Chrome</code>: WebEngine will automatically download and use Chrome Driver from official repository according to the Chrome installed on your computer.</li>
+<li><code>Mozilla FireFox</code>: WebEngine library contains a geckodriver</li>
+</ul>
+<pre><code class="lang-csharp">var webdriver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+webdriver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quot;);
+</code></pre><p>The returned <code>webdriver</code> object is type of <code>OpenQA.Selenium.WebDriver</code></p>
+<div class="IMPORTANT"><h5>Important</h5><ol>
+<li>Earlier EdgeHTML based Edge is abandoned by Microsoft. WebEngine support chromium-based Edge browser.</li>
+<li>Internet Explorer is no longer supported; we will remove the support of IE in future release.</li>
+</ol>
+</div>
+<h2 id="test-on-mobile-browsers">Test on Mobile browsers</h2>
+<p>WebEngine support following desktop browsers:</p>
+<ul>
+<li><code>Chrome</code>: for Android devices via Appium or Selenium Grid compatible platforms.</li>
+<li><code>Safari</code>: for iOS based devices via Appium or Selenium Grid compatible platforms.</li>
+</ul>
+<pre><code class="lang-csharp">var webdriver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Android, AXA.WebEngine.BrowserType.Chrome);
+webdriver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quot;);
+</code></pre><p>The returned <code>webdriver</code> object is type of <code>OpenQA.Selenium.Appium.AppiumDriver</code>. More specifically, AndroidDriver or IOSDriver according to the device connected.
+It gives you the possibility to pass mobile specific commands.</p>
+<p>To test on Mobile browsers you&#39;ll need to specify the Appium Server or Selenium Grid of which the device is connected.</p>
+<p>For following code snippet is used to connect to a <code>Android</code> Device, named <code>Nexus 5</code> running <code>Android 10.1</code> and <code>Chrome</code> browser.</p>
+<p>Parameters <code>Username</code> and <code>Password</code> will be used for Grid Authentication. <code>Device</code>, <code>OsVersion</code> will be used for device selection according to devices available in your device cloud.
+You can use these parameters to connect to some Device cloud providers based on Selenium Grid.</p>
+<pre><code class="lang-csharp">var settings = AXA.WebEngine.Settings.Instance;
+settings.GridServerUrl = &quot;http://&lt;grid-server&gt;:&lt;port&gt;/wd/hub&quot;;
+settings.Username = &quot;user-of-grid&quot;;
+settings.Password = &quot;user-access-key&quot;;
+settings.Device = &quot;Nexus 5&quot;;
+settings.OsVersion = &quot;10.1&quot;;
+driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Android, AXA.WebEngine.BrowserType.Chrome);
+driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quot;);
+</code></pre><div class="NOTE"><h5>Note</h5><p>Selenium Grid connection, username and password can be configured in <a href="../articles/appsettings.html">configuration files</a>.</p>
+</div>
+<h2 id="firewall-consideration">Firewall consideration</h2>
+<p>During test execution, the target machine must have access to the following internet address to download the web driver according to the browser installed.</p>
+<ul>
+<li>For Edge: <a href="https://msedgedriver.azureedge.net">https://msedgedriver.azureedge.net</a></li>
+<li>For Chrome: <a href="https://chromedriver.storage.googleapis.com">https://chromedriver.storage.googleapis.com</a></li>
+</ul>
+<p>If test execution is performed in a controlled environment, please configure either proxy or firewall rules to make sure above URLs are accessible.
+WebEngine framework will take account system proxy settings.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

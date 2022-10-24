@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Test Web Applications | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Test Web Applications | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="test-web-applications">Test Web Applications</h1>
+
+<p>With functionalities provided by <a class="xref" href="../api_net/AXA.WebEngine.Web.html">AXA.WebEngine.Web</a>, it is easy to build Selenium WebDriver powered tests running on Desktop and Mobile browsers.
+To test web application, we usually need to open the web browser and perform two kinds of actions on system under test:</p>
+<ul>
+<li>Perform actions on Web Elements: The button we want to click, the textbox we want to fill, etc.</li>
+<li>Compare the information retrieved from some Web Element with expected value.</li>
+</ul>
+<p>In WebEngine Framework, we have provided <a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> to easily manage web browsers and selenium webdrivers, and <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a> and <a class="xref" href="../api_net/AXA.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> to manage Web Elements.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To test web applications with WebEngine Framework, you&#39;ll need to have follow knowledges as pre-requisites:</p>
+<ul>
+<li>Basic knowledge on Web and HTML Document</li>
+<li>Able to use Development Tools provided by Web Browser to inspect Web Elements</li>
+<li>Have basic knowledge on Selenium WebDriver, either in C# or Java</li>
+</ul>
+<h2 id="use-browserfactory-to-manage-selenium-webdriver">Use BrowserFactory to manage Selenium WebDriver</h2>
+<p><a class="xref" href="../api_net/AXA.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> is used to open selected browser of which the test suite will execute on. For example, a single line of code:</p>
+<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+</code></pre><p>Will perform following actions:</p>
+<ul>
+<li>Determine the Edge browser installed on your computer</li>
+<li>Download the Edge WebDriver from official repository according to its version</li>
+<li>Initialize the Selenium WebDriver</li>
+</ul>
+<p>For mobile testing, the following line of code:</p>
+<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Android, AXA.WebEngine.BrowserType.Chrome);
+</code></pre><p>Will perform following actions</p>
+<ul>
+<li>Connect to Selenium Grid or Appium Server</li>
+<li>Initialize Selenium WebDriver and opens Chrome on selected device</li>
+<li>Returns an AppiumDriver to end user.</li>
+</ul>
+<h2 id="use-elementdescription-to-identify-web-elements">Use ElementDescription to identify Web Elements</h2>
+<p><a class="xref" href="../api_net/AXA.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.
+A Web Element can be identified by one or more properties, for example, its Tag Name, Id, Name, CssClass, XPath or other HTML Attributes.</p>
+<p>WebEngine Framework will use provided properties to filter and select element from current web page.
+For example, to identify the <code>&lt;input&gt;</code> tag we may use these two attributes:</p>
+<p><img src="../images/webelement.png" alt="Web Element"></p>
+<div class="tabGroup" id="tabgroup_uaXKPyJz2I">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I_ednet" role="tab" aria-controls="tabpanel_uaXKPyJz2I_ednet" data-tab="ednet" tabindex="0" aria-selected="true">.NET</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I_edjava" role="tab" aria-controls="tabpanel_uaXKPyJz2I_edjava" data-tab="edjava" tabindex="-1">JAVA</a>
+</li>
+</ul>
+<section id="tabpanel_uaXKPyJz2I_ednet" role="tabpanel" data-tab="ednet">
+<pre><code class="lang-csharp">//In C#, you can declare the Web Element with any combination of properties
+var TxtUserName = new WebElementDescription(driver)
+{
+    TagName = &quot;input&quot;,
+    Name = &quot;txtUser&quot;
+};
+
+//then perform any actions on this object.
+TxtUserName.SetValue(&quot;admin@test.com&quot;);
+</code></pre></section>
+<section id="tabpanel_uaXKPyJz2I_edjava" role="tabpanel" data-tab="edjava" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">/* In Java you can declare the Web Element by using a builder. */
+WebElementDescription txtUserName = new WebElementDescription.builder()
+    .useDriver(driver)
+    .tagName(&quot;input&quot;)
+    .name(&quot;txtUser&quot;)
+    .build();
+
+/* then perform any actions on this object. */
+txtUserName.setValue(&quot;admin@test.com&quot;);
+</code></pre></section>
+</div>
+<p>In WebEngine Framework, object identification is secured against web page synchronization and refresh.
+That means there is no need to add time wait everywhere in the code as many do,
+The framework will handle synchronized page loading, or asynchronized page update transparently.</p>
+<div class="NOTE"><h5>Note</h5><p>The object WebElementDescription is not the IWebElement itself used by Selenium,
+but a descriptor indicating how to identify the element.</p>
+</div>
+<h2 id="use-pagemodel-to-store-test-objects">Use PageModel to store test objects</h2>
+<p>One of the best practices of test automation is to separate the object identification and the logic of the test script.
+In WebEngine Framework, you can store one or more test objects into a <a class="xref" href="../api_net/AXA.WebEngine.Web.PageModel.html">PageModel</a>.</p>
+<p>In practice, imagine a login page contains username and password, the submit button and a span containing error messages.
+You can create a PageModel named LoginPage, containing the above 4 test objects which will be used in the script.</p>
+<p><img src="../images/pagemodel.png" alt="Pagemodel"></p>
+<p>As a result, you can declare the page model as following:</p>
+<div class="tabGroup" id="tabgroup_uaXKPyJz2I-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I-1_pmnet" role="tab" aria-controls="tabpanel_uaXKPyJz2I-1_pmnet" data-tab="pmnet" tabindex="0" aria-selected="true">.NET</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I-1_pmjava" role="tab" aria-controls="tabpanel_uaXKPyJz2I-1_pmjava" data-tab="pmjava" tabindex="-1">JAVA</a>
+</li>
+</ul>
+<section id="tabpanel_uaXKPyJz2I-1_pmnet" role="tabpanel" data-tab="pmnet">
+<pre><code class="lang-csharp">public class LoginPage : PageModel
+{
+    public WebElementDescription TxtUsername = new WebElementDescription
+    {
+        TagName = &quot;input&quot;,
+        Name = &quot;username&quot;,
+    };
+
+    public WebElementDescription TxtPassword = new WebElementDescription
+    {
+        TagName = &quot;input&quot;,
+        Name = &quot;password&quot;,
+    };
+
+    public WebElementDescription ButtonSubmit = new WebElementDescription
+    {
+        Id = &quot;submit&quot;
+    };
+
+    public WebElementDescription SpanErrorMessage = new WebElementDescription
+    {
+        TagName = &quot;span&quot;,
+        ClassName = &quot;alert errormessage&quot;
+    };
+
+    public LoginPage(WebDriver driver) : base(driver)
+    {
+    }
+}
+</code></pre></section>
+<section id="tabpanel_uaXKPyJz2I-1_pmjava" role="tabpanel" data-tab="pmjava" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">public class LoginPage : PageModel
+{
+}
+</code></pre></section>
+</div>
+<p>In the test script, when you need to perform actions on this login page, just initialize the page model and use it.
+The test script is object-oriented, clear to read and easy to maintain.</p>
+<div class="tabGroup" id="tabgroup_uaXKPyJz2I-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I-2_usepmnet" role="tab" aria-controls="tabpanel_uaXKPyJz2I-2_usepmnet" data-tab="usepmnet" tabindex="0" aria-selected="true">.NET</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_uaXKPyJz2I-2_usepmjava" role="tab" aria-controls="tabpanel_uaXKPyJz2I-2_usepmjava" data-tab="usepmjava" tabindex="-1">JAVA</a>
+</li>
+</ul>
+<section id="tabpanel_uaXKPyJz2I-2_usepmnet" role="tabpanel" data-tab="usepmnet">
+<pre><code class="lang-csharp">LoginPage page = new LoginPage(driver);
+page.TxtUsername.SetValue(&quot;admin@test.com&quot;);    //fill username
+page.TxtPassword.SendKeys(&quot;password&quot;);          //fill password
+page.ButtonSubmit.Click();                      
+
+if (page.SpanErrorMessage.IsDisplayed)          //check if error message shows
+{
+    //error message displayed, test failed.
+    return false;
+}
+else
+{
+    //error message not displayed, test success.
+    return true;
+}
+</code></pre></section>
+<section id="tabpanel_uaXKPyJz2I-2_usepmjava" role="tabpanel" data-tab="usepmjava" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">some java code
+</code></pre></section>
+</div>
+<h2 id="example-projects">Example Projects</h2>
+<p>Sample projects are available using different language and test approaches, please follow this link:
+<a href="../tutorials/toc-sample.html">Sample Projects</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

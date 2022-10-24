@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Writing test cases - Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Writing test cases - Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="writing-test-cases---linear-scripting-approach-cnet">Writing test cases - Linear Scripting Approach (C#/.NET)</h1>
+
+<p>In this article we will show you how to write test cases using linear scripting approach.
+Linear scripting approach is the most used approach in Unit Test and for simple test scenarios.
+In this approach, test cases are interpreted directly into test scripts, the method is fast for writing simple test cases but does not guarantee reuse of the functionality and part of test script across test projects.</p>
+<p>This tutorial is based on Unit Test Framework MsTest under Visual Studio 2022, if you are using NUnit or XUnit, or another development tool, the solution will be similar.</p>
+<div class="NOTE"><h5>Note</h5><p>Linear scripting approach may be fast to implement
+Consider avoiding this approach for complex end-to-end tests, because after several iterations, the effort of maintenance will be rapidly increased.</p>
+</div>
+<h2 id="framework-components-are-required">Framework components are required</h2>
+<ul>
+<li>[x] <code>AXA.WebEngine</code>: for basic data structures</li>
+<li>[x] <code>AXA.WebEngine.Web</code>: for Web Applications running on Desktop and Mobile Devices</li>
+<li>[ ] <code>AXA.WebEngine.MobileApp</code>: Required only if you are testing native or hybrid mobile applications</li>
+</ul>
+<p>Other components of WebEngine Framework is not used.</p>
+<h2 id="steps-to-build-test-automation-solution-using-linear-scripting">Steps to build Test Automation Solution using Linear Scripting</h2>
+<h3 id="step-1-create-a-test-project">Step 1: Create a Test Project</h3>
+<p>Using Visual Studio and Create a MSTest Project, bane it <code>Samples.LinearScripting</code>.
+You can use any recent versions of .NET (<code>.NET Framework 4.8</code> or <code>.NET 6.0</code> for example)</p>
+<p><img src="../images/ls-step1-createproject.png" alt="Ls Step1 Createproject"></p>
+<p>And empty test project is then created. with a class called <code>UnitTest1</code></p>
+<pre><code class="lang-csharp">namespace Samples.LinearScripting
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
+    }
+}
+</code></pre><p>Now we can build our test scripts based on Selenium. Our system under test is the application: <a href="http://webengine-test.azurewebsites.net/Step1.html">http://webengine-test.azurewebsites.net/Step1.html</a></p>
+<p>After the project initialization, you need to install the NuGet Package:</p>
+<ul>
+<li>AXA.WebEngine</li>
+<li>AXA.WebEngine.Web</li>
+<li>Selenium WebDriver (&gt;= 4.1.0)</li>
+<li>Appium.WebDriver (&gt;= 5.0.0-beta01) (for beta version of Appium you&#39;ll need to check &quot;include prerelease&quot; in NuGet Package Manager)</li>
+</ul>
+<h3 id="step-2-write-setup-and-teardown">Step 2: Write Setup and Teardown</h3>
+<p>In this step, we will write <code>Setup</code> and <code>Teardown</code> functions to initialize test environment before each test case and cleanup the test results after each test case.</p>
+<ul>
+<li>Setup: Initializes the WebDriver object.</li>
+<li>Teardown: Closes the driver and the browser.</li>
+</ul>
+<p>To do this, insert following code to <code>UnitTest.cs</code></p>
+<pre><code class="lang-csharp">using OpenQA.Selenium;
+
+namespace Samples.LinearScripting
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        //WebDriver object will be used for each test case.
+        WebDriver? driver = null;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            //Initialize the driver by platform and browser type, then open test application
+            driver = AXA.WebEngine.Web.BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.Chrome);
+            driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
+        }
+
+        [TestCleanup]
+        public void Teardown()
+        {
+            //Close the driver (and browser) after each test case.
+            driver?.Close();
+            driver?.Dispose();
+        }
+
+        [TestMethod]
+        public void TestMethod1()
+        {
+            //Here will be the test script.
+        }
+    }
+}
+</code></pre><h3 id="step-3-observe-sut-and-identify-ui-elements">Step 3: Observe SUT and identify UI Elements</h3>
+<p>Observing system under test via Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a <code>PageModel</code>.</p>
+<p><img src="../images/ls-step3-uielements.png" alt="Step 3 UI Elements"></p>
+<p>When identifying an UI Element, we can combine multiple locators to make sure they can select only the element we want:</p>
+<ul>
+<li>The dropdown list &quot;Choose Language&quot; can be identified by <code>TagName = &quot;select&quot;</code> and <code>id=&quot;language&quot;</code>.</li>
+<li>The radio button group &quot;Choose to buy&quot; can be identified by <code>name=&quot;fav_language&quot;</code> which matches all 3 radio buttons in the same group.</li>
+<li>The button &quot;Next&quot; can be identified by the <code>TagName=&quot;button&quot;</code> and <code>onclick attribute=&quot;testSleep()&quot;</code></li>
+</ul>
+<p>The PageModel for this web page can be coded like following snippet:</p>
+<pre><code class="lang-csharp">using AXA.WebEngine.Web;
+using OpenQA.Selenium;
+
+namespace Samples.LinearScripting
+{
+    public class MyPageModel : PageModel
+    {
+        public MyPageModel(WebDriver driver) : base(driver)
+        {
+        }
+
+        //Choose Language
+        public WebElementDescription SelectLanguage = new WebElementDescription
+        {
+            TagName = &quot;select&quot;,
+            Id = &quot;language&quot;
+        };
+
+        //Choose to buy
+        public WebElementDescription RadioChooseToBuy = new WebElementDescription
+        {
+            Name = &quot;fav_language&quot;
+        };
+
+        //Next Button
+        public WebElementDescription NextButton = new WebElementDescription
+        {
+            TagName = &quot;button&quot;,
+            Attributes = new HtmlAttribute[]
+            {
+                new HtmlAttribute{ Name = &quot;onclick&quot;, Value = &quot;testSleep()&quot;}
+            }
+        };
+
+        //Page title of next page (for verification)
+        public WebElementDescription Page2Title = new WebElementDescription
+        {
+            TagName = &quot;h1&quot;,
+            InnerText = &quot;Test page - Step 2&quot;
+        };
+    }
+}
+</code></pre><h3 id="step-4-write-test-script">Step 4: Write test script.</h3>
+<p>Now we are ready to write the automated test script for this web page:</p>
+<ul>
+<li>Initialize the page model object</li>
+<li>Use the page model to interact with UI elements</li>
+</ul>
+<p>Instead of using native selenium commands, it is recommended to use actions implemented in <code>WebElementDescription</code>. The script will be easier to read, to understand and to maintain, because
+most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter <code>NoSuchElementException</code> and <code>StaleElementReferenceException</code>. </p>
+<p>Using PageModel, you can fill the function TestMethod1 with following code snippet</p>
+<pre><code class="lang-csharp">//initialize the page model with current driver
+MyPageModel page = new MyPageModel(driver);
+
+//choose the option by value=&quot;fr&quot; in the select
+page.SelectLanguage.SelectByValue(&quot;fr&quot;);
+//choose the radiobutton where the value is &quot;Coffee&quot;
+page.RadioChooseToBuy.CheckByValue(&quot;Coffee&quot;);
+//click on the Next button
+page.NextButton.Click();
+
+//Verify if the current page title is page 2 
+Assert.IsTrue(page.Page2Title.Exists());
+//The above assertion will not fail because exists will wait until the second page has loaded within the timeout
+</code></pre><h3 id="run-tests">Run tests</h3>
+<p>To run the test case, open Test -&gt; Test Explorer and select the test case we have just coded to run:</p>
+<p><img src="../images/ls-run-test.png" alt="Run Test"></p>
+<h3 id="improve-the-test-cases">Improve the test cases</h3>
+<p>Now you can continue automatizing this scenario to the end by:</p>
+<ul>
+<li>Adding new UI elements into <code>PageModel</code></li>
+<li>Manipulate these UI elements</li>
+<li>Retrive information from these UI elements in order to compare with expected value</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>The source code of this exercise can be found in our Github repository.
+Project Name: Samples.LinearScripting</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
