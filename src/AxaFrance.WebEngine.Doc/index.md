@@ -41,9 +41,7 @@ td, th, tr {
 | [Introduction](articles/intro.md) | [.NET API<br />Reference](api_net/) | [JAVA API<br />Reference](api_java/) | [Tutorials &<br />Examples](tutorials/intro.md) |
 
 ## Show case
-<video width="640" height="400" controls>
-  <source src="images/run-from-excel.mp4" type="video/mp4">
-</video>
+<iframe frameborder="0" width="640" height="360" src="https://www.dailymotion.com/embed/video/k7kedqwLLueznayqBmd" allowfullscreen allow="autoplay"/>
 
 ## Use the latest version
 The Framework is distributed via Package Management: NuGet for .NET version and Maven for JAVA Version.
@@ -53,9 +51,9 @@ The Framework is distributed via Package Management: NuGet for .NET version and 
 Feel free to reach us if you want to adopt the Framework, report Bugs, or have good ideas to contribute on it.
 
 ### Repository of .NET Project and shared components:
-+ https://github.com/AxaGuilDEv/
++ https://github.com/AxaGuilDEv/webengine-dotnet
 + Main contributor: Huaxing YUAN [<img src="images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 ### Repository Java Project:
-+ https://github.com/AxaGuilDEv/
++ *[Will be available soon]*
 + Main contributor: Joseph ARUL [<img src="images/github.svg" width="16" />](https://github.com/josepha26)
