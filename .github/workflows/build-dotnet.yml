@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore src/AxaFrance.WebEngine.sln
-    - name: Build src/AxaFrance.WebEngine.sln
-      run: dotnet build --no-restore
+      run: dotnet restore "./src"
+    - name: Build 
+      run: dotnet build "./src" --no-restore --configuration Debug
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
        name: build-artifact
-       path: "./artifact" 
+       path: "./src" 
