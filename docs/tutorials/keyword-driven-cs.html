@@ -73,7 +73,7 @@
 Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a> for more information about this approach.</p>
 <p>Considering we are building a Test Automation Solution for Home Insurance Underwriting application: <a href="http://webengine-test.azurewebsites.net/home-insurance">http://webengine-test.azurewebsites.net/home-insurance</a></p>
 <h2 id="step-1-analyzing-and-modelling">Step 1: Analyzing and Modelling</h2>
-<p>In this step, we analyze application under test, its use cases and create high-level actions (keywords) while these actions can be possibly reused in different test cases.</p>
+<p>In this step, we analyze application under test, create use cases and high-level actions (keywords), note that these actions can be possibly reused in different test cases.</p>
 <p>For example, we can separate the insurance underwriting scenario into several high-level action keywords: </p>
 <ul>
 <li>Login</li>
@@ -91,7 +91,7 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 </ul>
 <p>The modelling of Home Insurance Underwriting application may look like following diagram:</p>
 <p><img src="../images/kd-schemas.png" alt="Schemas"></p>
-<p>Along with the modelling, it is necessary to define also test data to be used for each action keyword. that is Test data to manipulate application under test and test data to verify expected result.</p>
+<p>Along with the modelling, it is necessary to define also test data to be used for each action keyword. these Test datas are manipulated in the application under test and also verify expected result.</p>
 <h2 id="step-2-initializing-test-project-with-webengine-framework">Step 2: Initializing test project with WebEngine Framework</h2>
 <h3 id="21-create-a-class-library-project">2.1 Create a class library project</h3>
 <p>Create a new class library with Visual Studio.</p>
@@ -99,7 +99,7 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 <div class="NOTE"><h5>Note</h5><p>The project type can be <code>Class Library (.NET Framework)</code> based on .NET 4.8. or <code>Class Library</code> based on .NET Core</p>
 </div>
 <h3 id="22-install-required-nuget-packages">2.2 Install required NuGet Packages</h3>
-<p>To build test automation solutions with keyword-driven testing approach, you&#39;ll need following components:</p>
+<p>To build test automation solutions with keyword-driven testing approach, you&#39;ll need the following components:</p>
 <ul>
 <li><code>AxaFrance.WebEngine</code> - Required</li>
 <li><code>AxaFrance.WebEngine.Web</code> - Required</li>
@@ -142,7 +142,7 @@ A test case can be reused multiple times by giving different test data (combinat
 </ul>
 <h3 id="25-define-test-cases">2.5 Define test cases</h3>
 <p>Test case is inherited from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html">TestCaseWeb</a> to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
-And defines which keywords will be executed one after another. As per modelling, the test case will like following code snippet: </p>
+And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet: </p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine.Web;
 using Samples.KeywordDriven.Actions;
 
@@ -163,7 +163,7 @@ namespace Samples.KeywordDriven.TestCases
     }
 }
 </code></pre><h2 id="step-3-develop-test-scripts">Step 3: Develop test scripts</h2>
-<p>Now we are entering the most interesting part: develop test scripts. That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
+<p>Now we are entering to the most interesting part: develop test scripts. That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
 <code>Login</code> and <code>Underwriting</code></p>
 <p><code>Login</code> is a normal keyword doing following actions:</p>
 <ul>
@@ -193,7 +193,7 @@ namespace Samples.KeywordDriven.TestCases
 </li>
 </ul>
 <section id="tabpanel_+oFYteI1nb_webpage-login" role="tabpanel" data-tab="webpage-login">
-<p>In this action keyword, the script will need to access 3 Web Elements: username, password, and login button. and <strong>important</strong> the fourth one: error message.</p>
+<p>In this action keyword, the script will need to access 3 Web Elements: username, password, and login button and <strong>important</strong> the fourth one: error message.</p>
 <p>Use <code>Developer Tools</code> of the browser, lets create a Page Model <code>PageLogin.cs</code></p>
 <p><img src="../images/kd-login-web.png" alt="Login Web page"></p>
 </section>
@@ -240,8 +240,8 @@ namespace Samples.PageModels
 <section id="tabpanel_+oFYteI1nb_action-login" role="tabpanel" data-tab="action-login" aria-hidden="true" hidden="hidden">
 <p>In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
-Then fill login, password click login button and verify there is no error message.</p>
-<p>All action keyword must inherent from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherent from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html">SharedActionWeb</a>, then implement <code>DoAction</code> and <code>DoCheckpoint</code></p>
+Then fill login, password to the click login button and verify there is no error message.</p>
+<p>All action keyword must inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherit from &lt;xref:AXA.WebEngine.Web.SharedActionWeb&gt;, then implement <code>DoAction</code> and <code>DoCheckpoint</code> methods.</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 
@@ -468,7 +468,7 @@ For more information about Excel Add-in, please refer to <a href="../articles/ex
 <p><img src="../images/kd-viewreport.png" alt="Viewreport"></p>
 <p>When running tests with <code>WebRunner</code> you can add <code>-showReport</code> to start ReportViwer after test execution.</p>
 <h2 id="resume">Resume</h2>
-<p>As you can see, with this method it takes longer to automatize the first test case. But in long term, you have a well structured, modelized testing project that makes eaiser to improve and to maintain. We recommand this approach for complex end-to-end scenarios.</p>
+<p>As you can see, with this method it takes longer to automatize the first test case. But in long term, you have a well structured, modelized testing project that makes easier to improve and to maintain. We recommand this approach for complex end-to-end scenarios.</p>
 <p>BUT, it&#39;s not finished. In this tutorial, everything is hard-coded:</p>
 <ul>
 <li>Url is hard coded, you may want to test under multiple test-environments</li>

@@ -70,7 +70,7 @@
 <h1 id="test-configuration-file">Test Configuration File</h1>
 
 <p>To simplify command line arguments, some parameters can be specified in a configuration file <code>appsettings.json</code>. 
-If a parameter is provided both in <code>appsettings.json</code> file and command-line argument, the value provided in command-line will be taken account.</p>
+If a parameter is provided in both side, the value provided in command-line will be taken account.</p>
 <pre><code class="lang-json">{
   &quot;LogDir&quot;: null,
   &quot;GridConnection&quot;: &quot;http://localhost:4723/wd/hub&quot;,
@@ -85,7 +85,7 @@ If a parameter is provided both in <code>appsettings.json</code> file and comman
   }
 }
 </code></pre><ul>
-<li><code>LogDir</code>: The directory to store test report. This parameter is used by reports generated via WebRunner. if the value is null, then the default temporary folder will be used.</li>
+<li><code>LogDir</code>: The directory to store the test report. if the value is null, then the default temporary folder will be used.</li>
 <li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests. </li>
 <li><code>Username</code>: The username of Selenium Grid authentication.</li>
 <li><code>Password</code>: The password of Selenium Grid authentication.</li>

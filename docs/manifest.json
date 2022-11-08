@@ -633,10 +633,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/appsettings.html",
-          "hash": "eMnGpBmv1XeTDq0Pm9WFVE9HkKABaaTe9NzmdrqihuM="
+          "hash": "KL6LffGPl3ezRbTi6lP46HFxjB8zr01jPRVon3NcHd8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -645,10 +645,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/dev-status.html",
-          "hash": "2Zo0iHrTqBeMJp6dm4FDYz85XjabOYzgVhYi5BXFfrc="
+          "hash": "0Q3hYgMAOooommvYj5xbYaC7rJr78yWo5Hgfib6iV3o="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -672,7 +672,7 @@
           "hash": "ptJQWX5F72220jdikI4naxSc4xI5lRhn6J83dkmYvBw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -681,10 +681,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/excel-addin-settings.html",
-          "hash": "AO9fAvMam30gWGRRIwX+XpEPo4EyR2RxVT+9XdmJ0WQ="
+          "hash": "PQlmNqayky1BvzIP1kZOnTBi2cgCiRovHBOn4LGOyUE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -705,10 +705,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/excel-addin.html",
-          "hash": "FNbMwTljumGTN8O0bG68cTyBrTBcyxAfRlEFXLYJ+00="
+          "hash": "0SkzpA7kFsaupZ/+Bisf6ferKrfZcWFZMDXxkLyS8PM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -717,10 +717,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/excel-file-structure.html",
-          "hash": "uzRhm37DtFsO5dmmkZGm5C8m7D5YWG/CL/BXx09RqD0="
+          "hash": "6NRtE5yxFwL3teSeiB5GlFw30QL/4OHXV+592rh438c="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -741,10 +741,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "pF6dMMb+vFTYx2yhe6Ajt1ao3u6PCjq9cJUEh4FQhB0="
+          "hash": "0GYCCJm4GnYM+pwR/RG0xNIohBRGmn4ljLuPOaY0AAs="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -796,15 +796,18 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "DuplicateTabId"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/webengine-web.md",
       "output": {
         ".html": {
           "relative_path": "articles/webengine-web.html",
-          "hash": "Z4HlBJSSmwPDCVltE5b6KQsJZOd/gLu6tQCapcGEeL4="
+          "hash": "4HnxUtES68HAf98ntmzrZmLjm4e5T4dJIuKGNVfTxJE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -813,10 +816,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/webrunner.html",
-          "hash": "5u9HSg0eLkmUcWEGIFdg7esKpY8WoV/UuY/IH9lI/Dw="
+          "hash": "HNlDwsRzAorcHStkhqgdlEFRufiR9rUMAGtj3H42bt8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1697,7 +1700,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "4Gd4quQbPy22gJu+qAxJXjZW5HD2ErkibbDaWjfsnYY="
+          "hash": "tl8eqlY3RbUTJ8a/2X+LwcKtm4dx9jWQltgGLu5vmSM="
         }
       },
       "is_incremental": false,
@@ -1721,10 +1724,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/app-elements.html",
-          "hash": "r8BSzlMbTFAE+wn32ewsOlBNCTQKoo3QUuP6jOmaMwk="
+          "hash": "lwKmCdc+Mx0xViX0bE2rCIdh4NJEYLwUrVFCR+jGD/U="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1733,10 +1736,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/appium-driver.html",
-          "hash": "yqvpTIkNmOwAk2luogGfw6tQf6N0sHooetfwt8LV7GU="
+          "hash": "X5klieTStl9LwndSwBd/XjgGqzqi85K42qkNVWov6Wg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1757,10 +1760,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/data-driven-cs.html",
-          "hash": "P0RTmBa7/REzKMD9ctYPpY453MbAY7LUj1M+U8p3d+0="
+          "hash": "T8k7kH25bNDRNDNmKOBWX8//lHffX9X9lKyv5Lp1uJU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1793,10 +1796,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/gherkin-cs.html",
-          "hash": "2agV3Puwv7l2Oj3IgxqQsERWnevIBPyGkQgfYT3vBms="
+          "hash": "rL1gWB/M+47iS4tUVdpTDR1Qs1JSARw4CJdqBVpmoGk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1817,10 +1820,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/intro.html",
-          "hash": "s45WOGG62GWSk8quZGDc6EeT0KFyAq42pLLuOfZIjR0="
+          "hash": "xhgHj3ZJFkKBgfkTMp0HldmYZoKZWJZaF5NG+769FVk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1829,10 +1832,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/keyword-driven-cs.html",
-          "hash": "vx7Vw1dfde7A3OCbynIY9VJxJb5yA+tgaDb7C1uF5EQ="
+          "hash": "BTRjryufJ86dqrTkdPfeUEWHkBqWcwaIVJ1XS5p/4HM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1853,10 +1856,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/keyworddriven.html",
-          "hash": "V3YOBs8Pq5J5VdyGNkPiypNkQdUd/3lZUFFh87oJRL8="
+          "hash": "2WrKZpJa1iGhZq2eEj5a59pP/gOTajUNAft6kc/mAYk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1865,10 +1868,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/linear-script-cs.html",
-          "hash": "VDmn3vLC1CzG29e0QS4VnaORnJK7Zukzeum4r5QdWcQ="
+          "hash": "JC4Ifjs8Wxd3qKNjCGVuGf31eA8kYfJPBtQ8p8qcMdc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1889,10 +1892,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/page-model.html",
-          "hash": "x3QCxmx4NJvRKydqR2lwFGlNvKI7JwBWINztWq7MoKk="
+          "hash": "Y1PDWiURqtw4zwd6H4sBZDkmRNZaygSfyA/wXMtXDrk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1901,10 +1904,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/toc-concepts.html",
-          "hash": "LNh6VtZqTpLuB+i0YCQmNoZrins3fFamhuXWILju85k="
+          "hash": "uTChNHgS++/VZOSEE1XsCeJ9z/JdHUGpWnkenKo/xlE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1916,7 +1919,7 @@
           "hash": "CimWekQea4WZjj646vzeSDlLsRriXCOV0wrvRnu92cw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1944,15 +1947,18 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "UidNotFound"
+      ],
       "type": "Conceptual",
       "source_relative_path": "tutorials/web-driver.md",
       "output": {
         ".html": {
           "relative_path": "tutorials/web-driver.html",
-          "hash": "7zOovEbWx1h167yWUWmxbiS+7cdZDeP5/YLbX4e3VcA="
+          "hash": "p+OphfQjMMj9Oma5T8/XIK0ZpBOvgyNJIHcXmwZBDn4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1961,10 +1967,10 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/web-elements.html",
-          "hash": "1rC4xGVaShBLbOZo57PcOPo2Rc9qcF4T0Q1R3hj6zV8="
+          "hash": "LlgTVME53RWTvhMIxmxwp5NDLXiM2E7aO92NOcZYEMs="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     }
   ],
@@ -1981,7 +1987,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 38,
-          "skipped_file_count": 37
+          "skipped_file_count": 17
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

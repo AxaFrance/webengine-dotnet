@@ -85,8 +85,8 @@ To identify an Element, you can use following identification strategy:</p>
 <li><code>Attributes</code>: any standard or non-standard html attributes.</li>
 </ul>
 <h2 id="identify-single-web-elements">Identify Single Web Elements</h2>
-<p>First step to identify a Web Element on a HTML page is to use the <code>Developer Tool</code> integrated with the browser.
-To open the Developer Tool on the Browser, you can do right-click on the web page and select <code>Inspect</code>, or press <code>F12</code> to activate it.</p>
+<p>First step to identify a Web Element on a HTML page is to use the <code>Developer Tools</code> integrated with the browser.
+To open the Developer Tools on the Browser, you can do right-click on the web page and select <code>Inspect</code>, or press <code>F12</code> to activate it.</p>
 <p>Then activate the Inspect function and move to the element to be manipulated by the test script.</p>
 <p>For example: a dropdown list as shown below:
 <img src="../images/web-element-id.png" alt="Web Element Id"></p>
@@ -104,7 +104,7 @@ SelectLanguage.SelectByValue(&quot;fr&quot;);
 //Or Select an option by displayed text
 SelectLanguage.SelectByText(&quot;Français&quot;);
 </code></pre><h3 id="identify-elements-with-multiple-locators">Identify elements with multiple locators</h3>
-<p>It is strongly recommended that Dev and Test team work together to improve the testability of the application under test. That is tag UI elements so that can be easily identified by test script. 
+<p>It is strongly recommended that Developpers and Testers team work together to improve the testability of the application under test. That is tag UI elements so that can be easily identified by test script. 
 But sometimes, it&#39;s not easy to have well tagged element for testers. To address issue, WebEngine Framework simplifies the way to identify Web Elements with multiple locator:</p>
 <p>For example, to identify the following <code>div</code> element, there is no <code>id</code> nor <code>name</code>. But we can identify this element by its <code>TagName</code> and <code>Class</code>.
 <img src="../images/web-element-multiple.png" alt="Web Element Multiple"></p>
@@ -128,7 +128,7 @@ For example: following <code>button</code> element has no <code>id</code>, <code
         new HtmlAttribute(&quot;custom_name&quot;, &quot;scroll_intoview&quot;),
     }
 };
-</code></pre><p>With HTML attributes locator, you can literly identify any elements in HTML. Choose the combination of easiest, and most stable locator is a key to keep your script maintainable.</p>
+</code></pre><p>With HTML attributes locator, you can literly identify any elements in HTML. Choose the combination of easiest and most stable locator is a key to keep your script maintainable.</p>
 <h2 id="identify-multiple-web-elements">Identify Multiple Web Elements</h2>
 <p>With above locators, you can identify an unique Web Element to interact with.</p>
 <p>But sometimes, you&#39;ll also need to identify multiple elements, for example to populate items from a list, to get all radio button options. To identify multiple Web Elements, you&#39;ll use exactly the same method.</p>

@@ -1,6 +1,6 @@
 # WebDriver for Web based tests
 With WebEngine there is a unique way to initialize Web Driver for any kind of platforms and any kind of browsers:
-<xref:AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType)>
+<xref:AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AXA.WebEngine.Platform,AxaFrance.WebEngine.BrowserType)>
 
 ## Test on desktop browsers
 WebEngine support following desktop browsers:

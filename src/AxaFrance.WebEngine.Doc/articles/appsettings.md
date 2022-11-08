@@ -1,7 +1,7 @@
 ﻿# Test Configuration File
 
 To simplify command line arguments, some parameters can be specified in a configuration file `appsettings.json`. 
-If a parameter is provided both in `appsettings.json` file and command-line argument, the value provided in command-line will be taken account.
+If a parameter is provided in both side, the value provided in command-line will be taken account.
 
 ```json
 {
@@ -19,7 +19,7 @@ If a parameter is provided both in `appsettings.json` file and command-line argu
 }
 ```
 
-* `LogDir`: The directory to store test report. This parameter is used by reports generated via WebRunner. if the value is null, then the default temporary folder will be used.
+* `LogDir`: The directory to store the test report. if the value is null, then the default temporary folder will be used.
 * `GridConnection`: The Selenium Grid/Appium Server Url to run Mobile based tests. 
 * `Username`: The username of Selenium Grid authentication.
 * `Password`: The password of Selenium Grid authentication.

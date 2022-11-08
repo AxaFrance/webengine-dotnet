@@ -81,31 +81,31 @@
 </thead>
 <tbody>
 <tr>
-<td>AxaFrance.WebEngine</td>
+<td>AXA.WebEngine</td>
 <td>🟢</td>
 <td>🟢</td>
 <td>Provide basic data structure used in an automation project</td>
 </tr>
 <tr>
-<td>AxaFrance.WebEngine.Web</td>
+<td>AXA.WebEngine.Web</td>
 <td>🟢</td>
-<td>🟡</td>
+<td>🟢</td>
 <td>Provide functionalities to test Web based application on Desktop and Mobile browsers (Based on Selenium 4)</td>
 </tr>
 <tr>
-<td>AxaFrance.WebEngine.MobileApp</td>
+<td>AXA.WebEngine.MobileApp</td>
 <td>🟢</td>
 <td>🔘</td>
 <td>Provide functionalities to test Native and Hybrid mobile applications on Android and iOS (Based on Appium)</td>
 </tr>
 <tr>
-<td>AxaFrance.WebEngine.WebRunner</td>
+<td>AXA.WebEngine.WebRunner</td>
 <td>🟢</td>
 <td>🟢</td>
 <td>Run automated tests using Keyword driven testing approach</td>
 </tr>
 <tr>
-<td>AxaFrance.WebEngine.ReportViewer</td>
+<td>AXA.WebEngine.ReportViewer</td>
 <td>🟢</td>
 <td>🟢</td>
 <td>View test reports (unique version for both .NET and Java version of the framework)</td>
@@ -114,7 +114,7 @@
 </table>
 <h2 id="actions-for-web-elements-via-xrefaxafrancewebenginewebwebelementdescription">Actions for Web Elements (Via <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a>)</h2>
 <p>These actions are available for WebElementDescription. Please note that some actions have different meaning on Desktop and Mobile browsers.</p>
-<p><code>Synchronized</code> signifies the action is secured by the Framework. If the action failed because of page reloading or DOM updating by JavaScript programs, actions will be automatically retried. This feature significantly improves the readability of the test script (code) and reduces the effort to maintenance.</p>
+<p><code>Synchronized</code> signifies that the action is secured by the Framework. If the action failed because of page reloading or DOM updating by JavaScript programs, actions will be automatically retried. This feature significantly improves the readability of the test script (code) and reduces maintenance effort.</p>
 <table>
 <thead>
 <tr>
@@ -130,28 +130,28 @@
 <td>FindElement()</td>
 <td>✔</td>
 <td></td>
-<td>Find a unique Web Element with current element description.</td>
+<td>Finds a unique Web Element with current element description.</td>
 <td>✔</td>
 </tr>
 <tr>
 <td>FindElement(By)</td>
 <td>✔</td>
 <td></td>
-<td>Find an sub-element of the current Web Element</td>
+<td>Finds an sub-element of the current Web Element</td>
 <td>✔</td>
 </tr>
 <tr>
 <td>FindElements()</td>
 <td>✔</td>
 <td></td>
-<td>Find one or more Web Elements with current element description.(for example options of a <code>select</code> element or buttons in the same <code>radio button group</code>)</td>
+<td>Finds one or more Web Elements with current element description.(for example options of a <code>select</code> element or buttons in the same <code>radio button group</code>)</td>
 <td>✔</td>
 </tr>
 <tr>
 <td>FindElements(By)</td>
 <td>✔</td>
 <td></td>
-<td>Find one or more sub-element of the current unique Web Element</td>
+<td>Finds one or more sub-element of the current unique Web Element</td>
 <td>✔</td>
 </tr>
 <tr>
@@ -179,14 +179,14 @@
 <td>CheckByValue(String)</td>
 <td>✔</td>
 <td></td>
-<td>Checks an option of radio button group based on html attribute <code>value</code>. The current description correspondents all radio buttons of the same group</td>
+<td>Checks an option of radio button group based on html attribute <code>value</code>. The current description corresponds to all radio buttons of the same group</td>
 <td>✔</td>
 </tr>
 <tr>
 <td>DragAndDropTo(ElementDescription)</td>
 <td>✔</td>
 <td></td>
-<td>Drag the current element and drop to another element. (works only on desktop browser)</td>
+<td>Drags the current element and drops to another element. (works only on desktop browser)</td>
 <td>✔</td>
 </tr>
 <tr>
@@ -242,7 +242,7 @@
 <td>SendKeys(string)</td>
 <td>✔</td>
 <td></td>
-<td>Send the text to textbox based elements (for text-box, text-area and password-box)</td>
+<td>Sends the text to textbox based elements (for text-box, text-area and password-box)</td>
 <td>✔</td>
 </tr>
 <tr>

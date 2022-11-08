@@ -1,10 +1,14 @@
 # Test Web Applications
-With functionalities provided by <xref:AxaFrance.WebEngine.Web>, it is easy to build Selenium WebDriver powered tests running on Desktop and Mobile browsers.
-To test web application, we usually need to open the web browser and perform two kinds of actions on system under test:
-* Perform actions on Web Elements: The button we want to click, the textbox we want to fill, etc.
-* Compare the information retrieved from some Web Element with expected value.
+With functionalities provided by <xref:AxaFrance.WebEngine.Web>, it is easy to build tests using Selenium WebDriver running on Desktop and Mobile browsers.
+To test web application, we usually need to open the web browser and perform three kinds of actions on system under test:
 
-In WebEngine Framework, we have provided <xref:AxaFrance.WebEngine.Web.BrowserFactory> to easily manage web browsers and selenium webdrivers, and <xref:AxaFrance.WebEngine.Web.PageModel> and <xref:AxaFrance.WebEngine.Web.WebElementDescription> to manage Web Elements.
+* Localizes Web Elements: The button we want to click, the textbox we want to fill, etc.
+* Performs actions on Web Elements: The button we want to click, the textbox we want to fill, etc.
+* Compares the information retrieved from some Web Element with expected value.
+
+In WebEngine Framework, we have provided  : 
+* <xref:AXA.WebEngine.Web.BrowserFactory> to easily manage web browsers and selenium webdrivers 
+* <xref:AXA.WebEngine.Web.PageModel> and <xref:AXA.WebEngine.Web.WebElementDescription> to manage Web Elements.
 
 ## Prerequisites
 To test web applications with WebEngine Framework, you'll need to have follow knowledges as pre-requisites:
@@ -15,28 +19,42 @@ To test web applications with WebEngine Framework, you'll need to have follow kn
 
 ## Use BrowserFactory to manage Selenium WebDriver
 <xref:AxaFrance.WebEngine.Web.BrowserFactory> is used to open selected browser of which the test suite will execute on. For example, a single line of code:
+
 ```cs
 var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 ```
+
+# [.NET](#tab/browserfactory)
+```csharp
+var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+```
+
+# [JAVA](#tab/browserfactory)
+```java
+Optional<WebDriver> webDriver = BrowserFactory.getDriver(Platform.WINDOWS,Browser.CHROMIUM_EDGE); 
+```
+***
+
+
 Will perform following actions:
--	Determine the Edge browser installed on your computer
--	Download the Edge WebDriver from official repository according to its version
--	Initialize the Selenium WebDriver
+-	Determines the Edge browser installed on your computer
+-	Downloads the Edge WebDriver from official repository according to its version
+-	Initializes the Selenium WebDriver
 
 For mobile testing, the following line of code:
 ```cs
 var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
 ```
 Will perform following actions
--	Connect to Selenium Grid or Appium Server
--	Initialize Selenium WebDriver and opens Chrome on selected device
+-	Connects to Selenium Grid or Appium Server
+-	Initializes Selenium WebDriver and open Chrome on selected device
 -	Returns an AppiumDriver to end user.
 
 ## Use ElementDescription to identify Web Elements
 <xref:AxaFrance.WebEngine.Web.WebElementDescription> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.
 A Web Element can be identified by one or more properties, for example, its Tag Name, Id, Name, CssClass, XPath or other HTML Attributes.
 
-WebEngine Framework will use provided properties to filter and select element from current web page.
+WebEngine Framework will use the provided properties to filter and select element from the current web page.
 For example, to identify the `<input>` tag we may use these two attributes:
 
 ![Web Element](../images/webelement.png)
@@ -78,10 +96,13 @@ The framework will handle synchronized page loading, or asynchronized page updat
 
 
 ## Use PageModel to store test objects
-One of the best practices of test automation is to separate the object identification and the logic of the test script.
+One of the best practices of test automation is to separate :
+-	the object identification 
+-	the logic of the test script.
+
 In WebEngine Framework, you can store one or more test objects into a <xref:AxaFrance.WebEngine.Web.PageModel>.
 
-In practice, imagine a login page contains username and password, the submit button and a span containing error messages.
+In practice, imagine a login page containing username and password, the submit button and a span containing error messages.
 You can create a PageModel named LoginPage, containing the above 4 test objects which will be used in the script.
 
 ![Pagemodel](../images/pagemodel.png)
@@ -122,8 +143,23 @@ public class LoginPage : PageModel
 ```
 # [JAVA](#tab/pmjava)
 ```java
-public class LoginPage : PageModel
-{
+public class LoginPage extends AbstractPageModel{
+    @Getter
+    WebElementDescription txtUsername = WebElementDescription.builder().tagName("input").name("username").build();
+        
+    @Getter
+    WebElementDescription txtPassword = WebElementDescription.builder().tagName("input").name("password").build();  
+    
+    @Getter
+    WebElementDescription buttonSubmit = WebElementDescription.builder().id("submit").build();
+    
+    @Getter
+    WebElementDescription spanErrorMessage = WebElementDescription.builder().id("span").className("alert errormessage").build();
+    
+    public LoginPage(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+
 }
 ```
 ***
@@ -150,7 +186,18 @@ else
 ```
 # [JAVA](#tab/usepmjava)
 ```java
-some java code
+LoginPage page = new LoginPage(driver);
+page.getTxtUsername().setValue("admin@test.com");    //fill username
+page.getTxtPassword().sendKeys("password");          //fill password
+page.getButtonSubmit().Click();                      
+
+if (page.getSpanErrorMessage().isDisplayed()){        //check if error message shows
+    //error message displayed, test failed.
+    return false;
+}else{
+    //error message not displayed, test success.
+    return true;
+}
 ```
 ***
 

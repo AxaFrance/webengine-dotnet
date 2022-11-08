@@ -1,6 +1,6 @@
 # Data-Driven testing Approach (C#/.NET)
 
-This article will show steps to build an Automation solution based on Keyword-Driven testing approach with `Externalized test data` and `Dynamic execution based on test data`.
+This article will show steps to build an Automation solution based on Data-Driven testing approach with `Externalized test data` and `Dynamic execution based on test data`.
 We will continue from the previous test project for application http://webengine-test.azurewebsites.net/home-insurance.
 
 # Prerequisite:
@@ -17,17 +17,17 @@ The modelling of Home Insurance Underwriting application may look like following
 
 # Step 2: Identify variables
 In this step, we'll need to identify variables used in the test automation solution.
-To record and manage test data the most convenient way is to use an Excel spreadsheet under WebEngine format.
-So you can benefit from the functionalities implemented in WebEngine Excel Add-in and launch data-driven test cases directly from Excel.
+To record and manage test data, the most convenient way is to use an Excel spreadsheet under WebEngine format.
+So you can run all your tests directly from Excel with WebEngine Excel Add-in.
 
 For more information about Excel test data
 * [Excel Add-in](../articles/excel-addin.md)
 * [Download Excel test data for this tutorial](../files/Data-HomeInsurance.xlsx)
 
 Test data will have 3 sheets:
-`PARAMS`: All the possible parameters of test case and it's description.
-`ENV`: Test environment dependent variables such as URL or the site or the name of the server.
-`TEST_SUITE`: represents the test suite (including a list of test cases)
+* `PARAMS`: All the possible parameters of test case and it's description.
+* `ENV`: Test environment dependent variables such as URL or the site or the name of the server.
+* `TEST_SUITE`: represents the test suite (including a list of test cases)
 
 
 For this test, we developed following test data
@@ -148,7 +148,7 @@ Save them to the same level of WebRunner.exe and your test assembly.
 
 ![Exportdata Menu](../images/dd-exportdata-menu.png)
 
-We can see these two files are presented in `/bin/debug/.net6.0-windows` folder along with other files related to the test solution.
+We can see these two files are presents in `/bin/debug/.net6.0-windows` folder along with other files related to the test solution.
 
 > When using different version of .NET Framework, the name of the folder may vary.
 
@@ -185,7 +185,7 @@ This can be configured in Settings:
 * **Export Directory**: The folder where Test data and Environment variables should be exported.
 * **WebRunner Directory**: The folder where `webrunner.exe` or `webrunner.jar` is located along with your test solution.
 In general, the output folder of your test projet in `bin\\debug`
-* **Test Assembly**: The compiled library contains your test script. By default, its name is your `<project_name>.dll`
+* **Test Assembly**: The compiled library contains your test script. By default, its name is your `<project_name>.dll` for C# projet and `<project_name>.jar` for Java. 
 
 Once the settings is done, now we can run any and any number of tests directly:
 For example: run `TEST_02`:
@@ -213,7 +213,7 @@ Now you can see the framework is running Test_02 on Firefox:
 > If you want to debug a particular test case or action, you can use Excel Add-in to export that particular test case, then launch the project with-in Visual Studio.
 
 # Conclusion
-Congratulations! You’ve reached here and have a dynamic data-driven test solution for your application.
+Congratulations! You've reached here and have a dynamic data-driven test solution for your application.
 
 Now you can study test coverage and develop other test cases, if necessary, in both directions:
 * In Width: to develop additional test cases with new combination of test data.

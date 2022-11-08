@@ -69,7 +69,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="data-driven-testing-approach-cnet">Data-Driven testing Approach (C#/.NET)</h1>
 
-<p>This article will show steps to build an Automation solution based on Keyword-Driven testing approach with <code>Externalized test data</code> and <code>Dynamic execution based on test data</code>.
+<p>This article will show steps to build an Automation solution based on Data-Driven testing approach with <code>Externalized test data</code> and <code>Dynamic execution based on test data</code>.
 We will continue from the previous test project for application <a href="http://webengine-test.azurewebsites.net/home-insurance">http://webengine-test.azurewebsites.net/home-insurance</a>.</p>
 <h1 id="prerequisite">Prerequisite:</h1>
 <ul>
@@ -83,17 +83,19 @@ We will continue from the previous test project for application <a href="http://
 </div>
 <h1 id="step-2-identify-variables">Step 2: Identify variables</h1>
 <p>In this step, we&#39;ll need to identify variables used in the test automation solution.
-To record and manage test data the most convenient way is to use an Excel spreadsheet under WebEngine format.
-So you can benefit from the functionalities implemented in WebEngine Excel Add-in and launch data-driven test cases directly from Excel.</p>
+To record and manage test data, the most convenient way is to use an Excel spreadsheet under WebEngine format.
+So you can run all your tests directly from Excel with WebEngine Excel Add-in.</p>
 <p>For more information about Excel test data</p>
 <ul>
 <li><a href="../articles/excel-addin.html">Excel Add-in</a></li>
 <li><a href="../files/Data-HomeInsurance.xlsx">Download Excel test data for this tutorial</a></li>
 </ul>
-<p>Test data will have 3 sheets:
-<code>PARAMS</code>: All the possible parameters of test case and it&#39;s description.
-<code>ENV</code>: Test environment dependent variables such as URL or the site or the name of the server.
-<code>TEST_SUITE</code>: represents the test suite (including a list of test cases)</p>
+<p>Test data will have 3 sheets:</p>
+<ul>
+<li><code>PARAMS</code>: All the possible parameters of test case and it&#39;s description.</li>
+<li><code>ENV</code>: Test environment dependent variables such as URL or the site or the name of the server.</li>
+<li><code>TEST_SUITE</code>: represents the test suite (including a list of test cases)</li>
+</ul>
 <p>For this test, we developed following test data</p>
 <div class="tabGroup" id="tabgroup_GxZVkLapNS">
 <ul role="tablist">
@@ -553,7 +555,7 @@ namespace Samples.DataDriven
 <p>Now go back to Excel test data and export Test Data and Environment Variables.
 Save them to the same level of WebRunner.exe and your test assembly.</p>
 <p><img src="../images/dd-exportdata-menu.png" alt="Exportdata Menu"></p>
-<p>We can see these two files are presented in <code>/bin/debug/.net6.0-windows</code> folder along with other files related to the test solution.</p>
+<p>We can see these two files are presents in <code>/bin/debug/.net6.0-windows</code> folder along with other files related to the test solution.</p>
 <blockquote><p>When using different version of .NET Framework, the name of the folder may vary.</p>
 </blockquote>
 <p><img src="../images/dd-exportdata.png" alt="Export data"></p>
@@ -581,7 +583,7 @@ But before launch the test via EXCEL, you must tell WebEngine Add-in where your 
 <li><strong>Export Directory</strong>: The folder where Test data and Environment variables should be exported.</li>
 <li><strong>WebRunner Directory</strong>: The folder where <code>webrunner.exe</code> or <code>webrunner.jar</code> is located along with your test solution.
 In general, the output folder of your test projet in <code>bin\\debug</code></li>
-<li><strong>Test Assembly</strong>: The compiled library contains your test script. By default, its name is your <code>&lt;project_name&gt;.dll</code></li>
+<li><strong>Test Assembly</strong>: The compiled library contains your test script. By default, its name is your <code>&lt;project_name&gt;.dll</code> for C# projet and <code>&lt;project_name&gt;.jar</code> for Java. </li>
 </ul>
 <p>Once the settings is done, now we can run any and any number of tests directly:
 For example: run <code>TEST_02</code>:</p>
@@ -621,7 +623,7 @@ For example: run <code>TEST_02</code>:</p>
 If you want to debug a particular test case or action, you can use Excel Add-in to export that particular test case, then launch the project with-in Visual Studio.</p>
 </div>
 <h1 id="conclusion">Conclusion</h1>
-<p>Congratulations! You�ve reached here and have a dynamic data-driven test solution for your application.</p>
+<p>Congratulations! You&#39;ve reached here and have a dynamic data-driven test solution for your application.</p>
 <p>Now you can study test coverage and develop other test cases, if necessary, in both directions:</p>
 <ul>
 <li>In Width: to develop additional test cases with new combination of test data.

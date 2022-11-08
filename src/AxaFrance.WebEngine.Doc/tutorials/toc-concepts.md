@@ -1,5 +1,5 @@
 # Basic Concepts
-In this section, you will understand how to use WebEngine Framework by using following concepts:
+In this section, you will learn how to use WebEngine Framework by using following concepts:
 
 * Identify Web Elements
 * Identify Mobile App Elements

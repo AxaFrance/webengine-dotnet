@@ -1,9 +1,9 @@
 # Working with WebEngine Add-in for Excel
 
-In many enterprises, Excel is the widely used software to do data related works. Many test teams use it to manage Test Data for manual or Automated Tests.
+In many enterprises, Excel is used a lot to do data related works. Many test teams use it to manage Test Data for manual or Automated Tests.
 Web Engine Excel Add-in is built to easily manage test data and execute tests on local computer.
 
-The add-in can be used by all squad members:
+The add-in can be used by all team members:
 * Testers and Product Owners can define and maintain test data, launch automated tests and observe the execution.
 * Test Automation Engineers and Developers can develop and debug the test solution.
 

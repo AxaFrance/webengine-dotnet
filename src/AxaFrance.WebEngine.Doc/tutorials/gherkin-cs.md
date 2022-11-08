@@ -2,7 +2,7 @@
 In this article we will show you how to write test cases using Gherkin approach.
 Gherkin approach is often used to test features in Behavior-Driven Development (for example: acceptance criteria of a user story) and in Agile environment. The test cases are represented by test scenarios written in gherkin language, and each sentence is implemented by code-behind. You can reuse the same sentence across the test project so the code-behind can also be reused.
 
-With this method testers (or business users) and automation engineers can work together: One can maintain the repository of test scenarios in Gherkin and the other can maintain automation implementations. When a scenario is not yet automated, it can still be served for manual execution.
+With this method, testers (or business users) and automation engineers can work together: One can maintain the repository of test scenarios in Gherkin and the other can maintain automation implementations. When a scenario is not yet automated, it can still be served for manual execution.
 
 > [!NOTE]
 > Gherkin approach is perfect for feature testing combined with BDD (Behavior-Driven Development).
@@ -31,7 +31,7 @@ Let's delete the files in the folder Features and StepDefinitions and create our
 
 
 ### Step 2: Observe SUT and identify UI Elements
-Observing system under test via Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a `PageModel`.
+Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages of the Framework, we will put these 3 elements into a `PageModel`.
 
 ![Step 3 UI Elements](../images/ls-step3-uielements.png)
 

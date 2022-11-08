@@ -6,7 +6,7 @@ AXA WebEngine Framework is based on Selenium WebDriver. In this document we assu
 
 * Locator Strategies: That is use Class name, Css selector, Id, Name, Xpath or other locators to identify one or more specific elements in the DOM.
 * Find Web Elements: By using functions of FindElement (by id, by name, by xpath ...)
-* Interactions: Like Click a button, Fill a Textbox, Select an option from Radio button group...
+* Interactions: Like Click on a button, Fill a Textbox, Select an option from Radio button group...
 
 > [!NOTE]
 > In this tutorials, we won't discuss basic concepts of Selenium and Selenium WebDriver. For these subjects, please refer to the [documentation of Selenium](https://www.selenium.dev/documentation/)

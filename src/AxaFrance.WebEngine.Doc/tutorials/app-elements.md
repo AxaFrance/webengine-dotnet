@@ -1,7 +1,7 @@
 # Identify Mobile App UI Elements
 
 During the automation activities, you’ll need to identify elements used by the application.
-For Web based testing you can observe HTML/DOM elements via developer tool provided by browsers, but for mobile App testing, you’ll need following tools:
+For Web based testing you can observe HTML/DOM elements from developer tools provided by browsers, but for mobile App testing, you’ll need following tools:
 
 * `Appium Inspector`: An Appium client of which you can observe the application and its UI elements.
 * `Appium Server`: provides the interface to connect to a mobile device or emulator.

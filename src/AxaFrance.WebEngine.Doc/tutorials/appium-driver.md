@@ -1,12 +1,12 @@
 # WebDriver for MobileApp testing
 In this article, we will discuss how to test Mobile applications running on Android and iOS.
 It is easier to test Web based applications, because we can just open the browser and type the URL, then we are able to work on it.
-Mobile App testing is different: Because before launching the test script, we need to install the App package and open it in the first place.
+Mobile App testing is different, before launching the test script, we need to install the App package and open it in the first place.
 
 To pass the App package, in WebEngine Framework, you can set it in <xref:AxaFrance.WebEngine.Settings.AppId>.
 There are two different possibilities:
 1. AppId format that supported by your cloud provider. 
-2. Or if test locally the path to a local package file: `c:\mypackage\appv1.0.apk`
+2. Or to test locally, the APK pathdans les : `c:\mypackage\appv1.0.apk`
 
 If you are connecting to a local Appium Server, the package file will be passed-through, so Appium server will install the package on the device and open it.
 If you are connecting to a remote Selenium Grid, make sure the AppId is understandable by remote server.
@@ -14,8 +14,7 @@ All other parameters are exactly the same as [WebDriver for Web based tests](web
 
 > [!NOTE]
 > When you are using Keyword driven test approach,
-> the class <xref:AxaFrance.WebEngine.MobileApp.TestSuiteApp> handles automatically app package upload to supported cloud providers.
-> And converts AppId from local path to cloud provider understandable value.
+> the class <xref:AxaFrance.WebEngine.MobileApp.TestSuiteApp> handles automatically app package upload to supported cloud providers and converts AppId from local path to cloud provider understandable value.
 
 Instead of using <xref:AxaFrance.WebEngine.Web.BrowserFactory> for web based tests, we will use <xref:AxaFrance.WebEngine.MobileApp.AppFactory> for mobile app tests.
 

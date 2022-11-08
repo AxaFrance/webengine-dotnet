@@ -75,19 +75,19 @@ This article shows you how to use it in test automation activites.</p>
 </div>
 <h2 id="common-steps-of-automation">Common steps of automation</h2>
 <p>Before writing test scripts, we need to observe the Application under test to analyze the UI Elements which will be used during the test.
-According to test approach and how test sceanrio will be organized (for example into actions by applying keyword-driven testing),
+According to test approach and how test scenario will be organized (for example into actions by applying keyword-driven testing),
 We can put one or more UI elements into a PageModel.</p>
 <p>The general steps are shown as follow:
 <img src="../images/page-model-step.png" alt="Page Model Step"></p>
 <ul>
 <li><code>Step 1</code>: Identify the elements which will be interacted during the test.</li>
-<li><code>Step 2</code>: Write a class inherated from PageModel and with <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> or <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html">AppElementDescription</a></li>
+<li><code>Step 2</code>: Write a class inherated from PageModel and with <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> or &lt;xref:AXA.WebEngine.MobileApp.AppElementDescription&gt;</li>
 <li><code>Step 3</code>: Instantiate PageModels in the script and use above elements to perform different actions.</li>
 </ul>
 <h3 id="advantages-of-page-models-and-element-descriptions">Advantages of Page Models and Element Descriptions</h3>
 <ol>
 <li>By separating object identification and the test script itself, scripts are easier to read and to understand.</li>
-<li>In case of non-functional changes happed on UI Level, there is no need to change the test script.
+<li>In case of non-functional changes to the UI, there is no need to change the test script.
 Only update Web Element descriptions will be enough.</li>
 <li>Every interaction via WelElement has <code>Retry</code> pattern natively implemented.
 There is no need to implement time wait and synchronization in most of cases.</li>

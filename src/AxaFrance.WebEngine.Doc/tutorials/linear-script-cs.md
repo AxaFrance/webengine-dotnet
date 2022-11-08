@@ -91,7 +91,7 @@ namespace Samples.LinearScripting
 
 ### Step 3: Observe SUT and identify UI Elements
 
-Observing system under test via Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a `PageModel`.
+Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a `PageModel`.
 
 ![Step 3 UI Elements](../images/ls-step3-uielements.png)
 

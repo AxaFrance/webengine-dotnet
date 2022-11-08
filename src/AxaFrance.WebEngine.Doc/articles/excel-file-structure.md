@@ -5,11 +5,11 @@ This article explains the structure of the Excel spreadsheet which WebEngine Add
 A test data spreadsheet contains at least 3 sheets as follows.
 You can download the example Excel file and start yours from it.
 
-### PARAM
+### PARAMS
 Referenced all test parameters which can be used in the automation solution.
 The comments on the parameter can be used in code generation, so automation engineers can understand each parameter when used in the script.
 
-The Excel sheet must be named `PARAM`, Parameter names **cannot** contains space.
+The Excel sheet must be named `PARAMS`, Parameter names must be acceptable code node, and **cannot** contain space.
 
 For example: these are the parameters of a system to search people in a corporation.
 ![Excel Structure Params](../images/excel-structure-params.png)

@@ -71,19 +71,18 @@
 
 <p>In this article, we will discuss how to test Mobile applications running on Android and iOS.
 It is easier to test Web based applications, because we can just open the browser and type the URL, then we are able to work on it.
-Mobile App testing is different: Because before launching the test script, we need to install the App package and open it in the first place.</p>
+Mobile App testing is different, before launching the test script, we need to install the App package and open it in the first place.</p>
 <p>To pass the App package, in WebEngine Framework, you can set it in <a class="xref" href="../api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_AppId">AppId</a>.
 There are two different possibilities:</p>
 <ol>
 <li>AppId format that supported by your cloud provider. </li>
-<li>Or if test locally the path to a local package file: <code>c:\mypackage\appv1.0.apk</code></li>
+<li>Or to test locally, the APK pathdans les : <code>c:\mypackage\appv1.0.apk</code></li>
 </ol>
 <p>If you are connecting to a local Appium Server, the package file will be passed-through, so Appium server will install the package on the device and open it.
 If you are connecting to a remote Selenium Grid, make sure the AppId is understandable by remote server.
 All other parameters are exactly the same as <a href="web-driver.html">WebDriver for Web based tests</a>.</p>
 <div class="NOTE"><h5>Note</h5><p>When you are using Keyword driven test approach,
-the class <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html">TestSuiteApp</a> handles automatically app package upload to supported cloud providers.
-And converts AppId from local path to cloud provider understandable value.</p>
+the class <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html">TestSuiteApp</a> handles automatically app package upload to supported cloud providers and converts AppId from local path to cloud provider understandable value.</p>
 </div>
 <p>Instead of using <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> for web based tests, we will use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html">AppFactory</a> for mobile app tests.</p>
 <h2 id="native-automation-driver">Native automation driver</h2>

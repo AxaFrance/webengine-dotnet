@@ -7,7 +7,7 @@ The test case design process has also separated into 2 distinct steps:
 - Test Script Development
 
 ## Test Process Modeling
-In this process, you'll need to analyze the system under test (*SUT*) and overview possible test cases and find out high-level test steps which can be reused among different test cases.
+In this process, you'll need to analyze the system under test (*SUT*) and define possible test cases and find out high-level test steps which can be reused among different test cases.
 
 Assign each high-level test steps with **Action Keyword** or called **Keyword**. Each keyword represents a series of operations on *SUT* and necessary operations to verify the results. Each keyword has its own prerequisites, logic, and test data (for operation and verification), and implemented with code (script).
 

@@ -17,8 +17,8 @@ To identify an Element, you can use following identification strategy:
 
 
 ## Identify Single Web Elements
-First step to identify a Web Element on a HTML page is to use the `Developer Tool` integrated with the browser.
-To open the Developer Tool on the Browser, you can do right-click on the web page and select `Inspect`, or press `F12` to activate it.
+First step to identify a Web Element on a HTML page is to use the `Developer Tools` integrated with the browser.
+To open the Developer Tools on the Browser, you can do right-click on the web page and select `Inspect`, or press `F12` to activate it.
 
 Then activate the Inspect function and move to the element to be manipulated by the test script.
 
@@ -44,7 +44,7 @@ SelectLanguage.SelectByText("Français");
 ```
 
 ### Identify elements with multiple locators
-It is strongly recommended that Dev and Test team work together to improve the testability of the application under test. That is tag UI elements so that can be easily identified by test script. 
+It is strongly recommended that Developpers and Testers team work together to improve the testability of the application under test. That is tag UI elements so that can be easily identified by test script. 
 But sometimes, it's not easy to have well tagged element for testers. To address issue, WebEngine Framework simplifies the way to identify Web Elements with multiple locator:
 
 For example, to identify the following `div` element, there is no `id` nor `name`. But we can identify this element by its `TagName` and `Class`.
@@ -78,7 +78,7 @@ var customDiv = new WebElementDescription(driver)
     }
 };
 ```
-With HTML attributes locator, you can literly identify any elements in HTML. Choose the combination of easiest, and most stable locator is a key to keep your script maintainable.
+With HTML attributes locator, you can literly identify any elements in HTML. Choose the combination of easiest and most stable locator is a key to keep your script maintainable.
 
 
 ## Identify Multiple Web Elements
