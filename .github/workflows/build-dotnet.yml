@@ -22,9 +22,8 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore "./src"
-    - name: Get next version
+    - name: Version Increment
       uses: reecetech/version-increment@2022.5.1
-      id: version
       with:
         scheme: semver
         increment: minor
