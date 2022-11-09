@@ -5,7 +5,7 @@ name: Build WebEngine
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
   pull_request:
     branches: [ "main" ]
 
@@ -22,8 +22,14 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore "./src"
+    - name: Get next version
+      uses: reecetech/version-increment@2022.5.1
+      id: version
+      with:
+        scheme: semver
+        increment: minor
     - name: Build 
-      run: dotnet build "./src" --no-restore --configuration Debug
+      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=${{steps.version.outputs.version}}
     - name: Pack  
       run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
     - name: Upload Artifacts
