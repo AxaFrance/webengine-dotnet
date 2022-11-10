@@ -21,7 +21,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "./src"
     - name: Build 
-      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{steps.version.outputs.version}}
+      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
     - name: Pack  
       run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
     - name: Upload Artifacts
