@@ -11,24 +11,17 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
-    - name: tag-version
-      uses: julesabr/tag-version@v1.5
-      with:
-        production-branch: main
-        dev-branch: develop
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore "./src"
-
     - name: Build 
-      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=${{steps.version.outputs.version}}
+      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{steps.version.outputs.version}}
     - name: Pack  
       run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
     - name: Upload Artifacts
@@ -36,3 +29,8 @@ jobs:
       with:
        name: build-artifact
        path: "./nuget" 
+    - name: tag-version
+      uses: julesabr/tag-version@v1.5
+      with:
+        production-branch: main
+        dev-branch: develop
