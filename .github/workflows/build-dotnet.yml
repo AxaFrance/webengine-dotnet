@@ -13,20 +13,20 @@ jobs:
   build:
 
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
+    - name: tag-version
+      uses: julesabr/tag-version@v1.5
+      with:
+        production-branch: main
+        dev-branch: develop
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore "./src"
-    - name: Version Increment
-      uses: reecetech/version-increment@2022.5.1
-      with:
-        scheme: semver
-        increment: minor
+
     - name: Build 
       run: dotnet build "./src" --no-restore --configuration Debug -p:Version=${{steps.version.outputs.version}}
     - name: Pack  
