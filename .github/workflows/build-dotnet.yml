@@ -18,10 +18,51 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
+      with:
+        path: ~\sonar\cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: Cache SonarCloud scanner
+      id: cache-sonar-scanner
+      uses: actions/cache@v1
+      with:
+        path: .\.sonar\scanner
+        key: ${{ runner.os }}-sonar-scanner
+        restore-keys: ${{ runner.os }}-sonar-scanner
+    - name: Install SonarCloud scanner
+      if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      shell: powershell
+      run: |
+        New-Item -Path .\.sonar\scanner -ItemType Directory
+        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+        
+        
+    # Prepare SonarCloud
+    - name: Prepare SonarCloud
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      shell: powershell
+      run: |
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine_dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths=./TestResults/*.trx /d:sonar.cs.opencover.reportsPaths=./**/coverage.opencover.xml /d:sonar.coverage.exclusions=./test/**/*.* /d:sonar.verbose=true
+
+    
     - name: Restore dependencies
       run: dotnet restore "./src"
     - name: Build 
       run: dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
+    
+    - name: Complete SonarCloud
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      shell: powershell
+      run: |
+        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+    
+    
     - name: Pack  
       run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
     - name: Upload Artifacts
@@ -29,8 +70,3 @@ jobs:
       with:
        name: build-artifact
        path: "./nuget" 
-    - name: tag-version
-      uses: julesabr/tag-version@v1.5
-      with:
-        production-branch: main
-        dev-branch: develop
