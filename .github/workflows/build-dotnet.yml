@@ -59,12 +59,9 @@ jobs:
       shell: powershell
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
+        dotnet pack "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}} -o "./nuget"
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-         
-    
-    - name: Pack NuGet Pacakges and upload to Artifacts
-      run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
+            
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
