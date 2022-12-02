@@ -13,21 +13,21 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    
-    # setup java used for sonar qube
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.11
-    
+   
     # checkout
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    
-    # Setup SonarCloud
+        
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:
@@ -41,36 +41,27 @@ jobs:
         path: .\.sonar\scanner
         key: ${{ runner.os }}-sonar-scanner
         restore-keys: ${{ runner.os }}-sonar-scanner
-    
     - name: Install SonarCloud scanner
       if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
       shell: powershell
       run: |
         New-Item -Path .\.sonar\scanner -ItemType Directory
-        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner        
-        
-    # Prepare SonarCloud
-    - name: Prepare SonarCloud
+        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          
+    # Restore
+    - name: Restore
+      run: dotnet restore "./src"
+    
+    - name: Build and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine_dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths=./TestResults/*.trx /d:sonar.cs.opencover.reportsPaths=./**/coverage.opencover.xml /d:sonar.coverage.exclusions=./test/**/*.* /d:sonar.verbose=true
-   
-    # Restore and Build 
-    - name: Restore
-      run: dotnet restore "./src"
-    - name: Build 
-      run: dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
-    
-    - name: Complete SonarCloud
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      shell: powershell
-      run: |
-        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"    
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
+        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+         
     
     - name: Pack NuGet Pacakges and upload to Artifacts
       run: dotnet pack "./src" --no-build --no-restore -o "./nuget"
