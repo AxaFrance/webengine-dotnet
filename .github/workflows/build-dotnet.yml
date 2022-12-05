@@ -77,3 +77,10 @@ jobs:
       with:
        name: build-artifact
        path: "./nuget"
+     
+    - name: Publish Nuget to GitHub registry
+      run: dotnet nuget push ./nuget/*.nupkg -k ${NUGET_TOKEN} --skip-duplicate --no-symbols 
+      env:
+        NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+       
+       
