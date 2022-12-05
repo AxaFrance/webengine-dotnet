@@ -60,13 +60,20 @@ jobs:
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
         dotnet build "./src" --no-restore --configuration Debug -p:Version=1.0.${{github.run_number}}
-        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"    
     
-    - name: Dotnet Pack
-      run: dotnet pack "./src" --no-restore --no-build -p:PackageVersion=1.0.${{github.run_number}} -o "./nuget"
-      
+    #Do not run dotnet pack because the project is already configured to generate nupkg during build. 
+    #- name: Dotnet Pack
+    #  run: dotnet pack "./src" --no-restore --no-build -p:PackageVersion=1.0.${{github.run_number}} -o "./nuget"
+    
+    - name: Copy package to artifact folder
+      shell: powershell
+      run: |
+        mkdir "nuget"
+        Get-ChildItem ./src -Recurse -File -Filter Axa*.nupkg | % {Copy-Item -Path $_.FullName -Destination "./nuget/$_"}
+    
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
        name: build-artifact
-       path: "./nuget" 
+       path: "./nuget"
