@@ -79,4 +79,4 @@ jobs:
        path: "./nuget"
      
     - name: Publish Nuget to GitHub registry
-      run: dotnet nuget push 'nuget/AxaFrance*.nupkg' -k ${{ secrets.NUGET_TOKEN }} -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
+      run: dotnet nuget push 'nuget/**/AxaFrance*.nupkg' -k ${{ secrets.NUGET_TOKEN }} -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
