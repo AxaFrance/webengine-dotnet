@@ -47,7 +47,7 @@ namespace AxaFrance.WebEngine
         /// <summary>
         /// Additional capabilities for the selenium grid (if running in distance)
         /// </summary>
-        public Dictionary<string, string> Capabilities { get; set; }
+        public Dictionary<string, object> Capabilities { get; set; }
 
         private Settings() {
             string appconfig = Path.Combine(new FileInfo(typeof(Settings).Assembly.Location).DirectoryName, "appsettings.json");
@@ -91,14 +91,14 @@ namespace AxaFrance.WebEngine
                 }
                 if (settings.ContainsKey("Capabilities"))
                 {
-                    Capabilities = new Dictionary<string, string>();
+                    Capabilities = new Dictionary<string, object>();
                     var kv = settings.GetValue("Capabilities");
                     if(kv != null && kv is Newtonsoft.Json.Linq.JObject caps)
                     {
                         foreach(var cap in caps.Properties())
                         {
                             var name = cap.Name;
-                            var v = cap.Value.ToString();
+                            var v = cap.Value;
                             Capabilities.Add(name, v);
                         }
 

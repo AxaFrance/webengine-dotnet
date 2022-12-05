@@ -15,7 +15,6 @@
     <AssemblyName>WebRunner</AssemblyName>
     <IsPublishable>True</IsPublishable>
     <Deterministic>False</Deterministic>
-    <VersionPrefix>1.0</VersionPrefix>
     <PackageId>AxaFrance.WebEngine.Runner</PackageId>
     <Description>WebRunner executable to run keyword driven automated tests.</Description>
     <Authors>AxaFrance, Huaxing YUAN</Authors>

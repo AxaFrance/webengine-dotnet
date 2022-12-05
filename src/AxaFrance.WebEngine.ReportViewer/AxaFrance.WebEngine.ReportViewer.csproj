@@ -10,7 +10,6 @@
     <UseWindowsForms>False</UseWindowsForms>
     <ApplicationIcon>Icons\ReportViewer.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <VersionPrefix>1.0</VersionPrefix>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <PackageId>AxaFrance.WebEngine.ReportViewer</PackageId>
