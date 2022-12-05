@@ -20,7 +20,6 @@
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>
-    <NuSpecFile>AxaFrance.WebEngine.Runner.nuspec</NuSpecFile>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
     <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AxaGuilDEv/webengine-dotnet</RepositoryUrl>
