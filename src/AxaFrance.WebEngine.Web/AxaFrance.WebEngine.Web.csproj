@@ -12,7 +12,6 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
     <Deterministic>False</Deterministic>
-    <VersionPrefix>1.0</VersionPrefix>
     <Description>Web Extension to run Keyword Driven automated tests based on Selenium WebDriver.</Description>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>

@@ -11,7 +11,6 @@
     <Platforms>AnyCPU</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Deterministic>False</Deterministic>
-    <VersionPrefix>1.0</VersionPrefix>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>

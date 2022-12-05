@@ -7,6 +7,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <ImplicitUsings>disable</ImplicitUsings>
+    <IsPackable>True</IsPackable>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Copyright>AXA France</Copyright>
     <Platforms>AnyCPU</Platforms>
@@ -14,13 +15,14 @@
     <AssemblyName>WebRunner</AssemblyName>
     <IsPublishable>True</IsPublishable>
     <Deterministic>False</Deterministic>
-    <VersionPrefix>1.0</VersionPrefix>
     <PackageId>AxaFrance.WebEngine.Runner</PackageId>
     <Description>WebRunner executable to run keyword driven automated tests.</Description>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AxaGuilDEv/webengine-dotnet</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

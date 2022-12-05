@@ -10,7 +10,6 @@
     <UseWindowsForms>False</UseWindowsForms>
     <ApplicationIcon>Icons\ReportViewer.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <VersionPrefix>1.0</VersionPrefix>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <PackageId>AxaFrance.WebEngine.ReportViewer</PackageId>
@@ -23,6 +22,7 @@
     <None Remove="Icons\icon_CriticalError.png" />
     <None Remove="Icons\icon_Failed.png" />
     <None Remove="Icons\icon_Ignored.png" />
+    <None Remove="Icons\icon_None.png" />
     <None Remove="Icons\icon_Passed.png" />
     <None Remove="Icons\ReportViewer.ico" />
     <None Remove="Icons\ReportViewer.png" />
@@ -49,6 +49,7 @@
     <Resource Include="Icons\axalogo.png" />
     <Resource Include="Icons\icon_CriticalError.png" />
     <Resource Include="Icons\icon_Failed.png" />
+    <Resource Include="Icons\icon_None.png" />
     <Resource Include="Icons\icon_Ignored.png" />
     <Resource Include="Icons\icon_Passed.png" />
     <Resource Include="Icons\ReportViewer.ico" />

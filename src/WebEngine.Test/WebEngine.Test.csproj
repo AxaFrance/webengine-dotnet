@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
     <None Remove="TestData.xml" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="TestData\ENV.xml" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="TestData\TestData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
