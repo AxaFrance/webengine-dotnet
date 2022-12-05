@@ -1,11 +1,13 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Build WebEngine (Main Branch Only)
+name: Build WebEngine (Develop)
 
 on:
+  push:
+    branches: [ "develop"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
@@ -75,6 +77,3 @@ jobs:
       with:
        name: build-artifact
        path: "./nuget"
-     
-    - name: Publish Nuget to GitHub registry
-      run: dotnet nuget push 'nuget/**/AxaFrance*.nupkg' -k ${{ secrets.NUGET_TOKEN }} -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
