@@ -1,7 +1,10 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+
 using OpenQA.Selenium;
+using System;
+using System.Reflection;
 
 namespace AxaFrance.WebEngine.Web
 {
@@ -23,6 +26,7 @@ namespace AxaFrance.WebEngine.Web
                 if (p.FieldType.IsSubclassOf(typeof(ElementDescription)))
                 {
                     ElementDescription e = (ElementDescription)p.GetValue(this);
+                    CheckFindsByAttribute(p, e);
                     e.UseDriver(driver);
                 }
             }
@@ -33,7 +37,25 @@ namespace AxaFrance.WebEngine.Web
                 if (p.PropertyType.IsSubclassOf(typeof(ElementDescription)))
                 {
                     ElementDescription e = (ElementDescription)p.GetValue(this);
+                    CheckFindsByAttribute(p, e);
                     e.UseDriver(driver);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Applies the element locating logic via FindsByAttribute
+        /// </summary>
+        /// <param name="p">PropertyInfo which the property may be tagged with <see cref="FindsByAttribute"/></param>
+        /// <param name="e">ElementDescription which the property may be tagged with <see cref="FindsByAttribute"/></param>
+        private void CheckFindsByAttribute(MemberInfo memberInfo, ElementDescription e)
+        {
+            var attributes = memberInfo.GetCustomAttributes<FindsByAttribute>();
+            if(attributes != null)
+            {
+                foreach(var attr in attributes)
+                {
+                    e.ApplyAttribute(attr);
                 }
             }
         }

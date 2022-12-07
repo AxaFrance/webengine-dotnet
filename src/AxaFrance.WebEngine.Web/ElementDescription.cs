@@ -15,6 +15,12 @@ namespace AxaFrance.WebEngine.Web
     public abstract class ElementDescription
     {
         /// <summary>
+        /// Applies the locator defined in <see cref="FindsByAttribute"/>. this function is called automatically before <see cref="InternalFindElements"/>
+        /// </summary>
+        /// <param name="attr"></param>
+        public abstract void ApplyAttribute(FindsByAttribute attr);
+
+        /// <summary>
         /// WebDriver used to identify test objects.
         /// </summary>
         protected WebDriver driver;
