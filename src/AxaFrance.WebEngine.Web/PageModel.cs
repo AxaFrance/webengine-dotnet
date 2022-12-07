@@ -26,6 +26,8 @@ namespace AxaFrance.WebEngine.Web
                 if (p.FieldType.IsSubclassOf(typeof(ElementDescription)))
                 {
                     ElementDescription e = (ElementDescription)p.GetValue(this);
+                    if (e == null) e = (ElementDescription)Activator.CreateInstance(p.FieldType);
+                    p.SetValue(this, e);
                     CheckFindsByAttribute(p, e);
                     e.UseDriver(driver);
                 }
@@ -37,6 +39,8 @@ namespace AxaFrance.WebEngine.Web
                 if (p.PropertyType.IsSubclassOf(typeof(ElementDescription)))
                 {
                     ElementDescription e = (ElementDescription)p.GetValue(this);
+                    if (e == null) e = (ElementDescription)Activator.CreateInstance(p.PropertyType);
+                    p.SetValue(this, e);
                     CheckFindsByAttribute(p, e);
                     e.UseDriver(driver);
                 }

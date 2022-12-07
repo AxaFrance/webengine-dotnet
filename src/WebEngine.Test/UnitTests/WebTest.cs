@@ -94,7 +94,7 @@ namespace WebEngine.Test.UnitTests
             }
 
             [FindsBy(How.ClassName, "class1 class2")]
-            public WebElementDescription descWithAttribute { get; set; } = new WebElementDescription();
+            public WebElementDescription descWithAttribute { get; set; } 
 
             public WebElementDescription desc { get; set; } = new WebElementDescription()
             {
