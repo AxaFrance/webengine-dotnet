@@ -24,6 +24,8 @@ namespace AxaFrance.WebEngine.Report
         /// <param name="outputPath">The directory where the report should be generated.</param>
         public static string GenerateJUnitReport(TestSuiteReport report, string testname, string outputPath)
         {
+            string extension = ".xml";
+            if (testname.EndsWith(extension, StringComparison.InvariantCultureIgnoreCase)) testname = testname.Substring(0, testname.Length - extension.Length);
             var jr = new JUnit.testsuite()
             {
                 name = testname ?? "WebEngine Test Suite",

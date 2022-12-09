@@ -53,13 +53,14 @@ namespace AxaFrance.WebEngine
             {
                 string name = tc.Key;
                 var test = tc.Value;
-                TestCaseReport tcr = new TestCaseReport() { TestName = name };
+                TestCaseReport tcr = new TestCaseReport() { TestName = name, StartTime = DateTime.Now };
                 tsReport.TestResult.Add(tcr);
                 StringBuilder filename = new StringBuilder(name);
                 Path.GetInvalidFileNameChars().ToList().ForEach(c => filename.Replace(c.ToString(), string.Empty));
                 tc.Value.TestCaseLogDir = Path.Combine(Settings.Instance.LogDir, filename.ToString());
                 test.Name = name;
                 test.Run(tcr);
+                tcr.EndTime = DateTime.Now;
             }
             tsReport.EndTime = DateTime.Now;
             return tsReport;

@@ -50,7 +50,7 @@ namespace AxaFrance.WebEngine.Web
         /// <summary>
         /// Applies the element locating logic via FindsByAttribute
         /// </summary>
-        /// <param name="p">PropertyInfo which the property may be tagged with <see cref="FindsByAttribute"/></param>
+        /// <param name="memberInfo">PropertyInfo which the property may be tagged with <see cref="FindsByAttribute"/></param>
         /// <param name="e">ElementDescription which the property may be tagged with <see cref="FindsByAttribute"/></param>
         private void CheckFindsByAttribute(MemberInfo memberInfo, ElementDescription e)
         {
