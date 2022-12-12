@@ -90,6 +90,10 @@ namespace AxaFrance.WebEngine
                 {
                     this.AllowAnyCertificate = settings.Value<bool>("AllowInsecureCertificate");
                 }
+                if (settings.ContainsKey("GridForDesktop"))
+                {
+                    this.GridForDesktop = settings.Value<bool>("GridForDesktop");
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, object>();
@@ -270,7 +274,7 @@ namespace AxaFrance.WebEngine
         /// [Grid Only] Run Desktop based Selenium test in the Grid (default value is false, that is always run desktop tests locally)
         /// When value is true, the framework will create Selenium Grid connection provided by <see cref="GridServerUrl"/> 
         /// </summary>
-        public bool DesktopGridEnabled { get; set; } = false;
+        public bool GridForDesktop { get; set; } = false;
 
         /// <summary>
         /// Settings about report generating, including additional formats and locations.

@@ -3,6 +3,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
@@ -96,22 +99,28 @@ namespace AxaFrance.WebEngine.Web
 
             if (platform == Platform.Windows || platform == Platform.MacOS)
             {
-                switch (browserType)
+                if (Settings.Instance.GridForDesktop)
                 {
-                    case BrowserType.Chrome:
-                        return GetChromeDriver(browserOptions);
-                    case BrowserType.ChromiumEdge:
-                        return GetEdgeDriver(browserOptions);
-                    case BrowserType.Firefox:
-                        return GetFirefoxDriver(browserOptions);
-                    case BrowserType.InternetExplorer:
-                        return GetIEDriver();
-                    case BrowserType.Safari:
-                        return GetSafariDriver(browserOptions);
-                    default:
-                        throw new PlatformNotSupportedException($"The browser {browserType} is not yet supported by WebEngine Framework.");
+                    return ConnectToDesktopGrid();
                 }
-
+                else
+                {
+                    switch (browserType)
+                    {
+                        case BrowserType.Chrome:
+                            return GetChromeDriver(browserOptions);
+                        case BrowserType.ChromiumEdge:
+                            return GetEdgeDriver(browserOptions);
+                        case BrowserType.Firefox:
+                            return GetFirefoxDriver(browserOptions);
+                        case BrowserType.InternetExplorer:
+                            return GetIEDriver();
+                        case BrowserType.Safari:
+                            return GetSafariDriver(browserOptions);
+                        default:
+                            throw new PlatformNotSupportedException($"The browser {browserType} is not yet supported by WebEngine Framework.");
+                    }
+                }
             }
             else
             {
@@ -119,6 +128,49 @@ namespace AxaFrance.WebEngine.Web
             }
         }
 
+        private static WebDriver ConnectToDesktopGrid()
+        {
+            Settings s = Settings.Instance;
+            var options = GetDriverOption(s.Browser);
+            options.PlatformName = s.Platform.ToString();
+            options.AddAdditionalOption("newCommandTimeout", 90);
+            options.AddAdditionalOption("nativeWebScreenshot", "true");
+
+            string remoteServerAddress = s.GridServerUrl;
+            if (remoteServerAddress == null)
+            {
+                remoteServerAddress = "http://localhost:4723/wd/hub";
+            }
+
+            DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");
+            AddAdditionalCapabilities(options, s);
+            AddPlatformSpecificOptions(remoteServerAddress, options, s);
+            if (options != null)
+            {
+                var capa = options.ToCapabilities();  
+                return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(s.GridServerUrl), capa);
+            }
+            else
+            {
+                throw new NotSupportedException($"The framework does not support {s.Browser} yet on desktop grid.");
+            }
+        }
+
+        private static DriverOptions GetDriverOption(BrowserType browser)
+        {
+            switch (browser)
+            {
+                case BrowserType.Safari:
+                    return new SafariOptions();
+                case BrowserType.Chrome:
+                    return new ChromeOptions();
+                case BrowserType.ChromiumEdge:
+                    return new EdgeOptions();
+                case BrowserType.Firefox:
+                    return new FirefoxOptions();
+            }
+            return null;
+        }
 
         private static WebDriver GetSafariDriver(IEnumerable<string> browserOptions)
         {
@@ -161,12 +213,12 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Platform == Platform.Android)
             {
-                Settings.Instance.UseJavaScriptClick = true;
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
 
             }
             else if (s.Platform == Platform.iOS)
             {
+                Settings.Instance.UseJavaScriptClick = true;
                 return new IOSDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
             }
             else
@@ -183,13 +235,26 @@ namespace AxaFrance.WebEngine.Web
         /// <param name="s">Settings instance</param>
         private static void AddAdditionalCapabilities(AppiumOptions options, Settings s)
         {
-            foreach(var cap in s.Capabilities)
+            foreach (var cap in s.Capabilities)
             {
                 options.AddAdditionalAppiumOption(cap.Key, cap.Value);
             }
         }
 
-        private static void AddPlatformSpecificOptions(string appiumServerAddress, AppiumOptions options, Settings s)
+        /// <summary>
+        /// Add additional capabilities specified in <see cref="Settings"/> (loaded from appsettings.json)
+        /// </summary>
+        /// <param name="options">the appium option object</param>
+        /// <param name="s">Settings instance</param>
+        private static void AddAdditionalCapabilities(DriverOptions options, Settings s)
+        {
+            foreach (var cap in s.Capabilities)
+            {
+                options.AddAdditionalOption(cap.Key, cap.Value);
+            }
+        }
+
+        private static void AddPlatformSpecificOptions(string appiumServerAddress, DriverOptions options, Settings s)
         {
             if (appiumServerAddress.IsBrowserStack())
             {
@@ -198,19 +263,20 @@ namespace AxaFrance.WebEngine.Web
             //Add here the support for other platforms
         }
 
-        private static void AddBrowserStackOptions(AppiumOptions options, Settings s)
+        private static void AddBrowserStackOptions(DriverOptions options, Settings s)
         {
             Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
             browserstackOptions.Add("userName", s.Username);
             browserstackOptions.Add("accessKey", s.Password);
-            options.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
+            options.AddAdditionalOption("bstack:options", browserstackOptions);
 
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
-            if (name != null) {
-                options.AddAdditionalAppiumOption("project", name.Name);
-                options.AddAdditionalAppiumOption("build", name.Version.ToString()) ;
-                options.AddAdditionalAppiumOption("name", name.FullName);
+            if (name != null)
+            {
+                options.AddAdditionalOption("project", name.Name);
+                options.AddAdditionalOption("build", name.Version.ToString());
+                options.AddAdditionalOption("name", name.FullName);
             }
         }
 
@@ -301,7 +367,7 @@ namespace AxaFrance.WebEngine.Web
                 options.AddArgument("homepage=about:blank");
                 options.AddArgument("disable-popup-blocking");
                 options.AddArgument("no-default-browser-check");
-                if(browserOptions != null) options.AddArguments(browserOptions);
+                if (browserOptions != null) options.AddArguments(browserOptions);
                 OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(folder, options);
                 return cd;
             }
@@ -342,9 +408,9 @@ namespace AxaFrance.WebEngine.Web
                     var status = driver.ExecuteScript("return document.readyState");
                     return status.ToString() == "complete";
                 });
-            
+
             }
-            catch(WebDriverTimeoutException) { }
+            catch (WebDriverTimeoutException) { }
         }
 
         /// <summary>
