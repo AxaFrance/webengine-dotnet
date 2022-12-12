@@ -201,14 +201,14 @@ It can be: </p>
   </table>
   
   
-  <a id="AxaFrance_WebEngine_Settings_Capabilities_" data-uid="AxaFrance.WebEngine.Settings.Capabilities*"></a>
-  <h4 id="AxaFrance_WebEngine_Settings_Capabilities" data-uid="AxaFrance.WebEngine.Settings.Capabilities">Capabilities</h4>
-  <div class="markdown level1 summary"><p>Additional capabilities for the selenium grid (if running in distance)</p>
+  <a id="AxaFrance_WebEngine_Settings_BrowserOptions_" data-uid="AxaFrance.WebEngine.Settings.BrowserOptions*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_BrowserOptions" data-uid="AxaFrance.WebEngine.Settings.BrowserOptions">BrowserOptions</h4>
+  <div class="markdown level1 summary"><p>Get a list of browser options according to current selected browser <a class="xref" href="AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Browser">Browser</a> loaded from appsettings.json</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; Capabilities { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; BrowserOptions { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +220,33 @@ It can be: </p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="AxaFrance_WebEngine_Settings_Capabilities_" data-uid="AxaFrance.WebEngine.Settings.Capabilities*"></a>
+  <h4 id="AxaFrance_WebEngine_Settings_Capabilities" data-uid="AxaFrance.WebEngine.Settings.Capabilities">Capabilities</h4>
+  <div class="markdown level1 summary"><p>Additional capabilities for the selenium grid (if running in distance)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, object&gt; Capabilities { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

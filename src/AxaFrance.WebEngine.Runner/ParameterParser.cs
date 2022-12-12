@@ -100,6 +100,8 @@ namespace AxaFrance.WebEngine.Runner
             {
                 gridSettings = gridSettings.Replace(arg, string.Empty);
                 s.GridServerUrl = gridSettings;
+                // if -grid is provided in argument, we active GridForDesktop option.
+                s.GridForDesktop = true;
             }
 
             arg = "-username:";
@@ -122,7 +124,7 @@ namespace AxaFrance.WebEngine.Runner
             string desktopGridEnabled = args.FirstOrDefault(x => x.StartsWith(arg, StringComparison.InvariantCultureIgnoreCase));
             if (!string.IsNullOrEmpty(gridSettings))
             {
-                s.DesktopGridEnabled = true;
+                s.GridForDesktop = true;
             }
         }
 

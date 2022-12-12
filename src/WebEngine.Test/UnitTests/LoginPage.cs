@@ -6,22 +6,18 @@ namespace WebEngine.Test.UnitTests
 {
     public class LoginPage : PageModel
     {
+        [FindsBy(How = How.TagName, Using = "input")]
         public WebElementDescription TxtUsername = new WebElementDescription
         {
-            TagName = "input",
             Name = "username",
         };
 
-        public WebElementDescription TxtPassword = new WebElementDescription
-        {
-            TagName = "input",
-            Name = "password",
-        };
+        [FindsBy(How = How.TagName, Using = "input")]
+        [FindsBy(How = How.Name, Using = "password")]
+        public WebElementDescription TxtPassword = new WebElementDescription();
 
-        public WebElementDescription ButtonSubmit = new WebElementDescription
-        {
-            Id = "submit"
-        };
+        [FindsBy(How = How.Id, Using = "submit")]
+        public WebElementDescription ButtonSubmit = new WebElementDescription();
 
         public WebElementDescription SpanErrorMessage = new WebElementDescription
         {

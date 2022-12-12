@@ -334,6 +334,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AccessbilityId
   nameWithType: AppElementDescription.AccessbilityId
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  name: ApplyAttribute(FindsByAttribute)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ApplyAttribute_AxaFrance_WebEngine_Web_FindsByAttribute_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  nameWithType: AppElementDescription.ApplyAttribute(FindsByAttribute)
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute*
+  name: ApplyAttribute
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ApplyAttribute_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute
+  nameWithType: AppElementDescription.ApplyAttribute
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ClassName
   name: ClassName
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ClassName
@@ -1859,6 +1872,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Settings.Browser
   nameWithType: Settings.Browser
+- uid: AxaFrance.WebEngine.Settings.BrowserOptions
+  name: BrowserOptions
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_BrowserOptions
+  commentId: P:AxaFrance.WebEngine.Settings.BrowserOptions
+  fullName: AxaFrance.WebEngine.Settings.BrowserOptions
+  nameWithType: Settings.BrowserOptions
+- uid: AxaFrance.WebEngine.Settings.BrowserOptions*
+  name: BrowserOptions
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_BrowserOptions_
+  commentId: Overload:AxaFrance.WebEngine.Settings.BrowserOptions
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Settings.BrowserOptions
+  nameWithType: Settings.BrowserOptions
 - uid: AxaFrance.WebEngine.Settings.Capabilities
   name: Capabilities
   href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Capabilities
@@ -3106,6 +3132,15 @@ references:
   commentId: M:AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType)
   fullName: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType)
   nameWithType: BrowserFactory.GetDriver(Platform, BrowserType)
+- uid: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})
+  name: GetDriver(Platform, BrowserType, IEnumerable<String>)
+  href: api_net/AxaFrance.WebEngine.Web.BrowserFactory.html#AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: GetDriver(Platform, BrowserType, IEnumerable(Of String))
+  fullName: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: BrowserFactory.GetDriver(Platform, BrowserType, IEnumerable<String>)
+  nameWithType.vb: BrowserFactory.GetDriver(Platform, BrowserType, IEnumerable(Of String))
 - uid: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver*
   name: GetDriver
   href: api_net/AxaFrance.WebEngine.Web.BrowserFactory.html#AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_
@@ -3132,6 +3167,19 @@ references:
   commentId: T:AxaFrance.WebEngine.Web.ElementDescription
   fullName: AxaFrance.WebEngine.Web.ElementDescription
   nameWithType: ElementDescription
+- uid: AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  name: ApplyAttribute(FindsByAttribute)
+  href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_ApplyAttribute_AxaFrance_WebEngine_Web_FindsByAttribute_
+  commentId: M:AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  nameWithType: ElementDescription.ApplyAttribute(FindsByAttribute)
+- uid: AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute*
+  name: ApplyAttribute
+  href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_ApplyAttribute_
+  commentId: Overload:AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.ApplyAttribute
+  nameWithType: ElementDescription.ApplyAttribute
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Clear
   name: Clear()
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Clear
@@ -3510,6 +3558,117 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.ElementDescription.Value
   nameWithType: ElementDescription.Value
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute
+  name: FindsByAttribute
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html
+  commentId: T:AxaFrance.WebEngine.Web.FindsByAttribute
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute
+  nameWithType: FindsByAttribute
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.#ctor
+  name: FindsByAttribute()
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor
+  commentId: M:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute()
+  nameWithType: FindsByAttribute.FindsByAttribute()
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.#ctor(AxaFrance.WebEngine.Web.How,System.String)
+  name: FindsByAttribute(How, String)
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor_AxaFrance_WebEngine_Web_How_System_String_
+  commentId: M:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor(AxaFrance.WebEngine.Web.How,System.String)
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute(AxaFrance.WebEngine.Web.How, System.String)
+  nameWithType: FindsByAttribute.FindsByAttribute(How, String)
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.#ctor*
+  name: FindsByAttribute
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor_
+  commentId: Overload:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute
+  nameWithType: FindsByAttribute.FindsByAttribute
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.How
+  name: How
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute_How
+  commentId: P:AxaFrance.WebEngine.Web.FindsByAttribute.How
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.How
+  nameWithType: FindsByAttribute.How
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.How*
+  name: How
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute_How_
+  commentId: Overload:AxaFrance.WebEngine.Web.FindsByAttribute.How
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.How
+  nameWithType: FindsByAttribute.How
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.Using
+  name: Using
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute_Using
+  commentId: P:AxaFrance.WebEngine.Web.FindsByAttribute.Using
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.Using
+  nameWithType: FindsByAttribute.Using
+- uid: AxaFrance.WebEngine.Web.FindsByAttribute.Using*
+  name: Using
+  href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute_Using_
+  commentId: Overload:AxaFrance.WebEngine.Web.FindsByAttribute.Using
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.Using
+  nameWithType: FindsByAttribute.Using
+- uid: AxaFrance.WebEngine.Web.How
+  name: How
+  href: api_net/AxaFrance.WebEngine.Web.How.html
+  commentId: T:AxaFrance.WebEngine.Web.How
+  fullName: AxaFrance.WebEngine.Web.How
+  nameWithType: How
+- uid: AxaFrance.WebEngine.Web.How.ClassName
+  name: ClassName
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_ClassName
+  commentId: F:AxaFrance.WebEngine.Web.How.ClassName
+  fullName: AxaFrance.WebEngine.Web.How.ClassName
+  nameWithType: How.ClassName
+- uid: AxaFrance.WebEngine.Web.How.CssSelector
+  name: CssSelector
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_CssSelector
+  commentId: F:AxaFrance.WebEngine.Web.How.CssSelector
+  fullName: AxaFrance.WebEngine.Web.How.CssSelector
+  nameWithType: How.CssSelector
+- uid: AxaFrance.WebEngine.Web.How.Custom
+  name: Custom
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_Custom
+  commentId: F:AxaFrance.WebEngine.Web.How.Custom
+  fullName: AxaFrance.WebEngine.Web.How.Custom
+  nameWithType: How.Custom
+- uid: AxaFrance.WebEngine.Web.How.Id
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_Id
+  commentId: F:AxaFrance.WebEngine.Web.How.Id
+  fullName: AxaFrance.WebEngine.Web.How.Id
+  nameWithType: How.Id
+- uid: AxaFrance.WebEngine.Web.How.LinkText
+  name: LinkText
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_LinkText
+  commentId: F:AxaFrance.WebEngine.Web.How.LinkText
+  fullName: AxaFrance.WebEngine.Web.How.LinkText
+  nameWithType: How.LinkText
+- uid: AxaFrance.WebEngine.Web.How.Name
+  name: Name
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_Name
+  commentId: F:AxaFrance.WebEngine.Web.How.Name
+  fullName: AxaFrance.WebEngine.Web.How.Name
+  nameWithType: How.Name
+- uid: AxaFrance.WebEngine.Web.How.PartialLinkText
+  name: PartialLinkText
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_PartialLinkText
+  commentId: F:AxaFrance.WebEngine.Web.How.PartialLinkText
+  fullName: AxaFrance.WebEngine.Web.How.PartialLinkText
+  nameWithType: How.PartialLinkText
+- uid: AxaFrance.WebEngine.Web.How.TagName
+  name: TagName
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_TagName
+  commentId: F:AxaFrance.WebEngine.Web.How.TagName
+  fullName: AxaFrance.WebEngine.Web.How.TagName
+  nameWithType: How.TagName
+- uid: AxaFrance.WebEngine.Web.How.XPath
+  name: XPath
+  href: api_net/AxaFrance.WebEngine.Web.How.html#AxaFrance_WebEngine_Web_How_XPath
+  commentId: F:AxaFrance.WebEngine.Web.How.XPath
+  fullName: AxaFrance.WebEngine.Web.How.XPath
+  nameWithType: How.XPath
 - uid: AxaFrance.WebEngine.Web.HtmlAttribute
   name: HtmlAttribute
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html
@@ -3753,6 +3912,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.WebElementDescription
   nameWithType: WebElementDescription.WebElementDescription
+- uid: AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  name: ApplyAttribute(FindsByAttribute)
+  href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_ApplyAttribute_AxaFrance_WebEngine_Web_FindsByAttribute_
+  commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
+  nameWithType: WebElementDescription.ApplyAttribute(FindsByAttribute)
+- uid: AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute*
+  name: ApplyAttribute
+  href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_ApplyAttribute_
+  commentId: Overload:AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute
+  nameWithType: WebElementDescription.ApplyAttribute
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.AsSelect
   name: AsSelect()
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_AsSelect

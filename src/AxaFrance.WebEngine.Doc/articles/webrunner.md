@@ -87,6 +87,10 @@ To run tests on Mobile device, `-platform`, you should specify the following arg
 ##### -grid:\<gridUrl>
 Indicates the Selenium Grid to connect to device cloud. Default value is `http://localhost:4723/wd/hub` for local Appium Server
 If you are using cloud-based device cloud, please refer to service providers documentation.
+If the argument is provided, option `desktopGrid` will be automatically set to `true`
+
+##### -desktopGrid
+This option activates the usage of Selenium Grid for Web Desktop tests. If the value is false, the framework only use selenium grid for mobile based tests.
 
 ##### -username:\<username>
 Indicates the username to be used for Selenium Grid authentication.
