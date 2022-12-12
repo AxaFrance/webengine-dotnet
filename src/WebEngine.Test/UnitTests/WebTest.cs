@@ -82,7 +82,9 @@ namespace WebEngine.Test.UnitTests
         {
             TestPageModel model = new TestPageModel(driver);
             var element = model.desc.GetText();
+            var element2 = model.descWithAttribute.GetText();
             Assert.IsTrue(element.Contains("first line"));
+            Assert.IsTrue(element2.Contains("first line"));
         }
 
         public class TestPageModel : PageModel
@@ -90,6 +92,10 @@ namespace WebEngine.Test.UnitTests
             public TestPageModel(WebDriver driver) : base(driver)
             {
             }
+
+            [FindsBy(How.ClassName, "class1 class2")]
+            public WebElementDescription descWithAttribute { get; set; } 
+
             public WebElementDescription desc { get; set; } = new WebElementDescription()
             {
                 ClassName = "class1 class2"

@@ -170,6 +170,91 @@ When using mobile devices: under Android the native automation framework is UiAu
   </table>
   
   
+  <a id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver*"></a>
+  <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})">GetDriver(Platform, BrowserType, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>The unique function initialize the WebDriver on the target platform and browser and returns the WebDriver, AndroidDriver or IOSDriver according to contexte.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static WebDriver GetDriver(Platform platform, BrowserType browserType, IEnumerable&lt;string&gt; browserOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.Platform.html">Platform</a></td>
+        <td><span class="parametername">platform</span></td>
+        <td><p>Android, iOS or Windows</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="AxaFrance.WebEngine.BrowserType.html">BrowserType</a></td>
+        <td><span class="parametername">browserType</span></td>
+        <td><p>The browserType of which the test should be executed on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">browserOptions</span></td>
+        <td><p>A List of webDriver options you want to use for Web testings.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenQA.Selenium.WebDriver</span></td>
+        <td><p>WebDriver object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If you are another test framework, you must provide additional information to <a class="xref" href="AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Instance">Instance</a>, especially when testing on Mobile Devices.
+</p>
+<p>
+This method will take account Desktop browsers and Mobile Devices. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is valorized to &apos;Android&apos;
+the WebDriver object will be type of <span class="xref">OpenQA.Selenium.Appium.Android.AndroidDriver</span>, allows doing specific controls on the device. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is
+valorized to &apos;iOS&apos;, the WebDriver will be typeof <span class="xref">OpenQA.Selenium.Appium.iOS.IOSDriver</span>. Otherwise, An ordinary <span class="xref">OpenQA.Selenium.WebDriver</span> us returned.
+</p>
+<p>
+When using mobile devices: under Android the native automation framework is UiAutomator2, under IOS the native automation framework used is XCUITest
+</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.PlatformNotSupportedException</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_Sync_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.Sync*"></a>
   <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_Sync_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.Sync(OpenQA.Selenium.WebDriver)">Sync(WebDriver)</h4>
   <div class="markdown level1 summary"><p>Syncrohnize the browser and wait until the document readystate is complete</p>

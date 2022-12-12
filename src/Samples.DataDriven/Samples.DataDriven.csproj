@@ -20,6 +20,10 @@
   </Target>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
 
   </ItemGroup>
@@ -30,6 +34,12 @@
     <Compile Include="..\Samples.KeywordDriven\PageModels\PageProespect.cs" Link="PageModels\PageProespect.cs" />
     <Compile Include="..\Samples.KeywordDriven\PageModels\PageUnderWriting.cs" Link="PageModels\PageUnderWriting.cs" />
     <Compile Include="..\Samples.KeywordDriven\PageModels\PageValidation.cs" Link="PageModels\PageValidation.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

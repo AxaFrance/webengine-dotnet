@@ -29,6 +29,9 @@ namespace WebEngine.Test.UnitTests
             driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
         }
 
+        
+
+
         [TestMethod]
         public void ElementByClassName()
         {
@@ -72,7 +75,7 @@ namespace WebEngine.Test.UnitTests
             Assert.IsTrue(outerhtml.StartsWith("<input type=\"button\" value=\"OK\" id=\"btnButtonOk\""));
         }
 
-        [TestMethod]
+        //Drag and Drop is nt working in Mobile devices.
         public void DragAndDrop()
         {
             WebElementDescription drop1 = new WebElementDescription(driver)
@@ -135,7 +138,7 @@ namespace WebEngine.Test.UnitTests
             Assert.AreEqual("helloworld", text);
         }
 
-        [TestMethod]
+        //Hover does not work on mobile devices.
         public void Hover()
         {
             WebElementDescription hover = new WebElementDescription(driver)

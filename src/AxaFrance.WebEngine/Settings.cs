@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -89,6 +90,10 @@ namespace AxaFrance.WebEngine
                 {
                     this.AllowAnyCertificate = settings.Value<bool>("AllowInsecureCertificate");
                 }
+                if (settings.ContainsKey("GridForDesktop"))
+                {
+                    this.GridForDesktop = settings.Value<bool>("GridForDesktop");
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, object>();
@@ -103,6 +108,26 @@ namespace AxaFrance.WebEngine
                         }
 
                     }
+                }
+                if (settings.ContainsKey("edgeOptions"))
+                {
+                    var options = settings.GetValue("edgeOptions");
+                    EdgeOptions = options.AsJEnumerable();
+                }
+                if (settings.ContainsKey("firefoxOptions"))
+                {
+                    var options = settings.GetValue("firefoxOptions");
+                    FirefoxOptions = options.AsJEnumerable();
+                }
+                if (settings.ContainsKey("chromeOptions"))
+                {
+                    var options = settings.GetValue("chromeOptions");
+                    ChromeOptions = options.AsJEnumerable();
+                }
+                if (settings.ContainsKey("safariOptions"))
+                {
+                    var options = settings.GetValue("safariOptions");
+                    SafariOptions = options.AsJEnumerable();
                 }
             }
             else
@@ -119,6 +144,42 @@ namespace AxaFrance.WebEngine
                 LogDir = Path.GetTempPath();
             }
 
+        }
+
+        
+        /// <summary>
+        /// Get a list of browser options according to current selected browser <see cref="Browser"/> loaded from appsettings.json
+        /// </summary>
+        public IEnumerable<string> BrowserOptions
+        {
+            get
+            {
+                List<string> options = new List<string>();
+                IEnumerable<object> source = null;
+                switch (Browser)
+                {
+                    case BrowserType.Safari:
+                        source = SafariOptions;
+                        break;
+                    case BrowserType.Chrome:
+                        source = ChromeOptions;
+                        break;
+                    case BrowserType.ChromiumEdge:
+                        source = EdgeOptions;
+                        break;
+                    case BrowserType.Firefox:
+                        source = FirefoxOptions;
+                        break;
+                }
+                if (source != null)
+                {
+                    foreach(var option in source)
+                    {
+                        options.Add(option.ToString());
+                    }
+                }
+                return options;
+            }
         }
 
         internal string encryptionKey = null;
@@ -138,6 +199,27 @@ namespace AxaFrance.WebEngine
                 return _settings;
             }
         }
+
+        /// <summary>
+        /// Additional options/arguments for Edge Browser, default values are loaded from appsettings.json/edgeOptions array
+        /// </summary>
+        internal IEnumerable<object> EdgeOptions { get; set; }
+
+        /// <summary>
+        /// Additional options/arguments for Firefox Browser, default values are loaded from appsettings.json/firefoxOptions array
+        /// </summary>
+
+        internal IEnumerable<object> FirefoxOptions { get; set; }
+
+        /// <summary>
+        /// Additional options/arguments for Chrome Browser, default values are loaded from appsettings.json/chromeOptions array
+        /// </summary>
+        internal IEnumerable<object> ChromeOptions { get; set; }
+
+        /// <summary>
+        /// Additional options/arguments for Safari Browser, default values are loaded from appsettings.json/chromeOptions array
+        /// </summary>
+        internal IEnumerable<object> SafariOptions { get; set; }
 
         /// <summary>
         /// [MobileApp Only] The applicationId to be used (System under test)
@@ -192,7 +274,7 @@ namespace AxaFrance.WebEngine
         /// [Grid Only] Run Desktop based Selenium test in the Grid (default value is false, that is always run desktop tests locally)
         /// When value is true, the framework will create Selenium Grid connection provided by <see cref="GridServerUrl"/> 
         /// </summary>
-        public bool DesktopGridEnabled { get; set; } = false;
+        public bool GridForDesktop { get; set; } = false;
 
         /// <summary>
         /// Settings about report generating, including additional formats and locations.

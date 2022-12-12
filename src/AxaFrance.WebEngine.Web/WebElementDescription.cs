@@ -574,5 +574,38 @@ namespace AxaFrance.WebEngine.Web
                 driver.ExecuteScript("arguments[0].click()", element);
             }
         }
+
+        /// <inheritdoc />
+        public override void ApplyAttribute(FindsByAttribute attr)
+        {
+            switch (attr.How)
+            {
+                case How.Id:
+                    if(Id==null) Id = attr.Using;
+                    break;
+                case How.Name:
+                    if(Name==null) Name = attr.Using;
+                    break;
+                case How.TagName:
+                    if(TagName==null) TagName = attr.Using;
+                    break;
+                case How.ClassName:
+                    if(ClassName==null) ClassName = attr.Using;
+                    break;
+                case How.LinkText:
+                case How.PartialLinkText:
+                    if (LinkText==null) LinkText = attr.Using;
+                    break;
+                case How.CssSelector:
+                    if(CssSelector==null) CssSelector = attr.Using;
+                    break;
+                case How.XPath:
+                    if(XPath==null) XPath = attr.Using;
+                    break;
+                case How.Custom:
+                default:
+                    throw new NotSupportedException("FindsByAttribute does not support Custom yet.");                
+            }
+        }
     }
 }

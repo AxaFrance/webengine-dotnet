@@ -123,7 +123,7 @@ namespace AxaFrance.WebEngine
             SharedActionBase.Indent = indentLength;
             StartDate = DateTime.Now;
             this.TestCaseResult = Result.None;
-            TimeSpan Duration;
+
             try
             {
                 TestData = TestSuiteData.Current.GetTestData(Name);
@@ -145,7 +145,6 @@ namespace AxaFrance.WebEngine
             catch (Exception ex)
             {
                 DebugLogger.WriteLine(ex.ToString());
-                Duration = DateTime.Now - StartDate;
                 this.TestCaseResult = Result.Failed;
                 return Result.Failed;
             }
@@ -256,8 +255,6 @@ namespace AxaFrance.WebEngine
                 DebugLogger.WriteWarning("Cleanup process timed-out.");
             }
 
-            Duration = DateTime.Now - StartDate;
-
             if (!String.IsNullOrEmpty(TestCaseLogDir))
             {
                 Directory.CreateDirectory(TestCaseLogDir);
@@ -267,6 +264,7 @@ namespace AxaFrance.WebEngine
                 sw.Close();
             }
             GetReport();
+
             return TestCaseResult;
         }
 

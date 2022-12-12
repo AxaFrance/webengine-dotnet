@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://www.AxaFrance.fr/WebEngine/2022" elementFormDefault="qualified" targetNamespace="http://www.AxaFrance.fr/WebEngine/2022" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://www.axa.fr/WebEngine/2022" elementFormDefault="qualified" targetNamespace="http://www.axa.fr/WebEngine/2022" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="EnvironmentVariables" nillable="true" type="tns:EnvironmentVariables" />
   <xs:complexType name="EnvironmentVariables">
     <xs:sequence>
