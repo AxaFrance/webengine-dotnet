@@ -10,15 +10,21 @@ If a parameter is provided in both side, the value provided in command-line will
   "Username": "",
   "Password": "",
   "PackageUploadTargetUrl": "https://api-cloud.browserstack.com/app-automate/upload",
+  "AllowInsecureCertificate": false,
   "PackageName": "my.company.myapplication",
   "EncryptionKey": null,
   "Capabilities": {
     "additionalCapability1": "value1",
     "additionalCapability2": "value2"
-  }
+  },
+  "chromeOptions": [ "incognito" ],
+  "firefoxOptions": [],
+  "edgeOptions": [ "inprivate", "start-maximized"],
+  "safariOptions": []
 }
 ```
 
+## General Options
 * `LogDir`: The directory to store the test report. if the value is null, then the default temporary folder will be used.
 * `GridConnection`: The Selenium Grid/Appium Server Url to run Mobile based tests. 
 * `Username`: The username of Selenium Grid authentication.
@@ -28,6 +34,10 @@ If a parameter is provided in both side, the value provided in command-line will
 * `EncryptionKey`: If you want to secure password used in your script, you can encrypt it via the customized Encryption Key.
 If the value is `null`, WebEngine will use default encryption key.
 * `Capabilities`: To provided necessary Appium capabilities or options for special need.
+
+## Options for browsers
+* `chromeOptions`, `firefoxOptions`, `edgeOptions` and `safariOptions`: These are default options for each browser. when `BrowserFactory.GetDriver` is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in `incongnito` mode, if running tests on Edge, the browser will be launched in `imprivate` mode with window maximized by default. 
+
 
 > [!NOTE]
 > Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it's necessary.

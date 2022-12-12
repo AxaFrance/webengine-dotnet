@@ -77,14 +77,20 @@ If a parameter is provided in both side, the value provided in command-line will
   &quot;Username&quot;: &quot;&quot;,
   &quot;Password&quot;: &quot;&quot;,
   &quot;PackageUploadTargetUrl&quot;: &quot;https://api-cloud.browserstack.com/app-automate/upload&quot;,
+  &quot;AllowInsecureCertificate&quot;: false,
   &quot;PackageName&quot;: &quot;my.company.myapplication&quot;,
   &quot;EncryptionKey&quot;: null,
   &quot;Capabilities&quot;: {
     &quot;additionalCapability1&quot;: &quot;value1&quot;,
     &quot;additionalCapability2&quot;: &quot;value2&quot;
-  }
+  },
+  &quot;chromeOptions&quot;: [ &quot;incognito&quot; ],
+  &quot;firefoxOptions&quot;: [],
+  &quot;edgeOptions&quot;: [ &quot;inprivate&quot;, &quot;start-maximized&quot;],
+  &quot;safariOptions&quot;: []
 }
-</code></pre><ul>
+</code></pre><h2 id="general-options">General Options</h2>
+<ul>
 <li><code>LogDir</code>: The directory to store the test report. if the value is null, then the default temporary folder will be used.</li>
 <li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests. </li>
 <li><code>Username</code>: The username of Selenium Grid authentication.</li>
@@ -94,6 +100,10 @@ If a parameter is provided in both side, the value provided in command-line will
 <li><code>EncryptionKey</code>: If you want to secure password used in your script, you can encrypt it via the customized Encryption Key.
 If the value is <code>null</code>, WebEngine will use default encryption key.</li>
 <li><code>Capabilities</code>: To provided necessary Appium capabilities or options for special need.</li>
+</ul>
+<h2 id="options-for-browsers">Options for browsers</h2>
+<ul>
+<li><code>chromeOptions</code>, <code>firefoxOptions</code>, <code>edgeOptions</code> and <code>safariOptions</code>: These are default options for each browser. when <code>BrowserFactory.GetDriver</code> is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in <code>incongnito</code> mode, if running tests on Edge, the browser will be launched in <code>imprivate</code> mode with window maximized by default. </li>
 </ul>
 <div class="NOTE"><h5>Note</h5><p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it&#39;s necessary.</p>
 </div>

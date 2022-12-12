@@ -52,7 +52,7 @@ namespace AxaFrance.WebEngine.Web
                 try
                 {
                     DebugLogger.WriteLine("Initializing Selenium WebDriver");
-                    Context = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser);
+                    Context = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
                 }
                 catch (Exception ex)
                 {
