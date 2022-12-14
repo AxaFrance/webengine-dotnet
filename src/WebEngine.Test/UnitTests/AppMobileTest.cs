@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace WebEngine.Test.UnitTests
 {
     [TestClass]
+    [TestCategory("Mobile")]
     public class AppMobileTest
     {
 
@@ -55,14 +56,16 @@ namespace WebEngine.Test.UnitTests
             var settings = Settings.Instance;
             settings.GridServerUrl = "http://localhost:4723/wd/hub";
             settings.AppId = "TestData\\ApiDemos-debug.apk";
-            var driver = AppFactory.GetDriver(Platform.Android);
+            using(var driver = AppFactory.GetDriver(Platform.Android)){
 
-            MyModel m = new MyModel(driver);
-            m.menuViews.Click();
-            m.menuButtons.Click();
-            m.normalButton.Click();
-            m.smallButton.Click();
-            m.toggleButton.Click();
+                MyModel m = new MyModel(driver);
+                m.menuViews.Click();
+                m.menuButtons.Click();
+                m.normalButton.Click();
+                m.smallButton.Click();
+                m.toggleButton.Click();
+                driver.Close();
+            }
         }
 
         [TestMethod]
@@ -74,6 +77,7 @@ namespace WebEngine.Test.UnitTests
                 settings.GridServerUrl = "http://localhost:4723/wd/hub";
                 settings.AppId = "TestData\\ApiDemos-debug.apk";
                 var driver = AppFactory.GetDriver(Platform.Windows);
+                driver.Close();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -92,6 +96,7 @@ namespace WebEngine.Test.UnitTests
                 settings.AppId = "TestData\\ApiDemos-debug.apk";
                 settings.Device = "iPhone 13";
                 var driver = AppFactory.GetDriver(Platform.iOS);
+                driver.Close();
             }
             catch (OpenQA.Selenium.WebDriverException)
             {

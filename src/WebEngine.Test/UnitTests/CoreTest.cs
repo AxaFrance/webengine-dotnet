@@ -50,16 +50,6 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
-        public void WebDriver_Firefox()
-        {
-            using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome))
-            {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
-                driver.Quit();
-            }
-        }
-
-        [TestMethod]
         public void WebDriver_Chrome_Incognito()
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome, new string[] { "incognito" }))

@@ -10,6 +10,7 @@ namespace WebEngine.Test.UnitTests
 {
 
     [TestClass]
+    [TestCategory("Mobile")]
     public class WebMobileTest
     {
 

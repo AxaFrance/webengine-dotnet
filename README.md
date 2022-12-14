@@ -36,7 +36,7 @@ td, th, tr {
 * API Reference: Explains every class, method and property.
 * Tutorials: Follow some step by step turotial to build first test automation solution using different approach.
 
-`Link to Github Pages`
+https://axaguildev.github.io/webengine-dotnet/
 
 ## Use the latest version
 The Framework is distributed via Package Management: NuGet for .NET version and Maven for JAVA Version.
@@ -50,5 +50,5 @@ Feel free to reach us if you want to adopt the Framework, report Bugs, or have g
 + Main contributor: Huaxing YUAN [<img src="src/AxaFrance.WebEngine.Doc/images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="src/AxaFrance.WebEngine.Doc/images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 #### Repository Java Project:
-+ https://github.com/AxaGuilDEv/webengine-java
++ Project ongoing
 + Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)D
