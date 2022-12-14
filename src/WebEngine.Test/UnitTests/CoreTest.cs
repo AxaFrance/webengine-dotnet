@@ -52,7 +52,7 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void WebDriver_Firefox()
         {
-            using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome))
+            using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Firefox))
             {
                 driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
                 driver.Quit();
