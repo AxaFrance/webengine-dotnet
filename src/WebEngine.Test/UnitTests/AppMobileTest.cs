@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace WebEngine.Test.UnitTests
 {
     [TestClass]
+    [TestCategory("Mobile")]
     public class AppMobileTest
     {
 
