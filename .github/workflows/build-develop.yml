@@ -48,7 +48,7 @@ jobs:
         New-Item -Path .\.sonar\scanner -ItemType Directory
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
         dotnet tool install --global dotnet-sonarscanner --version 5.2.0
-        dotnet tool update dotnet-reportgenerator-globaltool -g --version 4.8.7
+        dotnet tool install --global dotnet-coverage
           
     # Restore
     - name: Restore
@@ -60,9 +60,9 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.1.${{github.run_number}}
-        dotnet test "./src/WebEngine.Test" --collect "XPlat Code Coverage;Format=opencover" --filter TestCategory!=Mobile
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.1.${{github.run_number}}    
+        dotnet-coverage collect 'dotnet test "./src/WebEngine.Test" --filter TestCategory!=Mobile' -f xml  -o 'coverage.xml'
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"    
     
     #Do not run dotnet pack because the project is already configured to generate nupkg during build. 
