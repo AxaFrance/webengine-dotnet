@@ -62,8 +62,7 @@ jobs:
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
         dotnet build "./src" --no-restore --configuration Debug -p:Version=1.1.${{github.run_number}}
-        dotnet test "./src/WebEngine.Test" --collect:"XPlat Code Coverage" --filter TestCategory!=Mobile
-        reportgenerator "-reports:*\TestResults\*\coverage.cobertura.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
+        dotnet test "./src/WebEngine.Test" --collect "XPlat Code Coverage;Format=opencover" --filter TestCategory!=Mobile
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"    
     
     #Do not run dotnet pack because the project is already configured to generate nupkg during build. 
