@@ -78,9 +78,20 @@ namespace AxaFrance.WebEngine.MobileApp
                 string packagePath = s.AppId;
                 if (!s.AppId.StartsWith("bs:"))
                 {
-                    var id = AppFactory.UploadAppPackage(s.Username, s.Password, packagePath, s.PackageUploadUrl).Result;
+                    var id = AppFactory.UploadToBrowserstack(packagePath, s.Username, s.Password, s.PackageUploadUrl).Result;
                     s.AppId = id;
                     DebugLogger.WriteLine($"Application Id privided by Browserstack is: {id}");
+                }
+            }
+            else if (s.GridServerUrl.Contains("moiblelab"))
+            {
+                DebugLogger.WriteLine("Test on remote appium compatible server: Mobile Lab Service");
+                string packagePath = s.AppId;
+                if (!s.AppId.StartsWith("http"))
+                {
+                    var id = AppFactory.UploadToMobileLab(s.Password, packagePath, s.PackageUploadUrl).Result;
+                    s.AppId = id;
+                    DebugLogger.WriteLine($"Application Id privided by Mobile Lab service is: {id}");
                 }
             }
             driver = AppFactory.GetDriver(s.Platform);
