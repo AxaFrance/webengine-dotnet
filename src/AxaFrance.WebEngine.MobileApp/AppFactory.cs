@@ -27,6 +27,7 @@ namespace AxaFrance.WebEngine.MobileApp
     /// </summary>
     public static class AppFactory
     {
+
         /// <summary>
         /// Upload an App package (APK or IPA) to the browserstack server
         /// </summary>
@@ -35,26 +36,11 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <param name="packagePath">The Full path of package file (.apk or .ipa)</param>
         /// <param name="targetUrl">The target server to upload, default value: https://api-cloud.browserstack.com/app-automate/upload </param>
         /// <returns>app_url, used to identify the application on the target modile device</returns>
-        public static async Task<string> UploadAppPackage(string username, string accessKey, string packagePath, string targetUrl = "https://api-cloud.browserstack.com/app-automate/upload")
-        {
-            if (targetUrl.Contains("browserstack.com"))
-            {
-                return await UploadToBrowserstack(packagePath, targetUrl, username, accessKey);
-            }
-            else
-            {
-                string errorMessage = "targetUrl not compatible.";
-                DebugLogger.WriteLine(errorMessage);
-                throw new WebEngineGeneralException(errorMessage);
-            }
-
-        }
-
-        private static async Task<string> UploadToBrowserstack(string packagePath, string targetUrl, string username, string accessKey)
+        internal static async Task<string> UploadToBrowserstack(string packagePath, string username, string accessKey, string targetUrl = "https://api-cloud.browserstack.com/app-automate/upload")
         {
             ServicePointManager.ServerCertificateValidationCallback += checkCertificate;
             DebugLogger.WriteLine($"Uploading the package {packagePath} to {targetUrl}");
-            string boundary = $"--bsaxa-{DateTime.Now.Ticks.ToString("x")}";
+            string boundary = $"--bswebengine-{DateTime.Now.Ticks.ToString("x")}";
             FileInfo fi = new FileInfo(packagePath);
             var fileContent = File.ReadAllBytes(packagePath);
             MemoryStream ms = new MemoryStream(fileContent);
@@ -78,6 +64,44 @@ namespace AxaFrance.WebEngine.MobileApp
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Upload an App package (apk or ipa) to Mobile Lab server
+        /// </summary>
+        /// <param name="accessToken">The access key distributed by Mobile lab administrator</param>
+        /// <param name="packagePath">The path of local package to upload</param>
+        /// <param name="targetUrl">The endpoint of Upload Package service</param>
+        /// <returns>AppId returned by Mobile Lab</returns>
+        internal static async Task<string> UploadToMobileLab(string accessToken, string packagePath, string targetUrl)
+        {
+            ServicePointManager.ServerCertificateValidationCallback += checkCertificate;
+            DebugLogger.WriteLine($"Uploading the package {packagePath} to {targetUrl}");
+            string boundary = $"--mlwebengine-{DateTime.Now.Ticks.ToString("x")}";
+            FileInfo fi = new FileInfo(packagePath);
+            var fileContent = File.ReadAllBytes(packagePath);
+            MemoryStream ms = new MemoryStream(fileContent);
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                using (StreamContent sc = new StreamContent(ms))
+                {
+                    using (MultipartFormDataContent formData = new MultipartFormDataContent(boundary))
+                    {
+                        formData.Add(sc, "file", fi.Name);
+                        var message = await httpClient.PostAsync(targetUrl, formData);
+                        var code = message.StatusCode;
+                        string content = await message.Content.ReadAsStringAsync();
+                        printMessage(code, content);
+                        var responseContent = await message.Content.ReadAsStringAsync();
+                        var obj = JObject.Parse(responseContent);
+                        string appId = obj.GetValue("app-package").ToString();
+                        string user = obj.GetValue("user").ToString();
+                        return appId;
+                    }
+                }
+            }
+
         }
 
         private static bool checkCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)

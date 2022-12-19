@@ -17,7 +17,7 @@ namespace WebEngine.Test.UnitTests
         public WebElementDescription TxtPassword = new WebElementDescription();
 
         [FindsBy(How = How.Id, Using = "submit")]
-        public WebElementDescription ButtonSubmit = new WebElementDescription();
+        public WebElementDescription ButtonSubmit { get; set; } = new WebElementDescription();
 
         public WebElementDescription SpanErrorMessage = new WebElementDescription
         {
