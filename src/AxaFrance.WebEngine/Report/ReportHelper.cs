@@ -49,7 +49,7 @@ namespace AxaFrance.WebEngine.Report
                 tests.Add(jtc);
                 if (tc.Result == Result.Failed)
                 {
-                    jtc.Item = new JUnit.testsuiteTestcaseError()
+                    jtc.Item = new JUnit.testsuiteTestcaseFailure()
                     {
                         message = tc.Log,
                         type = tc.Result.ToString()
@@ -94,6 +94,23 @@ namespace AxaFrance.WebEngine.Report
                 string content = Encoding.UTF8.GetString(ms.ToArray());
                 return content;
             }
+        }
+
+        /// <summary>
+        /// Load WebEngine Report from File
+        /// </summary>
+        /// <param name="filename">The path of the WebEngine Report file</param>
+        /// <param name="content">The content in XML of WebEngine Report file</param>
+        /// <returns>The report of type <see cref="TestSuiteReport"/></returns>
+        public static TestSuiteReport LoadReport(string filename, out string content)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteReport));
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                content = sr.ReadToEnd();
+            }
+            TestSuiteReport ts = (TestSuiteReport)serializer.Deserialize(new StreamReader(filename));
+            return ts;
         }
     }
 }
