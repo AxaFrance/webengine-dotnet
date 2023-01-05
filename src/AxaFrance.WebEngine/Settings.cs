@@ -94,6 +94,10 @@ namespace AxaFrance.WebEngine
                 {
                     this.GridForDesktop = settings.Value<bool>("GridForDesktop");
                 }
+                if (settings.ContainsKey("BrowserVersion"))
+                {
+                    this.BrowserVersion = settings.Value<string>(BrowserVersion);
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, object>();
@@ -316,5 +320,10 @@ namespace AxaFrance.WebEngine
         /// Active JavaScript Click. Mainly used for SafariDriver and Mobile Chrome based driver because native click may not work.
         /// </summary>
         public bool UseJavaScriptClick { get; internal set; }
+        
+        /// <summary>
+        /// BrowserVersion to be used for Web Tests,
+        /// </summary>
+        public string BrowserVersion { get; internal set; }
     }
 }
