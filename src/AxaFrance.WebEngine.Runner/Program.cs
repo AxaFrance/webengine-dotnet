@@ -19,8 +19,11 @@ namespace AxaFrance.WebEngine.Runner
             }
             else
             {
+                
                 if (args[0].Equals("-encrypt"))
                 {
+                    Settings settings1 = Settings.Instance;
+                    ParameterParser.ParseEncrypt(args, settings1);
                     Encrypt(args[1]);
                     return;
                 };

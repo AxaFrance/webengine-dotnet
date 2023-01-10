@@ -268,15 +268,59 @@ namespace AxaFrance.WebEngine.Web
             Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
             browserstackOptions.Add("userName", s.Username);
             browserstackOptions.Add("accessKey", s.Password);
+            var os = GetBrowserStackOSName(s.Platform);
+            if (!string.IsNullOrEmpty(os))
+            {
+                browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X"
+            }
+            browserstackOptions.Add("osVersion", s.OsVersion); //for MacOS: Monterey, Big Sur, ... for Windows: 10, For iOS or Android: 13.1, ...
+            browserstackOptions.Add("browserName", GetBrowserStackBrowserName(s.Browser)); //Safari, InternetExplorer
+            if (!string.IsNullOrEmpty(s.BrowserVersion))
+            {
+                browserstackOptions.Add("browserVersion", s.BrowserVersion); //13.0
+            }
+            //browserstackOptions.Add("seleniumVersion", "4.7.0");             //Same as installed selenium package;
             options.AddAdditionalOption("bstack:options", browserstackOptions);
 
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
             if (name != null)
             {
-                options.AddAdditionalOption("project", name.Name);
-                options.AddAdditionalOption("build", name.Version.ToString());
-                options.AddAdditionalOption("name", name.FullName);
+                browserstackOptions.Add("projectName", name.Name);
+                browserstackOptions.Add("buildName", name.Version.ToString());
+                browserstackOptions.Add("sessionName", name.FullName);
+            }
+        }
+
+        private static string GetBrowserStackOSName(Platform platform)
+        {
+            switch (platform)
+            {
+                case Platform.Windows:
+                    return "Windows";
+                case Platform.MacOS:
+                    return "OS X";
+                default:
+                    return null;
+            }
+        }
+
+        private static object GetBrowserStackBrowserName(BrowserType browser)
+        {
+            switch (browser)
+            {
+                case BrowserType.InternetExplorer:
+                    return "IE";
+                case BrowserType.Chrome:
+                    return "Chrome";
+                case BrowserType.Firefox:
+                    return "Firefox";
+                case BrowserType.ChromiumEdge:
+                    return "Edge";
+                case BrowserType.Safari:
+                    return "Safari";
+                default:
+                    throw new NotSupportedException($"{browser} is not a valid value on Desktop Web Browser on Browserstack platform");
             }
         }
 

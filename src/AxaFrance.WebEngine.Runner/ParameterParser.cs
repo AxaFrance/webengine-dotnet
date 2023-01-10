@@ -40,9 +40,9 @@ namespace AxaFrance.WebEngine.Runner
             return s;
         }
 
-        private static void ParseEncrypt(string[] args, Settings s)
+        internal static void ParseEncrypt(string[] args, Settings s)
         {
-            const string arg = "-encyptionKey:";
+            const string arg = "-encryptionKey:";
             string encrypt = args.FirstOrDefault(x => x.StartsWith(arg, StringComparison.OrdinalIgnoreCase));
             if (!string.IsNullOrEmpty(encrypt))
             {

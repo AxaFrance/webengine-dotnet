@@ -13,6 +13,8 @@
       href: web-driver.md
     - name: Web Driver for MobileApp Testing
       href: appium-driver.md
+    - name: Secure passwords
+      href: secure-password.md
 - name: Keyword-Driven testing approach
   href: keyworddriven.md
 - name: Workarounds

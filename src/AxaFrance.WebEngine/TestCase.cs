@@ -132,6 +132,7 @@ namespace AxaFrance.WebEngine
                 {
                     UniqueId = Name;
                 }
+                DebugLogger.WriteLine($"[Test Case] Start running '{this.Name}'");
             }
             catch
             {

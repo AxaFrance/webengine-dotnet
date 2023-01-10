@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    },
+    "WebRunner": {
+      "commandName": "Project",
+      "commandLineArgs": "-encrypt helloworld -encryptionkey:abcdefghijklmn"
+    }
+  }
+}
