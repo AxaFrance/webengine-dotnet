@@ -160,7 +160,10 @@ However, all behaviors and arguments remain the same.</p>
 <p>To run tests on Mobile device, <code>-platform</code>, you should specify the following arguments <code>Android</code> or <code>iOS</code>.</p>
 <h5 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h5>
 <p>Indicates the Selenium Grid to connect to device cloud. Default value is <code>http://localhost:4723/wd/hub</code> for local Appium Server
-If you are using cloud-based device cloud, please refer to service providers documentation.</p>
+If you are using cloud-based device cloud, please refer to service providers documentation.
+If the argument is provided, option <code>desktopGrid</code> will be automatically set to <code>true</code></p>
+<h5 id="-desktopgrid">-desktopGrid</h5>
+<p>This option activates the usage of Selenium Grid for Web Desktop tests. If the value is false, the framework only use selenium grid for mobile based tests.</p>
 <h5 id="-usernameusername">-username:&lt;username&gt;</h5>
 <p>Indicates the username to be used for Selenium Grid authentication.</p>
 <h5 id="-passwordpassword">-password:&lt;password&gt;</h5>

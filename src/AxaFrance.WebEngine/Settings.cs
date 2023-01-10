@@ -96,7 +96,7 @@ namespace AxaFrance.WebEngine
                 }
                 if (settings.ContainsKey("BrowserVersion"))
                 {
-                    this.BrowserVersion = settings.Value<string>(BrowserVersion);
+                    this.BrowserVersion = settings.Value<string>("BrowserVersion");
                 }
                 if (settings.ContainsKey("Capabilities"))
                 {

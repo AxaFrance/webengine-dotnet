@@ -55,26 +55,14 @@ namespace WebEngine.Test.UnitTests
                 Id = "password"
             };
 
-
             WebElementDescription inputBox = new WebElementDescription(driver)
             {
                 Id = "inputValue"
             };
 
-
-
             var password = Encrypter.Encrypt("password");
-            passwordBox.SendKeys("nothing");
-            passwordBox.SetSecure(password);
-            try
-            {
-                inputBox.SetSecure(password);
-            }
-            catch (NotSupportedException)
-            {
-                return;
-            }
-            Assert.Fail();
+            passwordBox.SetSecure(password); // -> OK
+            inputBox.SetSecure(password);    //-> Error with Not supported Exception
         }
 
         [TestMethod]

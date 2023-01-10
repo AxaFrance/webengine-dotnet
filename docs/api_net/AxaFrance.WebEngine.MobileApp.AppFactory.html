@@ -211,69 +211,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_" data-uid="AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage*"></a>
-  <h4 id="AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_" data-uid="AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)">UploadAppPackage(String, String, String, String)</h4>
-  <div class="markdown level1 summary"><p>Upload an App package (APK or IPA) to the browserstack server</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task&lt;string&gt; UploadAppPackage(string username, string accessKey, string packagePath, string targetUrl = &quot;https://api-cloud.browserstack.com/app-automate/upload&quot;)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">username</span></td>
-        <td><p>User Name (can be retrived via app-automate.browserstack.com)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">accessKey</span></td>
-        <td><p>Access Key (can be retrived via app-automate.browserstack.com)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">packagePath</span></td>
-        <td><p>The Full path of package file (.apk or .ipa)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">targetUrl</span></td>
-        <td><p>The target server to upload, default value: <a href="https://api-cloud.browserstack.com/app-automate/upload">https://api-cloud.browserstack.com/app-automate/upload</a> </p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><p>app_url, used to identify the application on the target modile device</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           

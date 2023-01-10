@@ -561,19 +561,6 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext
   nameWithType: AppFactory.SwitchContext
-- uid: AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)
-  name: UploadAppPackage(String, String, String, String)
-  href: api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_System_String_System_String_System_String_System_String_
-  commentId: M:AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)
-  fullName: AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String, System.String, System.String, System.String)
-  nameWithType: AppFactory.UploadAppPackage(String, String, String, String)
-- uid: AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage*
-  name: UploadAppPackage
-  href: api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_UploadAppPackage_
-  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage
-  isSpec: "True"
-  fullName: AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage
-  nameWithType: AppFactory.UploadAppPackage
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp
   name: SharedActionApp
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html
@@ -1390,6 +1377,22 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport
   nameWithType: ReportHelper.GenerateJUnitReport
+- uid: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String,System.String@)
+  name: LoadReport(String, out String)
+  href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_LoadReport_System_String_System_String__
+  commentId: M:AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String,System.String@)
+  name.vb: LoadReport(String, ByRef String)
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String, out System.String)
+  fullName.vb: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String, ByRef System.String)
+  nameWithType: ReportHelper.LoadReport(String, out String)
+  nameWithType.vb: ReportHelper.LoadReport(String, ByRef String)
+- uid: AxaFrance.WebEngine.Report.ReportHelper.LoadReport*
+  name: LoadReport
+  href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_LoadReport_
+  commentId: Overload:AxaFrance.WebEngine.Report.ReportHelper.LoadReport
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.LoadReport
+  nameWithType: ReportHelper.LoadReport
 - uid: AxaFrance.WebEngine.Report.ScreenshotReport
   name: ScreenshotReport
   href: api_net/AxaFrance.WebEngine.Report.ScreenshotReport.html
@@ -1885,6 +1888,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Settings.BrowserOptions
   nameWithType: Settings.BrowserOptions
+- uid: AxaFrance.WebEngine.Settings.BrowserVersion
+  name: BrowserVersion
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_BrowserVersion
+  commentId: P:AxaFrance.WebEngine.Settings.BrowserVersion
+  fullName: AxaFrance.WebEngine.Settings.BrowserVersion
+  nameWithType: Settings.BrowserVersion
+- uid: AxaFrance.WebEngine.Settings.BrowserVersion*
+  name: BrowserVersion
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_BrowserVersion_
+  commentId: Overload:AxaFrance.WebEngine.Settings.BrowserVersion
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Settings.BrowserVersion
+  nameWithType: Settings.BrowserVersion
 - uid: AxaFrance.WebEngine.Settings.Capabilities
   name: Capabilities
   href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Capabilities
@@ -1911,19 +1927,6 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Settings.DataSourceName
   nameWithType: Settings.DataSourceName
-- uid: AxaFrance.WebEngine.Settings.DesktopGridEnabled
-  name: DesktopGridEnabled
-  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_DesktopGridEnabled
-  commentId: P:AxaFrance.WebEngine.Settings.DesktopGridEnabled
-  fullName: AxaFrance.WebEngine.Settings.DesktopGridEnabled
-  nameWithType: Settings.DesktopGridEnabled
-- uid: AxaFrance.WebEngine.Settings.DesktopGridEnabled*
-  name: DesktopGridEnabled
-  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_DesktopGridEnabled_
-  commentId: Overload:AxaFrance.WebEngine.Settings.DesktopGridEnabled
-  isSpec: "True"
-  fullName: AxaFrance.WebEngine.Settings.DesktopGridEnabled
-  nameWithType: Settings.DesktopGridEnabled
 - uid: AxaFrance.WebEngine.Settings.Device
   name: Device
   href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Device
@@ -1937,6 +1940,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Settings.Device
   nameWithType: Settings.Device
+- uid: AxaFrance.WebEngine.Settings.GridForDesktop
+  name: GridForDesktop
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_GridForDesktop
+  commentId: P:AxaFrance.WebEngine.Settings.GridForDesktop
+  fullName: AxaFrance.WebEngine.Settings.GridForDesktop
+  nameWithType: Settings.GridForDesktop
+- uid: AxaFrance.WebEngine.Settings.GridForDesktop*
+  name: GridForDesktop
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_GridForDesktop_
+  commentId: Overload:AxaFrance.WebEngine.Settings.GridForDesktop
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Settings.GridForDesktop
+  nameWithType: Settings.GridForDesktop
 - uid: AxaFrance.WebEngine.Settings.GridServerUrl
   name: GridServerUrl
   href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_GridServerUrl
