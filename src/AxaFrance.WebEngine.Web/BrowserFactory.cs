@@ -273,7 +273,11 @@ namespace AxaFrance.WebEngine.Web
             {
                 browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X"
             }
-            browserstackOptions.Add("osVersion", s.OsVersion); //for MacOS: Monterey, Big Sur, ... for Windows: 10, For iOS or Android: 13.1, ...
+            if (!string.IsNullOrEmpty(s.OsVersion))
+            {
+                browserstackOptions.Add("osVersion", s.OsVersion); //for MacOS: Monterey, Big Sur, ... for Windows: 10, For iOS or Android: 13.1, ...
+            }
+
             browserstackOptions.Add("browserName", GetBrowserStackBrowserName(s.Browser)); //Safari, InternetExplorer
             if (!string.IsNullOrEmpty(s.BrowserVersion))
             {

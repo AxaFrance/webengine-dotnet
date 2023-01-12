@@ -14,6 +14,7 @@ If a parameter is provided in both side, the value provided in command-line will
   "AllowInsecureCertificate": false,
   "PackageName": "my.company.myapplication",
   "EncryptionKey": null,
+  "OsVersion": null,
   "BrowserVersion": null,
   "Capabilities": {
     "additionalCapability1": "value1",
