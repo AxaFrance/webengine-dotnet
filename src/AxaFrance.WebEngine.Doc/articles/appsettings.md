@@ -7,19 +7,21 @@ If a parameter is provided in both side, the value provided in command-line will
 {
   "LogDir": null,
   "GridConnection": "http://localhost:4723/wd/hub",
+  "GridForDesktop": false,
   "Username": "",
   "Password": "",
-  "PackageUploadTargetUrl": "https://api-cloud.browserstack.com/app-automate/upload",
+  "PackageUploadTargetUrl": "https://yourcloudprovider.com/apploader/upload",
   "AllowInsecureCertificate": false,
   "PackageName": "my.company.myapplication",
   "EncryptionKey": null,
+  "BrowserVersion": null,
   "Capabilities": {
     "additionalCapability1": "value1",
     "additionalCapability2": "value2"
   },
   "chromeOptions": [ "incognito" ],
   "firefoxOptions": [],
-  "edgeOptions": [ "inprivate", "start-maximized"],
+  "edgeOptions": [ "inprivate", "start-maximized" ],
   "safariOptions": []
 }
 ```
@@ -27,6 +29,7 @@ If a parameter is provided in both side, the value provided in command-line will
 ## General Options
 * `LogDir`: The directory to store the test report. if the value is null, then the default temporary folder will be used.
 * `GridConnection`: The Selenium Grid/Appium Server Url to run Mobile based tests. 
+* `GridForDesktop`: Normal Web Desktop execution will run locally and ignore selenium grid connection. If you want to run Desktop Web tests on a Selenium Grid, set this value to `true`. Mobile test will not be affected by this value.
 * `Username`: The username of Selenium Grid authentication.
 * `Password`: The password of Selenium Grid authentication.
 * `PackageUploadTargetUrl`: The url handler to upload the app package (.apk or .ipa)
