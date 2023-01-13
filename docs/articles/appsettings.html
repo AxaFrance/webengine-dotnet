@@ -74,25 +74,29 @@ If a parameter is provided in both side, the value provided in command-line will
 <pre><code class="lang-json">{
   &quot;LogDir&quot;: null,
   &quot;GridConnection&quot;: &quot;http://localhost:4723/wd/hub&quot;,
+  &quot;GridForDesktop&quot;: false,
   &quot;Username&quot;: &quot;&quot;,
   &quot;Password&quot;: &quot;&quot;,
-  &quot;PackageUploadTargetUrl&quot;: &quot;https://api-cloud.browserstack.com/app-automate/upload&quot;,
+  &quot;PackageUploadTargetUrl&quot;: &quot;https://yourcloudprovider.com/apploader/upload&quot;,
   &quot;AllowInsecureCertificate&quot;: false,
   &quot;PackageName&quot;: &quot;my.company.myapplication&quot;,
   &quot;EncryptionKey&quot;: null,
+  &quot;OsVersion&quot;: null,
+  &quot;BrowserVersion&quot;: null,
   &quot;Capabilities&quot;: {
     &quot;additionalCapability1&quot;: &quot;value1&quot;,
     &quot;additionalCapability2&quot;: &quot;value2&quot;
   },
   &quot;chromeOptions&quot;: [ &quot;incognito&quot; ],
   &quot;firefoxOptions&quot;: [],
-  &quot;edgeOptions&quot;: [ &quot;inprivate&quot;, &quot;start-maximized&quot;],
+  &quot;edgeOptions&quot;: [ &quot;inprivate&quot;, &quot;start-maximized&quot; ],
   &quot;safariOptions&quot;: []
 }
 </code></pre><h2 id="general-options">General Options</h2>
 <ul>
 <li><code>LogDir</code>: The directory to store the test report. if the value is null, then the default temporary folder will be used.</li>
 <li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests. </li>
+<li><code>GridForDesktop</code>: Normal Web Desktop execution will run locally and ignore selenium grid connection. If you want to run Desktop Web tests on a Selenium Grid, set this value to <code>true</code>. Mobile test will not be affected by this value.</li>
 <li><code>Username</code>: The username of Selenium Grid authentication.</li>
 <li><code>Password</code>: The password of Selenium Grid authentication.</li>
 <li><code>PackageUploadTargetUrl</code>: The url handler to upload the app package (.apk or .ipa)</li>

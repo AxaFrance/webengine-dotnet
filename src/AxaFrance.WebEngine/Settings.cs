@@ -98,6 +98,10 @@ namespace AxaFrance.WebEngine
                 {
                     this.BrowserVersion = settings.Value<string>("BrowserVersion");
                 }
+                if (settings.ContainsKey("OsVersion"))
+                {
+                    this.OsVersion = settings.Value<string>("OsVersion");
+                }
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, object>();
@@ -249,12 +253,12 @@ namespace AxaFrance.WebEngine
         public string Device { get; set; }
 
         /// <summary>
-        /// [Mobile Only] Version of the OS, Optional when running tests on Mobile Devices. It refers to iOS or Android version during the device selection.
+        /// [Grid Only] Version of the OS, Optional when running tests on Mobile Devices. It refers to iOS or Android version during the device selection.
         /// </summary>
         public string OsVersion { get; set; }
 
         /// <summary>
-        /// [Mobile Only] The platform for mobile testing. Mandatary for Mobile testing: Possible values Android / iOS
+        /// [Grid Only] [Mobile Only] The platform for mobile testing. Mandatary for Mobile testing: Possible values Android / iOS
         /// </summary>
         public Platform Platform { get; set; }
 

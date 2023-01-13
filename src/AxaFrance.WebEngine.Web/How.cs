@@ -50,7 +50,7 @@ namespace AxaFrance.WebEngine.Web
         XPath,
 
         /// <summary>
-        /// Finds by a custom <see cref="By"/> implementation.
+        /// Finds by a custom By implementation.
         /// </summary>
         Custom
     }
