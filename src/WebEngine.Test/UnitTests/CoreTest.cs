@@ -65,7 +65,7 @@ namespace WebEngine.Test.UnitTests
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge))
             {
                 driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
-                driver.Quit();
+                 driver.Quit();
             }
         }
 

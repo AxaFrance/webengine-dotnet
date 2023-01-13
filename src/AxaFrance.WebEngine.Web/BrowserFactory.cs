@@ -55,7 +55,7 @@ namespace AxaFrance.WebEngine.Web
         /// <exception cref="PlatformNotSupportedException" />
         public static WebDriver GetDriver(Platform platform, AxaFrance.WebEngine.BrowserType browserType)
         {
-            return GetDriver(platform, browserType, Settings.Instance.BrowserOptions);
+            return GetDriver(platform, browserType, new string[0]);
         }
 
         /// <summary>
@@ -84,6 +84,18 @@ namespace AxaFrance.WebEngine.Web
             Settings.Instance.Platform = platform;
             Settings.Instance.Browser = browserType;
 
+            //Merge browser options provided by this function and appsettings.json
+            var optionsFromSettings = Settings.Instance.BrowserOptions.ToList();
+            foreach(var option in browserOptions)
+            {
+                if (!optionsFromSettings.Contains(option))
+                {
+                    optionsFromSettings.Add(option);
+                }
+            }
+            
+
+
 #if NET48_OR_GREATER || NET6_0_OR_GREATER
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 |  SecurityProtocolType.Tls13;
 #else
@@ -108,15 +120,15 @@ namespace AxaFrance.WebEngine.Web
                     switch (browserType)
                     {
                         case BrowserType.Chrome:
-                            return GetChromeDriver(browserOptions);
+                            return GetChromeDriver(optionsFromSettings);
                         case BrowserType.ChromiumEdge:
-                            return GetEdgeDriver(browserOptions);
+                            return GetEdgeDriver(optionsFromSettings);
                         case BrowserType.Firefox:
-                            return GetFirefoxDriver(browserOptions);
+                            return GetFirefoxDriver(optionsFromSettings);
                         case BrowserType.InternetExplorer:
                             return GetIEDriver();
                         case BrowserType.Safari:
-                            return GetSafariDriver(browserOptions);
+                            return GetSafariDriver(optionsFromSettings);
                         default:
                             throw new PlatformNotSupportedException($"The browser {browserType} is not yet supported by WebEngine Framework.");
                     }
