@@ -82,3 +82,9 @@ jobs:
      
     - name: Publish Nuget to GitHub registry
       run: dotnet nuget push 'nuget/**/AxaFrance*.nupkg' -k ${{ secrets.NUGET_TOKEN }} -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
+      
+    - name: Tag commit
+      uses: tvdias/github-tagger@v0.0.1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        tag: "1.1.${{github.run_number}}"
