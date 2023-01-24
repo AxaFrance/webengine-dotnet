@@ -10,11 +10,11 @@ namespace Samples.KeywordDriven.Actions
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
         {
-            Browser.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/home-insurance");
-            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
-            login.UserName.SetValue("username");
-            login.Password.SetValue("password");
-            Screenshot();
+            var browser = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
+            browser.Navigate().GoToUrl(GetParameter("URL_RECETTE"));
+            PageModels.PageLogin login = new PageModels.PageLogin(browser);
+            login.UserName.SetValue(GetParameter("User"));
+            login.UserName.SetSecure(GetParameter("EncPassword"));
             login.ButtonLogin.Click();
         }
 

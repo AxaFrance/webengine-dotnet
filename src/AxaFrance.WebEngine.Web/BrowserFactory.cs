@@ -136,6 +136,7 @@ namespace AxaFrance.WebEngine.Web
             }
             else
             {
+                Settings.Instance.UseJavaScriptClick = true;
                 return ConnectToDevice();
             }
         }
