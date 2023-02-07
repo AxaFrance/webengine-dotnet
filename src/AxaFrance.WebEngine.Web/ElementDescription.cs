@@ -624,7 +624,7 @@ namespace AxaFrance.WebEngine.Web
         }
 
         /// <summary>
-        /// Get the value of the specified DOM property of this element.
+        /// Get the value of the specified DOM property of this element. for example GetProperty("value") will get the current value of a textbox
         /// </summary>
         /// <param name="propertyName">the name of Html Property.</param>
         /// <returns>

@@ -95,7 +95,7 @@
                 <ScrollViewer Margin="6,0" Grid.Row="5" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <StackPanel  x:Name="grdDetails"  >
                         <TextBlock Text="Information:" />
-                        <TextBlock Text="Choose a test case or an test step to see the details" Margin="10,2" x:Name="txtInformation" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
+                        <TextBlock Text="Choose a test case or an test step to see the details" TextWrapping="Wrap" Margin="10,2" x:Name="txtInformation" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
                         <WrapPanel x:Name="spScreenShots" />
                     </StackPanel>
                 </ScrollViewer>
