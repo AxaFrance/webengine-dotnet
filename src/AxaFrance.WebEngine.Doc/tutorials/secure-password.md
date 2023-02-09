@@ -12,12 +12,22 @@ WebEngine provides a native solution to achieve this:
 ## Encryption
 For the encryption, you can set `encryption key` in [appsetting.json](../articles/appsetting.md), then use any of following methods to calculate encrypted data:
 ### Via WebRunner
+If you have an encryption key stored in appsettng.json (not recommanded in shared storage), you can pass this command line to get encrypted data:
 ```base
 > WebRunner.exe -encrypt helloworld
 Encrypted data is: Iw6buAX7oY97dbk/w3gXLA==
 ```
+
+
+For security reason, it is recommanded to leave a Token in `appsettings.json` then replace it's value on DevOps platform, or to pass `-encryptionKey` parameter in command line to launch the test. 
+```base
+> WebRunner.exe -encrypt helloworld -encryptionKey:my128bitkey
+Encrypted data is: rTGtyWKevbTjT3RkSAJvYA==
+```
+
+
 ### Via `Encrypter.Encrypt(string)`
-If you do not use WebRunner (for example, you are using Gherkin or Linear Scripting Approach) you can use <xref:AxaFrance.WebEngine.Encrypter.Encrypt(System.String)> method to calculate encrypted data in the code.
+If you do not use WebRunner (for example, you are using Gherkin or Linear Scripting Approach) you can use <xref:AxaFrance.WebEngine.Encrypter.Encrypt(System.String)> method to calculate encrypted data in the code. In this case, you'll need to put ecryption key in `appsetting.json`
 
 Once the data is encrypted, it can be used in the code or in the test data.
 

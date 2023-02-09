@@ -39,6 +39,9 @@
       <xs:element minOccurs="0" maxOccurs="1" name="HostName" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="SystemOut" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="SystemError" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Passed" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Failed" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Ignored" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TestCaseReport">

@@ -19,18 +19,6 @@ WebEngine Framework resolves some common problems every test automation project 
 * Graphical test report.
 * **Open Source**, free usage and let’s improve it together!
 
-<style>
-table {
-	text-align: center
-}
-
-td, th, tr {
-   border: none!important;
-   text-align: center
-}
-</style>
-
-
 ## Getting started.
 * Introduction: Explains common concepts of the framework.
 * API Reference: Explains every class, method and property.
@@ -39,7 +27,9 @@ td, th, tr {
 https://axaguildev.github.io/webengine-dotnet/
 
 ## Use the latest version
-The Framework is distributed via Package Management: NuGet for .NET version and Maven for JAVA Version.
+The Framework is distributed via Package Management:
+When using .NET, please find AxaFrance.WebEngine packages on nuget.org
+When using JAVA, these pacakges will be available on Maven
 
 
 ## Contact us
@@ -51,4 +41,4 @@ Feel free to reach us if you want to adopt the Framework, report Bugs, or have g
 
 #### Repository Java Project:
 + Project ongoing
-+ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)D
++ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)

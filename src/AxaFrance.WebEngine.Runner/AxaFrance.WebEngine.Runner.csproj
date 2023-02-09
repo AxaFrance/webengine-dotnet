@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net472;net48</TargetFrameworks>
+    <TargetFrameworks>net472;net48;net6.0</TargetFrameworks>
     <Nullable>disable</Nullable>
     <PublishSingleFile>false</PublishSingleFile>
     <SelfContained>false</SelfContained>
@@ -24,11 +24,14 @@
     <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AxaGuilDEv/webengine-dotnet</RepositoryUrl>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
+      <Private>True</Private>
+      <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
     </ProjectReference>
   </ItemGroup>
 
