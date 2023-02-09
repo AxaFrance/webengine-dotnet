@@ -30,8 +30,23 @@ namespace WebEngine.Test.UnitTests
             driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
         }
 
-        
 
+        [TestMethod]
+        public void RadioGroup()
+        {
+            var radioGroup = new WebElementDescription(driver)
+            {
+                Name = "fav_language"
+            };
+            var check = radioGroup.CheckByValue("CSS");
+            var value = check.GetDomProperty("checked");
+            var check2 = radioGroup.CheckByValue("HTML");
+            var value2 = check2.GetDomProperty("checked");
+            var value3 = check.GetDomProperty("checked");
+            Assert.AreEqual(string.Compare("true", value, true), 0);
+            Assert.AreEqual(string.Compare("true", value2, true), 0);
+            Assert.AreNotEqual(string.Compare("true", value3, true), 0);
+        }
 
         [TestMethod]
         public void ElementByClassName()

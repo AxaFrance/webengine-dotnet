@@ -46,6 +46,36 @@ namespace WebEngine.Test.UnitTests
             }
         }
 
+        [TestMethod]
+        public void ElementTypeing()
+        {
+            WebElementDescription inputBox = new WebElementDescription(driver)
+            {
+                Id = "inputValue"
+            };
+
+            inputBox.SetValue("abc");
+            var value1 = inputBox.GetProperty("value");
+            inputBox.SetValue("def");
+            var value2 = inputBox.GetProperty("value");
+            inputBox.SendKeys("abc");
+            var value3 = inputBox.GetProperty("value");
+            Assert.AreEqual("abc", value1);
+            Assert.AreEqual("def", value2);
+            Assert.AreEqual("defabc", value3);
+        }
+
+        [TestMethod]
+        public void ElementIsEnabled()
+        {
+            WebElementDescription inputBox = new WebElementDescription(driver)
+            {
+                Id = "inputValue"
+            };
+            var enabled = inputBox.IsEnabled;
+            Assert.IsTrue(enabled);
+        }
+
 
         [TestMethod]
         public void SecurePassword()
@@ -62,7 +92,14 @@ namespace WebEngine.Test.UnitTests
 
             var password = Encrypter.Encrypt("password");
             passwordBox.SetSecure(password); // -> OK
-            inputBox.SetSecure(password);    //-> Error with Not supported Exception
+            try
+            {
+                inputBox.SetSecure(password);    //-> Error with Not supported Exception
+            } catch
+            {
+                
+            }
+            Assert.Fail("no exception if setsecure is used on normal text box");
         }
 
         [TestMethod]
@@ -246,14 +283,13 @@ namespace WebEngine.Test.UnitTests
                 Name = "fav_language"
             };
             var check = radioGroup.CheckByValue("CSS");
-
-            var value = check.GetDomProperty("checked");
-            Assert.AreEqual( string.Compare("true", value, true), 0);
+            var value = check.GetDomProperty("checked");            
             var check2 = radioGroup.CheckByValue("HTML");
-            value = check.GetDomProperty("checked");
             var value2 = check2.GetDomProperty("checked");
+            var value3 = check.GetDomProperty("checked");
+            Assert.AreEqual(string.Compare("true", value, true), 0);
             Assert.AreEqual(string.Compare("true", value2, true), 0);
-            Assert.AreNotEqual(string.Compare("true", value, true), 0);
+            Assert.AreNotEqual(string.Compare("true", value3, true), 0);
 
         }
 

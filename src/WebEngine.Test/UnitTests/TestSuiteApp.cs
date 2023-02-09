@@ -20,6 +20,7 @@ namespace WebEngine.Test.UnitTests
                 {
                     new KeyValuePair<string, TestCase>("Addition1", new TestCaseMobileApp())
                 };
+                
                 return testCases;
             }
         }

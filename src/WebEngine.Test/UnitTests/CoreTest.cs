@@ -87,5 +87,11 @@ namespace WebEngine.Test.UnitTests
             Assert.IsTrue(list.Count == 1);
         }
 
+        [TestMethod]
+        public void BS_OSName()
+        {
+
+        }
+
     }
 }

@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -21,6 +22,32 @@ namespace AxaFrance.WebEngine.Report
         /// </summary>
         [XmlElement(ElementName = "TestResult")]
         public List<TestCaseReport> TestResult { get; set; }
+
+        /// <summary>
+        /// Number of test cases which result are <see cref="Result.Passed"/>
+        /// </summary>
+        /// <remarks>
+        /// The number will be valorised before saving the report on the disk.
+        /// </remarks>
+        public int Passed { get; set; }
+
+        /// <summary>
+        /// Number of test cases which result are <see cref="Result.Failed"/> or <see cref="Result.CriticalError"/>
+        /// </summary>
+        /// <remarks>
+        /// The number will be valorised before saving the report on the disk.
+        /// </remarks>
+
+        public int Failed { get; set; }
+
+        /// <summary>
+        /// Number of test cases which result are <see cref="Result.Ignored"/>
+        /// </summary>
+        /// <remarks>
+        /// The number will be valorised before saving the report on the disk.
+        /// </remarks>
+        public int Ignored { get; set; }
+
 
         /// <summary>
         /// The Test enviroment variables used during the test.
@@ -57,7 +84,6 @@ namespace AxaFrance.WebEngine.Report
         /// The raw output of the test execution.
         /// </summary>
         public string SystemOut { get; set; }
-
         
         /// <summary>
         /// The raw error otput of the test execution.
@@ -82,6 +108,9 @@ namespace AxaFrance.WebEngine.Report
         /// <returns>the report Full Path name generated.</returns>
         public string SaveAs(string path, string filePrefix, bool uniqueName)
         {
+            this.Passed = TestResult.Count(x => x.Result == Result.Passed);
+            this.Failed = TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
+            this.Ignored = TestResult.Count() - Passed - Failed;
             string filename;
             if (uniqueName)
             {

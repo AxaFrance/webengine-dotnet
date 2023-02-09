@@ -1,12 +1,14 @@
-using OpenQA.Selenium;
+using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
+
 
 namespace Samples.LinearScripting
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest1 
     {
         //WebDriver object will be used for each test case.
-        WebDriver? driver = null;
+        OpenQA.Selenium.WebDriver? driver = null;
 
         [TestInitialize]
         public void Setup()
@@ -17,6 +19,8 @@ namespace Samples.LinearScripting
                 AxaFrance.WebEngine.BrowserType.Chrome);
             driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/Step1.html");
         }
+
+
 
         [TestCleanup]
         public void Teardown()

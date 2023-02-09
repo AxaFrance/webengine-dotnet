@@ -1632,6 +1632,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.EnvironmentVariables
   nameWithType: TestSuiteReport.EnvironmentVariables
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Failed
+  name: Failed
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Failed
+  commentId: P:AxaFrance.WebEngine.Report.TestSuiteReport.Failed
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Failed
+  nameWithType: TestSuiteReport.Failed
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Failed*
+  name: Failed
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Failed_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestSuiteReport.Failed
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Failed
+  nameWithType: TestSuiteReport.Failed
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String,System.String,System.Boolean)
   name: GenereteCSV(String, String, Boolean)
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_System_String_System_String_System_Boolean_
@@ -1658,6 +1671,32 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.HostName
   nameWithType: TestSuiteReport.HostName
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Ignored
+  name: Ignored
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Ignored
+  commentId: P:AxaFrance.WebEngine.Report.TestSuiteReport.Ignored
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Ignored
+  nameWithType: TestSuiteReport.Ignored
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Ignored*
+  name: Ignored
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Ignored_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestSuiteReport.Ignored
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Ignored
+  nameWithType: TestSuiteReport.Ignored
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Passed
+  name: Passed
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Passed
+  commentId: P:AxaFrance.WebEngine.Report.TestSuiteReport.Passed
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Passed
+  nameWithType: TestSuiteReport.Passed
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.Passed*
+  name: Passed
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Passed_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestSuiteReport.Passed
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Passed
+  nameWithType: TestSuiteReport.Passed
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)
   name: SaveAs(String, String, Boolean)
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_
