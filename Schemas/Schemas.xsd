@@ -46,6 +46,7 @@
   </xs:complexType>
   <xs:complexType name="TestCaseReport">
     <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="TestName" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Log" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="Result" type="tns:Result" />
@@ -73,6 +74,7 @@
   </xs:complexType>
   <xs:complexType name="ActionReport">
     <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="Result" type="tns:Result" />
       <xs:element minOccurs="1" maxOccurs="1" name="StartTime" type="xs:dateTime" />
