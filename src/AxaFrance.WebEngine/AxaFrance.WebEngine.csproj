@@ -16,7 +16,7 @@
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
     <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
-    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
