@@ -14,6 +14,12 @@ namespace AxaFrance.WebEngine.Report
     [XmlRoot(Namespace = GlobalConstants.XmlNamespace)]
     public class TestCaseReport
     {
+
+        /// <summary>
+        /// The unique identifier of the report item, generated automaticaly and used for showing report
+        /// </summary>
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
         /// <summary>
         /// The name of test case
         /// </summary>
