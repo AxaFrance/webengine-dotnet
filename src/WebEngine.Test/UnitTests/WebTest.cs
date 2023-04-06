@@ -41,7 +41,7 @@ namespace WebEngine.Test.UnitTests
         {
             if (driver == null)
             {
-                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
+                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
                 driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
             }
         }
@@ -97,7 +97,7 @@ namespace WebEngine.Test.UnitTests
                 inputBox.SetSecure(password);    //-> Error with Not supported Exception
             } catch
             {
-                
+                return;
             }
             Assert.Fail("no exception if setsecure is used on normal text box");
         }

@@ -297,7 +297,14 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("browserVersion", s.BrowserVersion); //13.0
             }
             //browserstackOptions.Add("seleniumVersion", "4.7.0");             //Same as installed selenium package;
-            options.AddAdditionalOption("bstack:options", browserstackOptions);
+            if (options is AppiumOptions ao)
+            {
+                ao.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
+            }
+            else
+            {
+                options.AddAdditionalOption("bstack:options", browserstackOptions);
+            }
 
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
