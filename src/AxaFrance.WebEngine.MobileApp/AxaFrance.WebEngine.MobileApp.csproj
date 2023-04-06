@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta02" />
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta03" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Selenium.WebDriver" Version="4.8.2" />
   </ItemGroup>
