@@ -292,6 +292,7 @@ namespace AxaFrance.WebEngine.Web
             }
 
             browserstackOptions.Add("browserName", GetBrowserStackBrowserName(s.Browser)); //Safari, InternetExplorer
+            browserstackOptions.Add("deviceName", s.Device);
             if (!string.IsNullOrEmpty(s.BrowserVersion))
             {
                 browserstackOptions.Add("browserVersion", s.BrowserVersion); //13.0
@@ -324,6 +325,10 @@ namespace AxaFrance.WebEngine.Web
                     return "Windows";
                 case Platform.MacOS:
                     return "OS X";
+                case Platform.iOS:
+                    return "ios";
+                case Platform.Android:
+                    return "android";
                 default:
                     return null;
             }
