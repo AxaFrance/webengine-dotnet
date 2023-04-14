@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -155,9 +156,9 @@ namespace AxaFrance.WebEngine.Web
                 remoteServerAddress = "http://localhost:4723/wd/hub";
             }
 
-            DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");
+            DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");           
+            AddPlatformSpecificOptions(remoteServerAddress, s);
             AddAdditionalCapabilities(options, s);
-            AddPlatformSpecificOptions(remoteServerAddress, options, s);
             if (options != null)
             {
                 var capa = options.ToCapabilities();  
@@ -220,9 +221,9 @@ namespace AxaFrance.WebEngine.Web
             {
                 appiumServerAddress = "http://localhost:4723/wd/hub";
             }
-
+            
+            AddPlatformSpecificOptions(appiumServerAddress, s);
             AddAdditionalCapabilities(options, s);
-            AddPlatformSpecificOptions(appiumServerAddress, options, s);
 
             if (s.Platform == Platform.Android)
             {
@@ -250,7 +251,15 @@ namespace AxaFrance.WebEngine.Web
         {
             foreach (var cap in s.Capabilities)
             {
-                options.AddAdditionalAppiumOption(cap.Key, cap.Value);
+                if (cap.Value is JObject jo)
+                {
+                    var dict = jo.ToObject<Dictionary<string, object>>();
+                    options.AddAdditionalAppiumOption(cap.Key, dict);
+                }
+                else
+                {
+                    options.AddAdditionalAppiumOption(cap.Key, cap.Value);
+                }
             }
         }
 
@@ -263,28 +272,38 @@ namespace AxaFrance.WebEngine.Web
         {
             foreach (var cap in s.Capabilities)
             {
-                options.AddAdditionalOption(cap.Key, cap.Value);
+                if (cap.Value is JObject jo)
+                {
+                    var dict = jo.ToObject<Dictionary<string, object>>();
+                    options.AddAdditionalOption(cap.Key, dict);
+                }
+                else
+                {
+                    options.AddAdditionalOption(cap.Key, cap.Value);
+                }
             }
         }
 
-        private static void AddPlatformSpecificOptions(string appiumServerAddress, DriverOptions options, Settings s)
+        private static void AddPlatformSpecificOptions(string appiumServerAddress, Settings s)
         {
             if (appiumServerAddress.IsBrowserStack())
             {
-                AddBrowserStackOptions(options, s);
+                AddBrowserStackOptions(s);
             }
             //Add here the support for other platforms
         }
 
-        private static void AddBrowserStackOptions(DriverOptions options, Settings s)
+        private static void AddBrowserStackOptions(Settings s)
         {
-            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
-            browserstackOptions.Add("userName", s.Username);
-            browserstackOptions.Add("accessKey", s.Password);
+            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>
+            {
+                { "userName", s.Username },
+                { "accessKey", s.Password }
+            };
             var os = GetBrowserStackOSName(s.Platform);
             if (!string.IsNullOrEmpty(os))
             {
-                browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X"
+                browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X", Android, iOS
             }
             if (!string.IsNullOrEmpty(s.OsVersion))
             {
@@ -298,15 +317,6 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("browserVersion", s.BrowserVersion); //13.0
             }
             //browserstackOptions.Add("seleniumVersion", "4.7.0");             //Same as installed selenium package;
-            if (options is AppiumOptions ao)
-            {
-                ao.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
-            }
-            else
-            {
-                options.AddAdditionalOption("bstack:options", browserstackOptions);
-            }
-
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
             if (name != null)
@@ -315,8 +325,28 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("buildName", name.Version.ToString());
                 browserstackOptions.Add("sessionName", name.FullName);
             }
+
+
+            if (s.Capabilities.ContainsKey("bstack:options"))
+            {
+                var dic = s.Capabilities["bstack:options"];
+                if(dic is JObject jo)
+                {
+                    var dictionary = jo.ToObject<Dictionary<string, object>>();
+                    foreach (var kv in dictionary) {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                    //Merge
+                }
+            }
+            s.Capabilities["bstack:options"] = browserstackOptions;
         }
 
+        /// <summary>
+        /// Gets the parameter 'OS' used for browerstack according to platform.
+        /// </summary>
+        /// <param name="platform">Platform name</param>
+        /// <returns>browerstack </returns>
         private static string GetBrowserStackOSName(Platform platform)
         {
             switch (platform)
