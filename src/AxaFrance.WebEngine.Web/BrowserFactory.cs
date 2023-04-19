@@ -290,9 +290,13 @@ namespace AxaFrance.WebEngine.Web
             {
                 AddBrowserStackOptions(s);
             }
-            //Add here the support for other platforms
+            //Add here the support for other platforms such as saucelabs and other customized providers.
         }
 
+        /// <summary>
+        /// Adds specifics options for browserstack platform
+        /// </summary>
+        /// <param name="s">Settings object (which may already contains bstack:options capability)</param>
         private static void AddBrowserStackOptions(Settings s)
         {
             Dictionary<string, object> browserstackOptions = new Dictionary<string, object>
@@ -329,17 +333,21 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Capabilities.ContainsKey("bstack:options"))
             {
+                Console.WriteLine("Merging bstack:options capabilities with values from appsetting.json");
                 var dic = s.Capabilities["bstack:options"];
                 if(dic is JObject jo)
                 {
                     var dictionary = jo.ToObject<Dictionary<string, object>>();
+                    Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
                     foreach (var kv in dictionary) {
                         browserstackOptions[kv.Key] = kv.Value;
                     }
-                    //Merge
+                    
                 }
             }
             s.Capabilities["bstack:options"] = browserstackOptions;
+            Console.WriteLine("bstack:options after merging: " + browserstackOptions.Count);
         }
 
         /// <summary>
