@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home insurance </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!--
+
+    TemplateMo 559 Zay Shop
+
+    https://templatemo.com/tm-559-zay-shop
+
+    -->
+
+</head>
+
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <a class="text-light" href="" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center">
+                Home Insurance - Validate the contract
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- Close Header -->
+    <!-- Start Banner Hero -->
+    <div class="container" style="margin: 50px auto 50px auto; min-height: 500px">
+        <h1 class="h1 text-success">Validate the contract</h1>
+        <div>
+            <p>
+                <b>Licensee Insurance.</b>
+                Throughout the Term and for a period of three (3) years after the Term, Licensee shall, at its sole cost and expense, obtain, pay for, and maintain in full force and effect commercial general liability and professional liability (Errors and Omissions) insurance in commercially reasonable and appropriate amounts that
+            </p>
+            <p>
+                (a) provides product liability coverage concerning the Licensed Products and contractual liability coverage for Licensee’s defense and indemnification obligations under this Agreement, and
+            </p>
+            <p>
+                (b) in any event, provide commercial general liability limits of not less than two million Euros (2,000,000€) and product liability insurance limits of not less than ten million Euros (10,000,000€), in each case as an annual aggregate for all claims each policy year.
+            </p>
+            <p>
+                To the extent any insurance coverage required under this Section 13.1 is purchased on a "claims-made" basis, such insurance must cover all prior acts of Licensee during the Term.
+            </p>
+            <p>
+                Licensee shall have Licensor named in each policy as an additional insured. Upon request by Licensor, Licensee shall provide Licensor with certificates of insurance or other reasonable written evidence of all coverages described in this Section 13.1. Additionally, Licensee shall provide Licensor with written notice at least thirty (30) Business Days prior to Licensee cancelling, not renewing, or materially changing the insurance.
+            </p>
+            <input type="radio" class="form-check-input m-sm-1" name="agreement" id="agreement-yes" value="yes" /><label class="form-check-label m-sm-1" for="ant-yes"> Yes, Customer has read and accept User Agreement and would like to validate this contract.</label>
+        </div>
+
+        <div>
+            <p class="alert-info" id="info">
+            </p>
+            <p class="alert-danger" id="error">
+            </p>
+        </div>
+
+        <div class="fa-pull-right">
+            <button onclick="window.location.href='end.html'">Validate the contact</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- End Banner Hero -->
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2022 AXA France
+                        </p>
+                        <p class="text-left text-light">
+                            This demo application is build with CSS template designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $('#ant-yes').on('click', function () {
+                if ($(this).prop('checked')) {
+                    ant.style.display = 'block';
+                    info.innerText = 'Please fill the details about previous accidents.'
+                }
+            });
+
+            $('#ant-no').on('click', function () {
+                if ($(this).prop('checked')) {
+                    ant.style.display = 'none';
+                    info.innerText = 'Please go to next step.'
+                }
+            });
+        });
+    </script>
+
+    <!-- End Script -->
+</body>
+
+</html>

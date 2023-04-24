@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.ImageComparison;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -11,6 +12,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -86,12 +88,12 @@ namespace AxaFrance.WebEngine.Web
             Settings.Instance.Browser = browserType;
 
             //Merge browser options provided by this function and appsettings.json
-            var optionsFromSettings = Settings.Instance.BrowserOptions.ToList();
+            var arguments = Settings.Instance.BrowserOptions.ToList();
             foreach(var option in browserOptions)
             {
-                if (!optionsFromSettings.Contains(option))
+                if (!arguments.Contains(option))
                 {
-                    optionsFromSettings.Add(option);
+                    arguments.Add(option);
                 }
             }
             
@@ -114,38 +116,43 @@ namespace AxaFrance.WebEngine.Web
             {
                 if (Settings.Instance.GridForDesktop)
                 {
-                    return ConnectToDesktopGrid();
+                    return ConnectToGridUsingRemoteDriver(arguments);
                 }
                 else
                 {
                     switch (browserType)
                     {
                         case BrowserType.Chrome:
-                            return GetChromeDriver(optionsFromSettings);
+                            return GetChromeDriver(arguments);
                         case BrowserType.ChromiumEdge:
-                            return GetEdgeDriver(optionsFromSettings);
+                            return GetEdgeDriver(arguments);
                         case BrowserType.Firefox:
-                            return GetFirefoxDriver(optionsFromSettings);
+                            return GetFirefoxDriver(arguments);
                         case BrowserType.InternetExplorer:
                             return GetIEDriver();
                         case BrowserType.Safari:
-                            return GetSafariDriver(optionsFromSettings);
+                            return GetSafariDriver(arguments);
                         default:
                             throw new PlatformNotSupportedException($"The browser {browserType} is not yet supported by WebEngine Framework.");
                     }
                 }
             }
+            else if(Settings.Instance.UseAppiumForWebMobile)
+            {
+                Settings.Instance.UseJavaScriptClick = true;
+                return ConnectToGridUsingAppiumDriver(arguments);
+            }
             else
             {
                 Settings.Instance.UseJavaScriptClick = true;
-                return ConnectToDevice();
+                return ConnectToGridUsingRemoteDriver(arguments);
             }
         }
 
-        private static WebDriver ConnectToDesktopGrid()
+        private static WebDriver ConnectToGridUsingRemoteDriver(List<string> arguments)
         {
             Settings s = Settings.Instance;
-            var options = GetDriverOption(s.Browser);
+            var options = GetDriverOption(s.Browser, arguments);
             options.PlatformName = s.Platform.ToString();
             options.AddAdditionalOption("newCommandTimeout", 90);
             options.AddAdditionalOption("nativeWebScreenshot", "true");
@@ -170,18 +177,25 @@ namespace AxaFrance.WebEngine.Web
             }
         }
 
-        private static DriverOptions GetDriverOption(BrowserType browser)
+        private static DriverOptions GetDriverOption(BrowserType browser, List<string> arguments)
         {
             switch (browser)
             {
                 case BrowserType.Safari:
-                    return new SafariOptions();
+                    var options = new SafariOptions();
+                    return options;
                 case BrowserType.Chrome:
-                    return new ChromeOptions();
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArguments(arguments);
+                    return chromeOptions;
                 case BrowserType.ChromiumEdge:
-                    return new EdgeOptions();
+                    var edgeOptions= new EdgeOptions();
+                    edgeOptions.AddArguments(arguments);
+                    return edgeOptions;
                 case BrowserType.Firefox:
-                    return new FirefoxOptions();
+                    var firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.AddArguments(arguments);
+                    return firefoxOptions;
             }
             return null;
         }
@@ -196,7 +210,7 @@ namespace AxaFrance.WebEngine.Web
             return driver;
         }
 
-        private static WebDriver ConnectToDevice()
+        private static WebDriver ConnectToGridUsingAppiumDriver(List<string> optionsFromSettings)
         {
             Settings s = Settings.Instance;
             AppiumOptions options = new AppiumOptions()
@@ -228,7 +242,6 @@ namespace AxaFrance.WebEngine.Web
             if (s.Platform == Platform.Android)
             {
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
-
             }
             else if (s.Platform == Platform.iOS)
             {
@@ -294,7 +307,7 @@ namespace AxaFrance.WebEngine.Web
         }
 
         /// <summary>
-        /// Adds specifics options for browserstack platform
+        /// Adds specifics options for browserstack platform. These options will be stored in `bstack:options` capability.
         /// </summary>
         /// <param name="s">Settings object (which may already contains bstack:options capability)</param>
         private static void AddBrowserStackOptions(Settings s)
@@ -330,12 +343,14 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("sessionName", name.FullName);
             }
 
+            string bstackOptions = "bstack:options";
 
-            if (s.Capabilities.ContainsKey("bstack:options"))
+            if (s.Capabilities.ContainsKey(bstackOptions))
             {
-                Console.WriteLine("Merging bstack:options capabilities with values from appsetting.json");
-                var dic = s.Capabilities["bstack:options"];
-                if(dic is JObject jo)
+                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");                
+                var dic = s.Capabilities[bstackOptions];
+                Console.WriteLine($"The type of {bstackOptions} from appsetting.json is {dic.GetType().FullName}");
+                if (dic is JObject jo)
                 {
                     var dictionary = jo.ToObject<Dictionary<string, object>>();
                     Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
@@ -343,10 +358,21 @@ namespace AxaFrance.WebEngine.Web
                     foreach (var kv in dictionary) {
                         browserstackOptions[kv.Key] = kv.Value;
                     }
-                    
+                }else if (dic is Dictionary<string, object> dic2)
+                {
+                    Console.WriteLine("bstack:options from appsetting.json: " + dic2.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dic2)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The type of bstack:options from appsetting.json is not JObject: " + dic.GetType().FullName);
                 }
             }
-            s.Capabilities["bstack:options"] = browserstackOptions;
+            s.Capabilities[bstackOptions] = browserstackOptions;
             Console.WriteLine("bstack:options after merging: " + browserstackOptions.Count);
         }
 

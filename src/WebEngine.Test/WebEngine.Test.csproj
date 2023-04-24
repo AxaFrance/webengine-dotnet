@@ -8,12 +8,15 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="TestData.xml" />
+    <None Remove="TestData\ENV.xml" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="TestData\ENV.xml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="TestData\ENV.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\TestData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -38,9 +41,6 @@
 
   <ItemGroup>
     <None Update="TestData\ApiDemos-debug.apk">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Test.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
