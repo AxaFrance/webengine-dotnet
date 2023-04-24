@@ -1,0 +1,114 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>webengine test page</title>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function GetInput() {
+            var retVal = prompt("Enter your name : ", "name");
+            document.getElementById("inputValue").value = retVal;
+        }
+    </script>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: red;
+        }
+    </style>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.5em">
+    <h1>WebEngine Web Sample HTML</h1>
+    <input type="button" value="OK" id="btnButtonOk" onclick="alert('hello world!')" />
+    <input type="button" value="Confirm" id="btnButtonConfirm" onclick="confirm('hello world? yes or no.')" />
+    <input type="button" value="Input" id="btnButtonInput" onclick="GetInput()" />
+
+    <input type="text" id="inputValue" />
+    <input type="password" id="password" />
+
+    <h3>basic structure and classes</h3>
+    <div class="class1 class2">
+        <div>first line</div>
+        <div>second line</div>
+        <div class="class1 class1-1 class2 very-long-class-name the quick brown fox jumps over a lazy dog">TRUE</div>
+    </div>
+
+    <a href="Step1.html">Start Step 1</a>
+
+    <h3>Drag and Drop</h3>
+    <div draggable="true" id="draggable_element" ondragstart="drag(event)" style="height: 50px; width: 100px; border: 1px solid black">dragable text</div>
+
+    <div id="divDrop1" ondrop="drop(event)" dropzone="move" ondragover="allowDrop(event)" style="background-color: gray; height: 100px; width: 200px; display: inline-block; border: 1px solid red">
+        drag target 1
+    </div>
+
+    <div id="divDrop2" ondrop="drop(event)" dropzone="copy" ondragover="allowDrop(event)" style="background-color: gray; height: 100px; width: 200px; display: inline-block; border: 1px solid green ">
+        drag target 2
+    </div>
+
+    <h3>Hoverable element</h3>
+    <div class="myDIV" id="hover_item">Hover over me.</div>
+    <div class="hide" id="hover_display">I am shown when someone hovers over the div above.</div>
+
+    <h3>Dropdown list "select"</h3>
+    <label for="cars">Choose a car:</label>
+
+    <select name="cars" id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes-Benz</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <h3>Radio Group</h3>
+    <input type="radio" id="html" name="fav_language" value="HTML">
+    <label for="html">HTML</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">JavaScript</label>
+
+    <h3>IFrame</h3>
+    <iframe src="IFrame.html" title="IFrame "></iframe>
+
+    <h3>Checkboxs</h3>
+    <fieldset>
+        <legend>Choose your monster's features:</legend>
+
+        <div>
+            <input type="checkbox" id="scales" name="scales"
+                   checked>
+            <label for="scales">Scales</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="horns" name="horns">
+            <label for="horns">Horns</label>
+        </div>
+    </fieldset>
+
+    <h3>Element not in viewport</h3>
+    <div style="height: 1000px">space holder</div>
+    <div style="height: 1000px">space holder</div>
+    <div custom_name="scroll_intoview">
+        scrolle into view
+    </div>
+
+</body>
+</html>

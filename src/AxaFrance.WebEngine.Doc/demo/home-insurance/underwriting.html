@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home insurance </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!--
+
+    TemplateMo 559 Zay Shop
+
+    https://templatemo.com/tm-559-zay-shop
+
+    -->
+
+</head>
+
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <a class="text-light" href="" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center">
+                Home Insurance - Home details
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- Close Header -->
+    <!-- Start Banner Hero -->
+    <div class="container" style="margin: 50px auto 50px auto">
+        <h1 class="h1 text-success">Fill the home details</h1>
+
+
+        <div class="bg-light container"  style="padding: 20px; border-radius: 20px">
+            <table class="table-active">
+                <tr>
+                    <td colspan="2">
+                        <h2 class="h2 text-capitalize">Home Location</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">Street Number:</span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="streetNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">Street Name:</span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="streetName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">City:</span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="city" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">Post Code:</span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" name="postcode" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">Region:</span>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="region" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="form-label">Country:</span>
+                    </td>
+                    <td>
+                        <select class="form-select" name="country">
+                            <option value="--">-- select --</option>
+                            <option value="fr">France</option>
+                            <option value="ma">Monaco</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p></p>
+
+        <div class="bg-light container" style="padding: 20px; border-radius: 20px">
+            <table class="table-active">
+                <tr>
+                    <td colspan="2">
+                        <h2 class="h2 text-capitalize">Home Details</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <h3 class="h3 text-capitalize">Type of home:</h3>
+
+                    </td>
+                    <td>
+                        <input type="radio" class="form-check-input m-sm-1" name="homeType" id="home-type-appt" value="apartment" /><label class="form-check-label m-sm-1" for="home-type-appt"> Apartment</label>
+                        <input type="radio" class="form-check-input m-sm-1" name="homeType" id="home-type-house" value="house" /><label class="form-check-label m-sm-1" for="home-type-house"> House</label>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table-active" id="house" style="display: none">
+                <tr>
+                    <td colspan="2">
+                        <h3 class="h3 text-capitalize">House caracteristics</h3>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td><span class="form-label">Nomber of floors:</span></td>
+                    <td><input class="form-control" type="number" name="floors" /></td>
+                </tr>
+                <tr>
+                    <td><span class="form-label">Surface of backyard:</span></td>
+                    <td><input class="form-control" type="number" name="surface-backyard" /></td>
+                </tr>
+                <tr>
+                    <td><span class="form-label">Do you have an swimming pool ?</span></td>
+                    <td>
+                        <input type="radio" class="form-check-input m-sm-1" name="pool" id="pool-yes" value="yes" /><label class="form-check-label m-sm-1" for="pool-yes"> Yes</label>
+                        <input type="radio" class="form-check-input m-sm-1" name="pool" id="pool-no" value="no" /><label class="form-check-label m-sm-1" for="pool-no"> No</label>
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <table class="table-active" id="apartment" style="display: none">
+                <tr>
+                    <td colspan="2">
+                        <h3 class="h3 text-capitalize">Apartment Details</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="form-label">Total floors of the building</span></td>
+                    <td>
+                        <select class="form-select" name="total-floors">
+                            <option value="<3">Less than 3 floors</option>
+                            <option value="4to7">Between 4 to 7 floors</option>
+                            <option value="8to11">Between 8 to 11 floors</option>
+                            <option value=">12">More than 12 floors</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="form-label">Your apartment is at (x)th floor:</span></td>
+                    <td><input class="form-control" type="number" name="my-floors" /></td>
+                </tr>
+
+                <tr>
+                    <td><span class="form-label">Do you have an elevator ?</span></td>
+                    <td>
+                        <input type="radio" class="form-check-input m-sm-1" name="elevator" id="elevator-yes" value="yes" /><label class="form-check-label m-sm-1" for="elevator-yes"> Yes</label>
+                        <input type="radio" class="form-check-input m-sm-1" name="elevator" id="elevator-no" value="no" /><label class="form-check-label m-sm-1" for="elevator-no"> No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+            <table id="commun" class="table-active">
+                <tr>
+                    <td><span class="form-label">Nomber of rooms:</span></td>
+                    <td>
+                        <select class="form-select" name="rooms">
+                            <option value="1">1 Room</option>
+                            <option value="2">2 Rooms</option>
+                            <option value="3">3 Rooms</option>
+                            <option value="4">4 Rooms</option>
+                            <option value="5">5+ Rooms</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="form-label">Surface (sq meters):</span></td>
+                    <td><input class="form-control" name="surface" /></td>
+                </tr>
+            </table>
+
+        </div>
+        <div>
+            <p class="alert-info" id="info">
+            </p>
+            <p class="alert-danger" id="error">
+            </p>
+        </div>
+        <div class="fa-pull-right">
+            <button onclick="window.location.href='antecedent.html'">Next Step</button>
+        </div>
+    </div>
+
+    <!-- End Banner Hero -->
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2022 AXA France
+                        </p>
+                        <p class="text-left text-light">
+                            This demo application is build with CSS template designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $('#home-type-appt').on('click', function () {
+                if ($(this).prop('checked')) {
+                    apartment.style.display = 'block';
+                    house.style.display = 'none';
+                }
+            });
+
+            $('#home-type-house').on('click', function () {
+                if ($(this).prop('checked')) {
+                    apartment.style.display = 'none';
+                    house.style.display = 'block';
+                }
+            });
+        });
+    </script>
+
+    <!-- End Script -->
+</body>
+
+</html>

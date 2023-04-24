@@ -64,7 +64,7 @@ namespace WebEngine.Test.UnitTests
                 m.normalButton.Click();
                 m.smallButton.Click();
                 m.toggleButton.Click();
-                driver.Close();
+                driver.Quit();
             }
         }
 

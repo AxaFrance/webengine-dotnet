@@ -5,6 +5,7 @@ using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,17 @@ namespace WebEngine.Test.UnitTests
         {
             var s = Settings.Instance;
             Assert.IsTrue(s.Capabilities != null);
+            var dic = s.Capabilities["other:capability"];
+            if (dic is JObject jo)
+            {
+                var dictionary = jo.ToObject<Dictionary<string, object>>();
+                Assert.AreEqual(2, dictionary.Count);
+            }
+            else
+            {
+                Assert.Fail("other:capability is not a JObject");
+            }
+            
         }
 
         [TestMethod]

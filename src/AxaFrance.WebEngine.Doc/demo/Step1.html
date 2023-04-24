@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test Step1</title>
+    <script>
+        const sleep = async (milliseconds) => {
+            await new Promise(resolve => {
+                return setTimeout(resolve, milliseconds)
+            });
+        };
+
+        const testSleep = async () => {
+            for (let i = 3; i > -1; i--) {
+                await sleep(1000);
+                console.log(i);
+                document.getElementById("info").innerText  = "Redirection in " + i + " second(s)";
+            }
+
+            console.log("The loop is finished :)");
+            window.location.href = "step2.html";
+        }
+
+    </script>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.5em">
+    <h1>Test page - Step 1</h1>
+    <h3>Step 1: Choose your language:</h3>
+    <select id="language" name="language">
+        <option value="ar">عربي</option>
+        <option value="cn">中文</option>
+        <option value="en" selected>English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="gr">Ελληνικά</option>
+        <option value="jp">日本語</option>
+        <option value="kr">한국어</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский</option>
+    </select>
+
+    <h3>Step 2: Choose what you want to buy:</h3>
+    <input type="radio" id="coffee" name="fav_language" value="Coffee"><span>Coffee</span><br />
+    <input type="radio" id="tea" name="fav_language" value="Tea"><span>Tea</span><br />
+    <input type="radio" id="water" name="fav_language" value="Water"><span>Water</span><br />
+
+
+    <h3>Step 3: Goto next page:</h3>
+    <button onclick="testSleep()">Next (3-second-delay)</button>
+    <div id="info"></div>
+
+</body>
+</html>
