@@ -11,6 +11,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -227,8 +228,8 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Platform == Platform.Android)
             {
+                //return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
-
             }
             else if (s.Platform == Platform.iOS)
             {
@@ -330,12 +331,14 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("sessionName", name.FullName);
             }
 
+            string bstackOptions = "bstack:options";
 
-            if (s.Capabilities.ContainsKey("bstack:options"))
+            if (s.Capabilities.ContainsKey(bstackOptions))
             {
-                Console.WriteLine("Merging bstack:options capabilities with values from appsetting.json");
-                var dic = s.Capabilities["bstack:options"];
-                if(dic is JObject jo)
+                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");                
+                var dic = s.Capabilities[bstackOptions];
+                Console.WriteLine($"The type of {bstackOptions} from appsetting.json is {dic.GetType().FullName}");
+                if (dic is JObject jo)
                 {
                     var dictionary = jo.ToObject<Dictionary<string, object>>();
                     Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
@@ -343,10 +346,21 @@ namespace AxaFrance.WebEngine.Web
                     foreach (var kv in dictionary) {
                         browserstackOptions[kv.Key] = kv.Value;
                     }
-                    
+                }else if (dic is Dictionary<string, object> dic2)
+                {
+                    Console.WriteLine("bstack:options from appsetting.json: " + dic2.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dic2)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The type of bstack:options from appsetting.json is not JObject: " + dic.GetType().FullName);
                 }
             }
-            s.Capabilities["bstack:options"] = browserstackOptions;
+            s.Capabilities[bstackOptions] = browserstackOptions;
             Console.WriteLine("bstack:options after merging: " + browserstackOptions.Count);
         }
 
