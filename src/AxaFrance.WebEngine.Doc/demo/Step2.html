@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script>
+        const sleep = async (milliseconds) => {
+            await new Promise(resolve => {
+                return setTimeout(resolve, milliseconds)
+            });
+        };
+
+        const testSleep = async () => {
+            for (let i = 5; i > -1; i--) {
+                await sleep(1000);
+                console.log(i);
+                document.getElementById("info").innerText  = "Redirection in " + i + " second(s)";
+            }
+
+            console.log("The loop is finished :)");
+            window.location.href = "step3.html";
+        }
+
+    </script>
+    <title>Test Step1</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.5em">
+    <h1>Test page - Step 2</h1>
+    <h3>Step 3: Result</h3>
+    <textarea customid="customid-1" style="width: 400px; min-height: 200px; display: block">
+And you are here.
+This is a text area. identify with htmlattribute "customid", then get text via Get() Function
+</textarea>
+
+    <h3>Step 4: Checkbox</h3>
+    <fieldset>
+        <legend>Choose your monster's features:</legend>
+
+        <div>
+            <input type="checkbox" id="scales" name="scales"
+                   checked>
+            <label for="scales">Scales</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="horns" name="horns">
+            <label for="horns">Horns</label>
+        </div>
+    </fieldset>
+
+    <button onclick="testSleep()">Next (5-second-delay)</button>
+    <div id="info"></div>
+
+</body>
+</html>

@@ -37,15 +37,15 @@ namespace WebEngine.Test.UnitTests
         {
             var s = Settings.Instance;
             Assert.IsTrue(s.Capabilities != null);
-            var dic = s.Capabilities["bstack:options"];
+            var dic = s.Capabilities["other:capability"];
             if (dic is JObject jo)
             {
                 var dictionary = jo.ToObject<Dictionary<string, object>>();
-                Assert.AreEqual(4, dictionary.Count);
+                Assert.AreEqual(2, dictionary.Count);
             }
             else
             {
-                Assert.Fail("bstack:options is not a JObject");
+                Assert.Fail("other:capability is not a JObject");
             }
             
         }
