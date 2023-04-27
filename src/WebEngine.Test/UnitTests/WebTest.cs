@@ -42,7 +42,7 @@ namespace WebEngine.Test.UnitTests
             if (driver == null)
             {
                 driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
-                driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             }
         }
 
@@ -358,7 +358,7 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ScrollIntoView()
         {
-            driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             var customDiv = new WebElementDescription(driver)
             {
                 Attributes = new HtmlAttribute[]
@@ -414,7 +414,7 @@ namespace WebEngine.Test.UnitTests
             }
             catch
             {
-                driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                 throw;
             }
         }

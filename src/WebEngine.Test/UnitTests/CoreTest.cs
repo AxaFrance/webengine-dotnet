@@ -66,7 +66,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome, new string[] { "incognito" }))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                 driver.Quit();
             }
         }
@@ -76,7 +76,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                  driver.Quit();
             }
         }
