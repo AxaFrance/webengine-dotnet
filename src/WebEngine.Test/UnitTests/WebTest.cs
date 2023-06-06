@@ -135,6 +135,8 @@ namespace WebEngine.Test.UnitTests
                 ClassName = "class1 class2"
             };
             var element = desc.GetText();
+
+
             Assert.IsTrue(element.Contains("first line"));
             Assert.IsTrue(element.Contains("second line"));
         }
@@ -147,6 +149,8 @@ namespace WebEngine.Test.UnitTests
                 CssSelector = "#divDrop2",
             };
             var element = desc.GetText();
+
+
             Assert.IsTrue(element.Contains("drag target 2"));
         }
 
@@ -229,6 +233,8 @@ namespace WebEngine.Test.UnitTests
                     new HtmlAttribute("value", "Confirm")
                 },
             };
+
+
             desc.Click();
             driver.SwitchTo().Alert().Dismiss();
         }
