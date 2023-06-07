@@ -4,9 +4,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
+using System.Xml;
 using System.Xml.Serialization;
+using System.Xml.Xsl;
 
 namespace AxaFrance.WebEngine.Report
 {
@@ -20,7 +25,7 @@ namespace AxaFrance.WebEngine.Report
         /// Generates JUnit test result format from standard WebEngine report
         /// </summary>
         /// <param name="report">WebEngine report</param>
-        /// <param name="testname">The name of the test</param>
+        /// <param name="testname">The name of the test suite</param>
         /// <param name="outputPath">The directory where the report should be generated.</param>
         public static string GenerateJUnitReport(TestSuiteReport report, string testname, string outputPath)
         {
@@ -81,6 +86,73 @@ namespace AxaFrance.WebEngine.Report
             }
 
             return reportFullPath;
+        }
+
+        /// <summary>
+        /// Generates HTML report from standard WebEngine report
+        /// </summary>
+        /// <param name="report">WebEngine report</param>
+        /// <param name="testname">The name of the test suite</param>
+        /// <param name="outputPath">The directory where the report should be generated</param>
+        /// <returns></returns>
+        public static string GenerateHtmlReport(TestSuiteReport report, string testname, string outputPath)
+        {
+            var assetFolder = ExtractResource("html-report.zip");
+            var xslt = Path.Combine(assetFolder, "xslt", "index.xslt");
+            //conver report to xml and transform to html with xslt
+            string xmlContent = Serialize<TestSuiteReport>(report);
+            string htmlContent = TransformXSLT(xmlContent, xslt);
+            Directory.CreateDirectory(outputPath);
+            string reportFullPath = Path.Combine(outputPath, $"{testname}.html");
+            using (StreamWriter sw = new StreamWriter(reportFullPath))
+            {
+                sw.Write(htmlContent);
+            }
+            //copy assets files from assetfolder to output path
+            var path = Path.Combine(assetFolder, "assets");
+            foreach (var file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+            {
+                string relativePath = file.Substring(assetFolder.Length + 1);
+                string targetPath = Path.Combine(outputPath, relativePath);
+                Directory.CreateDirectory(Path.GetDirectoryName(targetPath));
+                File.Copy(file, targetPath, true);
+            }
+            return reportFullPath;
+        }
+
+        private static string TransformXSLT(string xmlContent, string xslt)
+        {
+            XslCompiledTransform transformer = new XslCompiledTransform();
+            transformer.Load(xslt);
+            var xmlDoc = XDocument.Parse(xmlContent);
+            var htmlDoc = new XDocument();
+
+            using (XmlReader junit = xmlDoc.CreateReader())
+            {
+                using (XmlWriter html = htmlDoc.CreateWriter())
+                {
+                    transformer.Transform(junit, html);
+                }
+            }
+            string result = htmlDoc.ToString();
+            return result;
+        }
+
+        private static string ExtractResource(string resourceName)
+        {
+            Assembly assembly = typeof(ReportHelper).Assembly;
+            string[] names = assembly.GetManifestResourceNames();
+            string name = names.FirstOrDefault(x => x.EndsWith(resourceName, StringComparison.InvariantCultureIgnoreCase));
+            if (name == null) throw new FileNotFoundException($"Resource {resourceName} not found in assembly {assembly.FullName}");
+            using (Stream stream = assembly.GetManifestResourceStream(name))
+            {
+                using(ZipArchive archive = new ZipArchive(stream))
+                {
+                    string outputPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                    archive.ExtractToDirectory(outputPath);
+                    return outputPath;
+                }
+            }
         }
 
         private static string Serialize<T>(T jr)

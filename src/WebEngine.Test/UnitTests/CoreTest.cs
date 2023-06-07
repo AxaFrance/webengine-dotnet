@@ -7,6 +7,7 @@ using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 
@@ -48,6 +49,14 @@ namespace WebEngine.Test.UnitTests
                 Assert.Fail("other:capability is not a JObject");
             }
             
+        }
+
+        [TestMethod]
+        public void HtmlReport()
+        {
+            var report = ReportHelper.LoadReport("TestData\\SampleReport.xml", out _);
+            var htmlFile = ReportHelper.GenerateHtmlReport(report, "Test", Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));
+            Assert.IsTrue(File.Exists(htmlFile));
         }
 
         [TestMethod]

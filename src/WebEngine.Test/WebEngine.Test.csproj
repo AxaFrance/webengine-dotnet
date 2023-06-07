@@ -9,12 +9,16 @@
     <None Remove="appsettings.json" />
     <None Remove="TestData.xml" />
     <None Remove="TestData\ENV.xml" />
+    <None Remove="TestData\SampleReport.xml" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="TestData\ENV.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\SampleReport.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\TestData.xml">
