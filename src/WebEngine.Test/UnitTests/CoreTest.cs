@@ -7,6 +7,7 @@ using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 
@@ -51,6 +52,14 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
+        public void HtmlReport()
+        {
+            var report = ReportHelper.LoadReport("TestData\\SampleReport.xml", out _);
+            var htmlFile = ReportHelper.GenerateHtmlReport(report, "Test", Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));
+            Assert.IsTrue(File.Exists(htmlFile));
+        }
+
+        [TestMethod]
         public void LoadTestSuiteData()
         {
             string filename = TestSuiteData.LoadFrom("TestData\\TestData.xml");
@@ -66,7 +75,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome, new string[] { "incognito" }))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                 driver.Quit();
             }
         }
@@ -76,7 +85,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                  driver.Quit();
             }
         }

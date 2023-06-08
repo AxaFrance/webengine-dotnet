@@ -43,6 +43,12 @@ namespace AxaFrance.WebEngine.Runner
                     DebugLogger.WriteLine("JUnit Report Generated: " + jReport);
                 }
 
+                if (settings.ReportSettings.HtmlReport)
+                {
+                    var htmlReport = ReportHelper.GenerateHtmlReport(result, settings.DataSourceName, settings.ReportSettings.HtmlReportPath);
+                    DebugLogger.WriteLine("HTML Report Generated: " + htmlReport);
+                }
+
                 var reportPath = result.SaveAs(settings.LogDir, logFileName, false);
                 DebugLogger.WriteLine("Report Generated: " + reportPath);
                 try
@@ -68,7 +74,7 @@ namespace AxaFrance.WebEngine.Runner
         private static void ShowHelpMessage()
         {
             Console.WriteLine("Parameter error.");
-            Console.WriteLine("Please refers to documentation: https://xxx.xxx.xxx/articles/webrunner.html");
+            Console.WriteLine("Please refers to documentation: https://axafrance.github.io/webengine-dotnet/articles/webrunner.html");
         }
 
         private static void Encrypt(string data)

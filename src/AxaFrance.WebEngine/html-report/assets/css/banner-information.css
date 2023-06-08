@@ -1,0 +1,10 @@
+.general-information {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 7%;
+    padding: 0px;
+    color: gray;
+    border-bottom: 1px solid #D7DBDD;
+}

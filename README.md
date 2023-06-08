@@ -40,5 +40,7 @@ Feel free to reach us if you want to adopt the Framework, report Bugs, or have g
 + Main contributor: Huaxing YUAN [<img src="src/AxaFrance.WebEngine.Doc/images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="src/AxaFrance.WebEngine.Doc/images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 #### Repository Java Project:
-+ Project ongoing
-+ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)
++ https://github.com/AxaFrance/webengine-java
++ Main contributor:
+    + Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepharul82)
+    + Jean-Prince DOTOU-SEGLA [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/JeanPrince)

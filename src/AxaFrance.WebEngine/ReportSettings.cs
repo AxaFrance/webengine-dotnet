@@ -32,6 +32,16 @@ namespace AxaFrance.WebEngine
         /// The location of the NUnit report. (default location will be <see cref="Settings.LogDir"/>)
         /// </summary>
         public string NUnitReportPath { get; set; }
+        
+        /// <summary>
+        /// Indicates if a HTML report should be generated after test execution
+        /// </summary>
+        public bool HtmlReport { get;  set; }
+        
+        /// <summary>
+        /// The location of the HTML report. (default location will be <see cref="Settings.LogDir"/>)
+        /// </summary>
+        public string HtmlReportPath { get;  set; }
     }
 
 }

@@ -12,11 +12,8 @@ using OpenQA.Selenium;
 
 namespace Samples.LinearScripting
 {
-    public class MyPageModel : PageModel
+    public class DrinkSelectionPageModel : PageModel
     {
-        public MyPageModel(WebDriver driver) : base(driver)
-        {
-        }
 
         //Choose Language
         public WebElementDescription SelectLanguage = new WebElementDescription
@@ -46,5 +43,10 @@ namespace Samples.LinearScripting
             TagName = "h1",
             InnerText = "Test page - Step 2"
         };
+
+        public DrinkSelectionPageModel(WebDriver driver) : base(driver)
+        {
+        }
+
     }
 }

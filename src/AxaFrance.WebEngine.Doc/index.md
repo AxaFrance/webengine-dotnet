@@ -57,5 +57,8 @@ Feel free to reach us if you want to adopt the Framework, report Bugs or have go
 + Main contributor: Huaxing YUAN [<img src="images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 ### Repository Java Project:
-+ *[Will be available soon]*
-+ Main contributor: Joseph ARUL [<img src="images/github.svg" width="16" />](https://github.com/josepha26)
++ https://github.com/AxaFrance/webengine-java
+    + Main contributor: Joseph ARUL [<img src="images/github.svg" width="16" />](https://github.com/josepharul82),
+    Jean-Prince DOTOU-SEGLA [<img src="images/github.svg" width="16" />](https://github.com/JeanPrince),
+
+

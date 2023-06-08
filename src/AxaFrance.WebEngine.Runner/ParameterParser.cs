@@ -72,9 +72,18 @@ namespace AxaFrance.WebEngine.Runner
                 s.ReportSettings.JUnitReport = true;
                 s.ReportSettings.JUnitReportPath = outputPath;
                 DebugLogger.WriteLine("[CONFIG] Generated JUnit Report: " + s.ReportSettings.JUnitReportPath);
-
             }
 
+            const string argHtml = "-html:";
+            string html = args.FirstOrDefault(x => x.StartsWith(argHtml, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrEmpty(html))
+            {
+                string outputPath = html.Replace(arg, string.Empty);
+                outputPath = outputPath.TrimEnd('\"');
+                s.ReportSettings.HtmlReport = true;
+                s.ReportSettings.HtmlReportPath = outputPath;
+                DebugLogger.WriteLine("[CONFIG] Generated HTML Report: " + s.ReportSettings.HtmlReportPath);
+            }
         }
 
 
