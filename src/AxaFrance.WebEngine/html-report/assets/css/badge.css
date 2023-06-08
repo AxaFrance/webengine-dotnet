@@ -1,0 +1,38 @@
+.badge{
+    border-radius: 0rem !important;
+}
+
+.badge-container{
+    margin-right: 5px;
+}
+
+.badge-action{
+    color: #ffffff !important;
+    background-color: #000072 !important;
+    font-weight: bold !important;
+    border: 1px solid #CCD1D1;
+    font-size: 14px !important;
+}
+
+.badge-action-green{
+    color: #27AE60 !important;
+}
+
+.badge-action-red{
+    color: #E74C3C !important;
+}
+
+.badge-action-blue{
+    color: #3498DB !important;
+}
+
+.badge-action-gray{
+    color: #CCD1D1 !important;
+}
+
+.badge-action-hover:hover{
+    cursor: pointer;
+    background-color: white !important;
+    color:gray !important;
+}
+

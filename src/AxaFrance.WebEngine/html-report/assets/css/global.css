@@ -1,0 +1,134 @@
+/* Layout */
+html {
+    display: flex;
+    flex-direction: column;
+}
+
+/* IE fix */
+
+body {
+    display: flex; /* crée un contexte flex pour ses enfants */
+    flex-direction: column; /* affichage vertical */
+    min-height: 100vh; /*toute la hauteur du viewport (compatible IE9+) */
+    margin: 0;
+    background: #fff;
+    font-family: Source Sans Pro, sans-serif;
+    font-size: 14px !important;
+    height: 100%;
+    width: 100%;
+}
+
+section {
+    background: white;
+    color: gray;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: fixed;
+}
+
+.common-font {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 600;
+    line-height: 2;
+    color: #515a5a;
+}
+
+.title {
+    color: #F1948A;
+}
+
+.label-in-tab {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.shadow {
+    -webkit-box-shadow: 10px 11px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 10px 11px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 11px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.selected-line {
+    color: #000072!important;
+}
+
+a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+
+/* ***********************scrollbar*********************** */
+#style-srollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-srollbar::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+#style-srollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #D62929;
+}
+
+/* ***********************footer*********************** */
+footer {
+    background: #F8F9F9;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #7F8C8D;
+}
+
+/* ***********************Responsive*********************** */
+
+@media (max-width: 640px) {
+    body {
+        min-height: 0;
+    }
+
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .content {
+        flex-basis: auto;
+    }
+
+    nav {
+        width: auto;
+        order: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -123,19 +123,21 @@ namespace AxaFrance.WebEngine.Report
         private static string TransformXSLT(string xmlContent, string xslt)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
+            
             transformer.Load(xslt);
             var xmlDoc = XDocument.Parse(xmlContent);
-            var htmlDoc = new XDocument();
-
+            var arguments = new XsltArgumentList();
             using (XmlReader junit = xmlDoc.CreateReader())
             {
-                using (XmlWriter html = htmlDoc.CreateWriter())
+                using (MemoryStream html = new MemoryStream())
                 {
-                    transformer.Transform(junit, html);
+                    transformer.Transform(junit, arguments,  html);
+                    html.Flush();
+                    string result = Encoding.UTF8.GetString(html.ToArray());
+                    return result;
+
                 }
             }
-            string result = htmlDoc.ToString();
-            return result;
         }
 
         private static string ExtractResource(string resourceName)
