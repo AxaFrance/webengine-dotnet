@@ -117,7 +117,41 @@ namespace AxaFrance.WebEngine.Report
                 Directory.CreateDirectory(Path.GetDirectoryName(targetPath));
                 File.Copy(file, targetPath, true);
             }
+
+            //copy images to img folder
+            var imgPath = Path.Combine(outputPath, "assets", "img");
+            Directory.CreateDirectory(imgPath);
+            foreach(ScreenshotReport img in GetScreenshots(report))
+            {
+                string targetPath = Path.Combine(imgPath, img.Id + ".jpg");
+                File.WriteAllBytes(targetPath, img.Data);
+            }
             return reportFullPath;
+        }
+
+        private static IEnumerable<ScreenshotReport> GetScreenshots(TestSuiteReport report)
+        {
+            List<ScreenshotReport> screenshots = new List<ScreenshotReport>();
+            foreach(var tc in report.TestResult)
+            {
+                foreach(var a in tc.ActionReports)
+                {
+                    GetScreenshots(a, screenshots);
+                }
+            }
+            return screenshots;
+        }
+
+        private static void GetScreenshots(ActionReport a, List<ScreenshotReport> screenshots)
+        {
+            a.Screenshots.ForEach(x => screenshots.Add(x));
+            if(a.SubActionReports != null)
+            {
+                foreach(var sa in a.SubActionReports)
+                {
+                    GetScreenshots(sa, screenshots);
+                }
+            }
         }
 
         private static string TransformXSLT(string xmlContent, string xslt)

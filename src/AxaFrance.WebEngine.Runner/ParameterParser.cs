@@ -72,7 +72,6 @@ namespace AxaFrance.WebEngine.Runner
                 s.ReportSettings.JUnitReport = true;
                 s.ReportSettings.JUnitReportPath = outputPath;
                 DebugLogger.WriteLine("[CONFIG] Generated JUnit Report: " + s.ReportSettings.JUnitReportPath);
-
             }
 
         }
