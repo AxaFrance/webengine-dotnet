@@ -68,40 +68,46 @@ WebRunner.exe "-a:AppProject.dll" "-data:Data.xml" "-env:Staging.xml" -platform:
 > Some parameters can be provided in the configuration file `appsettings.json` for C# and `application-properties.yml` for JAVA. please refer to [Test Configuration](appsettings.md)
 
 ### Commun parameters
-##### -browser:\<browser>
+#### -browser:\<browser>
 Specifies the browser on which to run test. see: <xref:AxaFrance.WebEngine.BrowserType>.
-##### -platform:\<platform>
+#### -platform:\<platform>
 Specifies The platform for test execution: see: <xref:AxaFrance.WebEngine.Platform>. Default value is `Windows`.
-##### -outputDir:\<outputFolder>
+#### -outputDir:\<outputFolder>
 Specifies the folder to store output of test execution and test report. This parameter is can be defined in `appsetting.json` for C# and `application-properties.yml` for JAVA.
-##### -m
+
+#### -m
 Specifies the manual debug mode. Use this mode for debugging test scenarios locally. When the test is failed test will pause for manual intervention before clean-up process.
-##### -junit:\<junitPath>
+
+#### -junit:\<junit-report-path>
 In additional of default XML report, generates a JUnit 2.6 compliant test report. Useful to publish test result to a Continuous Integration Platform
-##### -showReport
+
+#### -html:\<html-report-path>
+In additional of default XML report, generates a HTML test report. Test report will be generated in the given folder. HTML report contains also css, javascript and screenshot files. If you want the share the report, you have to copy the whole folder.
+
+#### -showReport
 Launches `Report Viewer` after test execution.
 
 ### Parameters for Mobile testing
 To run tests on Mobile device, `-platform`, you should specify the following arguments `Android` or `iOS`.
 
-##### -grid:\<gridUrl>
+#### -grid:\<gridUrl>
 Indicates the Selenium Grid to connect to device cloud. Default value is `http://localhost:4723/wd/hub` for local Appium Server
 If you are using cloud-based device cloud, please refer to service providers documentation.
 If the argument is provided, option `desktopGrid` will be automatically set to `true`
 
-##### -desktopGrid
+#### -desktopGrid
 This option activates the usage of Selenium Grid for Web Desktop tests. If the value is false, the framework only use selenium grid for mobile based tests.
 
-##### -username:\<username>
+#### -username:\<username>
 Indicates the username to be used for Selenium Grid authentication.
 
-##### -password:\<password>
+#### -password:\<password>
 Indicates the password to be used for Selenium Grid authentication.
 
-##### -device:\<deviceName>
+#### -device:\<deviceName>
 Indicates the device name for device selection. for example: `iPhone Xs`, `Huawei P30`. Refers your cloud provider.
 
-##### -osVersion:\<version>
+#### -osVersion:\<version>
 Indicate the version of the OS for device selection. for example: `14.1`, `9.0`. Refers your cloud provider.
 
 ### Where to find WebRunner package?
