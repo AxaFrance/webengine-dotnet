@@ -42,7 +42,7 @@ namespace WebEngine.Test.UnitTests
             if (driver == null)
             {
                 driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
-                driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             }
         }
 
@@ -135,6 +135,8 @@ namespace WebEngine.Test.UnitTests
                 ClassName = "class1 class2"
             };
             var element = desc.GetText();
+
+
             Assert.IsTrue(element.Contains("first line"));
             Assert.IsTrue(element.Contains("second line"));
         }
@@ -147,6 +149,8 @@ namespace WebEngine.Test.UnitTests
                 CssSelector = "#divDrop2",
             };
             var element = desc.GetText();
+
+
             Assert.IsTrue(element.Contains("drag target 2"));
         }
 
@@ -229,6 +233,8 @@ namespace WebEngine.Test.UnitTests
                     new HtmlAttribute("value", "Confirm")
                 },
             };
+
+
             desc.Click();
             driver.SwitchTo().Alert().Dismiss();
         }
@@ -358,7 +364,7 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ScrollIntoView()
         {
-            driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             var customDiv = new WebElementDescription(driver)
             {
                 Attributes = new HtmlAttribute[]
@@ -414,7 +420,7 @@ namespace WebEngine.Test.UnitTests
             }
             catch
             {
-                driver.Navigate().GoToUrl("http://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                 throw;
             }
         }

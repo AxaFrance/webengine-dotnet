@@ -17,7 +17,7 @@ namespace Samples.LinearScripting
             driver = AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(
                 AxaFrance.WebEngine.Platform.Windows,
                 AxaFrance.WebEngine.BrowserType.Chrome);
-            driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/Step1.html");
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Step1.html");
         }
 
 
@@ -34,19 +34,15 @@ namespace Samples.LinearScripting
         [TestMethod]
         public void TestMethod1()
         {
-            //initialize the page model with current driver
+            driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Step1.html");
             MyPageModel page = new MyPageModel(driver);
 
-            //choose the option by value="fr" in the select
             page.SelectLanguage.SelectByValue("fr");
-            //choose the radiobutton where the value is "Coffee"
             page.RadioChooseToBuy.CheckByValue("Coffee");
-            //click on the Next button
             page.NextButton.Click();
 
-            //Verify if the current page title is page 2 
             Assert.IsTrue(page.Page2Title.Exists());
-            //The above assertion will not fail because exists will wait until the second page has loaded within the timeout
 
         }
     }

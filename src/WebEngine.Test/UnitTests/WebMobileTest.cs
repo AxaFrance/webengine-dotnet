@@ -27,7 +27,7 @@ namespace WebEngine.Test.UnitTests
         public static void Initialize(TestContext context)
         {
             driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
-            driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
         }
 
 

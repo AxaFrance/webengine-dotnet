@@ -260,7 +260,7 @@ namespace AxaFrance.WebEngine.Web
             {
                 if (elements != null)
                 {
-                    elements = elements.Where(x => x.Text == InnerText);
+                    elements = elements.Where(x => x.GetDomProperty("innerText") == InnerText);
                 }
                 else
                 {
