@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
+using System.Runtime.InteropServices;
 
 namespace AxaFrance.WebEngine.Report
 {
@@ -97,6 +98,9 @@ namespace AxaFrance.WebEngine.Report
         /// <returns></returns>
         public static string GenerateHtmlReport(TestSuiteReport report, string testname, string outputPath)
         {
+#if NET
+            AppContext.SetSwitch("Switch.System.Xml.AllowDefaultResolver", true);
+#endif
             var assetFolder = ExtractResource("html-report.zip");
             var xslt = Path.Combine(assetFolder, "xslt", "index.xslt");
             //conver report to xml and transform to html with xslt
