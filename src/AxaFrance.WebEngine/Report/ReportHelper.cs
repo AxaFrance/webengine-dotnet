@@ -127,7 +127,7 @@ namespace AxaFrance.WebEngine.Report
             Directory.CreateDirectory(imgPath);
             foreach(ScreenshotReport img in GetScreenshots(report))
             {
-                string targetPath = Path.Combine(imgPath, img.Id + ".jpg");
+                string targetPath = Path.Combine(imgPath, img.Id + ".png");
                 File.WriteAllBytes(targetPath, img.Data);
             }
             return reportFullPath;
