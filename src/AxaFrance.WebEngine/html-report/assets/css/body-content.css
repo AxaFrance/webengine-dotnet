@@ -3,38 +3,33 @@
     justify-content: space-between;
     padding: 10px;
     color: gray;
-    height: 83%;
-    background-color: #F8F9F9;
+    height: 78%;
 }
 
-.body-left-container{
+.body-left-container {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     width: 40%;
     height: 100%;
-    overflow: auto;
-    background-color: #ffffff;
+    background-color: white;
     position: relative;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
     border: 1px solid #e7e9eb;
 }
 
-.body-right-container{
+.body-right-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
-    /*border: 1px solid #0d8bf2;*/
     height: 100%;
     width: 60%;
-    background-color: #ffffff;
+    background-color: white;
     position: relative;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
     margin-left: 20px;
-    overflow: auto;
     border: 1px solid #e7e9eb;
 }
 
-.body-right-container-class{
+.body-right-container-class {
 }
+
