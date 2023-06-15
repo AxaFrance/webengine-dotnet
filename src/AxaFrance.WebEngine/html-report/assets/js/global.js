@@ -31,6 +31,13 @@ function hideElement(className){
     }
 }
 
+function openTestResultContent(event,idTab) {
+    changeColorOfSelectedElement(event);
+    hideElement('body-right-container-class');
+    showElement(idTab);
+    openSelectedTab('tab-id-information-'+idTab,'content-id-information-'+idTab);
+}
+
 function unSelectedAllTab(className){
     let i;
     let tablinks = document.getElementsByClassName(className);
