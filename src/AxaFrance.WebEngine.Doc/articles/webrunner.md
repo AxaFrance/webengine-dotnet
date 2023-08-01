@@ -12,13 +12,13 @@ webrunner "-a:<testproject>" [-data:<testdata>] [-env:<env_ariable>] [-browser:<
 ```
 # [Java](#tab/java)
 ```batch
-java -jar webrunner.jar "-a:<testproject>" [-data:<testdata>] [-env:<env_ariable>] [-browser:<browser-type>] [optional_arguments]
+java -jar MyProject.jar [-data:<testdata>] [-env:<env_ariable>] [-browser:<browser-type>] [optional_arguments]
 ```
 ***
 
 ## Prerequisites
 To run tests build with WebEngine Framework, you have to provide compiled test automation solution.
-* `-a:<testproject>`: the filename or full path of compiled test project: DLL library for .NET or a JAR package for Java.
+* `-a:<testproject>`: the filename or full path of compiled test project: DLL library for .NET.
 
 If your solution use Data-Driven approach, it is required to provide at least one of following files:
 * `-data:<testdata>`: Test Data to be used for data-driven test execution, in XML format. The file can be exported via `Excel Add-in`
@@ -36,7 +36,7 @@ WebRunner.exe "-a:MyProject.dll" "-data:Data.xml" "-env:Staging.xml" "-browser:F
 
 # [Java](#tab/java)
 ```batch
-java -jar webrunner.jar "-a:project.jar" "-data:Data.xml" "-env:Staging.xml" "-browser:Firefox" "-outputDir:C:\Temp"
+java -jar MyProject.jar "-data:Data.xml" "-env:Staging.xml" "-browser:Firefox" "-outputDir:C:\Temp"
 ```
 ***
 
@@ -51,7 +51,7 @@ WebRunner.exe "-a:MyProject.dll" "-data:Data.xml" "-env:Env.xml" "-platform:Andr
 
 # [Java](#tab/java)
 ```batch
-java -jar webrunner.jar "-a:MyProject.jar" "-data:Data.xml" "-env:Env.xml" "-platform:Android" "-browser:Chrome" "-device:Emulator" "-outputDir:C:\Temp"
+java -jar MyProject.jar "-data:Data.xml" "-env:Env.xml" "-platform:Android" "-browser:Chrome" "-device:Emulator" "-outputDir:C:\Temp"
 ```
 ***
 
@@ -65,7 +65,11 @@ WebRunner.exe "-a:AppProject.dll" "-data:Data.xml" "-env:Staging.xml" -platform:
 ## Optional parameters
 
 > [!NOTE]
-> Some parameters can be provided in the configuration file `appsettings.json` for C# and `application-properties.yml` for JAVA. please refer to [Test Configuration](appsettings.md)
+> Some parameters can be provided in the configuration file `appsettings.json` for C# and `application-properties.yml` for JAVA.
+
+> Please refer to [Test Configuration C#](appsettings.md) for C#
+
+> Please refer to [Test Configuration JAVA](appsettings-java.md) for Java
 
 ### Commun parameters
 #### -browser:\<browser>
