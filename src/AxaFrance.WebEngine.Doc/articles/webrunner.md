@@ -77,7 +77,7 @@ Specifies the browser on which to run test. see: <xref:AxaFrance.WebEngine.Brows
 #### -platform:\<platform>
 Specifies The platform for test execution: see: <xref:AxaFrance.WebEngine.Platform>. Default value is `Windows`.
 #### -outputDir:\<outputFolder>
-Specifies the folder to store output of test execution and test report. This parameter is can be defined in `appsetting.json` for C# and `application-properties.yml` for JAVA.
+Specifies the folder to store output of test execution and test report. This parameter is can be defined in `appsetting.json` for C# and `application.yml` for JAVA.
 
 #### -m
 Specifies the manual debug mode. Use this mode for debugging test scenarios locally. When the test is failed test will pause for manual intervention before clean-up process.
