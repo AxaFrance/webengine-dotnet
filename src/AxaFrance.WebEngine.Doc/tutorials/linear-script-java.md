@@ -18,7 +18,7 @@ Other components of WebEngine Framework is not used.
 ## Steps to build Test Automation Solution using Linear Scripting
 ### Step 1: Create a Test Project
 
-First, you need to install :JDK 8, maven and lombok
+Prerequisites for linear Approach : JDK 8, maven and lombok
 
 Then, create a simple project or you can clone this sample project.
 
@@ -110,20 +110,7 @@ public class SampleTest {
         WebDriver driver = optionalWebdriver.get();
         driver.quit();
     }
-
-    @Test
-    public void linearApproachWithPageModel() throws Exception {
-        String baseUrl = "https://axafrance.github.io/webengine-dotnet/demo/Step1.html";
-        if(optionalWebdriver.isPresent()){
-            WebDriver driver = optionalWebdriver.get();
-            driver.get(baseUrl);
-            Page page = new Page(driver);
-            page.getLanguage().selectByText("Français");
-            page.getCoffeeRadio().click();
-            page.getNextStep().click();
-            Assertions.assertTrue(page.getPageStep2().exists());
-        }
-    }
+    
 }
 
 ```
@@ -153,26 +140,44 @@ Instead of using native selenium commands, it is recommended to use actions impl
 most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter `NoSuchElementException` and `StaleElementReferenceException`.
 
 Using PageModel, you can fill the function TestMethod1 with following code snippet
-```csharp
-//initialize the page model with current driver
-MyPageModel page = new MyPageModel(driver);
+```java
+public class SampleTest {
 
-//choose the option by value="fr" in the select
-page.getLanguage().selectByText("Français");
-//choose the radiobutton where the value is "Coffee"
-page.getCoffeeRadio().click();
-//click on the Next button
-page.getNextStep().click();
+    private Optional<WebDriver> optionalWebdriver;
 
-//Verify if the current page title is page 2 
-Assertions.assertTrue(page.getPageStep2().exists());
-//The above assertion will not fail because exists will wait until the second page has loaded within the timeout
+    @BeforeEach
+    public void setup() throws Exception {
+        optionalWebdriver =  BrowserFactory.getWebDriver("Windows", "Chrome", Arrays.asList("--remote-allow-origins=*"));
+    }
+
+    @AfterEach
+    void tearDown() {
+        WebDriver driver = optionalWebdriver.get();
+        driver.quit();
+    }
+
+    @Test
+    public void linearApproachWithPageModel() throws Exception {
+        String baseUrl = "https://axafrance.github.io/webengine-dotnet/demo/Step1.html";
+        if(optionalWebdriver.isPresent()){
+            WebDriver driver = optionalWebdriver.get();
+            driver.get(baseUrl);
+            Page page = new Page(driver);
+            page.getLanguage().selectByText("Français");
+            page.getCoffeeRadio().click();
+            page.getNextStep().click();
+            Assertions.assertTrue(page.getPageStep2().exists());
+        }
+    }
+}
 
 ```
 
 ### Run tests
-To run the test case, open Test -> Test Explorer and select the test case we have just coded to run:
+To run the test case, click to the play button:
+![](../images/java/linear/run-linear-test.png)
 
+Below the result
 ![Run Test](../images/java/linear/linear-result.png)
 
 
