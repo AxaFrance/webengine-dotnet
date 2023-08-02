@@ -273,3 +273,9 @@ Run :
 
 Result :
 ![](../images/java/gherkin/result-test-case.png)
+
+> [!NOTE]
+> The source code of this exercise can be found in our Github repository.
+> Project Name: sample-gerkhin-webengine
+> https://github.com/AxaFrance/webengine-java/sample-gerkhin-webengine
+

@@ -23,9 +23,7 @@ JDK 8, maven and lombok
 
 ### Step 2: Create a Test Project
 
-Create a simple maven project or you can clone this sample project.
-
-https://github.com/AxaFrance/webengine-java/sample-test-linear
+Create a simple maven project.
 
 Open pom.xml paste below code 
 
@@ -230,4 +228,5 @@ Now you can continue automatizing this scenario to the end by:
 > [!NOTE]
 > The source code of this exercise can be found in our Github repository.
 > Project Name: sample-test-linear
+> https://github.com/AxaFrance/webengine-java/sample-test-linear
 
