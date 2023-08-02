@@ -16,11 +16,14 @@ This tutorial is based on JUnit 5, if you are using TestNG, or another library, 
 Other components of WebEngine Framework is not used.
 
 ## Steps to build Test Automation Solution using Linear Scripting
-### Step 1: Create a Test Project
 
-Prerequisites for linear Approach : JDK 8, maven and lombok
+### Step 1: Prerequisites for linear Approach
 
-Then, create a simple project or you can clone this sample project.
+JDK 8, maven and lombok
+
+### Step 2: Create a Test Project
+
+Create a simple maven project or you can clone this sample project.
 
 https://github.com/AxaFrance/webengine-java/sample-test-linear
 
@@ -88,7 +91,7 @@ Now we can build you project with the command "mvn clean install -U".
 
 Our system under test is the application: http://webengine-test.azurewebsites.net/Step1.html
 
-### Step 2: Write Setup and Teardown
+### Step 3: Write Setup and Teardown
 In this step, we will write `Setup` and `Teardown` functions to initialize test environment before each test case and cleanup the test results after each test case.
 
 * Setup: Initializes the WebDriver object.
@@ -115,7 +118,7 @@ public class SampleTest {
 
 ```
 
-### Step 3: Observe SUT and identify UI Elements
+### Step 4: Observe SUT and identify UI Elements
 
 Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a `PageModel`.
 
@@ -131,7 +134,7 @@ The PageModel for this web page can be coded like following snippet:
 [!code-csharp[Main](../../Samples.LinearScripting/MyPageModel.cs "Page Model")]
 
 
-### Step 4: Write test script.
+### Step 5: Write test script.
 Now we are ready to write the automated test script for this web page:
 * Initialize the page model object
 * Use the page model to interact with UI elements
@@ -140,6 +143,43 @@ Instead of using native selenium commands, it is recommended to use actions impl
 most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter `NoSuchElementException` and `StaleElementReferenceException`.
 
 Using PageModel, you can fill the function TestMethod1 with following code snippet
+
+```java
+package fr.axa.automation.feature.model;
+
+import fr.axa.automation.webengine.core.AbstractPageModel;
+import fr.axa.automation.webengine.core.WebElementDescription;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+
+@FieldDefaults(level = AccessLevel.PUBLIC)
+public class FirstPageModel extends AbstractPageModel {
+
+    @Getter
+    WebElementDescription language = WebElementDescription.builder().tagName("select").id("language").build();
+
+    @Getter
+    WebElementDescription coffeeRadio = WebElementDescription.builder().tagName("input").id("coffee").build();
+
+    @Getter
+    WebElementDescription teaRadio = WebElementDescription.builder().tagName("input").id("tea").build();
+
+    @Getter
+    WebElementDescription waterRadio = WebElementDescription.builder().tagName("input").id("water").build();
+
+    @Getter
+    WebElementDescription nextStep = WebElementDescription.builder().tagName("button").xPath(".//button[contains(text(),\"Next (3-second-delay)\")]").build();
+
+    public FirstPageModel(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+}
+```
+
+
 ```java
 public class SampleTest {
 
@@ -173,7 +213,7 @@ public class SampleTest {
 
 ```
 
-### Run tests
+### Step 6: Run tests
 To run the test case, click to the play button:
 ![](../images/java/linear/run-linear-test.png)
 
@@ -181,7 +221,7 @@ Below the result
 ![Run Test](../images/java/linear/linear-result.png)
 
 
-### Improve the test cases
+### Step 7: Improve the test cases
 Now you can continue automatizing this scenario to the end by:
 * Adding new UI elements into `PageModel`
 * Manipulate these UI elements

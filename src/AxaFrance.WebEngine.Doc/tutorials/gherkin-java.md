@@ -11,26 +11,73 @@ With this method, testers (or business users) and automation engineers can work 
 > For complex end-to-end tests, you may consider Keyword-driven/Data-driven testing approach.
 
 
-## Prerequisites for Gherkin Approach
-Using Visual Studio as development environment, you'll need to install `SpecFlow` extension in order to create test projects.
+### Step 1: Prerequisites for Gherkin Approach
 
-![Install SpecFlow](../images/ga-install-SpecFlow.png)
+JDK 8, maven and lombok
 
-### Step 1: Create SpecFlow project
-To initialize a test project using Gherkin, create a SpecFlow project:
+### Step 2: Create a simple maven project
+Open pom.xml paste below code
 
-![Create Project](../images/ga-create-project.png)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-SpecFlow is based on top of Unit Test framework, so the execution experience will be very similar. Once a SpecFlow project is created, it initializes the structure as follows:
+  <modelVersion>4.0.0</modelVersion>
 
-![Project Structure](../images/ga-project-structure.png)
+  <groupId>fr.axa.automation.webengine</groupId>
+  <artifactId>sample-gherkin-webengine-java</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>sample-gherkin-webengine-java</name>
+
+  <properties>
+    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+    <webengine-boot-gherkin.version>3.0.0-SNAPSHOT</webengine-boot-gherkin.version>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>fr.axa.automation.webengine</groupId>
+      <artifactId>webengine-boot-gherkin</artifactId>
+      <version>${webengine-boot-gherkin.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>
+```
+
+For your information, we use junit 5 with the framework
+
+### Step 3: Project structure
+![](../images/java/gherkin/gherkin-project-structure.png)
 
 * In `Features` folder, test scenarios written in Gherkin Language and saved in `.features` file.
-* In `StepDefinitions`, the implementation of these scenarios by code.
-  Let's delete the files in the folder Features and StepDefinitions and create our scenarios later.
+* In `step`, the implementation of these scenarios by code.
+* In `model`, the page model.
+* CucumberRunnerTest : Runner for executing tests
+  
 
 
-### Step 2: Observe SUT and identify UI Elements
+### Step 4: Observe SUT and identify UI Elements
 Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages of the Framework, we will put these 3 elements into a `PageModel`.
 
 ![Step 3 UI Elements](../images/ls-step3-uielements.png)
@@ -38,53 +85,191 @@ Observing system under test from Developer tools provided with browser. Here in 
 This is exactly the same step we've discussed in Linear Script Approach. Please refer to
 [Observe SUT and Identify UI Elements](linear-script-cs.md#step-3-observe-sut-and-identify-ui-elements) for more information.
 
-### Step 3: Write test scenarios (.feature)
-Create a SpecFlow Feature file and name it `DrinkMachine.feature`, place it under the folder `Features`
+### Step 5: Write test scenarios (.feature)
+Create a Feature file and name it `sample-flow.feature`, place it under the folder `features`
+Paste this below code :
 
-![Create Feature](../images/ga-create-feature.png)
+```feature
+Feature: Sample training
 
-Let's create our first scenario in Gherkin to order the Tea.
-[!code-gherkin[Main](../../Samples.Gherkin/Features/DrinkMachine.feature "DrinkMachine")]
+  Scenario: first-scenario
+    Given I visit the test page
+    When I choose the language with text "Français"
+    And I want to buy a coffee
+    And I click on the first next button
+    Then I go to the next page
+```
 
-There is no limit how to write the scenario using the keywords given-when-then. But generally, people often use `Given` to specify the preconditions, `When` to specify actions and `Then` to specify expected results. Following the same naming convention across teams can ensure good understanding of scenarios for all stakeholders.
+There is no limit how to write the scenario using the keywords given-when-then. But generally, people often use `Given` to specify the preconditions, `When` to specify actions and `Then` to specify expected results. 
+Following the same naming convention across teams can ensure good understanding of scenarios for all stakeholders.
 
-### Step 4: Generate test steps from features
-Once the feature is written, `Build` the project so SpecFlow add-in can generates necessary codes.
-Then, in the feature file, right-click on the scenario and select `define steps`
+### Step 6: Generate test steps from features
+Once the feature is written, place the caret at a step in your .feature file and press Alt + Enter.
 
-![Generate Steps](../images/ga-generate-steps.png)
+![](../images/java/gherkin/generate-java-class-from-feature.png)
+
+Name the java class: SampleFlowStep.java
+![](../images/java/gherkin/java-class-feature-name.png)
 
 It will automatically generate code to match each sentence:
 
-![Generate step Dialog](../images/ga-generatestep-dialog.png)
+```java
+package fr.axa.automation.feature.step;
 
-We can see the `Variables` of the scenario is automatically recognized. (If that's not the case, you'll need to adjust the regular expression above the function and the arguments of the function.)
-Now build the test project again, you can see the variables of the test is highlighted. That means we can reuse the same sentence and changing the test data in other test scenarios without the need to rewrite code-behind.
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-![Scenario Binded](../images/ga-scenario-binded.png)
+public class SampleFlowStep {
+@Given("I visit the test page")
+public void iVisitTheTestPage() {
+}
 
-Now we are ready to write test scripts.
+    @When("I choose the language with text {string}")
+    public void iChooseTheLanguageWithText(String arg0) {
+    }
 
-### Step 5: Implementation
-From here, we'll need to use functionalities provided in WebEngine to implement automated tests. Here we will open the code `DrinkMachineStepDefinitions` generated from Step 4.
+    @And("I want to buy a coffee")
+    public void iWantToBuyACoffee() {
+    }
 
-Make sure following NuGet Packages of WebEngine are installed in the test project:
-* `AxaFrance.WebEngine`: for basic data structures
-* `AxaFrance.WebEngine.Web`: for Web Applications running on Desktop and Mobile Devices
-* `AxaFrance.WebEngine.MobileApp`: Required only if you are testing native or hybrid mobile applications
+    @And("I click on the first next button")
+    public void iClickOnTheFirstNextButton() {
+    }
+
+    @Then("I go to the next page")
+    public void iGoToTheNextPage() {
+    }
+}
+```
 
 
-In this tutorial, the implementation will be as follow:
-* In *Turn on drink machine* step, we initialize Selenium WebDriver via <xref:AxaFrance.WebEngine.Web.BrowserFactory> and navigate to the application.
-* In *select language and order* step, we manipulate the SUT via page model
-* In *then* step, we use `Assertion` to verify expected result
-* At last, a *Cleanup* function tagged with `AfterSceario` to close the browser and Selenium WebDriver
+### Step 5: Complete the code for using page model and browser factory
 
-Code snippets:
-[!code-csharp[Main](../../Samples.Gherkin/StepDefinitions/DrinkMachineStepDefinitions.cs "DrinkMachineStepDefinition.cs")]
+Create the page model :
+
+```java
+package fr.axa.automation.feature.model;
+
+import fr.axa.automation.webengine.core.AbstractPageModel;
+import fr.axa.automation.webengine.core.WebElementDescription;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+
+@FieldDefaults(level = AccessLevel.PUBLIC)
+public class FirstPageModel extends AbstractPageModel {
+
+    @Getter
+    WebElementDescription language = WebElementDescription.builder().tagName("select").id("language").build();
+
+    @Getter
+    WebElementDescription coffeeRadio = WebElementDescription.builder().tagName("input").id("coffee").build();
+
+    @Getter
+    WebElementDescription teaRadio = WebElementDescription.builder().tagName("input").id("tea").build();
+
+    @Getter
+    WebElementDescription waterRadio = WebElementDescription.builder().tagName("input").id("water").build();
+
+    @Getter
+    WebElementDescription nextStep = WebElementDescription.builder().tagName("button").xPath(".//button[contains(text(),\"Next (3-second-delay)\")]").build();
+
+    public FirstPageModel(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+}
+```
+
+Complete the SampleFlowStep class
+
+```java
+package fr.axa.automation.feature.step;
+
+import fr.axa.automation.feature.model.FirstPageModel;
+import fr.axa.automation.webengine.helper.WebdriverHelper;
+import fr.axa.automation.webengine.step.AbstractStep;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+@Getter
+@FieldDefaults(level = AccessLevel.PROTECTED)
+public class SampleFlowStep extends AbstractStep {
+
+    WebDriver driver;
+    FirstPageModel firstPageModel;
+
+    public SampleFlowStep() throws Exception {
+        driver = WebdriverHelper.initializeDriver();
+        firstPageModel = new FirstPageModel(driver);
+    }
+
+    @Given("^I visit the test page$")
+    public void visitTheTestPage() throws InterruptedException {
+        addInformation("Open WebEngine test page");
+        driver.get("http://webengine-test.azurewebsites.net/Step1.html");
+    }
+
+    @And("^I choose the language with text \"([^\"]*)\"$")
+    public void chooseTheLanguage(String language) throws Exception {
+        addInformation("Choose the language");
+        getFirstPageModel().getLanguage().selectByText(language);
+    }
+
+    @And("^I want to buy a coffee$")
+    public void seePopUpAndEnterText() throws Exception {
+        getFirstPageModel().getCoffeeRadio().click();
+    }
+
+    @And("^I click on the first next button$")
+    public void clickFirstButtonOKInThePopup() throws Exception {
+        getFirstPageModel().getNextStep().click();
+    }
+
+    @Then("^I go to the next page$")
+    public void goToTheNextPage() {
+        addInformation("Success");
+        getDriver().close();
+    }
+}
+```
+
+### Step 7: Create the runner class
+``` java
+package fr.axa.automation.feature;
+
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.ConfigurationParameters;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@ConfigurationParameters({
+                            @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "fr.axa.automation.feature.step"),
+                            @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/report-gherkin/report.html, fr.axa.automation.webengine.listener.WebengineReportListener, json:target/cucumber-report/cucumber.json")
+                        })
+public class CucumberRunnerTest {
+
+}
+```
 
 ### Step 6: Run test case
-Build your test project and go to *Test* -> *Test Explorer*: The scenario is listed in Test Explorer and you can now debug and run this automated test.
+Run :
+![](../images/java/gherkin/run-test-cases.png)
 
-![Run Test](../images/ga-run-test.png)
-
+Result :
+![](../images/java/gherkin/result-test-case.png)
