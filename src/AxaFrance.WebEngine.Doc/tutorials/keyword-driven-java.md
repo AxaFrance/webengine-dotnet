@@ -262,7 +262,8 @@ public class ProspectModel extends AbstractPageModel {
 ```
 
 ## Step 5: Develop test scripts
-Now we are entering to the most interesting part: develop test scripts. That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
+Now we are entering to the most interesting part: develop test scripts. 
+That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
 `Login` and `searching module`
 
 `Login` is a normal keyword doing following actions:
@@ -285,25 +286,117 @@ Click on the "search" button
 
 ### Implementing `Login` keyword
 
-# [Login page](#tab-2/login-page)
+# [Login page](#tab-login-action/login-page)
 
 ![Login Web page](../images/kd-login-web.png)
 
-# [Login action](#tab-2/login-action)
+# [Login action](#tab-login-action/login-action)
+```java
+package fr.axa.automation.action;
 
-# [Login step](#tab-2/login-step)
+import fr.axa.automation.model.LoginModel;
+import fr.axa.automation.webengine.core.AbstractActionWebBase;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class LoginAction extends AbstractActionWebBase {
+    LoginModel loginModel;
+
+    public LoginAction() {
+    }
+
+    @Override
+    public void doAction() throws Exception {
+        loginModel = new LoginModel(getWebDriver());
+        getWebDriver().get("http://webengine-test.azurewebsites.net/home-insurance/");
+        loginModel.getLogin().sendKeys("test");
+        loginModel.getPassword().sendKeys("test");
+        screenShot();
+        loginModel.getButton().click();
+        addInformation("First step succeed");
+    }
+
+    @Override
+    public boolean doCheckpoint() throws Exception {
+        return true;
+    }
+}
+```
+
+# [Login step](#tab-login-action/login-step)
+
+```java
+package fr.axa.automation.teststep;
+
+import fr.axa.automation.action.LoginAction;
+import fr.axa.automation.webengine.core.IAction;
+import fr.axa.automation.webengine.core.ITestStep;
+
+public class LoginStep implements ITestStep {
+  @Override
+  public Class<? extends IAction> getAction() {
+      return LoginAction.class;   
+  }
+}
+```
 
 ### Implementing `searching module` keyword
 
-# [Searching module page](#tab-3/searching-module-page)
+# [Searching module page](#tab-searching-module-action/searching-module-page)
 
-![Login Web page](../images/kd-login-web.png)
+![](../images/search-prospect.png)
 
-# [Searching module action](#tab-3/searching-module-action)
+# [Searching module action](#tab-searching-module-action/searching-module-action)
 
-# [Searching module step](#tab-3/searching-module-step)
+```java
+package fr.axa.automation.action;
 
+import fr.axa.automation.model.ProspectModel;
+import fr.axa.automation.webengine.core.AbstractActionWebBase;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class ProspectAction extends AbstractActionWebBase {
+  ProspectModel prospectModel;
+
+  public ProspectAction() {
+  }
+
+  @Override
+  public void doAction() throws Exception {
+    prospectModel = new ProspectModel(getWebDriver());
+    prospectModel.getCustomerName().sendKeys("Nicolas");
+    prospectModel.getSearchName().click();
+    screenShot();
+    addInformation("Prospect step succeed");
+  }
+
+  @Override
+  public boolean doCheckpoint() throws Exception {
+    return true;
+  }
+}
+```
+
+# [Searching module step](#tab-searching-module-action/searching-module-step)
+
+```java
+package fr.axa.automation.teststep;
+
+
+import fr.axa.automation.action.ProspectAction;
+import fr.axa.automation.webengine.core.IAction;
+import fr.axa.automation.webengine.core.ITestStep;
+
+public class ProspectStep implements ITestStep {
+    @Override
+    public Class<? extends IAction> getAction() {        
+        return ProspectAction.class;
+    }
+}
+```
 ## Step 6: Define test cases
 Test case is inherited from "fr.axa.automation.webengine.core.ITestCase" to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
 And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet:
@@ -338,6 +431,27 @@ In this example, We don't use externalized test data, all test data is hard code
 In this case we will provide a hard-coded list of test cases with name:
 
 ```java
+package fr.axa.automation.testsuite;
+
+import fr.axa.automation.testcase.FindProspectTestCase;
+import fr.axa.automation.webengine.core.AbstractTestSuite;
+import fr.axa.automation.webengine.core.ITestCase;
+
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestSuite extends AbstractTestSuite {
+
+    public static final String FIND_PROSPECT_TEST_CASE = "FIND_PROSPECT"; //Test case defined in data.xml
+
+    @Override
+    public List<AbstractMap.SimpleEntry<String, ? extends ITestCase>> getTestCaseList() {
+        List<AbstractMap.SimpleEntry<String, ? extends ITestCase>> testCaseList = new ArrayList();
+        testCaseList.add(new AbstractMap.SimpleEntry<String, ITestCase>(FIND_PROSPECT_TEST_CASE,new FindProspectTestCase()));
+        return testCaseList;
+    }
+}
 ```
 
 > [!NOTE]
@@ -347,15 +461,48 @@ In this case we will provide a hard-coded list of test cases with name:
 
 ## Step 8: Define application boot
 
+```java
+package fr.axa.automation;
+
+import fr.axa.automation.webengine.boot.BootProject;
+import fr.axa.automation.webengine.logger.LoggerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    final LoggerService loggerService;
+
+    final BootProject bootProject;
+
+    @Autowired
+    public Application(LoggerService loggerService, BootProject bootProject) {
+        this.loggerService = loggerService;
+        this.bootProject = bootProject;
+    }
+
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(Application.class).web(WebApplicationType.NONE).run(args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        loggerService.info("Temporary directory application: "+System.getProperty("java.io.tmpdir"));
+        bootProject.runFromProject(args);
+    }
+}
+```
 
 
 ## Step 9: Execute the solution
 To launch or debug your solution, you'll need to configure arguments.
 
-
-
 Then you can set breakpoint in the code to debug step by step.
-For more information about `WebRunner` please refers to [WebRunner](../articles/webrunner.md)
+
 
 > [!NOTE]
 > When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
@@ -364,9 +511,9 @@ For more information about `WebRunner` please refers to [WebRunner](../articles/
 ## Step 10: Visualize Reports
 After execution, the log will be generated in indicated folder. You can open it with Edge to see details and even screenshots:
 
--------screenshot
+![](../images/java/keyword-driven/result-keyword-driven-test.png)
 
-When running tests with `WebRunner` you can add `-showReport` to open HTML report after test execution.
+When running you can add `-showReport` to open HTML report after test execution.
 
 
 ## Resume
