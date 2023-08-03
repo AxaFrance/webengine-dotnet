@@ -34,13 +34,18 @@ For this test, we developed following test data
 # [PARAMS](#tab/param)
 Describes all the test parameters
 
-![Test Parameters](../images/dd-excelparam.png)
+![](../images/dd-excel-param-java.png)
+
+
+
 # [ENV](#tab/env)
 Here we lists all test environment dependent variables such as URLs.
 
 If you have more than one test environment, you can list all data with prefix or postfix
 
-![Excel ENV](../images/dd-excelenv.png)
+![](../images/dd-excelenv-java.png)
+
+
 # [TEST_SUITE](#tab/testsuite)
 In test data we will specify the test cases and test data used for each test case.
 
@@ -48,7 +53,7 @@ For example: our test suite will have 3 test cases, covers Apartment, House and 
 From spreadsheet we can clearly see how parameters are used and have an idea about the test coverage of each parameter.
 To increase test coverage, we can simply create new columns without the need to modify the test script.
 
-![Test Data](../images/dd-exceldata.png)
+![](../images/dd-exceldata-java.png)
 ***
 
 > [!NOTE]
@@ -68,6 +73,8 @@ Using parameter list are following advantage:
 * Avoid type error in the test script.
 
 # [Content of ParameterList](#tab/content-parameter-list)
+You should split after into two classes for maintenability
+
 ```java
 package fr.axa.automation.parameter;
 
@@ -256,7 +263,6 @@ public class TestSuite extends AbstractTestSuite {
     }
 }
 ```
-
 ***
 
 # Step 6: Export test data
@@ -305,20 +311,23 @@ Once the settings is done, now we can run any and any number of tests directly:
 For example: run `TEST_02`:
 
 # [Select Test](#tab/run-step-1)
-Select `TEST_02_Home_NoAntecedents` cell
 
-![Dd Step1](../images/dd-step1.png)
+Select `SUBSCRIPTION_HOME` cell
+
+![](../images/dd-step1-java.png)
 # [Launch Test](#tab/run-step-2)
+
 Click `Launch Test`
-
 ![Dd Step2](../images/dd-step2.png)
+
 # [Select Browser](#tab/run-step-3)
+
 Choose a desktop browser, for example `Firefox`. Then click `Start`
-
 ![Dd Step3](../images/dd-step3.png)
-# [Observe Test Execution](#tab/run-step-4)
-Now you can see the framework is running Test_02 on Firefox:
 
+# [Observe Test Execution](#tab/run-step-4)
+
+Now you can see the framework is running Test_02 on Firefox:
 ![Dd Step4](../images/dd-step4.png)
 ***
 

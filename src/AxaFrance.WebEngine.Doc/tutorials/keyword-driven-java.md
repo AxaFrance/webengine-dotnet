@@ -201,7 +201,7 @@ In this example, we will define one model per page.
 * Please refer to section [Implementing Login keyword](#implementing-login-keyword)
 
 
-# [Login page model](#tab-page-model/login-page-model)
+# [Login page model](#tab/login-page-model)
 ```java
 package fr.axa.automation.model;
 
@@ -231,7 +231,7 @@ public class LoginModel extends AbstractPageModel {
 }
 ```
 
-# [search prospect page model](#tab-page-model/search-prospect-page-model)
+# [search prospect page model](#tab/search-prospect-page-model)
 ```java
 package fr.axa.automation.model;
 
@@ -260,6 +260,7 @@ public class ProspectModel extends AbstractPageModel {
     }
 }
 ```
+***
 
 ## Step 5: Develop test scripts
 Now we are entering to the most interesting part: develop test scripts. 
@@ -286,11 +287,11 @@ Click on the "search" button
 
 ### Implementing `Login` keyword
 
-# [Login page](#tab-login-action/login-page)
+# [Login page](#tab/login-page)
 
 ![Login Web page](../images/kd-login-web.png)
 
-# [Login action](#tab-login-action/login-action)
+# [Login action](#tab/login-action)
 ```java
 package fr.axa.automation.action;
 
@@ -324,7 +325,7 @@ public class LoginAction extends AbstractActionWebBase {
 }
 ```
 
-# [Login step](#tab-login-action/login-step)
+# [Login step](#tab/login-step)
 
 ```java
 package fr.axa.automation.teststep;
@@ -340,14 +341,15 @@ public class LoginStep implements ITestStep {
   }
 }
 ```
+***
 
 ### Implementing `searching module` keyword
 
-# [Searching module page](#tab-searching-module-action/searching-module-page)
+# [Searching module page](#tab/searching-module-page)
 
 ![](../images/search-prospect.png)
 
-# [Searching module action](#tab-searching-module-action/searching-module-action)
+# [Searching module action](#tab/searching-module-action)
 
 ```java
 package fr.axa.automation.action;
@@ -380,7 +382,7 @@ public class ProspectAction extends AbstractActionWebBase {
 }
 ```
 
-# [Searching module step](#tab-searching-module-action/searching-module-step)
+# [Searching module step](#tab/searching-module-step)
 
 ```java
 package fr.axa.automation.teststep;
@@ -397,6 +399,8 @@ public class ProspectStep implements ITestStep {
     }
 }
 ```
+***
+
 ## Step 6: Define test cases
 Test case is inherited from "fr.axa.automation.webengine.core.ITestCase" to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
 And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet:

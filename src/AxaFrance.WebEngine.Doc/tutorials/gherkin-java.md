@@ -33,7 +33,7 @@ Open pom.xml paste below code
   <properties>
     <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-    <webengine-boot-gherkin.version>3.0.0-SNAPSHOT</webengine-boot-gherkin.version>
+    <webengine-boot-gherkin.version>2.2.0</webengine-boot-gherkin.version>
   </properties>
 
   <dependencies>
