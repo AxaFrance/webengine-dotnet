@@ -460,6 +460,8 @@ public class TestSuite extends AbstractTestSuite {
 > Please refer to [Data-Driven Test Approach](data-driven-cs.md) after finished this tutoriel.
 
 ## Step 8: Define application boot
+This the main class for running your solution.
+You have just to copy and paste this below code.
 
 ```java
 package fr.axa.automation;
