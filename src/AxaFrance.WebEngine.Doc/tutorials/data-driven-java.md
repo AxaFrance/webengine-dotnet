@@ -328,7 +328,7 @@ Choose a desktop browser, for example `Firefox`. Then click `Start`
 # [Observe Test Execution](#tab/run-step-4)
 
 Now you can see the framework is running Test_02 on Firefox:
-![Dd Step4](../images/dd-step4.png)
+![](../images/dd-step4-java.png)
 ***
 
 > [!NOTE]
