@@ -460,7 +460,7 @@ public class TestSuite extends AbstractTestSuite {
 > Please refer to [Data-Driven Test Approach](data-driven-cs.md) after finished this tutoriel.
 
 ## Step 8: Define application boot
-This the main class for running your solution.
+This is the main class for running your solution.
 You have just to copy and paste this below code.
 
 ```java
@@ -501,7 +501,7 @@ public class Application implements CommandLineRunner {
 
 
 ## Step 9: Execute the solution
-To launch or debug your solution, you'll need to configure arguments.
+Run the class Application
 
 Then you can set breakpoint in the code to debug step by step.
 
