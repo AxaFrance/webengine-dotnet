@@ -122,6 +122,8 @@ namespace WebEngine.Test.UnitTests
                 }
                 sb.AppendLine("</table>");
             }
+            
+            
             sb.AppendLine("</body></html>");
             File.WriteAllText(Path.Combine(rootPath, "a11y.html"), sb.ToString()); 
             Debug.WriteLine("All violations: " + result.Violations.Length);

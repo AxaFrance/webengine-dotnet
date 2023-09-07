@@ -26,7 +26,7 @@ namespace AxaFrance.WebEngine.Report
         public string TestName { get; set; }
 
         /// <summary>
-        /// The log of
+        /// The log of the test case.
         /// </summary>
         public string Log { get; set; }
 

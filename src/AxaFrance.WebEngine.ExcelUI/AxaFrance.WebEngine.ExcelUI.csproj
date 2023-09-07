@@ -39,7 +39,7 @@
     </NuGetPackageImportStamp>
     <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>\\prnas01.axa-fr.intraxa\16\Netshare_Dqsi\CommunauteDesAutomaticiens\02-Outils\Excel Addin3\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
     <ApplicationVersion>3.0.0.71</ApplicationVersion>
@@ -352,10 +352,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AXA.WebEngine.ExcelUI_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E17D56D22BE7799197DB7C86058639A0CF1A0690</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>15AF60B1039FE800E46EB1AD48CACBB5D20F37B7</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
