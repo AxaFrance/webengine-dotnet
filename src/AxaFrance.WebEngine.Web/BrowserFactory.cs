@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -89,14 +90,14 @@ namespace AxaFrance.WebEngine.Web
 
             //Merge browser options provided by this function and appsettings.json
             var arguments = Settings.Instance.BrowserOptions.ToList();
-            foreach(var option in browserOptions)
+            foreach (var option in browserOptions)
             {
                 if (!arguments.Contains(option))
                 {
                     arguments.Add(option);
                 }
             }
-            
+
 
 
 #if NET48_OR_GREATER || NET6_0_OR_GREATER
@@ -137,7 +138,7 @@ namespace AxaFrance.WebEngine.Web
                     }
                 }
             }
-            else if(Settings.Instance.UseAppiumForWebMobile)
+            else if (Settings.Instance.UseAppiumForWebMobile)
             {
                 Settings.Instance.UseJavaScriptClick = true;
                 return ConnectToGridUsingAppiumDriver(arguments);
@@ -163,12 +164,12 @@ namespace AxaFrance.WebEngine.Web
                 remoteServerAddress = "http://localhost:4723/wd/hub";
             }
 
-            DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");           
+            DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");
             AddPlatformSpecificOptions(remoteServerAddress, s);
             AddAdditionalCapabilities(options, s);
             if (options != null)
             {
-                var capa = options.ToCapabilities();  
+                var capa = options.ToCapabilities();
                 return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(s.GridServerUrl), capa);
             }
             else
@@ -189,7 +190,7 @@ namespace AxaFrance.WebEngine.Web
                     chromeOptions.AddArguments(arguments);
                     return chromeOptions;
                 case BrowserType.ChromiumEdge:
-                    var edgeOptions= new EdgeOptions();
+                    var edgeOptions = new EdgeOptions();
                     edgeOptions.AddArguments(arguments);
                     return edgeOptions;
                 case BrowserType.Firefox:
@@ -235,7 +236,7 @@ namespace AxaFrance.WebEngine.Web
             {
                 appiumServerAddress = "http://localhost:4723/wd/hub";
             }
-            
+
             AddPlatformSpecificOptions(appiumServerAddress, s);
             AddAdditionalCapabilities(options, s);
 
@@ -347,7 +348,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (s.Capabilities.ContainsKey(bstackOptions))
             {
-                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");                
+                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");
                 var dic = s.Capabilities[bstackOptions];
                 Console.WriteLine($"The type of {bstackOptions} from appsetting.json is {dic.GetType().FullName}");
                 if (dic is JObject jo)
@@ -355,10 +356,12 @@ namespace AxaFrance.WebEngine.Web
                     var dictionary = jo.ToObject<Dictionary<string, object>>();
                     Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
                     Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
-                    foreach (var kv in dictionary) {
+                    foreach (var kv in dictionary)
+                    {
                         browserstackOptions[kv.Key] = kv.Value;
                     }
-                }else if (dic is Dictionary<string, object> dic2)
+                }
+                else if (dic is Dictionary<string, object> dic2)
                 {
                     Console.WriteLine("bstack:options from appsetting.json: " + dic2.Count);
                     Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
@@ -476,20 +479,47 @@ namespace AxaFrance.WebEngine.Web
         private static WebDriver GetChromeDriver(string version, IEnumerable<string> browserOptions)
         {
             string downloadUrl = null;
+            int major = int.Parse(version.Substring(0, version.IndexOf(".")));
             string v = version.Substring(0, version.LastIndexOf("."));
-            string latestVersion = $"https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{v}";
+            string getVersionUrl;
+            if (major >= 115)
+            {
+                getVersionUrl = $"https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_{v}";
+            }
+            else
+            {
+                getVersionUrl = $"https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{v}";
+            }
 
             using (WebClient c = new WebClient())
             {
-                string lv = c.DownloadString(latestVersion);
-                downloadUrl = $"https://chromedriver.storage.googleapis.com/{lv}/chromedriver_win32.zip";
-                string file = $"{workingDirectory}\\ChromeDriver\\{lv}\\Webdriver.zip";
-                string folder = $"{workingDirectory}\\ChromeDriver\\{lv}\\Extracted";
+                string driverVersion = c.DownloadString(getVersionUrl);
+                if (major >= 115)
+                {
+                    downloadUrl = $"https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{driverVersion}/win64/chromedriver-win64.zip";
+                }
+                else
+                {
+                    downloadUrl = $"https://chromedriver.storage.googleapis.com/{driverVersion}/chromedriver_win32.zip";
+                }
+                string file = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Webdriver.zip";
+                string folder = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Extracted";
                 if (!System.IO.Directory.Exists(folder))
                 {
-                    System.IO.Directory.CreateDirectory(folder);
+                    var di = System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
+                    //new version of chromedriver are in a folder, copy them to root folder of Extracted.
+                    if (di.GetDirectories().Any())
+                    {
+                        foreach (var subdir in di.GetDirectories())
+                        {
+                            foreach (var fil in subdir.GetFiles())
+                            {
+                                fil.CopyTo(Path.Combine(folder, fil.Name));
+                            }
+                        }
+                    }
                 }
                 else
                 {
