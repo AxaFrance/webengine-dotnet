@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <ribbon>
+        <tabs>
+            <tab idMso="TabAddIns" label="WebEngine">
+                <group id="grpTestData" label="Test data">
+                    <gallery id="gryExport" imageMso="ExportXmlFile" label="Export" size="large" columns="1">
+                        <button id="btnExportSelection" imageMso="ExportXmlFile" onAction="btnExportSelection_Click" screentip="Export Selected test cases to XML file" label="Export Selected" />
+                        <button id="btnExportAll" imageMso="ExportSavedExports" onAction="btnExportAll_Click" screentip="Export all test cases or current Tab to XML file" label="Export all (current Tab)" />
+                        <button id="btnExportAllTabs" imageMso="ExportSavedExports" screentip="Export all test cases of all Tab of current file to XML file" label="Export all (all tabs)" />
+                        <button id="BtnExportFilter" imageMso="ExportXmlFile" onAction="BtnExportFilter_Click" screentip="Export Test data using a filter" label="Export with filter" />
+                        <button id="btnExportEnvironmentVariable" imageMso="ListPublish" onAction="btnExportEnvironmentVariable_Click" screentip="Export Environment Variables to XML File" label="Export Environment variables" />
+                    </gallery>
+                    <gallery id="gryTools" imageMso="ToolboxGallery" label="Tools" size="large">
+                        <button id="btnCodeGeneration" imageMso="AfterInsert" onAction="btnCodeGenerationCSharp_Click" screentip="Generate parameters class from PARAM tab as C# Code" label="Code Generation (C#)" />
+                        <button id="btnCodeGenerationJava" imageMso="AfterInsert" onAction="btnCodeGenerationJava_Click" screentip="Generate parameter names from PARAM tab as Java Code" label="Code Generation (Java)" />
+                        <button id="btnDataCheck" imageMso="CheckWorkflow" onAction="btnDataCheck_Click" screentip="Check test data used in the current tab with parameters listed in PARAM tab and report any differences." label="Check test data" />
+                        <button id="btnDataSync" imageMso="SynchronizeAll" onAction="btnDataMerge_Click" screentip="Compare used parameters in the current tab with PARAM tab and add mission parameters." label="Sync with Param" />
+                    </gallery>
+                </group>
+                <group id="grpExecution" label="Run">
+                    <button id="btnStartDriveByExcelNow" onAction="btnStartDriveByExcelNow_Click" label="Drive By Excel test" size="large" />
+                    <button id="btnStartNow" imageMso="PlayFromPage" onAction="btnStartNow_Click" label="Launch test" size="large" />
+                    <dialogBoxLauncher>
+                        <button id="grpExecution__btn" />
+                    </dialogBoxLauncher>
+                </group>
+                <group id="grpHelp" label="Configuration">
+                    <button id="btnSettings" imageMso="AddInCommandsMenu" onAction="btnSettings_Click" label="Settings" size="large" />
+                    <gallery id="gryHelp" imageMso="Help" label="Help" size="large">
+                        <button id="btnAbout" imageMso="Info" onAction="btnAbout_Click" screentip="About WebEngine Framework" label="About ..." />
+                        <button id="btnHelp" imageMso="Help" onAction="btnHelp_Click" screentip="Brings you online help of WebEngine Framework" label="WebEngine Online Help" />
+                        <button id="btnFeedback" imageMso="OmsEmoticonInsertGallery" onAction="btnFeedback_Click" screentip="Give feedback and suggestions to AXA WebEngine Framework" label="Feedback &amp; Suggestion" />
+                    </gallery>
+                </group>
+            </tab>
+        </tabs>
+    </ribbon>
+</customUI>

@@ -53,6 +53,32 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.label7 = new System.Windows.Forms.Label();
             this.rbChromeAndroid = new System.Windows.Forms.RadioButton();
             this.rbSafari = new System.Windows.Forms.RadioButton();
+            this.appLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.dwlProgressBar = new System.Windows.Forms.ProgressBar();
+            this.dwlrobotLabel = new System.Windows.Forms.Label();
+            this.devicesLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.driveSettingLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtOutputFolder = new System.Windows.Forms.TextBox();
+            this.btnOutputBrowse = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPropertiesFile = new System.Windows.Forms.TextBox();
+            this.btnPropFile = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.keepassFile = new System.Windows.Forms.TextBox();
+            this.keepassFileLocate = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.keepassPassword = new System.Windows.Forms.TextBox();
+            this.folderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.cbCloseBrowser = new System.Windows.Forms.CheckBox();
+            this.cbListeTestsCases = new System.Windows.Forms.CheckedListBox();
+            this.appLayout.SuspendLayout();
+            this.devicesLayout.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.driveSettingLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -197,28 +223,190 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.rbSafari.Name = "rbSafari";
             this.rbSafari.UseVisualStyleBackColor = false;
             // 
+            // appLayout
+            // 
+            this.appLayout.Controls.Add(this.label5);
+            this.appLayout.Controls.Add(this.txtDeviceName);
+            this.appLayout.Controls.Add(this.label4);
+            this.appLayout.Controls.Add(this.txtAppPackage);
+            resources.ApplyResources(this.appLayout, "appLayout");
+            this.appLayout.Name = "appLayout";
+            // 
+            // dwlProgressBar
+            // 
+            resources.ApplyResources(this.dwlProgressBar, "dwlProgressBar");
+            this.dwlProgressBar.Name = "dwlProgressBar";
+            // 
+            // dwlrobotLabel
+            // 
+            resources.ApplyResources(this.dwlrobotLabel, "dwlrobotLabel");
+            this.dwlrobotLabel.Name = "dwlrobotLabel";
+            this.dwlrobotLabel.UseWaitCursor = true;
+            // 
+            // devicesLayout
+            // 
+            this.devicesLayout.Controls.Add(this.label8);
+            this.devicesLayout.Controls.Add(this.label7);
+            this.devicesLayout.Controls.Add(this.rbSafari);
+            this.devicesLayout.Controls.Add(this.rbChromeAndroid);
+            this.devicesLayout.Controls.Add(this.rbIOSNative);
+            this.devicesLayout.Controls.Add(this.rbAndroidNative);
+            resources.ApplyResources(this.devicesLayout, "devicesLayout");
+            this.devicesLayout.Name = "devicesLayout";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Name = "label8";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label6);
+            this.flowLayoutPanel1.Controls.Add(this.rbIE);
+            this.flowLayoutPanel1.Controls.Add(this.rbFirefox);
+            this.flowLayoutPanel1.Controls.Add(this.rbChrome);
+            this.flowLayoutPanel1.Controls.Add(this.rbEdge);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // driveSettingLayout
+            // 
+            this.driveSettingLayout.Controls.Add(this.label9);
+            this.driveSettingLayout.Controls.Add(this.txtOutputFolder);
+            this.driveSettingLayout.Controls.Add(this.btnOutputBrowse);
+            this.driveSettingLayout.Controls.Add(this.label10);
+            this.driveSettingLayout.Controls.Add(this.txtPropertiesFile);
+            this.driveSettingLayout.Controls.Add(this.btnPropFile);
+            this.driveSettingLayout.Controls.Add(this.label11);
+            this.driveSettingLayout.Controls.Add(this.keepassFile);
+            this.driveSettingLayout.Controls.Add(this.keepassFileLocate);
+            this.driveSettingLayout.Controls.Add(this.label12);
+            this.driveSettingLayout.Controls.Add(this.keepassPassword);
+            resources.ApplyResources(this.driveSettingLayout, "driveSettingLayout");
+            this.driveSettingLayout.Name = "driveSettingLayout";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label9.Name = "label9";
+            // 
+            // txtOutputFolder
+            // 
+            resources.ApplyResources(this.txtOutputFolder, "txtOutputFolder");
+            this.txtOutputFolder.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtOutputFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOutputFolder.Name = "txtOutputFolder";
+            // 
+            // btnOutputBrowse
+            // 
+            resources.ApplyResources(this.btnOutputBrowse, "btnOutputBrowse");
+            this.btnOutputBrowse.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnOutputBrowse.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnOutputBrowse.FlatAppearance.BorderSize = 2;
+            this.btnOutputBrowse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnOutputBrowse.Name = "btnOutputBrowse";
+            this.btnOutputBrowse.UseVisualStyleBackColor = false;
+            this.btnOutputBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label10.Name = "label10";
+            // 
+            // txtPropertiesFile
+            // 
+            resources.ApplyResources(this.txtPropertiesFile, "txtPropertiesFile");
+            this.txtPropertiesFile.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPropertiesFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPropertiesFile.Name = "txtPropertiesFile";
+            // 
+            // btnPropFile
+            // 
+            resources.ApplyResources(this.btnPropFile, "btnPropFile");
+            this.btnPropFile.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPropFile.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnPropFile.FlatAppearance.BorderSize = 2;
+            this.btnPropFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnPropFile.Name = "btnPropFile";
+            this.btnPropFile.UseVisualStyleBackColor = false;
+            this.btnPropFile.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label11.Name = "label11";
+            // 
+            // keepassFile
+            // 
+            resources.ApplyResources(this.keepassFile, "keepassFile");
+            this.keepassFile.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.keepassFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.keepassFile.Name = "keepassFile";
+            // 
+            // keepassFileLocate
+            // 
+            resources.ApplyResources(this.keepassFileLocate, "keepassFileLocate");
+            this.keepassFileLocate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.keepassFileLocate.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.keepassFileLocate.FlatAppearance.BorderSize = 2;
+            this.keepassFileLocate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.keepassFileLocate.Name = "keepassFileLocate";
+            this.keepassFileLocate.UseVisualStyleBackColor = false;
+            this.keepassFileLocate.Click += new System.EventHandler(this.keepassFileLocate_Click);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label12.Name = "label12";
+            // 
+            // keepassPassword
+            // 
+            resources.ApplyResources(this.keepassPassword, "keepassPassword");
+            this.keepassPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.keepassPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.keepassPassword.Name = "keepassPassword";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // cbCloseBrowser
+            // 
+            resources.ApplyResources(this.cbCloseBrowser, "cbCloseBrowser");
+            this.cbCloseBrowser.Checked = true;
+            this.cbCloseBrowser.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCloseBrowser.Name = "cbCloseBrowser";
+            this.cbCloseBrowser.UseVisualStyleBackColor = true;
+            // 
+            // cbListeTestsCases
+            // 
+            this.cbListeTestsCases.CheckOnClick = true;
+            this.cbListeTestsCases.FormattingEnabled = true;
+            resources.ApplyResources(this.cbListeTestsCases, "cbListeTestsCases");
+            this.cbListeTestsCases.Name = "cbListeTestsCases";
+            this.cbListeTestsCases.ThreeDCheckBoxes = true;
+            // 
             // FrmRun
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.rbSafari);
-            this.Controls.Add(this.rbChromeAndroid);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cbListeTestsCases);
+            this.Controls.Add(this.cbCloseBrowser);
+            this.Controls.Add(this.driveSettingLayout);
+            this.Controls.Add(this.appLayout);
+            this.Controls.Add(this.dwlrobotLabel);
+            this.Controls.Add(this.dwlProgressBar);
             this.Controls.Add(this.cbShowReport);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtAppPackage);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtDeviceName);
-            this.Controls.Add(this.rbIOSNative);
-            this.Controls.Add(this.rbAndroidNative);
-            this.Controls.Add(this.rbEdge);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cbManual);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.rbChrome);
-            this.Controls.Add(this.rbFirefox);
-            this.Controls.Add(this.rbIE);
+            this.Controls.Add(this.devicesLayout);
             this.Controls.Add(this.lblSelectedTests);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -226,6 +414,14 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmRun";
             this.Load += new System.EventHandler(this.FrmRun_Load);
+            this.appLayout.ResumeLayout(false);
+            this.appLayout.PerformLayout();
+            this.devicesLayout.ResumeLayout(false);
+            this.devicesLayout.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.driveSettingLayout.ResumeLayout(false);
+            this.driveSettingLayout.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +450,27 @@ namespace AxaFrance.WebEngine.ExcelUI
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rbChromeAndroid;
         private System.Windows.Forms.RadioButton rbSafari;
+        private System.Windows.Forms.FlowLayoutPanel appLayout;
+        private System.Windows.Forms.ProgressBar dwlProgressBar;
+        private System.Windows.Forms.Label dwlrobotLabel;
+        private System.Windows.Forms.FlowLayoutPanel devicesLayout;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel driveSettingLayout;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtOutputFolder;
+        private System.Windows.Forms.Button btnOutputBrowse;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPropertiesFile;
+        private System.Windows.Forms.Button btnPropFile;
+        private System.Windows.Forms.FolderBrowserDialog folderDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox keepassFile;
+        private System.Windows.Forms.Button keepassFileLocate;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox keepassPassword;
+        private System.Windows.Forms.CheckBox cbCloseBrowser;
+        private System.Windows.Forms.CheckedListBox cbListeTestsCases;
     }
 }
