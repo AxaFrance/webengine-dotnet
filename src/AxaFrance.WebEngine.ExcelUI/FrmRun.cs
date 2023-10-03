@@ -257,7 +257,6 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     parameters += " \"-deleteTempFile:true\"";
                 }
-
             }
             else
             {
