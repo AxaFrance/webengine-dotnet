@@ -285,6 +285,24 @@
   <data name="&gt;&gt;btnStartNow.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnStartDriveByExcelNow.ImageName" xml:space="preserve">
+    <value>drive</value>
+  </data>
+  <data name="btnStartDriveByExcelNow.Label" xml:space="preserve">
+    <value>NoCode Test</value>
+  </data>
+  <data name="&gt;&gt;btnStartDriveByExcelNow.Name" xml:space="preserve">
+    <value>btnStartDriveByExcelNow</value>
+  </data>
+  <data name="&gt;&gt;btnStartDriveByExcelNow.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;btnStartDriveByExcelNow.Parent" xml:space="preserve">
+    <value>grpExecution</value>
+  </data>
+  <data name="&gt;&gt;btnStartDriveByExcelNow.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="grpExecution.Label" xml:space="preserve">
     <value>Run</value>
   </data>
@@ -366,6 +384,24 @@
   <data name="&gt;&gt;gryHelp.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="generateGherkin.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="generateGherkin.Label" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;generateGherkin.Name" xml:space="preserve">
+    <value>generateGherkin</value>
+  </data>
+  <data name="&gt;&gt;generateGherkin.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;generateGherkin.Parent" xml:space="preserve">
+    <value>grpHelp</value>
+  </data>
+  <data name="&gt;&gt;generateGherkin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="grpHelp.Label" xml:space="preserve">
     <value>Configuration</value>
   </data>
@@ -380,6 +416,96 @@
   </data>
   <data name="&gt;&gt;grpHelp.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <metadata name="driveSettings.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="driveSettings.Label" xml:space="preserve">
+    <value>Initialiser l'aide et le titre des colonnes</value>
+  </data>
+  <data name="&gt;&gt;driveSettings.Name" xml:space="preserve">
+    <value>driveSettings</value>
+  </data>
+  <data name="&gt;&gt;driveSettings.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;driveSettings.Parent" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;driveSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtGotoDriveHelp.Label" xml:space="preserve">
+    <value>Description des commandes</value>
+  </data>
+  <data name="&gt;&gt;BtGotoDriveHelp.Name" xml:space="preserve">
+    <value>BtGotoDriveHelp</value>
+  </data>
+  <data name="&gt;&gt;BtGotoDriveHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;BtGotoDriveHelp.Parent" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;BtGotoDriveHelp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="KeepassHelp.Label" xml:space="preserve">
+    <value>KeePass Help</value>
+  </data>
+  <data name="&gt;&gt;KeepassHelp.Name" xml:space="preserve">
+    <value>KeepassHelp</value>
+  </data>
+  <data name="&gt;&gt;KeepassHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;KeepassHelp.Parent" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;KeepassHelp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;separator1.Name" xml:space="preserve">
+    <value>separator1</value>
+  </data>
+  <data name="&gt;&gt;separator1.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.SeparatorView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;separator1.Parent" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;separator1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BtTargetHelp.Label" xml:space="preserve">
+    <value>Modifier l'identification dans la cellule courante</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Name" xml:space="preserve">
+    <value>BtTargetHelp</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Parent" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="NoCodeHelp.Label" xml:space="preserve">
+    <value>NoCode Help</value>
+  </data>
+  <data name="&gt;&gt;NoCodeHelp.Name" xml:space="preserve">
+    <value>NoCodeHelp</value>
+  </data>
+  <data name="&gt;&gt;NoCodeHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;NoCodeHelp.Parent" xml:space="preserve">
+    <value>tabWebEngine</value>
+  </data>
+  <data name="&gt;&gt;NoCodeHelp.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="tabWebEngine.Label" xml:space="preserve">
     <value>WebEngine</value>

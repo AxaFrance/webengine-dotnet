@@ -16,11 +16,43 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// Full path where TestData and Environment Variables will be exported.
         /// </summary>
         public string ExportPath { get; set; }
-        
+
+
+        public string NoCodeExportPath { get; set; }
+
+        /// <summary>
+        /// Full path of given properties file.
+        /// </summary>
+        public string PropertiesFilePath { get; set; }
+
+        /// <summary>
+        /// Full path of given gherkin folder.
+        /// </summary>
+        public string GherkinFilesPath { get; set; }
+
+        /// <summary>
+        /// FR or EN for the language of the Nocode Test
+        /// </summary>
+        public string NoCodeCmdLangage { get; set; }
+
+        /// <summary>
+        /// Automacally close browser after test execution
+        /// </summary>
+        public bool CloseBrowserAfterTest { get; set; }
+
+        /// <summary>
+        /// Full path of given keepass file.
+        /// </summary>
+        public string KeepassFilePath { get; set; }
+
         /// <summary>
         /// Full path where WebRunner.exe is located (often the same location of your Test Automation Solution)
         /// </summary>
         public string WebRunnerPath { get; set; }
+
+        /// <summary>
+        /// Full path where NoCodeRunner is located (often the same location of your Test Automation Solution)
+        public string NoCodeRunnerPath { get; set; }
         
         /// <summary>
         /// The tabs excluded by exportall function.
@@ -43,6 +75,11 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// Device used for mobile testing
         /// </summary>
         public string Device { get; set; }
+
+        /// <summary>
+        /// Show report after test execution
+        /// </summary>
+        public bool ShowReport { get; set; }
 
         public AddinSettings()
         {

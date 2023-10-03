@@ -1,38 +1,113 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using AxaFrance.WebEngine.ExcelUI.Properties;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Office.Tools.Ribbon;
-using System.IO.IsolatedStorage;
-using System.Xml.Serialization;
-using System.IO;
-using AxaFrance.WebEngine;
-using Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml.Serialization;
+using YamlDotNet.Core.Tokens;
+using YamlDotNet.RepresentationModel;
+using static System.Environment;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.LinkLabel;
+using Button = System.Windows.Forms.Button;
+using Label = System.Windows.Forms.Label;
+using TextBox = Microsoft.Office.Interop.Excel.TextBox;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {
+
+    //generate comments for all the functions
+    /// <summary>
+    /// 
     public partial class Ribbon
     {
+        private const string Drive_Help_SheetName = "DriveByExcel_Help";
         internal static AddinSettings Settings = new AddinSettings();
         bool noPopup = false;
         int VariableRow = 1;
         int VariableColumn = 1;
         int TestCaseStartColumn = 3;
         int TestCaseRow = 3;
-        internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelSetting.xml");
+
+        //create enum for the different languages
+        public enum NoCodeCmdLangage
+        {
+            English,
+            French
+        }
+
+        private bool isNoCode = false;
+
+        internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelWithDriveSetting.xml");
 
         internal static string TestDataFile;
         internal static List<string> TestCases = new List<string>();
         internal static string EnvironmentVariableFile;
         internal static string categoryName;
 
+
+
+
+        private CommandBar GetCellContextMenu()
+        {
+            return Globals.ThisAddIn.Application.CommandBars["Cell"];
+        }
+
+        private void ResetCellMenu()
+        {
+            GetCellContextMenu().Reset(); // reset the cell context menu back to the default
+        }
+
+        private void Application_SheetBeforeRightClick(object Sh, Range Target, ref bool Cancel)
+        {
+            ResetCellMenu();  // reset the cell context menu back to the default
+
+            if (Target.Cells.Column == 3)   // sample code: if only a single cell is selected
+            {
+               AddExampleMenuItem();
+            }
+        }
+
+        private void AddExampleMenuItem()
+        {
+            MsoControlType menuItem = MsoControlType.msoControlButton;
+            CommandBarButton exampleMenuItem = (CommandBarButton)GetCellContextMenu().Controls.Add(menuItem, "1", "2", 1, true);
+
+            exampleMenuItem.Style = MsoButtonStyle.msoButtonIconAndCaption;
+            exampleMenuItem.Caption = "Modifier L'identification du champ";
+            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(exampleMenuItemClick);
+        }
+
+    
+
+        void exampleMenuItemClick(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
+        {
+            FrmTargetEdit frmNoCode = new FrmTargetEdit();
+            frmNoCode.ShowDialog();
+        }
+
+
+
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
+            ResetCellMenu();  // reset the cell context menu back to the default
+
+            // Call this function is the user right clicks on a cell
+            Globals.ThisAddIn.Application.SheetBeforeRightClick += new Microsoft.Office.Interop.Excel.AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);
+
+            //initializeDriveByCommandList();
             if (File.Exists(settingFile))
             {
                 using (var stream = File.OpenRead(settingFile))
@@ -219,7 +294,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
+        }
 
             list.TestDataList.RemoveAll(x => !exportedNames.Contains(x.TestName));
 
@@ -428,7 +503,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                 noPopup = true;
                 btnExportEnvironmentVariable_Click(null, null);
                 btnExportSelection_Click(null, null);
-                FrmRun run = new FrmRun(categoryName);
+                isNoCode = false;
+                FrmRun run = new FrmRun(categoryName, isNoCode);
                 run.ShowDialog();
             }
             catch (Exception ex)
@@ -749,6 +825,435 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 ExportAll(frmFilter.Filter, frmFilter.FilterType);
             }
+        }
+
+        private void btnStartDriveByExcelNow_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                noPopup = true;
+                btnExportEnvironmentVariable_Click(null, null);
+                btnExportSelection_Click(null, null);
+                FrmRun run = new FrmRun(categoryName, isNoCode);
+                run.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex.Message);
+            }
+            finally
+            {
+                noPopup = false;
+            }
+        }
+
+        public static class Prompt
+        {
+            public static Boolean ShowDialog(string text, string moreText, string caption)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 650,
+                    Height = 150,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    Text = caption,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Label textLabel = new Label() { Left = 10, Top = 10, Width = 600, Height = 20, Text = text };
+                Label moreTextLabel = new Label() { Left = 10, Top = 30, Width = 600, Height = 20, Text = moreText };
+                moreTextLabel.Font = new System.Drawing.Font(Label.DefaultFont, FontStyle.Bold);
+                Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+                Button cancel = new Button() { Text = "Annuler", Left = 150, Width = 100, Top = 70, DialogResult = DialogResult.Cancel };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(textLabel);
+                prompt.Controls.Add(moreTextLabel);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(cancel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK;
+            }
+        }
+
+        private void btnStartDriveByExcelNow_Click_1(object sender, RibbonControlEventArgs e)
+        {
+            //initializeDriveByCommandList();
+            isNoCode = true;
+
+            String col = "";
+
+            Worksheet worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            Range selectedrange = Globals.ThisAddIn.Application.Selection;
+            int colCOunt = selectedrange.Columns.Count;
+            if (colCOunt > 10)
+            {
+                MessageBox.Show("Vous avez sélectionné plus de 10 colonnes, veuillez réduire le nombre de tests sélectionnés SVP.");
+                return;
+            }
+            
+            show_FrmRun(col);
+
+        }
+
+        private void show_FrmRun(string noCodeColInfo)
+        {
+            try
+            {
+                noPopup = true;
+                if (!isNoCode)
+                {
+                    btnExportEnvironmentVariable_Click(null, null);
+                    btnExportSelection_Click(null, null);
+                }
+                List<string> list = new List<string>();
+                List<string> selected = new List<string>();
+                FrmRun run = new FrmRun(categoryName, isNoCode, noCodeColInfo);
+                run.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex.Message);
+            }
+            finally
+            {
+                noPopup = false;
+            }
+        }
+
+        private static void initializeDriveByCommandList()
+        {
+            //Prompt Excecution bar
+            String workingDirectory = System.Environment.GetFolderPath(SpecialFolder.ApplicationData) + "\\AxaFrance.WebEngine";
+            Form form = new Form();
+            form.Width = 700;
+            form.Height = 150;
+            FlowLayoutPanel prompt = new FlowLayoutPanel();
+            prompt.Width = 700;
+            prompt.Height = 100;
+            form.Text = "Chargement de la liste des commandes...";
+            Label textLabel = new Label() { Width = 600, Text = "Téléchargement des dernières commandes" };
+            prompt.Controls.Add(textLabel);
+            ProgressBar dwl = new ProgressBar();
+            dwl.Show();
+            prompt.Controls.Add(dwl);
+            form.Controls.Add(prompt);
+            form.Show();
+            dwl.PerformLayout();
+
+            //Check and init values sheet First line
+            Worksheet s = Globals.ThisAddIn.Application.ActiveSheet;
+            if (!s.Name.Equals(Drive_Help_SheetName))
+            {
+                updateCell(s.Cells[1, 1], "Nom du champ", "Nom du champ");
+                updateCell(s.Cells[1, 2], "Commande/Action", "liste des commandes possibles");
+                updateCell(s.Cells[1, 3], "Identification du champ", "Identification du champ (Id, Xpath, ...)");
+                updateCell(s.Cells[1, 4], "Optionnel", "Indique si la ligne est ignoré en cas d'erreur");
+                updateCell(s.Cells[1, 5], "Référence/Exclusion", "Indique si la ligne est à prendre en compte par rapport à la colonne des valeurs choisie.\n Un '!' indique que la ligne est à ignorée");
+                updateCell(s.Cells[1, 6], "Liste_1_des_valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
+                updateCell(s.Cells[1, 7], "Liste 2 des valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
+
+            }
+            dwl.PerformLayout();
+
+            //Donwload command file and init Command List Column 
+            Dictionary<string, string> cmds = new Dictionary<string, string>(); 
+            
+            string cmdFile = FrmRun.getNoCodeRunnerFiles(workingDirectory, ((int)FrmRun.GetJarOrCmdYaml.cmdYaml), dwl);
+            using (var reader = new StreamReader(cmdFile))
+            {
+                // Load the stream
+                YamlStream yaml = new YamlDotNet.RepresentationModel.YamlStream();
+                yaml.Load(reader);
+
+                for (int i = 0; i < yaml.Documents.First().AllNodes.Count(); i++)
+                {
+                    try
+                    {
+
+                            string cmd = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
+                        string desc = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["DESCRIPTION"].ToString();
+
+                        if (desc.ToLowerInvariant().Contains(NoCodeCmdLangage.French.ToString().ToLowerInvariant()) 
+                            && desc.ToLowerInvariant().Contains(NoCodeCmdLangage.English.ToString().ToLowerInvariant()))
+                        {
+                            desc = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["DESCRIPTION"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
+                        }
+                        if (!cmds.ContainsKey(cmd))
+                        {
+                            cmds.Add(cmd, desc);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                }
+
+            }
+
+            dwl.PerformStep();
+            form.Dispose();
+
+            //Optional list Column validation
+            Range rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[4];
+            string[] options = null;
+            
+            options = new string[] { "optional", "optional and depends on previous", "" };            
+
+            updateRangeValidation(rng, options, "");
+
+            //Create or Update Help Sheet
+            Worksheet newHelp = null;
+            try
+            {
+                newHelp = Globals.ThisAddIn.Application.ActiveWorkbook.Worksheets[Drive_Help_SheetName];
+            }
+            catch (Exception)
+            {
+                newHelp = Globals.ThisAddIn.Application.ActiveWorkbook.Worksheets.Add();
+                newHelp.Name = Drive_Help_SheetName;
+            }
+
+
+            updateCell(newHelp.Cells[1, 1], "Commandes", null);
+            newHelp.Cells[1, 1].ColumnWidth = 20;
+            updateCell(newHelp.Cells[1, 2], "Description", null);
+            newHelp.Cells[1, 2].ColumnWidth = 100;
+            updateCell(newHelp.Cells[1, 4], "Initialisation des colonnes", null);
+            newHelp.Cells[2, 4] = "En cliquant sur le bouton (1), la 1ere ligne de la feuille courante sera initiatlisé avec les valeurs en (2). Vous pouvez ensuite";
+            newHelp.Cells[3, 4] = "Vous pouvez ensuite écrire votre scénario puis l'exécuter avec le lanceur NoCode (3)";
+
+            updateCell(newHelp.Cells[12, 4], "Identification du champ", null);
+            newHelp.Cells[18, 4] = "Nous vous recommandons d'utiliser les ID pour identifier les champs";
+            newHelp.Cells[19, 4] = "Lorsqu'il n'y a pas d'ID fixes, et qu'une combinaison d'attributs n'est pas possibles, vous pouvez récupérer le xpath ainsi :";
+            newHelp.Cells[20, 4] = "'-Clic droit sur l’élément(1) puis cliquer sur Inspecter(2)";
+
+            newHelp.Cells[45, 4] = "'- Puis, répéter l'opération 1 et 2 si vous n'êtes pas directement sur l'élement comme indiqué en (3) ci-dessous";
+            newHelp.Cells[46, 4] = "'- Puis clic droit sur l'élément souhaité (3) , puis Copier le Xpath (4 et 5)";
+            newHelp.Cells[47, 4] = "'- Eviter au maximum la copie du Xpayh complet";
+
+
+
+            //Command description
+            int commandIndex = 1;
+            for (commandIndex = 1; commandIndex <= cmds.Count; commandIndex++)
+            {
+                string cmd = cmds.Keys.ElementAt(commandIndex - 1);
+                newHelp.Cells[commandIndex + 1, 1] = cmd;
+                newHelp.Cells[commandIndex + 1, 2] = cmds[cmd];
+            }
+
+            newHelp.Cells[commandIndex + 1, 1] = "Fichier Exemple d'utilisation des commandes";
+            newHelp.Cells[commandIndex + 1, 2].Formula = "=HYPERLINK(\"https://github.com/AxaFrance/webengine-java/releases/download/3.0.3/no-code-tu.xlsx\")";
+
+            //Identification help images
+            string initbuttonFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "initButtonHelp.png");
+            string inspectHelpFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "inspectHelp.png");
+            string getxpathFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "getxpath.png");
+            Resources.initButtonpng.Save(initbuttonFile);
+            addDriveHelpImage(initbuttonFile, newHelp, 4, 4);
+            Resources.inspect.Save(inspectHelpFile);
+            addDriveHelpImage(inspectHelpFile, newHelp, 23, 4);
+            Resources.getxpath.Save(getxpathFile);
+            addDriveHelpImage(getxpathFile, newHelp, 47, 4);
+            UpdateToKeePassHelp(false);
+
+            //Command list validation
+            rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[2];
+            updateRangeValidation(rng, cmds.Keys.ToArray(), newHelp.Name);
+        }
+
+
+        public static void UpdateToKeePassHelp(bool gotoHelp)
+        {
+            Worksheet newHelp = null;
+            try
+            {
+                newHelp = Globals.ThisAddIn.Application.ActiveWorkbook.Worksheets[Drive_Help_SheetName];
+                updateCell(newHelp.Cells[65, 4], "Utilisation de variables Keepass : #{variable}# ou #{/Sous-Groupe/variable_sous_groupe}#", null);
+                newHelp.Cells[1, 4].ColumnWidth = 120;
+
+                String keepassHelp = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "KeePass Value.png");
+                String keepassHelpSousGroup = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "KeePass sous-groupe Value.png");
+                Resources.KeePass_Value.Save(keepassHelp);
+                addDriveHelpImage(keepassHelp, newHelp, 66, 4);
+                Resources.KeePass_sous_groupe_Value.Save(keepassHelpSousGroup);
+                addDriveHelpImage(keepassHelpSousGroup, newHelp, 80, 4);
+                if (gotoHelp)
+                {
+                    newHelp.Activate();
+                    newHelp.Application.ActiveWindow.ScrollRow = 65;
+                }
+            }
+            catch (Exception)
+            {
+                initializeDriveByCommandList();
+            }
+
+        }
+
+        private static void gotoDriveHelp()
+        {
+            Worksheet newHelp = null;
+            try
+            {
+                newHelp = Globals.ThisAddIn.Application.ActiveWorkbook.Worksheets[Drive_Help_SheetName];
+                newHelp.Activate();
+                newHelp.Application.ActiveWindow.ScrollRow = 1;
+            }
+            catch (Exception)
+            {
+                initializeDriveByCommandList();
+            }
+        }
+
+        private static void addDriveHelpImage(string initbuttonFile, Worksheet newHelp, int rowPosition, int colPosition)
+        {
+            object missing = System.Reflection.Missing.Value;
+            Microsoft.Office.Interop.Excel.Range picPosition = newHelp.Cells[rowPosition, colPosition]; // retrieve the range for picture insert
+            Microsoft.Office.Interop.Excel.Pictures pc = newHelp.Pictures(missing) as Microsoft.Office.Interop.Excel.Pictures;
+            Microsoft.Office.Interop.Excel.Picture pic = null;
+            pic = pc.Insert(initbuttonFile, missing);
+            pic.Left = Convert.ToDouble(picPosition.Left);
+            pic.Top = Convert.ToDouble(picPosition.Top);
+            pic.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMove;
+        }
+
+        private static void updateCell(Range cell, string name, string description)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(cell.FormulaLocal))
+                {
+                    cell.FormulaLocal = name;
+                }
+                cell.ClearComments();
+                if (description != null)
+                {
+                    cell.AddComment(description);
+                }
+                cell.Interior.Color = Color.FromArgb(68, 114, 196);
+                if (cell.Column == 1 || cell.Column == 3)
+                {
+                    cell.ColumnWidth = 40;
+                }
+                else
+                {
+                    cell.ColumnWidth = 20;
+                }
+                cell.Font.Color = Color.White;
+                cell.Font.Bold = true;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+
+        private static void updateRangeValidation(Range rng, string[] values, string helpSheetName)
+        {
+            rng.Validation.Delete();
+            if (values.Length < 10 && String.IsNullOrEmpty(helpSheetName))
+            {
+                rng.Validation.Add(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertWarning, XlFormatConditionOperator.xlEqual, Formula1: string.Join(";", values));
+            }
+            else
+            {
+                string validationFormula = "='" + helpSheetName + "'!$A$2:$A$" + (values.Length + 1);
+                rng.Validation.Add(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertInformation,
+                    XlFormatConditionOperator.xlEqual, validationFormula);
+                
+                rng.Validation.Modify(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertInformation,
+                    XlFormatConditionOperator.xlEqual, validationFormula);
+            }
+            rng.Validation.ErrorTitle = "Value Error!!";
+            rng.Validation.ErrorMessage = "Please select a value from dropdown list.";
+
+            rng.Validation.ShowError = false;
+            rng.Validation.InCellDropdown = true;
+            rng.Validation.IgnoreBlank = true;
+        }
+
+        private void driveSettings_Click(object sender, RibbonControlEventArgs e)
+        {
+            isNoCode = true;
+            Worksheet worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            chooseLanguage();
+            initializeDriveByCommandList();
+        }
+
+        private void chooseLanguage()
+        {
+            Form chooseLangageForm = new Form();
+            chooseLangageForm.Width = 600;
+            chooseLangageForm.Height = 100;
+            FlowLayoutPanel prompt = new FlowLayoutPanel();
+            prompt.Width = 600;
+            prompt.Height = 75;
+            chooseLangageForm.Text = "Choix de la langue des commandes";
+            System.Windows.Forms.Button closebtn = new Button();
+            closebtn.Text = "Done";
+
+            System.Windows.Forms.ListBox langageList = new System.Windows.Forms.ListBox();
+            langageList.Width = 400;
+            langageList.Height = 50;
+            langageList.AccessibilityObject.Name = "Langage";
+            langageList.Items.Add(""+NoCodeCmdLangage.French);
+            langageList.Items.Add(""+NoCodeCmdLangage.English);
+            if (Ribbon.Settings.NoCodeCmdLangage == null)
+            {
+                langageList.SelectedIndex = 0;
+            }                
+            else if (Ribbon.Settings.NoCodeCmdLangage == NoCodeCmdLangage.French.ToString())
+            {
+                langageList.SelectedIndex = 0;
+            }
+            else
+            {
+                langageList.SelectedIndex = 1;
+            }
+            closebtn.Click += (btnsender, args) =>
+            {
+                Ribbon.Settings.NoCodeCmdLangage = langageList.SelectedItem.ToString();
+                chooseLangageForm.Close();
+            };
+            chooseLangageForm.Controls.Add(prompt);
+
+            langageList.KeyPress += new KeyPressEventHandler(chooseLangage_KeyPress);
+            prompt.Controls.Add(langageList);   
+            prompt.Controls.Add(closebtn);
+
+
+            chooseLangageForm.ShowDialog();
+            langageList.Focus();
+        }
+
+        private void chooseLangage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Ribbon.Settings.NoCodeCmdLangage = ((System.Windows.Forms.ListBox)sender).SelectedItem.ToString(); 
+                //close parent form
+                ((Form)((System.Windows.Forms.ListBox)sender).Parent.Parent).Close();
+            }
+        }
+
+        private void BtTargetHelp_Click(object sender, RibbonControlEventArgs e)
+        {
+            FrmTargetEdit frmNoCode = new FrmTargetEdit();
+            frmNoCode.ShowDialog();
+        }
+
+        private void KeepassHelp_Click(object sender, RibbonControlEventArgs e)
+        {
+            Ribbon.UpdateToKeePassHelp(true);
+        }
+
+        private void BtGotoDriveHelp_Click(object sender, RibbonControlEventArgs e)
+        {
+            Ribbon.gotoDriveHelp();
         }
     }
 }
