@@ -1,0 +1,31 @@
+.table-common {
+    width: 100%!important;
+    border: 1px solid #E5E7E9;
+}
+
+.table-common  th{
+    text-align: left;
+    vertical-align: middle;
+    /*border-bottom: 1px solid #E5E7E9;*/
+    color:#273746!important;
+    border: 1px solid #E5E7E9;
+    padding-left: 5px!important;
+}
+
+.table-common tr{
+    height: 50px;
+}
+
+th{
+    text-align: start;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+td{
+    vertical-align: middle!important;
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+    word-break: break-all;
+    border: 1px solid #E5E7E9;
+}

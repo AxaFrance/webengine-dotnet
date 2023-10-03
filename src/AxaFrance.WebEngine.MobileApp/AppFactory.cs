@@ -294,18 +294,6 @@ namespace AxaFrance.WebEngine.MobileApp
             if (appiumServerAddress.Contains("browserstack.com"))
             {
                 AddBrowserStackOptions(options, s);
-                Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
-                browserstackOptions.Add("userName", s.Username);
-                browserstackOptions.Add("accessKey", s.Password);
-                options.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
-                var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
-                var name = assembly?.GetName();
-                if (name != null)
-                {
-                    options.AddAdditionalAppiumOption("project", name.Name);
-                    options.AddAdditionalAppiumOption("build", name.Version.ToString());
-                    options.AddAdditionalAppiumOption("name", name.FullName);
-                }
             }
             
         }

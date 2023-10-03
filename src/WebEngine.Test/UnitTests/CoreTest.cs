@@ -5,7 +5,9 @@ using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 
@@ -36,6 +38,25 @@ namespace WebEngine.Test.UnitTests
         {
             var s = Settings.Instance;
             Assert.IsTrue(s.Capabilities != null);
+            var dic = s.Capabilities["other:capability"];
+            if (dic is JObject jo)
+            {
+                var dictionary = jo.ToObject<Dictionary<string, object>>();
+                Assert.AreEqual(2, dictionary.Count);
+            }
+            else
+            {
+                Assert.Fail("other:capability is not a JObject");
+            }
+            
+        }
+
+        [TestMethod]
+        public void HtmlReport()
+        {
+            var report = ReportHelper.LoadReport("TestData\\SampleReport.xml", out _);
+            var htmlFile = ReportHelper.GenerateHtmlReport(report, "Test", Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));
+            Assert.IsTrue(File.Exists(htmlFile));
         }
 
         [TestMethod]
@@ -54,7 +75,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome, new string[] { "incognito" }))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                 driver.Quit();
             }
         }
@@ -64,7 +85,7 @@ namespace WebEngine.Test.UnitTests
         {
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge))
             {
-                driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/");
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
                  driver.Quit();
             }
         }

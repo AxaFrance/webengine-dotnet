@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net472;net48;net6.0</TargetFrameworks>
+    <TargetFrameworks>net472;net48;net6.0;net6.0-windows</TargetFrameworks>
     <Nullable>disable</Nullable>
     <PublishSingleFile>false</PublishSingleFile>
     <SelfContained>false</SelfContained>
@@ -21,8 +21,8 @@
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
-    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AxaGuilDEv/webengine-dotnet</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AxaFrance/webengine-dotnet</RepositoryUrl>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>

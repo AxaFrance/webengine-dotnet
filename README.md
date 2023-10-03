@@ -24,21 +24,31 @@ WebEngine Framework resolves some common problems every test automation project 
 * API Reference: Explains every class, method and property.
 * Tutorials: Follow some step by step turotial to build first test automation solution using different approach.
 
-https://axaguildev.github.io/webengine-dotnet/
+https://axafrance.github.io/webengine-dotnet/
 
 ## Use the latest version
 The Framework is distributed via Package Management:
 When using .NET, please find AxaFrance.WebEngine packages on nuget.org
 When using JAVA, these pacakges will be available on Maven
 
+## WebEngine 2.0 Roadmap
+We are working on the next version of WebEngine Framework, in the next versions we will bring.
+- [ ] Enhanced Page-Object Model.
+- [ ] Enhanced Element Description Model (with more attributes and relative-identification mode)
+- [ ] Integrates Acessibility Testing with axe-core library and comprehensive reports.
+
+To get detailed information with this roadmap, please check [WebEngine 2.0 Roadmap](WebEngine2.0.md)
+
 
 ## Contact us
 Feel free to reach us if you want to adopt the Framework, report Bugs, or have good ideas to contribute on it.
 
 #### Repository of .NET Project and shared components:
-+ https://github.com/AxaGuilDEv/webengine-dotnet
++ https://github.com/AxaFrance/webengine-dotnet
 + Main contributor: Huaxing YUAN [<img src="src/AxaFrance.WebEngine.Doc/images/linked-in.svg" width="16" />](https://www.linkedin.com/in/huaxing-yuan/) [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/huaxing-yuan) [<img src="src/AxaFrance.WebEngine.Doc/images/twitter.svg" width="16" />](https://twitter.com/huaxing_yuan)
 
 #### Repository Java Project:
-+ Project ongoing
-+ Main contributor: Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepha26)
++ https://github.com/AxaFrance/webengine-java
++ Main contributor:
+    + Joseph ARUL [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/josepharul82)
+    + Jean-Prince DOTOU-SEGLA [<img src="src/AxaFrance.WebEngine.Doc/images/github.svg" width="16" />](https://github.com/JeanPrince)

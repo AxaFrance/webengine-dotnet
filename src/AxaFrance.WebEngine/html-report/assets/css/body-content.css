@@ -1,0 +1,35 @@
+.body-content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: gray;
+    height: 78%;
+}
+
+.body-left-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    border: 1px solid #e7e9eb;
+}
+
+.body-right-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 100%;
+    width: 60%;
+    background-color: white;
+    position: relative;
+    margin-left: 20px;
+    border: 1px solid #e7e9eb;
+}
+
+.body-right-container-class {
+}
+

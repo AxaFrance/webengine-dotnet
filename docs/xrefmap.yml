@@ -836,6 +836,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.ActionReport.EndTime
   nameWithType: ActionReport.EndTime
+- uid: AxaFrance.WebEngine.Report.ActionReport.Id
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.ActionReport.html#AxaFrance_WebEngine_Report_ActionReport_Id
+  commentId: P:AxaFrance.WebEngine.Report.ActionReport.Id
+  fullName: AxaFrance.WebEngine.Report.ActionReport.Id
+  nameWithType: ActionReport.Id
+- uid: AxaFrance.WebEngine.Report.ActionReport.Id*
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.ActionReport.html#AxaFrance_WebEngine_Report_ActionReport_Id_
+  commentId: Overload:AxaFrance.WebEngine.Report.ActionReport.Id
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.ActionReport.Id
+  nameWithType: ActionReport.Id
 - uid: AxaFrance.WebEngine.Report.ActionReport.Log
   name: Log
   href: api_net/AxaFrance.WebEngine.Report.ActionReport.html#AxaFrance_WebEngine_Report_ActionReport_Log
@@ -1412,6 +1425,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.ScreenshotReport.Data
   nameWithType: ScreenshotReport.Data
+- uid: AxaFrance.WebEngine.Report.ScreenshotReport.Id
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.ScreenshotReport.html#AxaFrance_WebEngine_Report_ScreenshotReport_Id
+  commentId: P:AxaFrance.WebEngine.Report.ScreenshotReport.Id
+  fullName: AxaFrance.WebEngine.Report.ScreenshotReport.Id
+  nameWithType: ScreenshotReport.Id
+- uid: AxaFrance.WebEngine.Report.ScreenshotReport.Id*
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.ScreenshotReport.html#AxaFrance_WebEngine_Report_ScreenshotReport_Id_
+  commentId: Overload:AxaFrance.WebEngine.Report.ScreenshotReport.Id
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.ScreenshotReport.Id
+  nameWithType: ScreenshotReport.Id
 - uid: AxaFrance.WebEngine.Report.ScreenshotReport.Name
   name: Name
   href: api_net/AxaFrance.WebEngine.Report.ScreenshotReport.html#AxaFrance_WebEngine_Report_ScreenshotReport_Name
@@ -1509,6 +1535,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.TestCaseReport.GlobalContextValues
   nameWithType: TestCaseReport.GlobalContextValues
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.Id
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_Id
+  commentId: P:AxaFrance.WebEngine.Report.TestCaseReport.Id
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.Id
+  nameWithType: TestCaseReport.Id
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.Id*
+  name: Id
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_Id_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestCaseReport.Id
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.Id
+  nameWithType: TestCaseReport.Id
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.Log
   name: Log
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_Log
@@ -2161,6 +2200,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Settings.SynchronzationTimeout
   nameWithType: Settings.SynchronzationTimeout
+- uid: AxaFrance.WebEngine.Settings.UseAppiumForWebMobile
+  name: UseAppiumForWebMobile
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_UseAppiumForWebMobile
+  commentId: P:AxaFrance.WebEngine.Settings.UseAppiumForWebMobile
+  fullName: AxaFrance.WebEngine.Settings.UseAppiumForWebMobile
+  nameWithType: Settings.UseAppiumForWebMobile
+- uid: AxaFrance.WebEngine.Settings.UseAppiumForWebMobile*
+  name: UseAppiumForWebMobile
+  href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_UseAppiumForWebMobile_
+  commentId: Overload:AxaFrance.WebEngine.Settings.UseAppiumForWebMobile
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Settings.UseAppiumForWebMobile
+  nameWithType: Settings.UseAppiumForWebMobile
 - uid: AxaFrance.WebEngine.Settings.UseJavaScriptClick
   name: UseJavaScriptClick
   href: api_net/AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_UseJavaScriptClick

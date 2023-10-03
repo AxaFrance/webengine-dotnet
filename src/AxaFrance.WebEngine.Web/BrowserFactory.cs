@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.ImageComparison;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -10,8 +12,10 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -85,15 +89,15 @@ namespace AxaFrance.WebEngine.Web
             Settings.Instance.Browser = browserType;
 
             //Merge browser options provided by this function and appsettings.json
-            var optionsFromSettings = Settings.Instance.BrowserOptions.ToList();
-            foreach(var option in browserOptions)
+            var arguments = Settings.Instance.BrowserOptions.ToList();
+            foreach (var option in browserOptions)
             {
-                if (!optionsFromSettings.Contains(option))
+                if (!arguments.Contains(option))
                 {
-                    optionsFromSettings.Add(option);
+                    arguments.Add(option);
                 }
             }
-            
+
 
 
 #if NET48_OR_GREATER || NET6_0_OR_GREATER
@@ -113,38 +117,43 @@ namespace AxaFrance.WebEngine.Web
             {
                 if (Settings.Instance.GridForDesktop)
                 {
-                    return ConnectToDesktopGrid();
+                    return ConnectToGridUsingRemoteDriver(arguments);
                 }
                 else
                 {
                     switch (browserType)
                     {
                         case BrowserType.Chrome:
-                            return GetChromeDriver(optionsFromSettings);
+                            return GetChromeDriver(arguments);
                         case BrowserType.ChromiumEdge:
-                            return GetEdgeDriver(optionsFromSettings);
+                            return GetEdgeDriver(arguments);
                         case BrowserType.Firefox:
-                            return GetFirefoxDriver(optionsFromSettings);
+                            return GetFirefoxDriver(arguments);
                         case BrowserType.InternetExplorer:
                             return GetIEDriver();
                         case BrowserType.Safari:
-                            return GetSafariDriver(optionsFromSettings);
+                            return GetSafariDriver(arguments);
                         default:
                             throw new PlatformNotSupportedException($"The browser {browserType} is not yet supported by WebEngine Framework.");
                     }
                 }
             }
+            else if (Settings.Instance.UseAppiumForWebMobile)
+            {
+                Settings.Instance.UseJavaScriptClick = true;
+                return ConnectToGridUsingAppiumDriver(arguments);
+            }
             else
             {
                 Settings.Instance.UseJavaScriptClick = true;
-                return ConnectToDevice();
+                return ConnectToGridUsingRemoteDriver(arguments);
             }
         }
 
-        private static WebDriver ConnectToDesktopGrid()
+        private static WebDriver ConnectToGridUsingRemoteDriver(List<string> arguments)
         {
             Settings s = Settings.Instance;
-            var options = GetDriverOption(s.Browser);
+            var options = GetDriverOption(s.Browser, arguments);
             options.PlatformName = s.Platform.ToString();
             options.AddAdditionalOption("newCommandTimeout", 90);
             options.AddAdditionalOption("nativeWebScreenshot", "true");
@@ -156,11 +165,11 @@ namespace AxaFrance.WebEngine.Web
             }
 
             DebugLogger.WriteLine($"Connecting to Grid: {remoteServerAddress}, Browser: {s.Browser}, Platform: {s.Platform}");
+            AddPlatformSpecificOptions(remoteServerAddress, s);
             AddAdditionalCapabilities(options, s);
-            AddPlatformSpecificOptions(remoteServerAddress, options, s);
             if (options != null)
             {
-                var capa = options.ToCapabilities();  
+                var capa = options.ToCapabilities();
                 return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(s.GridServerUrl), capa);
             }
             else
@@ -169,18 +178,25 @@ namespace AxaFrance.WebEngine.Web
             }
         }
 
-        private static DriverOptions GetDriverOption(BrowserType browser)
+        private static DriverOptions GetDriverOption(BrowserType browser, List<string> arguments)
         {
             switch (browser)
             {
                 case BrowserType.Safari:
-                    return new SafariOptions();
+                    var options = new SafariOptions();
+                    return options;
                 case BrowserType.Chrome:
-                    return new ChromeOptions();
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArguments(arguments);
+                    return chromeOptions;
                 case BrowserType.ChromiumEdge:
-                    return new EdgeOptions();
+                    var edgeOptions = new EdgeOptions();
+                    edgeOptions.AddArguments(arguments);
+                    return edgeOptions;
                 case BrowserType.Firefox:
-                    return new FirefoxOptions();
+                    var firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.AddArguments(arguments);
+                    return firefoxOptions;
             }
             return null;
         }
@@ -195,7 +211,7 @@ namespace AxaFrance.WebEngine.Web
             return driver;
         }
 
-        private static WebDriver ConnectToDevice()
+        private static WebDriver ConnectToGridUsingAppiumDriver(List<string> optionsFromSettings)
         {
             Settings s = Settings.Instance;
             AppiumOptions options = new AppiumOptions()
@@ -221,13 +237,12 @@ namespace AxaFrance.WebEngine.Web
                 appiumServerAddress = "http://localhost:4723/wd/hub";
             }
 
+            AddPlatformSpecificOptions(appiumServerAddress, s);
             AddAdditionalCapabilities(options, s);
-            AddPlatformSpecificOptions(appiumServerAddress, options, s);
 
             if (s.Platform == Platform.Android)
             {
                 return new AndroidDriver(new Uri(appiumServerAddress), options, new TimeSpan(0, 3, 0));
-
             }
             else if (s.Platform == Platform.iOS)
             {
@@ -250,7 +265,15 @@ namespace AxaFrance.WebEngine.Web
         {
             foreach (var cap in s.Capabilities)
             {
-                options.AddAdditionalAppiumOption(cap.Key, cap.Value);
+                if (cap.Value is JObject jo)
+                {
+                    var dict = jo.ToObject<Dictionary<string, object>>();
+                    options.AddAdditionalAppiumOption(cap.Key, dict);
+                }
+                else
+                {
+                    options.AddAdditionalAppiumOption(cap.Key, cap.Value);
+                }
             }
         }
 
@@ -263,28 +286,42 @@ namespace AxaFrance.WebEngine.Web
         {
             foreach (var cap in s.Capabilities)
             {
-                options.AddAdditionalOption(cap.Key, cap.Value);
+                if (cap.Value is JObject jo)
+                {
+                    var dict = jo.ToObject<Dictionary<string, object>>();
+                    options.AddAdditionalOption(cap.Key, dict);
+                }
+                else
+                {
+                    options.AddAdditionalOption(cap.Key, cap.Value);
+                }
             }
         }
 
-        private static void AddPlatformSpecificOptions(string appiumServerAddress, DriverOptions options, Settings s)
+        private static void AddPlatformSpecificOptions(string appiumServerAddress, Settings s)
         {
             if (appiumServerAddress.IsBrowserStack())
             {
-                AddBrowserStackOptions(options, s);
+                AddBrowserStackOptions(s);
             }
-            //Add here the support for other platforms
+            //Add here the support for other platforms such as saucelabs and other customized providers.
         }
 
-        private static void AddBrowserStackOptions(DriverOptions options, Settings s)
+        /// <summary>
+        /// Adds specifics options for browserstack platform. These options will be stored in `bstack:options` capability.
+        /// </summary>
+        /// <param name="s">Settings object (which may already contains bstack:options capability)</param>
+        private static void AddBrowserStackOptions(Settings s)
         {
-            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
-            browserstackOptions.Add("userName", s.Username);
-            browserstackOptions.Add("accessKey", s.Password);
+            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>
+            {
+                { "userName", s.Username },
+                { "accessKey", s.Password }
+            };
             var os = GetBrowserStackOSName(s.Platform);
             if (!string.IsNullOrEmpty(os))
             {
-                browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X"
+                browserstackOptions.Add("os", os); //Windows = "Windows", MacOS = "OS X", Android, iOS
             }
             if (!string.IsNullOrEmpty(s.OsVersion))
             {
@@ -292,13 +329,12 @@ namespace AxaFrance.WebEngine.Web
             }
 
             browserstackOptions.Add("browserName", GetBrowserStackBrowserName(s.Browser)); //Safari, InternetExplorer
+            browserstackOptions.Add("deviceName", s.Device);
             if (!string.IsNullOrEmpty(s.BrowserVersion))
             {
                 browserstackOptions.Add("browserVersion", s.BrowserVersion); //13.0
             }
             //browserstackOptions.Add("seleniumVersion", "4.7.0");             //Same as installed selenium package;
-            options.AddAdditionalOption("bstack:options", browserstackOptions);
-
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
             if (name != null)
@@ -307,8 +343,47 @@ namespace AxaFrance.WebEngine.Web
                 browserstackOptions.Add("buildName", name.Version.ToString());
                 browserstackOptions.Add("sessionName", name.FullName);
             }
+
+            string bstackOptions = "bstack:options";
+
+            if (s.Capabilities.ContainsKey(bstackOptions))
+            {
+                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");
+                var dic = s.Capabilities[bstackOptions];
+                Console.WriteLine($"The type of {bstackOptions} from appsetting.json is {dic.GetType().FullName}");
+                if (dic is JObject jo)
+                {
+                    var dictionary = jo.ToObject<Dictionary<string, object>>();
+                    Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dictionary)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else if (dic is Dictionary<string, object> dic2)
+                {
+                    Console.WriteLine("bstack:options from appsetting.json: " + dic2.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dic2)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The type of bstack:options from appsetting.json is not JObject: " + dic.GetType().FullName);
+                }
+            }
+            s.Capabilities[bstackOptions] = browserstackOptions;
+            Console.WriteLine("bstack:options after merging: " + browserstackOptions.Count);
         }
 
+        /// <summary>
+        /// Gets the parameter 'OS' used for browerstack according to platform.
+        /// </summary>
+        /// <param name="platform">Platform name</param>
+        /// <returns>browerstack </returns>
         private static string GetBrowserStackOSName(Platform platform)
         {
             switch (platform)
@@ -317,6 +392,10 @@ namespace AxaFrance.WebEngine.Web
                     return "Windows";
                 case Platform.MacOS:
                     return "OS X";
+                case Platform.iOS:
+                    return "ios";
+                case Platform.Android:
+                    return "android";
                 default:
                     return null;
             }
@@ -400,20 +479,47 @@ namespace AxaFrance.WebEngine.Web
         private static WebDriver GetChromeDriver(string version, IEnumerable<string> browserOptions)
         {
             string downloadUrl = null;
+            int major = int.Parse(version.Substring(0, version.IndexOf(".")));
             string v = version.Substring(0, version.LastIndexOf("."));
-            string latestVersion = $"https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{v}";
+            string getVersionUrl;
+            if (major >= 115)
+            {
+                getVersionUrl = $"https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_{v}";
+            }
+            else
+            {
+                getVersionUrl = $"https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{v}";
+            }
 
             using (WebClient c = new WebClient())
             {
-                string lv = c.DownloadString(latestVersion);
-                downloadUrl = $"https://chromedriver.storage.googleapis.com/{lv}/chromedriver_win32.zip";
-                string file = $"{workingDirectory}\\ChromeDriver\\{lv}\\Webdriver.zip";
-                string folder = $"{workingDirectory}\\ChromeDriver\\{lv}\\Extracted";
+                string driverVersion = c.DownloadString(getVersionUrl);
+                if (major >= 115)
+                {
+                    downloadUrl = $"https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{driverVersion}/win64/chromedriver-win64.zip";
+                }
+                else
+                {
+                    downloadUrl = $"https://chromedriver.storage.googleapis.com/{driverVersion}/chromedriver_win32.zip";
+                }
+                string file = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Webdriver.zip";
+                string folder = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Extracted";
                 if (!System.IO.Directory.Exists(folder))
                 {
-                    System.IO.Directory.CreateDirectory(folder);
+                    var di = System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
+                    //new version of chromedriver are in a folder, copy them to root folder of Extracted.
+                    if (di.GetDirectories().Any())
+                    {
+                        foreach (var subdir in di.GetDirectories())
+                        {
+                            foreach (var fil in subdir.GetFiles())
+                            {
+                                fil.CopyTo(Path.Combine(folder, fil.Name));
+                            }
+                        }
+                    }
                 }
                 else
                 {

@@ -94,6 +94,10 @@ namespace AxaFrance.WebEngine
                 {
                     this.GridForDesktop = settings.Value<bool>("GridForDesktop");
                 }
+                if (settings.ContainsKey("UseAppiumForWebMobile"))
+                {
+                    this.UseAppiumForWebMobile = settings.Value<bool>("UseAppiumForWebMobile");
+                }
                 if (settings.ContainsKey("BrowserVersion"))
                 {
                     this.BrowserVersion = settings.Value<string>("BrowserVersion");
@@ -329,5 +333,12 @@ namespace AxaFrance.WebEngine
         /// BrowserVersion to be used for Web Tests,
         /// </summary>
         public string BrowserVersion { get; internal set; }
+
+        /// <summary>
+        /// Use Appium driver for Web Mobile Testing.
+        /// This parameter can be set to true if you are running Web Mobile testing on local Appium Instance or a Selenium Grid based on Appium instances.
+        /// True: Use Appium Driver (AndroidDriver or IOsDriver), False : Use RemoteWebDriver.
+        /// </summary>
+        public bool UseAppiumForWebMobile { get; internal set; }
     }
 }

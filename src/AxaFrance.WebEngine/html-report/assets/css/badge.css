@@ -1,0 +1,44 @@
+.badge {
+    border-radius: 0rem !important;
+}
+
+.badge-container {
+    margin-right: 5px;
+    transition: 200ms all ease-in-out;
+}
+/*.badge-container:hover {*/
+/*    transform: translateY(-4px);*/
+/*    cursor: pointer;*/
+/*}*/
+
+.badge-action {
+    font-weight: 350 !important;
+    background-color: #00008f !important;
+    color: white;
+    font-size: 16px !important;
+    display: inline-block;
+    padding: 0.8em 1.5em !important;
+    border-radius: 30px !important;
+}
+
+.badge-action-green {
+    color: #27ae60 !important;
+}
+
+.badge-action-red {
+    color: #e74c3c !important;
+}
+
+.badge-action-blue {
+    color: #3498db !important;
+}
+
+.badge-action-gray {
+    color: #ccd1d1 !important;
+}
+
+.badge-action-hover:hover {
+    cursor: pointer;
+    background-color: white !important;
+    color: gray !important;
+}

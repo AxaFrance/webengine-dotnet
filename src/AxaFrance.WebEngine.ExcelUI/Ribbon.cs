@@ -613,12 +613,12 @@ namespace AxaFrance.WebEngine.ExcelUI
         }
         private void btnHelp_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("https://github.com/AxaGuilDEv/webengine-dotnet");
+            Process.Start("https://github.com/AxaFrance/webengine-dotnet");
         }
 
         private void btnFeedback_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("https://github.com/AxaGuilDEv/webengine-dotnet/issues");
+            Process.Start("https://github.com/AxaFrance/webengine-dotnet/issues");
         }
 
         private void btnAbout_Click(object sender, RibbonControlEventArgs e)

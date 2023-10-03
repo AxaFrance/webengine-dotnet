@@ -37,4 +37,10 @@
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="demo\Test.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

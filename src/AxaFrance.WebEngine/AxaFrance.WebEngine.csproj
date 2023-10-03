@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net472;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net472;net48;net6.0-windows</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -16,7 +16,7 @@
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
     <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
-    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
@@ -45,6 +45,11 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="html-report.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="html-report.zip" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,8 +59,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="html-report\" />
   </ItemGroup>
 
 </Project>

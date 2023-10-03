@@ -15,6 +15,11 @@ namespace AxaFrance.WebEngine.Report
     public class ActionReport
     {
         /// <summary>
+        /// The unique identifier of the report item, generated automaticaly and used for showing report
+        /// </summary>
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
+        /// <summary>
         /// The name of the action.
         /// </summary>
         public string Name { get; set; }

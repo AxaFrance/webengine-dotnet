@@ -16,13 +16,13 @@
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
     <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
-    <PackageProjectUrl>https://github.com/AxaGuilDEv/webengine-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta02" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.7.0" />
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta03" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.9.0" />
   </ItemGroup>
 
   <ItemGroup>
