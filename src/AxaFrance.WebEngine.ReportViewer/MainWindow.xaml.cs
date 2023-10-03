@@ -37,6 +37,20 @@ namespace AxaFrance.WebEngine.ReportViewer
         }
 
         string xmlReport;
+        private bool ShouldSkip(TestCaseReport tc)
+        {
+            if (!string.IsNullOrEmpty(App.Filter) && !(tc.TestName.IndexOf(App.Filter, StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                return true;
+            }
+
+            if (App.FilterFailed && tc.Result != Result.Failed && tc.Result != Result.CriticalError)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         private void Load()
         {
@@ -57,6 +71,10 @@ namespace AxaFrance.WebEngine.ReportViewer
                 double totalSeconds = ts.Duration.TotalSeconds;
                 foreach (var tc in ts.TestResult)
                 {
+                    if (this.ShouldSkip(tc))
+                    {
+                        continue;
+                    }
                     lvTestcases.Items.Add(tc);
                     switch (tc.Result)
                     {
@@ -295,6 +313,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             WindowViewXML xml = new WindowViewXML(xmlReport);
             xml.ShowDialog();
         }
+        private bool Reseting = false;
 
         private void OpenReport_Click(object sender, RoutedEventArgs e)
         {
@@ -309,6 +328,12 @@ namespace AxaFrance.WebEngine.ReportViewer
             if (result.HasValue && result.Value)
             {
                 App.LogFile = ofd.FileName;
+
+                this.Reseting = true;
+                txFilter.Text = string.Empty;
+                cbFailed.IsChecked = false;
+                this.Reseting = false;
+
                 Load();
             }
         }
@@ -346,6 +371,44 @@ namespace AxaFrance.WebEngine.ReportViewer
             WindowAbout wa = new WindowAbout();
             wa.ShowDialog();
             wa.Close();
+        }
+
+        private void TxFilter_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!this.IsInitialized)
+            {
+                return;
+            }
+            App.Filter = txFilter.Text;
+            if (this.Reseting)
+            {
+                return;
+            }
+            Load();
+        }
+
+        private void CheckedChanged()
+        {
+            if (!this.IsInitialized)
+            {
+                return;
+            }
+            App.FilterFailed = cbFailed.IsChecked.HasValue && cbFailed.IsChecked.Value;
+            if (this.Reseting)
+            {
+                return;
+            }
+            Load();
+        }
+
+        private void CbFailed_OnChecked(object sender, RoutedEventArgs e)
+        {
+            this.CheckedChanged();
+        }
+
+        private void cbFailed_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.CheckedChanged();
         }
     }
 }
