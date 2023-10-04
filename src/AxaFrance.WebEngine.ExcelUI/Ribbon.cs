@@ -49,16 +49,13 @@ namespace AxaFrance.WebEngine.ExcelUI
         }
 
         private bool isNoCode = false;
-
+        private static Worksheet activeWorksheet;
         internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelWithDriveSetting.xml");
 
         internal static string TestDataFile;
         internal static List<string> TestCases = new List<string>();
         internal static string EnvironmentVariableFile;
         internal static string categoryName;
-
-
-
 
         private CommandBar GetCellContextMenu()
         {
@@ -103,11 +100,10 @@ namespace AxaFrance.WebEngine.ExcelUI
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
             ResetCellMenu();  // reset the cell context menu back to the default
-
             // Call this function is the user right clicks on a cell
-            Globals.ThisAddIn.Application.SheetBeforeRightClick += new Microsoft.Office.Interop.Excel.AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);
-
-            //initializeDriveByCommandList();
+            Globals.ThisAddIn.Application.SheetBeforeRightClick += 
+                new Microsoft.Office.Interop.Excel.AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);
+            //initialize user saved preferences
             if (File.Exists(settingFile))
             {
                 using (var stream = File.OpenRead(settingFile))
@@ -129,7 +125,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 Ribbon.Settings = new AddinSettings();
             }
-
         }
 
         internal static void SaveSettings()
@@ -245,7 +240,10 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
             else
             {
-                if (filter == null || filter.Length == 0) return true;
+                if (filter == null || filter.Length == 0)
+                {
+                    return true;
+                }
                 return !filter.Any(x => testCaseName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) > 0);
             }
         }
@@ -292,12 +290,12 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (duplicatedNames.Count > 0)
             {
-                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", 
+                    string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-        }
-
+            }
             list.TestDataList.RemoveAll(x => !exportedNames.Contains(x.TestName));
-
             SaveTestDataToFile(list);
         }
 
@@ -328,8 +326,10 @@ namespace AxaFrance.WebEngine.ExcelUI
                     sw.Close();
 
                 }
-                MessageBox.Show("Test Data has exported to the following file:\n" + TestDataFile + "\n\nFile path has already copied to clipboard.", "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Test Data has exported to the following file:\n" + TestDataFile + "\n\nFile path has already copied to clipboard.", 
+                    "Export Success", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
             }
             else
             {
@@ -374,11 +374,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     for (int column = TestCaseStartColumn; column < maxColumns; column++)
                     {
                         int i = column - TestCaseStartColumn;
-                        if (columns == null || columns.Contains(i))
-                        {
-
-                        }
-                        else
+                        if (!(columns == null || columns.Contains(i)))
                         {
                             continue;
                         }
@@ -882,17 +878,14 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             String col = "";
 
-            Worksheet worksheet = Globals.ThisAddIn.Application.ActiveSheet;
             Range selectedrange = Globals.ThisAddIn.Application.Selection;
             int colCOunt = selectedrange.Columns.Count;
             if (colCOunt > 10)
             {
                 MessageBox.Show("Vous avez sélectionné plus de 10 colonnes, veuillez réduire le nombre de tests sélectionnés SVP.");
                 return;
-            }
-            
+            }            
             show_FrmRun(col);
-
         }
 
         private void show_FrmRun(string noCodeColInfo)
@@ -923,7 +916,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         private static void initializeDriveByCommandList()
         {
             //Prompt Excecution bar
-            String workingDirectory = System.Environment.GetFolderPath(SpecialFolder.ApplicationData) + "\\AxaFrance.WebEngine";
+            String workingDirectory = FrmRun.GetWorkingDirectory(Settings.NoCodeRunnerPath);
             Form form = new Form();
             form.Width = 700;
             form.Height = 150;
@@ -948,7 +941,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                 updateCell(s.Cells[1, 2], "Commande/Action", "liste des commandes possibles");
                 updateCell(s.Cells[1, 3], "Identification du champ", "Identification du champ (Id, Xpath, ...)");
                 updateCell(s.Cells[1, 4], "Optionnel", "Indique si la ligne est ignoré en cas d'erreur");
-                updateCell(s.Cells[1, 5], "Référence/Exclusion", "Indique si la ligne est à prendre en compte par rapport à la colonne des valeurs choisie.\n Un '!' indique que la ligne est à ignorée");
+                updateCell(s.Cells[1, 5], "Référence/Exclusion", 
+                    "Indique si la ligne est à prendre en compte par rapport à la colonne des valeurs choisie.\n Un '!' indique que la ligne est à ignorée");
                 updateCell(s.Cells[1, 6], "Liste_1_des_valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
                 updateCell(s.Cells[1, 7], "Liste 2 des valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
 
@@ -969,8 +963,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     try
                     {
-
-                            string cmd = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
+                        string cmd = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
                         string desc = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["DESCRIPTION"].ToString();
 
                         if (desc.ToLowerInvariant().Contains(NoCodeCmdLangage.French.ToString().ToLowerInvariant()) 
@@ -1059,7 +1052,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             UpdateToKeePassHelp(false);
 
             //Command list validation
-            rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[2];
+            rng = activeWorksheet.Columns[2];
             updateRangeValidation(rng, cmds.Keys.ToArray(), newHelp.Name);
         }
 
@@ -1146,8 +1139,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
             catch (Exception)
             {
-
-
+                //Nothing
             }
 
         }
@@ -1179,7 +1171,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         private void driveSettings_Click(object sender, RibbonControlEventArgs e)
         {
             isNoCode = true;
-            Worksheet worksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            activeWorksheet = Globals.ThisAddIn.Application.ActiveSheet;
             chooseLanguage();
             initializeDriveByCommandList();
         }

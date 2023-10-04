@@ -43,6 +43,10 @@ namespace AxaFrance.WebEngine.ExcelUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon));
             this.tabWebEngine = this.Factory.CreateRibbonTab();
             this.grpTestData = this.Factory.CreateRibbonGroup();
+            this.grpExecution = this.Factory.CreateRibbonGroup();
+            this.grpHelp = this.Factory.CreateRibbonGroup();
+            this.NoCodeHelp = this.Factory.CreateRibbonGroup();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.gryExport = this.Factory.CreateRibbonGallery();
             this.btnExportSelection = this.Factory.CreateRibbonButton();
             this.btnExportAll = this.Factory.CreateRibbonButton();
@@ -54,21 +58,17 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnCodeGenerationJava = this.Factory.CreateRibbonButton();
             this.btnDataCheck = this.Factory.CreateRibbonButton();
             this.btnDataSync = this.Factory.CreateRibbonButton();
-            this.grpExecution = this.Factory.CreateRibbonGroup();
             this.btnStartNow = this.Factory.CreateRibbonButton();
             this.btnStartDriveByExcelNow = this.Factory.CreateRibbonButton();
-            this.grpHelp = this.Factory.CreateRibbonGroup();
             this.btnSettings = this.Factory.CreateRibbonButton();
             this.gryHelp = this.Factory.CreateRibbonGallery();
             this.btnAbout = this.Factory.CreateRibbonButton();
             this.btnHelp = this.Factory.CreateRibbonButton();
             this.btnFeedback = this.Factory.CreateRibbonButton();
             this.generateGherkin = this.Factory.CreateRibbonButton();
-            this.NoCodeHelp = this.Factory.CreateRibbonGroup();
             this.driveSettings = this.Factory.CreateRibbonButton();
             this.BtGotoDriveHelp = this.Factory.CreateRibbonButton();
             this.KeepassHelp = this.Factory.CreateRibbonButton();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.BtTargetHelp = this.Factory.CreateRibbonButton();
             this.tabWebEngine.SuspendLayout();
             this.grpTestData.SuspendLayout();
@@ -93,6 +93,35 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.grpTestData.Items.Add(this.gryTools);
             resources.ApplyResources(this.grpTestData, "grpTestData");
             this.grpTestData.Name = "grpTestData";
+            // 
+            // grpExecution
+            // 
+            this.grpExecution.Items.Add(this.btnStartNow);
+            this.grpExecution.Items.Add(this.btnStartDriveByExcelNow);
+            resources.ApplyResources(this.grpExecution, "grpExecution");
+            this.grpExecution.Name = "grpExecution";
+            // 
+            // grpHelp
+            // 
+            this.grpHelp.Items.Add(this.btnSettings);
+            this.grpHelp.Items.Add(this.gryHelp);
+            this.grpHelp.Items.Add(this.generateGherkin);
+            resources.ApplyResources(this.grpHelp, "grpHelp");
+            this.grpHelp.Name = "grpHelp";
+            // 
+            // NoCodeHelp
+            // 
+            this.NoCodeHelp.Items.Add(this.driveSettings);
+            this.NoCodeHelp.Items.Add(this.BtGotoDriveHelp);
+            this.NoCodeHelp.Items.Add(this.KeepassHelp);
+            this.NoCodeHelp.Items.Add(this.separator1);
+            this.NoCodeHelp.Items.Add(this.BtTargetHelp);
+            resources.ApplyResources(this.NoCodeHelp, "NoCodeHelp");
+            this.NoCodeHelp.Name = "NoCodeHelp";
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
             // 
             // gryExport
             // 
@@ -191,13 +220,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnDataSync.ShowImage = true;
             this.btnDataSync.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDataMerge_Click);
             // 
-            // grpExecution
-            // 
-            this.grpExecution.Items.Add(this.btnStartNow);
-            this.grpExecution.Items.Add(this.btnStartDriveByExcelNow);
-            resources.ApplyResources(this.grpExecution, "grpExecution");
-            this.grpExecution.Name = "grpExecution";
-            // 
             // btnStartNow
             // 
             this.btnStartNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -215,14 +237,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnStartDriveByExcelNow.Name = "btnStartDriveByExcelNow";
             this.btnStartDriveByExcelNow.ShowImage = true;
             this.btnStartDriveByExcelNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartDriveByExcelNow_Click_1);
-            // 
-            // grpHelp
-            // 
-            this.grpHelp.Items.Add(this.btnSettings);
-            this.grpHelp.Items.Add(this.gryHelp);
-            this.grpHelp.Items.Add(this.generateGherkin);
-            resources.ApplyResources(this.grpHelp, "grpHelp");
-            this.grpHelp.Name = "grpHelp";
             // 
             // btnSettings
             // 
@@ -273,16 +287,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.generateGherkin, "generateGherkin");
             this.generateGherkin.Name = "generateGherkin";
             // 
-            // NoCodeHelp
-            // 
-            this.NoCodeHelp.Items.Add(this.driveSettings);
-            this.NoCodeHelp.Items.Add(this.BtGotoDriveHelp);
-            this.NoCodeHelp.Items.Add(this.KeepassHelp);
-            this.NoCodeHelp.Items.Add(this.separator1);
-            this.NoCodeHelp.Items.Add(this.BtTargetHelp);
-            resources.ApplyResources(this.NoCodeHelp, "NoCodeHelp");
-            this.NoCodeHelp.Name = "NoCodeHelp";
-            // 
             // driveSettings
             // 
             this.driveSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -310,10 +314,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.KeepassHelp.OfficeImageId = "Help";
             this.KeepassHelp.ShowImage = true;
             this.KeepassHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.KeepassHelp_Click);
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
             // 
             // BtTargetHelp
             // 

@@ -976,7 +976,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="txtOutputFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 27</value>
+    <value>505, 27</value>
   </data>
   <data name="txtOutputFolder.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1006,7 +1006,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnOutputBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>686, 4</value>
+    <value>683, 4</value>
   </data>
   <data name="btnOutputBrowse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

@@ -1,27 +1,15 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using AxaFrance.WebEngine;
 using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Tools.Excel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Management;
 using System.Net;
-using System.ServiceModel;
-using System.ServiceModel.Security;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using static System.Environment;
 
 namespace AxaFrance.WebEngine.ExcelUI
@@ -232,6 +220,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     parameters += " \"-showReport:true\"";
                 }
+                Ribbon.Settings.ShowReport = cbShowReport.Checked;
 
                 parameters += " \"-closeBrowser:" + cbCloseBrowser.Checked + "\"";
                 Ribbon.Settings.CloseBrowserAfterTest = cbCloseBrowser.Checked;
@@ -290,8 +279,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 parameters += " -showreport";
             }
-            Ribbon.Settings.ShowReport = true;
 
+            Ribbon.SaveSettings();
             return parameters;
         }
 
@@ -299,6 +288,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             if (isNoCode)
             {
+                dwlProgressBar.PerformLayout();
                 getNoCodeRunnerFiles(txtOutputFolder.Text, ((int)GetJarOrCmdYaml.jar), dwlProgressBar);
                 param = "-jar webrunner.jar " + parameters;
                 commandline = getJavaExePath(Ribbon.Settings.NoCodeRunnerPath);
@@ -362,27 +352,29 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 using (WebClient client = new WebClient())
                 {
-
-                    String runnerfile = $"{folder}\\webrunner.jar";
-                    String commandfile = $"{folder}\\command.yaml";
-
-                    if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7)) <=0)
-                    {
-                        dwlProgressBar.PerformStep();
-                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls | 
-                            System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 | 
-                            System.Net.SecurityProtocolType.Ssl3;
-
-                        client.DownloadFile(runnerDirectLink, runnerfile);
-                        client.DownloadFile(commandDirectLink, commandfile);
-                    }
-                    dwlProgressBar.Value = dwlProgressBar.Maximum;
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls |
+                          System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 |
+                          System.Net.SecurityProtocolType.Ssl3;                    
                     if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
                     {
+                        String commandfile = $"{folder}\\command.yaml";
+                        if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
+                        {
+                            dwlProgressBar.PerformStep();
+                            client.DownloadFile(commandDirectLink, commandfile);
+                            dwlProgressBar.Value = dwlProgressBar.Maximum;
+                        }
                         return commandfile;
                     }
                     else
                     {
+                        String runnerfile = $"{folder}\\webrunner.jar";
+                        if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
+                        {
+                            dwlProgressBar.PerformStep();
+                            client.DownloadFile(runnerDirectLink, runnerfile);
+                            dwlProgressBar.Value = dwlProgressBar.Maximum;
+                        }
                         return runnerfile;
                     }
                 }
@@ -429,7 +421,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
         }
 
-        private static string GetWorkingDirectory(string outputDir)
+        public static string GetWorkingDirectory(string outputDir)
         {
             string workingDirectory = "";
 
@@ -484,6 +476,23 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
             else
             {
+                //check java exixstence in the current machine
+                Process p = new System.Diagnostics.Process()
+                {
+                    StartInfo = new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = "java.exe",
+                        Arguments = "-v"
+                    }
+                };
+                try
+                {
+                    p.Start();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Veuillez svp installer une version de java!");
+                }
                 return "java.exe";
             }
         }
@@ -559,7 +568,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 cbCloseBrowser.Visible = true;
                 cbShowReport.Visible = true;
                 cbCloseBrowser.Checked = Ribbon.Settings.CloseBrowserAfterTest;
-                cbShowReport.Checked = Ribbon.Settings.ShowReport;
+                //cbShowReport.Checked = Ribbon.Settings.ShowReport;
                 txtKeepassFile.Text = Ribbon.Settings.KeepassFilePath;
                 InitializeTestCasesList();
             }
