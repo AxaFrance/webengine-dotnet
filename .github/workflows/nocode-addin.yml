@@ -38,7 +38,9 @@
 
 name: .NET Core Desktop for WebEngine Addin
 
-on: [workflow_dispatch]  
+on:
+  push:
+    branches: [ "feature/NoCodeAddin"] 
 
 jobs:
 
