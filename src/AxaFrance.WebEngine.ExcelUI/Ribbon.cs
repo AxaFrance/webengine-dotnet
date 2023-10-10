@@ -9,21 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
-using static System.Environment;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.LinkLabel;
 using Button = System.Windows.Forms.Button;
 using Label = System.Windows.Forms.Label;
-using TextBox = Microsoft.Office.Interop.Excel.TextBox;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {
@@ -49,7 +42,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         }
 
         private bool isNoCode = false;
-        private static Worksheet activeWorksheet;
+        private static Microsoft.Office.Interop.Excel.Worksheet activeWorksheet;
         internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelWithDriveSetting.xml");
 
         internal static string TestDataFile;
@@ -66,33 +59,54 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             GetCellContextMenu().Reset(); // reset the cell context menu back to the default
         }
-
+       
         private void Application_SheetBeforeRightClick(object Sh, Range Target, ref bool Cancel)
         {
             ResetCellMenu();  // reset the cell context menu back to the default
 
-            if (Target.Cells.Column == 3)   // sample code: if only a single cell is selected
+            if (Target.Cells.Column == 3) 
             {
-               AddExampleMenuItem();
+               AddEditIdentificationMenuItem();
+            }
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            string currentCmd = Globals.ThisAddIn.Application.ActiveSheet.Cells[currentRow, 2].FormulaLocal;
+            if (Target.Cells.Column >= 6 && ("upload file".Equals(currentCmd.Trim().ToLowerInvariant()) 
+                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))) 
+            {
+                AddChooseFileMenuItem();
             }
         }
 
-        private void AddExampleMenuItem()
+        private void AddEditIdentificationMenuItem()
         {
             MsoControlType menuItem = MsoControlType.msoControlButton;
             CommandBarButton exampleMenuItem = (CommandBarButton)GetCellContextMenu().Controls.Add(menuItem, "1", "2", 1, true);
 
             exampleMenuItem.Style = MsoButtonStyle.msoButtonIconAndCaption;
             exampleMenuItem.Caption = "Modifier L'identification du champ";
-            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(exampleMenuItemClick);
+            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(EditIdentificationMenuItem);
         }
-
-    
-
-        void exampleMenuItemClick(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
+        
+        void EditIdentificationMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
         {
             FrmTargetEdit frmNoCode = new FrmTargetEdit();
             frmNoCode.ShowDialog();
+        }
+
+        private void AddChooseFileMenuItem()
+        {
+            MsoControlType menuItem = MsoControlType.msoControlButton;
+            CommandBarButton exampleMenuItem = (CommandBarButton)GetCellContextMenu().Controls.Add(menuItem, "1", "2", 1, true);
+
+            exampleMenuItem.Style = MsoButtonStyle.msoButtonIconAndCaption;
+            exampleMenuItem.Caption = "Choisir le fichier à uploader";
+            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseFileMenuItem);
+        }
+
+        void ChooseFileMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
+        {
+            FrmUploadFile frmUploadFile = new FrmUploadFile();  
+            frmUploadFile.ShowDialog();
         }
 
 
@@ -102,7 +116,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             ResetCellMenu();  // reset the cell context menu back to the default
             // Call this function is the user right clicks on a cell
             Globals.ThisAddIn.Application.SheetBeforeRightClick += 
-                new Microsoft.Office.Interop.Excel.AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);
+                new AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);           
+
             //initialize user saved preferences
             if (File.Exists(settingFile))
             {
@@ -275,7 +290,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 if (testCaseEligible(filters, filterType, t.TestName))
                 {
-
                     if (exportedNames.Contains(t.TestName))
                     {
                         duplicatedNames.Add(t.TestName);
@@ -963,13 +977,13 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     try
                     {
-                        string cmd = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
-                        string desc = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["DESCRIPTION"].ToString();
+                        string cmd = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
+                        string desc = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["DESCRIPTION"].ToString();
 
                         if (desc.ToLowerInvariant().Contains(NoCodeCmdLangage.French.ToString().ToLowerInvariant()) 
                             && desc.ToLowerInvariant().Contains(NoCodeCmdLangage.English.ToString().ToLowerInvariant()))
                         {
-                            desc = yaml.Documents.First().AllNodes.First()[yaml.Documents.First().AllNodes.ElementAt(i)]["DESCRIPTION"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
+                            desc = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["DESCRIPTION"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
                         }
                         if (!cmds.ContainsKey(cmd))
                         {
@@ -1246,6 +1260,23 @@ namespace AxaFrance.WebEngine.ExcelUI
         private void BtGotoDriveHelp_Click(object sender, RibbonControlEventArgs e)
         {
             Ribbon.gotoDriveHelp();
+        }
+
+        private void BtChooseFile_Click(object sender, RibbonControlEventArgs e)
+        {
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            string currentCmd = Globals.ThisAddIn.Application.Cells[currentRow, 2].FormulaLocal;
+            if ("upload file".Equals(currentCmd.Trim().ToLowerInvariant())
+                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))
+            {
+                FrmUploadFile frmUpload = new FrmUploadFile();
+                frmUpload.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir une ligne contenant une commande d'upload de fichier");
+            }
+
         }
     }
 }

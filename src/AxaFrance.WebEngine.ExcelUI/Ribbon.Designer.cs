@@ -42,11 +42,6 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon));
             this.tabWebEngine = this.Factory.CreateRibbonTab();
-            this.grpTestData = this.Factory.CreateRibbonGroup();
-            this.grpExecution = this.Factory.CreateRibbonGroup();
-            this.grpHelp = this.Factory.CreateRibbonGroup();
-            this.NoCodeHelp = this.Factory.CreateRibbonGroup();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.gryExport = this.Factory.CreateRibbonGallery();
             this.btnExportSelection = this.Factory.CreateRibbonButton();
             this.btnExportAll = this.Factory.CreateRibbonButton();
@@ -59,20 +54,24 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnDataCheck = this.Factory.CreateRibbonButton();
             this.btnDataSync = this.Factory.CreateRibbonButton();
             this.btnStartNow = this.Factory.CreateRibbonButton();
-            this.btnStartDriveByExcelNow = this.Factory.CreateRibbonButton();
+            this.grpHelp = this.Factory.CreateRibbonGroup();
             this.btnSettings = this.Factory.CreateRibbonButton();
             this.gryHelp = this.Factory.CreateRibbonGallery();
             this.btnAbout = this.Factory.CreateRibbonButton();
             this.btnHelp = this.Factory.CreateRibbonButton();
             this.btnFeedback = this.Factory.CreateRibbonButton();
             this.generateGherkin = this.Factory.CreateRibbonButton();
-            this.driveSettings = this.Factory.CreateRibbonButton();
+            this.NoCodeHelp = this.Factory.CreateRibbonGroup();
             this.BtGotoDriveHelp = this.Factory.CreateRibbonButton();
             this.KeepassHelp = this.Factory.CreateRibbonButton();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
             this.BtTargetHelp = this.Factory.CreateRibbonButton();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
+            this.btnStartDriveByExcelNow = this.Factory.CreateRibbonButton();
+            this.driveSettings = this.Factory.CreateRibbonButton();
+            this.BtChooseFile = this.Factory.CreateRibbonButton();
+            this.separator3 = this.Factory.CreateRibbonSeparator();
             this.tabWebEngine.SuspendLayout();
-            this.grpTestData.SuspendLayout();
-            this.grpExecution.SuspendLayout();
             this.grpHelp.SuspendLayout();
             this.NoCodeHelp.SuspendLayout();
             this.SuspendLayout();
@@ -80,48 +79,10 @@ namespace AxaFrance.WebEngine.ExcelUI
             // tabWebEngine
             // 
             this.tabWebEngine.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tabWebEngine.Groups.Add(this.grpTestData);
-            this.tabWebEngine.Groups.Add(this.grpExecution);
             this.tabWebEngine.Groups.Add(this.grpHelp);
             this.tabWebEngine.Groups.Add(this.NoCodeHelp);
             resources.ApplyResources(this.tabWebEngine, "tabWebEngine");
             this.tabWebEngine.Name = "tabWebEngine";
-            // 
-            // grpTestData
-            // 
-            this.grpTestData.Items.Add(this.gryExport);
-            this.grpTestData.Items.Add(this.gryTools);
-            resources.ApplyResources(this.grpTestData, "grpTestData");
-            this.grpTestData.Name = "grpTestData";
-            // 
-            // grpExecution
-            // 
-            this.grpExecution.Items.Add(this.btnStartNow);
-            this.grpExecution.Items.Add(this.btnStartDriveByExcelNow);
-            resources.ApplyResources(this.grpExecution, "grpExecution");
-            this.grpExecution.Name = "grpExecution";
-            // 
-            // grpHelp
-            // 
-            this.grpHelp.Items.Add(this.btnSettings);
-            this.grpHelp.Items.Add(this.gryHelp);
-            this.grpHelp.Items.Add(this.generateGherkin);
-            resources.ApplyResources(this.grpHelp, "grpHelp");
-            this.grpHelp.Name = "grpHelp";
-            // 
-            // NoCodeHelp
-            // 
-            this.NoCodeHelp.Items.Add(this.driveSettings);
-            this.NoCodeHelp.Items.Add(this.BtGotoDriveHelp);
-            this.NoCodeHelp.Items.Add(this.KeepassHelp);
-            this.NoCodeHelp.Items.Add(this.separator1);
-            this.NoCodeHelp.Items.Add(this.BtTargetHelp);
-            resources.ApplyResources(this.NoCodeHelp, "NoCodeHelp");
-            this.NoCodeHelp.Name = "NoCodeHelp";
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
             // 
             // gryExport
             // 
@@ -229,14 +190,18 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnStartNow.ShowImage = true;
             this.btnStartNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartNow_Click);
             // 
-            // btnStartDriveByExcelNow
+            // grpHelp
             // 
-            this.btnStartDriveByExcelNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnStartDriveByExcelNow.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_excel;
-            resources.ApplyResources(this.btnStartDriveByExcelNow, "btnStartDriveByExcelNow");
-            this.btnStartDriveByExcelNow.Name = "btnStartDriveByExcelNow";
-            this.btnStartDriveByExcelNow.ShowImage = true;
-            this.btnStartDriveByExcelNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartDriveByExcelNow_Click_1);
+            this.grpHelp.Items.Add(this.gryExport);
+            this.grpHelp.Items.Add(this.gryTools);
+            this.grpHelp.Items.Add(this.separator2);
+            this.grpHelp.Items.Add(this.btnStartNow);
+            this.grpHelp.Items.Add(this.separator1);
+            this.grpHelp.Items.Add(this.btnSettings);
+            this.grpHelp.Items.Add(this.gryHelp);
+            this.grpHelp.Items.Add(this.generateGherkin);
+            resources.ApplyResources(this.grpHelp, "grpHelp");
+            this.grpHelp.Name = "grpHelp";
             // 
             // btnSettings
             // 
@@ -287,15 +252,17 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.generateGherkin, "generateGherkin");
             this.generateGherkin.Name = "generateGherkin";
             // 
-            // driveSettings
+            // NoCodeHelp
             // 
-            this.driveSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.driveSettings.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_settings;
-            resources.ApplyResources(this.driveSettings, "driveSettings");
-            this.driveSettings.Name = "driveSettings";
-            this.driveSettings.OfficeImageId = "AddInCommandsMenu";
-            this.driveSettings.ShowImage = true;
-            this.driveSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.driveSettings_Click);
+            this.NoCodeHelp.Items.Add(this.btnStartDriveByExcelNow);
+            this.NoCodeHelp.Items.Add(this.driveSettings);
+            this.NoCodeHelp.Items.Add(this.BtGotoDriveHelp);
+            this.NoCodeHelp.Items.Add(this.KeepassHelp);
+            this.NoCodeHelp.Items.Add(this.separator3);
+            this.NoCodeHelp.Items.Add(this.BtTargetHelp);
+            this.NoCodeHelp.Items.Add(this.BtChooseFile);
+            resources.ApplyResources(this.NoCodeHelp, "NoCodeHelp");
+            this.NoCodeHelp.Name = "NoCodeHelp";
             // 
             // BtGotoDriveHelp
             // 
@@ -315,6 +282,10 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.KeepassHelp.ShowImage = true;
             this.KeepassHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.KeepassHelp_Click);
             // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            // 
             // BtTargetHelp
             // 
             this.BtTargetHelp.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -323,6 +294,42 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.BtTargetHelp.OfficeImageId = "AccessFormWizard";
             this.BtTargetHelp.ShowImage = true;
             this.BtTargetHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtTargetHelp_Click);
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
+            // 
+            // btnStartDriveByExcelNow
+            // 
+            this.btnStartDriveByExcelNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnStartDriveByExcelNow.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_excel;
+            resources.ApplyResources(this.btnStartDriveByExcelNow, "btnStartDriveByExcelNow");
+            this.btnStartDriveByExcelNow.Name = "btnStartDriveByExcelNow";
+            this.btnStartDriveByExcelNow.ShowImage = true;
+            this.btnStartDriveByExcelNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartDriveByExcelNow_Click_1);
+            // 
+            // driveSettings
+            // 
+            this.driveSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.driveSettings.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_settings;
+            resources.ApplyResources(this.driveSettings, "driveSettings");
+            this.driveSettings.Name = "driveSettings";
+            this.driveSettings.OfficeImageId = "AddInCommandsMenu";
+            this.driveSettings.ShowImage = true;
+            this.driveSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.driveSettings_Click);
+            // 
+            // BtChooseFile
+            // 
+            this.BtChooseFile.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            resources.ApplyResources(this.BtChooseFile, "BtChooseFile");
+            this.BtChooseFile.Name = "BtChooseFile";
+            this.BtChooseFile.OfficeImageId = "FileOpen";
+            this.BtChooseFile.ShowImage = true;
+            this.BtChooseFile.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtChooseFile_Click);
+            // 
+            // separator3
+            // 
+            this.separator3.Name = "separator3";
             // 
             // Ribbon
             // 
@@ -333,10 +340,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon_Load);
             this.tabWebEngine.ResumeLayout(false);
             this.tabWebEngine.PerformLayout();
-            this.grpTestData.ResumeLayout(false);
-            this.grpTestData.PerformLayout();
-            this.grpExecution.ResumeLayout(false);
-            this.grpExecution.PerformLayout();
             this.grpHelp.ResumeLayout(false);
             this.grpHelp.PerformLayout();
             this.NoCodeHelp.ResumeLayout(false);
@@ -350,13 +353,11 @@ namespace AxaFrance.WebEngine.ExcelUI
         #endregion
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tabWebEngine;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpTestData;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnExportAll;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnExportSelection;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnExportEnvironmentVariable;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpHelp;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSettings;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpExecution;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnCodeGeneration;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery gryTools;
         internal Microsoft.Office.Tools.Ribbon.RibbonGallery gryExport;
@@ -378,6 +379,9 @@ namespace AxaFrance.WebEngine.ExcelUI
         internal RibbonButton KeepassHelp;
         internal RibbonSeparator separator1;
         internal RibbonButton BtGotoDriveHelp;
+        internal RibbonSeparator separator2;
+        internal RibbonButton BtChooseFile;
+        internal RibbonSeparator separator3;
     }
 
     partial class ThisRibbonCollection

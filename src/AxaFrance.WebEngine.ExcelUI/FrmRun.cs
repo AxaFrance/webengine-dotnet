@@ -3,6 +3,7 @@
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
 using Microsoft.Office.Interop.Excel;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -16,6 +17,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 {
     public partial class FrmRun : Form
     {
+        private const string NocodeSuffixRepository = "\\AxaFrance.WebEngine";
         private bool isNoCode = false;
         private string noCodeColInfo = null;
         private bool useTempFIleForNocode = false;
@@ -47,45 +49,45 @@ namespace AxaFrance.WebEngine.ExcelUI
             InitializeComponent();
         }
 
-        public void InitializeTestCasesList()
+        public static void InitializeTestCasesList(CheckedListBox cbListeTestsCases, System.Windows.Forms.Label lblSelectedTests, Dictionary<String, int> colNameIndex)
         {
+             lblSelectedTests.Text = "La liste des colonnes (tests) possibles s'arrêtent à la 1ere colonne avec titre vide!";
+            
             Range selectedrange = Globals.ThisAddIn.Application.Selection;
             dynamic activeSheet = Globals.ThisAddIn.Application.ActiveSheet;
 
-            for (int i = 1; i <= selectedrange.Columns.Count; i++)
+            for (int i = 6; i <= 16; i++)
             {
-                Range cr = selectedrange.Columns[i];
-                if (cr.Column <= 5)
-                {
-                      continue;
-                }
-                String value = activeSheet.Columns[cr.Column].FormulaLocal[1, 1];
+                
+                String value = activeSheet.Cells[1,i].FormulaLocal;
                 if (!String.IsNullOrEmpty(value))
                 {
                     cbListeTestsCases.Items.Add(value);
+                    if (colNameIndex != null)
+                    {
+                        colNameIndex.Add(value, i);
+                    }
                 }
                 else
                 {
                     break;
                 }
-                cbListeTestsCases.SetItemChecked(cbListeTestsCases.Items.Count-1, true);
             }
-            lblSelectedTests.Text = "La liste des colonnes (tests) possibles s'arrêtent à la 1ere colonne avec titre vide!";
-
-            for (int i = 6; i <= 12; i++)
+                
+            foreach (Range cr in selectedrange.Columns)
             {
-                String value = activeSheet.Columns[i].FormulaLocal[1, 1];
-                if (!String.IsNullOrEmpty(value) && !cbListeTestsCases.Items.Contains(value))
+                if (cr.Column >= 6)
                 {
-                    cbListeTestsCases.Items.Add(value);
-                }
-                else
-                {
-                    break; 
+                    string value = Globals.ThisAddIn.Application.ActiveSheet.Cells[1, cr.Column].FormulaLocal;
+                    int selectedItemIndex = cr.Column - 6;
+                    if (selectedItemIndex< cbListeTestsCases.Items.Count)
+                    {
+                        cbListeTestsCases.SetItemChecked(selectedItemIndex, true);
+                    }
                 }
             }
-            
-            if (cbListeTestsCases.SelectedItems.Count <= 0)
+
+            if (cbListeTestsCases.CheckedItems.Count <= 0)
             {
                 cbListeTestsCases.SetItemChecked(0, true);
             }
@@ -342,7 +344,13 @@ namespace AxaFrance.WebEngine.ExcelUI
             string commandDirectLink = ConfigurationManager.AppSettings.Get("commandDirectLink");
             string workingDirectory = GetWorkingDirectory(outputDir);
 
-            string folder = $"{workingDirectory}\\WebRunnerJar";
+            string folder = $"{workingDirectory}";
+            string jarSubFolder ="\\WebRunnerJar";
+            if (!folder.EndsWith(jarSubFolder))
+            {
+                folder = folder + jarSubFolder;
+            }
+
             Ribbon.Settings.NoCodeRunnerPath = folder;
 
             Directory.CreateDirectory(folder);
@@ -427,11 +435,11 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (String.IsNullOrEmpty(outputDir))
             {
-                workingDirectory = System.Environment.GetFolderPath(SpecialFolder.ApplicationData) + "\\AxaFrance.WebEngine";
+                workingDirectory = System.Environment.GetFolderPath(SpecialFolder.ApplicationData) + NocodeSuffixRepository;
             }
             else
-            {
-                workingDirectory = checkEnvInDir(outputDir) + "\\AxaFrance.WebEngine";
+            {                
+                workingDirectory = checkEnvInDir(outputDir) + (outputDir.EndsWith(NocodeSuffixRepository) ? "" : NocodeSuffixRepository);
             }
 
             return workingDirectory;
@@ -570,7 +578,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 cbCloseBrowser.Checked = Ribbon.Settings.CloseBrowserAfterTest;
                 //cbShowReport.Checked = Ribbon.Settings.ShowReport;
                 txtKeepassFile.Text = Ribbon.Settings.KeepassFilePath;
-                InitializeTestCasesList();
+                InitializeTestCasesList(cbListeTestsCases, lblSelectedTests, null);
             }
             else
             {

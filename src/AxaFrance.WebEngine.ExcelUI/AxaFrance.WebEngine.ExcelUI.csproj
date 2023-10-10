@@ -42,7 +42,7 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.113</ApplicationVersion>
+    <ApplicationVersion>3.0.0.116</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -196,6 +196,12 @@
   -->
   <ItemGroup>
     <Compile Include="AddinSettings.cs" />
+    <Compile Include="FrmChooseFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChooseFile.Designer.cs">
+      <DependentUpon>FrmChooseFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="FrmChooseFile.resx">
+      <DependentUpon>FrmChooseFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,7 +380,9 @@
     <None Include="Resources\initButtonpng.png" />
     <None Include="Resources\inspect.png" />
     <None Include="Resources\getxpath.png" />
-    <Content Include="Resources\ios.png" />
+    <Content Include="Resources\ios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

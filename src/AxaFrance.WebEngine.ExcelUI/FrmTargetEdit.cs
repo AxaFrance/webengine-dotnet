@@ -23,11 +23,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         private void button1_Click(object sender, EventArgs e)
         {
             String target = "";
-
-
             List<string> targetsList = new List<string>();
-
-
             if (!String.IsNullOrEmpty(TbId.Text))
             {
                 targetsList.Add("\"id\":\"" + TbId.Text + "\"");
@@ -127,8 +123,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                 return;
             }
 
-
-            Globals.ThisAddIn.Application.ActiveCell.FormulaLocal = target;
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            Globals.ThisAddIn.Application.Cells[currentRow,3] = target;
             this.Close();
 
         }
