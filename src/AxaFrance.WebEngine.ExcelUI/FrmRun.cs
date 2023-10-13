@@ -355,76 +355,71 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             Directory.CreateDirectory(folder);
             dwlProgressBar.PerformStep();
+            WebClient client = new WebClient();
 
-            if (!String.IsNullOrEmpty(runnerDirectLink) && !String.IsNullOrEmpty(commandDirectLink))
+            if (!String.IsNullOrEmpty(noCodeArtifactPath) && !String.IsNullOrEmpty(mavenRepoUrl))
             {
-                using (WebClient client = new WebClient())
+
+                XmlDocument doc = new XmlDocument();
+                dwlProgressBar.PerformStep();
+
+                string metadata = mavenRepoUrl + "/" + noCodeArtifactPath + "/maven-metadata.xml";
+
+                Stream stream = client.OpenRead(metadata);
+                doc.Load(stream);
+                dwlProgressBar.PerformStep();
+
+                XmlNode nodeSnaptshot = doc.DocumentElement.SelectSingleNode("/metadata/versioning/release");
+                string localmetadatafile = $"{folder}\\metadata.xml";
+
+                String file = "";
+                if (File.Exists(localmetadatafile) && jarOrCmdYaml == ((int)GetJarOrCmdYaml.jar))
                 {
-                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls |
-                          System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 |
-                          System.Net.SecurityProtocolType.Ssl3;                    
-                    if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
-                    {
-                        String commandfile = $"{folder}\\command.yaml";
-                        if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
-                        {
-                            dwlProgressBar.PerformStep();
-                            client.DownloadFile(commandDirectLink, commandfile);
-                            dwlProgressBar.Value = dwlProgressBar.Maximum;
-                        }
-                        return commandfile;
-                    }
-                    else
-                    {
-                        String runnerfile = $"{folder}\\webrunner.jar";
-                        if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
-                        {
-                            dwlProgressBar.PerformStep();
-                            client.DownloadFile(runnerDirectLink, runnerfile);
-                            dwlProgressBar.Value = dwlProgressBar.Maximum;
-                        }
-                        return runnerfile;
-                    }
-                }
-            }
-            else
-            {
-                using (WebClient client = new WebClient())
-                {
-
-                    XmlDocument doc = new XmlDocument();
+                    XmlDocument localmetadata = new XmlDocument();
+                    localmetadata.Load(localmetadatafile);
                     dwlProgressBar.PerformStep();
-
-                    string metadata = mavenRepoUrl + "/" + noCodeArtifactPath + "/maven-metadata.xml";
-
-                    Stream stream = client.OpenRead(metadata);
-                    doc.Load(stream);
-                    dwlProgressBar.PerformStep();
-
-                    XmlNode nodeSnaptshot = doc.DocumentElement.SelectSingleNode("/metadata/versioning/release");
-                    string localmetadatafile = $"{folder}\\metadata.xml";
-
-                    String file = "";
-                    if (File.Exists(localmetadatafile) && jarOrCmdYaml == ((int)GetJarOrCmdYaml.jar))
-                    {
-                        XmlDocument localmetadata = new XmlDocument();
-                        localmetadata.Load(localmetadatafile);
-                        dwlProgressBar.PerformStep();
-                        if (!localmetadata.OuterXml.Equals(doc.OuterXml))
-                        {
-                            client.DownloadFile(metadata, localmetadatafile);
-                            file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);
-                        }
-                    }
-                    else
+                    if (!localmetadata.OuterXml.Equals(doc.OuterXml))
                     {
                         client.DownloadFile(metadata, localmetadatafile);
                         file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);
                     }
+                }
+                else
+                {
+                    client.DownloadFile(metadata, localmetadatafile);
+                    file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);
+                }
 
-                    dwlProgressBar.Value = dwlProgressBar.Maximum;
-                    Ribbon.Settings.NoCodeRunnerPath = folder;
-                    return file;
+                dwlProgressBar.Value = dwlProgressBar.Maximum;
+                Ribbon.Settings.NoCodeRunnerPath = folder;
+                return file;
+            }
+            else
+            {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls |
+                             System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 |
+                             System.Net.SecurityProtocolType.Ssl3;
+                if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
+                {
+                    String commandfile = $"{folder}\\command.yaml";
+                    if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
+                    {
+                        dwlProgressBar.PerformStep();
+                        client.DownloadFile(commandDirectLink, commandfile);
+                        dwlProgressBar.Value = dwlProgressBar.Maximum;
+                    }
+                    return commandfile;
+                }
+                else
+                {
+                    String runnerfile = $"{folder}\\webrunner.jar";
+                    if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
+                    {
+                        dwlProgressBar.PerformStep();
+                        client.DownloadFile(runnerDirectLink, runnerfile);
+                        dwlProgressBar.Value = dwlProgressBar.Maximum;
+                    }
+                    return runnerfile;
                 }
             }
         }

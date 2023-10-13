@@ -68,4 +68,8 @@
     <Folder Include="html-report\" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if exist  $(ProjectDir)\App.local.config copy /Y  $(ProjectDir)\App.local.config $(TargetDir)\$(TargetName)$(TargetExt).config" />
+  </Target>
+
 </Project>

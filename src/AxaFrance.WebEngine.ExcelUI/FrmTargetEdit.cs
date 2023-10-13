@@ -94,7 +94,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
                 if (attributesList.Count > 0)
                 {
-                    String attributes = "{\"attributeList\":{" + String.Join(",", attributesList) + "}";
+                    String attributes = "\"attributeList\":{" + String.Join(",", attributesList) + "}";
                     if (!String.IsNullOrEmpty(target))
                     {
                         target = target + "," + attributes;
