@@ -7,6 +7,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -116,7 +117,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             ResetCellMenu();  // reset the cell context menu back to the default
             // Call this function is the user right clicks on a cell
             Globals.ThisAddIn.Application.SheetBeforeRightClick += 
-                new AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);           
+                new AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);   
+            
 
             //initialize user saved preferences
             if (File.Exists(settingFile))
@@ -139,6 +141,37 @@ namespace AxaFrance.WebEngine.ExcelUI
             else
             {
                 Ribbon.Settings = new AddinSettings();
+            }
+
+            if (Ribbon.Settings.selectedTabs == null || Ribbon.Settings.selectedTabs <= 0 || Ribbon.Settings.selectedTabs > 3)
+            {
+                tabKeyWord.Visible = true;
+                cbShowKeyword.Checked = true;
+                cbShowKeyword2.Checked = true;
+                tabNoCode.Visible = true;
+                cbShowNoCode.Checked = true;
+                cbShowNoCode2.Checked = true;
+            }
+            else
+            {
+                if (Ribbon.Settings.selectedTabs == 1)
+                {
+                    tabKeyWord.Visible = true;
+                    cbShowKeyword.Checked = true;
+                    cbShowKeyword2.Checked = true;
+                    tabNoCode.Visible = false;
+                    cbShowNoCode.Checked = false;
+                    cbShowNoCode2.Checked = false;
+                }
+                else if (Ribbon.Settings.selectedTabs == 3)
+                {
+                    tabKeyWord.Visible = false;
+                    cbShowKeyword.Checked = false;
+                    cbShowKeyword2.Checked = false;
+                    tabNoCode.Visible = true;
+                    cbShowNoCode.Checked = true;
+                    cbShowNoCode2.Checked = true;
+                }
             }
         }
 
@@ -1277,6 +1310,48 @@ namespace AxaFrance.WebEngine.ExcelUI
                 MessageBox.Show("Veuillez choisir une ligne contenant une commande d'upload de fichier");
             }
 
+        }
+
+        private void cbShowKeyword_Click(object sender, RibbonControlEventArgs e)
+        {
+            cbShowKeyword2.Checked = cbShowKeyword.Checked;
+            processTabVisiblity();
+        }
+
+        private void processTabVisiblity()
+        {
+            tabKeyWord.Visible = cbShowKeyword.Checked;
+            tabNoCode.Visible = cbShowNoCode.Checked;
+
+            if (!cbShowKeyword.Checked && !cbShowNoCode.Checked)
+            {
+                tabKeyWord.Visible = true;
+                tabNoCode.Visible = true;
+                cbShowNoCode.Checked = true;
+                cbShowKeyword.Checked = true;
+                cbShowNoCode2.Checked = true;
+                cbShowKeyword2.Checked = true;
+                MessageBox.Show("L'un des 2 onglets doit être visibles");
+            }
+            Ribbon.Settings.selectedTabs = (tabKeyWord.Visible ? int.Parse(tabKeyWord.Tag.ToString()) : 0) + (tabNoCode.Visible ? int.Parse(tabNoCode.Tag.ToString()) : 0);
+        }
+
+        private void cbShowNoCode_Click(object sender, RibbonControlEventArgs e)
+        {
+            cbShowNoCode2.Checked = cbShowNoCode.Checked;
+            processTabVisiblity();
+        }
+
+        private void cbShowKeyword2_Click(object sender, RibbonControlEventArgs e)
+        {
+            cbShowKeyword.Checked = cbShowKeyword2.Checked;
+            processTabVisiblity();
+        }
+
+        private void cbShowNoCode2_Click(object sender, RibbonControlEventArgs e)
+        {
+            cbShowNoCode.Checked = cbShowNoCode2.Checked;
+            processTabVisiblity();
         }
     }
 }

@@ -93,6 +93,26 @@ namespace AxaFrance.WebEngine.ExcelUI.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap drive_by_axa_globe_main {
+            get {
+                object obj = ResourceManager.GetObject("drive_by_axa_globe_main", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drive_by_axa_globe_souris {
+            get {
+                object obj = ResourceManager.GetObject("drive_by_axa_globe_souris", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap drive_by_excel {
             get {
                 object obj = ResourceManager.GetObject("drive_by_excel", resourceCulture);
@@ -106,6 +126,16 @@ namespace AxaFrance.WebEngine.ExcelUI.Properties {
         public static System.Drawing.Bitmap drive_by_settings {
             get {
                 object obj = ResourceManager.GetObject("drive_by_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drive_by_xls_plat_terre {
+            get {
+                object obj = ResourceManager.GetObject("drive_by_xls_plat_terre", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

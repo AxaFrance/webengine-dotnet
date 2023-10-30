@@ -17,7 +17,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 {
     public partial class FrmRun : Form
     {
-        private const string NocodeSuffixRepository = "\\AxaFrance.WebEngine";
+        private const string NocodeSuffixRepository = "\\AxaFrance.WebEngine\\WebRunnerJar";
         private bool isNoCode = false;
         private string noCodeColInfo = null;
         private bool useTempFIleForNocode = false;
@@ -359,7 +359,6 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (!String.IsNullOrEmpty(noCodeArtifactPath) && !String.IsNullOrEmpty(mavenRepoUrl))
             {
-
                 XmlDocument doc = new XmlDocument();
                 dwlProgressBar.PerformStep();
 

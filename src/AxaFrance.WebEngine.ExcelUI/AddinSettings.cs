@@ -81,6 +81,9 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// </summary>
         public bool ShowReport { get; set; }
 
+        public int selectedTabs { get; set; }
+
+
         public AddinSettings()
         {
             ExportPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);

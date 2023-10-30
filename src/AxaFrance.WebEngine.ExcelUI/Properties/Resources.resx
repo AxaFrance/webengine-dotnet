@@ -163,4 +163,13 @@
   <data name="KeePass_Value" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KeePass Value.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="drive_by_axa_globe_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\drive by axa globe main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="drive_by_axa_globe_souris" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\drive by axa globe souris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="drive_by_xls_plat_terre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\drive by xls plat terre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
