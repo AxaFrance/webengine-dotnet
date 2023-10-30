@@ -81,7 +81,15 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// </summary>
         public bool ShowReport { get; set; }
 
+        /// <summary>
+        /// Selected WebEngine addin Tab
+        /// </summary>
         public int selectedTabs { get; set; }
+
+        /// <summary>
+        /// Encrypted keepass pwd.
+        /// </summary>
+        public string enc { get; set; }
 
 
         public AddinSettings()

@@ -70,7 +70,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.txtKeepassFile = new System.Windows.Forms.TextBox();
             this.keepassFileLocate = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.keepassPassword = new System.Windows.Forms.TextBox();
+            this.txtKeepassPassword = new System.Windows.Forms.TextBox();
             this.folderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.cbCloseBrowser = new System.Windows.Forms.CheckBox();
@@ -282,7 +282,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.driveSettingLayout.Controls.Add(this.txtKeepassFile);
             this.driveSettingLayout.Controls.Add(this.keepassFileLocate);
             this.driveSettingLayout.Controls.Add(this.label12);
-            this.driveSettingLayout.Controls.Add(this.keepassPassword);
+            this.driveSettingLayout.Controls.Add(this.txtKeepassPassword);
             resources.ApplyResources(this.driveSettingLayout, "driveSettingLayout");
             this.driveSettingLayout.Name = "driveSettingLayout";
             // 
@@ -364,12 +364,12 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.label12.ForeColor = System.Drawing.Color.SteelBlue;
             this.label12.Name = "label12";
             // 
-            // keepassPassword
+            // txtKeepassPassword
             // 
-            resources.ApplyResources(this.keepassPassword, "keepassPassword");
-            this.keepassPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.keepassPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.keepassPassword.Name = "keepassPassword";
+            resources.ApplyResources(this.txtKeepassPassword, "txtKeepassPassword");
+            this.txtKeepassPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtKeepassPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKeepassPassword.Name = "txtKeepassPassword";
             // 
             // openFileDialog
             // 
@@ -469,7 +469,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         private System.Windows.Forms.TextBox txtKeepassFile;
         private System.Windows.Forms.Button keepassFileLocate;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox keepassPassword;
+        private System.Windows.Forms.TextBox txtKeepassPassword;
         private System.Windows.Forms.CheckBox cbCloseBrowser;
         private System.Windows.Forms.CheckedListBox cbListeTestsCases;
     }

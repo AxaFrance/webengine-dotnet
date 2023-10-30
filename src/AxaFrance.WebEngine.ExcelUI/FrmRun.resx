@@ -1272,37 +1272,37 @@
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="keepassPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="txtKeepassPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="keepassPassword.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="txtKeepassPassword.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="keepassPassword.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtKeepassPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 130</value>
   </data>
-  <data name="keepassPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="txtKeepassPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="keepassPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+  <data name="txtKeepassPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
-  <data name="keepassPassword.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtKeepassPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 27</value>
   </data>
-  <data name="keepassPassword.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtKeepassPassword.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
-  <data name="&gt;&gt;keepassPassword.Name" xml:space="preserve">
-    <value>keepassPassword</value>
+  <data name="&gt;&gt;txtKeepassPassword.Name" xml:space="preserve">
+    <value>txtKeepassPassword</value>
   </data>
-  <data name="&gt;&gt;keepassPassword.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtKeepassPassword.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;keepassPassword.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtKeepassPassword.Parent" xml:space="preserve">
     <value>driveSettingLayout</value>
   </data>
-  <data name="&gt;&gt;keepassPassword.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtKeepassPassword.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="driveSettingLayout.Location" type="System.Drawing.Point, System.Drawing">
