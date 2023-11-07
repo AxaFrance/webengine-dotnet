@@ -373,6 +373,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
                 XmlNode nodeSnaptshot = doc.DocumentElement.SelectSingleNode("/metadata/versioning/release");
                 string localmetadatafile = $"{folder}\\metadata.xml";
+                string jarFile = $"{folder}\\webrunner.jar";
 
                 String file = "";
                 if (File.Exists(localmetadatafile) && jarOrCmdYaml == ((int)GetJarOrCmdYaml.jar))
@@ -380,7 +381,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     XmlDocument localmetadata = new XmlDocument();
                     localmetadata.Load(localmetadatafile);
                     dwlProgressBar.PerformStep();
-                    if (!localmetadata.OuterXml.Equals(doc.OuterXml))
+                    if (!localmetadata.OuterXml.Equals(doc.OuterXml) || !File.Exists(jarFile))
                     {
                         client.DownloadFile(metadata, localmetadatafile);
                         file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);

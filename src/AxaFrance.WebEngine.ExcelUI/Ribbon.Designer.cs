@@ -48,13 +48,13 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.separator2 = this.Factory.CreateRibbonSeparator();
             this.separator1 = this.Factory.CreateRibbonSeparator();
             this.tabKeyWord = this.Factory.CreateRibbonTab();
+            this.grpTabChoiceKeyWord = this.Factory.CreateRibbonGroup();
+            this.cbShowKeyword2 = this.Factory.CreateRibbonCheckBox();
+            this.cbShowNoCode2 = this.Factory.CreateRibbonCheckBox();
             this.grpTabChoice = this.Factory.CreateRibbonGroup();
             this.cbShowKeyword = this.Factory.CreateRibbonCheckBox();
             this.cbShowNoCode = this.Factory.CreateRibbonCheckBox();
             this.tabNoCode = this.Factory.CreateRibbonTab();
-            this.grpTabChoiceKeyWord = this.Factory.CreateRibbonGroup();
-            this.cbShowKeyword2 = this.Factory.CreateRibbonCheckBox();
-            this.cbShowNoCode2 = this.Factory.CreateRibbonCheckBox();
             this.gryExport = this.Factory.CreateRibbonGallery();
             this.btnExportSelection = this.Factory.CreateRibbonButton();
             this.btnExportAll = this.Factory.CreateRibbonButton();
@@ -83,9 +83,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.grpNoCode.SuspendLayout();
             this.grpKeyWord.SuspendLayout();
             this.tabKeyWord.SuspendLayout();
+            this.grpTabChoiceKeyWord.SuspendLayout();
             this.grpTabChoice.SuspendLayout();
             this.tabNoCode.SuspendLayout();
-            this.grpTabChoiceKeyWord.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabWebEngine
@@ -138,6 +138,25 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.tabKeyWord, "tabKeyWord");
             this.tabKeyWord.Name = "tabKeyWord";
             // 
+            // grpTabChoiceKeyWord
+            // 
+            this.grpTabChoiceKeyWord.Items.Add(this.cbShowKeyword2);
+            this.grpTabChoiceKeyWord.Items.Add(this.cbShowNoCode2);
+            resources.ApplyResources(this.grpTabChoiceKeyWord, "grpTabChoiceKeyWord");
+            this.grpTabChoiceKeyWord.Name = "grpTabChoiceKeyWord";
+            // 
+            // cbShowKeyword2
+            // 
+            resources.ApplyResources(this.cbShowKeyword2, "cbShowKeyword2");
+            this.cbShowKeyword2.Name = "cbShowKeyword2";
+            this.cbShowKeyword2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword2_Click);
+            // 
+            // cbShowNoCode2
+            // 
+            resources.ApplyResources(this.cbShowNoCode2, "cbShowNoCode2");
+            this.cbShowNoCode2.Name = "cbShowNoCode2";
+            this.cbShowNoCode2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode2_Click);
+            // 
             // grpTabChoice
             // 
             this.grpTabChoice.Items.Add(this.cbShowKeyword);
@@ -163,25 +182,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.tabNoCode.Groups.Add(this.grpTabChoice);
             resources.ApplyResources(this.tabNoCode, "tabNoCode");
             this.tabNoCode.Name = "tabNoCode";
-            // 
-            // grpTabChoiceKeyWord
-            // 
-            this.grpTabChoiceKeyWord.Items.Add(this.cbShowKeyword2);
-            this.grpTabChoiceKeyWord.Items.Add(this.cbShowNoCode2);
-            resources.ApplyResources(this.grpTabChoiceKeyWord, "grpTabChoiceKeyWord");
-            this.grpTabChoiceKeyWord.Name = "grpTabChoiceKeyWord";
-            // 
-            // cbShowKeyword2
-            // 
-            resources.ApplyResources(this.cbShowKeyword2, "cbShowKeyword2");
-            this.cbShowKeyword2.Name = "cbShowKeyword2";
-            this.cbShowKeyword2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword2_Click);
-            // 
-            // cbShowNoCode2
-            // 
-            resources.ApplyResources(this.cbShowNoCode2, "cbShowNoCode2");
-            this.cbShowNoCode2.Name = "cbShowNoCode2";
-            this.cbShowNoCode2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode2_Click);
             // 
             // gryExport
             // 
@@ -410,12 +410,12 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.grpKeyWord.PerformLayout();
             this.tabKeyWord.ResumeLayout(false);
             this.tabKeyWord.PerformLayout();
+            this.grpTabChoiceKeyWord.ResumeLayout(false);
+            this.grpTabChoiceKeyWord.PerformLayout();
             this.grpTabChoice.ResumeLayout(false);
             this.grpTabChoice.PerformLayout();
             this.tabNoCode.ResumeLayout(false);
             this.tabNoCode.PerformLayout();
-            this.grpTabChoiceKeyWord.ResumeLayout(false);
-            this.grpTabChoiceKeyWord.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -41,15 +41,15 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
-    <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.122</ApplicationVersion>
+    <TargetCulture>fr</TargetCulture>
+    <ApplicationVersion>3.0.0.126</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>WebEngine Excel Addin</ProductName>
     <PublisherName>AXA France</PublisherName>
-    <SupportUrl>https://github.com/AxaGuilDEv/webengine-dotnet</SupportUrl>
+    <SupportUrl>https://github.com/AxaFrance/webengine-dotnet/tree/feature/NoCodeAddin</SupportUrl>
     <FriendlyName>AxaFrance.WebEngine.ExcelUI</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
@@ -163,6 +163,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
