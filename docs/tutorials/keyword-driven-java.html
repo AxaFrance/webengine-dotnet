@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | AXA WebEngine Test Framework </title>
+    <title>Keyword-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | AXA WebEngine Test Framework ">
+    <meta name="title" content="Keyword-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
@@ -67,8 +67,505 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="keyword-driven-testing-approach-javaspring-boot">Keyword-Driven testing Approach (Java/Spring boot)</h1>
 
-<p><img src="toc-workaround.html" alt="Toc Workaround"># Tutorials</p>
+<p>This article will show steps to build an Automation Solution based on Keyword-Driven testing approach with WebEngine Framework.
+Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a> for more information about this approach.</p>
+<p>Considering we are building a Test Automation Solution for Home Insurance Underwriting application: <a href="http://webengine-test.azurewebsites.net/home-insurance">http://webengine-test.azurewebsites.net/home-insurance</a></p>
+<h2 id="step-1-analyzing-and-modelling">Step 1: Analyzing and Modelling</h2>
+<p>In this step, we analyze application under test, create use cases and high-level actions (keywords), note that these actions can be possibly reused in different test cases.</p>
+<p>For example, we can separate the insurance underwriting scenario into several high-level action keywords:</p>
+<ul>
+<li>Login</li>
+<li>Search Prospect</li>
+<li>Underwriting</li>
+<li>Choose offer and options</li>
+<li>Validate contract</li>
+<li>Logout</li>
+</ul>
+<p>For underwriting, there will be 3 steps:</p>
+<ul>
+<li>Home location</li>
+<li>Details based on type of home: <strong>Apartment</strong> or <strong>House</strong>.</li>
+<li>And antecedents if it happened</li>
+</ul>
+<p>The modelling of Home Insurance Underwriting application may look like following diagram:</p>
+<p><img src="../images/kd-schemas.png" alt="Schemas"></p>
+<p>Along with the modelling, it is necessary to define also test data to be used for each action keyword. these Test datas are manipulated in the application under test and also verify expected result.</p>
+<h2 id="step-2-prerequisites-for-keyword-driven-approach">Step 2: Prerequisites for Keyword-Driven Approach</h2>
+<p>JDK 8, maven and lombok</p>
+<h2 id="step-3-create-a-simple-maven-project">Step 3: Create a simple maven project</h2>
+<p>Open pom.xml paste below code</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+&lt;groupId&gt;fr.axa.automation&lt;/groupId&gt;
+&lt;artifactId&gt;sample-keyword-driven-webengine-java&lt;/artifactId&gt;
+&lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;packaging&gt;jar&lt;/packaging&gt;
+&lt;name&gt;sample-keyword-driven-webengine-java&lt;/name&gt;
+
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;start-class&gt;fr.axa.automation.Application&lt;/start-class&gt;
+
+    &lt;spring-boot-starter.version&gt;2.2.0.RELEASE&lt;/spring-boot-starter.version&gt;
+
+    &lt;spring-boot-maven-plugin.version&gt;2.5.4&lt;/spring-boot-maven-plugin.version&gt;
+    &lt;maven-compiler-plugin.version&gt;3.10.1&lt;/maven-compiler-plugin.version&gt;
+    &lt;maven-surefire-plugin.version&gt;3.0.0-M7&lt;/maven-surefire-plugin.version&gt;
+    &lt;webengine-boot-keyword-driven.version&gt;2.2.0&lt;/webengine-boot-keyword-driven.version&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;fr.axa.automation.webengine&lt;/groupId&gt;
+      &lt;artifactId&gt;webengine-boot-keyword-driven&lt;/artifactId&gt;
+      &lt;version&gt;${webengine-boot-keyword-driven.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+  &lt;/dependencies&gt;
+
+  &lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+      &lt;dependency&gt;
+        &lt;!-- Import dependency management from Spring Boot --&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;${spring-boot-starter.version}&lt;/version&gt;
+        &lt;type&gt;pom&lt;/type&gt;
+        &lt;scope&gt;import&lt;/scope&gt;
+      &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;
+
+  &lt;build&gt;
+    &lt;plugins&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;${maven-compiler-plugin.version}&lt;/version&gt;
+      &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;${spring-boot-maven-plugin.version}&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;mainClass&gt;${start-class}&lt;/mainClass&gt;
+          &lt;classifier&gt;exec&lt;/classifier&gt;
+          &lt;excludeDevtools&gt;true&lt;/excludeDevtools&gt;
+        &lt;/configuration&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;repackage&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;version&gt;${maven-surefire-plugin.version}&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;useSystemClassLoader&gt;false&lt;/useSystemClassLoader&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;unpack&lt;/id&gt;
+            &lt;phase&gt;generate-resources&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;unpack&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;artifactItems&gt;
+                &lt;artifactItem&gt;
+                  &lt;groupId&gt;fr.axa.automation.webengine&lt;/groupId&gt;
+                  &lt;artifactId&gt;webengine-report&lt;/artifactId&gt;
+                  &lt;version&gt;3.0.0-SNAPSHOT&lt;/version&gt;
+                  &lt;type&gt;jar&lt;/type&gt;
+                  &lt;includes&gt;html-report/**&lt;/includes&gt;
+                  &lt;outputDirectory&gt;${basedir}/src/main/resources/&lt;/outputDirectory&gt;
+                &lt;/artifactItem&gt;
+              &lt;/artifactItems&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+
+    &lt;/plugins&gt;
+    &lt;pluginManagement&gt;
+      &lt;plugins /&gt;
+    &lt;/pluginManagement&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</code></pre><div class="NOTE"><h5>Note</h5><p>Run the command &quot;mvn clean install -U&quot;</p>
+</div>
+<h2 id="step-3--initialize-project-structure">Step 3:  Initialize project structure</h2>
+<p>A typical WebEngine test project has following structures:
+<table>
+<tr>
+<td width="40%" style="text-align:center"><p>
+<p><img src="../images/java/keyword-driven/keyword-driven-project-structure.png" alt=""></p>
+<p></td>
+<td><p>
+<h4 id="model">model</h4>
+<p>This folder contains all page models.
+It is recommended to create one page model per web page (or screen).
+If a web page has too many UI elements to manipulate during the test, they can also be stored in different page models.</p>
+<h4 id="action">action</h4>
+<p>This folder contains all Action Keywords.</p>
+<h4 id="teststep">teststep</h4>
+<p>Test step associated to action.</p>
+<h4 id="testcase">testcase</h4>
+<p>Defines test cases by reusing action keywords.
+A test case can be reused multiple times by giving different test data (combination with Data-driven approach)</p>
+<h4 id="testsuite">Testsuite</h4>
+<p>The entry point of the test project. It lists the test cases should be executed.</p>
+<p></td>
+</tr>
+</table></p>
+<h2 id="step-4-define-page-models">Step 4: Define page models</h2>
+<p>Similar to other methods, it is recommended to use Page model to separate object identification and test script.</p>
+<p>Please refer to <a href="page-model.html">Organize UI Elements with Page Model</a></p>
+<ul>
+<li>For Web application, use <a href="web-elements.html">WebElementDescription</a></li>
+</ul>
+<p>In this example, we will define one model per page.</p>
+<ul>
+<li>Please refer to section <a href="#implementing-login-keyword">Implementing Login keyword</a></li>
+</ul>
+<div class="tabGroup" id="tabgroup_y-RiFPGq+H">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H_login-page-model" role="tab" aria-controls="tabpanel_y-RiFPGq+H_login-page-model" data-tab="login-page-model" tabindex="0" aria-selected="true">Login page model</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H_search-prospect-page-model" role="tab" aria-controls="tabpanel_y-RiFPGq+H_search-prospect-page-model" data-tab="search-prospect-page-model" tabindex="-1">search prospect page model</a>
+</li>
+</ul>
+<section id="tabpanel_y-RiFPGq+H_login-page-model" role="tabpanel" data-tab="login-page-model">
+<pre><code class="lang-java">package fr.axa.automation.model;
+
+import fr.axa.automation.webengine.core.AbstractPageModel;
+import fr.axa.automation.webengine.core.WebElementDescription;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+
+@FieldDefaults(level = AccessLevel.PUBLIC)
+public class LoginModel extends AbstractPageModel {
+
+    @Getter
+    WebElementDescription login = WebElementDescription.builder().tagName(&quot;input&quot;).name(&quot;login&quot;).build();
+
+    @Getter
+    WebElementDescription password = WebElementDescription.builder().tagName(&quot;input&quot;).name(&quot;password&quot;).build();
+
+    @Getter
+    WebElementDescription button = WebElementDescription.builder().tagName(&quot;button&quot;).innerText(&quot;Login&quot;).build();
+
+    public LoginModel(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+}
+</code></pre></section>
+<section id="tabpanel_y-RiFPGq+H_search-prospect-page-model" role="tabpanel" data-tab="search-prospect-page-model" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">package fr.axa.automation.model;
+
+import fr.axa.automation.webengine.core.AbstractPageModel;
+import fr.axa.automation.webengine.core.WebElementDescription;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+
+@FieldDefaults(level = AccessLevel.PUBLIC)
+public class ProspectModel extends AbstractPageModel {
+
+    @Getter
+    WebElementDescription customerId = WebElementDescription.builder().tagName(&quot;input&quot;).id(&quot;prospectId&quot;).build();
+
+    @Getter
+    WebElementDescription customerName = WebElementDescription.builder().tagName(&quot;input&quot;).name(&quot;prospectName&quot;).build();
+
+    @Getter
+    WebElementDescription searchName = WebElementDescription.builder().xPath(&quot;/html/body/div/div[2]/button&quot;).build();
+
+    public ProspectModel(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+}
+</code></pre></section>
+</div>
+<h2 id="step-5-develop-test-scripts">Step 5: Develop test scripts</h2>
+<p>Now we are entering to the most interesting part: develop test scripts. 
+That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
+<code>Login</code> and <code>searching module</code></p>
+<p><code>Login</code> is a normal keyword doing following actions:</p>
+<ul>
+<li>Connect to the application.</li>
+<li>Fill username in the textbox</li>
+<li>Fill password in the textbox</li>
+<li>Click on &quot;Login&quot; button</li>
+<li>Check the login is success</li>
+</ul>
+<p>This action needs 3 parameters: <code>URL</code> of the application, <code>Username</code> and <code>Password</code></p>
+<p><code>searching module</code> is a page for searching customer : 
+Enter the name or id of customer
+Click on the &quot;search&quot; button </p>
+<div class="NOTE"><h5>Note</h5><p>In this tutorial, we will use hard coded test data for demonstration.</p>
+<p>Externalized test data and dynamic test suite will be discussed in <a href="data-driven-cs.html">Data-Driven testing approach</a></p>
+</div>
+<h3 id="implementing-login-keyword">Implementing <code>Login</code> keyword</h3>
+<div class="tabGroup" id="tabgroup_y-RiFPGq+H-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-1_login-page" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-page" data-tab="login-page" tabindex="0" aria-selected="true">Login page</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-1_login-action" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-action" data-tab="login-action" tabindex="-1">Login action</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-1_login-step" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-step" data-tab="login-step" tabindex="-1">Login step</a>
+</li>
+</ul>
+<section id="tabpanel_y-RiFPGq+H-1_login-page" role="tabpanel" data-tab="login-page">
+<p><img src="../images/kd-login-web.png" alt="Login Web page"></p>
+</section>
+<section id="tabpanel_y-RiFPGq+H-1_login-action" role="tabpanel" data-tab="login-action" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">package fr.axa.automation.action;
+
+import fr.axa.automation.model.LoginModel;
+import fr.axa.automation.webengine.core.AbstractActionWebBase;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class LoginAction extends AbstractActionWebBase {
+    LoginModel loginModel;
+
+    public LoginAction() {
+    }
+
+    @Override
+    public void doAction() throws Exception {
+        loginModel = new LoginModel(getWebDriver());
+        getWebDriver().get(&quot;http://webengine-test.azurewebsites.net/home-insurance/&quot;);
+        loginModel.getLogin().sendKeys(&quot;test&quot;);
+        loginModel.getPassword().sendKeys(&quot;test&quot;);
+        screenShot();
+        loginModel.getButton().click();
+        addInformation(&quot;First step succeed&quot;);
+    }
+
+    @Override
+    public boolean doCheckpoint() throws Exception {
+        return true;
+    }
+}
+</code></pre></section>
+<section id="tabpanel_y-RiFPGq+H-1_login-step" role="tabpanel" data-tab="login-step" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">package fr.axa.automation.teststep;
+
+import fr.axa.automation.action.LoginAction;
+import fr.axa.automation.webengine.core.IAction;
+import fr.axa.automation.webengine.core.ITestStep;
+
+public class LoginStep implements ITestStep {
+  @Override
+  public Class&lt;? extends IAction&gt; getAction() {
+      return LoginAction.class;   
+  }
+}
+</code></pre></section>
+</div>
+<h3 id="implementing-searching-module-keyword">Implementing <code>searching module</code> keyword</h3>
+<div class="tabGroup" id="tabgroup_y-RiFPGq+H-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-2_searching-module-page" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-page" data-tab="searching-module-page" tabindex="0" aria-selected="true">Searching module page</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-2_searching-module-action" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-action" data-tab="searching-module-action" tabindex="-1">Searching module action</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_y-RiFPGq+H-2_searching-module-step" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-step" data-tab="searching-module-step" tabindex="-1">Searching module step</a>
+</li>
+</ul>
+<section id="tabpanel_y-RiFPGq+H-2_searching-module-page" role="tabpanel" data-tab="searching-module-page">
+<p><img src="../images/search-prospect.png" alt=""></p>
+</section>
+<section id="tabpanel_y-RiFPGq+H-2_searching-module-action" role="tabpanel" data-tab="searching-module-action" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">package fr.axa.automation.action;
+
+import fr.axa.automation.model.ProspectModel;
+import fr.axa.automation.webengine.core.AbstractActionWebBase;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class ProspectAction extends AbstractActionWebBase {
+  ProspectModel prospectModel;
+
+  public ProspectAction() {
+  }
+
+  @Override
+  public void doAction() throws Exception {
+    prospectModel = new ProspectModel(getWebDriver());
+    prospectModel.getCustomerName().sendKeys(&quot;Nicolas&quot;);
+    prospectModel.getSearchName().click();
+    screenShot();
+    addInformation(&quot;Prospect step succeed&quot;);
+  }
+
+  @Override
+  public boolean doCheckpoint() throws Exception {
+    return true;
+  }
+}
+</code></pre></section>
+<section id="tabpanel_y-RiFPGq+H-2_searching-module-step" role="tabpanel" data-tab="searching-module-step" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-java">package fr.axa.automation.teststep;
+
+
+import fr.axa.automation.action.ProspectAction;
+import fr.axa.automation.webengine.core.IAction;
+import fr.axa.automation.webengine.core.ITestStep;
+
+public class ProspectStep implements ITestStep {
+    @Override
+    public Class&lt;? extends IAction&gt; getAction() {        
+        return ProspectAction.class;
+    }
+}
+</code></pre></section>
+</div>
+<h2 id="step-6-define-test-cases">Step 6: Define test cases</h2>
+<p>Test case is inherited from &quot;fr.axa.automation.webengine.core.ITestCase&quot; to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
+And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet:</p>
+<pre><code class="lang-java">package fr.axa.automation.testcase;
+
+import fr.axa.automation.teststep.LoginStep;
+import fr.axa.automation.teststep.ProspectStep;
+import fr.axa.automation.webengine.core.ITestCase;
+import fr.axa.automation.webengine.core.ITestStep;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FindProspectTestCase implements ITestCase {
+
+    @Override
+    public List&lt;? extends ITestStep&gt; getTestStepList() {
+        return Arrays.asList(   new LoginStep(),
+                                new ProspectStep());
+    }
+}
+</code></pre><h2 id="step-7-define-test-suite">Step 7: Define Test Suite</h2>
+<p>A test suite defines a list of test cases to be executed.
+One Test Case can be used multiple times with different test data.
+Only one <code>TestSuite</code> per project is allowed.</p>
+<p>In this example, We don&#39;t use externalized test data, all test data is hard coded in the keyword action.
+In this case we will provide a hard-coded list of test cases with name:</p>
+<pre><code class="lang-java">package fr.axa.automation.testsuite;
+
+import fr.axa.automation.testcase.FindProspectTestCase;
+import fr.axa.automation.webengine.core.AbstractTestSuite;
+import fr.axa.automation.webengine.core.ITestCase;
+
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestSuite extends AbstractTestSuite {
+
+    public static final String FIND_PROSPECT_TEST_CASE = &quot;FIND_PROSPECT&quot;; //Test case defined in data.xml
+
+    @Override
+    public List&lt;AbstractMap.SimpleEntry&lt;String, ? extends ITestCase&gt;&gt; getTestCaseList() {
+        List&lt;AbstractMap.SimpleEntry&lt;String, ? extends ITestCase&gt;&gt; testCaseList = new ArrayList();
+        testCaseList.add(new AbstractMap.SimpleEntry&lt;String, ITestCase&gt;(FIND_PROSPECT_TEST_CASE,new FindProspectTestCase()));
+        return testCaseList;
+    }
+}
+</code></pre><div class="NOTE"><h5>Note</h5><p>Using hard coded test data and hard coded test case list is only for demonstration.
+In the real project, it is strongly recommanded to use variables in each keyword and run tests dynamically driven by external data.
+Please refer to <a href="data-driven-cs.html">Data-Driven Test Approach</a> after finished this tutoriel.</p>
+</div>
+<h2 id="step-8-define-application-boot">Step 8: Define application boot</h2>
+<p>This is the main class for running your solution.
+You have just to copy and paste this below code.</p>
+<pre><code class="lang-java">package fr.axa.automation;
+
+import fr.axa.automation.webengine.boot.BootProject;
+import fr.axa.automation.webengine.logger.LoggerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    final LoggerService loggerService;
+
+    final BootProject bootProject;
+
+    @Autowired
+    public Application(LoggerService loggerService, BootProject bootProject) {
+        this.loggerService = loggerService;
+        this.bootProject = bootProject;
+    }
+
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(Application.class).web(WebApplicationType.NONE).run(args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        loggerService.info(&quot;Temporary directory application: &quot;+System.getProperty(&quot;java.io.tmpdir&quot;));
+        bootProject.runFromProject(args);
+    }
+}
+</code></pre><h2 id="step-9-execute-the-solution">Step 9: Execute the solution</h2>
+<p>Run the class Application</p>
+<p>Then you can set breakpoint in the code to debug step by step.</p>
+<div class="NOTE"><h5>Note</h5><p>When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
+For more information about Excel Add-in, please refer to <a href="../articles/excel-addin.html">Working with WebEngine Add-in for Excel</a></p>
+</div>
+<h2 id="step-10-visualize-reports">Step 10: Visualize Reports</h2>
+<p>After execution, the log will be generated in indicated folder. You can open it with Edge to see details and even screenshots:</p>
+<p><img src="../images/java/keyword-driven/result-keyword-driven-test.png" alt=""></p>
+<p>When running you can add <code>-showReport</code> to open HTML report after test execution.</p>
+<h2 id="resume">Resume</h2>
+<p>As you can see, with this method it takes longer to automatize the first test case. But in long term, you have a well structured, modelized testing project that makes easier to improve and to maintain. We recommand this approach for complex end-to-end scenarios.</p>
+<p>BUT, it&#39;s not finished. In this tutorial, everything is hard-coded:</p>
+<ul>
+<li>Url is hard coded, you may want to test under multiple test-environments</li>
+<li>Test data is hard coded, you may want to run the test case with other combination of test data</li>
+<li>Test suite is hard coded, you may want to execute one, more or all test cases according to the need.</li>
+<li>Logic is hard coded, you may want to change some logic of script based on the test data.
+In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;ll convert all these hard coded things dynamically.</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>The example project of this article can be found in sample-keyword-driven</p>
+</div>
 </article>
           </div>
           

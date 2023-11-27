@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | AXA WebEngine Test Framework </title>
+    <title>Linear Scripting Approach (Java) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | AXA WebEngine Test Framework ">
+    <meta name="title" content="Linear Scripting Approach (Java) | AXA WebEngine Test Framework ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo_small.svg">
@@ -67,8 +67,255 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="linear-scripting-approach-java">Linear Scripting Approach (Java)</h1>
 
-<p><img src="toc-workaround.html" alt="Toc Workaround"># Tutorials</p>
+<p>In this article we will show you how to write test cases using linear scripting approach.
+Linear scripting approach is the most used approach in Unit Test and for simple test scenarios.
+In this approach, test cases are interpreted directly into test scripts, the method is fast for writing simple test cases but does not guarantee reuse of the functionality and part of test script across test projects.</p>
+<p>This tutorial is based on JUnit 5, if you are using TestNG, or another library, the solution will be similar.</p>
+<div class="NOTE"><h5>Note</h5><p>Linear scripting approach is easy and fast to implement.</p>
+<p>Linear scripting approach does not guarantee modeling and reuse. Please consider avoiding this approach for end-to-end tests, because it may be too complex to be evolved and maintained.</p>
+</div>
+<h2 id="required-framework-components">Required Framework components</h2>
+<ul>
+<li><code>webengine-web</code>: for Web Applications running on Desktop and Mobile Devices.</li>
+</ul>
+<p>Other components of WebEngine Framework is not used.</p>
+<h2 id="steps-to-build-test-automation-solution-using-linear-scripting">Steps to build Test Automation Solution using Linear Scripting</h2>
+<h3 id="step-1-prerequisites-for-linear-approach">Step 1: Prerequisites for linear Approach</h3>
+<p>JDK 8, maven and lombok</p>
+<h3 id="step-2-create-a-test-project">Step 2: Create a Test Project</h3>
+<p>Create a simple maven project.</p>
+<p>Open pom.xml paste below code </p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;fr.axa.automation&lt;/groupId&gt;
+    &lt;artifactId&gt;sample-test-linear&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+    &lt;name&gt;sample-test-linear&lt;/name&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;fr.axa.automation.webengine&lt;/groupId&gt;
+            &lt;artifactId&gt;webengine-web&lt;/artifactId&gt;
+            &lt;version&gt;2.2.0&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.10.1&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;8&lt;/source&gt;
+                    &lt;target&gt;8&lt;/target&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.0.0-M7&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;useSystemClassLoader&gt;false&lt;/useSystemClassLoader&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.jacoco&lt;/groupId&gt;
+                &lt;artifactId&gt;jacoco-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;0.8.6&lt;/version&gt;
+            &lt;/plugin&gt;
+
+        &lt;/plugins&gt;
+        &lt;pluginManagement&gt;
+            &lt;plugins /&gt;
+        &lt;/pluginManagement&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre><p>Now we can build you project with the command &quot;mvn clean install -U&quot;. </p>
+<p>Our system under test is the application: <a href="http://webengine-test.azurewebsites.net/Step1.html">http://webengine-test.azurewebsites.net/Step1.html</a></p>
+<h3 id="step-3-write-setup-and-teardown">Step 3: Write Setup and Teardown</h3>
+<p>In this step, we will write <code>Setup</code> and <code>Teardown</code> functions to initialize test environment before each test case and cleanup the test results after each test case.</p>
+<ul>
+<li>Setup: Initializes the WebDriver object.</li>
+<li>Teardown: Closes the driver and the browser.</li>
+</ul>
+<p>To do this, insert following code to <code>SampleTest.java</code></p>
+<pre><code class="lang-java">public class SampleTest {
+
+    private Optional&lt;WebDriver&gt; optionalWebdriver;
+
+    @BeforeEach // setup()
+    public void setup() throws Exception {
+        optionalWebdriver =  BrowserFactory.getWebDriver(&quot;Windows&quot;, &quot;Chrome&quot;, Arrays.asList(&quot;--remote-allow-origins=*&quot;));
+    }
+
+    @AfterEach
+    void tearDown() {
+        WebDriver driver = optionalWebdriver.get();
+        driver.quit();
+    }
+
+}
+</code></pre><h3 id="step-4-observe-sut-and-identify-ui-elements">Step 4: Observe SUT and identify UI Elements</h3>
+<p>Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a <code>PageModel</code>.</p>
+<p><img src="../images/ls-step3-uielements.png" alt="Step 3 UI Elements"></p>
+<p>When identifying an UI Element, we can combine multiple locators to make sure they can select only the element we want:</p>
+<ul>
+<li>The dropdown list &quot;Choose Language&quot; can be identified by <code>TagName = &quot;select&quot;</code> and <code>id=&quot;language&quot;</code>.</li>
+<li>The radio button group &quot;Choose to buy&quot; can be identified by <code>name=&quot;fav_language&quot;</code> which matches all 3 radio buttons in the same group.</li>
+<li>The button &quot;Next&quot; can be identified by the <code>TagName=&quot;button&quot;</code> and <code>onclick attribute=&quot;testSleep()&quot;</code></li>
+</ul>
+<p>The PageModel for this web page can be coded like following snippet:</p>
+<pre><code class="lang-csharp" name="Main" title="Page Model">// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified By: YUAN Huaxing, at: 2022-8-1 15:59
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AxaFrance.WebEngine.Web;
+using OpenQA.Selenium;
+
+namespace Samples.LinearScripting
+{
+    public class DrinkSelectionPageModel : PageModel
+    {
+
+        //Choose Language
+        public WebElementDescription SelectLanguage = new WebElementDescription
+        {
+            TagName = &quot;select&quot;,
+            Id = &quot;language&quot;
+        };
+
+        public WebElementDescription RadioChooseToBuy = new WebElementDescription
+        {
+            Name = &quot;fav_language&quot;
+        };
+
+        //Choose to buy
+        public WebElementDescription NextButton = new WebElementDescription
+        {
+            TagName = &quot;button&quot;,
+            Attributes = new HtmlAttribute[]
+            {
+                new HtmlAttribute{ Name = &quot;onclick&quot;, Value = &quot;testSleep()&quot;}
+            }
+        };
+
+        //Page title of next page (for verification)
+        public WebElementDescription Page2Title = new WebElementDescription
+        {
+            TagName = &quot;h1&quot;,
+            InnerText = &quot;Test page - Step 2&quot;
+        };
+
+        public DrinkSelectionPageModel(WebDriver driver) : base(driver)
+        {
+        }
+
+    }
+}
+</code></pre><h3 id="step-5-write-test-script">Step 5: Write test script.</h3>
+<p>Now we are ready to write the automated test script for this web page:</p>
+<ul>
+<li>Initialize the page model object</li>
+<li>Use the page model to interact with UI elements</li>
+</ul>
+<p>Instead of using native selenium commands, it is recommended to use actions implemented in <code>WebElementDescription</code>. The script will be easier to read, to understand and to maintain, because
+most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter <code>NoSuchElementException</code> and <code>StaleElementReferenceException</code>.</p>
+<p>Using PageModel, you can fill the function TestMethod1 with following code snippet</p>
+<pre><code class="lang-java">package fr.axa.automation.feature.model;
+
+import fr.axa.automation.webengine.core.AbstractPageModel;
+import fr.axa.automation.webengine.core.WebElementDescription;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.openqa.selenium.WebDriver;
+
+
+@FieldDefaults(level = AccessLevel.PUBLIC)
+public class FirstPageModel extends AbstractPageModel {
+
+    @Getter
+    WebElementDescription language = WebElementDescription.builder().tagName(&quot;select&quot;).id(&quot;language&quot;).build();
+
+    @Getter
+    WebElementDescription coffeeRadio = WebElementDescription.builder().tagName(&quot;input&quot;).id(&quot;coffee&quot;).build();
+
+    @Getter
+    WebElementDescription teaRadio = WebElementDescription.builder().tagName(&quot;input&quot;).id(&quot;tea&quot;).build();
+
+    @Getter
+    WebElementDescription waterRadio = WebElementDescription.builder().tagName(&quot;input&quot;).id(&quot;water&quot;).build();
+
+    @Getter
+    WebElementDescription nextStep = WebElementDescription.builder().tagName(&quot;button&quot;).xPath(&quot;.//button[contains(text(),\&quot;Next (3-second-delay)\&quot;)]&quot;).build();
+
+    public FirstPageModel(WebDriver webDriver) throws Exception {
+        populateDriver(webDriver);
+    }
+}
+</code></pre><pre><code class="lang-java">public class SampleTest {
+
+    private Optional&lt;WebDriver&gt; optionalWebdriver;
+
+    @BeforeEach
+    public void setup() throws Exception {
+        optionalWebdriver =  BrowserFactory.getWebDriver(&quot;Windows&quot;, &quot;Chrome&quot;, Arrays.asList(&quot;--remote-allow-origins=*&quot;));
+    }
+
+    @AfterEach
+    void tearDown() {
+        WebDriver driver = optionalWebdriver.get();
+        driver.quit();
+    }
+
+    @Test
+    public void linearApproachWithPageModel() throws Exception {
+        String baseUrl = &quot;https://axafrance.github.io/webengine-dotnet/demo/Step1.html&quot;;
+        if(optionalWebdriver.isPresent()){
+            WebDriver driver = optionalWebdriver.get();
+            driver.get(baseUrl);
+            Page page = new Page(driver);
+            page.getLanguage().selectByText(&quot;Français&quot;);
+            page.getCoffeeRadio().click();
+            page.getNextStep().click();
+            Assertions.assertTrue(page.getPageStep2().exists());
+        }
+    }
+}
+</code></pre><h3 id="step-6-run-tests">Step 6: Run tests</h3>
+<p>To run the test case, click to the play button:
+<img src="../images/java/linear/run-linear-test.png" alt=""></p>
+<p>Below the result
+<img src="../images/java/linear/linear-result.png" alt="Run Test"></p>
+<h3 id="step-7-improve-the-test-cases">Step 7: Improve the test cases</h3>
+<p>Now you can continue automatizing this scenario to the end by:</p>
+<ul>
+<li>Adding new UI elements into <code>PageModel</code></li>
+<li>Manipulate these UI elements</li>
+<li>Retrieve information from these UI elements in order to compare with expected value</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>The source code of this exercise can be found in our Github repository.
+Project Name: sample-test-linear
+<a href="https://github.com/AxaFrance/webengine-java/sample-test-linear">https://github.com/AxaFrance/webengine-java/sample-test-linear</a></p>
+</div>
 </article>
           </div>
           

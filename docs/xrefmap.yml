@@ -1377,6 +1377,19 @@ references:
   commentId: T:AxaFrance.WebEngine.Report.ReportHelper
   fullName: AxaFrance.WebEngine.Report.ReportHelper
   nameWithType: ReportHelper
+- uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
+  name: GenerateHtmlReport(TestSuiteReport, String, String)
+  href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateHtmlReport_AxaFrance_WebEngine_Report_TestSuiteReport_System_String_System_String_
+  commentId: M:AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport, System.String, System.String)
+  nameWithType: ReportHelper.GenerateHtmlReport(TestSuiteReport, String, String)
+- uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport*
+  name: GenerateHtmlReport
+  href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateHtmlReport_
+  commentId: Overload:AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport
+  nameWithType: ReportHelper.GenerateHtmlReport
 - uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
   name: GenerateJUnitReport(TestSuiteReport, String, String)
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateJUnitReport_AxaFrance_WebEngine_Report_TestSuiteReport_System_String_System_String_
@@ -1807,6 +1820,32 @@ references:
   commentId: T:AxaFrance.WebEngine.ReportSettings
   fullName: AxaFrance.WebEngine.ReportSettings
   nameWithType: ReportSettings
+- uid: AxaFrance.WebEngine.ReportSettings.HtmlReport
+  name: HtmlReport
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_HtmlReport
+  commentId: P:AxaFrance.WebEngine.ReportSettings.HtmlReport
+  fullName: AxaFrance.WebEngine.ReportSettings.HtmlReport
+  nameWithType: ReportSettings.HtmlReport
+- uid: AxaFrance.WebEngine.ReportSettings.HtmlReport*
+  name: HtmlReport
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_HtmlReport_
+  commentId: Overload:AxaFrance.WebEngine.ReportSettings.HtmlReport
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.ReportSettings.HtmlReport
+  nameWithType: ReportSettings.HtmlReport
+- uid: AxaFrance.WebEngine.ReportSettings.HtmlReportPath
+  name: HtmlReportPath
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_HtmlReportPath
+  commentId: P:AxaFrance.WebEngine.ReportSettings.HtmlReportPath
+  fullName: AxaFrance.WebEngine.ReportSettings.HtmlReportPath
+  nameWithType: ReportSettings.HtmlReportPath
+- uid: AxaFrance.WebEngine.ReportSettings.HtmlReportPath*
+  name: HtmlReportPath
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_HtmlReportPath_
+  commentId: Overload:AxaFrance.WebEngine.ReportSettings.HtmlReportPath
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.ReportSettings.HtmlReportPath
+  nameWithType: ReportSettings.HtmlReportPath
 - uid: AxaFrance.WebEngine.ReportSettings.JUnitReport
   name: JUnitReport
   href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_JUnitReport

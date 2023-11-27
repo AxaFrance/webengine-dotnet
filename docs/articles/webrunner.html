@@ -87,13 +87,13 @@ However, all behaviors and arguments remain the same.</p>
 <pre><code class="lang-batch">webrunner &quot;-a:&lt;testproject&gt;&quot; [-data:&lt;testdata&gt;] [-env:&lt;env_ariable&gt;] [-browser:&lt;browser-type&gt;] [optional_arguments]
 </code></pre></section>
 <section id="tabpanel_8e4t8rYVNM_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-batch">java -jar webrunner.jar &quot;-a:&lt;testproject&gt;&quot; [-data:&lt;testdata&gt;] [-env:&lt;env_ariable&gt;] [-browser:&lt;browser-type&gt;] [optional_arguments]
+<pre><code class="lang-batch">java -jar MyProject.jar [-data:&lt;testdata&gt;] [-env:&lt;env_ariable&gt;] [-browser:&lt;browser-type&gt;] [optional_arguments]
 </code></pre></section>
 </div>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>To run tests build with WebEngine Framework, you have to provide compiled test automation solution.</p>
 <ul>
-<li><code>-a:&lt;testproject&gt;</code>: the filename or full path of compiled test project: DLL library for .NET or a JAR package for Java.</li>
+<li><code>-a:&lt;testproject&gt;</code>: the filename or full path of compiled test project: DLL library for .NET.</li>
 </ul>
 <p>If your solution use Data-Driven approach, it is required to provide at least one of following files:</p>
 <ul>
@@ -116,7 +116,7 @@ However, all behaviors and arguments remain the same.</p>
 <pre><code class="lang-batch">WebRunner.exe &quot;-a:MyProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; &quot;-browser:Firefox&quot; &quot;-outputDir:C:\Temp&quot;
 </code></pre></section>
 <section id="tabpanel_8e4t8rYVNM-1_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-batch">java -jar webrunner.jar &quot;-a:project.jar&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; &quot;-browser:Firefox&quot; &quot;-outputDir:C:\Temp&quot;
+<pre><code class="lang-batch">java -jar MyProject.jar &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; &quot;-browser:Firefox&quot; &quot;-outputDir:C:\Temp&quot;
 </code></pre></section>
 </div>
 <h4 id="run-webapp-test-on-android-emulator">Run webapp test on Android Emulator</h4>
@@ -134,43 +134,47 @@ However, all behaviors and arguments remain the same.</p>
 <pre><code class="lang-batch">WebRunner.exe &quot;-a:MyProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Env.xml&quot; &quot;-platform:Android&quot; &quot;-browser:Chrome&quot; &quot;-device:Emulator&quot; &quot;-outputDir:C:\Temp&quot;
 </code></pre></section>
 <section id="tabpanel_8e4t8rYVNM-2_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-batch">java -jar webrunner.jar &quot;-a:MyProject.jar&quot; &quot;-data:Data.xml&quot; &quot;-env:Env.xml&quot; &quot;-platform:Android&quot; &quot;-browser:Chrome&quot; &quot;-device:Emulator&quot; &quot;-outputDir:C:\Temp&quot;
+<pre><code class="lang-batch">java -jar MyProject.jar &quot;-data:Data.xml&quot; &quot;-env:Env.xml&quot; &quot;-platform:Android&quot; &quot;-browser:Chrome&quot; &quot;-device:Emulator&quot; &quot;-outputDir:C:\Temp&quot;
 </code></pre></section>
 </div>
 <h4 id="run-app-test-on-selenium-compatible-device-cloud">Run app test on Selenium compatible Device Cloud</h4>
 <p>Following command line installs the application package, then launches test under <code>iPhone 12</code>, using provided device cloud.</p>
 <pre><code class="lang-batch">WebRunner.exe &quot;-a:AppProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; -platform:iOS -browser:IOSNative &quot;-device:iPhone 12&quot; &quot;-grid:http://seleniumgrid.com/wd/hub&quot; &quot;-appId:C:\app_under_test.ipa&quot;
 </code></pre><h2 id="optional-parameters">Optional parameters</h2>
-<div class="NOTE"><h5>Note</h5><p>Some parameters can be provided in the configuration file <code>appsettings.json</code> for C# and <code>application-properties.yml</code> for JAVA. please refer to <a href="appsettings.html">Test Configuration</a></p>
+<div class="NOTE"><h5>Note</h5><p>Some parameters can be provided in the configuration file <code>appsettings.json</code> for C# and <code>application-properties.yml</code> for JAVA.</p>
+<p>Please refer to <a href="appsettings.html">Test Configuration C#</a> for C#</p>
+<p>Please refer to <a href="appsettings-java.html">Test Configuration JAVA</a> for Java</p>
 </div>
 <h3 id="commun-parameters">Commun parameters</h3>
-<h5 id="-browserbrowser">-browser:&lt;browser&gt;</h5>
+<h4 id="-browserbrowser">-browser:&lt;browser&gt;</h4>
 <p>Specifies the browser on which to run test. see: <a class="xref" href="../api_net/AxaFrance.WebEngine.BrowserType.html">BrowserType</a>.</p>
-<h5 id="-platformplatform">-platform:&lt;platform&gt;</h5>
+<h4 id="-platformplatform">-platform:&lt;platform&gt;</h4>
 <p>Specifies The platform for test execution: see: <a class="xref" href="../api_net/AxaFrance.WebEngine.Platform.html">Platform</a>. Default value is <code>Windows</code>.</p>
-<h5 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h5>
-<p>Specifies the folder to store output of test execution and test report. This parameter is can be defined in <code>appsetting.json</code> for C# and <code>application-properties.yml</code> for JAVA.</p>
-<h5 id="-m">-m</h5>
+<h4 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h4>
+<p>Specifies the folder to store output of test execution and test report. This parameter is can be defined in <code>appsetting.json</code> for C# and <code>application.yml</code> for JAVA.</p>
+<h4 id="-m">-m</h4>
 <p>Specifies the manual debug mode. Use this mode for debugging test scenarios locally. When the test is failed test will pause for manual intervention before clean-up process.</p>
-<h5 id="-junitjunitpath">-junit:&lt;junitPath&gt;</h5>
+<h4 id="-junitjunit-report-path">-junit:&lt;junit-report-path&gt;</h4>
 <p>In additional of default XML report, generates a JUnit 2.6 compliant test report. Useful to publish test result to a Continuous Integration Platform</p>
-<h5 id="-showreport">-showReport</h5>
+<h4 id="-htmlhtml-report-path">-html:&lt;html-report-path&gt;</h4>
+<p>In additional of default XML report, generates a HTML test report. Test report will be generated in the given folder. HTML report contains also css, javascript and screenshot files. If you want the share the report, you have to copy the whole folder.</p>
+<h4 id="-showreport">-showReport</h4>
 <p>Launches <code>Report Viewer</code> after test execution.</p>
 <h3 id="parameters-for-mobile-testing">Parameters for Mobile testing</h3>
 <p>To run tests on Mobile device, <code>-platform</code>, you should specify the following arguments <code>Android</code> or <code>iOS</code>.</p>
-<h5 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h5>
+<h4 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h4>
 <p>Indicates the Selenium Grid to connect to device cloud. Default value is <code>http://localhost:4723/wd/hub</code> for local Appium Server
 If you are using cloud-based device cloud, please refer to service providers documentation.
 If the argument is provided, option <code>desktopGrid</code> will be automatically set to <code>true</code></p>
-<h5 id="-desktopgrid">-desktopGrid</h5>
+<h4 id="-desktopgrid">-desktopGrid</h4>
 <p>This option activates the usage of Selenium Grid for Web Desktop tests. If the value is false, the framework only use selenium grid for mobile based tests.</p>
-<h5 id="-usernameusername">-username:&lt;username&gt;</h5>
+<h4 id="-usernameusername">-username:&lt;username&gt;</h4>
 <p>Indicates the username to be used for Selenium Grid authentication.</p>
-<h5 id="-passwordpassword">-password:&lt;password&gt;</h5>
+<h4 id="-passwordpassword">-password:&lt;password&gt;</h4>
 <p>Indicates the password to be used for Selenium Grid authentication.</p>
-<h5 id="-devicedevicename">-device:&lt;deviceName&gt;</h5>
+<h4 id="-devicedevicename">-device:&lt;deviceName&gt;</h4>
 <p>Indicates the device name for device selection. for example: <code>iPhone Xs</code>, <code>Huawei P30</code>. Refers your cloud provider.</p>
-<h5 id="-osversionversion">-osVersion:&lt;version&gt;</h5>
+<h4 id="-osversionversion">-osVersion:&lt;version&gt;</h4>
 <p>Indicate the version of the OS for device selection. for example: <code>14.1</code>, <code>9.0</code>. Refers your cloud provider.</p>
 <h3 id="where-to-find-webrunner-package">Where to find WebRunner package?</h3>
 <p>WebRunner package is installed via NuGet Package (.NET) or Maven (Java).
