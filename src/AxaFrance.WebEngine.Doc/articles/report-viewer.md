@@ -3,7 +3,13 @@ ReportViewer is an application to view test results in a graphical way.
 
 As shown as follow, Test cases executed have been listed on the left side. Once a test case is selected, detailed test steps, test data, screenshot and other necessary information will be shown on the right side.
 
+With thick client :
+
 ![Report Viewer](../images/report-viewer.png)
+
+With thin client :
+
+![Html report viewer](../images/img-report-html.png)
 
 
 ## When report is generated?
