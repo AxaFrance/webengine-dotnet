@@ -31,6 +31,14 @@ The Framework is distributed via Package Management:
 When using .NET, please find AxaFrance.WebEngine packages on nuget.org
 When using JAVA, these pacakges will be available on Maven
 
+## WebEngine 2.0 Roadmap
+We are working on the next version of WebEngine Framework, in the next versions we will bring.
+- [ ] Enhanced Page-Object Model.
+- [ ] Enhanced Element Description Model (with more attributes and relative-identification mode)
+- [ ] Integrates Acessibility Testing with axe-core library and comprehensive reports.
+
+To get detailed information with this roadmap, please check [WebEngine 2.0 Roadmap](WebEngine2.0.md)
+
 
 ## Contact us
 Feel free to reach us if you want to adopt the Framework, report Bugs, or have good ideas to contribute on it.

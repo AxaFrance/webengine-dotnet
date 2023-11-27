@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366
 		..\LICENCE.md = ..\LICENCE.md
 		..\PULL_REQUEST_TEMPLATE.md = ..\PULL_REQUEST_TEMPLATE.md
 		..\README.md = ..\README.md
+		..\WebEngine2.0.md = ..\WebEngine2.0.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.LinearScripting", "Samples.LinearScripting\Samples.LinearScripting.csproj", "{AC9128CB-6277-4B66-8AF0-269934F689BF}"

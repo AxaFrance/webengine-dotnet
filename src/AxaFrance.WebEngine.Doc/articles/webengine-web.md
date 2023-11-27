@@ -189,7 +189,7 @@ else
 LoginPage page = new LoginPage(driver);
 page.getTxtUsername().setValue("admin@test.com");    //fill username
 page.getTxtPassword().sendKeys("password");          //fill password
-page.getButtonSubmit().Click();                      
+page.getButtonSubmit().click();                      
 
 if (page.getSpanErrorMessage().isDisplayed()){        //check if error message shows
     //error message displayed, test failed.
