@@ -36,10 +36,10 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta03" />
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.2" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.9.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.15.0" />
   </ItemGroup>
 
   <ItemGroup>
