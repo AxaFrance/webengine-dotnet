@@ -300,7 +300,7 @@
           "hash": "yX/TJDp5PtsA0g807aAzSVVyQ5vAU7YruftoMQDwnTk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "bAN+2SdFcZ7cFh47eHAQrLYRHo2EqX1EMRQs2yH6/xI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -360,7 +360,7 @@
           "hash": "RAccy1ZO6Wpa3+CNNDAkpehgOum+bQ6dl5HE7lDMFnw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -384,7 +384,7 @@
           "hash": "cu2cbQ9KTyIYeAo6LyeIwGag854uLSNLdfYnmU5jpZg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -660,7 +660,7 @@
           "hash": "T4h/Jmh2c0sHMFUMyHyGn16uPqeShaAwY0kYmcq/ibE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -684,7 +684,7 @@
           "hash": "MDYt0JNqI3ZsFi4ERvpKmvqD1LJActpf3ukqqaQ5aaw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -804,7 +804,7 @@
           "hash": "8UekDlId7IfcsCFOcmNonenDbGRLsiwa7hhJvVEtB7M="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -835,15 +835,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "DuplicateTabId"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/webengine-web.md",
       "output": {
         ".html": {
           "relative_path": "articles/webengine-web.html",
-          "hash": "bl0AbM0ayrQ1g0hw1jvQ12/IyvJDXPUkOk/kU9n+9wo="
+          "hash": "hOanslxdQ5JU/TYvZGvnF1VLxNMHU2KisENnlVPRKBc="
         }
       },
       "is_incremental": false,
@@ -858,7 +855,7 @@
           "hash": "SgLkSRAOgO/10c+B/FiCHwR3bJINFFpFpACO6m1IekE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2523,7 +2520,7 @@
           "hash": "vOhywKWhRoYqMcqDHscnSgHXEn5ubPWQygoe0Frq/jc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2598,7 +2595,7 @@
           "hash": "U2Pr7+yLZHRyO2Gez3Lq2sk47KVPHTH6z4MbxQtQekw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2634,7 +2631,7 @@
           "hash": "Mx4KigoBhirZawO5R0b9zFsG0R0C9QpheCZ6NBIJHUY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2646,7 +2643,7 @@
           "hash": "xbTJ7X/EcAfDyk6mGy1KebnW940txak0AvfQHEVxcyQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2658,7 +2655,7 @@
           "hash": "GbopHpYhaNPwf/DMENGhcW0ZY3bMSFkgknzEs9qr2hY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2670,7 +2667,7 @@
           "hash": "jjOrWFVZ3Lsr6QcmJzSGv073gi1HIV83o0Vxoy7DacE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2694,7 +2691,7 @@
           "hash": "l3gQGCHKMsYR3Uwi6u3Ai/fzZA67VDvk6UwZMFBloJU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2706,7 +2703,7 @@
           "hash": "Tptb8yqPOVFt3Z52D27ZwkzsSI0hwvVP7MKVgdGwX+I="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2722,18 +2719,15 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "tutorials/secure-password.md",
       "output": {
         ".html": {
           "relative_path": "tutorials/secure-password.html",
-          "hash": "oWCn/pI1Gsz0LArb+u1FqZ1F2efbPLhkYZ/BHHDKypM="
+          "hash": "RXRRwDm1dS4rX+g8c36G+TGOtQTE6tT3r8pAWCCaGyI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2757,7 +2751,7 @@
           "hash": "CimWekQea4WZjj646vzeSDlLsRriXCOV0wrvRnu92cw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2825,13 +2819,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 40,
-          "skipped_file_count": 28
+          "skipped_file_count": 38
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 57,
-          "skipped_file_count": 51
+          "skipped_file_count": 53
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
