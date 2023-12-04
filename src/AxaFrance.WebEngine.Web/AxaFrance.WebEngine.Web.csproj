@@ -20,15 +20,10 @@
 
   <ItemGroup>
     <None Remove="geckodriver.exe" />
-    <None Remove="IEDriverServer.exe" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="geckodriver.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-    </Content>
-    <Content Include="IEDriverServer.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>

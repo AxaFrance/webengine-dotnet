@@ -422,8 +422,7 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetIEDriver()
         {
-            OpenQA.Selenium.IE.InternetExplorerDriver ieDriver = new OpenQA.Selenium.IE.InternetExplorerDriver(CurrentDirectory);
-            return ieDriver;
+            throw new Exception("Internet Explorer is not supported anymore. Please update the browser and run tests in one of supported browsers: Chrome, Edge, Firefox and Safari");
         }
 
         private static WebDriver GetEdgeDriver(IEnumerable<string> browserOptions)
@@ -440,18 +439,19 @@ namespace AxaFrance.WebEngine.Web
             string downloadUrl = $"https://msedgedriver.azureedge.net/{version}/edgedriver_win64.zip";
             string file = $"{workingDirectory}\\Edge\\{version}\\Webdriver.zip";
             string folder = $"{workingDirectory}\\Edge\\{version}\\Extracted";
-
+            DirectoryInfo di = new DirectoryInfo(folder);
             using (WebClient c = new WebClient())
             {
-                if (!System.IO.Directory.Exists(folder))
+                if (!(di.Exists && di.GetFiles().Any()))
                 {
+                    DebugLogger.WriteLine($"Downloading driver and install into {folder}.");
                     System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
                 }
                 else
                 {
-                    DebugLogger.WriteLine($"Folder containing the current version of webdriver exists already.");
+                    DebugLogger.WriteLine($"Folder containing the current version of webdriver.");
                 }
                 OpenQA.Selenium.Edge.EdgeOptions options = new OpenQA.Selenium.Edge.EdgeOptions()
                 {
@@ -472,7 +472,7 @@ namespace AxaFrance.WebEngine.Web
                 path = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe", "", null);
             }
             var version = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
-            DebugLogger.WriteLine($"Chrome {version} installed");
+            DebugLogger.WriteLine($"Detected installed Chrome Version: {version}");
             var chromeDriver = GetChromeDriver(version, browserOptions);
             return chromeDriver;
         }
@@ -504,12 +504,15 @@ namespace AxaFrance.WebEngine.Web
                 }
                 string file = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Webdriver.zip";
                 string folder = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Extracted";
-                if (!System.IO.Directory.Exists(folder))
+                DirectoryInfo di = new DirectoryInfo(folder);
+                //fix bug #48: Deadlock if webdriver download fails
+                //Checks if the filder is not empty, or we try to download again the webdriver.
+                //Same implementation for Edge Driver.
+                if (!(di.Exists && di.GetFiles().Any())) 
                 {
-                    var di = System.IO.Directory.CreateDirectory(folder);
+                    System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
-                    //new version of chromedriver are in a folder, copy them to root folder of Extracted.
                     if (di.GetDirectories().Any())
                     {
                         foreach (var subdir in di.GetDirectories())
