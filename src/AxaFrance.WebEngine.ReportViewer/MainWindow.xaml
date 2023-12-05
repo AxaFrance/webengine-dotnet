@@ -137,7 +137,6 @@
 
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
-
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="Filter" HorizontalAlignment="Left"   />
                 <TextBox x:Name="txFilter" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="25" Width="175" TextChanged="TxFilter_OnTextChanged" />

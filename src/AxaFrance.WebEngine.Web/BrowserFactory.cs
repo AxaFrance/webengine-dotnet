@@ -510,9 +510,11 @@ namespace AxaFrance.WebEngine.Web
                 //Same implementation for Edge Driver.
                 if (!(di.Exists && di.GetFiles().Any())) 
                 {
-                    System.IO.Directory.CreateDirectory(folder);
+                    var di = System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
+                    //new version of chromedriver are in a folder, copy them to root folder of Extracted.
+
                     if (di.GetDirectories().Any())
                     {
                         foreach (var subdir in di.GetDirectories())
