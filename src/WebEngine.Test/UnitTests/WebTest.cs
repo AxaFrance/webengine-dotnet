@@ -5,7 +5,9 @@ using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
+using System.Diagnostics;
 
 namespace WebEngine.Test.UnitTests
 {
@@ -19,6 +21,7 @@ namespace WebEngine.Test.UnitTests
         [ClassCleanup]
         public static void Cleanup()
         {
+            networkIntercepter?.StopMonitoring();
             try
             {
                 driver?.Quit();
@@ -35,6 +38,7 @@ namespace WebEngine.Test.UnitTests
             }
             catch { }
         }
+        static INetwork networkIntercepter;
 
         [ClassInitialize]
         public static void Initialize(TestContext context)
@@ -42,8 +46,19 @@ namespace WebEngine.Test.UnitTests
             if (driver == null)
             {
                 driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
-                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             }
+
+            networkIntercepter = driver.Manage().Network;
+            networkIntercepter.NetworkRequestSent += (_, e) =>
+            {
+                Debug.WriteLine($"{e.RequestMethod} Request to: {e.RequestUrl}");
+            };
+            networkIntercepter.NetworkResponseReceived += (_, e) =>
+            {
+                Debug.WriteLine($"{e.ResponseStatusCode} Response to: {e.ResponseUrl}");
+            };
+            networkIntercepter.StartMonitoring().ConfigureAwait(false);
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
         }
 
         [TestMethod]
@@ -424,5 +439,6 @@ namespace WebEngine.Test.UnitTests
                 throw;
             }
         }
+
     }
 }

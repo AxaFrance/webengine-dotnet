@@ -42,7 +42,7 @@ namespace Samples.Gherkin.StepDefinitions
         public void ThenIGot(string tea)
         {
             MyPageModel pageModel = new MyPageModel(driver);
-            Assert.IsTrue(pageModel.Page2Title.Exists());
+            Assert.That(pageModel.Page2Title.Exists());
         }
     }
 }

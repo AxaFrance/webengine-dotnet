@@ -137,8 +137,8 @@
 
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="left" VerticalAlignment="Top">
-                <Label Content="Filter" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Label Content="Filter" HorizontalAlignment="Left"   />
                 <TextBox x:Name="txFilter" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="25" Width="175" TextChanged="TxFilter_OnTextChanged" />
                 <CheckBox x:Name="cbFailed" Content="Failed"  Foreground="White" Checked="CbFailed_OnChecked" Unchecked="cbFailed_Unchecked"/>
             </StackPanel>
