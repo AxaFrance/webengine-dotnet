@@ -451,7 +451,7 @@ namespace AxaFrance.WebEngine.Web
                 }
                 else
                 {
-                    DebugLogger.WriteLine($"Folder containing the current version of webdriver.");
+                    DebugLogger.WriteLine($"A Webdriver is found for your current version of Browser.");
                 }
                 OpenQA.Selenium.Edge.EdgeOptions options = new OpenQA.Selenium.Edge.EdgeOptions()
                 {
@@ -510,7 +510,8 @@ namespace AxaFrance.WebEngine.Web
                 //Same implementation for Edge Driver.
                 if (!(di.Exists && di.GetFiles().Any())) 
                 {
-                    var di = System.IO.Directory.CreateDirectory(folder);
+                    DebugLogger.WriteLine($"Downloading driver and install into {folder}.");
+                    System.IO.Directory.CreateDirectory(folder);
                     c.DownloadFile(downloadUrl, file);
                     System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
                     //new version of chromedriver are in a folder, copy them to root folder of Extracted.
@@ -528,7 +529,7 @@ namespace AxaFrance.WebEngine.Web
                 }
                 else
                 {
-                    DebugLogger.WriteLine($"The Chrome WebDriver already exsits");
+                    DebugLogger.WriteLine($"A Webdriver is found for your current version of Browser.");
                 }
                 OpenQA.Selenium.Chrome.ChromeOptions options = new OpenQA.Selenium.Chrome.ChromeOptions()
                 {
