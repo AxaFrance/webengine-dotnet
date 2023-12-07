@@ -14,7 +14,7 @@ using System.Security;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("AXA France")]
 [assembly: AssemblyProduct("AXA WebEngine Excel Addin")]
-[assembly: AssemblyCopyright("Copyright © AXA France 2016-2022")]
+[assembly: AssemblyCopyright("Copyright © AXA France 2016-2024")]
 [assembly: AssemblyTrademark("AXA France")]
 [assembly: AssemblyCulture("")]
 

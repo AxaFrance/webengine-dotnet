@@ -75,6 +75,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.cbCloseBrowser = new System.Windows.Forms.CheckBox();
             this.cbListeTestsCases = new System.Windows.Forms.CheckedListBox();
+            this.cbGetBeta = new System.Windows.Forms.CheckBox();
+            this.cbForce = new System.Windows.Forms.CheckBox();
             this.appLayout.SuspendLayout();
             this.devicesLayout.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -391,11 +393,25 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.cbListeTestsCases.Name = "cbListeTestsCases";
             this.cbListeTestsCases.ThreeDCheckBoxes = true;
             // 
+            // cbGetBeta
+            // 
+            resources.ApplyResources(this.cbGetBeta, "cbGetBeta");
+            this.cbGetBeta.Name = "cbGetBeta";
+            this.cbGetBeta.UseVisualStyleBackColor = true;
+            // 
+            // cbForce
+            // 
+            resources.ApplyResources(this.cbForce, "cbForce");
+            this.cbForce.Name = "cbForce";
+            this.cbForce.UseVisualStyleBackColor = true;
+            // 
             // FrmRun
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.cbForce);
+            this.Controls.Add(this.cbGetBeta);
             this.Controls.Add(this.cbListeTestsCases);
             this.Controls.Add(this.cbCloseBrowser);
             this.Controls.Add(this.driveSettingLayout);
@@ -472,5 +488,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         private System.Windows.Forms.TextBox txtKeepassPassword;
         private System.Windows.Forms.CheckBox cbCloseBrowser;
         private System.Windows.Forms.CheckedListBox cbListeTestsCases;
+        private System.Windows.Forms.CheckBox cbGetBeta;
+        private System.Windows.Forms.CheckBox cbForce;
     }
 }

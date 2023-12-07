@@ -42,7 +42,7 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>fr</TargetCulture>
-    <ApplicationVersion>3.0.0.126</ApplicationVersion>
+    <ApplicationVersion>3.0.0.140</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -138,7 +138,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <CodeAnalysisRuleSet>
     </CodeAnalysisRuleSet>
@@ -158,6 +158,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
@@ -216,6 +217,12 @@
     <Compile Include="FrmCheckResult.Designer.cs">
       <DependentUpon>FrmCheckResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDataTestRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataTestRef.Designer.cs">
+      <DependentUpon>FrmDataTestRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRun.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +263,9 @@
     <EmbeddedResource Include="FrmCheckResult.resx">
       <DependentUpon>FrmCheckResult.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataTestRef.resx">
+      <DependentUpon>FrmDataTestRef.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRun.fr-FR.resx">
       <DependentUpon>FrmRun.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,7 +299,9 @@
       <DependentUpon>Ribbon.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.local.config" />
     <None Include="AXA.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx" />
@@ -407,8 +419,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -432,6 +443,11 @@
     <Error Condition="!Exists('..\packages\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.15.0.1\build\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.15.0.1\build\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>if exist  $(ProjectDir)\App.local.config copy /Y  $(ProjectDir)\App.local.config $(TargetDir)\$(TargetName)$(TargetExt).config</PostBuildEvent>
+    <PostBuildEvent>if exist  $(ProjectDir)\App.local.config copy /Y  $(ProjectDir)\App.local.config $(TargetDir)\$(TargetName)$(TargetExt).config
+if exist  $(ProjectDir)\App.local.config copy /Y  $(ProjectDir)\App.local.config App.config</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

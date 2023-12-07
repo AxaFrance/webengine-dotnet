@@ -142,13 +142,13 @@ namespace AxaFrance.WebEngine.ExcelUI
             String target = Globals.ThisAddIn.Application.ActiveCell.FormulaLocal;
             if (!String.IsNullOrEmpty(target))
             {
-                if (!target.StartsWith("{") && !target.StartsWith("//"))
+                if (!target.StartsWith("{") && !target.Contains("//"))
                 {
                     TbId.Text = target;
                     return;
                 }
 
-                if (target.StartsWith("//"))
+                if (target.Contains("//") || (target.Contains("(") && target.Contains(")")) || (target.Contains("[") && target.Contains("]")))
                 {
                     TbXpath .Text = target;
                     return;

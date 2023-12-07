@@ -192,48 +192,6 @@
   <data name="&gt;&gt;KeepassHelp.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;separator3.Name" xml:space="preserve">
-    <value>separator3</value>
-  </data>
-  <data name="&gt;&gt;separator3.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.SeparatorView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;separator3.Parent" xml:space="preserve">
-    <value>grpNoCode</value>
-  </data>
-  <data name="&gt;&gt;separator3.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="BtTargetHelp.Label" xml:space="preserve">
-    <value>Modifier la cellule Identification de la ligne courante</value>
-  </data>
-  <data name="&gt;&gt;BtTargetHelp.Name" xml:space="preserve">
-    <value>BtTargetHelp</value>
-  </data>
-  <data name="&gt;&gt;BtTargetHelp.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;BtTargetHelp.Parent" xml:space="preserve">
-    <value>grpNoCode</value>
-  </data>
-  <data name="&gt;&gt;BtTargetHelp.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="BtChooseFile.Label" xml:space="preserve">
-    <value>Choisir un fichier pour la command Upload</value>
-  </data>
-  <data name="&gt;&gt;BtChooseFile.Name" xml:space="preserve">
-    <value>BtChooseFile</value>
-  </data>
-  <data name="&gt;&gt;BtChooseFile.Type" xml:space="preserve">
-    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;BtChooseFile.Parent" xml:space="preserve">
-    <value>grpNoCode</value>
-  </data>
-  <data name="&gt;&gt;BtChooseFile.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="grpNoCode.Label" xml:space="preserve">
     <value>NoCode</value>
   </data>
@@ -555,6 +513,21 @@
   <data name="&gt;&gt;cbShowNoCode2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cbShowInov2.Label" xml:space="preserve">
+    <value>Onglet Inov</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov2.Name" xml:space="preserve">
+    <value>cbShowInov2</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov2.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.CheckBoxView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov2.Parent" xml:space="preserve">
+    <value>grpTabChoiceKeyWord</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="grpTabChoiceKeyWord.Label" xml:space="preserve">
     <value>WebEngine</value>
   </data>
@@ -615,6 +588,21 @@
   <data name="&gt;&gt;cbShowNoCode.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cbShowInov.Label" xml:space="preserve">
+    <value>Onglet Inov</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov.Name" xml:space="preserve">
+    <value>cbShowInov</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.CheckBoxView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov.Parent" xml:space="preserve">
+    <value>grpTabChoice</value>
+  </data>
+  <data name="&gt;&gt;cbShowInov.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="grpTabChoice.Label" xml:space="preserve">
     <value>WebEngine</value>
   </data>
@@ -628,7 +616,127 @@
     <value>tabNoCode</value>
   </data>
   <data name="&gt;&gt;grpTabChoice.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BtChooseFile.Label" xml:space="preserve">
+    <value>Choisir un fichier pour la command Upload</value>
+  </data>
+  <data name="&gt;&gt;BtChooseFile.Name" xml:space="preserve">
+    <value>BtChooseFile</value>
+  </data>
+  <data name="&gt;&gt;BtChooseFile.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;BtChooseFile.Parent" xml:space="preserve">
+    <value>grpTools</value>
+  </data>
+  <data name="&gt;&gt;BtChooseFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btExclude.Label" xml:space="preserve">
+    <value>Exclure/Inclure des colonnes</value>
+  </data>
+  <data name="&gt;&gt;btExclude.Name" xml:space="preserve">
+    <value>btExclude</value>
+  </data>
+  <data name="&gt;&gt;btExclude.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;btExclude.Parent" xml:space="preserve">
+    <value>grpTools</value>
+  </data>
+  <data name="&gt;&gt;btExclude.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="BtTargetHelp.Label" xml:space="preserve">
+    <value>Modifier la cellule Identification</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Name" xml:space="preserve">
+    <value>BtTargetHelp</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.Parent" xml:space="preserve">
+    <value>grpTools</value>
+  </data>
+  <data name="&gt;&gt;BtTargetHelp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpTools.Label" xml:space="preserve">
+    <value>NoCode Outils pour la ligne courante</value>
+  </data>
+  <data name="&gt;&gt;grpTools.Name" xml:space="preserve">
+    <value>grpTools</value>
+  </data>
+  <data name="&gt;&gt;grpTools.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;grpTools.Parent" xml:space="preserve">
+    <value>tabNoCode</value>
+  </data>
+  <data name="&gt;&gt;grpTools.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BtSendMail.Label" xml:space="preserve">
+    <value>Envoyer une suggestion/demande</value>
+  </data>
+  <data name="&gt;&gt;BtSendMail.Name" xml:space="preserve">
+    <value>BtSendMail</value>
+  </data>
+  <data name="&gt;&gt;BtSendMail.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;BtSendMail.Parent" xml:space="preserve">
+    <value>grpContacts</value>
+  </data>
+  <data name="&gt;&gt;BtSendMail.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpContacts.Label" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="&gt;&gt;grpContacts.Name" xml:space="preserve">
+    <value>grpContacts</value>
+  </data>
+  <data name="&gt;&gt;grpContacts.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;grpContacts.Parent" xml:space="preserve">
+    <value>tabNoCode</value>
+  </data>
+  <data name="&gt;&gt;grpContacts.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lbVersion.Label" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="&gt;&gt;lbVersion.Name" xml:space="preserve">
+    <value>lbVersion</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.LabelView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.Parent" xml:space="preserve">
+    <value>group2</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="group2.Label" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="&gt;&gt;group2.Name" xml:space="preserve">
+    <value>group2</value>
+  </data>
+  <data name="&gt;&gt;group2.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;group2.Parent" xml:space="preserve">
+    <value>tabNoCode</value>
+  </data>
+  <data name="&gt;&gt;group2.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="tabNoCode.KeyTip" xml:space="preserve">
     <value>N</value>
@@ -643,6 +751,48 @@
     <value>tabNoCode</value>
   </data>
   <data name="&gt;&gt;tabNoCode.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.TabView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btGenerateGherkin.Label" xml:space="preserve">
+    <value>Insérer Examples Gherkin</value>
+  </data>
+  <data name="&gt;&gt;btGenerateGherkin.Name" xml:space="preserve">
+    <value>btGenerateGherkin</value>
+  </data>
+  <data name="&gt;&gt;btGenerateGherkin.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.ButtonView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;btGenerateGherkin.Parent" xml:space="preserve">
+    <value>group1</value>
+  </data>
+  <data name="&gt;&gt;btGenerateGherkin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="group1.Label" xml:space="preserve">
+    <value>group1</value>
+  </data>
+  <data name="&gt;&gt;group1.Name" xml:space="preserve">
+    <value>group1</value>
+  </data>
+  <data name="&gt;&gt;group1.Type" xml:space="preserve">
+    <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.GroupView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;group1.Parent" xml:space="preserve">
+    <value>tabGherkinSample</value>
+  </data>
+  <data name="&gt;&gt;group1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabGherkinSample.Label" xml:space="preserve">
+    <value>INOV Gherkin Samples</value>
+  </data>
+  <data name="tabGherkinSample.Tag" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tabGherkinSample.Name" xml:space="preserve">
+    <value>tabGherkinSample</value>
+  </data>
+  <data name="&gt;&gt;tabGherkinSample.Type" xml:space="preserve">
     <value>Microsoft.VisualStudio.Tools.Office.Ribbon.View.TabView, Microsoft.VisualStudio.Tools.Office.Designer, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

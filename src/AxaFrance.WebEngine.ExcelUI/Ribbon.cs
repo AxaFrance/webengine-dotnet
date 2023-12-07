@@ -8,15 +8,19 @@ using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using YamlDotNet.RepresentationModel;
 using Button = System.Windows.Forms.Button;
+using CheckBox = System.Windows.Forms.CheckBox;
 using Label = System.Windows.Forms.Label;
 
 namespace AxaFrance.WebEngine.ExcelUI
@@ -28,12 +32,14 @@ namespace AxaFrance.WebEngine.ExcelUI
     public partial class Ribbon
     {
         private const string Drive_Help_SheetName = "DriveByExcel_Help";
+        private const int _3 = 3;
         internal static AddinSettings Settings = new AddinSettings();
         bool noPopup = false;
         int VariableRow = 1;
         int VariableColumn = 1;
-        int TestCaseStartColumn = 3;
-        int TestCaseRow = 3;
+        int TestCaseStartColumn = _3;
+        int TestCaseRow = _3;
+        bool langagechoose = false;
 
         //create enum for the different languages
         public enum NoCodeCmdLangage
@@ -60,65 +66,68 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             GetCellContextMenu().Reset(); // reset the cell context menu back to the default
         }
-       
+
         private void Application_SheetBeforeRightClick(object Sh, Range Target, ref bool Cancel)
         {
             ResetCellMenu();  // reset the cell context menu back to the default
 
-            if (Target.Cells.Column == 3) 
+            if (Target.Cells.Column == _3)
             {
-               AddEditIdentificationMenuItem();
+                AddMenuItem("Identification du champ", new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(EditIdentificationMenuItem));
             }
             int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
             string currentCmd = Globals.ThisAddIn.Application.ActiveSheet.Cells[currentRow, 2].FormulaLocal;
-            if (Target.Cells.Column >= 6 && ("upload file".Equals(currentCmd.Trim().ToLowerInvariant()) 
-                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))) 
+            if (Target.Cells.Column >= 6 && ("upload file".Equals(currentCmd.Trim().ToLowerInvariant())
+                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant())))
             {
-                AddChooseFileMenuItem();
+                AddMenuItem("Choisir le fichier à uploader", new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseFileMenuItem));
+            }
+
+            if (Target.Cells.Column == 5)
+            {
+                AddMenuItem("Exclure/inclure des colonnes", new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseDataRef));
             }
         }
 
-        private void AddEditIdentificationMenuItem()
+        private void AddMenuItem(String menuLabel, _CommandBarButtonEvents_ClickEventHandler cmd)
         {
             MsoControlType menuItem = MsoControlType.msoControlButton;
             CommandBarButton exampleMenuItem = (CommandBarButton)GetCellContextMenu().Controls.Add(menuItem, "1", "2", 1, true);
 
             exampleMenuItem.Style = MsoButtonStyle.msoButtonIconAndCaption;
-            exampleMenuItem.Caption = "Modifier L'identification du champ";
-            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(EditIdentificationMenuItem);
+            exampleMenuItem.Caption = menuLabel;
+            exampleMenuItem.Click += cmd;
         }
-        
+
         void EditIdentificationMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
         {
             FrmTargetEdit frmNoCode = new FrmTargetEdit();
             frmNoCode.ShowDialog();
         }
 
-        private void AddChooseFileMenuItem()
-        {
-            MsoControlType menuItem = MsoControlType.msoControlButton;
-            CommandBarButton exampleMenuItem = (CommandBarButton)GetCellContextMenu().Controls.Add(menuItem, "1", "2", 1, true);
-
-            exampleMenuItem.Style = MsoButtonStyle.msoButtonIconAndCaption;
-            exampleMenuItem.Caption = "Choisir le fichier à uploader";
-            exampleMenuItem.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseFileMenuItem);
-        }
-
         void ChooseFileMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
         {
-            FrmUploadFile frmUploadFile = new FrmUploadFile();  
+            FrmUploadFile frmUploadFile = new FrmUploadFile();
             frmUploadFile.ShowDialog();
         }
 
-
+        void ChooseDataRef(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
+        {
+            FrmDataTestRef testRef = new FrmDataTestRef();
+            testRef.ShowDialog();
+        }
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
+            lbVersion.Label = ApplicationDeployment.IsNetworkDeployed
+               ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString()
+               : Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             ResetCellMenu();  // reset the cell context menu back to the default
             // Call this function is the user right clicks on a cell
-            Globals.ThisAddIn.Application.SheetBeforeRightClick += 
-                new AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);   
-            
+            Globals.ThisAddIn.Application.SheetBeforeRightClick +=
+                new AppEvents_SheetBeforeRightClickEventHandler(Application_SheetBeforeRightClick);
+
 
             //initialize user saved preferences
             if (File.Exists(settingFile))
@@ -143,7 +152,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 Ribbon.Settings = new AddinSettings();
             }
 
-            if (Ribbon.Settings.selectedTabs == null || Ribbon.Settings.selectedTabs <= 0 || Ribbon.Settings.selectedTabs > 3)
+            if (Ribbon.Settings.selectedTabs <= 0 || Ribbon.Settings.selectedTabs > _3)
             {
                 tabKeyWord.Visible = true;
                 cbShowKeyword.Checked = true;
@@ -163,7 +172,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     cbShowNoCode.Checked = false;
                     cbShowNoCode2.Checked = false;
                 }
-                else if (Ribbon.Settings.selectedTabs == 3)
+                else if (Ribbon.Settings.selectedTabs == _3)
                 {
                     tabKeyWord.Visible = false;
                     cbShowKeyword.Checked = false;
@@ -173,6 +182,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                     cbShowNoCode2.Checked = true;
                 }
             }
+
+            tabGherkinSample.Visible = cbShowInov.Checked = cbShowInov2.Checked = Ribbon.Settings.showInov;
         }
 
         internal static void SaveSettings()
@@ -337,8 +348,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (duplicatedNames.Count > 0)
             {
-                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", 
-                    string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", 
+                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.",
+                    string.Join(", ", duplicatedNames.ToArray())), "Test data Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -373,9 +384,9 @@ namespace AxaFrance.WebEngine.ExcelUI
                     sw.Close();
 
                 }
-                MessageBox.Show("Test Data has exported to the following file:\n" + TestDataFile + "\n\nFile path has already copied to clipboard.", 
-                    "Export Success", 
-                    MessageBoxButtons.OK, 
+                MessageBox.Show("Test Data has exported to the following file:\n" + TestDataFile + "\n\nFile path has already copied to clipboard.",
+                    "Export Success",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             else
@@ -465,7 +476,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private int GetMaxColumns(Worksheet worksheet)
         {
-            Range row = worksheet.Rows[3];
+            Range row = worksheet.Rows[_3];
             int currentColumn = TestCaseStartColumn;
             int count = 0;
             object value = null;
@@ -674,7 +685,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 throw new WebEngineGeneralException("The current worksheet is not test data but a special excluded worksheet. ");
             }
-            Range r = worksheet.Rows[3];
+            Range r = worksheet.Rows[_3];
             int i = 1;
             foreach (Range cell in r.Cells)
             {
@@ -931,7 +942,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 MessageBox.Show("Vous avez sélectionné plus de 10 colonnes, veuillez réduire le nombre de tests sélectionnés SVP.");
                 return;
-            }            
+            }
             show_FrmRun(col);
         }
 
@@ -986,9 +997,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 updateCell(s.Cells[1, 1], "Nom du champ", "Nom du champ");
                 updateCell(s.Cells[1, 2], "Commande/Action", "liste des commandes possibles");
-                updateCell(s.Cells[1, 3], "Identification du champ", "Identification du champ (Id, Xpath, ...)");
+                updateCell(s.Cells[1, _3], "Identification du champ", "Identification du champ (Id, Xpath, ...)");
                 updateCell(s.Cells[1, 4], "Optionnel", "Indique si la ligne est ignoré en cas d'erreur");
-                updateCell(s.Cells[1, 5], "Référence/Exclusion", 
+                updateCell(s.Cells[1, 5], "Référence/Exclusion",
                     "Indique si la ligne est à prendre en compte par rapport à la colonne des valeurs choisie.\n Un '!' indique que la ligne est à ignorée");
                 updateCell(s.Cells[1, 6], "Liste_1_des_valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
                 updateCell(s.Cells[1, 7], "Liste 2 des valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
@@ -997,9 +1008,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             dwl.PerformLayout();
 
             //Donwload command file and init Command List Column 
-            Dictionary<string, string> cmds = new Dictionary<string, string>(); 
-            
-            string cmdFile = FrmRun.getNoCodeRunnerFiles(workingDirectory, ((int)FrmRun.GetJarOrCmdYaml.cmdYaml), dwl);
+            Dictionary<string, string> cmds = new Dictionary<string, string>();
+
+            string cmdFile = FrmRun.getNoCodeRunnerFiles(workingDirectory, ((int)FrmRun.GetJarOrCmdYaml.cmdYaml), Ribbon.Settings.GetNoCodeBetaRunnerFile, dwl,false);
             using (var reader = new StreamReader(cmdFile))
             {
                 // Load the stream
@@ -1013,7 +1024,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                         string cmd = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["VALUE"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
                         string desc = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["DESCRIPTION"].ToString();
 
-                        if (desc.ToLowerInvariant().Contains(NoCodeCmdLangage.French.ToString().ToLowerInvariant()) 
+                        if (desc.ToLowerInvariant().Contains(NoCodeCmdLangage.French.ToString().ToLowerInvariant())
                             && desc.ToLowerInvariant().Contains(NoCodeCmdLangage.English.ToString().ToLowerInvariant()))
                         {
                             desc = yaml.Documents[0].AllNodes.First()[yaml.Documents[0].AllNodes.ElementAt(i)]["DESCRIPTION"][Ribbon.Settings.NoCodeCmdLangage.ToUpper()].ToString();
@@ -1037,8 +1048,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             //Optional list Column validation
             Range rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[4];
             string[] options = null;
-            
-            options = new string[] { "optional", "optional and depends on previous", "" };            
+
+            options = new string[] { "optional", "optional and depends on previous", "" };
 
             updateRangeValidation(rng, options, "");
 
@@ -1061,9 +1072,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             newHelp.Cells[1, 2].ColumnWidth = 100;
             updateCell(newHelp.Cells[1, 4], "Initialisation des colonnes", null);
             newHelp.Cells[2, 4] = "En cliquant sur le bouton (1), la 1ere ligne de la feuille courante sera initiatlisé avec les valeurs en (2). Vous pouvez ensuite";
-            newHelp.Cells[3, 4] = "Vous pouvez ensuite écrire votre scénario puis l'exécuter avec le lanceur NoCode (3)";
+            newHelp.Cells[_3, 4] = "Vous pouvez ensuite écrire votre scénario puis l'exécuter avec le lanceur NoCode (3)";
 
-            updateCell(newHelp.Cells[12, 4], "Identification du champ", null);
+            updateCell(newHelp.Cells[16, 4], "Identification du champ", null);
             newHelp.Cells[18, 4] = "Nous vous recommandons d'utiliser les ID pour identifier les champs";
             newHelp.Cells[19, 4] = "Lorsqu'il n'y a pas d'ID fixes, et qu'une combinaison d'attributs n'est pas possibles, vous pouvez récupérer le xpath ainsi :";
             newHelp.Cells[20, 4] = "'-Clic droit sur l’élément(1) puis cliquer sur Inspecter(2)";
@@ -1088,7 +1099,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             //Identification help images
             string initbuttonFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "initButtonHelp.png");
-            string inspectHelpFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "inspectHelp.png");
+            string inspectHelpFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "inspect.png");
             string getxpathFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "getxpath.png");
             Resources.initButtonpng.Save(initbuttonFile);
             addDriveHelpImage(initbuttonFile, newHelp, 4, 4);
@@ -1173,7 +1184,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     cell.AddComment(description);
                 }
                 cell.Interior.Color = Color.FromArgb(68, 114, 196);
-                if (cell.Column == 1 || cell.Column == 3)
+                if (cell.Column == 1 || cell.Column == _3)
                 {
                     cell.ColumnWidth = 40;
                 }
@@ -1203,7 +1214,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 string validationFormula = "='" + helpSheetName + "'!$A$2:$A$" + (values.Length + 1);
                 rng.Validation.Add(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertInformation,
                     XlFormatConditionOperator.xlEqual, validationFormula);
-                
+
                 rng.Validation.Modify(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertInformation,
                     XlFormatConditionOperator.xlEqual, validationFormula);
             }
@@ -1220,7 +1231,11 @@ namespace AxaFrance.WebEngine.ExcelUI
             isNoCode = true;
             activeWorksheet = Globals.ThisAddIn.Application.ActiveSheet;
             chooseLanguage();
-            initializeDriveByCommandList();
+            if (langagechoose)
+            {
+                initializeDriveByCommandList();
+                langagechoose = false;
+            }
         }
 
         private void chooseLanguage()
@@ -1234,17 +1249,21 @@ namespace AxaFrance.WebEngine.ExcelUI
             chooseLangageForm.Text = "Choix de la langue des commandes";
             System.Windows.Forms.Button closebtn = new Button();
             closebtn.Text = "Done";
+            CheckBox cbGetBeta = new CheckBox();
+            cbGetBeta.Width = 60;
+            cbGetBeta.Checked = Ribbon.Settings.GetNoCodeBetaRunnerFile;
+            cbGetBeta.Text= "Beta";
 
             System.Windows.Forms.ListBox langageList = new System.Windows.Forms.ListBox();
             langageList.Width = 400;
             langageList.Height = 50;
             langageList.AccessibilityObject.Name = "Langage";
-            langageList.Items.Add(""+NoCodeCmdLangage.French);
-            langageList.Items.Add(""+NoCodeCmdLangage.English);
+            langageList.Items.Add("" + NoCodeCmdLangage.French);
+            langageList.Items.Add("" + NoCodeCmdLangage.English);
             if (Ribbon.Settings.NoCodeCmdLangage == null)
             {
                 langageList.SelectedIndex = 0;
-            }                
+            }
             else if (Ribbon.Settings.NoCodeCmdLangage == NoCodeCmdLangage.French.ToString())
             {
                 langageList.SelectedIndex = 0;
@@ -1255,13 +1274,14 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
             closebtn.Click += (btnsender, args) =>
             {
-                Ribbon.Settings.NoCodeCmdLangage = langageList.SelectedItem.ToString();
-                chooseLangageForm.Close();
+                closeLangageForm(chooseLangageForm, cbGetBeta, langageList);
             };
             chooseLangageForm.Controls.Add(prompt);
 
             langageList.KeyPress += new KeyPressEventHandler(chooseLangage_KeyPress);
-            prompt.Controls.Add(langageList);   
+            prompt.Controls.Add(langageList);
+     
+            prompt.Controls.Add(cbGetBeta);
             prompt.Controls.Add(closebtn);
 
 
@@ -1269,13 +1289,22 @@ namespace AxaFrance.WebEngine.ExcelUI
             langageList.Focus();
         }
 
+        private void closeLangageForm(Form chooseLangageForm, CheckBox cbGetBeta, System.Windows.Forms.ListBox langageList)
+        {
+            Ribbon.Settings.NoCodeCmdLangage = langageList.SelectedItem.ToString();
+            Ribbon.Settings.GetNoCodeBetaRunnerFile = cbGetBeta.Checked;
+            langagechoose = true;
+            Ribbon.SaveSettings();
+            chooseLangageForm.Close();
+        }
+
         private void chooseLangage_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Ribbon.Settings.NoCodeCmdLangage = ((System.Windows.Forms.ListBox)sender).SelectedItem.ToString(); 
-                //close parent form
-                ((Form)((System.Windows.Forms.ListBox)sender).Parent.Parent).Close();
+                closeLangageForm((Form)((System.Windows.Forms.ListBox)sender).Parent.Parent,
+                    (CheckBox)((FlowLayoutPanel)((System.Windows.Forms.ListBox)sender).Parent).Controls[1],
+                    ((System.Windows.Forms.ListBox)sender));
             }
         }
 
@@ -1309,7 +1338,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 MessageBox.Show("Veuillez choisir une ligne contenant une commande d'upload de fichier");
             }
-
         }
 
         private void cbShowKeyword_Click(object sender, RibbonControlEventArgs e)
@@ -1322,7 +1350,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             tabKeyWord.Visible = cbShowKeyword.Checked;
             tabNoCode.Visible = cbShowNoCode.Checked;
-
+            
             if (!cbShowKeyword.Checked && !cbShowNoCode.Checked)
             {
                 tabKeyWord.Visible = true;
@@ -1333,6 +1361,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 cbShowKeyword2.Checked = true;
                 MessageBox.Show("L'un des 2 onglets doit être visibles");
             }
+            
             Ribbon.Settings.selectedTabs = (tabKeyWord.Visible ? int.Parse(tabKeyWord.Tag.ToString()) : 0) + (tabNoCode.Visible ? int.Parse(tabNoCode.Tag.ToString()) : 0);
         }
 
@@ -1353,5 +1382,180 @@ namespace AxaFrance.WebEngine.ExcelUI
             cbShowNoCode.Checked = cbShowNoCode2.Checked;
             processTabVisiblity();
         }
+
+        private void cbShowInov_Click(object sender, RibbonControlEventArgs e)
+        {
+            showInov(cbShowInov.Checked);
+            cbShowInov2.Checked = cbShowInov.Checked;
+        }
+
+        private void showInov(bool show)
+        {
+            tabGherkinSample.Visible = show;
+            Ribbon.Settings.showInov = show;
+            Ribbon.SaveSettings();
+        }
+
+        private void cbShowInov2_Click(object sender, RibbonControlEventArgs e)
+        {
+            showInov(cbShowInov2.Checked);
+            cbShowInov.Checked = cbShowInov2.Checked;
+        }
+
+        private void BtSendMail_Click(object sender, RibbonControlEventArgs e)
+        {
+            Process.Start("mailto:" + ConfigurationManager.AppSettings.Get("mailingList") + "?subject=NoCode Suggestion/Demande&body");
+        }
+
+        private void btGenerateGherkin_Click(object sender, RibbonControlEventArgs e)
+        {
+            Form form = new Form();
+            form.Width = 700;
+            form.Height = 110;
+            FlowLayoutPanel prompt = new FlowLayoutPanel();
+            prompt.Width = 700;
+            prompt.Height = 100;
+            form.Text = "Choix du répertoire des features";
+            System.Windows.Forms.Button closebtn = new Button();
+            closebtn.Text = "Done";
+
+            System.Windows.Forms.TextBox txtpropertiesFolder = new System.Windows.Forms.TextBox();
+            txtpropertiesFolder.Text = Ribbon.Settings.GherkinFilesPath;
+            txtpropertiesFolder.Width = 400;
+            System.Windows.Forms.Button btnPropFile = new Button();
+            System.Windows.Forms.FolderBrowserDialog openFileDialog = new FolderBrowserDialog();
+            
+            form.Controls.Add(prompt);
+            prompt.Controls.Add(txtpropertiesFolder);
+            btnPropFile.Text = "Choisir le rep des .feature";
+            btnPropFile.Width = 200;
+            //prompt.Controls.Add(openFileDialog);
+            prompt.Controls.Add(btnPropFile);
+            prompt.Controls.Add(closebtn);
+            btnPropFile.Click += (btnsender, args) =>
+            {
+                openFileDialog.ShowDialog();
+                txtpropertiesFolder.Text = openFileDialog.SelectedPath;
+            };
+            ProgressBar progressBar = new ProgressBar();
+            prompt.Controls.Add(progressBar);
+            closebtn.Click += (btnsender, args) =>
+            {
+                Ribbon.Settings.GherkinFilesPath = txtpropertiesFolder.Text;
+                Ribbon.SaveSettings();
+                progressBar.PerformStep();
+                updateFeatureFile(txtpropertiesFolder.Text,progressBar);
+                form.Close();
+            };
+            form.ShowDialog();
+        }
+
+        private void updateFeatureFile(String filename, ProgressBar progressBar)
+        {
+            try
+            {
+                foreach (String feature in Directory.GetFiles(filename).Where(s => s.EndsWith(".feature")))
+                {
+                    if (feature.EndsWith("tmp"))
+                    {
+                        continue;
+                    }
+                    StreamReader sr = File.OpenText(feature);
+                    StreamWriter sw = new StreamWriter(feature + "tmp");
+
+                    string lineTemplate = ConfigurationManager.AppSettings.Get("gherkin_sample_template");
+                    if (!String.IsNullOrEmpty(lineTemplate))
+                    {
+                        string[] lineTemplatesplit = lineTemplate.Split('|');
+
+                        string line = sr.ReadLine();
+                        while (line != null)
+                        {
+                            if (line.Contains(lineTemplatesplit[0]) && line.Contains(lineTemplatesplit[1]) && line.Contains(lineTemplatesplit[2]))
+                            {
+                                sw.WriteLine(line);
+                                break;
+                            }
+                            //write the line to console window
+                            sw.WriteLine(line);
+                            //Read the next line
+                            line = sr.ReadLine();
+                        }
+                        sr.Close();
+                        Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+                        Worksheet worksheet = workbook.ActiveSheet;
+                        categoryName = worksheet.Name;
+                        Range r = worksheet.Columns[19];
+                        string featurename = feature.Substring(feature.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+
+                        Range range = worksheet.UsedRange;
+                        worksheet.AutoFilterMode = false;
+                        range.AutoFilter(20, featurename);
+                        //af.ApplyFilter();
+                        for (int i = _3; i <= range.Rows.Count; i++)
+                        {
+                            Range r1 = worksheet.Cells[i, 20];
+                            if (featurename.Equals(r1.Value2))
+                            {
+                                Range r2 = worksheet.Cells[i, 19];
+                                String ligne = r2.Value2;
+                                string formatedLine = "      |";
+                                for (int j = 1; j < lineTemplatesplit.Length; j++)
+                                {
+                                    string[] lignesplit = ligne.Split('|');
+                                    String value = " " + lignesplit[j];
+                                    value = value.PadRight(lineTemplatesplit[j].Length);
+                                    formatedLine += value + "|";
+                                }
+                                formatedLine = formatedLine.Remove(formatedLine.Length - 1);
+                                sw.WriteLine(formatedLine);
+                            }
+                        }
+                        sw.Close();
+
+                        //replace the original file with the temporary file
+
+                        File.Delete(feature);
+                        File.Move(feature + "tmp", feature);
+
+                        if (progressBar !=null)
+                        {
+                            progressBar.PerformStep();
+                        }
+                    }
+                }
+
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+            if (progressBar != null)
+            {
+                progressBar.PerformStep();
+            }
+        }
+
+        private void btExclude_Click(object sender, RibbonControlEventArgs e)
+        {
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            string currentCmd = Globals.ThisAddIn.Application.Cells[currentRow, 2].FormulaLocal;
+            if (currentRow == FrmDataTestRef.ref_Col)
+            {
+                FrmDataTestRef frmref = new FrmDataTestRef();
+                frmref.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez rester dans une cellule de la colonne n°5 'data - test - ref ', pour selectionner les colonnes à inclure/exclure");
+            }
+        }
+
     }
 }

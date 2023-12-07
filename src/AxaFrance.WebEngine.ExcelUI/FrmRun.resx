@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -184,7 +184,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="lblSelectedTests.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 36</value>
@@ -244,7 +244,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblSelectedTests.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btnStart.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -277,7 +277,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnStart.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="cbManual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -307,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbManual.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="rbIOSNative.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -631,7 +631,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbShowReport.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -787,13 +787,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appLayout.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="dwlProgressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>805, 460</value>
+    <value>878, 460</value>
   </data>
   <data name="dwlProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 23</value>
+    <value>104, 23</value>
   </data>
   <data name="dwlProgressBar.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -811,7 +811,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dwlProgressBar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="dwlrobotLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -828,9 +828,6 @@
   <data name="dwlrobotLabel.Text" xml:space="preserve">
     <value>Téléchargement du robot</value>
   </data>
-  <data name="dwlrobotLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;dwlrobotLabel.Name" xml:space="preserve">
     <value>dwlrobotLabel</value>
   </data>
@@ -841,7 +838,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dwlrobotLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -901,7 +898,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;devicesLayout.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 120</value>
@@ -925,7 +922,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1327,7 +1324,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;driveSettingLayout.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <metadata name="folderDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1366,7 +1363,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbCloseBrowser.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="cbListeTestsCases.HorizontalScrollbar" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1390,6 +1387,60 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbListeTestsCases.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbGetBeta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbGetBeta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>935, 635</value>
+  </data>
+  <data name="cbGetBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 24</value>
+  </data>
+  <data name="cbGetBeta.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="cbGetBeta.Text" xml:space="preserve">
+    <value>Beta </value>
+  </data>
+  <data name="&gt;&gt;cbGetBeta.Name" xml:space="preserve">
+    <value>cbGetBeta</value>
+  </data>
+  <data name="&gt;&gt;cbGetBeta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbGetBeta.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbGetBeta.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbForce.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbForce.Location" type="System.Drawing.Point, System.Drawing">
+    <value>805, 460</value>
+  </data>
+  <data name="cbForce.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 24</value>
+  </data>
+  <data name="cbForce.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="cbForce.Text" xml:space="preserve">
+    <value>Force</value>
+  </data>
+  <data name="&gt;&gt;cbForce.Name" xml:space="preserve">
+    <value>cbForce</value>
+  </data>
+  <data name="&gt;&gt;cbForce.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbForce.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbForce.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -90,7 +90,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.TbClassName, 1, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 12;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -120,12 +120,12 @@
             this.label11.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.label11.Size = new System.Drawing.Size(205, 108);
             this.label11.TabIndex = 22;
-            this.label11.Text = "Autres Attibuts (attr:\"valeur\",\"attr2\":\"valeur\")";
+            this.label11.Text = "Autres Attibuts (\"attr1\":\"valeur\",\"attr2\":\"valeur\")";
             // 
             // TbAtrributs
             // 
             this.TbAtrributs.Location = new System.Drawing.Point(221, 420);
-            this.TbAtrributs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbAtrributs.Margin = new System.Windows.Forms.Padding(4);
             this.TbAtrributs.Multiline = true;
             this.TbAtrributs.Name = "TbAtrributs";
             this.TbAtrributs.Size = new System.Drawing.Size(415, 66);
@@ -148,7 +148,7 @@
             // TbInnerText
             // 
             this.TbInnerText.Location = new System.Drawing.Point(221, 388);
-            this.TbInnerText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbInnerText.Margin = new System.Windows.Forms.Padding(4);
             this.TbInnerText.Name = "TbInnerText";
             this.TbInnerText.Size = new System.Drawing.Size(415, 22);
             this.TbInnerText.TabIndex = 21;
@@ -254,7 +254,7 @@
             // TbName
             // 
             this.TbName.Location = new System.Drawing.Point(221, 38);
-            this.TbName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbName.Margin = new System.Windows.Forms.Padding(4);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(415, 22);
             this.TbName.TabIndex = 2;
@@ -262,7 +262,7 @@
             // TbId
             // 
             this.TbId.Location = new System.Drawing.Point(221, 6);
-            this.TbId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbId.Margin = new System.Windows.Forms.Padding(4);
             this.TbId.Name = "TbId";
             this.TbId.Size = new System.Drawing.Size(415, 22);
             this.TbId.TabIndex = 1;
@@ -270,7 +270,7 @@
             // TbXpath
             // 
             this.TbXpath.Location = new System.Drawing.Point(221, 70);
-            this.TbXpath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbXpath.Margin = new System.Windows.Forms.Padding(4);
             this.TbXpath.Multiline = true;
             this.TbXpath.Name = "TbXpath";
             this.TbXpath.Size = new System.Drawing.Size(415, 84);
@@ -279,7 +279,7 @@
             // TbDataID
             // 
             this.TbDataID.Location = new System.Drawing.Point(221, 164);
-            this.TbDataID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbDataID.Margin = new System.Windows.Forms.Padding(4);
             this.TbDataID.Name = "TbDataID";
             this.TbDataID.Size = new System.Drawing.Size(415, 22);
             this.TbDataID.TabIndex = 11;
@@ -287,7 +287,7 @@
             // TbDataqsi
             // 
             this.TbDataqsi.Location = new System.Drawing.Point(221, 196);
-            this.TbDataqsi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbDataqsi.Margin = new System.Windows.Forms.Padding(4);
             this.TbDataqsi.Name = "TbDataqsi";
             this.TbDataqsi.Size = new System.Drawing.Size(415, 22);
             this.TbDataqsi.TabIndex = 10;
@@ -295,7 +295,7 @@
             // TbAriaRole
             // 
             this.TbAriaRole.Location = new System.Drawing.Point(221, 228);
-            this.TbAriaRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbAriaRole.Margin = new System.Windows.Forms.Padding(4);
             this.TbAriaRole.Name = "TbAriaRole";
             this.TbAriaRole.Size = new System.Drawing.Size(415, 22);
             this.TbAriaRole.TabIndex = 12;
@@ -303,7 +303,7 @@
             // TbAriaLabel
             // 
             this.TbAriaLabel.Location = new System.Drawing.Point(221, 260);
-            this.TbAriaLabel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbAriaLabel.Margin = new System.Windows.Forms.Padding(4);
             this.TbAriaLabel.Name = "TbAriaLabel";
             this.TbAriaLabel.Size = new System.Drawing.Size(415, 22);
             this.TbAriaLabel.TabIndex = 13;
@@ -311,7 +311,7 @@
             // TbTagName
             // 
             this.TbTagName.Location = new System.Drawing.Point(221, 292);
-            this.TbTagName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbTagName.Margin = new System.Windows.Forms.Padding(4);
             this.TbTagName.Name = "TbTagName";
             this.TbTagName.Size = new System.Drawing.Size(415, 22);
             this.TbTagName.TabIndex = 15;
@@ -343,7 +343,7 @@
             // TbCssSelector
             // 
             this.TbCssSelector.Location = new System.Drawing.Point(221, 324);
-            this.TbCssSelector.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbCssSelector.Margin = new System.Windows.Forms.Padding(4);
             this.TbCssSelector.Name = "TbCssSelector";
             this.TbCssSelector.Size = new System.Drawing.Size(415, 22);
             this.TbCssSelector.TabIndex = 17;
@@ -365,7 +365,7 @@
             // TbClassName
             // 
             this.TbClassName.Location = new System.Drawing.Point(221, 356);
-            this.TbClassName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbClassName.Margin = new System.Windows.Forms.Padding(4);
             this.TbClassName.Name = "TbClassName";
             this.TbClassName.Size = new System.Drawing.Size(415, 22);
             this.TbClassName.TabIndex = 19;
@@ -373,7 +373,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(700, 578);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 6;
@@ -384,7 +384,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(563, 578);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 5;
@@ -396,7 +396,7 @@
             // 
             this.CbIsShadow.AutoSize = true;
             this.CbIsShadow.Location = new System.Drawing.Point(671, 20);
-            this.CbIsShadow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CbIsShadow.Margin = new System.Windows.Forms.Padding(4);
             this.CbIsShadow.Name = "CbIsShadow";
             this.CbIsShadow.Size = new System.Drawing.Size(117, 20);
             this.CbIsShadow.TabIndex = 4;
@@ -412,7 +412,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CbIsShadow);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmTargetEdit";
             this.Text = "Choix des Attributs d\'identifications";
             this.Load += new System.EventHandler(this.FrmTargetEdit_Load);

@@ -14,6 +14,7 @@ using System.Xml;
 using System.Security;
 using static System.Environment;
 using System.Security.Cryptography;
+using System.Reflection;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {
@@ -53,8 +54,9 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         public static void InitializeTestCasesList(CheckedListBox cbListeTestsCases, System.Windows.Forms.Label lblSelectedTests, Dictionary<String, int> colNameIndex)
         {
-             lblSelectedTests.Text = "La liste des colonnes (tests) possibles s'arrêtent à la 1ere colonne avec titre vide!";
-            
+            lblSelectedTests.Text = "La liste des colonnes (tests) possibles s'arrêtent à la 1ere colonne avec titre vide!";
+            cbListeTestsCases.CheckOnClick = true;
+
             Range selectedrange = Globals.ThisAddIn.Application.Selection;
             dynamic activeSheet = Globals.ThisAddIn.Application.ActiveSheet;
 
@@ -81,11 +83,13 @@ namespace AxaFrance.WebEngine.ExcelUI
                 if (cr.Column >= 6)
                 {
                     string value = Globals.ThisAddIn.Application.ActiveSheet.Cells[1, cr.Column].FormulaLocal;
-                    int selectedItemIndex = cr.Column - 6;
-                    if (selectedItemIndex< cbListeTestsCases.Items.Count)
+                    /**int selectedItemIndex = cr.Column - 6;
+                    if (selectedItemIndex < cbListeTestsCases.Items.Count)
                     {
                         cbListeTestsCases.SetItemChecked(selectedItemIndex, true);
-                    }
+                    }**/
+                    cbListeTestsCases.SetItemChecked(cbListeTestsCases.Items.IndexOf(value), true);
+
                 }
             }
 
@@ -171,6 +175,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.Abort;
             }
+            Ribbon.Settings.GetNoCodeBetaRunnerFile = cbGetBeta.Checked;
             Ribbon.SaveSettings();
             
         }
@@ -294,7 +299,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             if (isNoCode)
             {
                 dwlProgressBar.PerformLayout();
-                getNoCodeRunnerFiles(txtOutputFolder.Text, ((int)GetJarOrCmdYaml.jar), dwlProgressBar);
+                getNoCodeRunnerFiles(txtOutputFolder.Text, ((int)GetJarOrCmdYaml.jar), cbGetBeta.Checked, dwlProgressBar, cbForce.Checked);
                 param = "-jar webrunner.jar " + parameters;
                 commandline = getJavaExePath(Ribbon.Settings.NoCodeRunnerPath);
                 return true;
@@ -337,18 +342,19 @@ namespace AxaFrance.WebEngine.ExcelUI
             cmdYaml = 1
         }
 
-        public static string getNoCodeRunnerFiles(String outputDir, int jarOrCmdYaml, ProgressBar dwlProgressBar)
+        public static string getNoCodeRunnerFiles(String outputDir, int jarOrCmdYaml, bool getBeta, ProgressBar dwlProgressBar, bool Force)
         {
-            dwlProgressBar.PerformStep(); 
-            
+            dwlProgressBar.PerformStep();
+
             string noCodeArtifactPath = ConfigurationManager.AppSettings.Get("noCodeArtifactPath");
             string mavenRepoUrl = ConfigurationManager.AppSettings.Get("noCodeMavenRepository");
+            string mavenSnapRepoUrl = ConfigurationManager.AppSettings.Get("noCodeMavenSnapshotRepository");
             string runnerDirectLink = ConfigurationManager.AppSettings.Get("runnerDirectLink");
             string commandDirectLink = ConfigurationManager.AppSettings.Get("commandDirectLink");
             string workingDirectory = GetWorkingDirectory(outputDir);
 
             string folder = $"{workingDirectory}";
-            string jarSubFolder ="\\WebRunnerJar";
+            string jarSubFolder = "\\WebRunnerJar";
             if (!folder.EndsWith(jarSubFolder))
             {
                 folder = folder + jarSubFolder;
@@ -360,48 +366,85 @@ namespace AxaFrance.WebEngine.ExcelUI
             dwlProgressBar.PerformStep();
             WebClient client = new WebClient();
 
-            if (!String.IsNullOrEmpty(noCodeArtifactPath) && !String.IsNullOrEmpty(mavenRepoUrl))
+            if (!String.IsNullOrEmpty(noCodeArtifactPath) && !String.IsNullOrEmpty(mavenRepoUrl) 
+                && !noCodeArtifactPath.Contains("#{") && !mavenRepoUrl.Contains("#{"))
             {
+                String mvnSelectedRepo = getBeta ? mavenSnapRepoUrl : mavenRepoUrl;
+                if (!mvnSelectedRepo.EndsWith("/")){
+                    mvnSelectedRepo = mvnSelectedRepo +"/";
+                }
+                String nodeSnaptshot = "";
+                String nodeSnaptshot2 = "";
                 XmlDocument doc = new XmlDocument();
                 dwlProgressBar.PerformStep();
+                string localmetadatafile = $"{folder}\\metadata.xml";
+                string metadata = mvnSelectedRepo + noCodeArtifactPath + "/maven-metadata.xml";
 
-                string metadata = mavenRepoUrl + "/" + noCodeArtifactPath + "/maven-metadata.xml";
+                if (!File.Exists(localmetadatafile) || new FileInfo(localmetadatafile).Length<=0)
+                {
+                    client.DownloadFile(metadata, localmetadatafile);
+                }
+                XmlDocument localmetadata = new XmlDocument();
+                localmetadata.Load(localmetadatafile);
 
                 Stream stream = client.OpenRead(metadata);
                 doc.Load(stream);
                 dwlProgressBar.PerformStep();
-
-                XmlNode nodeSnaptshot = doc.DocumentElement.SelectSingleNode("/metadata/versioning/release");
-                string localmetadatafile = $"{folder}\\metadata.xml";
-                string jarFile = $"{folder}\\webrunner.jar";
-
-                String file = "";
-                if (File.Exists(localmetadatafile) && jarOrCmdYaml == ((int)GetJarOrCmdYaml.jar))
+                
+                int nodeCount = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version").Count;
+                nodeSnaptshot = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version")[nodeCount - 1].InnerText;
+                bool downloadfile = false;
+                
+                if (!Force)
                 {
-                    XmlDocument localmetadata = new XmlDocument();
-                    localmetadata.Load(localmetadatafile);
-                    dwlProgressBar.PerformStep();
-                    if (!localmetadata.OuterXml.Equals(doc.OuterXml) || !File.Exists(jarFile))
+                    if (getBeta)
                     {
-                        client.DownloadFile(metadata, localmetadatafile);
-                        file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);
+                        metadata = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/maven-metadata.xml";
+                        doc.Load(client.OpenRead(metadata));
+                        if (String.IsNullOrEmpty(localmetadata.InnerText) || !localmetadata.OuterXml.Equals(doc.OuterXml))
+                        {
+                            client.DownloadFile(metadata, localmetadatafile);
+                            localmetadata.Load(localmetadatafile);
+                            nodeSnaptshot2 = localmetadata.DocumentElement.SelectSingleNode("/metadata/versioning/snapshotVersions/snapshotVersion[1]/value").InnerText;
+                            downloadfile = true;
+                        }
                     }
+                    else
+                    {
+                        if (!localmetadata.OuterXml.Equals(doc.OuterXml))
+                        {
+                            client.DownloadFile(metadata, localmetadatafile);
+                            downloadfile = true;
+                        }
+                    }
+                }
+                
+                String fileUrl = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/" +
+                        $"webengine-drive-by-excel-{(getBeta ? nodeSnaptshot2 : nodeSnaptshot)}";
+                String file = "";
+                if (((int)GetJarOrCmdYaml.jar) == jarOrCmdYaml)
+                {
+                    fileUrl = fileUrl + "-exec.jar";
+                    file = $"{folder}\\webrunner.jar";
+                    downloadfile = checkDownload(Force, downloadfile, file);
                 }
                 else
                 {
-                    client.DownloadFile(metadata, localmetadatafile);
-                    file = downloadRunnerFile(client, folder, nodeSnaptshot, jarOrCmdYaml, dwlProgressBar);
+                    fileUrl = fileUrl + "-command.yaml";
+                    file = $"{folder}\\command.yaml";
+                    downloadfile = checkDownload(Force, downloadfile, file);
                 }
 
-                dwlProgressBar.Value = dwlProgressBar.Maximum;
-                Ribbon.Settings.NoCodeRunnerPath = folder;
+                if (downloadfile)
+                {
+                    dwlProgressBar.PerformStep();
+                    client.DownloadFile(fileUrl, file);
+                    dwlProgressBar.PerformStep();
+                }
                 return file;
             }
             else
             {
-                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls |
-                             System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12 |
-                             System.Net.SecurityProtocolType.Ssl3;
                 if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
                 {
                     String commandfile = $"{folder}\\command.yaml";
@@ -424,7 +467,21 @@ namespace AxaFrance.WebEngine.ExcelUI
                     }
                     return runnerfile;
                 }
+            }            
+        }
+
+        private static bool checkDownload(bool Force, bool downloadfile, string file)
+        {
+            if (Force)
+            {
+                downloadfile = true;
             }
+            else
+            {
+                downloadfile = !downloadfile ? !(File.Exists(file) && new FileInfo(file).Length > 0) : downloadfile;
+            }
+
+            return downloadfile;
         }
 
         public static string GetWorkingDirectory(string outputDir)
@@ -443,29 +500,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             return workingDirectory;
         }
 
-        private static string downloadRunnerFile(WebClient client, string folder, XmlNode nodeSnaptshot, int jarOrCmdYaml, ProgressBar dwlProgressBar)
-        {
-            string noCodeArtifactPath = ConfigurationManager.AppSettings.Get("noCodeArtifactPath") ;
-            string noCodeMavenRepository = ConfigurationManager.AppSettings.Get("noCodeMavenRepository");
-            string file;
-            dwlProgressBar.PerformStep();
-
-            String fileUrl = "";
-            if (((int)GetJarOrCmdYaml.jar) == jarOrCmdYaml)
-            {
-                fileUrl = $"{noCodeMavenRepository}/{noCodeArtifactPath}/{nodeSnaptshot.InnerText}/webengine-drive-by-excel-{nodeSnaptshot.InnerText}-exec.jar";
-                file = $"{folder}\\webrunner.jar";
-            }
-            else
-            {
-                fileUrl = $"{noCodeMavenRepository}/{noCodeArtifactPath}/{nodeSnaptshot.InnerText}/webengine-drive-by-excel-{nodeSnaptshot.InnerText}-command.yaml";
-                file = $"{folder}\\command.yaml";
-            }
-            dwlProgressBar.PerformStep();
-            client.DownloadFile(fileUrl, file);
-            dwlProgressBar.PerformStep();
-            return file;
-        }
+        
 
         /// <summary>
         /// This functions gets the java.exe path.
@@ -577,6 +612,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 //cbShowReport.Checked = Ribbon.Settings.ShowReport;
                 txtKeepassFile.Text = Ribbon.Settings.KeepassFilePath;
                 txtKeepassPassword.Text = Decrypt(Ribbon.Settings.enc);
+                cbGetBeta.Checked = Ribbon.Settings.GetNoCodeBetaRunnerFile;
                 InitializeTestCasesList(cbListeTestsCases, lblSelectedTests, null);
             }
             else

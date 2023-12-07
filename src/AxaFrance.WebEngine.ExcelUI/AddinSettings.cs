@@ -53,7 +53,12 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// <summary>
         /// Full path where NoCodeRunner is located (often the same location of your Test Automation Solution)
         public string NoCodeRunnerPath { get; set; }
-        
+
+        /// <summary>
+        /// get the snapshot jar or release jar.
+        /// </summary>
+        public bool GetNoCodeBetaRunnerFile { get; set; }
+
         /// <summary>
         /// The tabs excluded by exportall function.
         /// </summary>
@@ -85,6 +90,11 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// Selected WebEngine addin Tab
         /// </summary>
         public int selectedTabs { get; set; }
+
+        /// <summary>
+        /// Show Inov Tab
+        /// </summary>
+        public bool showInov { get; set; }
 
         /// <summary>
         /// Encrypted keepass pwd.
