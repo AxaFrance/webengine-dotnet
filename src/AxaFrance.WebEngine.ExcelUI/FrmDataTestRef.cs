@@ -26,8 +26,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private void FrmDataTestRef_Load(object sender, EventArgs e)
         {
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Column;
             FrmRun.InitializeTestCasesList(cbListAllDataSet, lbWarning, null);
-            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
             String currenttarget = Globals.ThisAddIn.Application.Cells[currentRow, ref_Col].FormulaLocal;
             if (String.IsNullOrEmpty(currenttarget))
             {

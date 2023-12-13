@@ -139,7 +139,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.KeyPress += new KeyPressEventHandler(FrmTargetEdit_KeyPress);
 
             //set all textboxes with the current cell value
-            String target = Globals.ThisAddIn.Application.ActiveCell.FormulaLocal;
+            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            String target = Globals.ThisAddIn.Application.Cells[currentRow, 3].FormulaLocal;
+
             if (!String.IsNullOrEmpty(target))
             {
                 if (!target.StartsWith("{") && !target.Contains("//"))

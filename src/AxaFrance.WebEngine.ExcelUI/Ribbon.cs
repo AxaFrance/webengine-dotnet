@@ -83,7 +83,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 AddMenuItem("Choisir le fichier à uploader", new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseFileMenuItem));
             }
 
-            if (Target.Cells.Column == 5)
+            if (Target.Cells.Column == FrmDataTestRef.ref_Col)
             {
                 AddMenuItem("Exclure/inclure des colonnes", new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(ChooseDataRef));
             }
@@ -1011,6 +1011,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             Dictionary<string, string> cmds = new Dictionary<string, string>();
 
             string cmdFile = FrmRun.getNoCodeRunnerFiles(workingDirectory, ((int)FrmRun.GetJarOrCmdYaml.cmdYaml), Ribbon.Settings.GetNoCodeBetaRunnerFile, dwl,false);
+            textLabel.Text = "Telechargement effectué : " + cmdFile;
+            form.PerformLayout();
             using (var reader = new StreamReader(cmdFile))
             {
                 // Load the stream
@@ -1045,13 +1047,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             dwl.PerformStep();
             form.Dispose();
 
-            //Optional list Column validation
-            Range rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[4];
-            string[] options = null;
-
-            options = new string[] { "optional", "optional and depends on previous", "" };
-
-            updateRangeValidation(rng, options, "");
+            
 
             //Create or Update Help Sheet
             Worksheet newHelp = null;
@@ -1065,7 +1061,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                 newHelp.Name = Drive_Help_SheetName;
             }
 
-
+            //Optional list Column validation
+            ((Range)newHelp.Columns).Clear();
             updateCell(newHelp.Cells[1, 1], "Commandes", null);
             newHelp.Cells[1, 1].ColumnWidth = 20;
             updateCell(newHelp.Cells[1, 2], "Description", null);
@@ -1084,9 +1081,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             newHelp.Cells[47, 4] = "'- Eviter au maximum la copie du Xpayh complet";
 
 
-
             //Command description
-            int commandIndex = 1;
+            int commandIndex;
             for (commandIndex = 1; commandIndex <= cmds.Count; commandIndex++)
             {
                 string cmd = cmds.Keys.ElementAt(commandIndex - 1);
@@ -1097,7 +1093,15 @@ namespace AxaFrance.WebEngine.ExcelUI
             newHelp.Cells[commandIndex + 1, 1] = "Fichier Exemple d'utilisation des commandes";
             newHelp.Cells[commandIndex + 1, 2].Formula = "=HYPERLINK(\"https://github.com/AxaFrance/webengine-java/releases/download/3.0.3/no-code-tu.xlsx\")";
 
+
+
             //Identification help images
+            Microsoft.Office.Interop.Excel.Pictures pc = newHelp.Pictures() as Microsoft.Office.Interop.Excel.Pictures;
+            if (pc.Count > 0)
+            {
+                pc.Delete();
+            }
+
             string initbuttonFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "initButtonHelp.png");
             string inspectHelpFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "inspect.png");
             string getxpathFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "getxpath.png");
@@ -1110,8 +1114,13 @@ namespace AxaFrance.WebEngine.ExcelUI
             UpdateToKeePassHelp(false);
 
             //Command list validation
-            rng = activeWorksheet.Columns[2];
+            Range rng = activeWorksheet.Columns[2];
             updateRangeValidation(rng, cmds.Keys.ToArray(), newHelp.Name);
+
+            rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[4];
+            string[] options = new string[] { "optional", "optional and depends on previous", "" };
+            updateRangeValidation(rng, options, "");
+
         }
 
 
@@ -1207,7 +1216,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             rng.Validation.Delete();
             if (values.Length < 10 && String.IsNullOrEmpty(helpSheetName))
             {
-                rng.Validation.Add(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertWarning, XlFormatConditionOperator.xlEqual, Formula1: string.Join(";", values));
+                string formula1 = string.Join(";", values);
+                formula1 = formula1.Remove(formula1.Length - 1);
+                rng.Validation.Add(XlDVType.xlValidateList, XlDVAlertStyle.xlValidAlertWarning, XlFormatConditionOperator.xlEqual, Formula1: formula1);
             }
             else
             {
@@ -1224,6 +1235,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             rng.Validation.ShowError = false;
             rng.Validation.InCellDropdown = true;
             rng.Validation.IgnoreBlank = true;
+
         }
 
         private void driveSettings_Click(object sender, RibbonControlEventArgs e)
@@ -1326,18 +1338,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private void BtChooseFile_Click(object sender, RibbonControlEventArgs e)
         {
-            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
-            string currentCmd = Globals.ThisAddIn.Application.Cells[currentRow, 2].FormulaLocal;
-            if ("upload file".Equals(currentCmd.Trim().ToLowerInvariant())
-                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))
-            {
-                FrmUploadFile frmUpload = new FrmUploadFile();
-                frmUpload.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Veuillez choisir une ligne contenant une commande d'upload de fichier");
-            }
+           FrmUploadFile frmUpload = new FrmUploadFile();
+           frmUpload.ShowDialog();
         }
 
         private void cbShowKeyword_Click(object sender, RibbonControlEventArgs e)
@@ -1544,17 +1546,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private void btExclude_Click(object sender, RibbonControlEventArgs e)
         {
-            int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
-            string currentCmd = Globals.ThisAddIn.Application.Cells[currentRow, 2].FormulaLocal;
-            if (currentRow == FrmDataTestRef.ref_Col)
-            {
-                FrmDataTestRef frmref = new FrmDataTestRef();
-                frmref.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Veuillez rester dans une cellule de la colonne n°5 'data - test - ref ', pour selectionner les colonnes à inclure/exclure");
-            }
+            FrmDataTestRef frmref = new FrmDataTestRef();
+            frmref.ShowDialog();            
         }
 
     }

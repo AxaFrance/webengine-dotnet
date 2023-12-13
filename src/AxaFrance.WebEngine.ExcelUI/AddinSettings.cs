@@ -46,6 +46,11 @@ namespace AxaFrance.WebEngine.ExcelUI
         public string KeepassFilePath { get; set; }
 
         /// <summary>
+        /// Encrypted Full path of given keepass file.
+        /// </summary>
+        public string enckp { get; set; }
+
+        /// <summary>
         /// Full path where WebRunner.exe is located (often the same location of your Test Automation Solution)
         /// </summary>
         public string WebRunnerPath { get; set; }

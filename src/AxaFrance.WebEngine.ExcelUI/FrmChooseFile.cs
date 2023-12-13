@@ -43,7 +43,18 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private void FrmUploadFile_Load(object sender, EventArgs e)
         {
-            FrmRun.InitializeTestCasesList(checkedListBox, lb, colNameIndex);
+            currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
+            string currentCmd = Globals.ThisAddIn.Application.Cells[currentRow, 2].FormulaLocal;
+            if ("upload file".Equals(currentCmd.Trim().ToLowerInvariant())
+                || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))
+            {
+                this.ShowDialog();
+            }
+            else
+            {
+                this.Close();
+                MessageBox.Show("Veuillez choisir une ligne contenant une commande d'upload de fichier");
+            }
         }
     }
 }

@@ -102,8 +102,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         }
 
         private void btnStart_Click(object sender, EventArgs e)
-        {
-            
+        {            
             string assembly = Ribbon.Settings.TestAssembly;
 
             if (string.IsNullOrEmpty(assembly) && !isNoCode)
@@ -249,7 +248,8 @@ namespace AxaFrance.WebEngine.ExcelUI
                     parameters += " \"-keepassFile:" + checkEnvInDir(txtKeepassFile.Text) + "\"";
                     parameters += " \"-keepassPassword:" + txtKeepassPassword.Text + "\"";
                 }
-                Ribbon.Settings.KeepassFilePath = txtKeepassFile.Text;
+                Ribbon.Settings.enckp = Encrypt(txtKeepassFile.Text);
+                Ribbon.Settings.KeepassFilePath = "empty";
                 Ribbon.Settings.enc = Encrypt(txtKeepassPassword.Text);
 
                 if (useTempFIleForNocode)
@@ -342,7 +342,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             cmdYaml = 1
         }
 
-        public static string getNoCodeRunnerFiles(String outputDir, int jarOrCmdYaml, bool getBeta, ProgressBar dwlProgressBar, bool Force)
+        public static string getNoCodeRunnerFiles(String outputDir, int jarOrCmdYaml, bool getBeta, ProgressBar dwlProgressBar, bool ForceDownload)
         {
             dwlProgressBar.PerformStep();
 
@@ -373,7 +373,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 if (!mvnSelectedRepo.EndsWith("/")){
                     mvnSelectedRepo = mvnSelectedRepo +"/";
                 }
-                String nodeSnaptshot = "";
+
                 String nodeSnaptshot2 = "";
                 XmlDocument doc = new XmlDocument();
                 dwlProgressBar.PerformStep();
@@ -392,32 +392,31 @@ namespace AxaFrance.WebEngine.ExcelUI
                 dwlProgressBar.PerformStep();
                 
                 int nodeCount = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version").Count;
-                nodeSnaptshot = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version")[nodeCount - 1].InnerText;
+                string nodeSnaptshot = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version")[nodeCount - 1].InnerText;
                 bool downloadfile = false;
-                
-                if (!Force)
+
+                if (ForceDownload)
                 {
                     if (getBeta)
                     {
-                        metadata = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/maven-metadata.xml";
-                        doc.Load(client.OpenRead(metadata));
-                        if (String.IsNullOrEmpty(localmetadata.InnerText) || !localmetadata.OuterXml.Equals(doc.OuterXml))
-                        {
-                            client.DownloadFile(metadata, localmetadatafile);
-                            localmetadata.Load(localmetadatafile);
-                            nodeSnaptshot2 = localmetadata.DocumentElement.SelectSingleNode("/metadata/versioning/snapshotVersions/snapshotVersion[1]/value").InnerText;
-                            downloadfile = true;
-                        }
+                        nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot);
                     }
-                    else
+                    client.DownloadFile(metadata, localmetadatafile);
+                    downloadfile = true;
+                }
+                else 
+                {
+                    if (getBeta)
                     {
-                        if (!localmetadata.OuterXml.Equals(doc.OuterXml))
-                        {
-                            client.DownloadFile(metadata, localmetadatafile);
-                            downloadfile = true;
-                        }
+                        nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot);
+                    }
+                    if (String.IsNullOrEmpty(localmetadata.InnerText) || !localmetadata.OuterXml.Equals(doc.OuterXml))
+                    {
+                        client.DownloadFile(metadata, localmetadatafile);
+                        downloadfile = true;
                     }
                 }
+                
                 
                 String fileUrl = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/" +
                         $"webengine-drive-by-excel-{(getBeta ? nodeSnaptshot2 : nodeSnaptshot)}";
@@ -426,13 +425,13 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     fileUrl = fileUrl + "-exec.jar";
                     file = $"{folder}\\webrunner.jar";
-                    downloadfile = checkDownload(Force, downloadfile, file);
+                    downloadfile = checkDownload(ForceDownload, downloadfile, file);
                 }
                 else
                 {
                     fileUrl = fileUrl + "-command.yaml";
                     file = $"{folder}\\command.yaml";
-                    downloadfile = checkDownload(Force, downloadfile, file);
+                    downloadfile = checkDownload(ForceDownload, downloadfile, file);
                 }
 
                 if (downloadfile)
@@ -441,6 +440,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     client.DownloadFile(fileUrl, file);
                     dwlProgressBar.PerformStep();
                 }
+                client.Dispose();
                 return file;
             }
             else
@@ -454,6 +454,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                         client.DownloadFile(commandDirectLink, commandfile);
                         dwlProgressBar.Value = dwlProgressBar.Maximum;
                     }
+                    client.Dispose();
                     return commandfile;
                 }
                 else
@@ -465,22 +466,36 @@ namespace AxaFrance.WebEngine.ExcelUI
                         client.DownloadFile(runnerDirectLink, runnerfile);
                         dwlProgressBar.Value = dwlProgressBar.Maximum;
                     }
+                    client.Dispose();
                     return runnerfile;
                 }
-            }            
+            }
+        }
+
+        private static String LoadSnapShotMetaData(string noCodeArtifactPath, 
+            string mvnSelectedRepo,  XmlDocument doc, 
+            string localmetadatafile, out string metadata, XmlDocument localmetadata, 
+            string nodeSnaptshot)
+        {
+            metadata = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/maven-metadata.xml";
+            WebClient client = new WebClient();
+            doc.Load(client.OpenRead(metadata));
+            client.DownloadFile(metadata, localmetadatafile);
+            localmetadata.Load(localmetadatafile);
+            client.Dispose();
+            return localmetadata.DocumentElement.SelectSingleNode("/metadata/versioning/snapshotVersions/snapshotVersion[1]/value").InnerText;
         }
 
         private static bool checkDownload(bool Force, bool downloadfile, string file)
         {
             if (Force)
             {
-                downloadfile = true;
+                return true;
             }
             else
             {
                 downloadfile = !downloadfile ? !(File.Exists(file) && new FileInfo(file).Length > 0) : downloadfile;
             }
-
             return downloadfile;
         }
 
@@ -610,7 +625,16 @@ namespace AxaFrance.WebEngine.ExcelUI
                 cbShowReport.Visible = true;
                 cbCloseBrowser.Checked = Ribbon.Settings.CloseBrowserAfterTest;
                 //cbShowReport.Checked = Ribbon.Settings.ShowReport;
-                txtKeepassFile.Text = Ribbon.Settings.KeepassFilePath;
+                String encKpPath = Ribbon.Settings.enckp;
+                String notEncKpPath = Ribbon.Settings.KeepassFilePath;
+                if (String.IsNullOrEmpty(encKpPath))
+                {
+                    txtKeepassFile.Text = Ribbon.Settings.KeepassFilePath;
+                }
+                else
+                {
+                    txtKeepassFile.Text = Decrypt(encKpPath);
+                }
                 txtKeepassPassword.Text = Decrypt(Ribbon.Settings.enc);
                 cbGetBeta.Checked = Ribbon.Settings.GetNoCodeBetaRunnerFile;
                 InitializeTestCasesList(cbListeTestsCases, lblSelectedTests, null);
@@ -622,6 +646,9 @@ namespace AxaFrance.WebEngine.ExcelUI
                 devicesLayout.Visible = true;
                 cbCloseBrowser.Visible = false;
                 cbListeTestsCases.Visible = false;
+                cbForce.Visible = false;
+                dwlrobotLabel.Visible = false;
+                cbGetBeta.Visible = false;
 
                 driveSettingLayout.Visible = false;
                 if (Ribbon.TestCases.Count > 2)
