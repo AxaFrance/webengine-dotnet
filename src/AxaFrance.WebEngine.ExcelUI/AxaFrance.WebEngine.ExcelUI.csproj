@@ -42,7 +42,7 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>fr</TargetCulture>
-    <ApplicationVersion>3.1.0.1</ApplicationVersion>
+    <ApplicationVersion>3.1.0.5</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -384,6 +384,7 @@
   <ItemGroup>
     <Content Include="Resources\drive by axa globe main.png" />
     <Content Include="Resources\drive by axa globe souris.png" />
+    <None Include="Resources\drive by xls plat terre souris2.png" />
     <Content Include="Resources\drive by xls plat terre.png" />
     <Content Include="Resources\KeePass sous-groupe Value.png" />
     <Content Include="Resources\KeePass Value.png" />

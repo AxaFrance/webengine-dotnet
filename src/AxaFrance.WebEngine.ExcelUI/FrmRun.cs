@@ -83,13 +83,15 @@ namespace AxaFrance.WebEngine.ExcelUI
                 if (cr.Column >= 6)
                 {
                     string value = Globals.ThisAddIn.Application.ActiveSheet.Cells[1, cr.Column].FormulaLocal;
-                    /**int selectedItemIndex = cr.Column - 6;
-                    if (selectedItemIndex < cbListeTestsCases.Items.Count)
+                    int selectedItemIndex = cr.Column - 5;
+                    if (selectedItemIndex <= cbListeTestsCases.Items.Count)
                     {
-                        cbListeTestsCases.SetItemChecked(selectedItemIndex, true);
-                    }**/
-                    cbListeTestsCases.SetItemChecked(cbListeTestsCases.Items.IndexOf(value), true);
-
+                        cbListeTestsCases.SetItemChecked(selectedItemIndex-1, true);
+                    }
+                    else
+                    {
+                        cbListeTestsCases.SetItemChecked(0, true);
+                    }
                 }
             }
 
@@ -115,6 +117,11 @@ namespace AxaFrance.WebEngine.ExcelUI
 
 
             BrowserType browser = GetSelectedBrowser(out string platform, out string appid, out string device);
+            if (browser == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner un navigateur svp!");
+                return;
+            }
             Ribbon.Settings.Browser = browser;
             string parameters = "";
 
@@ -151,6 +158,10 @@ namespace AxaFrance.WebEngine.ExcelUI
                 parameters = BuildParameter(browser, assembly, platform, device, appid, null, null);
             }
 
+            if (String.IsNullOrEmpty(parameters))
+            {
+                return;
+            }
 
             bool success = DetermineWebRunner(parameters, out string commandline, out string param);
 
@@ -207,6 +218,10 @@ namespace AxaFrance.WebEngine.ExcelUI
                 foreach (var item in cbListeTestsCases.CheckedItems)
                 {
                     selectedCol.Append(item.ToString()).Append(";");
+                }
+                if (selectedCol.Length == 0){
+                    MessageBox.Show("Veuillez Selectionner un colonne de données ayant un titre svp!");
+                    return "";
                 }
                 selectedCol =  selectedCol.Remove(selectedCol.Length - 1, 1);
 
@@ -410,7 +425,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     {
                         nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot);
                     }
-                    if (String.IsNullOrEmpty(localmetadata.InnerText) || !localmetadata.OuterXml.Equals(doc.OuterXml))
+                    if (!String.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
                     {
                         client.DownloadFile(metadata, localmetadatafile);
                         downloadfile = true;
@@ -425,13 +440,13 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     fileUrl = fileUrl + "-exec.jar";
                     file = $"{folder}\\webrunner.jar";
-                    downloadfile = checkDownload(ForceDownload, downloadfile, file);
+                    downloadfile = checkDownloadForJar(ForceDownload, downloadfile, file);
                 }
                 else
                 {
                     fileUrl = fileUrl + "-command.yaml";
                     file = $"{folder}\\command.yaml";
-                    downloadfile = checkDownload(ForceDownload, downloadfile, file);
+                    downloadfile = true;
                 }
 
                 if (downloadfile)
@@ -486,7 +501,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             return localmetadata.DocumentElement.SelectSingleNode("/metadata/versioning/snapshotVersions/snapshotVersion[1]/value").InnerText;
         }
 
-        private static bool checkDownload(bool Force, bool downloadfile, string file)
+        private static bool checkDownloadForJar(bool Force, bool downloadfile, string file)
         {
             if (Force)
             {
@@ -494,10 +509,11 @@ namespace AxaFrance.WebEngine.ExcelUI
             }
             else
             {
-                downloadfile = !downloadfile ? !(File.Exists(file) && new FileInfo(file).Length > 0) : downloadfile;
+                downloadfile = !downloadfile ? !(File.Exists(file) && new FileInfo(file).Length > 0 && File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3)) >=0) : downloadfile;
             }
             return downloadfile;
         }
+
 
         public static string GetWorkingDirectory(string outputDir)
         {

@@ -87,6 +87,10 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     target = TbId.Text;
                 }
+                else 
+                {
+                    target = "{" + target + "}";
+                }
             }
             else
             {
@@ -144,18 +148,23 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (!String.IsNullOrEmpty(target))
             {
-                if (!target.StartsWith("{") && !target.Contains("//"))
+                if (!target.StartsWith("{"))
                 {
-                    TbId.Text = target;
-                    return;
+                    if (!target.Contains("//"))
+                    {
+                        TbId.Text = target;
+                        return;
+                    }
+                    else if ((target.Contains("(") && target.Contains(")")) || (target.Contains("[") && target.Contains("]")))
+                    {
+                        TbXpath.Text = target;
+                        if (target.Contains("\"shadowDom\":\"true\""))
+                        {
+                            CbIsShadow.Checked = true;
+                        }
+                        return;
+                    }
                 }
-
-                if (target.Contains("//") || (target.Contains("(") && target.Contains(")")) || (target.Contains("[") && target.Contains("]")))
-                {
-                    TbXpath .Text = target;
-                    return;
-                }
-
                 if (target.StartsWith("{") && target.EndsWith("}"))
                 {
                     target = target.Substring(1, target.Length - 2);
@@ -207,18 +216,18 @@ namespace AxaFrance.WebEngine.ExcelUI
                         target = target.Replace(attlistlabel, "");
                         target = target.Replace("{}", "");
                     }
-
-                    String[] targets = target.Split(',');
+                    String[] split = new String[] { "\",\"" };
+                    String[] targets = target.Split(split,StringSplitOptions.RemoveEmptyEntries);
                     foreach (String t in targets)
                     {
-                        if (t.Contains("\"shadowDom\":\"true\""))
+                        if (t.Contains("shadowDom\":\"true\""))
                         {
                             CbIsShadow.Checked = true;
-                            target = target.Replace("\"shadowDom\":\"true\"", "");
+                            target = target.Replace("shadowDom\":\"true\"", "");
                             continue;
                         }
-
-                        else {
+                        else 
+                        {
                             target = target.Replace("{", "").Replace("}", "");
                             String[] targetParts = t.Split(':');
                             if (targetParts.Length == 2)

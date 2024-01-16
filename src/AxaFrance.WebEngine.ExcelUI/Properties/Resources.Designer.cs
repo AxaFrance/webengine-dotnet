@@ -143,6 +143,16 @@ namespace AxaFrance.WebEngine.ExcelUI.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap drive_by_xls_plat_terre_souris2 {
+            get {
+                object obj = ResourceManager.GetObject("drive_by_xls_plat_terre_souris2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap edge {
             get {
                 object obj = ResourceManager.GetObject("edge", resourceCulture);
