@@ -414,23 +414,22 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     if (getBeta)
                     {
-                        nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot);
+                        nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot, out downloadfile);
                     }
                     client.DownloadFile(metadata, localmetadatafile);
                     downloadfile = true;
                 }
-                else 
+                else if (getBeta)
                 {
-                    if (getBeta)
-                    {
-                        nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot);
-                    }
-                    if (!String.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
-                    {
-                        client.DownloadFile(metadata, localmetadatafile);
-                        downloadfile = true;
-                    }
+                    nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot, out downloadfile);
                 }
+                else if (!String.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
+                {
+                    client.DownloadFile(metadata, localmetadatafile);
+                    downloadfile = true;
+                }
+                //no else here, because we want to download the file if it does not exist
+                
                 
                 
                 String fileUrl = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/" +
@@ -458,46 +457,45 @@ namespace AxaFrance.WebEngine.ExcelUI
                 client.Dispose();
                 return file;
             }
-            else
+            if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
             {
-                if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
+                string commandfile = folder + "\\command.yaml";
+                if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0)
                 {
-                    String commandfile = $"{folder}\\command.yaml";
-                    if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
-                    {
-                        dwlProgressBar.PerformStep();
-                        client.DownloadFile(commandDirectLink, commandfile);
-                        dwlProgressBar.Value = dwlProgressBar.Maximum;
-                    }
-                    client.Dispose();
-                    return commandfile;
+                    dwlProgressBar.PerformStep();
+                    client.DownloadFile(commandDirectLink, commandfile);
+                    dwlProgressBar.Value = dwlProgressBar.Maximum;
                 }
-                else
-                {
-                    String runnerfile = $"{folder}\\webrunner.jar";
-                    if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7)) <= 0)
-                    {
-                        dwlProgressBar.PerformStep();
-                        client.DownloadFile(runnerDirectLink, runnerfile);
-                        dwlProgressBar.Value = dwlProgressBar.Maximum;
-                    }
-                    client.Dispose();
-                    return runnerfile;
-                }
+                client.Dispose();
+                return commandfile;
             }
+            string runnerfile = folder + "\\webrunner.jar";
+            if (!File.Exists(runnerfile) || File.GetCreationTime(runnerfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0)
+            {
+                dwlProgressBar.PerformStep();
+                client.DownloadFile(runnerDirectLink, runnerfile);
+                dwlProgressBar.Value = dwlProgressBar.Maximum;
+            }
+            client.Dispose();
+            return runnerfile;
         }
 
         private static String LoadSnapShotMetaData(string noCodeArtifactPath, 
             string mvnSelectedRepo,  XmlDocument doc, 
             string localmetadatafile, out string metadata, XmlDocument localmetadata, 
-            string nodeSnaptshot)
+            string nodeSnaptshot, out bool downloadfile)
         {
-            metadata = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/maven-metadata.xml";
+            metadata = mvnSelectedRepo + noCodeArtifactPath + "/" + nodeSnaptshot + "/maven-metadata.xml";
             WebClient client = new WebClient();
             doc.Load(client.OpenRead(metadata));
-            client.DownloadFile(metadata, localmetadatafile);
-            localmetadata.Load(localmetadatafile);
-            client.Dispose();
+            downloadfile = false;
+            if (!string.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
+            {
+                client.DownloadFile(metadata, localmetadatafile);
+                localmetadata.Load(localmetadatafile);
+                client.Dispose();
+                downloadfile = true;
+            }
             return localmetadata.DocumentElement.SelectSingleNode("/metadata/versioning/snapshotVersions/snapshotVersion[1]/value").InnerText;
         }
 
@@ -507,11 +505,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 return true;
             }
-            else
-            {
-                downloadfile = !downloadfile ? !(File.Exists(file) && new FileInfo(file).Length > 0 && File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3)) >=0) : downloadfile;
-            }
-            return downloadfile;
+            return (downloadfile ? downloadfile : (!File.Exists(file) || new FileInfo(file).Length <= 0 || File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3)) > 0));
         }
 
 
