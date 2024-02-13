@@ -145,6 +145,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             //set all textboxes with the current cell value
             int currentRow = Globals.ThisAddIn.Application.ActiveCell.Row;
             String target = Globals.ThisAddIn.Application.Cells[currentRow, 3].FormulaLocal;
+            String[] globalSplit = new String[] { "\",\"" };
 
             if (!String.IsNullOrEmpty(target))
             {
@@ -178,7 +179,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
                         attributes = attributes.Substring(1, attributes.IndexOf("}") - 1);
 
-                        String[] attributesParts = attributes.Split(',');
+                        //String[] splits = new String[] { "\",\"" };
+                        String[] attributesParts = attributes.Split(globalSplit, StringSplitOptions.RemoveEmptyEntries);
                         foreach (String att in attributesParts)
                         {
                             String[] keyval = att.Split(':');
@@ -216,8 +218,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                         target = target.Replace(attlistlabel, "");
                         target = target.Replace("{}", "");
                     }
-                    String[] split = new String[] { "\",\"" };
-                    String[] targets = target.Split(split,StringSplitOptions.RemoveEmptyEntries);
+                    String[] targets = target.Split(globalSplit,StringSplitOptions.RemoveEmptyEntries);
                     foreach (String t in targets)
                     {
                         if (t.Contains("shadowDom\":\"true\""))

@@ -360,58 +360,49 @@ namespace AxaFrance.WebEngine.ExcelUI
         public static string getNoCodeRunnerFiles(String outputDir, int jarOrCmdYaml, bool getBeta, ProgressBar dwlProgressBar, bool ForceDownload)
         {
             dwlProgressBar.PerformStep();
-
             string noCodeArtifactPath = ConfigurationManager.AppSettings.Get("noCodeArtifactPath");
             string mavenRepoUrl = ConfigurationManager.AppSettings.Get("noCodeMavenRepository");
             string mavenSnapRepoUrl = ConfigurationManager.AppSettings.Get("noCodeMavenSnapshotRepository");
             string runnerDirectLink = ConfigurationManager.AppSettings.Get("runnerDirectLink");
             string commandDirectLink = ConfigurationManager.AppSettings.Get("commandDirectLink");
             string workingDirectory = GetWorkingDirectory(outputDir);
-
-            string folder = $"{workingDirectory}";
+            string folder = workingDirectory ?? "";
             string jarSubFolder = "\\WebRunnerJar";
             if (!folder.EndsWith(jarSubFolder))
             {
-                folder = folder + jarSubFolder;
+                folder += jarSubFolder;
             }
-
             Ribbon.Settings.NoCodeRunnerPath = folder;
-
             Directory.CreateDirectory(folder);
             dwlProgressBar.PerformStep();
             WebClient client = new WebClient();
-
-            if (!String.IsNullOrEmpty(noCodeArtifactPath) && !String.IsNullOrEmpty(mavenRepoUrl) 
-                && !noCodeArtifactPath.Contains("#{") && !mavenRepoUrl.Contains("#{"))
+            if (!string.IsNullOrEmpty(noCodeArtifactPath) && !string.IsNullOrEmpty(mavenRepoUrl) && !noCodeArtifactPath.Contains("#{") && !mavenRepoUrl.Contains("#{"))
             {
-                String mvnSelectedRepo = getBeta ? mavenSnapRepoUrl : mavenRepoUrl;
-                if (!mvnSelectedRepo.EndsWith("/")){
-                    mvnSelectedRepo = mvnSelectedRepo +"/";
+                string mvnSelectedRepo = (getBeta ? mavenSnapRepoUrl : mavenRepoUrl);
+                if (!mvnSelectedRepo.EndsWith("/"))
+                {
+                    mvnSelectedRepo += "/";
                 }
-
-                String nodeSnaptshot2 = "";
+                string nodeSnaptshot2 = "";
                 XmlDocument doc = new XmlDocument();
                 dwlProgressBar.PerformStep();
-                string localmetadatafile = $"{folder}\\metadata.xml";
+                string localmetadatafile = folder + "\\metadata.xml";
                 string metadata = mvnSelectedRepo + noCodeArtifactPath + "/maven-metadata.xml";
-
-                if (!File.Exists(localmetadatafile) || new FileInfo(localmetadatafile).Length<=0)
+                if (!File.Exists(localmetadatafile) || new FileInfo(localmetadatafile).Length <= 0)
                 {
                     client.DownloadFile(metadata, localmetadatafile);
                 }
                 XmlDocument localmetadata = new XmlDocument();
                 localmetadata.Load(localmetadatafile);
-
                 Stream stream = client.OpenRead(metadata);
                 doc.Load(stream);
                 dwlProgressBar.PerformStep();
-                
                 int nodeCount = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version").Count;
                 string nodeSnaptshot = doc.DocumentElement.SelectNodes("/metadata/versioning/versions/version")[nodeCount - 1].InnerText;
                 bool downloadfile = false;
-
                 if (ForceDownload)
                 {
+                    //MessageBox.Show("ForceDownload launch ok");
                     if (getBeta)
                     {
                         nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot, out downloadfile);
@@ -423,31 +414,27 @@ namespace AxaFrance.WebEngine.ExcelUI
                 {
                     nodeSnaptshot2 = LoadSnapShotMetaData(noCodeArtifactPath, mvnSelectedRepo, doc, localmetadatafile, out metadata, localmetadata, nodeSnaptshot, out downloadfile);
                 }
-                else if (!String.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
+                else if (!string.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
                 {
+                    //MessageBox.Show("not beta download launch ok");
                     client.DownloadFile(metadata, localmetadatafile);
                     downloadfile = true;
                 }
-                //no else here, because we want to download the file if it does not exist
-                
-                
-                
-                String fileUrl = $"{mvnSelectedRepo}{noCodeArtifactPath}/{nodeSnaptshot}/" +
-                        $"webengine-drive-by-excel-{(getBeta ? nodeSnaptshot2 : nodeSnaptshot)}";
-                String file = "";
-                if (((int)GetJarOrCmdYaml.jar) == jarOrCmdYaml)
+                string fileUrl = mvnSelectedRepo + noCodeArtifactPath + "/" + nodeSnaptshot + "/webengine-drive-by-excel-" + (getBeta ? nodeSnaptshot2 : nodeSnaptshot);
+                string file = "";
+                if (jarOrCmdYaml == 0)
                 {
-                    fileUrl = fileUrl + "-exec.jar";
-                    file = $"{folder}\\webrunner.jar";
+                    fileUrl += "-exec.jar";
+                    file = folder + "\\webrunner.jar";
+                    //MessageBox.Show("download value before check=" + downloadfile);
                     downloadfile = checkDownloadForJar(ForceDownload, downloadfile, file);
                 }
                 else
                 {
-                    fileUrl = fileUrl + "-command.yaml";
-                    file = $"{folder}\\command.yaml";
+                    fileUrl += "-command.yaml";
+                    file = folder + "\\command.yaml";
                     downloadfile = true;
                 }
-
                 if (downloadfile)
                 {
                     dwlProgressBar.PerformStep();
@@ -457,7 +444,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 client.Dispose();
                 return file;
             }
-            if (jarOrCmdYaml == (int)GetJarOrCmdYaml.cmdYaml)
+            if (jarOrCmdYaml == 1)
             {
                 string commandfile = folder + "\\command.yaml";
                 if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0)
@@ -489,8 +476,11 @@ namespace AxaFrance.WebEngine.ExcelUI
             WebClient client = new WebClient();
             doc.Load(client.OpenRead(metadata));
             downloadfile = false;
+            //MessageBox.Show("beta localmetadata.InnerText: " + localmetadata.InnerText);
+            //MessageBox.Show("beta localmetadata.OuterXml: " + localmetadata.OuterXml);
             if (!string.IsNullOrEmpty(localmetadata.InnerText) && !localmetadata.OuterXml.Equals(doc.OuterXml))
             {
+                //MessageBox.Show("beta download launch ok");
                 client.DownloadFile(metadata, localmetadatafile);
                 localmetadata.Load(localmetadatafile);
                 client.Dispose();
@@ -505,7 +495,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 return true;
             }
-            return (downloadfile ? downloadfile : (!File.Exists(file) || new FileInfo(file).Length <= 0 || File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3)) > 0));
+            bool dwl = downloadfile ? downloadfile : (!File.Exists(file) || new FileInfo(file).Length <= 0 || File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3.0)) > 0);
+            //MessageBox.Show("checkDownloadForJar launch ok" +" file date="+File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3.0)) +" file exist="+ File.Exists(file)+" file lenght="+ new FileInfo(file).Length + "download ="+dwl);
+            return dwl;
         }
 
 
