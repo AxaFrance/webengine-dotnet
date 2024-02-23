@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.adapter"
+  id: "adapter"
+  children:
+  - "fr.axa.automation.webengine.report.adapter.CalendarAdapter"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.adapter"
+  nameWithType: "fr.axa.automation.webengine.report.adapter"
+  fullName: "fr.axa.automation.webengine.report.adapter"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.adapter"
+references:
+- uid: "fr.axa.automation.webengine.report.adapter.CalendarAdapter"
+  name: "CalendarAdapter"
+  nameWithType: "CalendarAdapter"
+  fullName: "fr.axa.automation.webengine.report.adapter.CalendarAdapter"

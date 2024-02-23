@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.checking.chain"
+  id: "chain"
+  children:
+  - "fr.axa.automation.webengine.checking.chain.IChecking"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.checking.chain"
+  nameWithType: "fr.axa.automation.webengine.checking.chain"
+  fullName: "fr.axa.automation.webengine.checking.chain"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.checking.chain"
+references:
+- uid: "fr.axa.automation.webengine.checking.chain.IChecking"
+  name: "IChecking"
+  nameWithType: "IChecking"
+  fullName: "fr.axa.automation.webengine.checking.chain.IChecking"

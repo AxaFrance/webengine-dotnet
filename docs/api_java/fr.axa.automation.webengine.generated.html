@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace fr.axa.automation.webengine.generated
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace fr.axa.automation.webengine.generated
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fr.axa.automation.webengine.generated">
+  
+  <h1 id="fr_axa_automation_webengine_generated" data-uid="fr.axa.automation.webengine.generated" class="text-break">Namespace fr.axa.automation.webengine.generated
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ActionReport.html">ActionReport</a></h4>
+      <section><p>Java class for ActionReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;ActionReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Id&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Name&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Result&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}Result&quot;/&gt;
+         &lt;element name=&quot;StartTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;EndTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;ContextValues&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfVariable&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;SubActionReports&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfActionReport&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Screenshots&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfScreenshotReport&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Log&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ArrayOfActionReport.html">ArrayOfActionReport</a></h4>
+      <section><p>Java class for ArrayOfActionReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;ArrayOfActionReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;ActionReport&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ActionReport&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ArrayOfScreenshotReport.html">ArrayOfScreenshotReport</a></h4>
+      <section><p>Java class for ArrayOfScreenshotReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;ArrayOfScreenshotReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;ScreenshotReport&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ScreenshotReport&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ArrayOfVariable.html">ArrayOfVariable</a></h4>
+      <section><p>Java class for ArrayOfVariable complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;ArrayOfVariable&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Variable&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}Variable&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></h4>
+      <section><p>Java class for EnvironmentVariables complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;EnvironmentVariables&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Variable&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}Variable&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ObjectFactory.html">ObjectFactory</a></h4>
+      <section><p>This object contains factory methods for each Java content interface and Java element interface generated in the fr.axa.automation.webengine.generated package.</p>
+<p>An ObjectFactory allows you to programatically construct new instances of the Java representation for XML content. The Java representation of XML content can consist of schema derived interfaces and classes representing the binding of schema type definitions, element declarations and model groups. Factory methods for each of these are provided in this class.</p>
+</section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.ScreenshotReport.html">ScreenshotReport</a></h4>
+      <section><p>Java class for ScreenshotReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;ScreenshotReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Name&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Id&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Data&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}base64Binary&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.TestCaseReport.html">TestCaseReport</a></h4>
+      <section><p>Java class for TestCaseReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;TestCaseReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Id&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;TestName&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Log&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Result&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}Result&quot;/&gt;
+         &lt;element name=&quot;StartTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;EndTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;TestData&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfVariable&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;ContextValues&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfVariable&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;GlobalContextValues&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfVariable&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;ActionReports&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfActionReport&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.TestData.html">TestData</a></h4>
+      <section><p>Java class for TestData complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;TestData&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;TestName&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Data&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}ArrayOfVariable&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.TestSuiteData.html">TestSuiteData</a></h4>
+      <section><p>Java class for TestSuiteData complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;TestSuiteData&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;TestData&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}TestData&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.TestSuiteReport.html">TestSuiteReport</a></h4>
+      <section><p>Java class for TestSuiteReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;TestSuiteReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;TestResult&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}TestCaseReport&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;EnvironmentVariables&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}EnvironmentVariables&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;StartTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;EndTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;HostName&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;SystemOut&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;SystemError&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;NumberOfTestcase&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Passed&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Failed&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Ignored&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.Variable.html">Variable</a></h4>
+      <section><p>Java class for Variable complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;Variable&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;Name&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;Value&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="fr.axa.automation.webengine.generated.Result.html">Result</a></h4>
+      <section><p>Java class for Result.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;simpleType name=&quot;Result&quot;&gt;
+   &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;&gt;
+     &lt;enumeration value=&quot;None&quot;/&gt;
+     &lt;enumeration value=&quot;Passed&quot;/&gt;
+     &lt;enumeration value=&quot;Failed&quot;/&gt;
+     &lt;enumeration value=&quot;CriticalError&quot;/&gt;
+     &lt;enumeration value=&quot;Ignored&quot;/&gt;
+   &lt;/restriction&gt;
+ &lt;/simpleType&gt;
+</code></pre></section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.constant.JavaConstant"
+  id: "JavaConstant"
+  parent: "fr.axa.automation.webengine.constant"
+  children:
+  - "fr.axa.automation.webengine.constant.JavaConstant.CLASSPATH"
+  langs:
+  - "java"
+  name: "JavaConstant"
+  nameWithType: "JavaConstant"
+  fullName: "fr.axa.automation.webengine.constant.JavaConstant"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public interface JavaConstant"
+- uid: "fr.axa.automation.webengine.constant.JavaConstant.CLASSPATH"
+  id: "CLASSPATH"
+  parent: "fr.axa.automation.webengine.constant.JavaConstant"
+  langs:
+  - "java"
+  name: "CLASSPATH"
+  nameWithType: "JavaConstant.CLASSPATH"
+  fullName: "fr.axa.automation.webengine.constant.JavaConstant.CLASSPATH"
+  type: "Field"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public static final String CLASSPATH"
+    return:
+      type: "java.lang.String"
+references:
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

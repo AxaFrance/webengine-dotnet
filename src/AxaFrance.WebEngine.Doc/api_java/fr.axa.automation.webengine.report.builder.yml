@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.builder"
+  id: "builder"
+  children:
+  - "fr.axa.automation.webengine.report.builder.ActionReportBuilder"
+  - "fr.axa.automation.webengine.report.builder.HtmlBuilder"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.builder"
+  nameWithType: "fr.axa.automation.webengine.report.builder"
+  fullName: "fr.axa.automation.webengine.report.builder"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.builder"
+references:
+- uid: "fr.axa.automation.webengine.report.builder.ActionReportBuilder"
+  name: "ActionReportBuilder"
+  nameWithType: "ActionReportBuilder"
+  fullName: "fr.axa.automation.webengine.report.builder.ActionReportBuilder"
+- uid: "fr.axa.automation.webengine.report.builder.HtmlBuilder"
+  name: "HtmlBuilder"
+  nameWithType: "HtmlBuilder"
+  fullName: "fr.axa.automation.webengine.report.builder.HtmlBuilder"

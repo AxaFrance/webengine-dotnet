@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.parser"
+  id: "parser"
+  children:
+  - "fr.axa.automation.webengine.parser.ArgumentParser"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.parser"
+  nameWithType: "fr.axa.automation.webengine.parser"
+  fullName: "fr.axa.automation.webengine.parser"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.parser"
+references:
+- uid: "fr.axa.automation.webengine.parser.ArgumentParser"
+  name: "ArgumentParser"
+  nameWithType: "ArgumentParser"
+  fullName: "fr.axa.automation.webengine.parser.ArgumentParser"

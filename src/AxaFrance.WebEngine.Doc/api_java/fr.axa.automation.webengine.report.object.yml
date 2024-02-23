@@ -1,0 +1,29 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.object"
+  id: "object"
+  children:
+  - "fr.axa.automation.webengine.report.object.ActionReportDetail"
+  - "fr.axa.automation.webengine.report.object.TestCaseMetric"
+  - "fr.axa.automation.webengine.report.object.TestSuiteReportInformation"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.object"
+  nameWithType: "fr.axa.automation.webengine.report.object"
+  fullName: "fr.axa.automation.webengine.report.object"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.object"
+references:
+- uid: "fr.axa.automation.webengine.report.object.ActionReportDetail"
+  name: "ActionReportDetail"
+  nameWithType: "ActionReportDetail"
+  fullName: "fr.axa.automation.webengine.report.object.ActionReportDetail"
+- uid: "fr.axa.automation.webengine.report.object.TestCaseMetric"
+  name: "TestCaseMetric"
+  nameWithType: "TestCaseMetric"
+  fullName: "fr.axa.automation.webengine.report.object.TestCaseMetric"
+- uid: "fr.axa.automation.webengine.report.object.TestSuiteReportInformation"
+  name: "TestSuiteReportInformation"
+  nameWithType: "TestSuiteReportInformation"
+  fullName: "fr.axa.automation.webengine.report.object.TestSuiteReportInformation"

@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.helper.global"
+  id: "global"
+  children:
+  - "fr.axa.automation.webengine.report.helper.global.IReportHelper"
+  - "fr.axa.automation.webengine.report.helper.global.ReportHelper"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.helper.global"
+  nameWithType: "fr.axa.automation.webengine.report.helper.global"
+  fullName: "fr.axa.automation.webengine.report.helper.global"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.helper.global"
+references:
+- uid: "fr.axa.automation.webengine.report.helper.global.IReportHelper"
+  name: "IReportHelper"
+  nameWithType: "IReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.global.IReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.global.ReportHelper"
+  name: "ReportHelper"
+  nameWithType: "ReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.global.ReportHelper"

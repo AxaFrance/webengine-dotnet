@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.api.IFunction"
+  id: "IFunction"
+  parent: "fr.axa.automation.webengine.api"
+  children:
+  - "fr.axa.automation.webengine.api.IFunction.call(T)"
+  langs:
+  - "java"
+  name: "IFunction<T,R>"
+  nameWithType: "IFunction<T,R>"
+  fullName: "fr.axa.automation.webengine.api.IFunction<T,R>"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.api"
+  syntax:
+    content: "public interface IFunction<T,R>"
+    typeParameters:
+    - id: "T"
+    - id: "R"
+- uid: "fr.axa.automation.webengine.api.IFunction.call(T)"
+  id: "call(T)"
+  parent: "fr.axa.automation.webengine.api.IFunction"
+  langs:
+  - "java"
+  name: "call(T t)"
+  nameWithType: "IFunction<T,R>.call(T t)"
+  fullName: "fr.axa.automation.webengine.api.IFunction<T,R>.call(T t)"
+  overload: "fr.axa.automation.webengine.api.IFunction.call*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.api"
+  syntax:
+    content: "public abstract R call(T t)"
+    parameters:
+    - id: "t"
+      type: "T"
+    return:
+      type: "R"
+  exceptions:
+  - type: "java.lang.Exception"
+references:
+- uid: "java.lang.Exception"
+  spec.java:
+  - uid: "java.lang.Exception"
+    name: "Exception"
+    fullName: "java.lang.Exception"
+- uid: "T"
+  spec.java:
+  - uid: "T"
+    name: "T"
+    fullName: "T"
+- uid: "R"
+  spec.java:
+  - uid: "R"
+    name: "R"
+    fullName: "R"
+- uid: "fr.axa.automation.webengine.api.IFunction.call*"
+  name: "call"
+  nameWithType: "IFunction<T,R>.call"
+  fullName: "fr.axa.automation.webengine.api.IFunction<T,R>.call"
+  package: "fr.axa.automation.webengine.api"

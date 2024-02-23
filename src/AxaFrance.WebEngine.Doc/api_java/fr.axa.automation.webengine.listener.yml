@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.listener"
+  id: "listener"
+  children:
+  - "fr.axa.automation.webengine.listener.WebengineLocalTestingListener"
+  - "fr.axa.automation.webengine.listener.WebengineReportListener"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.listener"
+  nameWithType: "fr.axa.automation.webengine.listener"
+  fullName: "fr.axa.automation.webengine.listener"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.listener"
+references:
+- uid: "fr.axa.automation.webengine.listener.WebengineLocalTestingListener"
+  name: "WebengineLocalTestingListener"
+  nameWithType: "WebengineLocalTestingListener"
+  fullName: "fr.axa.automation.webengine.listener.WebengineLocalTestingListener"
+- uid: "fr.axa.automation.webengine.listener.WebengineReportListener"
+  name: "WebengineReportListener"
+  nameWithType: "WebengineReportListener"
+  fullName: "fr.axa.automation.webengine.listener.WebengineReportListener"

@@ -1,0 +1,29 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine"
+  id: "webengine"
+  children:
+  - "fr.axa.automation.webengine.Application"
+  - "fr.axa.automation.webengine.ApplicationNoCode"
+  - "fr.axa.automation.webengine.Empty"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine"
+  nameWithType: "fr.axa.automation.webengine"
+  fullName: "fr.axa.automation.webengine"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine"
+references:
+- uid: "fr.axa.automation.webengine.Application"
+  name: "Application"
+  nameWithType: "Application"
+  fullName: "fr.axa.automation.webengine.Application"
+- uid: "fr.axa.automation.webengine.ApplicationNoCode"
+  name: "ApplicationNoCode"
+  nameWithType: "ApplicationNoCode"
+  fullName: "fr.axa.automation.webengine.ApplicationNoCode"
+- uid: "fr.axa.automation.webengine.Empty"
+  name: "Empty"
+  nameWithType: "Empty"
+  fullName: "fr.axa.automation.webengine.Empty"

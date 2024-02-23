@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.core.IActionExecutor"
+  id: "IActionExecutor"
+  parent: "fr.axa.automation.webengine.core"
+  children:
+  - "fr.axa.automation.webengine.core.IActionExecutor.run(fr.axa.automation.webengine.core.IAction)"
+  langs:
+  - "java"
+  name: "IActionExecutor"
+  nameWithType: "IActionExecutor"
+  fullName: "fr.axa.automation.webengine.core.IActionExecutor"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public interface IActionExecutor"
+- uid: "fr.axa.automation.webengine.core.IActionExecutor.run(fr.axa.automation.webengine.core.IAction)"
+  id: "run(fr.axa.automation.webengine.core.IAction)"
+  parent: "fr.axa.automation.webengine.core.IActionExecutor"
+  langs:
+  - "java"
+  name: "run(IAction actionDetail)"
+  nameWithType: "IActionExecutor.run(IAction actionDetail)"
+  fullName: "fr.axa.automation.webengine.core.IActionExecutor.run(IAction actionDetail)"
+  overload: "fr.axa.automation.webengine.core.IActionExecutor.run*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public abstract ActionReportDetail run(IAction actionDetail)"
+    parameters:
+    - id: "actionDetail"
+      type: "fr.axa.automation.webengine.core.IAction"
+    return:
+      type: "fr.axa.automation.webengine.report.object.ActionReportDetail"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+references:
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "fr.axa.automation.webengine.core.IAction"
+  name: "IAction"
+  nameWithType: "IAction"
+  fullName: "fr.axa.automation.webengine.core.IAction"
+- uid: "fr.axa.automation.webengine.report.object.ActionReportDetail"
+  name: "ActionReportDetail"
+  nameWithType: "ActionReportDetail"
+  fullName: "fr.axa.automation.webengine.report.object.ActionReportDetail"
+- uid: "fr.axa.automation.webengine.core.IActionExecutor.run*"
+  name: "run"
+  nameWithType: "IActionExecutor.run"
+  fullName: "fr.axa.automation.webengine.core.IActionExecutor.run"
+  package: "fr.axa.automation.webengine.core"

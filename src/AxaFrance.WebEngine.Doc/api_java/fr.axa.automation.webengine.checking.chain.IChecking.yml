@@ -1,0 +1,55 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.checking.chain.IChecking"
+  id: "IChecking"
+  parent: "fr.axa.automation.webengine.checking.chain"
+  children:
+  - "fr.axa.automation.webengine.checking.chain.IChecking.check(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.object.TestSuiteDataNoCode)"
+  langs:
+  - "java"
+  name: "IChecking"
+  nameWithType: "IChecking"
+  fullName: "fr.axa.automation.webengine.checking.chain.IChecking"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.checking.chain"
+  syntax:
+    content: "public interface IChecking"
+- uid: "fr.axa.automation.webengine.checking.chain.IChecking.check(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.object.TestSuiteDataNoCode)"
+  id: "check(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.object.TestSuiteDataNoCode)"
+  parent: "fr.axa.automation.webengine.checking.chain.IChecking"
+  langs:
+  - "java"
+  name: "check(AbstractGlobalApplicationContext globalApplicationContext, TestSuiteDataNoCode testSuiteData)"
+  nameWithType: "IChecking.check(AbstractGlobalApplicationContext globalApplicationContext, TestSuiteDataNoCode testSuiteData)"
+  fullName: "fr.axa.automation.webengine.checking.chain.IChecking.check(AbstractGlobalApplicationContext globalApplicationContext, TestSuiteDataNoCode testSuiteData)"
+  overload: "fr.axa.automation.webengine.checking.chain.IChecking.check*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.checking.chain"
+  syntax:
+    content: "public abstract boolean check(AbstractGlobalApplicationContext globalApplicationContext, TestSuiteDataNoCode testSuiteData)"
+    parameters:
+    - id: "globalApplicationContext"
+      type: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+    - id: "testSuiteData"
+      type: "fr.axa.automation.webengine.object.TestSuiteDataNoCode"
+    return:
+      type: "boolean"
+references:
+- uid: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+  name: "AbstractGlobalApplicationContext"
+  nameWithType: "AbstractGlobalApplicationContext"
+  fullName: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+- uid: "fr.axa.automation.webengine.object.TestSuiteDataNoCode"
+  name: "TestSuiteDataNoCode"
+  nameWithType: "TestSuiteDataNoCode"
+  fullName: "fr.axa.automation.webengine.object.TestSuiteDataNoCode"
+- uid: "boolean"
+  spec.java:
+  - uid: "boolean"
+    name: "boolean"
+    fullName: "boolean"
+- uid: "fr.axa.automation.webengine.checking.chain.IChecking.check*"
+  name: "check"
+  nameWithType: "IChecking.check"
+  fullName: "fr.axa.automation.webengine.checking.chain.IChecking.check"
+  package: "fr.axa.automation.webengine.checking.chain"

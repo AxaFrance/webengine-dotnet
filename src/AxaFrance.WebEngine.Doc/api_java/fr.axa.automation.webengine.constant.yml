@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.constant"
+  id: "constant"
+  children:
+  - "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  - "fr.axa.automation.webengine.constant.JavaConstant"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.constant"
+  nameWithType: "fr.axa.automation.webengine.constant"
+  fullName: "fr.axa.automation.webengine.constant"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.constant"
+references:
+- uid: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  name: "FileExtensionConstant"
+  nameWithType: "FileExtensionConstant"
+  fullName: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+- uid: "fr.axa.automation.webengine.constant.JavaConstant"
+  name: "JavaConstant"
+  nameWithType: "JavaConstant"
+  fullName: "fr.axa.automation.webengine.constant.JavaConstant"

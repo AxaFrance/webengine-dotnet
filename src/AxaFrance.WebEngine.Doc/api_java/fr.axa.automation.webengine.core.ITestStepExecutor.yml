@@ -1,0 +1,21 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.core.ITestStepExecutor"
+  id: "ITestStepExecutor"
+  parent: "fr.axa.automation.webengine.core"
+  langs:
+  - "java"
+  name: "ITestStepExecutor"
+  nameWithType: "ITestStepExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestStepExecutor"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public interface ITestStepExecutor extends ITestExecutor"
+  implements:
+  - "fr.axa.automation.webengine.core.ITestExecutor"
+references:
+- uid: "fr.axa.automation.webengine.core.ITestExecutor"
+  name: "ITestExecutor"
+  nameWithType: "ITestExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor"

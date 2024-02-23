@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.dto"
+  id: "dto"
+  children:
+  - "fr.axa.automation.webengine.dto.InputMarshallDTO"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.dto"
+  nameWithType: "fr.axa.automation.webengine.dto"
+  fullName: "fr.axa.automation.webengine.dto"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.dto"
+references:
+- uid: "fr.axa.automation.webengine.dto.InputMarshallDTO"
+  name: "InputMarshallDTO"
+  nameWithType: "InputMarshallDTO"
+  fullName: "fr.axa.automation.webengine.dto.InputMarshallDTO"

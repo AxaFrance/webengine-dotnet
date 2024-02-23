@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.xml"
+  id: "xml"
+  children:
+  - "fr.axa.automation.webengine.xml.NamespacePrefixerWebengine"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.xml"
+  nameWithType: "fr.axa.automation.webengine.xml"
+  fullName: "fr.axa.automation.webengine.xml"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.xml"
+references:
+- uid: "fr.axa.automation.webengine.xml.NamespacePrefixerWebengine"
+  name: "NamespacePrefixerWebengine"
+  nameWithType: "NamespacePrefixerWebengine"
+  fullName: "fr.axa.automation.webengine.xml.NamespacePrefixerWebengine"

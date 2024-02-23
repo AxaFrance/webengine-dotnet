@@ -1,0 +1,66 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  id: "FileExtensionConstant"
+  parent: "fr.axa.automation.webengine.constant"
+  children:
+  - "fr.axa.automation.webengine.constant.FileExtensionConstant.JPG"
+  - "fr.axa.automation.webengine.constant.FileExtensionConstant.PNG"
+  - "fr.axa.automation.webengine.constant.FileExtensionConstant.XML"
+  langs:
+  - "java"
+  name: "FileExtensionConstant"
+  nameWithType: "FileExtensionConstant"
+  fullName: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public interface FileExtensionConstant"
+- uid: "fr.axa.automation.webengine.constant.FileExtensionConstant.JPG"
+  id: "JPG"
+  parent: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  langs:
+  - "java"
+  name: "JPG"
+  nameWithType: "FileExtensionConstant.JPG"
+  fullName: "fr.axa.automation.webengine.constant.FileExtensionConstant.JPG"
+  type: "Field"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public static final String JPG"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.webengine.constant.FileExtensionConstant.PNG"
+  id: "PNG"
+  parent: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  langs:
+  - "java"
+  name: "PNG"
+  nameWithType: "FileExtensionConstant.PNG"
+  fullName: "fr.axa.automation.webengine.constant.FileExtensionConstant.PNG"
+  type: "Field"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public static final String PNG"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.webengine.constant.FileExtensionConstant.XML"
+  id: "XML"
+  parent: "fr.axa.automation.webengine.constant.FileExtensionConstant"
+  langs:
+  - "java"
+  name: "XML"
+  nameWithType: "FileExtensionConstant.XML"
+  fullName: "fr.axa.automation.webengine.constant.FileExtensionConstant.XML"
+  type: "Field"
+  package: "fr.axa.automation.webengine.constant"
+  syntax:
+    content: "public static final String XML"
+    return:
+      type: "java.lang.String"
+references:
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

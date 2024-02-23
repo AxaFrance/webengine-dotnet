@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.status"
+  id: "status"
+  children:
+  - "fr.axa.automation.webengine.status.StatusMapping"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.status"
+  nameWithType: "fr.axa.automation.webengine.status"
+  fullName: "fr.axa.automation.webengine.status"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.status"
+references:
+- uid: "fr.axa.automation.webengine.status.StatusMapping"
+  name: "StatusMapping"
+  nameWithType: "StatusMapping"
+  fullName: "fr.axa.automation.webengine.status.StatusMapping"

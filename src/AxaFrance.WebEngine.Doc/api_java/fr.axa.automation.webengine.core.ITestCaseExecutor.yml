@@ -1,0 +1,66 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.core.ITestCaseExecutor"
+  id: "ITestCaseExecutor"
+  parent: "fr.axa.automation.webengine.core"
+  children:
+  - "fr.axa.automation.webengine.core.ITestCaseExecutor.run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.global.AbstractTestCaseContext)"
+  langs:
+  - "java"
+  name: "ITestCaseExecutor"
+  nameWithType: "ITestCaseExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestCaseExecutor"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public interface ITestCaseExecutor extends ITestExecutor"
+  implements:
+  - "fr.axa.automation.webengine.core.ITestExecutor"
+- uid: "fr.axa.automation.webengine.core.ITestCaseExecutor.run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.global.AbstractTestCaseContext)"
+  id: "run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.global.AbstractTestCaseContext)"
+  parent: "fr.axa.automation.webengine.core.ITestCaseExecutor"
+  langs:
+  - "java"
+  name: "run(AbstractGlobalApplicationContext globalApplicationContext, AbstractTestCaseContext testCaseContext)"
+  nameWithType: "ITestCaseExecutor.run(AbstractGlobalApplicationContext globalApplicationContext, AbstractTestCaseContext testCaseContext)"
+  fullName: "fr.axa.automation.webengine.core.ITestCaseExecutor.run(AbstractGlobalApplicationContext globalApplicationContext, AbstractTestCaseContext testCaseContext)"
+  overload: "fr.axa.automation.webengine.core.ITestCaseExecutor.run*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public abstract TestCaseReport run(AbstractGlobalApplicationContext globalApplicationContext, AbstractTestCaseContext testCaseContext)"
+    parameters:
+    - id: "globalApplicationContext"
+      type: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+    - id: "testCaseContext"
+      type: "fr.axa.automation.webengine.global.AbstractTestCaseContext"
+    return:
+      type: "fr.axa.automation.webengine.generated.TestCaseReport"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+references:
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+  name: "AbstractGlobalApplicationContext"
+  nameWithType: "AbstractGlobalApplicationContext"
+  fullName: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+- uid: "fr.axa.automation.webengine.global.AbstractTestCaseContext"
+  name: "AbstractTestCaseContext"
+  nameWithType: "AbstractTestCaseContext"
+  fullName: "fr.axa.automation.webengine.global.AbstractTestCaseContext"
+- uid: "fr.axa.automation.webengine.generated.TestCaseReport"
+  name: "TestCaseReport"
+  nameWithType: "TestCaseReport"
+  fullName: "fr.axa.automation.webengine.generated.TestCaseReport"
+- uid: "fr.axa.automation.webengine.core.ITestCaseExecutor.run*"
+  name: "run"
+  nameWithType: "ITestCaseExecutor.run"
+  fullName: "fr.axa.automation.webengine.core.ITestCaseExecutor.run"
+  package: "fr.axa.automation.webengine.core"
+- uid: "fr.axa.automation.webengine.core.ITestExecutor"
+  name: "ITestExecutor"
+  nameWithType: "ITestExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor"

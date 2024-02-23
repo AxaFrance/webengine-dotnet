@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.parameter"
+  id: "parameter"
+  children:
+  - "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "fr.axa.automation.parameter"
+  nameWithType: "fr.axa.automation.parameter"
+  fullName: "fr.axa.automation.parameter"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.parameter"
+references:
+- uid: "fr.axa.automation.parameter.IParameter"
+  name: "IParameter"
+  nameWithType: "IParameter"
+  fullName: "fr.axa.automation.parameter.IParameter"
