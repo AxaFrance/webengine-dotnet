@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.helper.frmk"
+  id: "frmk"
+  children:
+  - "fr.axa.automation.webengine.report.helper.frmk.IWebengineHtmlReportHelper"
+  - "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+  - "fr.axa.automation.webengine.report.helper.frmk.WebengineHtmlReportHelper"
+  - "fr.axa.automation.webengine.report.helper.frmk.WebengineXmlReportHelper"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.helper.frmk"
+  nameWithType: "fr.axa.automation.webengine.report.helper.frmk"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.helper.frmk"
+references:
+- uid: "fr.axa.automation.webengine.report.helper.frmk.IWebengineHtmlReportHelper"
+  name: "IWebengineHtmlReportHelper"
+  nameWithType: "IWebengineHtmlReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.IWebengineHtmlReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+  name: "IWebengineXmlReportHelper"
+  nameWithType: "IWebengineXmlReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.frmk.WebengineHtmlReportHelper"
+  name: "WebengineHtmlReportHelper"
+  nameWithType: "WebengineHtmlReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.WebengineHtmlReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.frmk.WebengineXmlReportHelper"
+  name: "WebengineXmlReportHelper"
+  nameWithType: "WebengineXmlReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.WebengineXmlReportHelper"

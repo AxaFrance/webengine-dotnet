@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.step"
+  id: "step"
+  children:
+  - "fr.axa.automation.webengine.step.AbstractStep"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.step"
+  nameWithType: "fr.axa.automation.webengine.step"
+  fullName: "fr.axa.automation.webengine.step"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.step"
+references:
+- uid: "fr.axa.automation.webengine.step.AbstractStep"
+  name: "AbstractStep"
+  nameWithType: "AbstractStep"
+  fullName: "fr.axa.automation.webengine.step.AbstractStep"

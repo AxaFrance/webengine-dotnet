@@ -42,7 +42,7 @@
     <PublishUrl>\\prnas01.axa-fr.intraxa\16\Netshare_Dqsi\CommunauteDesAutomaticiens\02-Outils\Excel Addin3\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.71</ApplicationVersion>
+    <ApplicationVersion>3.0.0.72</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -260,7 +260,7 @@
     <EmbeddedResource Include="Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AXA.WebEngine.ExcelUI_TemporaryKey.pfx" />
+    <None Include="AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -352,11 +352,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>15AF60B1039FE800E46EB1AD48CACBB5D20F37B7</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E17D56D22BE7799197DB7C86058639A0CF1A0690</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

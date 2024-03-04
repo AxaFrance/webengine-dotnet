@@ -24,12 +24,12 @@ To test web applications with WebEngine Framework, you'll need to have follow kn
 var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 ```
 
-# [.NET](#tab/browserfactory)
+# [.NET](#tab/browserfactorynet)
 ```csharp
 var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
 ```
 
-# [JAVA](#tab/browserfactory)
+# [JAVA](#tab/browserfactoryjava)
 ```java
 Optional<WebDriver> webDriver = BrowserFactory.getDriver(Platform.WINDOWS,Browser.CHROMIUM_EDGE); 
 ```
@@ -189,7 +189,7 @@ else
 LoginPage page = new LoginPage(driver);
 page.getTxtUsername().setValue("admin@test.com");    //fill username
 page.getTxtPassword().sendKeys("password");          //fill password
-page.getButtonSubmit().Click();                      
+page.getButtonSubmit().click();                      
 
 if (page.getSpanErrorMessage().isDisplayed()){        //check if error message shows
     //error message displayed, test failed.

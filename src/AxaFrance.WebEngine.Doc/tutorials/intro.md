@@ -27,9 +27,9 @@ Understand basic concepts about
 
 |Test Approachs | .NET Sample | Java Sample|
 |---------------|-------------|------------|
-Linear Scripting Approach | [Linear Scripting .NET](linear-script-cs.md) | Java
-Structured Approach (Gherkin) | [Specflow](gherkin-cs.md) | Java
-Keyword Driven Approach | [Keyword Driven](keyword-driven-cs.md) | Java
-Data Driven Approach | [Data Driven](data-driven-cs.md) | Java
+Linear Scripting Approach | [Linear Scripting .NET](linear-script-cs.md) | [Linear Scripting JAVA](linear-script-java.md)
+Structured Approach (Gherkin) | [Specflow](gherkin-cs.md) | [JUnit](gherkin-java.md)
+Keyword Driven Approach | [Keyword Driven](keyword-driven-cs.md) | [Keyword Driven](keyword-driven-java.md)
+Data Driven Approach | [Data Driven](data-driven-cs.md) | [Data Driven](data-driven-java.md)
 
 

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.logger"
+  id: "logger"
+  children:
+  - "fr.axa.automation.webengine.logger.ILoggerService"
+  - "fr.axa.automation.webengine.logger.LoggerAppender"
+  - "fr.axa.automation.webengine.logger.LoggerService"
+  - "fr.axa.automation.webengine.logger.LoggerServiceProvider"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.logger"
+  nameWithType: "fr.axa.automation.webengine.logger"
+  fullName: "fr.axa.automation.webengine.logger"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.logger"
+references:
+- uid: "fr.axa.automation.webengine.logger.ILoggerService"
+  name: "ILoggerService"
+  nameWithType: "ILoggerService"
+  fullName: "fr.axa.automation.webengine.logger.ILoggerService"
+- uid: "fr.axa.automation.webengine.logger.LoggerAppender"
+  name: "LoggerAppender"
+  nameWithType: "LoggerAppender"
+  fullName: "fr.axa.automation.webengine.logger.LoggerAppender"
+- uid: "fr.axa.automation.webengine.logger.LoggerService"
+  name: "LoggerService"
+  nameWithType: "LoggerService"
+  fullName: "fr.axa.automation.webengine.logger.LoggerService"
+- uid: "fr.axa.automation.webengine.logger.LoggerServiceProvider"
+  name: "LoggerServiceProvider"
+  nameWithType: "LoggerServiceProvider"
+  fullName: "fr.axa.automation.webengine.logger.LoggerServiceProvider"

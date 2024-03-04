@@ -1,0 +1,57 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+  id: "IWebengineXmlReportHelper"
+  parent: "fr.axa.automation.webengine.report.helper.frmk"
+  children:
+  - "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport(fr.axa.automation.webengine.generated.TestSuiteReport,java.lang.String)"
+  langs:
+  - "java"
+  name: "IWebengineXmlReportHelper"
+  nameWithType: "IWebengineXmlReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.report.helper.frmk"
+  syntax:
+    content: "public interface IWebengineXmlReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport(fr.axa.automation.webengine.generated.TestSuiteReport,java.lang.String)"
+  id: "buildXmlReport(fr.axa.automation.webengine.generated.TestSuiteReport,java.lang.String)"
+  parent: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper"
+  langs:
+  - "java"
+  name: "buildXmlReport(TestSuiteReport testSuiteReport, String outputPath)"
+  nameWithType: "IWebengineXmlReportHelper.buildXmlReport(TestSuiteReport testSuiteReport, String outputPath)"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport(TestSuiteReport testSuiteReport, String outputPath)"
+  overload: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.report.helper.frmk"
+  syntax:
+    content: "public abstract String buildXmlReport(TestSuiteReport testSuiteReport, String outputPath)"
+    parameters:
+    - id: "testSuiteReport"
+      type: "fr.axa.automation.webengine.generated.TestSuiteReport"
+    - id: "outputPath"
+      type: "java.lang.String"
+    return:
+      type: "java.lang.String"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+references:
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "fr.axa.automation.webengine.generated.TestSuiteReport"
+  name: "TestSuiteReport"
+  nameWithType: "TestSuiteReport"
+  fullName: "fr.axa.automation.webengine.generated.TestSuiteReport"
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"
+- uid: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport*"
+  name: "buildXmlReport"
+  nameWithType: "IWebengineXmlReportHelper.buildXmlReport"
+  fullName: "fr.axa.automation.webengine.report.helper.frmk.IWebengineXmlReportHelper.buildXmlReport"
+  package: "fr.axa.automation.webengine.report.helper.frmk"

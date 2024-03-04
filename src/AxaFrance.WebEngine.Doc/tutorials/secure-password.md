@@ -10,7 +10,7 @@ WebEngine provides a native solution to achieve this:
 -	A method to securely set password into password box
 
 ## Encryption
-For the encryption, you can set `encryption key` in [appsetting.json](../articles/appsetting.md), then use any of following methods to calculate encrypted data:
+For the encryption, you can set `encryption key` in [appsetting.json](../articles/appsettings.md), then use any of following methods to calculate encrypted data:
 ### Via WebRunner
 If you have an encryption key stored in appsettng.json (not recommanded in shared storage), you can pass this command line to get encrypted data:
 ```base

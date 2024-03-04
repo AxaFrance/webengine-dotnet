@@ -94,16 +94,16 @@ To test web application, we usually need to open the web browser and perform thr
 </code></pre><div class="tabGroup" id="tabgroup_uaXKPyJz2I">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_uaXKPyJz2I_browserfactory" role="tab" aria-controls="tabpanel_uaXKPyJz2I_browserfactory" data-tab="browserfactory" tabindex="0" aria-selected="true">.NET</a>
+<a href="#tabpanel_uaXKPyJz2I_browserfactorynet" role="tab" aria-controls="tabpanel_uaXKPyJz2I_browserfactorynet" data-tab="browserfactorynet" tabindex="0" aria-selected="true">.NET</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_uaXKPyJz2I_browserfactory" role="tab" aria-controls="tabpanel_uaXKPyJz2I_browserfactory" data-tab="browserfactory" tabindex="-1">JAVA</a>
+<a href="#tabpanel_uaXKPyJz2I_browserfactoryjava" role="tab" aria-controls="tabpanel_uaXKPyJz2I_browserfactoryjava" data-tab="browserfactoryjava" tabindex="-1">JAVA</a>
 </li>
 </ul>
-<section id="tabpanel_uaXKPyJz2I_browserfactory" role="tabpanel" data-tab="browserfactory">
+<section id="tabpanel_uaXKPyJz2I_browserfactorynet" role="tabpanel" data-tab="browserfactorynet">
 <pre><code class="lang-csharp">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
 </code></pre></section>
-<section id="tabpanel_uaXKPyJz2I_browserfactory" role="tabpanel" data-tab="browserfactory" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_uaXKPyJz2I_browserfactoryjava" role="tabpanel" data-tab="browserfactoryjava" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-java">Optional&lt;WebDriver&gt; webDriver = BrowserFactory.getDriver(Platform.WINDOWS,Browser.CHROMIUM_EDGE); 
 </code></pre></section>
 </div>
@@ -269,7 +269,7 @@ else
 <pre><code class="lang-java">LoginPage page = new LoginPage(driver);
 page.getTxtUsername().setValue(&quot;admin@test.com&quot;);    //fill username
 page.getTxtPassword().sendKeys(&quot;password&quot;);          //fill password
-page.getButtonSubmit().Click();                      
+page.getButtonSubmit().click();                      
 
 if (page.getSpanErrorMessage().isDisplayed()){        //check if error message shows
     //error message displayed, test failed.

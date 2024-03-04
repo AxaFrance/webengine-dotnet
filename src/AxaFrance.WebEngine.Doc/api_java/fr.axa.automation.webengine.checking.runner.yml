@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.checking.runner"
+  id: "runner"
+  children:
+  - "fr.axa.automation.webengine.checking.runner.ICheckingRunner"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.checking.runner"
+  nameWithType: "fr.axa.automation.webengine.checking.runner"
+  fullName: "fr.axa.automation.webengine.checking.runner"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.checking.runner"
+references:
+- uid: "fr.axa.automation.webengine.checking.runner.ICheckingRunner"
+  name: "ICheckingRunner"
+  nameWithType: "ICheckingRunner"
+  fullName: "fr.axa.automation.webengine.checking.runner.ICheckingRunner"

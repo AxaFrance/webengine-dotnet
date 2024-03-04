@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.argument"
+  id: "argument"
+  children:
+  - "fr.axa.automation.webengine.argument.ArgumentOption"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.argument"
+  nameWithType: "fr.axa.automation.webengine.argument"
+  fullName: "fr.axa.automation.webengine.argument"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.argument"
+references:
+- uid: "fr.axa.automation.webengine.argument.ArgumentOption"
+  name: "ArgumentOption"
+  nameWithType: "ArgumentOption"
+  fullName: "fr.axa.automation.webengine.argument.ArgumentOption"

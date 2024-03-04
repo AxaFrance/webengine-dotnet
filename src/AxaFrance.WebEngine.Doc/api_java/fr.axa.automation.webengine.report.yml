@@ -1,0 +1,29 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report"
+  id: "report"
+  children:
+  - "fr.axa.automation.webengine.report.IReportGherkinHelper"
+  - "fr.axa.automation.webengine.report.ReportDetail"
+  - "fr.axa.automation.webengine.report.ReportGherkinHelper"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report"
+  nameWithType: "fr.axa.automation.webengine.report"
+  fullName: "fr.axa.automation.webengine.report"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report"
+references:
+- uid: "fr.axa.automation.webengine.report.IReportGherkinHelper"
+  name: "IReportGherkinHelper"
+  nameWithType: "IReportGherkinHelper"
+  fullName: "fr.axa.automation.webengine.report.IReportGherkinHelper"
+- uid: "fr.axa.automation.webengine.report.ReportDetail"
+  name: "ReportDetail"
+  nameWithType: "ReportDetail"
+  fullName: "fr.axa.automation.webengine.report.ReportDetail"
+- uid: "fr.axa.automation.webengine.report.ReportGherkinHelper"
+  name: "ReportGherkinHelper"
+  nameWithType: "ReportGherkinHelper"
+  fullName: "fr.axa.automation.webengine.report.ReportGherkinHelper"

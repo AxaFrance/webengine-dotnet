@@ -36,7 +36,7 @@ namespace Samples.LinearScripting
         {
             driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Step1.html");
-            MyPageModel page = new MyPageModel(driver);
+            DrinkSelectionPageModel page = new DrinkSelectionPageModel(driver);
 
             page.SelectLanguage.SelectByValue("fr");
             page.RadioChooseToBuy.CheckByValue("Coffee");

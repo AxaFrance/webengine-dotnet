@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.boot.IBootProject"
+  id: "IBootProject"
+  parent: "fr.axa.automation.webengine.boot"
+  children:
+  - "fr.axa.automation.webengine.boot.IBootProject.runFromFramework(java.lang.String...)"
+  - "fr.axa.automation.webengine.boot.IBootProject.runFromProject(java.lang.String...)"
+  langs:
+  - "java"
+  name: "IBootProject"
+  nameWithType: "IBootProject"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.boot"
+  syntax:
+    content: "public interface IBootProject"
+- uid: "fr.axa.automation.webengine.boot.IBootProject.runFromFramework(java.lang.String...)"
+  id: "runFromFramework(java.lang.String...)"
+  parent: "fr.axa.automation.webengine.boot.IBootProject"
+  langs:
+  - "java"
+  name: "runFromFramework(String[] args)"
+  nameWithType: "IBootProject.runFromFramework(String[] args)"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject.runFromFramework(String[] args)"
+  overload: "fr.axa.automation.webengine.boot.IBootProject.runFromFramework*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.boot"
+  syntax:
+    content: "public abstract void runFromFramework(String[] args)"
+    parameters:
+    - id: "args"
+      type: "java.lang.String[]"
+  exceptions:
+  - type: "java.lang.Exception"
+- uid: "fr.axa.automation.webengine.boot.IBootProject.runFromProject(java.lang.String...)"
+  id: "runFromProject(java.lang.String...)"
+  parent: "fr.axa.automation.webengine.boot.IBootProject"
+  langs:
+  - "java"
+  name: "runFromProject(String[] args)"
+  nameWithType: "IBootProject.runFromProject(String[] args)"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject.runFromProject(String[] args)"
+  overload: "fr.axa.automation.webengine.boot.IBootProject.runFromProject*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.boot"
+  syntax:
+    content: "public abstract void runFromProject(String[] args)"
+    parameters:
+    - id: "args"
+      type: "java.lang.String[]"
+  exceptions:
+  - type: "java.lang.Exception"
+references:
+- uid: "java.lang.Exception"
+  spec.java:
+  - uid: "java.lang.Exception"
+    name: "Exception"
+    fullName: "java.lang.Exception"
+- uid: "java.lang.String[]"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"
+  - name: "[]"
+    fullName: "[]"
+- uid: "fr.axa.automation.webengine.boot.IBootProject.runFromFramework*"
+  name: "runFromFramework"
+  nameWithType: "IBootProject.runFromFramework"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject.runFromFramework"
+  package: "fr.axa.automation.webengine.boot"
+- uid: "fr.axa.automation.webengine.boot.IBootProject.runFromProject*"
+  name: "runFromProject"
+  nameWithType: "IBootProject.runFromProject"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject.runFromProject"
+  package: "fr.axa.automation.webengine.boot"

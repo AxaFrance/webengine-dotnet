@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.exception"
+  id: "exception"
+  children:
+  - "fr.axa.automation.webengine.exception.MultipleElementException"
+  - "fr.axa.automation.webengine.exception.WebEngineException"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.exception"
+  nameWithType: "fr.axa.automation.webengine.exception"
+  fullName: "fr.axa.automation.webengine.exception"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.exception"
+references:
+- uid: "fr.axa.automation.webengine.exception.MultipleElementException"
+  name: "MultipleElementException"
+  nameWithType: "MultipleElementException"
+  fullName: "fr.axa.automation.webengine.exception.MultipleElementException"
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"

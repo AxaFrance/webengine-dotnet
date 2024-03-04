@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  id: "ILocalTestingRunner"
+  parent: "fr.axa.automation.webengine.localtesting"
+  children:
+  - "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting()"
+  - "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting(java.lang.String)"
+  - "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting()"
+  langs:
+  - "java"
+  name: "ILocalTestingRunner"
+  nameWithType: "ILocalTestingRunner"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.localtesting"
+  syntax:
+    content: "public interface ILocalTestingRunner"
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting()"
+  id: "startLocalTesting()"
+  parent: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  langs:
+  - "java"
+  name: "startLocalTesting()"
+  nameWithType: "ILocalTestingRunner.startLocalTesting()"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting()"
+  overload: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.localtesting"
+  syntax:
+    content: "public abstract void startLocalTesting()"
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting(java.lang.String)"
+  id: "startLocalTesting(java.lang.String)"
+  parent: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  langs:
+  - "java"
+  name: "startLocalTesting(String resourceNameOrPathAndFileName)"
+  nameWithType: "ILocalTestingRunner.startLocalTesting(String resourceNameOrPathAndFileName)"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting(String resourceNameOrPathAndFileName)"
+  overload: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.localtesting"
+  syntax:
+    content: "public abstract void startLocalTesting(String resourceNameOrPathAndFileName)"
+    parameters:
+    - id: "resourceNameOrPathAndFileName"
+      type: "java.lang.String"
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting()"
+  id: "stopLocalTesting()"
+  parent: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  langs:
+  - "java"
+  name: "stopLocalTesting()"
+  nameWithType: "ILocalTestingRunner.stopLocalTesting()"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting()"
+  overload: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.localtesting"
+  syntax:
+    content: "public abstract void stopLocalTesting()"
+references:
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting*"
+  name: "startLocalTesting"
+  nameWithType: "ILocalTestingRunner.startLocalTesting"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.startLocalTesting"
+  package: "fr.axa.automation.webengine.localtesting"
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting*"
+  name: "stopLocalTesting"
+  nameWithType: "ILocalTestingRunner.stopLocalTesting"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner.stopLocalTesting"
+  package: "fr.axa.automation.webengine.localtesting"

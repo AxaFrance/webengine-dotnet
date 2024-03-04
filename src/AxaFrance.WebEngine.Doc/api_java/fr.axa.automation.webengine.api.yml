@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.api"
+  id: "api"
+  children:
+  - "fr.axa.automation.webengine.api.IFunction"
+  - "fr.axa.automation.webengine.api.ITestCaseWebExecutor"
+  - "fr.axa.automation.webengine.api.ITestStepWebExecutor"
+  - "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.api"
+  nameWithType: "fr.axa.automation.webengine.api"
+  fullName: "fr.axa.automation.webengine.api"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.api"
+references:
+- uid: "fr.axa.automation.webengine.api.IFunction"
+  name: "IFunction<T,R>"
+  nameWithType: "IFunction<T,R>"
+  fullName: "fr.axa.automation.webengine.api.IFunction<T,R>"
+- uid: "fr.axa.automation.webengine.api.ITestCaseWebExecutor"
+  name: "ITestCaseWebExecutor"
+  nameWithType: "ITestCaseWebExecutor"
+  fullName: "fr.axa.automation.webengine.api.ITestCaseWebExecutor"
+- uid: "fr.axa.automation.webengine.api.ITestStepWebExecutor"
+  name: "ITestStepWebExecutor"
+  nameWithType: "ITestStepWebExecutor"
+  fullName: "fr.axa.automation.webengine.api.ITestStepWebExecutor"
+- uid: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"
+  name: "ITestSuiteWebExecutor"
+  nameWithType: "ITestSuiteWebExecutor"
+  fullName: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"

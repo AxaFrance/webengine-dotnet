@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.testcase"
+  id: "testcase"
+  children:
+  - "fr.axa.automation.testcase.FlowTestCase"
+  - "fr.axa.automation.testcase.SimpleTestCase"
+  langs:
+  - "java"
+  name: "fr.axa.automation.testcase"
+  nameWithType: "fr.axa.automation.testcase"
+  fullName: "fr.axa.automation.testcase"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.testcase"
+references:
+- uid: "fr.axa.automation.testcase.FlowTestCase"
+  name: "FlowTestCase"
+  nameWithType: "FlowTestCase"
+  fullName: "fr.axa.automation.testcase.FlowTestCase"
+- uid: "fr.axa.automation.testcase.SimpleTestCase"
+  name: "SimpleTestCase"
+  nameWithType: "SimpleTestCase"
+  fullName: "fr.axa.automation.testcase.SimpleTestCase"

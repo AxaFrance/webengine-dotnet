@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.teststep"
+  id: "teststep"
+  children:
+  - "fr.axa.automation.teststep.FirstTestStep"
+  - "fr.axa.automation.teststep.HomeTestStep"
+  - "fr.axa.automation.teststep.SecondTestStep"
+  - "fr.axa.automation.teststep.ThirdTestStep"
+  langs:
+  - "java"
+  name: "fr.axa.automation.teststep"
+  nameWithType: "fr.axa.automation.teststep"
+  fullName: "fr.axa.automation.teststep"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.teststep"
+references:
+- uid: "fr.axa.automation.teststep.FirstTestStep"
+  name: "FirstTestStep"
+  nameWithType: "FirstTestStep"
+  fullName: "fr.axa.automation.teststep.FirstTestStep"
+- uid: "fr.axa.automation.teststep.HomeTestStep"
+  name: "HomeTestStep"
+  nameWithType: "HomeTestStep"
+  fullName: "fr.axa.automation.teststep.HomeTestStep"
+- uid: "fr.axa.automation.teststep.SecondTestStep"
+  name: "SecondTestStep"
+  nameWithType: "SecondTestStep"
+  fullName: "fr.axa.automation.teststep.SecondTestStep"
+- uid: "fr.axa.automation.teststep.ThirdTestStep"
+  name: "ThirdTestStep"
+  nameWithType: "ThirdTestStep"
+  fullName: "fr.axa.automation.teststep.ThirdTestStep"
