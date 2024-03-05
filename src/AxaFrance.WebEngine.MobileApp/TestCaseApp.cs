@@ -38,7 +38,7 @@ namespace AxaFrance.WebEngine.MobileApp
             {
                 if (Context is AppiumDriver appiumDriver)
                 {
-                    appiumDriver.ResetApp();
+                    //appiumDriver.TerminateApp()
                 }
             }
             catch (Exception ex)

@@ -1,9 +1,14 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using AxaFrance.WebEngine.Report;
+using Axe.Extended.HtmlReport;
+using Deque.AxeCore.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 using System.Threading;
 
 namespace AxaFrance.WebEngine.Web
@@ -13,12 +18,36 @@ namespace AxaFrance.WebEngine.Web
     /// </summary>
     public abstract class TestCaseWeb : TestCase
     {
+
+        /// <summary>
+        /// Accessibility Report Builder for current test case.
+        /// If accessibility test is enabled, the report builder will be initialized.
+        /// </summary>
+        internal OverallReportBuilder reportBuilder;
+
+        /// <summary>
+        /// The test case report for the current test case.
+        /// </summary>
+        public bool IsAccessibilityTestEnabled { get; set; }
+        
+        /// <summary>
+        /// The title of the accessibility report.
+        /// </summary>
+        public string AccessibilityReportTitle { get; set; }
+
         /// <summary>
         /// Clean up script to close browsers and disconnected to the device if necessary.
         /// </summary>
         /// <returns>Additional information which can be showed in the report. (not used)</returns>
         public override string Cleanup()
         {
+            
+            if(IsAccessibilityTestEnabled)
+            {
+                var a11yReport = reportBuilder.Build().Export();
+                testCaseReport.AttachFile(a11yReport, "AccessibilityReport");
+                DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
+            }
             WebDriver browser = this.Context as WebDriver;
             if (browser != null)
             {
@@ -40,6 +69,10 @@ namespace AxaFrance.WebEngine.Web
         /// </summary>
         public override void Initialize()
         {
+            if(IsAccessibilityTestEnabled)
+            {
+                reportBuilder = InitializeA11yReportBuilder();
+            }            
             Settings s = Settings.Instance;
             string url = s.GridServerUrl;
             if (url != null && url.Contains("browserstack"))
@@ -80,5 +113,20 @@ namespace AxaFrance.WebEngine.Web
 
         }
 
+        private OverallReportBuilder InitializeA11yReportBuilder()
+        {
+            var defaultOptions = new PageReportOptions()
+            {
+                HighlightColor = Color.OrangeRed,
+                HighlightThickness = 5,
+                UseAdvancedScreenshot = true,                
+                OutputFormat = OutputFormat.Zip,
+                OutputFolder = Path.Combine(Settings.Instance.LogDir, "a11y"),
+                ScoringMode = ScoringMode.NonWeighted,
+                //Tags = Array.Empty<string>(),
+                Title = AccessibilityReportTitle ?? "Accessibility Test Report",
+            };
+            return new OverallReportBuilder().WithDefaultOptions(defaultOptions);
+        }
     }
 }

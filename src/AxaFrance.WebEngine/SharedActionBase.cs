@@ -66,22 +66,10 @@ namespace AxaFrance.WebEngine
         /// </summary>
         protected ActionReport ActionReport { get; set; }
 
+        protected TestCase testCase;
 
-        /// <summary>
-        /// Static function to run this shared action. the action:
-        /// 1. Check if all the required parameters are given, or by default using it's default value.
-        /// 2. for all those who the parameter has no default value (Parameter.Value == null), throw exception
-        /// 3. Create an instance of the action and run it.
-        /// </summary>
-        /// <param name="sharedActionType">the object type of sharedAction</param>
-        /// <param name="Context">The browser object</param>
-        /// <param name="ContextValues">The stored context content to be shared and be used with other actions.</param>
-        /// <param name="actionReport">The testaction report to use for generating </param>
-        /// <param name="parameters">Test parameters</param>
-        /// <returns>A SharedActionBase object which is created during the execution. this object can be used later to call DoCheckpoint()</returns>
-        public static SharedActionBase DoAction(Type sharedActionType, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
+        public static SharedActionBase DoAction(Type sharedActionType, TestCase relatedTestCase, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
         {
-
             Indent += 2;
             DebugLogger.WriteLine(new string(' ', Indent) + "Action Start:" + sharedActionType.Name);
             actionReport.Name = Utilities.GetDescriptionByType(sharedActionType);
@@ -99,8 +87,7 @@ namespace AxaFrance.WebEngine
             SharedActionBase obj = (SharedActionBase)Activator.CreateInstance(sharedActionType);
             obj.ActionReport = actionReport;
             obj.ContextValues = ContextValues;
-
-
+            obj.testCase = relatedTestCase;
             List<string> missingParameters = new List<string>();
             if (obj.RequiredParameters != null)
             {
@@ -177,6 +164,23 @@ namespace AxaFrance.WebEngine
             actionReport.Result = obj.ActionResult;
             actionReport.Screenshots = obj.Screenshots;
             return obj;
+        }
+
+        /// <summary>
+        /// Static function to run this shared action. the action:
+        /// 1. Check if all the required parameters are given, or by default using it's default value.
+        /// 2. for all those who the parameter has no default value (Parameter.Value == null), throw exception
+        /// 3. Create an instance of the action and run it.
+        /// </summary>
+        /// <param name="sharedActionType">the object type of sharedAction</param>
+        /// <param name="Context">The browser object</param>
+        /// <param name="ContextValues">The stored context content to be shared and be used with other actions.</param>
+        /// <param name="actionReport">The testaction report to use for generating </param>
+        /// <param name="parameters">Test parameters</param>
+        /// <returns>A SharedActionBase object which is created during the execution. this object can be used later to call DoCheckpoint()</returns>
+        public static SharedActionBase DoAction(Type sharedActionType, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
+        {
+            return DoAction(sharedActionType, null, Context, ContextValues, actionReport, parameters);
         }
 
         /// <summary>

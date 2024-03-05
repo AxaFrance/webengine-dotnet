@@ -6,7 +6,11 @@ using Hummingbird.UI;
 using ICSharpCode.AvalonEdit.Folding;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -180,6 +184,17 @@ namespace AxaFrance.WebEngine.ReportViewer
                             FillTreeViewItem(tvi, step);
                         }
                     }
+                }
+
+                if(tc.AttachedData.FirstOrDefault(x=>x.Name == "AccessibilityReport") != null)
+                {
+                    var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport").Value;
+                    btnOpenAccessibilityReport.Tag = data;
+                    tabAccessibility.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tabAccessibility.Visibility = Visibility.Collapsed;
                 }
             }
 
@@ -409,6 +424,33 @@ namespace AxaFrance.WebEngine.ReportViewer
         private void cbFailed_Unchecked(object sender, RoutedEventArgs e)
         {
             this.CheckedChanged();
+        }
+
+        private void btnOpenAccessibilityReport_Click(object sender, RoutedEventArgs e)
+        {
+            var data = (sender as Button).Tag as byte[];
+            //extract data as zip stream to temp folder
+            using (var stream = new MemoryStream(data)) {
+                ZipArchive archive = new ZipArchive(stream);
+                var tempFolder = Path.Combine(Path.GetTempPath(), "AccessibilityReport");
+                if (Directory.Exists(tempFolder))
+                {
+                    Directory.Delete(tempFolder, true);
+                }
+                Directory.CreateDirectory(tempFolder);
+                archive.ExtractToDirectory(tempFolder);
+                //open the index.html
+                var indexFile = Directory.GetFiles(tempFolder, "index.html", SearchOption.AllDirectories).FirstOrDefault();
+                if (indexFile != null)
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(indexFile) { UseShellExecute = true };
+                    Process.Start(psi);
+                }
+                else
+                {
+                    ShowMessageBox("Error", "Unable to find the index.html file in the accessibility report", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }

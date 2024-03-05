@@ -88,6 +88,11 @@
             <TabItem Header="System Output" ToolTip="The standard output from console.">
                 <avalon:TextEditor x:Name="txtSystemOut" IsReadOnly="True" FontFamily="Consolas" Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" />
             </TabItem>
+            <TabItem Header="Accessibility" x:Name="tabAccessibility">
+                <Button x:Name="btnOpenAccessibilityReport" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnOpenAccessibilityReport_Click">
+                    Show Accessibility Report
+                </Button>
+            </TabItem>
         </TabControl>
 
         <TabControl Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Style="{DynamicResource SecondaryTabControlStyle}">

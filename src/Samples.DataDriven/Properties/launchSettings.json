@@ -4,7 +4,7 @@
       "commandName": "Executable",
       "executablePath": "./WebRunner.exe",
       "commandLineArgs": "\"-a:Samples.DataDriven.dll\" -browser:Edge -platform:Windows -showReport -data:TEST_SUITE.xml -env:ENV.XML \"-junit:C:\\Users\\A269OL\\AppData\\Local\\Temp\"",
-      "workingDirectory": ".\\bin\\Debug\\net6.0-windows"
+      "workingDirectory": ".\\bin\\Debug\\net8.0-windows"
     }
   }
 }
