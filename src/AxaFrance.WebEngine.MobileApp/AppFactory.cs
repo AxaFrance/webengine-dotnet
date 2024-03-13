@@ -156,10 +156,11 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <param name="driver">the appiumdriver to be used.</param>
         public static void ActionBack(AppiumDriver driver)
         {
-            if(driver is AndroidDriver ad)
+            if (driver is AndroidDriver ad)
             {
                 ad.PressKeyCode(AndroidKeyCode.Back);
-            }else if(driver is IOSDriver id)
+            }
+            else if (driver is IOSDriver id)
             {
                 driver.Navigate().Back();
             }
@@ -235,7 +236,7 @@ namespace AxaFrance.WebEngine.MobileApp
                 options.AddAdditionalAppiumOption("os_version", s.OsVersion);
             }
 
-            
+
 
             DebugLogger.WriteLine($"Connecting to device: {s.Device}, os: {s.OsVersion} ");
 
@@ -277,16 +278,52 @@ namespace AxaFrance.WebEngine.MobileApp
             Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
             browserstackOptions.Add("userName", s.Username);
             browserstackOptions.Add("accessKey", s.Password);
-            options.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
-
             var assembly = GlobalConstants.LoadedAssemblies.FirstOrDefault();
             var name = assembly?.GetName();
             if (name != null)
             {
-                options.AddAdditionalAppiumOption("project", name.Name);
-                options.AddAdditionalAppiumOption("build", name.Version.ToString());
-                options.AddAdditionalAppiumOption("name", name.FullName);
+                browserstackOptions.Add("projectName", name.Name);
+                browserstackOptions.Add("buildName", name.Version.ToString());
+                browserstackOptions.Add("sessionName", name.FullName);
             }
+            else
+            {
+                browserstackOptions.Add("projectName", "unknownName");
+                browserstackOptions.Add("buildName", "unkonwnBuild");
+                browserstackOptions.Add("sessionName", "unkonwnSession");
+            }
+            string bstackOptions = "bstack:options";
+            if (s.Capabilities.ContainsKey(bstackOptions))
+            {
+                Console.WriteLine($"Merging {bstackOptions} capabilities with values from appsetting.json");
+                var dic = s.Capabilities[bstackOptions];
+                Console.WriteLine($"The type of {bstackOptions} from appsetting.json is {dic.GetType().FullName}");
+                if (dic is JObject jo)
+                {
+                    var dictionary = jo.ToObject<Dictionary<string, object>>();
+                    Console.WriteLine("bstack:options from appsetting.json: " + dictionary.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dictionary)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else if (dic is Dictionary<string, object> dic2)
+                {
+                    Console.WriteLine("bstack:options from appsetting.json: " + dic2.Count);
+                    Console.WriteLine("bstack:options auto-generated: " + browserstackOptions.Count);
+                    foreach (var kv in dic2)
+                    {
+                        browserstackOptions[kv.Key] = kv.Value;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The type of bstack:options from appsetting.json is not JObject: " + dic.GetType().FullName);
+                }
+            }
+            s.Capabilities[bstackOptions] = browserstackOptions;
+            options.AddAdditionalAppiumOption(bstackOptions, browserstackOptions);
         }
 
         private static void AddPlatformSpecificOptions(string appiumServerAddress, AppiumOptions options, Settings s)
@@ -295,7 +332,7 @@ namespace AxaFrance.WebEngine.MobileApp
             {
                 AddBrowserStackOptions(options, s);
             }
-            
+
         }
     }
 }
