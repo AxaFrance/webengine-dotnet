@@ -506,7 +506,7 @@ namespace AxaFrance.WebEngine.Web
                 string folder = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Extracted";
                 DirectoryInfo di = new DirectoryInfo(folder);
                 //fix bug #48: Deadlock if webdriver download fails
-                //Checks if the filder is not empty, or we try to download again the webdriver.
+                //Checks if the folder is not empty, or we need to download and install the webdriver again.
                 //Same implementation for Edge Driver.
                 if (!(di.Exists && di.GetFiles().Any())) 
                 {

@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.tree"
+  id: "tree"
+  children:
+  - "fr.axa.automation.webengine.tree.TreeNode"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.tree"
+  nameWithType: "fr.axa.automation.webengine.tree"
+  fullName: "fr.axa.automation.webengine.tree"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.tree"
+references:
+- uid: "fr.axa.automation.webengine.tree.TreeNode"
+  name: "TreeNode<T>"
+  nameWithType: "TreeNode<T>"
+  fullName: "fr.axa.automation.webengine.tree.TreeNode<T>"

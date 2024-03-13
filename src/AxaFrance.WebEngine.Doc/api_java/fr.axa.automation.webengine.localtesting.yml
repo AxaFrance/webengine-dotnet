@@ -1,0 +1,29 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.localtesting"
+  id: "localtesting"
+  children:
+  - "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  - "fr.axa.automation.webengine.localtesting.LocalTestingProvider"
+  - "fr.axa.automation.webengine.localtesting.LocalTestingRunner"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.localtesting"
+  nameWithType: "fr.axa.automation.webengine.localtesting"
+  fullName: "fr.axa.automation.webengine.localtesting"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.localtesting"
+references:
+- uid: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+  name: "ILocalTestingRunner"
+  nameWithType: "ILocalTestingRunner"
+  fullName: "fr.axa.automation.webengine.localtesting.ILocalTestingRunner"
+- uid: "fr.axa.automation.webengine.localtesting.LocalTestingProvider"
+  name: "LocalTestingProvider"
+  nameWithType: "LocalTestingProvider"
+  fullName: "fr.axa.automation.webengine.localtesting.LocalTestingProvider"
+- uid: "fr.axa.automation.webengine.localtesting.LocalTestingRunner"
+  name: "LocalTestingRunner"
+  nameWithType: "LocalTestingRunner"
+  fullName: "fr.axa.automation.webengine.localtesting.LocalTestingRunner"

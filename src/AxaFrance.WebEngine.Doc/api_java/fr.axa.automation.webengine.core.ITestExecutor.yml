@@ -1,0 +1,79 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.core.ITestExecutor"
+  id: "ITestExecutor"
+  parent: "fr.axa.automation.webengine.core"
+  children:
+  - "fr.axa.automation.webengine.core.ITestExecutor.cleanUp(java.lang.Object)"
+  - "fr.axa.automation.webengine.core.ITestExecutor.initialize(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext)"
+  langs:
+  - "java"
+  name: "ITestExecutor"
+  nameWithType: "ITestExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public interface ITestExecutor"
+- uid: "fr.axa.automation.webengine.core.ITestExecutor.cleanUp(java.lang.Object)"
+  id: "cleanUp(java.lang.Object)"
+  parent: "fr.axa.automation.webengine.core.ITestExecutor"
+  langs:
+  - "java"
+  name: "cleanUp(Object object)"
+  nameWithType: "ITestExecutor.cleanUp(Object object)"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor.cleanUp(Object object)"
+  overload: "fr.axa.automation.webengine.core.ITestExecutor.cleanUp*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public default void cleanUp(Object object)"
+    parameters:
+    - id: "object"
+      type: "java.lang.Object"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "fr.axa.automation.webengine.core.ITestExecutor.initialize(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext)"
+  id: "initialize(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext)"
+  parent: "fr.axa.automation.webengine.core.ITestExecutor"
+  langs:
+  - "java"
+  name: "initialize(AbstractGlobalApplicationContext globalApplicationContext)"
+  nameWithType: "ITestExecutor.initialize(AbstractGlobalApplicationContext globalApplicationContext)"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor.initialize(AbstractGlobalApplicationContext globalApplicationContext)"
+  overload: "fr.axa.automation.webengine.core.ITestExecutor.initialize*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.core"
+  syntax:
+    content: "public default Object initialize(AbstractGlobalApplicationContext globalApplicationContext)"
+    parameters:
+    - id: "globalApplicationContext"
+      type: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+    return:
+      type: "java.lang.Object"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+references:
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+  name: "AbstractGlobalApplicationContext"
+  nameWithType: "AbstractGlobalApplicationContext"
+  fullName: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+- uid: "java.lang.Object"
+  spec.java:
+  - uid: "java.lang.Object"
+    name: "Object"
+    fullName: "java.lang.Object"
+- uid: "fr.axa.automation.webengine.core.ITestExecutor.initialize*"
+  name: "initialize"
+  nameWithType: "ITestExecutor.initialize"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor.initialize"
+  package: "fr.axa.automation.webengine.core"
+- uid: "fr.axa.automation.webengine.core.ITestExecutor.cleanUp*"
+  name: "cleanUp"
+  nameWithType: "ITestExecutor.cleanUp"
+  fullName: "fr.axa.automation.webengine.core.ITestExecutor.cleanUp"
+  package: "fr.axa.automation.webengine.core"

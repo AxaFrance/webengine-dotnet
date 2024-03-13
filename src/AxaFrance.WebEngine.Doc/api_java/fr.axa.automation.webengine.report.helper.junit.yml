@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.helper.junit"
+  id: "junit"
+  children:
+  - "fr.axa.automation.webengine.report.helper.junit.IJunitReportHelper"
+  - "fr.axa.automation.webengine.report.helper.junit.JunitReportHelper"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.helper.junit"
+  nameWithType: "fr.axa.automation.webengine.report.helper.junit"
+  fullName: "fr.axa.automation.webengine.report.helper.junit"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.helper.junit"
+references:
+- uid: "fr.axa.automation.webengine.report.helper.junit.IJunitReportHelper"
+  name: "IJunitReportHelper"
+  nameWithType: "IJunitReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.junit.IJunitReportHelper"
+- uid: "fr.axa.automation.webengine.report.helper.junit.JunitReportHelper"
+  name: "JunitReportHelper"
+  nameWithType: "JunitReportHelper"
+  fullName: "fr.axa.automation.webengine.report.helper.junit.JunitReportHelper"

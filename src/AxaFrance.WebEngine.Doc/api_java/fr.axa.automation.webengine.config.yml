@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.config"
+  id: "config"
+  children:
+  - "fr.axa.automation.webengine.config.AsyncConfiguration"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.config"
+  nameWithType: "fr.axa.automation.webengine.config"
+  fullName: "fr.axa.automation.webengine.config"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.config"
+references:
+- uid: "fr.axa.automation.webengine.config.AsyncConfiguration"
+  name: "AsyncConfiguration"
+  nameWithType: "AsyncConfiguration"
+  fullName: "fr.axa.automation.webengine.config.AsyncConfiguration"

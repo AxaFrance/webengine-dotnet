@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.report.constante"
+  id: "constante"
+  children:
+  - "fr.axa.automation.webengine.report.constante.HtmlFileConstant"
+  - "fr.axa.automation.webengine.report.constante.ReportPathConstant"
+  - "fr.axa.automation.webengine.report.constante.ReportPathKey"
+  - "fr.axa.automation.webengine.report.constante.XsltFileConstant"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.report.constante"
+  nameWithType: "fr.axa.automation.webengine.report.constante"
+  fullName: "fr.axa.automation.webengine.report.constante"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.report.constante"
+references:
+- uid: "fr.axa.automation.webengine.report.constante.HtmlFileConstant"
+  name: "HtmlFileConstant"
+  nameWithType: "HtmlFileConstant"
+  fullName: "fr.axa.automation.webengine.report.constante.HtmlFileConstant"
+- uid: "fr.axa.automation.webengine.report.constante.ReportPathConstant"
+  name: "ReportPathConstant"
+  nameWithType: "ReportPathConstant"
+  fullName: "fr.axa.automation.webengine.report.constante.ReportPathConstant"
+- uid: "fr.axa.automation.webengine.report.constante.ReportPathKey"
+  name: "ReportPathKey"
+  nameWithType: "ReportPathKey"
+  fullName: "fr.axa.automation.webengine.report.constante.ReportPathKey"
+- uid: "fr.axa.automation.webengine.report.constante.XsltFileConstant"
+  name: "XsltFileConstant"
+  nameWithType: "XsltFileConstant"
+  fullName: "fr.axa.automation.webengine.report.constante.XsltFileConstant"
