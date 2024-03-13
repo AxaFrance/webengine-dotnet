@@ -1,0 +1,29 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.context"
+  id: "context"
+  children:
+  - "fr.axa.automation.webengine.context.ExecutionDetail"
+  - "fr.axa.automation.webengine.context.SharedContext"
+  - "fr.axa.automation.webengine.context.SharedInformation"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.context"
+  nameWithType: "fr.axa.automation.webengine.context"
+  fullName: "fr.axa.automation.webengine.context"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.context"
+references:
+- uid: "fr.axa.automation.webengine.context.ExecutionDetail"
+  name: "ExecutionDetail"
+  nameWithType: "ExecutionDetail"
+  fullName: "fr.axa.automation.webengine.context.ExecutionDetail"
+- uid: "fr.axa.automation.webengine.context.SharedContext"
+  name: "SharedContext"
+  nameWithType: "SharedContext"
+  fullName: "fr.axa.automation.webengine.context.SharedContext"
+- uid: "fr.axa.automation.webengine.context.SharedInformation"
+  name: "SharedInformation"
+  nameWithType: "SharedInformation"
+  fullName: "fr.axa.automation.webengine.context.SharedInformation"

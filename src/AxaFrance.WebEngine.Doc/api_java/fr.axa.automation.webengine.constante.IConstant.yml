@@ -1,0 +1,36 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.constante.IConstant"
+  id: "IConstant"
+  parent: "fr.axa.automation.webengine.constante"
+  children:
+  - "fr.axa.automation.webengine.constante.IConstant.SEPARATOR_ARG"
+  langs:
+  - "java"
+  name: "IConstant"
+  nameWithType: "IConstant"
+  fullName: "fr.axa.automation.webengine.constante.IConstant"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.constante"
+  syntax:
+    content: "public interface IConstant"
+- uid: "fr.axa.automation.webengine.constante.IConstant.SEPARATOR_ARG"
+  id: "SEPARATOR_ARG"
+  parent: "fr.axa.automation.webengine.constante.IConstant"
+  langs:
+  - "java"
+  name: "SEPARATOR_ARG"
+  nameWithType: "IConstant.SEPARATOR_ARG"
+  fullName: "fr.axa.automation.webengine.constante.IConstant.SEPARATOR_ARG"
+  type: "Field"
+  package: "fr.axa.automation.webengine.constante"
+  syntax:
+    content: "public static final String SEPARATOR_ARG"
+    return:
+      type: "java.lang.String"
+references:
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

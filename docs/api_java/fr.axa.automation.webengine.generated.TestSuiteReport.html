@@ -1,0 +1,1064 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TestSuiteReport
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TestSuiteReport
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport">
+  
+  
+  <h1 id="fr_axa_automation_webengine_generated_TestSuiteReport" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport" class="text-break">Class TestSuiteReport
+  </h1>
+  <div class="markdown level0 summary"><p>Java class for TestSuiteReport complex type.</p>
+<p>The following schema fragment specifies the expected content contained within this class.</p>
+<pre><code class="lang-java">&lt;complexType name=&quot;TestSuiteReport&quot;&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&gt;
+       &lt;sequence&gt;
+         &lt;element name=&quot;TestResult&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}TestCaseReport&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;EnvironmentVariables&quot; type=&quot;{http://www.axa.fr/WebEngine/2022}EnvironmentVariables&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;StartTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;EndTime&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&gt;
+         &lt;element name=&quot;HostName&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;SystemOut&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;SystemError&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; minOccurs=&quot;0&quot;/&gt;
+         &lt;element name=&quot;NumberOfTestcase&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Passed&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Failed&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+         &lt;element name=&quot;Ignored&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&gt;
+       &lt;/sequence&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+</code></pre></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">java.lang.Object</span></div>
+    <div class="level1"><span class="xref">TestSuiteReport</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">java.io.Serializable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">java.lang.Object.clone()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.equals(java.lang.Object)</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.finalize()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.getClass()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.hashCode()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.notify()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.notifyAll()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.toString()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait(long)</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait(long,int)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: </h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="fr_axa_automation_webengine_generated_TestSuiteReport_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TestSuiteReport implements Serializable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_TestSuiteReport_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.TestSuiteReport*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_TestSuiteReport__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.TestSuiteReport()">TestSuiteReport()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TestSuiteReport()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_endTime" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.endTime">endTime</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Calendar endTime</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_environmentVariables" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.environmentVariables">environmentVariables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected EnvironmentVariables environmentVariables</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_failed" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.failed">failed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int failed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_hostName" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.hostName">hostName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected String hostName</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_ignored" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.ignored">ignored</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int ignored</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_numberOfTestcase" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.numberOfTestcase">numberOfTestcase</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int numberOfTestcase</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_passed" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.passed">passed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int passed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_startTime" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.startTime">startTime</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Calendar startTime</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_systemError" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.systemError">systemError</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected String systemError</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_systemOut" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.systemOut">systemOut</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected String systemOut</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_testResults" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.testResults">testResults</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;TestCaseReport&gt; testResults</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.List</span>&lt;<a class="xref" href="fr.axa.automation.webengine.generated.TestCaseReport.html">TestCaseReport</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getEndTime_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getEndTime*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getEndTime__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getEndTime()">getEndTime()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the endTime property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Calendar getEndTime()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td><p>possible object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getEnvironmentVariables_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getEnvironmentVariables*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getEnvironmentVariables__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getEnvironmentVariables()">getEnvironmentVariables()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the environmentVariables property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnvironmentVariables getEnvironmentVariables()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></td>
+        <td><p>possible object is
+     <a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getFailed_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getFailed*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getFailed__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getFailed()">getFailed()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the failed property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getFailed()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getHostName_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getHostName*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getHostName__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getHostName()">getHostName()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the hostName property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getHostName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><p>possible object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getIgnored_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getIgnored*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getIgnored__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getIgnored()">getIgnored()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the ignored property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getIgnored()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getNumberOfTestcase_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getNumberOfTestcase*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getNumberOfTestcase__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getNumberOfTestcase()">getNumberOfTestcase()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the numberOfTestcase property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getNumberOfTestcase()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getPassed_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getPassed*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getPassed__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getPassed()">getPassed()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the passed property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getPassed()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getStartTime_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getStartTime*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getStartTime__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getStartTime()">getStartTime()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the startTime property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Calendar getStartTime()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td><p>possible object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getSystemError_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getSystemError*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getSystemError__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getSystemError()">getSystemError()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the systemError property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getSystemError()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><p>possible object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getSystemOut_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getSystemOut*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getSystemOut__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getSystemOut()">getSystemOut()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the systemOut property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getSystemOut()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><p>possible object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_getTestResults_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getTestResults*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_getTestResults__" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.getTestResults()">getTestResults()</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the testResults property.</p>
+<p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make to the returned list will be present inside the JAXB object. This is why there is not a <code>set</code> method for the testResults property.</p>
+<p>For example, to add a new item, do as follows:</p>
+<pre><code class="lang-java">getTestResults().add(newItem);
+</code></pre><p>Objects of the following type(s) are allowed in the list <a class="xref" href="fr.axa.automation.webengine.generated.TestCaseReport.html">TestCaseReport</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;TestCaseReport&gt; getTestResults()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.List</span>&lt;<a class="xref" href="fr.axa.automation.webengine.generated.TestCaseReport.html">TestCaseReport</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setEndTime_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setEndTime*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setEndTime_java_util_Calendar_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setEndTime(java.util.Calendar)">setEndTime(Calendar value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the endTime property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setEndTime(Calendar value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setEnvironmentVariables_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setEnvironmentVariables*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setEnvironmentVariables_fr_axa_automation_webengine_generated_EnvironmentVariables_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setEnvironmentVariables(fr.axa.automation.webengine.generated.EnvironmentVariables)">setEnvironmentVariables(EnvironmentVariables value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the environmentVariables property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setEnvironmentVariables(EnvironmentVariables value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <a class="xref" href="fr.axa.automation.webengine.generated.EnvironmentVariables.html">EnvironmentVariables</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setFailed_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setFailed*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setFailed_int_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setFailed(int)">setFailed(int value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the failed property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setFailed(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setHostName_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setHostName*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setHostName_java_lang_String_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setHostName(java.lang.String)">setHostName(String value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the hostName property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setHostName(String value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setIgnored_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setIgnored*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setIgnored_int_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setIgnored(int)">setIgnored(int value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the ignored property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setIgnored(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setNumberOfTestcase_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setNumberOfTestcase*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setNumberOfTestcase_int_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setNumberOfTestcase(int)">setNumberOfTestcase(int value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the numberOfTestcase property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setNumberOfTestcase(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setPassed_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setPassed*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setPassed_int_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setPassed(int)">setPassed(int value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the passed property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setPassed(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setStartTime_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setStartTime*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setStartTime_java_util_Calendar_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setStartTime(java.util.Calendar)">setStartTime(Calendar value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the startTime property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setStartTime(Calendar value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Calendar</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setSystemError_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setSystemError*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setSystemError_java_lang_String_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setSystemError(java.lang.String)">setSystemError(String value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the systemError property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setSystemError(String value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_generated_TestSuiteReport_setSystemOut_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setSystemOut*"></a>
+  <h4 id="fr_axa_automation_webengine_generated_TestSuiteReport_setSystemOut_java_lang_String_" data-uid="fr.axa.automation.webengine.generated.TestSuiteReport.setSystemOut(java.lang.String)">setSystemOut(String value)</h4>
+  <div class="markdown level1 summary"><p>Sets the value of the systemOut property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setSystemOut(String value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>allowed object is
+     <span class="xref">String</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">java.io.Serializable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

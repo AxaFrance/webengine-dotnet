@@ -1,0 +1,2789 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class WebElementDescription
+   | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class WebElementDescription
+   | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fr.axa.automation.webengine.core.WebElementDescription">
+  
+  
+  <h1 id="fr_axa_automation_webengine_core_WebElementDescription" data-uid="fr.axa.automation.webengine.core.WebElementDescription" class="text-break">Class WebElementDescription
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">java.lang.Object</span></div>
+    <div class="level1"><a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html">AbstractElement</a></div>
+    <div class="level2"><a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html">AbstractWebElement</a></div>
+    <div class="level3"><span class="xref">WebElementDescription</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement__T_R_retry_fr_axa_automation_webengine_api_IFunction_T_R__T_">AbstractElement.&lt;T,R&gt;retry(IFunction&lt;T,R&gt;,T)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement__T_R_retry_fr_axa_automation_webengine_api_IFunction_T_R__T_java_lang_Integer_">AbstractElement.&lt;T,R&gt;retry(IFunction&lt;T,R&gt;,T,Integer)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement_getScreenshot__">AbstractElement.getScreenshot()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement_internalGetScreenshot__">AbstractElement.internalGetScreenshot()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement_populateDriver_org_openqa_selenium_WebDriver_">AbstractElement.populateDriver(WebDriver)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement_waitInMillisecondes_java_lang_Long_">AbstractElement.waitInMillisecondes(Long)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_assertInputValue_org_openqa_selenium_WebElement_java_lang_String_">AbstractWebElement.assertInputValue(WebElement,String)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_autocompletion_java_lang_String_">AbstractWebElement.autocompletion(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_clear__">AbstractWebElement.clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_clearWithKey__">AbstractWebElement.clearWithKey()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_click__">AbstractWebElement.click()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_click_org_openqa_selenium_WebElement_">AbstractWebElement.click(WebElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_existWithoutRetry_int_">AbstractWebElement.existWithoutRetry(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_exists__">AbstractWebElement.exists()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_exists_java_lang_Integer_">AbstractWebElement.exists(Integer)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElement__">AbstractWebElement.findElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElement_int_">AbstractWebElement.findElement(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElement_org_openqa_selenium_By_">AbstractWebElement.findElement(By)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElement_org_openqa_selenium_By_int_">AbstractWebElement.findElement(By,int)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElements__">AbstractWebElement.findElements()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_findElements_org_openqa_selenium_By_">AbstractWebElement.findElements(By)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_getAttribute_java_lang_String_">AbstractWebElement.getAttribute(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_getText__">AbstractWebElement.getText()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_internalFindElement__">AbstractWebElement.internalFindElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_internalFindElements__">AbstractWebElement.internalFindElements()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isDisplayed__">AbstractWebElement.isDisplayed()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isEnabled__">AbstractWebElement.isEnabled()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isNotDisplayed__">AbstractWebElement.isNotDisplayed()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isNotExists__">AbstractWebElement.isNotExists()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isNotSelected__">AbstractWebElement.isNotSelected()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_isSelected__">AbstractWebElement.isSelected()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_pressEnterKey__">AbstractWebElement.pressEnterKey()</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_sendKeys_java_lang_String_">AbstractWebElement.sendKeys(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_sendKeys_java_lang_String_org_openqa_selenium_WebElement_">AbstractWebElement.sendKeys(String,WebElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_sendKeysWithClear_java_lang_String_org_openqa_selenium_WebElement_">AbstractWebElement.sendKeysWithClear(String,WebElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_setValue_java_lang_String_">AbstractWebElement.setValue(String)</a>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.clone()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.equals(java.lang.Object)</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.finalize()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.getClass()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.hashCode()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.notify()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.notifyAll()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.toString()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait()</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait(long)</span>
+    </div>
+    <div>
+      <span class="xref">java.lang.Object.wait(long,int)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: </h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="fr_axa_automation_webengine_core_WebElementDescription_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WebElementDescription extends AbstractWebElement</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_WebElementDescription_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.WebElementDescription*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_WebElementDescription__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.WebElementDescription()">WebElementDescription()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebElementDescription()</code></pre>
+  </div>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_WebElementDescription_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.WebElementDescription*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_WebElementDescription_org_openqa_selenium_WebDriver_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.WebElementDescription(org.openqa.selenium.WebDriver)">WebElementDescription(WebDriver webDriver)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebElementDescription(WebDriver webDriver)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebDriver</span></td>
+        <td><span class="parametername">webDriver</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_INNER_HTML" data-uid="fr.axa.automation.webengine.core.WebElementDescription.INNER_HTML">INNER_HTML</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static final String INNER_HTML</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_OUTER_HTML" data-uid="fr.axa.automation.webengine.core.WebElementDescription.OUTER_HTML">OUTER_HTML</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static final String OUTER_HTML</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_asSelect_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.asSelect*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_asSelect__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.asSelect()">asSelect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Select asSelect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.support.ui.Select</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentByElementType_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentByElementType*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentByElementType_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentByElementType(java.lang.String)">assertContentByElementType(String expectedValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentByElementType(String expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentEmpty_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentEmpty*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentEmpty__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentEmpty()">assertContentEmpty()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentEmpty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentInput_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentInput*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentInput_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentInput(java.lang.String)">assertContentInput(String expectedValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentInput(String expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentNotEmpty_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentNotEmpty*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentNotEmpty__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentNotEmpty()">assertContentNotEmpty()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentNotEmpty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentSelect_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentSelect*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentSelect_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentSelect(java.lang.String)">assertContentSelect(String expectedValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentSelect(String expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentText_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentText(java.lang.String)">assertContentText(String expectedValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentText(String expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertContentTextarea_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentTextarea*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertContentTextarea_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertContentTextarea(java.lang.String)">assertContentTextarea(String expectedValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertContentTextarea(String expectedValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">expectedValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentInput_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentInput*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentInput__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentInput()">assertNotEmptyContentInput()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertNotEmptyContentInput()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentText__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentText()">assertNotEmptyContentText()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertNotEmptyContentText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentTextarea_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentTextarea*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertNotEmptyContentTextarea__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertNotEmptyContentTextarea()">assertNotEmptyContentTextarea()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertNotEmptyContentTextarea()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertRadioChecked_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertRadioChecked*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertRadioChecked__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertRadioChecked()">assertRadioChecked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertRadioChecked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_assertRadioNotChecked_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertRadioNotChecked*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_assertRadioNotChecked__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.assertRadioNotChecked()">assertRadioNotChecked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssertContentResult assertRadioNotChecked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.AssertContentResult.html">AssertContentResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_checkByValue_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.checkByValue*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_checkByValue_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.checkByValue(java.lang.String)">checkByValue(String value)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void checkByValue(String value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_dragAndDropTo_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.dragAndDropTo*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_dragAndDropTo_fr_axa_automation_webengine_core_AbstractWebElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.dragAndDropTo(fr.axa.automation.webengine.core.AbstractWebElement)">dragAndDropTo(AbstractWebElement element)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void dragAndDropTo(AbstractWebElement element)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html">AbstractWebElement</a></td>
+        <td><span class="parametername">element</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_dragAndDropTo_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.dragAndDropTo*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_dragAndDropTo_org_openqa_selenium_WebElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.dragAndDropTo(org.openqa.selenium.WebElement)">dragAndDropTo(WebElement element)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void dragAndDropTo(WebElement element)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td><span class="parametername">element</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_focus_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focus*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_focus__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focus()">focus()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void focus()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClick_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClick*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClick__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClick()">focusAndClick()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void focusAndClick()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClickFromActions_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClickFromActions*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClickFromActions__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClickFromActions()">focusAndClickFromActions()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void focusAndClickFromActions()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClickWithJS_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClickWithJS*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_focusAndClickWithJS__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.focusAndClickWithJS()">focusAndClickWithJS()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void focusAndClickWithJS()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getContentInput_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentInput*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getContentInput__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentInput()">getContentInput()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getContentInput()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getContentInputRadio_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentInputRadio*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getContentInputRadio__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentInputRadio()">getContentInputRadio()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getContentInputRadio()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getContentSelect_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentSelect*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getContentSelect__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentSelect()">getContentSelect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getContentSelect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getContentText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getContentText__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentText()">getContentText()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getContentText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getContentTextarea_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentTextarea*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getContentTextarea__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getContentTextarea()">getContentTextarea()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getContentTextarea()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getElementInShadowByCssSelector_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getElementInShadowByCssSelector*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getElementInShadowByCssSelector_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getElementInShadowByCssSelector(java.lang.String)">getElementInShadowByCssSelector(String cssSelector)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebElement getElementInShadowByCssSelector(String cssSelector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">cssSelector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getElementInShadowByXpath_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getElementInShadowByXpath*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getElementInShadowByXpath_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getElementInShadowByXpath(java.lang.String)">getElementInShadowByXpath(String xPath)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebElement getElementInShadowByXpath(String xPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">xPath</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getInnerHtml_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getInnerHtml*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getInnerHtml__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getInnerHtml()">getInnerHtml()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getInnerHtml()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getOuterHtml_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getOuterHtml*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getOuterHtml__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getOuterHtml()">getOuterHtml()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getOuterHtml()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getSelectedOption_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getSelectedOption*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getSelectedOption__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getSelectedOption()">getSelectedOption()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementContent getSelectedOption()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="fr.axa.automation.webengine.global.ElementContent.html">ElementContent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getTextByElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getTextByElement*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getTextByElement__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getTextByElement()">getTextByElement()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String getTextByElement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_getValueAndTextInInputSelect_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getValueAndTextInInputSelect*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_getValueAndTextInInputSelect_org_openqa_selenium_support_ui_Select_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.getValueAndTextInInputSelect(org.openqa.selenium.support.ui.Select)">getValueAndTextInInputSelect(Select select)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Map&lt;String,String&gt; getValueAndTextInInputSelect(Select select)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.support.ui.Select</span></td>
+        <td><span class="parametername">select</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Map</span>&lt;<span class="xref">java.lang.String</span>,<span class="xref">java.lang.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_highLight_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.highLight*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_highLight__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.highLight()">highLight()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void highLight()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_internalFindElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalFindElement*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_internalFindElement__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalFindElement()">internalFindElement()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WebElement internalFindElement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_internalFindElement__">AbstractWebElement.internalFindElement()</a></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_internalFindElements_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalFindElements*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_internalFindElements__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalFindElements()">internalFindElements()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Collection&lt;WebElement&gt; internalFindElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.Collection</span>&lt;<span class="xref">org.openqa.selenium.WebElement</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fr.axa.automation.webengine.core.AbstractWebElement.html#fr_axa_automation_webengine_core_AbstractWebElement_internalFindElements__">AbstractWebElement.internalFindElements()</a></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_internalGetScreenshot_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalGetScreenshot*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_internalGetScreenshot__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.internalGetScreenshot()">internalGetScreenshot()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Function&lt;Void,byte[]&gt; internalGetScreenshot()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.util.function.Function</span>&lt;<span class="xref">java.lang.Void</span>,<span class="xref">byte</span>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="fr.axa.automation.webengine.core.AbstractElement.html#fr_axa_automation_webengine_core_AbstractElement_internalGetScreenshot__">AbstractElement.internalGetScreenshot()</a></div>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isChecked_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isChecked*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isChecked__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isChecked()">isChecked()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public boolean isChecked()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInput_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInput*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInput__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInput()">isInput()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInput()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInput_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInput*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInput_org_openqa_selenium_WebElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInput(org.openqa.selenium.WebElement)">isInput(WebElement webElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInput(WebElement webElement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td><span class="parametername">webElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeCheckbox_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeCheckbox*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeCheckbox__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeCheckbox()">isInputTypeCheckbox()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInputTypeCheckbox()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeCheckbox_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeCheckbox*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeCheckbox_org_openqa_selenium_WebElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeCheckbox(org.openqa.selenium.WebElement)">isInputTypeCheckbox(WebElement webElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInputTypeCheckbox(WebElement webElement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td><span class="parametername">webElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeRadio_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeRadio*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeRadio__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeRadio()">isInputTypeRadio()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInputTypeRadio()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isInputTypeText__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isInputTypeText()">isInputTypeText()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isInputTypeText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isSelect_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isSelect*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isSelect__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isSelect()">isSelect()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isSelect()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isTextarea_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isTextarea*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isTextarea__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isTextarea()">isTextarea()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isTextarea()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_isTextarea_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isTextarea*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_isTextarea_org_openqa_selenium_WebElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.isTextarea(org.openqa.selenium.WebElement)">isTextarea(WebElement webElement)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Boolean isTextarea(WebElement webElement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">org.openqa.selenium.WebElement</span></td>
+        <td><span class="parametername">webElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_mouseHover_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.mouseHover*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_mouseHover__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.mouseHover()">mouseHover()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void mouseHover()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_rightClick_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.rightClick*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_rightClick__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.rightClick()">rightClick()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void rightClick()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoCenterView_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoCenterView*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoCenterView__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoCenterView()">scrollIntoCenterView()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void scrollIntoCenterView()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoView_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoView*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoView__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoView()">scrollIntoView()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void scrollIntoView()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoViewAndclick_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoViewAndclick*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_scrollIntoViewAndclick__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollIntoViewAndclick()">scrollIntoViewAndclick()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void scrollIntoViewAndclick()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_scrollToElement_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollToElement*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_scrollToElement__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollToElement()">scrollToElement()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void scrollToElement()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_scrollToElementAndclick_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollToElementAndclick*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_scrollToElementAndclick__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.scrollToElementAndclick()">scrollToElementAndclick()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void scrollToElementAndclick()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_selectByIndex_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByIndex*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_selectByIndex_java_lang_Integer_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByIndex(java.lang.Integer)">selectByIndex(Integer index)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void selectByIndex(Integer index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Integer</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_selectByText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_selectByText_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByText(java.lang.String)">selectByText(String text)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void selectByText(String text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_selectByValue_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByValue*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_selectByValue_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByValue(java.lang.String)">selectByValue(String value)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void selectByValue(String value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_selectByValueOrText_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByValueOrText*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_selectByValueOrText_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.selectByValueOrText(java.lang.String)">selectByValueOrText(String text)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void selectByValueOrText(String text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_sendKeyboard_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeyboard*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_sendKeyboard_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeyboard(java.lang.String)">sendKeyboard(String text)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void sendKeyboard(String text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_sendKeysWithAssertion_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeysWithAssertion*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_sendKeysWithAssertion_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeysWithAssertion(java.lang.String)">sendKeysWithAssertion(String text)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void sendKeysWithAssertion(String text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_sendKeysWithClearBefore_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeysWithClearBefore*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_sendKeysWithClearBefore_java_lang_String_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.sendKeysWithClearBefore(java.lang.String)">sendKeysWithClearBefore(String text)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void sendKeysWithClearBefore(String text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_toString_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.toString*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_toString__" data-uid="fr.axa.automation.webengine.core.WebElementDescription.toString()">toString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public String toString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">java.lang.Object.toString()</span></div>
+  
+  
+  <a id="fr_axa_automation_webengine_core_WebElementDescription_waitUntilXpath_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.waitUntilXpath*"></a>
+  <h4 id="fr_axa_automation_webengine_core_WebElementDescription_waitUntilXpath_java_lang_Long_" data-uid="fr.axa.automation.webengine.core.WebElementDescription.waitUntilXpath(java.lang.Long)">waitUntilXpath(Long timeOutInSeconds)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public boolean waitUntilXpath(Long timeOutInSeconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">java.lang.Long</span></td>
+        <td><span class="parametername">timeOutInSeconds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

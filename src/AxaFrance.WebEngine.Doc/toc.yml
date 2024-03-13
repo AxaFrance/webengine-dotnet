@@ -3,6 +3,6 @@
 - name: .NET API Reference
   href: api_net/
 - name: JAVA API Reference
-  href: api_java/index.md
+  href: api_java/
 - name: Tutorials
   href: tutorials/

@@ -1,0 +1,56 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.global.SettingsWeb"
+  id: "SettingsWeb"
+  parent: "fr.axa.automation.webengine.global"
+  children:
+  - "fr.axa.automation.webengine.global.SettingsWeb.RETRY_MILLISECONDS"
+  - "fr.axa.automation.webengine.global.SettingsWeb.TIMEOUT_SECONDS"
+  langs:
+  - "java"
+  name: "SettingsWeb"
+  nameWithType: "SettingsWeb"
+  fullName: "fr.axa.automation.webengine.global.SettingsWeb"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.global"
+  syntax:
+    content: "public interface SettingsWeb"
+- uid: "fr.axa.automation.webengine.global.SettingsWeb.RETRY_MILLISECONDS"
+  id: "RETRY_MILLISECONDS"
+  parent: "fr.axa.automation.webengine.global.SettingsWeb"
+  langs:
+  - "java"
+  name: "RETRY_MILLISECONDS"
+  nameWithType: "SettingsWeb.RETRY_MILLISECONDS"
+  fullName: "fr.axa.automation.webengine.global.SettingsWeb.RETRY_MILLISECONDS"
+  type: "Field"
+  package: "fr.axa.automation.webengine.global"
+  syntax:
+    content: "public static final long RETRY_MILLISECONDS"
+    return:
+      type: "long"
+- uid: "fr.axa.automation.webengine.global.SettingsWeb.TIMEOUT_SECONDS"
+  id: "TIMEOUT_SECONDS"
+  parent: "fr.axa.automation.webengine.global.SettingsWeb"
+  langs:
+  - "java"
+  name: "TIMEOUT_SECONDS"
+  nameWithType: "SettingsWeb.TIMEOUT_SECONDS"
+  fullName: "fr.axa.automation.webengine.global.SettingsWeb.TIMEOUT_SECONDS"
+  type: "Field"
+  package: "fr.axa.automation.webengine.global"
+  syntax:
+    content: "public static final int TIMEOUT_SECONDS"
+    return:
+      type: "int"
+references:
+- uid: "int"
+  spec.java:
+  - uid: "int"
+    name: "int"
+    fullName: "int"
+- uid: "long"
+  spec.java:
+  - uid: "long"
+    name: "long"
+    fullName: "long"

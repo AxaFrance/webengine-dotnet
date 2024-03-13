@@ -1,0 +1,72 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"
+  id: "ITestSuiteWebExecutor"
+  parent: "fr.axa.automation.webengine.api"
+  children:
+  - "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.core.ITestSuite)"
+  langs:
+  - "java"
+  name: "ITestSuiteWebExecutor"
+  nameWithType: "ITestSuiteWebExecutor"
+  fullName: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"
+  type: "Interface"
+  package: "fr.axa.automation.webengine.api"
+  syntax:
+    content: "public interface ITestSuiteWebExecutor extends ITestSuiteExecutor"
+  implements:
+  - "fr.axa.automation.webengine.core.ITestSuiteExecutor"
+- uid: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.core.ITestSuite)"
+  id: "run(fr.axa.automation.webengine.global.AbstractGlobalApplicationContext,fr.axa.automation.webengine.core.ITestSuite)"
+  parent: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor"
+  langs:
+  - "java"
+  name: "run(AbstractGlobalApplicationContext globalApplicationContext, ITestSuite testSuite)"
+  nameWithType: "ITestSuiteWebExecutor.run(AbstractGlobalApplicationContext globalApplicationContext, ITestSuite testSuite)"
+  fullName: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run(AbstractGlobalApplicationContext globalApplicationContext, ITestSuite testSuite)"
+  overload: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run*"
+  type: "Method"
+  package: "fr.axa.automation.webengine.api"
+  syntax:
+    content: "public abstract TestSuiteReport run(AbstractGlobalApplicationContext globalApplicationContext, ITestSuite testSuite)"
+    parameters:
+    - id: "globalApplicationContext"
+      type: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+    - id: "testSuite"
+      type: "fr.axa.automation.webengine.core.ITestSuite"
+    return:
+      type: "fr.axa.automation.webengine.generated.TestSuiteReport"
+  exceptions:
+  - type: "fr.axa.automation.webengine.exception.WebEngineException"
+  - type: "java.net.UnknownHostException"
+references:
+- uid: "fr.axa.automation.webengine.exception.WebEngineException"
+  name: "WebEngineException"
+  nameWithType: "WebEngineException"
+  fullName: "fr.axa.automation.webengine.exception.WebEngineException"
+- uid: "java.net.UnknownHostException"
+  spec.java:
+  - uid: "java.net.UnknownHostException"
+    name: "UnknownHostException"
+    fullName: "java.net.UnknownHostException"
+- uid: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+  name: "AbstractGlobalApplicationContext"
+  nameWithType: "AbstractGlobalApplicationContext"
+  fullName: "fr.axa.automation.webengine.global.AbstractGlobalApplicationContext"
+- uid: "fr.axa.automation.webengine.core.ITestSuite"
+  name: "ITestSuite"
+  nameWithType: "ITestSuite"
+  fullName: "fr.axa.automation.webengine.core.ITestSuite"
+- uid: "fr.axa.automation.webengine.generated.TestSuiteReport"
+  name: "TestSuiteReport"
+  nameWithType: "TestSuiteReport"
+  fullName: "fr.axa.automation.webengine.generated.TestSuiteReport"
+- uid: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run*"
+  name: "run"
+  nameWithType: "ITestSuiteWebExecutor.run"
+  fullName: "fr.axa.automation.webengine.api.ITestSuiteWebExecutor.run"
+  package: "fr.axa.automation.webengine.api"
+- uid: "fr.axa.automation.webengine.core.ITestSuiteExecutor"
+  name: "ITestSuiteExecutor"
+  nameWithType: "ITestSuiteExecutor"
+  fullName: "fr.axa.automation.webengine.core.ITestSuiteExecutor"

@@ -1,0 +1,96 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.parameter.IParameter"
+  id: "IParameter"
+  parent: "fr.axa.automation.parameter"
+  children:
+  - "fr.axa.automation.parameter.IParameter.COMMENT"
+  - "fr.axa.automation.parameter.IParameter.DATE"
+  - "fr.axa.automation.parameter.IParameter.LANGUAGE"
+  - "fr.axa.automation.parameter.IParameter.PASSWORD"
+  - "fr.axa.automation.parameter.IParameter.URL"
+  langs:
+  - "java"
+  name: "IParameter"
+  nameWithType: "IParameter"
+  fullName: "fr.axa.automation.parameter.IParameter"
+  type: "Interface"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public interface IParameter"
+- uid: "fr.axa.automation.parameter.IParameter.COMMENT"
+  id: "COMMENT"
+  parent: "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "COMMENT"
+  nameWithType: "IParameter.COMMENT"
+  fullName: "fr.axa.automation.parameter.IParameter.COMMENT"
+  type: "Field"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public static final String COMMENT"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.parameter.IParameter.DATE"
+  id: "DATE"
+  parent: "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "DATE"
+  nameWithType: "IParameter.DATE"
+  fullName: "fr.axa.automation.parameter.IParameter.DATE"
+  type: "Field"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public static final String DATE"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.parameter.IParameter.LANGUAGE"
+  id: "LANGUAGE"
+  parent: "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "LANGUAGE"
+  nameWithType: "IParameter.LANGUAGE"
+  fullName: "fr.axa.automation.parameter.IParameter.LANGUAGE"
+  type: "Field"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public static final String LANGUAGE"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.parameter.IParameter.PASSWORD"
+  id: "PASSWORD"
+  parent: "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "PASSWORD"
+  nameWithType: "IParameter.PASSWORD"
+  fullName: "fr.axa.automation.parameter.IParameter.PASSWORD"
+  type: "Field"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public static final String PASSWORD"
+    return:
+      type: "java.lang.String"
+- uid: "fr.axa.automation.parameter.IParameter.URL"
+  id: "URL"
+  parent: "fr.axa.automation.parameter.IParameter"
+  langs:
+  - "java"
+  name: "URL"
+  nameWithType: "IParameter.URL"
+  fullName: "fr.axa.automation.parameter.IParameter.URL"
+  type: "Field"
+  package: "fr.axa.automation.parameter"
+  syntax:
+    content: "public static final String URL"
+    return:
+      type: "java.lang.String"
+references:
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

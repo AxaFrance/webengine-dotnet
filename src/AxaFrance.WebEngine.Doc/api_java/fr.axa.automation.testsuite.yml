@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.testsuite"
+  id: "testsuite"
+  children:
+  - "fr.axa.automation.testsuite.WebengineTestSuite"
+  langs:
+  - "java"
+  name: "fr.axa.automation.testsuite"
+  nameWithType: "fr.axa.automation.testsuite"
+  fullName: "fr.axa.automation.testsuite"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.testsuite"
+references:
+- uid: "fr.axa.automation.testsuite.WebengineTestSuite"
+  name: "WebengineTestSuite"
+  nameWithType: "WebengineTestSuite"
+  fullName: "fr.axa.automation.testsuite.WebengineTestSuite"

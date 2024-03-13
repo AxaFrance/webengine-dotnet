@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation.webengine.boot"
+  id: "boot"
+  children:
+  - "fr.axa.automation.webengine.boot.AbstractBootProject"
+  - "fr.axa.automation.webengine.boot.BootProject"
+  - "fr.axa.automation.webengine.boot.BootProjectNoCode"
+  - "fr.axa.automation.webengine.boot.IBootProject"
+  langs:
+  - "java"
+  name: "fr.axa.automation.webengine.boot"
+  nameWithType: "fr.axa.automation.webengine.boot"
+  fullName: "fr.axa.automation.webengine.boot"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation.webengine.boot"
+references:
+- uid: "fr.axa.automation.webengine.boot.AbstractBootProject"
+  name: "AbstractBootProject"
+  nameWithType: "AbstractBootProject"
+  fullName: "fr.axa.automation.webengine.boot.AbstractBootProject"
+- uid: "fr.axa.automation.webengine.boot.BootProject"
+  name: "BootProject"
+  nameWithType: "BootProject"
+  fullName: "fr.axa.automation.webengine.boot.BootProject"
+- uid: "fr.axa.automation.webengine.boot.BootProjectNoCode"
+  name: "BootProjectNoCode"
+  nameWithType: "BootProjectNoCode"
+  fullName: "fr.axa.automation.webengine.boot.BootProjectNoCode"
+- uid: "fr.axa.automation.webengine.boot.IBootProject"
+  name: "IBootProject"
+  nameWithType: "IBootProject"
+  fullName: "fr.axa.automation.webengine.boot.IBootProject"

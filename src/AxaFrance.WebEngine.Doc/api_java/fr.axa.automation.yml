@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "fr.axa.automation"
+  id: "automation"
+  children:
+  - "fr.axa.automation.Application"
+  langs:
+  - "java"
+  name: "fr.axa.automation"
+  nameWithType: "fr.axa.automation"
+  fullName: "fr.axa.automation"
+  type: "Namespace"
+  syntax:
+    content: "package fr.axa.automation"
+references:
+- uid: "fr.axa.automation.Application"
+  name: "Application"
+  nameWithType: "Application"
+  fullName: "fr.axa.automation.Application"
