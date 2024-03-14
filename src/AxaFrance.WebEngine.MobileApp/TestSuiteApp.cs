@@ -36,7 +36,6 @@ namespace AxaFrance.WebEngine.MobileApp
             {
                 try
                 {
-                    androidDriver.CloseApp();
                     androidDriver.Close();
                 }
                 catch { }
@@ -51,7 +50,6 @@ namespace AxaFrance.WebEngine.MobileApp
             {
                 try
                 {
-                    iosDriver.CloseApp();
                     iosDriver.Close();
                 }
                 catch { }
