@@ -376,6 +376,11 @@ namespace AxaFrance.WebEngine.ExcelUI
             Directory.CreateDirectory(folder);
             dwlProgressBar.PerformStep();
             WebClient client = new WebClient();
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls | 
+                System.Net.SecurityProtocolType.Tls11 | 
+                System.Net.SecurityProtocolType.Tls12 | 
+                System.Net.SecurityProtocolType.Ssl3;
+
             if (!string.IsNullOrEmpty(noCodeArtifactPath) && !string.IsNullOrEmpty(mavenRepoUrl) && !noCodeArtifactPath.Contains("#{") && !mavenRepoUrl.Contains("#{"))
             {
                 string mvnSelectedRepo = (getBeta ? mavenSnapRepoUrl : mavenRepoUrl);
@@ -447,7 +452,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             if (jarOrCmdYaml == 1)
             {
                 string commandfile = folder + "\\command.yaml";
-                if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0)
+                if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0 || (new FileInfo(commandfile)).Length<=0)
                 {
                     dwlProgressBar.PerformStep();
                     client.DownloadFile(commandDirectLink, commandfile);

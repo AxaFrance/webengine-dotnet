@@ -1118,9 +1118,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             Range rng = activeWorksheet.Columns[2];
             updateRangeValidation(rng, cmds.Keys.ToArray(), newHelp.Name);
 
-            rng = Globals.ThisAddIn.Application.ActiveSheet.Columns[4];
+            Range rngOptions = activeWorksheet.Columns[4];
             string[] options = new string[] { "optional", "optional and depends on previous", "" };
-            updateRangeValidation(rng, options, "");
+            updateRangeValidation(rngOptions, options, "");
 
         }
 

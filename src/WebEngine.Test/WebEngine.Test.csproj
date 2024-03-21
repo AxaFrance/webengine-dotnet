@@ -37,10 +37,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine.ExcelUI\AxaFrance.WebEngine.ExcelUI.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.MobileApp\AxaFrance.WebEngine.MobileApp.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
