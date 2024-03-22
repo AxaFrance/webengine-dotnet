@@ -231,10 +231,21 @@ namespace AxaFrance.WebEngine.ExcelUI
                         {
                             target = target.Replace("{", "").Replace("}", "");
                             String[] targetParts = t.Split(':');
-                            if (targetParts.Length == 2)
+                            if (targetParts.Length >= 2)
                             {
                                 String key = targetParts[0].Replace("\"", "");
                                 String value = targetParts[1].Replace("\"", "");
+                                if (targetParts.Length > 2)
+                                {
+                                    for (int i = 2; i < targetParts.Length; i++)
+                                    {
+                                        value = value + ":" + targetParts[i].Replace("\"", "");
+                                    }
+                                }
+                                if (value.EndsWith(","))
+                                {
+                                    value = value.Substring(0, value.Length - 1);
+                                }
                                 switch (key)
                                 {
                                     case "id":

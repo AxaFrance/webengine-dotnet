@@ -243,6 +243,16 @@ namespace AxaFrance.WebEngine.ExcelUI.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap no_code_light {
+            get {
+                object obj = ResourceManager.GetObject("no_code_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap safari {
             get {
                 object obj = ResourceManager.GetObject("safari", resourceCulture);

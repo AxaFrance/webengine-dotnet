@@ -43,31 +43,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon));
             this.tabWebEngine = this.Factory.CreateRibbonTab();
             this.grpNoCode = this.Factory.CreateRibbonGroup();
-            this.btnStartDriveByExcelNow = this.Factory.CreateRibbonButton();
-            this.driveSettings = this.Factory.CreateRibbonButton();
-            this.BtGotoDriveHelp = this.Factory.CreateRibbonButton();
-            this.KeepassHelp = this.Factory.CreateRibbonButton();
             this.grpKeyWord = this.Factory.CreateRibbonGroup();
-            this.gryExport = this.Factory.CreateRibbonGallery();
-            this.btnExportSelection = this.Factory.CreateRibbonButton();
-            this.btnExportAll = this.Factory.CreateRibbonButton();
-            this.btnExportAllTabs = this.Factory.CreateRibbonButton();
-            this.BtnExportFilter = this.Factory.CreateRibbonButton();
-            this.btnExportEnvironmentVariable = this.Factory.CreateRibbonButton();
-            this.gryTools = this.Factory.CreateRibbonGallery();
-            this.btnCodeGeneration = this.Factory.CreateRibbonButton();
-            this.btnCodeGenerationJava = this.Factory.CreateRibbonButton();
-            this.btnDataCheck = this.Factory.CreateRibbonButton();
-            this.btnDataSync = this.Factory.CreateRibbonButton();
             this.separator2 = this.Factory.CreateRibbonSeparator();
-            this.btnStartNow = this.Factory.CreateRibbonButton();
             this.separator1 = this.Factory.CreateRibbonSeparator();
-            this.btnSettings = this.Factory.CreateRibbonButton();
-            this.gryHelp = this.Factory.CreateRibbonGallery();
-            this.btnAbout = this.Factory.CreateRibbonButton();
-            this.btnHelp = this.Factory.CreateRibbonButton();
-            this.btnFeedback = this.Factory.CreateRibbonButton();
-            this.generateGherkin = this.Factory.CreateRibbonButton();
             this.tabKeyWord = this.Factory.CreateRibbonTab();
             this.grpTabChoiceKeyWord = this.Factory.CreateRibbonGroup();
             this.cbShowKeyword2 = this.Factory.CreateRibbonCheckBox();
@@ -79,15 +57,37 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.cbShowInov = this.Factory.CreateRibbonCheckBox();
             this.tabNoCode = this.Factory.CreateRibbonTab();
             this.grpTools = this.Factory.CreateRibbonGroup();
-            this.BtChooseFile = this.Factory.CreateRibbonButton();
-            this.btExclude = this.Factory.CreateRibbonButton();
-            this.BtTargetHelp = this.Factory.CreateRibbonButton();
             this.grpContacts = this.Factory.CreateRibbonGroup();
-            this.BtSendMail = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.lbVersion = this.Factory.CreateRibbonLabel();
             this.tabGherkinSample = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.gryExport = this.Factory.CreateRibbonGallery();
+            this.btnExportSelection = this.Factory.CreateRibbonButton();
+            this.btnExportAll = this.Factory.CreateRibbonButton();
+            this.btnExportAllTabs = this.Factory.CreateRibbonButton();
+            this.BtnExportFilter = this.Factory.CreateRibbonButton();
+            this.btnExportEnvironmentVariable = this.Factory.CreateRibbonButton();
+            this.gryTools = this.Factory.CreateRibbonGallery();
+            this.btnCodeGeneration = this.Factory.CreateRibbonButton();
+            this.btnCodeGenerationJava = this.Factory.CreateRibbonButton();
+            this.btnDataCheck = this.Factory.CreateRibbonButton();
+            this.btnDataSync = this.Factory.CreateRibbonButton();
+            this.btnStartNow = this.Factory.CreateRibbonButton();
+            this.btnSettings = this.Factory.CreateRibbonButton();
+            this.gryHelp = this.Factory.CreateRibbonGallery();
+            this.btnAbout = this.Factory.CreateRibbonButton();
+            this.btnHelp = this.Factory.CreateRibbonButton();
+            this.btnFeedback = this.Factory.CreateRibbonButton();
+            this.generateGherkin = this.Factory.CreateRibbonButton();
+            this.BtGotoDriveHelp = this.Factory.CreateRibbonButton();
+            this.KeepassHelp = this.Factory.CreateRibbonButton();
+            this.BtChooseFile = this.Factory.CreateRibbonButton();
+            this.btExclude = this.Factory.CreateRibbonButton();
+            this.BtTargetHelp = this.Factory.CreateRibbonButton();
+            this.BtSendMail = this.Factory.CreateRibbonButton();
+            this.btnStartDriveByExcelNow = this.Factory.CreateRibbonButton();
+            this.driveSettings = this.Factory.CreateRibbonButton();
             this.btGenerateGherkin = this.Factory.CreateRibbonButton();
             this.tabWebEngine.SuspendLayout();
             this.grpNoCode.SuspendLayout();
@@ -118,43 +118,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.grpNoCode, "grpNoCode");
             this.grpNoCode.Name = "grpNoCode";
             // 
-            // btnStartDriveByExcelNow
-            // 
-            this.btnStartDriveByExcelNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btnStartDriveByExcelNow.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_xls_plat_terre;
-            resources.ApplyResources(this.btnStartDriveByExcelNow, "btnStartDriveByExcelNow");
-            this.btnStartDriveByExcelNow.Name = "btnStartDriveByExcelNow";
-            this.btnStartDriveByExcelNow.ShowImage = true;
-            this.btnStartDriveByExcelNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartDriveByExcelNow_Click_1);
-            // 
-            // driveSettings
-            // 
-            this.driveSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.driveSettings.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_settings;
-            resources.ApplyResources(this.driveSettings, "driveSettings");
-            this.driveSettings.Name = "driveSettings";
-            this.driveSettings.OfficeImageId = "AddInCommandsMenu";
-            this.driveSettings.ShowImage = true;
-            this.driveSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.driveSettings_Click);
-            // 
-            // BtGotoDriveHelp
-            // 
-            this.BtGotoDriveHelp.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.BtGotoDriveHelp, "BtGotoDriveHelp");
-            this.BtGotoDriveHelp.Name = "BtGotoDriveHelp";
-            this.BtGotoDriveHelp.OfficeImageId = "Help";
-            this.BtGotoDriveHelp.ShowImage = true;
-            this.BtGotoDriveHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtGotoDriveHelp_Click);
-            // 
-            // KeepassHelp
-            // 
-            this.KeepassHelp.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            resources.ApplyResources(this.KeepassHelp, "KeepassHelp");
-            this.KeepassHelp.Name = "KeepassHelp";
-            this.KeepassHelp.OfficeImageId = "Help";
-            this.KeepassHelp.ShowImage = true;
-            this.KeepassHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.KeepassHelp_Click);
-            // 
             // grpKeyWord
             // 
             this.grpKeyWord.Items.Add(this.gryExport);
@@ -167,6 +130,120 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.grpKeyWord.Items.Add(this.generateGherkin);
             resources.ApplyResources(this.grpKeyWord, "grpKeyWord");
             this.grpKeyWord.Name = "grpKeyWord";
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            // 
+            // tabKeyWord
+            // 
+            this.tabKeyWord.Groups.Add(this.grpKeyWord);
+            this.tabKeyWord.Groups.Add(this.grpTabChoiceKeyWord);
+            resources.ApplyResources(this.tabKeyWord, "tabKeyWord");
+            this.tabKeyWord.Name = "tabKeyWord";
+            // 
+            // grpTabChoiceKeyWord
+            // 
+            this.grpTabChoiceKeyWord.Items.Add(this.cbShowKeyword2);
+            this.grpTabChoiceKeyWord.Items.Add(this.cbShowNoCode2);
+            this.grpTabChoiceKeyWord.Items.Add(this.cbShowInov2);
+            resources.ApplyResources(this.grpTabChoiceKeyWord, "grpTabChoiceKeyWord");
+            this.grpTabChoiceKeyWord.Name = "grpTabChoiceKeyWord";
+            // 
+            // cbShowKeyword2
+            // 
+            resources.ApplyResources(this.cbShowKeyword2, "cbShowKeyword2");
+            this.cbShowKeyword2.Name = "cbShowKeyword2";
+            this.cbShowKeyword2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword2_Click);
+            // 
+            // cbShowNoCode2
+            // 
+            resources.ApplyResources(this.cbShowNoCode2, "cbShowNoCode2");
+            this.cbShowNoCode2.Name = "cbShowNoCode2";
+            this.cbShowNoCode2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode2_Click);
+            // 
+            // cbShowInov2
+            // 
+            resources.ApplyResources(this.cbShowInov2, "cbShowInov2");
+            this.cbShowInov2.Name = "cbShowInov2";
+            this.cbShowInov2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowInov2_Click);
+            // 
+            // grpTabChoice
+            // 
+            this.grpTabChoice.Items.Add(this.cbShowKeyword);
+            this.grpTabChoice.Items.Add(this.cbShowNoCode);
+            this.grpTabChoice.Items.Add(this.cbShowInov);
+            resources.ApplyResources(this.grpTabChoice, "grpTabChoice");
+            this.grpTabChoice.Name = "grpTabChoice";
+            // 
+            // cbShowKeyword
+            // 
+            resources.ApplyResources(this.cbShowKeyword, "cbShowKeyword");
+            this.cbShowKeyword.Name = "cbShowKeyword";
+            this.cbShowKeyword.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword_Click);
+            // 
+            // cbShowNoCode
+            // 
+            resources.ApplyResources(this.cbShowNoCode, "cbShowNoCode");
+            this.cbShowNoCode.Name = "cbShowNoCode";
+            this.cbShowNoCode.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode_Click);
+            // 
+            // cbShowInov
+            // 
+            resources.ApplyResources(this.cbShowInov, "cbShowInov");
+            this.cbShowInov.Name = "cbShowInov";
+            this.cbShowInov.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowInov_Click);
+            // 
+            // tabNoCode
+            // 
+            this.tabNoCode.Groups.Add(this.grpNoCode);
+            this.tabNoCode.Groups.Add(this.grpTools);
+            this.tabNoCode.Groups.Add(this.grpTabChoice);
+            this.tabNoCode.Groups.Add(this.grpContacts);
+            this.tabNoCode.Groups.Add(this.group2);
+            resources.ApplyResources(this.tabNoCode, "tabNoCode");
+            this.tabNoCode.Name = "tabNoCode";
+            // 
+            // grpTools
+            // 
+            this.grpTools.Items.Add(this.BtChooseFile);
+            this.grpTools.Items.Add(this.btExclude);
+            this.grpTools.Items.Add(this.BtTargetHelp);
+            resources.ApplyResources(this.grpTools, "grpTools");
+            this.grpTools.Name = "grpTools";
+            // 
+            // grpContacts
+            // 
+            this.grpContacts.Items.Add(this.BtSendMail);
+            resources.ApplyResources(this.grpContacts, "grpContacts");
+            this.grpContacts.Name = "grpContacts";
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.lbVersion);
+            resources.ApplyResources(this.group2, "group2");
+            this.group2.Name = "group2";
+            // 
+            // lbVersion
+            // 
+            resources.ApplyResources(this.lbVersion, "lbVersion");
+            this.lbVersion.Name = "lbVersion";
+            // 
+            // tabGherkinSample
+            // 
+            this.tabGherkinSample.Groups.Add(this.group1);
+            resources.ApplyResources(this.tabGherkinSample, "tabGherkinSample");
+            this.tabGherkinSample.Name = "tabGherkinSample";
+            // 
+            // group1
+            // 
+            this.group1.Items.Add(this.btGenerateGherkin);
+            resources.ApplyResources(this.group1, "group1");
+            this.group1.Name = "group1";
             // 
             // gryExport
             // 
@@ -265,10 +342,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnDataSync.ShowImage = true;
             this.btnDataSync.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnDataMerge_Click);
             // 
-            // separator2
-            // 
-            this.separator2.Name = "separator2";
-            // 
             // btnStartNow
             // 
             this.btnStartNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -277,10 +350,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.btnStartNow.OfficeImageId = "PlayFromPage";
             this.btnStartNow.ShowImage = true;
             this.btnStartNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartNow_Click);
-            // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
             // 
             // btnSettings
             // 
@@ -331,82 +400,23 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.generateGherkin, "generateGherkin");
             this.generateGherkin.Name = "generateGherkin";
             // 
-            // tabKeyWord
+            // BtGotoDriveHelp
             // 
-            this.tabKeyWord.Groups.Add(this.grpKeyWord);
-            this.tabKeyWord.Groups.Add(this.grpTabChoiceKeyWord);
-            resources.ApplyResources(this.tabKeyWord, "tabKeyWord");
-            this.tabKeyWord.Name = "tabKeyWord";
+            this.BtGotoDriveHelp.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            resources.ApplyResources(this.BtGotoDriveHelp, "BtGotoDriveHelp");
+            this.BtGotoDriveHelp.Name = "BtGotoDriveHelp";
+            this.BtGotoDriveHelp.OfficeImageId = "Help";
+            this.BtGotoDriveHelp.ShowImage = true;
+            this.BtGotoDriveHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtGotoDriveHelp_Click);
             // 
-            // grpTabChoiceKeyWord
+            // KeepassHelp
             // 
-            this.grpTabChoiceKeyWord.Items.Add(this.cbShowKeyword2);
-            this.grpTabChoiceKeyWord.Items.Add(this.cbShowNoCode2);
-            this.grpTabChoiceKeyWord.Items.Add(this.cbShowInov2);
-            resources.ApplyResources(this.grpTabChoiceKeyWord, "grpTabChoiceKeyWord");
-            this.grpTabChoiceKeyWord.Name = "grpTabChoiceKeyWord";
-            // 
-            // cbShowKeyword2
-            // 
-            resources.ApplyResources(this.cbShowKeyword2, "cbShowKeyword2");
-            this.cbShowKeyword2.Name = "cbShowKeyword2";
-            this.cbShowKeyword2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword2_Click);
-            // 
-            // cbShowNoCode2
-            // 
-            resources.ApplyResources(this.cbShowNoCode2, "cbShowNoCode2");
-            this.cbShowNoCode2.Name = "cbShowNoCode2";
-            this.cbShowNoCode2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode2_Click);
-            // 
-            // cbShowInov2
-            // 
-            resources.ApplyResources(this.cbShowInov2, "cbShowInov2");
-            this.cbShowInov2.Name = "cbShowInov2";
-            this.cbShowInov2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowInov2_Click);
-            // 
-            // grpTabChoice
-            // 
-            this.grpTabChoice.Items.Add(this.cbShowKeyword);
-            this.grpTabChoice.Items.Add(this.cbShowNoCode);
-            this.grpTabChoice.Items.Add(this.cbShowInov);
-            resources.ApplyResources(this.grpTabChoice, "grpTabChoice");
-            this.grpTabChoice.Name = "grpTabChoice";
-            // 
-            // cbShowKeyword
-            // 
-            resources.ApplyResources(this.cbShowKeyword, "cbShowKeyword");
-            this.cbShowKeyword.Name = "cbShowKeyword";
-            this.cbShowKeyword.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowKeyword_Click);
-            // 
-            // cbShowNoCode
-            // 
-            resources.ApplyResources(this.cbShowNoCode, "cbShowNoCode");
-            this.cbShowNoCode.Name = "cbShowNoCode";
-            this.cbShowNoCode.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowNoCode_Click);
-            // 
-            // cbShowInov
-            // 
-            resources.ApplyResources(this.cbShowInov, "cbShowInov");
-            this.cbShowInov.Name = "cbShowInov";
-            this.cbShowInov.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cbShowInov_Click);
-            // 
-            // tabNoCode
-            // 
-            this.tabNoCode.Groups.Add(this.grpNoCode);
-            this.tabNoCode.Groups.Add(this.grpTools);
-            this.tabNoCode.Groups.Add(this.grpTabChoice);
-            this.tabNoCode.Groups.Add(this.grpContacts);
-            this.tabNoCode.Groups.Add(this.group2);
-            resources.ApplyResources(this.tabNoCode, "tabNoCode");
-            this.tabNoCode.Name = "tabNoCode";
-            // 
-            // grpTools
-            // 
-            this.grpTools.Items.Add(this.BtChooseFile);
-            this.grpTools.Items.Add(this.btExclude);
-            this.grpTools.Items.Add(this.BtTargetHelp);
-            resources.ApplyResources(this.grpTools, "grpTools");
-            this.grpTools.Name = "grpTools";
+            this.KeepassHelp.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            resources.ApplyResources(this.KeepassHelp, "KeepassHelp");
+            this.KeepassHelp.Name = "KeepassHelp";
+            this.KeepassHelp.OfficeImageId = "Help";
+            this.KeepassHelp.ShowImage = true;
+            this.KeepassHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.KeepassHelp_Click);
             // 
             // BtChooseFile
             // 
@@ -435,12 +445,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.BtTargetHelp.ShowImage = true;
             this.BtTargetHelp.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtTargetHelp_Click);
             // 
-            // grpContacts
-            // 
-            this.grpContacts.Items.Add(this.BtSendMail);
-            resources.ApplyResources(this.grpContacts, "grpContacts");
-            this.grpContacts.Name = "grpContacts";
-            // 
             // BtSendMail
             // 
             this.BtSendMail.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -450,28 +454,24 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.BtSendMail.ShowImage = true;
             this.BtSendMail.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.BtSendMail_Click);
             // 
-            // group2
+            // btnStartDriveByExcelNow
             // 
-            this.group2.Items.Add(this.lbVersion);
-            resources.ApplyResources(this.group2, "group2");
-            this.group2.Name = "group2";
+            this.btnStartDriveByExcelNow.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btnStartDriveByExcelNow.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.no_code_light;
+            resources.ApplyResources(this.btnStartDriveByExcelNow, "btnStartDriveByExcelNow");
+            this.btnStartDriveByExcelNow.Name = "btnStartDriveByExcelNow";
+            this.btnStartDriveByExcelNow.ShowImage = true;
+            this.btnStartDriveByExcelNow.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnStartDriveByExcelNow_Click_1);
             // 
-            // lbVersion
+            // driveSettings
             // 
-            resources.ApplyResources(this.lbVersion, "lbVersion");
-            this.lbVersion.Name = "lbVersion";
-            // 
-            // tabGherkinSample
-            // 
-            this.tabGherkinSample.Groups.Add(this.group1);
-            resources.ApplyResources(this.tabGherkinSample, "tabGherkinSample");
-            this.tabGherkinSample.Name = "tabGherkinSample";
-            // 
-            // group1
-            // 
-            this.group1.Items.Add(this.btGenerateGherkin);
-            resources.ApplyResources(this.group1, "group1");
-            this.group1.Name = "group1";
+            this.driveSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.driveSettings.Image = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.drive_by_settings;
+            resources.ApplyResources(this.driveSettings, "driveSettings");
+            this.driveSettings.Name = "driveSettings";
+            this.driveSettings.OfficeImageId = "AddInCommandsMenu";
+            this.driveSettings.ShowImage = true;
+            this.driveSettings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.driveSettings_Click);
             // 
             // btGenerateGherkin
             // 

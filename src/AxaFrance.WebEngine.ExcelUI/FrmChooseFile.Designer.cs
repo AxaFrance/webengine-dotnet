@@ -39,7 +39,7 @@
             // checkedListBox
             // 
             this.checkedListBox.FormattingEnabled = true;
-            this.checkedListBox.Location = new System.Drawing.Point(12, 37);
+            this.checkedListBox.Location = new System.Drawing.Point(12, 38);
             this.checkedListBox.Name = "checkedListBox";
             this.checkedListBox.Size = new System.Drawing.Size(495, 72);
             this.checkedListBox.TabIndex = 0;
@@ -49,9 +49,8 @@
             this.lb.AutoSize = true;
             this.lb.Location = new System.Drawing.Point(13, 2);
             this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(44, 16);
+            this.lb.Size = new System.Drawing.Size(0, 16);
             this.lb.TabIndex = 1;
-            this.lb.Text = "label1";
             // 
             // tb
             // 

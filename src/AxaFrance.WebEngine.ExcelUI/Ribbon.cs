@@ -101,8 +101,10 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         void EditIdentificationMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
         {
-            FrmTargetEdit frmNoCode = new FrmTargetEdit();
-            frmNoCode.ShowDialog();
+            FrmTargetEdit frmTargetEdit = new FrmTargetEdit();
+            frmTargetEdit.Height = 673;
+            frmTargetEdit.Width = 858;
+            frmTargetEdit.ShowDialog();
         }
 
         void ChooseFileMenuItem(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
@@ -1083,6 +1085,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
 
             //Command description
+            //sort command list
+            cmds = cmds.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
             int commandIndex;
             for (commandIndex = 1; commandIndex <= cmds.Count; commandIndex++)
             {

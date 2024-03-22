@@ -48,7 +48,8 @@ namespace AxaFrance.WebEngine.ExcelUI
             if ("upload file".Equals(currentCmd.Trim().ToLowerInvariant())
                 || "choisir fichier".Equals(currentCmd.Trim().ToLowerInvariant()))
             {
-                this.ShowDialog();
+                FrmRun.InitializeTestCasesList(checkedListBox, lb, colNameIndex);
+                //this.ShowDialog();
             }
             else
             {

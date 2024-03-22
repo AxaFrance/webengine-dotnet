@@ -42,7 +42,7 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>fr</TargetCulture>
-    <ApplicationVersion>3.1.0.15</ApplicationVersion>
+    <ApplicationVersion>3.1.0.20</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -385,6 +385,7 @@
   <ItemGroup>
     <Content Include="Resources\drive by axa globe main.png" />
     <Content Include="Resources\drive by axa globe souris.png" />
+    <Content Include="Resources\no code light.png" />
     <None Include="Resources\drive by xls plat terre souris2.png" />
     <Content Include="Resources\drive by xls plat terre.png" />
     <Content Include="Resources\KeePass sous-groupe Value.png" />
@@ -442,7 +443,8 @@
     <Error Condition="!Exists('..\packages\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.15.0.1\build\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.15.0.1\build\MSBuild.Microsoft.VisualStudio.Tools.Office.targets.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>if exist  $(ProjectDir)\App.local.config copy /Y  $(ProjectDir)\App.local.config $(TargetDir)\$(TargetName)$(TargetExt).config</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

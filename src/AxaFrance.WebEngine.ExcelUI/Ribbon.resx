@@ -130,7 +130,7 @@
     <value>drive</value>
   </data>
   <data name="btnStartDriveByExcelNow.Label" xml:space="preserve">
-    <value>NoCode Test</value>
+    <value>Lancer le scénario</value>
   </data>
   <data name="&gt;&gt;btnStartDriveByExcelNow.Name" xml:space="preserve">
     <value>btnStartDriveByExcelNow</value>

@@ -99,7 +99,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 cbListeTestsCases.SetItemChecked(0, true);
             }
-            cbListeTestsCases.PerformLayout();
+           // cbListeTestsCases.PerformLayout();
 
         }
 
@@ -452,7 +452,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             if (jarOrCmdYaml == 1)
             {
                 string commandfile = folder + "\\command.yaml";
-                if (!File.Exists(commandfile) || File.GetCreationTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0 || (new FileInfo(commandfile)).Length<=0)
+                if (!File.Exists(commandfile) || File.GetLastWriteTime(commandfile).CompareTo(DateTime.Now.AddDays(-7.0)) <= 0 || (new FileInfo(commandfile)).Length<=0)
                 {
                     dwlProgressBar.PerformStep();
                     client.DownloadFile(commandDirectLink, commandfile);
@@ -500,7 +500,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 return true;
             }
-            bool dwl = downloadfile ? downloadfile : (!File.Exists(file) || new FileInfo(file).Length <= 0 || File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3.0)) > 0);
+            bool dwl = downloadfile ? downloadfile : (!File.Exists(file) || new FileInfo(file).Length <= 0 || File.GetLastWriteTime(file).CompareTo(DateTime.Now.AddDays(-3.0)) < 0);
             //MessageBox.Show("checkDownloadForJar launch ok" +" file date="+File.GetCreationTime(file).CompareTo(DateTime.Now.AddDays(-3.0)) +" file exist="+ File.Exists(file)+" file lenght="+ new FileInfo(file).Length + "download ="+dwl);
             return dwl;
         }
