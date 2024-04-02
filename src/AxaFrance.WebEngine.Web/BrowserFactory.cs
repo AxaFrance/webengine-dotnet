@@ -21,6 +21,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using WebDriverManager.DriverConfigs.Impl;
 using static System.Environment;
 
 [assembly: InternalsVisibleTo("WebRunner")]
@@ -101,7 +102,7 @@ namespace AxaFrance.WebEngine.Web
 
 
 #if NET48_OR_GREATER || NET6_0_OR_GREATER
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 |  SecurityProtocolType.Tls13;
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 #else
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 #endif
@@ -427,123 +428,32 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetEdgeDriver(IEnumerable<string> browserOptions)
         {
-            object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe", "", null);
-            var version = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
-            DebugLogger.WriteLine($"Edge: {version} installed. Checking WebDriver for the browser.");
-            var edgeDriver = GetEdgeDriver(version, browserOptions);
-            return edgeDriver;
-        }
-
-        private static WebDriver GetEdgeDriver(string version, IEnumerable<string> browserOptions)
-        {
-            string downloadUrl = $"https://msedgedriver.azureedge.net/{version}/edgedriver_win64.zip";
-            string file = $"{workingDirectory}\\Edge\\{version}\\Webdriver.zip";
-            string folder = $"{workingDirectory}\\Edge\\{version}\\Extracted";
-            DirectoryInfo di = new DirectoryInfo(folder);
-            using (WebClient c = new WebClient())
+            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig(), "MatchingBrowser");
+            OpenQA.Selenium.Edge.EdgeOptions options = new OpenQA.Selenium.Edge.EdgeOptions()
             {
-                if (!(di.Exists && di.GetFiles().Any()))
-                {
-                    DebugLogger.WriteLine($"Downloading driver and install into {folder}.");
-                    System.IO.Directory.CreateDirectory(folder);
-                    c.DownloadFile(downloadUrl, file);
-                    System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
-                }
-                else
-                {
-                    DebugLogger.WriteLine($"A Webdriver is found for your current version of Browser.");
-                }
-                OpenQA.Selenium.Edge.EdgeOptions options = new OpenQA.Selenium.Edge.EdgeOptions()
-                {
-                    AcceptInsecureCertificates = true,
-                };
-                options.AddArguments(browserOptions);
+                AcceptInsecureCertificates = true,
+            };
+            options.AddArguments(browserOptions);
 
-                OpenQA.Selenium.Edge.EdgeDriver cd = new OpenQA.Selenium.Edge.EdgeDriver(folder, options);
-                return cd;
-            }
+            OpenQA.Selenium.Edge.EdgeDriver cd = new OpenQA.Selenium.Edge.EdgeDriver(options);
+            return cd;
         }
 
         private static WebDriver GetChromeDriver(IEnumerable<string> browserOptions)
         {
-            object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe", "", null);
-            if (path == null)
+            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig(), "MatchingBrowser");
+            OpenQA.Selenium.Chrome.ChromeOptions options = new OpenQA.Selenium.Chrome.ChromeOptions()
             {
-                path = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe", "", null);
-            }
-            var version = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
-            DebugLogger.WriteLine($"Detected installed Chrome Version: {version}");
-            var chromeDriver = GetChromeDriver(version, browserOptions);
-            return chromeDriver;
-        }
-        private static WebDriver GetChromeDriver(string version, IEnumerable<string> browserOptions)
-        {
-            string downloadUrl = null;
-            int major = int.Parse(version.Substring(0, version.IndexOf(".")));
-            string v = version.Substring(0, version.LastIndexOf("."));
-            string getVersionUrl;
-            if (major >= 115)
-            {
-                getVersionUrl = $"https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_{v}";
-            }
-            else
-            {
-                getVersionUrl = $"https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{v}";
-            }
-
-            using (WebClient c = new WebClient())
-            {
-                string driverVersion = c.DownloadString(getVersionUrl);
-                if (major >= 115)
-                {
-                    downloadUrl = $"https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{driverVersion}/win64/chromedriver-win64.zip";
-                }
-                else
-                {
-                    downloadUrl = $"https://chromedriver.storage.googleapis.com/{driverVersion}/chromedriver_win32.zip";
-                }
-                string file = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Webdriver.zip";
-                string folder = $"{workingDirectory}\\ChromeDriver\\{driverVersion}\\Extracted";
-                DirectoryInfo di = new DirectoryInfo(folder);
-                //fix bug #48: Deadlock if webdriver download fails
-                //Checks if the folder is not empty, or we need to download and install the webdriver again.
-                //Same implementation for Edge Driver.
-                if (!(di.Exists && di.GetFiles().Any())) 
-                {
-                    DebugLogger.WriteLine($"Downloading driver and install into {folder}.");
-                    System.IO.Directory.CreateDirectory(folder);
-                    c.DownloadFile(downloadUrl, file);
-                    System.IO.Compression.ZipFile.ExtractToDirectory(file, folder);
-                    //new version of chromedriver are in a folder, copy them to root folder of Extracted.
-
-                    if (di.GetDirectories().Any())
-                    {
-                        foreach (var subdir in di.GetDirectories())
-                        {
-                            foreach (var fil in subdir.GetFiles())
-                            {
-                                fil.CopyTo(Path.Combine(folder, fil.Name));
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    DebugLogger.WriteLine($"A Webdriver is found for your current version of Browser.");
-                }
-                OpenQA.Selenium.Chrome.ChromeOptions options = new OpenQA.Selenium.Chrome.ChromeOptions()
-                {
-                    AcceptInsecureCertificates = true,
-                };
-                options.AddArgument($"user-data-dir={GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\User Data");
-                options.AddArgument("dns-prefetch-disable");
-                options.AddArgument("homepage=about:blank");
-                options.AddArgument("disable-popup-blocking");
-                options.AddArgument("no-default-browser-check");
-                if (browserOptions != null) options.AddArguments(browserOptions);
-                OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(folder, options);
-                return cd;
-            }
+                AcceptInsecureCertificates = true,
+            };
+            options.AddArgument($"user-data-dir={GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\User Data");
+            options.AddArgument("dns-prefetch-disable");
+            options.AddArgument("homepage=about:blank");
+            options.AddArgument("disable-popup-blocking");
+            options.AddArgument("no-default-browser-check");
+            if (browserOptions != null) options.AddArguments(browserOptions);
+            OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
+            return cd;
         }
 
         private static WebDriver GetFirefoxDriver(IEnumerable<string> browserOptions)
