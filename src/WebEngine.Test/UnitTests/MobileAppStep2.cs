@@ -36,6 +36,14 @@ namespace WebEngine.Test.UnitTests
             {
                 throw new Exception("Test Failed");
             }
+            if (model.ButtonFirst.ScrollIntoView(ScrollDirection.Up))
+            {
+                model.ButtonFirst.Click();
+            }
+            else
+            {
+                throw new Exception("Test Failed");
+            }
         }
 
         public override bool DoCheckpoint(AppiumDriver driver)
@@ -49,6 +57,11 @@ namespace WebEngine.Test.UnitTests
         public AppElementDescription ButtonWebView = new AppElementDescription
         {
             AccessbilityId = "WebView"
+        };
+
+        public AppElementDescription ButtonFirst = new AppElementDescription
+        {
+            AccessbilityId = "Animation"
         };
 
         public WebElementDescription FormInput = new WebElementDescription

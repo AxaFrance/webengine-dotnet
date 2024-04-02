@@ -451,12 +451,18 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.Name
   nameWithType: AppElementDescription.Name
-- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView
-  name: ScrollIntoView()
-  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView
-  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView
-  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView()
-  nameWithType: AppElementDescription.ScrollIntoView()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection,System.Int32)
+  name: ScrollIntoView(ScrollDirection, Int32)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_AxaFrance_WebEngine_MobileApp_ScrollDirection_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection,System.Int32)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection, System.Int32)
+  nameWithType: AppElementDescription.ScrollIntoView(ScrollDirection, Int32)
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
+  name: ScrollIntoView(Int32)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
+  nameWithType: AppElementDescription.ScrollIntoView(Int32)
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView*
   name: ScrollIntoView
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_
@@ -561,6 +567,24 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext
   nameWithType: AppFactory.SwitchContext
+- uid: AxaFrance.WebEngine.MobileApp.ScrollDirection
+  name: ScrollDirection
+  href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html
+  commentId: T:AxaFrance.WebEngine.MobileApp.ScrollDirection
+  fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection
+  nameWithType: ScrollDirection
+- uid: AxaFrance.WebEngine.MobileApp.ScrollDirection.Down
+  name: Down
+  href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html#AxaFrance_WebEngine_MobileApp_ScrollDirection_Down
+  commentId: F:AxaFrance.WebEngine.MobileApp.ScrollDirection.Down
+  fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection.Down
+  nameWithType: ScrollDirection.Down
+- uid: AxaFrance.WebEngine.MobileApp.ScrollDirection.Up
+  name: Up
+  href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html#AxaFrance_WebEngine_MobileApp_ScrollDirection_Up
+  commentId: F:AxaFrance.WebEngine.MobileApp.ScrollDirection.Up
+  fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection.Up
+  nameWithType: ScrollDirection.Up
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp
   name: SharedActionApp
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html
@@ -703,32 +727,6 @@ references:
   commentId: T:AxaFrance.WebEngine.MobileApp.TestSuiteApp
   fullName: AxaFrance.WebEngine.MobileApp.TestSuiteApp
   nameWithType: TestSuiteApp
-- uid: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp(AxaFrance.WebEngine.Settings)
-  name: CleanUp(Settings)
-  href: api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html#AxaFrance_WebEngine_MobileApp_TestSuiteApp_CleanUp_AxaFrance_WebEngine_Settings_
-  commentId: M:AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp(AxaFrance.WebEngine.Settings)
-  fullName: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp(AxaFrance.WebEngine.Settings)
-  nameWithType: TestSuiteApp.CleanUp(Settings)
-- uid: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp*
-  name: CleanUp
-  href: api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html#AxaFrance_WebEngine_MobileApp_TestSuiteApp_CleanUp_
-  commentId: Overload:AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp
-  isSpec: "True"
-  fullName: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CleanUp
-  nameWithType: TestSuiteApp.CleanUp
-- uid: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver
-  name: CurrentDriver
-  href: api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html#AxaFrance_WebEngine_MobileApp_TestSuiteApp_CurrentDriver
-  commentId: P:AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver
-  fullName: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver
-  nameWithType: TestSuiteApp.CurrentDriver
-- uid: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver*
-  name: CurrentDriver
-  href: api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html#AxaFrance_WebEngine_MobileApp_TestSuiteApp_CurrentDriver_
-  commentId: Overload:AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver
-  isSpec: "True"
-  fullName: AxaFrance.WebEngine.MobileApp.TestSuiteApp.CurrentDriver
-  nameWithType: TestSuiteApp.CurrentDriver
 - uid: AxaFrance.WebEngine.MobileApp.TestSuiteApp.Initialize(AxaFrance.WebEngine.Settings)
   name: Initialize(Settings)
   href: api_net/AxaFrance.WebEngine.MobileApp.TestSuiteApp.html#AxaFrance_WebEngine_MobileApp_TestSuiteApp_Initialize_AxaFrance_WebEngine_Settings_

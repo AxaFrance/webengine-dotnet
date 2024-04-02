@@ -45,7 +45,7 @@ namespace WebEngine.Test.UnitTests
         {
             if (driver == null)
             {
-                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
+                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
             }
 
             networkIntercepter = driver.Manage().Network;
