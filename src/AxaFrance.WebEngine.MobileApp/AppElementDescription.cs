@@ -169,7 +169,7 @@ namespace AxaFrance.WebEngine.MobileApp
             while (!this.Exists(1) && count < maxSwipe)
             {
                 count++;
-                ScrollDown((int)(driver.Manage().Window.Size.Width * 0.5), (int)(driver.Manage().Window.Size.Height * 0.5));
+                ScrollDown();
             }
             return this.Exists(1);
         }
@@ -180,34 +180,34 @@ namespace AxaFrance.WebEngine.MobileApp
             while (!this.Exists(1) && count < maxSwipe)
             {
                 count++;
-                ScrollUp((int)(driver.Manage().Window.Size.Width * 0.5), (int)(driver.Manage().Window.Size.Height * 0.5));
+                ScrollUp();
             }
             return this.Exists(1);
         }
 
-        private void ScrollUp(int x, int y)
+
+        /// <summary>
+        /// Scroll the screen downward
+        /// </summary>
+        public void ScrollDown()
         {
-            int startY = (int)(driver.Manage().Window.Size.Height * 0.30);
-            int endY = (int)(driver.Manage().Window.Size.Height * 0.80);
-
-            var finger = new PointerInputDevice(PointerKind.Touch);
-            var actionSequence = new ActionSequence(finger, 0);
-
-            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, x, startY, TimeSpan.Zero));
-            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
-            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, x, endY, new TimeSpan(0, 0, 1)));
-            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
-
-
-            driver.PerformActions(new List<ActionSequence> { actionSequence });
+            var x = (int)(driver.Manage().Window.Size.Width * 0.5);
+            GenericScroll(x, 0.8, 0.3);
         }
 
-
-
-        private void ScrollDown(int x, int y)
+        /// <summary>
+        /// Scroll the screen upward
+        /// </summary>
+        public void ScrollUp()
         {
-            int startY = (int)(driver.Manage().Window.Size.Height * 0.80);
-            int endY = (int)(driver.Manage().Window.Size.Height * 0.30);
+            var x = (int)(driver.Manage().Window.Size.Width * 0.5);
+            GenericScroll(x, 0.3, 0.8);
+        }
+
+        private void GenericScroll(int x, double startYPercent, double endYPercent)
+        {
+            int startY = (int)(driver.Manage().Window.Size.Height * startYPercent);
+            int endY = (int)(driver.Manage().Window.Size.Height * endYPercent);
 
             var finger = new PointerInputDevice(PointerKind.Touch);
             var actionSequence = new ActionSequence(finger, 0);
