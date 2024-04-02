@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net472;net48</TargetFrameworks>
+    <TargetFrameworks>net6.0;net48</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -31,10 +31,10 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.2" />
+    <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.7" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.16.2" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.19.0" />
   </ItemGroup>
 
   <ItemGroup>
