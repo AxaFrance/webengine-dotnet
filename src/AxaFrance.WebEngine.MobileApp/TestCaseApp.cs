@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
@@ -17,10 +18,12 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <inheritdoc/>
         public override string Cleanup()
         {
-            try
-            {                
-                var l = (Context as AppiumDriver).Manage().Logs;
-                foreach(var logType in l.AvailableLogTypes)
+            var l = (Context as AppiumDriver).Manage().Logs;
+            DebugLogger.WriteLine($"There are following available logs: {string.Join(", ", l.AvailableLogTypes)}");
+            foreach (var logType in l.AvailableLogTypes)
+            {
+                DebugLogger.WriteLine($"Log for {logType}");
+                try
                 {
                     StringBuilder sb = new StringBuilder();
                     var logs = l.GetLog(logType);
@@ -31,19 +34,16 @@ namespace AxaFrance.WebEngine.MobileApp
                             sb.AppendLine($"[{log.Level}] {log.Timestamp} {log.Message}");
                         }
                     }
-                    DebugLogger.WriteLine($"Log for {logType}");
                     DebugLogger.WriteLine(sb.ToString());
                 }
-                
+                catch (Exception ex)
+                {
+                    DebugLogger.WriteLine("[ERROR] Get log error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                DebugLogger.WriteLine("[ERROR] Get log error: " + ex.Message);
-            }
-
             try
             {
-                
+
                 if (Context is AppiumDriver appiumDriver && !string.IsNullOrEmpty(Settings.Instance.AppPackageName))
                 {
                     ResetApp(appiumDriver);
@@ -52,6 +52,18 @@ namespace AxaFrance.WebEngine.MobileApp
             catch (Exception ex)
             {
                 DebugLogger.WriteLine("[DEBUG] Current App closing error: " + ex.Message);
+            }
+
+
+            if (Context is AppiumDriver ad)
+            {
+                try
+                {
+                    DebugLogger.WriteLine("Close the app");
+                    ad.Close();
+                    ad.Dispose();
+                }
+                catch { }
             }
 
             return string.Empty;
@@ -76,7 +88,7 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <inheritdoc/>
         public override void Initialize()
         {
-            Context = TestSuiteApp.CurrentDriver;
+            Context = AppFactory.GetDriver(Settings.Instance.Platform);
             startDate = DateTime.Now;
         }
 
