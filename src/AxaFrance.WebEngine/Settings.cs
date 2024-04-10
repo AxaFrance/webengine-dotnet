@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,7 @@ namespace AxaFrance.WebEngine
                 DebugLogger.WriteLine("Load test parameters from configuration file `appsettings.json`");
                 string content = File.ReadAllText(appconfig);
                 var settings = Newtonsoft.Json.JsonConvert.DeserializeObject(content) as Newtonsoft.Json.Linq.JObject;
+               
                 if (settings.ContainsKey("LogDir"))
                 {
                     this.LogDir = settings.Value<string>("LogDir");

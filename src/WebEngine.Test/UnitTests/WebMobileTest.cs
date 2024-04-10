@@ -19,8 +19,8 @@ namespace WebEngine.Test.UnitTests
         [ClassCleanup]
         public static void Cleanup()
         {
-            driver.Close();
-            driver.Dispose();
+            driver?.Close();
+            driver?.Dispose();
         }
 
         [ClassInitialize]
