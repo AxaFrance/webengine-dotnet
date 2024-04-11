@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.6" />
-    <PackageReference Include="Axe.Extended.Selenium" Version="0.1.15-preview" />
+    <PackageReference Include="Axe.Extended.Selenium" Version="0.1.16-preview" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
