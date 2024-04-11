@@ -42,9 +42,10 @@ namespace AxaFrance.WebEngine.Web
         public override string Cleanup()
         {
             
-            if(IsAccessibilityTestEnabled)
+            if(IsAccessibilityTestEnabled && reportBuilder != null)
             {
                 var a11yReport = reportBuilder.Build().Export();
+                DebugLogger.WriteLine("[A11Y] Attaching Accessibility Report from:" + a11yReport) ;
                 testCaseReport.AttachFile(a11yReport, "AccessibilityReport");
                 DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
             }
@@ -69,6 +70,12 @@ namespace AxaFrance.WebEngine.Web
         /// </summary>
         public override void Initialize()
         {
+            var a11y = TestData.TryGetValue("Accessibility");
+            if(a11y.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                IsAccessibilityTestEnabled = true;
+                AccessibilityReportTitle = TestData.TestName;
+            }
             if(IsAccessibilityTestEnabled)
             {
                 reportBuilder = InitializeA11yReportBuilder();
@@ -115,6 +122,7 @@ namespace AxaFrance.WebEngine.Web
 
         private OverallReportBuilder InitializeA11yReportBuilder()
         {
+            DebugLogger.WriteLine("[A11Y] Initialize Accessibility Report Builder");
             var defaultOptions = new PageReportOptions()
             {
                 HighlightColor = Color.OrangeRed,

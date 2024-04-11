@@ -33,6 +33,7 @@ namespace AxaFrance.WebEngine.Web
         {
             if(testCase is TestCaseWeb tw && tw.IsAccessibilityTestEnabled && tw.reportBuilder != null)
             {
+                DebugLogger.WriteLine("[A11Y] Analyzing accessibility issues on current page.");
                 tw.reportBuilder.WithSelenium(Browser, pageName).WithRgaaExtension().Build();                
             }
         }

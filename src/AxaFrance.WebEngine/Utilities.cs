@@ -259,11 +259,12 @@ namespace AxaFrance.WebEngine
 
         internal static string GetDescriptionByType(Type t)
         {
-            try
+            var attr = t.GetCustomAttribute<DescriptionAttribute>();
+            if (attr != null)
             {
-                return t.GetCustomAttribute<DescriptionAttribute>().Description;
+                return attr.Description;
             }
-            catch
+            else
             {
                 return t.Name;
             }
@@ -318,7 +319,7 @@ namespace AxaFrance.WebEngine
             }
             catch
             {
-                
+
             }
             throw new ActionNotFoundException($"The action type {className} can not be found in loaded assemblies.");
         }

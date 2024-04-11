@@ -17,8 +17,7 @@ namespace Samples.DataDriven
                 var tc = new TestCases.TC_InsuranceQuote()
                 {
                     Name = testdata.TestName,
-                    IsAccessibilityTestEnabled = true,
-                    AccessibilityReportTitle = "Home Insurance"
+                    AccessibilityReportTitle = testdata.TestName
                 };
                 testCases.Add(new KeyValuePair<string, TestCase>(testdata.TestName, tc));
             }
