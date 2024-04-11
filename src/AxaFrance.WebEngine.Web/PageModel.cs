@@ -14,12 +14,15 @@ namespace AxaFrance.WebEngine.Web
     /// </summary>
     public class PageModel
     {
+
+        private IWebDriver driver;
         /// <summary>
         /// Initialize the Page model with the associated Selenium WebDriver
         /// </summary>
         /// <param name="driver">The Webdriver to use for the localization of Web Elements </param>
         public PageModel(WebDriver driver)
         {
+            this.driver = driver;
             var fields = this.GetType().GetFields();
             foreach (var p in fields)
             {
@@ -68,6 +71,37 @@ namespace AxaFrance.WebEngine.Web
                     e.ApplyAttribute(attr);
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Run accessibility test on the current page
+        /// </summary>
+        public void AccessibilityCheck()
+        {
+            Deque.AxeCore.Selenium.AxeBuilder builder = new Deque.AxeCore.Selenium.AxeBuilder(driver).WithRules();
+            var results = builder.Analyze();
+        }
+
+        /// <summary>
+        /// Run accessibility test on the given element
+        /// </summary>
+        /// <param name="context"></param>
+        public void AccessibilityCheck(ElementDescription context)
+        {
+            Deque.AxeCore.Selenium.AxeBuilder builder = new Deque.AxeCore.Selenium.AxeBuilder(driver);
+            AccessibilityCheck(context.FindElement());
+        }
+
+
+        /// <summary>
+        /// Run accessibiity test on the given element
+        /// </summary>
+        /// <param name="context"></param>
+        public void AccessibilityCheck(IWebElement context)
+        {
+            Deque.AxeCore.Selenium.AxeBuilder builder = new Deque.AxeCore.Selenium.AxeBuilder(driver);
+            var results = builder.Analyze(context);
         }
     }
 }

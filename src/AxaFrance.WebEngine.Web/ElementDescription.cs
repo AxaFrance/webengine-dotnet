@@ -366,7 +366,14 @@ namespace AxaFrance.WebEngine.Web
         /// <returns>The screenshot image in RAW Binary data format.</returns>
         public byte[] GetScreenshot()
         {
-            return Perform(InternalGetScreenshot);
+            try
+            {
+                return Perform(InternalGetScreenshot);
+            }catch(Exception ex)
+            {
+                DebugLogger.WriteError($"Unable to generate screenshot. {ex.Message}");
+                return null;
+            }
         }
 
         /// <summary>
