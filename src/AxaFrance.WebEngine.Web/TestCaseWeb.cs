@@ -71,7 +71,7 @@ namespace AxaFrance.WebEngine.Web
         public override void Initialize()
         {
             var a11y = TestData.TryGetValue("Accessibility");
-            if(a11y.Equals("true", StringComparison.OrdinalIgnoreCase))
+            if(IsTrue(a11y))
             {
                 IsAccessibilityTestEnabled = true;
                 AccessibilityReportTitle = TestData.TestName;
@@ -118,6 +118,32 @@ namespace AxaFrance.WebEngine.Web
             }
 
 
+        }
+
+        private bool IsTrue(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return false;
+            if (text.Trim().Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }else if(text.Trim().Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }else if(text.Trim().Equals("1", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }else if(text.Trim().Equals("on", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }else if(text.Trim().Equals("enabled", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }else if(text.Trim().Equals("oui", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private OverallReportBuilder InitializeA11yReportBuilder()
