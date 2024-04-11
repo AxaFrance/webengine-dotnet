@@ -13,57 +13,6 @@ namespace AxaFrance.WebEngine.MobileApp
     /// </summary>
     public abstract class TestSuiteApp : TestSuite
     {
-        static WebDriver driver;
-
-        /// <summary>
-        /// gets the currently using WebDriver (AndroidDriver or IOSDriver for example)
-        /// </summary>
-        public static WebDriver CurrentDriver
-        {
-            get
-            {
-                return driver;
-            }
-        }
-
-        /// <summary>
-        /// Cleanup method to close the uninstall the test application.
-        /// </summary>
-        /// <param name="s">Test settings (not used in this contexte)</param>
-        public override void CleanUp(Settings s)
-        {
-            if (driver is AndroidDriver androidDriver)
-            {
-                try
-                {
-                    androidDriver.CloseApp();
-                    androidDriver.Close();
-                }
-                catch { }
-                try
-                {
-                    androidDriver.RemoveApp(s.AppPackageName);
-                }
-                catch { }
-                androidDriver.Quit();
-            }
-            else if (driver is IOSDriver iosDriver)
-            {
-                try
-                {
-                    iosDriver.CloseApp();
-                    iosDriver.Close();
-                }
-                catch { }
-                try
-                {
-                    iosDriver.RemoveApp(s.AppPackageName);
-                }
-                catch { }
-                iosDriver.Quit();
-            }
-        }
-
 
         /// <summary>
         /// Initialize the connection to Selenium Grid compatible device Cloud and install the application package (if using browserstack)
@@ -94,7 +43,7 @@ namespace AxaFrance.WebEngine.MobileApp
                     DebugLogger.WriteLine($"Application Id privided by Mobile Lab service is: {id}");
                 }
             }
-            driver = AppFactory.GetDriver(s.Platform);
+            //driver = AppFactory.GetDriver(s.Platform);
         }
     }
 }

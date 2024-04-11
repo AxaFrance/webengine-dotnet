@@ -133,24 +133,81 @@ namespace AxaFrance.WebEngine.MobileApp
         }
 
         /// <summary>
-        /// Tires to bring current element into viewport. If the element is still not visible after scroll action, the return value will be false.
+        /// Tries to bring current element into viewport.
+        /// This method will scroll down the page  multiple times to make the element visible.
+        /// If after the maximum scroll action and the element is still not visible, the method will return false.
         /// </summary>
         /// <returns>True if the element is visible after scrolling. False when the element is not visible.</returns>
-        public bool ScrollIntoView()
+        public bool ScrollIntoView(int maxSwipe = 10)
         {
-            int max = 10, count = 0;
-            while(!this.Exists(1) && count < max)
+            return ScrollIntoViewDown(maxSwipe);
+        }
+
+        /// <summary>
+        /// Tries to bring current element into viewport.
+        /// This method will scroll the page multiple times to make the element visible.
+        /// If after the maximum scroll action and the element is still not visible, the method will return false.
+        /// </summary>
+        /// <param name="direction">The direction of the scroll</param>
+        /// <param name="maxSwipe">The maximum number of swipe action to make the element visible</param>
+        /// <returns>True if the element is visible after scrolling. False when the element is not visible.</returns>
+        public bool ScrollIntoView(ScrollDirection direction, int maxSwipe = 10)
+        {
+            if (direction == ScrollDirection.Up)
+            {
+                return ScrollIntoViewUp(maxSwipe);
+            }
+            else
+            {
+                return ScrollIntoViewDown(maxSwipe);
+            }
+        }
+
+        private bool ScrollIntoViewDown(int maxSwipe)
+        {
+            int count = 0;
+            while (!this.Exists(1) && count < maxSwipe)
             {
                 count++;
-                ScrollDown((int)(driver.Manage().Window.Size.Width * 0.5), (int)(driver.Manage().Window.Size.Height * 0.5));
+                ScrollDown();
             }
             return this.Exists(1);
         }
 
-        private void ScrollDown(int x, int y)
+        private bool ScrollIntoViewUp(int maxSwipe)
         {
-            int startY = (int)(driver.Manage().Window.Size.Height * 0.80);
-            int endY = (int)(driver.Manage().Window.Size.Height * 0.30);
+            int count = 0;
+            while (!this.Exists(1) && count < maxSwipe)
+            {
+                count++;
+                ScrollUp();
+            }
+            return this.Exists(1);
+        }
+
+
+        /// <summary>
+        /// Scroll the screen downward
+        /// </summary>
+        public void ScrollDown()
+        {
+            var x = (int)(driver.Manage().Window.Size.Width * 0.5);
+            GenericScroll(x, 0.8, 0.3);
+        }
+
+        /// <summary>
+        /// Scroll the screen upward
+        /// </summary>
+        public void ScrollUp()
+        {
+            var x = (int)(driver.Manage().Window.Size.Width * 0.5);
+            GenericScroll(x, 0.3, 0.8);
+        }
+
+        private void GenericScroll(int x, double startYPercent, double endYPercent)
+        {
+            int startY = (int)(driver.Manage().Window.Size.Height * startYPercent);
+            int endY = (int)(driver.Manage().Window.Size.Height * endYPercent);
 
             var finger = new PointerInputDevice(PointerKind.Touch);
             var actionSequence = new ActionSequence(finger, 0);
