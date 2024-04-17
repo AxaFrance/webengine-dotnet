@@ -189,16 +189,18 @@ namespace AxaFrance.WebEngine.ReportViewer
                 if(tc.AttachedData.FirstOrDefault(x=>x.Name == "AccessibilityReport") != null)
                 {
                     var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport").Value;
-                    btnOpenAccessibilityReport.Tag = data;
+                    OpenAccessibilityReport(data);
                     tabAccessibility.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     tabAccessibility.Visibility = Visibility.Collapsed;
+                    tabControl.SelectedIndex = 0;
                 }
             }
 
         }
+
 
         private void FillTreeViewItem(TreeViewItem parent, ActionReport action)
         {
@@ -426,9 +428,8 @@ namespace AxaFrance.WebEngine.ReportViewer
             this.CheckedChanged();
         }
 
-        private void btnOpenAccessibilityReport_Click(object sender, RoutedEventArgs e)
+        private void OpenAccessibilityReport(byte[] data)
         {
-            var data = (sender as Button).Tag as byte[];
             //extract data as zip stream to temp folder
             using (var stream = new MemoryStream(data)) {
                 ZipArchive archive = new ZipArchive(stream);
@@ -443,13 +444,28 @@ namespace AxaFrance.WebEngine.ReportViewer
                 var indexFile = Directory.GetFiles(tempFolder, "index.html", SearchOption.AllDirectories).FirstOrDefault();
                 if (indexFile != null)
                 {
-                    ProcessStartInfo psi = new ProcessStartInfo(indexFile) { UseShellExecute = true };
-                    Process.Start(psi);
+                    btnViewInBrowser.Tag = indexFile;
+                    webViewAccessibility.Source = new Uri(indexFile);
+
                 }
                 else
                 {
                     ShowMessageBox("Error", "Unable to find the index.html file in the accessibility report", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            webViewAccessibility.GoBack();
+        }
+
+        private void btnViewInBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            if(btnViewInBrowser.Tag != null)
+            {
+                ProcessStartInfo psi = new ProcessStartInfo(btnViewInBrowser.Tag.ToString()) { UseShellExecute = true };
+                Process.Start(psi);
             }
         }
     }
