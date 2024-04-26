@@ -11,7 +11,7 @@ using System.Text;
 using System.Web;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AxaFrance.AxeExtended.Selenium")]
-namespace Axe.Extended.HtmlReport
+namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
     /// Classes for generating HTML report from given Axe-Core results

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.HtmlReport
+namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
     /// The provider to get additional tags for a rule.

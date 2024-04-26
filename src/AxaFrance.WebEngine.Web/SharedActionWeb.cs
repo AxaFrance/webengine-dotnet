@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using Axe.Extended.HtmlReport;
-using Axe.Extended.Selenium;
+using AxaFrance.AxeExtended.HtmlReport;
+using AxaFrance.AxeExtended.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System;

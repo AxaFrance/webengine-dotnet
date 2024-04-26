@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.HtmlReport
+namespace AxaFrance.AxeExtended.HtmlReport
 {
     public static class ExtensionMethods
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.HtmlReport
+namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
     /// Represents the overall result of the application. It contains the result of all tested pages.

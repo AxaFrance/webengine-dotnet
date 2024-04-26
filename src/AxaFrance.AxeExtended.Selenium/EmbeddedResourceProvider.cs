@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.Selenium
+namespace AxaFrance.AxeExtended.Selenium
 {
     internal static class EmbeddedResourceProvider
     {
