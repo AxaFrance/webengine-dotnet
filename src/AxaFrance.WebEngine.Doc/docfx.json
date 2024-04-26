@@ -19,8 +19,19 @@
             "**.csproj"
           ],
           "src": "..\\AxaFrance.WebEngine.MobileApp"
+        },
+        {
+          "files": [
+            "**.csproj"
+          ],
+          "src": "..\\AxaFrance.AxeExtended.HtmlReport"
+        },
+        {
+          "files": [
+            "**.csproj"
+          ],
+          "src": "..\\AxaFrance.AxeExtended.Selenium"
         }
-
       ],
       "dest": "api_net",
       "filter": "filterConfig.yml",
@@ -30,7 +41,7 @@
   "build": {
     "globalMetadata": {
       "_appTitle": "AXA WebEngine Test Framework",
-      "_appFooter": "Copyright &reg; 2016-2022 AXA France, All rights reserved.",
+      "_appFooter": "Copyright &reg; 2016-2024 AXA France, All rights reserved.",
       "_appLogoPath": "images/logo.svg"
     },
     "content": [
