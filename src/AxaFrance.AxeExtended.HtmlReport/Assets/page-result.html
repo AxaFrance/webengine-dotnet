@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{{Title}}</title>
+    <!-- Syntax Highting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <style>
+
+        body {
+            font-family: Segoe UI, Helvetica, sans-serif;
+            font-size: 14px;
+            min-width: 800px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h1 {
+            font-family: Segoe UI Light, Helvetica, sans-serif;
+            margin-top: 0px;
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+            font-size: 36px;
+        }
+
+        .navbar {
+            background: #F1F1F1;
+            margin: 10px;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 10px 0px;
+        }
+
+        /* Expander using CSS + JS*/
+        .collapsible {
+            color: black;
+            cursor: pointer;
+            padding: 10px 18px;
+            width: 100%;
+            border: 1px solid #DDD;
+            background: #EEE;
+            text-align: left;
+            outline: none;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+
+            .collapsible.active {
+                background-color: #99ccff;
+                border-radius: 10px 10px 0px 0px;
+            }
+
+            .collapsible.inner {
+                background-color: #fff4d7;
+            }
+
+            .collapsible:hover {
+                background-color: #b7dbff;
+            }
+
+            .collapsible.inner :hover {
+                background-color: #ffecbb;
+            }
+
+            .collapsible.inner.active {
+                background-color: #b7dbff;
+            }
+
+            .collapsible:after {
+                content: '\23F7';
+                color: black;
+                font-weight: bold;
+                float: right;
+                margin-left: 10px;
+                margin-right: 5px;
+                font-size: 16px;
+            }
+
+        .collapsible.active:after {
+            content: "\23F6";
+        }
+
+        /** content of collapsible **/
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            min-width: 400px;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f5f5f5;
+            border-radius: 0px 0px 10px 10px;
+            margin: 0px 0px 5px 0px;
+        }
+
+
+        /** content of inner collapsible (inside another collapsible) */
+        .content.inner {
+            background-color: #eeeeee;
+            transition: none;
+        }
+
+        span.tag {
+            color: darkblue;
+        }
+
+        /* Used to show tags, standards */
+        div.regularition {
+            vertical-align: middle;
+            background-color: darkblue;
+            color: white;
+            border-radius: 5px;
+            padding: 4px;
+            font-size: 12px;
+            margin: 0px 2px;
+            display: inline-block;
+        }
+
+
+
+        th {
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .label {
+            background-color: gray;
+            color: white;
+            padding: 4px;
+            border-radius: 8px;
+            min-height: 16px;
+            min-width: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+        .fixedSize {
+            display: inline-block;
+            width: 70px;
+            text-align: center;
+            margin: 0px 10px 0px 0px;
+        }
+
+        .right {
+            float: right;
+        }
+
+
+
+        img {
+            max-width: 100%;
+        }
+
+            img.thumbnail {
+                max-width: 500px;
+                max-height: 400px;
+                cursor: zoom-in;
+                border: 1px solid black;
+                padding: 2px;
+            }
+
+                img.thumbnail:hover {
+                    border: 3px solid darkblue;
+                    padding: 0px;
+                }
+
+            img.center {
+                max-width: 200%;
+                height: auto;
+                display: block;
+                left: auto;
+                right: auto;
+                top: auto;
+                bottom: auto;
+                margin: auto;
+                filter: drop-shadow(0 0 0.75rem black);
+            }
+
+        /* issue severity tag:critical, serious, moderate, minor*/
+        .label.critical {
+            background-color: maroon;
+            color: white;
+        }
+
+        .label.serious {
+            background-color: red;
+            color: white;
+        }
+
+        .label.moderate {
+            background-color: orange;
+            color: white;
+        }
+
+        .label.minor {
+            background-color: yellow;
+            color: black;
+        }
+
+        pre {
+            background-color: #EEEEEE;
+            border-radius: 5px;
+            border: 1px solid #CCCCCC;
+            white-space: pre-wrap;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+
+            .tab.horizontal {
+                border-radius: 10px;
+            }
+
+
+            /* Style the buttons that are used to open the tab content */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 18px;
+                transition: 0.3s;
+            }
+
+                /* Change background color of buttons on hover
+                */
+                .tab button:hover {
+                    background-color: #ccc;
+                }
+
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ddd;
+                }
+
+
+            .tab.horizontal button {
+                min-width: 200px;
+                width: 100%;
+                float: unset;
+            }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            border-radius: 0px 0px 10px 10px;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            height: 100%;
+            animation: fadeEffect 1s; /* Fading effect takes 1 second */
+        }
+
+        .horizontalTabContent {
+            display: none;
+            padding: 6px 12px;
+            animation: fadeEffect 1s; /* Fading effect takes 1 second */
+        }
+
+
+        table.nospace{
+            border-collapse: collapse;
+        }
+
+        table.nospace td{
+            padding: 0px;
+        }
+
+        /* Go from zero to full opacity */
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Donut Chart showing accessibility index */
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+        .donut-label {
+            /* (A1) CIRCLE */
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            background: #EEEEEE;
+            border-radius: 50%;
+            text-align: center;
+            display: block;
+            position: absolute;
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+
+        .donut {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            display: block;
+            position: absolute;
+            /* (A2) SEGMENTS */
+            background: conic-gradient( #{{ScoreColor}} 0deg {{ScoreRotation}}deg, #cccccc {{ScoreRotation}}deg 360deg );
+            transform: rotate(-{{ScoreRotation}}deg);
+            opacity: 0;
+            animation: rotate 1s 1 forwards;
+        }
+
+        .donut-container {
+            width: 100px;
+            height: 100px;
+            float: right;
+            margin: 15px 30px;
+        }
+
+        td{
+            vertical-align: top;
+        }
+
+        p.center {
+            position: absolute;
+            text-align: center;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            margin: auto;
+            z-index: 10;
+            border-radius: 50%;
+            padding: 17%;
+            color: #{{ScoreBackgroundColor}};
+        }
+
+        /* Animation */
+        @keyframes rotate {
+            from {
+                transform: rotate(-180deg);
+                opacity: 0
+            }
+
+            to {
+                transform: rotate(0deg);
+                opacity: 1
+            }
+        }
+
+        #imageCanvasContainer {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background-color: rgb(0, 0, 0, 0.60);
+            position: fixed;
+            z-index: 100;
+            
+        }
+
+        #imageCanvas {
+            width: 100%;
+            height: 100%;
+            animation: fadeEffect 0.5s;
+            padding: 40px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function openHorizontalTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("horizontalTabContent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("horizontalLinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+
+
+        // Get the element with id="defaultOpen" and click on it
+        window.addEventListener('load', function () {
+            openTab(event, 'Violations')
+            this.document.getElementById("defaultTab").className += " active";
+        })
+
+        function hideCanvas() {
+            var canvas = document.getElementById("imageCanvas");
+            var container = document.getElementById("imageCanvasContainer");
+            canvas.innerHTML = "";
+            container.style.display = "none";
+        }
+
+        function showCanvas(evt) {
+            var html = evt.outerHTML;
+            var container = document.getElementById("imageCanvasContainer");
+            var canvas = document.getElementById("imageCanvas");
+            canvas.innerHTML = html;
+            var img = canvas.firstChild;
+            img.className = "center";
+            container.style.display = "block";
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <div id="imageCanvasContainer">
+        <div id="imageCanvas" onclick="hideCanvas()">
+
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class='donut-container'>
+            <div class='donut'>
+            </div>
+            <div class="donut-label">
+                <p class="center">
+                    {{Score}}
+                </p>
+            </div>
+        </div>
+        <div>
+            <h1>Accessibility Report - Page {{Title}}</h1>
+            <h2>Url: {{PageUrl}}</h2>
+            <h3>Timestamp: {{TimeStamp}}</h3>
+        </div>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" id="defaultTab" onclick="openTab(event, 'Violations')">🔴 Violations ({{ViolationRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'Incomplete')">🟡 Incomplete ({{IncompleteRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'NonApplicable')">⚪ Inapplicable ({{NonApplicableRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'Passed')">🟢 Passed ({{PassedRules}})</button>
+    </div>
+
+    <div id="Violations" class="tabcontent">
+        <h3>Following are {{ViolationRules}} rules having Accessibility issues, with a total of {{ViolationNodes}} occurrences</h3>
+        <div>
+            {{Violations}}
+        </div>
+    </div>
+
+    <div id="Incomplete" class="tabcontent">
+        <h3>These rules can not be covered by automated testing tool. It is recommanded to conduct an accessbility review on these items.</h3>
+        <div>
+            {{Incomplete}}
+        </div>
+    </div>
+
+    <div id="NonApplicable" class="tabcontent">
+        <h3>These rules are not applicable on the current page.</h3>
+        <div>
+            {{NonApplicable}}
+        </div>
+    </div>
+    <div id="Passed" class="tabcontent">
+        <h3>These rules have been audited as passed.</h3>
+        <div>
+            {{Passed}}
+        </div>
+    </div>
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = "2000px";
+                }
+            });
+        }
+
+        function delay(time) {
+            return new Promise(resolve => setTimeout(resolve, time));
+        }
+
+        hljs.highlightAll();
+    </script>
+</body>
+</html>

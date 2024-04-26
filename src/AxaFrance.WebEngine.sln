@@ -53,6 +53,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{8943BF7F-9
 		..\.github\workflows\build-develop.yml = ..\.github\workflows\build-develop.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A333A615-1BE3-4FAD-930E-2CF69D794320}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{E0E28C2C-1A5D-4E7E-BF00-326591D6C49F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accesssibility", "Accesssibility", "{29B53297-D557-490E-95CB-449E7EBA4EC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AxaFrance.AxeExtended.HtmlReport", "AxaFrance.AxeExtended.HtmlReport\AxaFrance.AxeExtended.HtmlReport.csproj", "{5E767089-F407-496F-9EE5-911515D4369D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AxaFrance.AxeExtended.Selenium", "AxaFrance.AxeExtended.Selenium\AxaFrance.AxeExtended.Selenium.csproj", "{0319E876-1FBB-4FF8-AA6D-A82BC461332D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,9 +108,26 @@ Global
 		{2FBD1C5A-5301-411C-9967-68A450A5C897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FBD1C5A-5301-411C-9967-68A450A5C897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FBD1C5A-5301-411C-9967-68A450A5C897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E767089-F407-496F-9EE5-911515D4369D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E767089-F407-496F-9EE5-911515D4369D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E767089-F407-496F-9EE5-911515D4369D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E767089-F407-496F-9EE5-911515D4369D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0319E876-1FBB-4FF8-AA6D-A82BC461332D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0319E876-1FBB-4FF8-AA6D-A82BC461332D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0319E876-1FBB-4FF8-AA6D-A82BC461332D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0319E876-1FBB-4FF8-AA6D-A82BC461332D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B655DD7F-5E31-40FD-A91B-CEE4E0BF548F} = {E0E28C2C-1A5D-4E7E-BF00-326591D6C49F}
+		{AC9128CB-6277-4B66-8AF0-269934F689BF} = {A333A615-1BE3-4FAD-930E-2CF69D794320}
+		{DEF5EC1F-9DA3-4433-A5B5-BDC65A920D28} = {A333A615-1BE3-4FAD-930E-2CF69D794320}
+		{E2C2874F-EAA8-4826-A2EF-17A39FD4625A} = {A333A615-1BE3-4FAD-930E-2CF69D794320}
+		{2FBD1C5A-5301-411C-9967-68A450A5C897} = {A333A615-1BE3-4FAD-930E-2CF69D794320}
+		{5E767089-F407-496F-9EE5-911515D4369D} = {29B53297-D557-490E-95CB-449E7EBA4EC0}
+		{0319E876-1FBB-4FF8-AA6D-A82BC461332D} = {29B53297-D557-490E-95CB-449E7EBA4EC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACFD5F0E-9949-4C5E-9CD9-5B2C8BBA1B9E}

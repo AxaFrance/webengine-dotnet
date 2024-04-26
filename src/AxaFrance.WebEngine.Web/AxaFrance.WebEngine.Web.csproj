@@ -32,15 +32,15 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.7" />
-    <PackageReference Include="Axe.Extended.Selenium" Version="0.1.19-preview" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.19.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.20.0" />
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
     <PackageReference Include="WebDriverManager" Version="2.17.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.AxeExtended.Selenium\AxaFrance.AxeExtended.Selenium.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
   </ItemGroup>
 
