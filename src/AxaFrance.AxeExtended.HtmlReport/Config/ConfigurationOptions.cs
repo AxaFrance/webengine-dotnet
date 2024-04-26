@@ -12,7 +12,8 @@ using System.Xml.Linq;
 namespace Axe.Extended.HtmlReport.Config
 {
     /// <summary>
-    /// Options object;
+    /// Options object; it is used to set the configuration options for the axe.run function.
+    /// if you have additional checks or rules this structure can be used.
     /// </summary>
     public class ConfigurationOptions
     {

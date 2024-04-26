@@ -5,7 +5,7 @@ name: Build WebEngine (Main Branch Only)
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "preview" ]
 
 jobs:
   build:
@@ -61,7 +61,7 @@ jobs:
       shell: powershell
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.2.${{github.run_number}}    
+        dotnet build "./src" --no-restore --configuration Debug -p:Version=1.2.${{github.run_number}} --version-suffix preview
         dotnet-coverage collect 'dotnet test "./src/WebEngine.Test" --filter TestCategory!=Mobile' -f xml  -o 'coverage.xml'
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"     
     
@@ -73,7 +73,7 @@ jobs:
       shell: powershell
       run: |
         mkdir "nuget"
-        Get-ChildItem ./src -Recurse -File -Filter Axa*.nupkg | % {Copy-Item -Path $_.FullName -Destination "./nuget/$_"}
+        Get-ChildItem ./src -Recurse -File -Filter AxaFrance*.nupkg | % {Copy-Item -Path $_.FullName -Destination "./nuget/$_"}
     
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2

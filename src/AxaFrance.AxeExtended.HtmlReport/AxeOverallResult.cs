@@ -14,6 +14,9 @@ namespace Axe.Extended.HtmlReport
     public class AxeOverallResult : BaseResult
     {
 
+        /// <summary>
+        /// List of all tested pages and their results
+        /// </summary>
         public List<AxePageResult> PageResults { get; set; } = new List<AxePageResult>();
 
         internal Dictionary<string, ResultType> overallResults = new Dictionary<string, ResultType>();
