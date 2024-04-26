@@ -22,8 +22,16 @@ namespace Axe.Extended.HtmlReport
         /// </summary>
         public AxeResult AxeResult { get; private set; }
 
+        /// <summary>
+        /// The builder that created this report.
+        /// </summary>
         public PageReportBuilder Builder { get; private set; }
 
+        /// <summary>
+        /// Create a new instance of AxePageResult
+        /// </summary>
+        /// <param name="result">Original AxeResult provided by Axe core library</param>
+        /// <param name="htmlReportBuilder">the report builder used for the page.</param>
         public AxePageResult(AxeResult result, PageReportBuilder htmlReportBuilder)
         {
             Builder = htmlReportBuilder;
@@ -170,8 +178,19 @@ namespace Axe.Extended.HtmlReport
         /// <summary>
         /// Get the weight according to the impact, uses the same weighting score as lighthouse
         /// </summary>
-        /// <param name="impact">Acessibility impact: Critical, Serious, Moderate, Minor</param>
+        /// <param name="resultItem">the result item used to get the impact</param>
         /// <returns>Weight: 1, 3, 7, and 10 according to impact</returns>
+        /// <remarks>
+        ///  The weighting is based on impact:
+        ///  - Critical = 10,
+        ///  - Serious = 7,
+        ///  - Moderate = 3,
+        ///  - Minor = 1
+        ///  
+        ///  This weighthing is used to calculate the score of the page in a weighted mode.
+        ///  This function will not be used in non-weighted mode.
+        ///  Tools like Lighthouse use the same weighting score. In RGAA, score is not weighted.
+        /// </remarks>
         internal static int ScorePerImpact(AxeResultItem resultItem)
         {
             var impact = resultItem.GetImpact();

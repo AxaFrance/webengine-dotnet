@@ -25,6 +25,10 @@ namespace Axe.Extended.HtmlReport
         public int Scorebase { get; set; }
 
         private int? _score;
+        
+        /// <summary>
+        /// The score of the test result.
+        /// </summary>
         public int? Score
         {
             get
@@ -39,6 +43,10 @@ namespace Axe.Extended.HtmlReport
 
         private int? _scoreRotation;
 
+
+        /// <summary>
+        /// The rotation in degree used to display the score in html report
+        /// </summary>
         public int? ScoreRotation
         {
             get
@@ -76,6 +84,9 @@ namespace Axe.Extended.HtmlReport
             }
         }
 
+        /// <summary>
+        /// The color code for the score background color.
+        /// </summary>
         public string ScoreBackgroundColor
         {
             get
