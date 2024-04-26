@@ -4,6 +4,7 @@
 using System;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AxaFrance.WebEngine.Report
 {
@@ -26,7 +27,7 @@ namespace AxaFrance.WebEngine.Report
         public string TestName { get; set; }
 
         /// <summary>
-        /// The log of
+        /// The log of the test case.
         /// </summary>
         public string Log { get; set; }
 
@@ -102,5 +103,16 @@ namespace AxaFrance.WebEngine.Report
         /// The result of the test steps 
         /// </summary>
         public List<ActionReport> ActionReports { get; set; } = new List<ActionReport>();
+
+        internal void AttachFile(string fileName, string fileType)
+        {
+            AttachedData.Add(new AdditionalData()
+            {
+                Name = fileType,
+                Value = File.ReadAllBytes(fileName)
+            });
+        }
+
+        public List<AdditionalData> AttachedData { get; set; } = new List<AdditionalData>();
     }
 }

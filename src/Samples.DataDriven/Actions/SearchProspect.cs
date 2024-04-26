@@ -24,6 +24,7 @@ namespace Samples.DataDriven.Actions
             {
                 model.CustomerId.SetValue(customerId);
             }
+            RunAccessibilityTest("Prospect");
             model.NextStep.Click();
         }
 

@@ -6,7 +6,11 @@ using Hummingbird.UI;
 using ICSharpCode.AvalonEdit.Folding;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -181,9 +185,22 @@ namespace AxaFrance.WebEngine.ReportViewer
                         }
                     }
                 }
+
+                if(tc.AttachedData.FirstOrDefault(x=>x.Name == "AccessibilityReport") != null)
+                {
+                    var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport").Value;
+                    OpenAccessibilityReport(data);
+                    tabAccessibility.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tabAccessibility.Visibility = Visibility.Collapsed;
+                    tabControl.SelectedIndex = 0;
+                }
             }
 
         }
+
 
         private void FillTreeViewItem(TreeViewItem parent, ActionReport action)
         {
@@ -409,6 +426,47 @@ namespace AxaFrance.WebEngine.ReportViewer
         private void cbFailed_Unchecked(object sender, RoutedEventArgs e)
         {
             this.CheckedChanged();
+        }
+
+        private void OpenAccessibilityReport(byte[] data)
+        {
+            //extract data as zip stream to temp folder
+            using (var stream = new MemoryStream(data)) {
+                ZipArchive archive = new ZipArchive(stream);
+                var tempFolder = Path.Combine(Path.GetTempPath(), "AccessibilityReport");
+                if (Directory.Exists(tempFolder))
+                {
+                    Directory.Delete(tempFolder, true);
+                }
+                Directory.CreateDirectory(tempFolder);
+                archive.ExtractToDirectory(tempFolder);
+                //open the index.html
+                var indexFile = Directory.GetFiles(tempFolder, "index.html", SearchOption.AllDirectories).FirstOrDefault();
+                if (indexFile != null)
+                {
+                    btnViewInBrowser.Tag = indexFile;
+                    webViewAccessibility.Source = new Uri(indexFile);
+
+                }
+                else
+                {
+                    ShowMessageBox("Error", "Unable to find the index.html file in the accessibility report", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            webViewAccessibility.GoBack();
+        }
+
+        private void btnViewInBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            if(btnViewInBrowser.Tag != null)
+            {
+                ProcessStartInfo psi = new ProcessStartInfo(btnViewInBrowser.Tag.ToString()) { UseShellExecute = true };
+                Process.Start(psi);
+            }
         }
     }
 }

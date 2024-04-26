@@ -25,6 +25,7 @@ namespace Samples.DataDriven.Actions
                 }
                 Browser.SwitchTo().Alert().Accept();
             }
+            RunAccessibilityTest("End");
             model.Done.Click();
         }
 

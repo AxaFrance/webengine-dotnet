@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net6.0;net8.0</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\check-part.html" />
+    <None Remove="Assets\node-part.html" />
+    <None Remove="Assets\overall-result.html" />
+    <None Remove="Assets\overall-tablerow.html" />
+    <None Remove="Assets\page-result.html" />
+    <None Remove="Assets\rule-part.html" />
+    <None Remove="axe-rgaa-extension.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\check-part.html" />
+    <EmbeddedResource Include="Assets\overall-result.html" />
+    <EmbeddedResource Include="Assets\overall-tablerow.html" />
+    <EmbeddedResource Include="Assets\page-result.html" />
+    <EmbeddedResource Include="Assets\node-part.html" />
+    <EmbeddedResource Include="Assets\rule-part.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\axe-rgaa-extension.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Deque.AxeCore.Commons" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+</Project>

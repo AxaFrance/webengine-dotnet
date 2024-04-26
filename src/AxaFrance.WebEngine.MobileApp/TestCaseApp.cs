@@ -41,19 +41,6 @@ namespace AxaFrance.WebEngine.MobileApp
                     DebugLogger.WriteLine("[ERROR] Get log error: " + ex.Message);
                 }
             }
-            try
-            {
-
-                if (Context is AppiumDriver appiumDriver && !string.IsNullOrEmpty(Settings.Instance.AppPackageName))
-                {
-                    ResetApp(appiumDriver);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.WriteLine("[DEBUG] Current App closing error: " + ex.Message);
-            }
-
 
             if (Context is AppiumDriver ad)
             {
@@ -70,19 +57,6 @@ namespace AxaFrance.WebEngine.MobileApp
 
         }
 
-        private void ResetApp(AppiumDriver appiumDriver)
-        {
-            DebugLogger.WriteLine("Dont reset app, please do a proper login/logout on each test scenario");
-            //get current package name, terminate it and reset it
-            /*
-            if (appiumDriver is AndroidDriver ad)
-            {
-                var packageName = ad.CurrentPackage;
-                appiumDriver.TerminateApp(packageName);
-                appiumDriver.ActivateApp(packageName);
-            }
-            */
-        }
 
 
         /// <inheritdoc/>
