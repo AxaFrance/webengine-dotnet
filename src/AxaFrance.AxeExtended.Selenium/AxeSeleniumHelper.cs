@@ -1,4 +1,4 @@
-﻿using Axe.Extended.HtmlReport;
+﻿using AxaFrance.AxeExtended.HtmlReport;
 using Deque.AxeCore.Commons;
 using Deque.AxeCore.Selenium;
 using Newtonsoft.Json.Linq;
@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Axe.Extended.Selenium
+namespace AxaFrance.AxeExtended.Selenium
 {
     public static class SeleniumHelper
     {

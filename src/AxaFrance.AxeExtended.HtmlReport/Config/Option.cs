@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.HtmlReport.Config
+namespace AxaFrance.AxeExtended.HtmlReport.Config
 {
     public class Option
     {

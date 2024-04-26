@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Axe.Extended.HtmlReport.Config
+namespace AxaFrance.AxeExtended.HtmlReport.Config
 {
     /// <summary>
     /// Options object; it is used to set the configuration options for the axe.run function.

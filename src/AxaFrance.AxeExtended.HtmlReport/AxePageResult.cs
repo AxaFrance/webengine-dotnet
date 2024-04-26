@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.HtmlReport
+namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
     /// Represents the complete result of accessibility test for a single page.

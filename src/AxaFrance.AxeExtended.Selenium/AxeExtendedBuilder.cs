@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Axe.Extended.Selenium
+namespace AxaFrance.AxeExtended.Selenium
 {
     public class AxeExtendedBuilder
     {
