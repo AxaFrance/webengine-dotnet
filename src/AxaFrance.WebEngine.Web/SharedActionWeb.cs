@@ -1,9 +1,13 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using AxaFrance.AxeExtended.HtmlReport;
+using AxaFrance.AxeExtended.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System;
+using System.Drawing;
+using System.IO;
 
 namespace AxaFrance.WebEngine.Web
 {
@@ -18,7 +22,21 @@ namespace AxaFrance.WebEngine.Web
         /// <summary>
         /// The shared <see cref="IWebDriver"/> object for the current Selenium test Action
         /// </summary>
-        protected WebDriver Browser;
+        protected WebDriver Browser { get; set; }
+
+
+        /// <summary>
+        /// Runs an accessibility check on current location.
+        /// </summary>
+        /// <param name="pageName">Name of the current page on report</param>
+        public void RunAccessibilityTest(string pageName)
+        {
+            if(testCase is TestCaseWeb tw && tw.IsAccessibilityTestEnabled && tw.reportBuilder != null)
+            {
+                DebugLogger.WriteLine("[A11Y] Analyzing accessibility issues on current page.");
+                tw.reportBuilder.WithSelenium(Browser, pageName).WithRgaaExtension().Build();                
+            }
+        }
 
         /// <summary>
         /// Run the current test action.
@@ -174,5 +192,6 @@ namespace AxaFrance.WebEngine.Web
         {
 
         }
+        
     }
 }

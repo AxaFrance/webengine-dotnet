@@ -1,0 +1,14 @@
+﻿<!-- This is the template of a single axe rule -->
+<button type="button" class="collapsible">
+    <div class='label {{Impact}}' aria-label="{{Impact}}"> </div>
+    {{Description}}
+    <span class="tag">({{RuleNodeCount}})</span>
+</button>
+<div class="content">   
+    <ul>
+        <li>Tags: {{RuleTags}}</li>
+        <li>Rule Id: <div class='label' aria-label="Tag of rule id: {{RuleId}}">{{RuleId}}</div></li>
+        <li>Link to the description: <a href={{HelpUrl}}>{{Help}}</a></li>
+    </ul>
+    {{RuleNodes}}
+</div>

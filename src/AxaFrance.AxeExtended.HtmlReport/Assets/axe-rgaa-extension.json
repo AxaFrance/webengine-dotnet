@@ -1,0 +1,156 @@
+{
+  "branding": "axe-rgaa-extension",
+  "checks": [
+    {
+      "id": "always-fail",
+      "evaluate": "function (node, options, virtualNode) {\r\n    return false;\r\n}",
+      "metadata": {
+        "impact": "serious",
+        "messages": {
+          "pass": "There is no way to pass.",
+          "fail": "It will always fail."
+        }
+      }
+    },
+    {
+      "id": "always-pass",
+      "evaluate": "function (node, options, virtualNode) {\r\n    return true;\r\n}",
+      "metadata": {
+        "impact": "serious",
+        "messages": {
+          "pass": "There is no way to fail.",
+          "fail": "It will always pass."
+        }
+      }
+    },
+    {
+      "id": "img-has-alt",
+      "evaluate": "function (node, options, virtualNode) {\r\n    var alt = node.getAttribute(\"alt\");\r\n    var title = node.getAttribute(\"title\");\r\n    var ariaLabel = node.getAttribute(\"aria-label\");\r\n    var ariaLabelledBy = node.getAttribute(\"aria-labelledby\");\r\n\r\n    if (alt == null && title == null && ariaLabel == null && ariaLabelledBy == null) {\r\n        return false;\r\n    } else {\r\n        return true;\r\n    }\r\n}",
+      "metadata": {
+        "impact": "serious",
+        "messages": {
+          "pass": "`<img>` tag or element with `role=\"img\"` must have one of following attribute: `aria-labelledby`, `aria-label`, `alt` or `title`",
+          "fail": "`<img>` tag or element with `role=\"img\"` must have one of following attribute: `aria-labelledby`, `aria-label`, `alt` or `title`"
+        }
+      }
+    },
+    {
+      "id": "rgaa-heading-order",
+      "evaluate": "function (node, options, virtualNode) {\r\n\r\n    //get all headings from document\r\n    var nodeList = document.querySelectorAll(\"h1, h2, h3, h4, h5, h6\");\r\n    var headings = Array.from(nodeList);\r\n\r\n\r\n\r\n    //get the previous heading from the array. if node is the first heading, previousHeading will be null\r\n    var index = headings.indexOf(node);\r\n    if (index <= 0) return true;\r\n    if (index > headings.length - 1) return true;\r\n\r\n    //get current heading level\r\n    var currentHeadingLevel = parseInt(node.tagName.substring(1));\r\n    var previousHeading = headings[index - 1];\r\n    //get the previous heading level\r\n    var previousHeadingLevel = previousHeading ? parseInt(previousHeading.tagName.substring(1)) : null;\r\n\r\n    if (currentHeadingLevel > previousHeadingLevel && currentHeadingLevel - previousHeadingLevel > 1) {\r\n        //there is a gap between the current heading and the previous heading\r\n        //for example, the current heading is h3 and the previous heading is h1\r\n        //created an array containing previeus heading\r\n        var array = [previousHeading];\r\n        this.relatedNodes(array);\r\n        return false;\r\n    }\r\n    return true;\r\n}",
+      "metadata": {
+        "messages": {
+          "pass": "Pour chaque tableau de données complexe, un résumé est-il disponible ? ",
+          "fail": "Pour chaque tableau de données complexe, un résumé est-il disponible ? "
+        }
+      }
+    },
+    {
+      "id": "table-has-resume",
+      "evaluate": "function (node, options, virtualNode) {\r\n    var summary = node.getAttribute(\"summary\");\r\n    var captionElement = node.querySelector(\"caption\");\r\n\r\n    var describedby = node.getAttribute(\"aria-describedby\");\r\n\r\n    if (summary == null && captionElement == null && describedby) {\r\n        return false;\r\n    } else {\r\n        return true;\r\n    }\r\n}",
+      "metadata": {
+        "messages": {
+          "pass": "Pour chaque tableau de données complexe, un résumé est-il disponible ? ",
+          "fail": "Pour chaque tableau de données complexe, un résumé est-il disponible ? "
+        }
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "always-fail",
+      "impact": "critical",
+      "metadata": {
+        "description": "[TEST] this rule will always fail",
+        "help": "And there is no way to pass",
+        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1.1"
+      },
+      "selector": "html",
+      "any": [],
+      "all": [
+        "always-fail"
+      ],
+      "none": [],
+      "tags": [
+        "test"
+      ]
+    },
+    {
+      "id": "always-pass",
+      "impact": "critical",
+      "metadata": {
+        "description": "[PASS] this rule will always pass",
+        "help": "And there is no way to pass",
+        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1.1"
+      },
+      "selector": "h1, h2, h3, h4",
+      "any": [],
+      "all": [
+        "always-pass"
+      ],
+      "none": [],
+      "tags": [
+        "test"
+      ]
+    },
+    {
+      "id": "rgaa-1.1",
+      "impact": "critical",
+      "metadata": {
+        "description": "[RGAA 1.1] Chaque image porteuse d’information a-t-elle une alternative textuelle ?",
+        "help": "Le test comprend les tests suivants: 1.1.1 (image), 1.1.2 (zone d'image'), 1.1.3 (bouton de type image), 1.1.5 (svg), 1.1.6 (object type image), 1.1.7 (embed type image)",
+        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1"
+      },
+      "selector": "img, [role=\"img\"], area, button[type=\"image\"], svg, object[type|=\"image/\"], embed[type|=\"image/\"]",
+      "any": [],
+      "all": [
+        "img-has-alt"
+      ],
+      "none": [],
+      "tags": [
+        "wcag111",
+        "rgaa-1-1",
+        "rgaa"
+      ]
+    },
+    {
+      "id": "rgaa-5.1.1",
+      "impact": "moderate",
+      "metadata": {
+        "description": "[RGAA 5.1.1] Chaque tableau de données complexe a-t-il un résumé ?",
+        "help": "Pour chaque tableau de données complexe, un résumé est-il disponible ?",
+        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#5.1"
+      },
+      "selector": "table, [role=\"table\"]",
+      "any": [],
+      "all": [
+        "table-has-resume"
+      ],
+      "none": [],
+      "tags": [
+        "wcag131",
+        "rgaa-5-1-1",
+        "rgaa"
+      ]
+    },
+    {
+      "id": "rgaa-9.1.1",
+      "reviewOnFail": false,
+      "impact": "moderate",
+      "selector": "h1, h2, h3, h4, h5, h6",
+      "tags": [
+        "rgaa-9-1-1",
+        "rgaa"
+      ],
+      "metadata": {
+        "description": "[RGAA 9.1.1] Dans chaque page web, la hiérarchie entre les titres est-elle pertinente ?",
+        "help": "Dans chaque page web, la hiérarchie entre les titres est-elle pertinente",
+        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#9.1.1"
+      },
+      "any": [
+        "rgaa-heading-order"
+      ],
+      "all": [],
+      "none": []
+    }
+  ]
+}

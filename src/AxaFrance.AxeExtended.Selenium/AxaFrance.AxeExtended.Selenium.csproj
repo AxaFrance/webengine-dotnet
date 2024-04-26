@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net6.0;net8.0</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Copyright>AXA France</Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Deterministic>False</Deterministic>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <Product>AXA WebEngine Automation Framework</Product>
+    <PackageTags>AXA WebEngine Automation Framework</PackageTags>
+    <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Deque.AxeCore.Selenium" Version="4.9.0" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.AxeExtended.HtmlReport\AxaFrance.AxeExtended.HtmlReport.csproj" />
+  </ItemGroup>
+
+</Project>

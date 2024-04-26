@@ -139,26 +139,19 @@ namespace AxaFrance.WebEngine.Web
                     }
                 }
             }
-            else if (Settings.Instance.UseAppiumForWebMobile)
-            {
-                Settings.Instance.UseJavaScriptClick = true;
-                return ConnectToGridUsingAppiumDriver(arguments);
-            }
             else
             {
-                Settings.Instance.UseJavaScriptClick = true;
-                return ConnectToGridUsingRemoteDriver(arguments);
+                return ConnectToGridUsingAppiumDriver(arguments);
             }
         }
 
         private static WebDriver ConnectToGridUsingRemoteDriver(List<string> arguments)
         {
-            Settings s = Settings.Instance;
+            Settings s = Settings.Instance;           
             var options = GetDriverOption(s.Browser, arguments);
             options.PlatformName = s.Platform.ToString();
             options.AddAdditionalOption("newCommandTimeout", 90);
             options.AddAdditionalOption("nativeWebScreenshot", "true");
-
             string remoteServerAddress = s.GridServerUrl;
             if (remoteServerAddress == null)
             {
@@ -170,8 +163,7 @@ namespace AxaFrance.WebEngine.Web
             AddAdditionalCapabilities(options, s);
             if (options != null)
             {
-                var capa = options.ToCapabilities();
-                return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(s.GridServerUrl), capa);
+                return new OpenQA.Selenium.Remote.RemoteWebDriver(new Uri(s.GridServerUrl), options);
             }
             else
             {

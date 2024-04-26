@@ -1,6 +1,6 @@
 ﻿<ui:BasicWindow xmlns:ui="clr-namespace:Hummingbird.UI;assembly=Hummingbird.UI" x:Class="AxaFrance.WebEngine.ReportViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        
+        xmlns:web="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -46,7 +46,7 @@
             </Button>
         </StackPanel>
 
-        <TabControl Grid.Column="1" Grid.Row="2">
+        <TabControl Grid.Column="1" Grid.Row="2" x:Name="tabControl">
             <TabItem Header="Test Steps">
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <TreeView x:Name="lvTeststeps"  BorderThickness="0" Margin="6,0" SelectedItemChanged="lvTeststeps_SelectedItemChanged" Background="Transparent" >
@@ -87,6 +87,20 @@
             </TabItem>
             <TabItem Header="System Output" ToolTip="The standard output from console.">
                 <avalon:TextEditor x:Name="txtSystemOut" IsReadOnly="True" FontFamily="Consolas" Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" />
+            </TabItem>
+            <TabItem Header="Accessibility" x:Name="tabAccessibility" Visibility="Collapsed" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ToolBar>
+                        <Button Content="Back" Click="btnBack_Click" Style="{StaticResource FlatButtonStyle}" />
+                        <Button Content="View in Browser" Click="btnViewInBrowser_Click" x:Name="btnViewInBrowser" Style="{StaticResource FlatButtonStyle}"/>
+                    </ToolBar>
+                    <web:WebView2 x:Name="webViewAccessibility" Grid.Row="1" />
+                </Grid>
+                
             </TabItem>
         </TabControl>
 

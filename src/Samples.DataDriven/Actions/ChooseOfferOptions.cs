@@ -36,7 +36,7 @@ namespace Samples.DataDriven.Actions
             }
 
 
-
+            RunAccessibilityTest("Offer");
             this.Screenshot("screenshot for selected offer and option");
             
         }

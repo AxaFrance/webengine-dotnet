@@ -354,7 +354,8 @@ namespace Samples.DataDriven.Actions
             login.UserName.SetValue(GetParameter(ParameterList.Username));
             login.Password.SetValue(GetParameter(ParameterList.Password));
             Screenshot();
-            login.ButtonLogin.Click();
+            RunAccessibilityTest(&quot;Login&quot;);
+            login.ButtonLogin.Click();            
         }
 
         // Verifies if this action goes well.
@@ -409,6 +410,7 @@ namespace Samples.DataDriven.Actions
                 //if hometype is not house, run action for apartment
                 result = DoActionWithCheckpoint(typeof(HomeDetail_Apartment), Browser, ContextValues, this, Parameters);
             }
+            RunAccessibilityTest(&quot;HomeDetails&quot;);
             if (result)
             {
                 model.NextStep.Click();
@@ -466,7 +468,7 @@ namespace Samples.DataDriven.Actions
                 model.AntecedentDate.SendKeys(GetParameter(ParameterList.AccidentDate));
                 model.AntecedentResponsability.CheckByValue(GetParameter(ParameterList.AccidentResponsability));
             }
-
+            RunAccessibilityTest(&quot;Antecedents&quot;);
             model.NextStep.Click();
         }
 
@@ -539,9 +541,9 @@ namespace Samples.DataDriven
             {
                 var tc = new TestCases.TC_InsuranceQuote()
                 {
-                    Name = testdata.TestName
+                    Name = testdata.TestName,
+                    AccessibilityReportTitle = testdata.TestName
                 };
-
                 testCases.Add(new KeyValuePair&lt;string, TestCase&gt;(testdata.TestName, tc));
             }
 
@@ -658,7 +660,7 @@ This can be done exclusively within Excel without the need to motify the code or
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2022 AXA France, All rights reserved.
+            Copyright &reg; 2016-2024 AXA France, All rights reserved.
             
           </div>
         </div>

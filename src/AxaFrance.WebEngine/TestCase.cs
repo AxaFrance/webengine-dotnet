@@ -177,7 +177,7 @@ namespace AxaFrance.WebEngine
                     string name = Utilities.GetDescriptionByClassName(action);
                     ar.Name = name;
                     Variable[] parameters = TestData?.Data ?? new Variable[1] { new Variable { Name = "Empty", Value = string.Empty } };
-                    var actionObj = SharedActionBase.DoAction(t, Context, ContextValues, ar, parameters);
+                    var actionObj = SharedActionBase.DoAction(t, this, Context, ContextValues, ar, parameters);
 
                     ContextValues = actionObj.ContextValues;
                     bool result = true;

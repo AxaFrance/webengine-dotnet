@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{{Title}}</title>
+    <!-- Syntax Highting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <style>
+
+        body {
+            font-family: Segoe UI, Helvetica, sans-serif;
+            font-size: 14px;
+            min-width: 800px;
+            margin: 0px;
+            padding: 10px;
+        }
+
+        h1 {
+            font-family: Segoe UI Light, Helvetica, sans-serif;
+            margin-top: 0px;
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+            font-size: 36px;
+        }
+
+
+        table {
+            border: 1px solid lightgray;
+            border-radius: 1em;
+            border-collapse: collapse;
+            background-color: white;
+            width: 100%;
+            overflow: hidden;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            background-color: #CCCCCC;
+            color: navy;
+        }
+
+        td {
+            padding: 12px;
+        }
+
+
+        .navbar {
+            margin: 10px;
+            background: #F1F1F1;
+            margin: 10px 0px 0px 0px;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 10px 0px;
+        }
+
+
+        .right {
+            float: right;
+        }
+
+        /* Go from zero to full opacity */
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Donut Chart showing accessibility index */
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+        .donut-label {
+            /* (A1) CIRCLE */
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            background: #EEEEEE;
+            border-radius: 50%;
+            text-align: center;
+            display: block;
+            position: absolute;
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+
+        .donut {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            display: block;
+            position: absolute;
+            /* (A2) SEGMENTS */
+            background: conic-gradient( #{{ScoreColor}} 0deg {{ScoreRotation}}deg, #cccccc {{ScoreRotation}}deg 360deg );
+            transform: rotate(-{{ScoreRotation}}deg);
+            opacity: 0;
+            animation: rotate 1s 1 forwards;
+        }
+
+        span.tag {
+            background-color: darkblue;
+            padding: 2px 4px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .donut-container {
+            width: 100px;
+            height: 100px;
+            float: right;
+            margin: 15px 30px;
+        }
+
+        td{
+            vertical-align: top;
+        }
+
+        p.center {
+            position: absolute;
+            text-align: center;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            margin: auto;
+            z-index: 10;
+            border-radius: 50%;
+            padding: 17%;
+            color: #{{ScoreBackgroundColor}};
+        }
+
+        .progressbar {
+            position: relative;
+            max-width: 500px;
+            min-width: 100px;
+            width: 100%;
+            margin: auto 0;
+            height: 15px;
+            background: #cccccc;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        span.progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            transition: all .3s;
+            text-align: right;
+            font-size: 12px;
+            padding-right: 10px;
+            color: white;
+        }
+
+        span.Passes {
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: green;
+        }
+
+        span.Violations {
+            padding: 2px 4px;
+            border-radius: 4px;
+            background-color: maroon;
+            color: white;
+        }
+        
+
+        /* Animation */
+        @keyframes rotate {
+            from {
+                transform: rotate(-180deg);
+                opacity: 0
+            }
+
+            to {
+                transform: rotate(0deg);
+                opacity: 1
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar" role="banner">
+        <div class='donut-container' aria-label="Overall score of the application: {{Score}} percent.">
+            <div class='donut' role="none">
+            </div>
+            <div class="donut-label" role="none">
+                <p class="center">
+                    {{Score}}
+                </p>
+            </div>
+        </div>
+        <div>
+            <h1>Accessibility Report: Application {{Title}}</h1>
+            <h3>Test performed at: {{TimeStamp}}</h3>
+        </div>
+    </div>
+    <article>
+        <h2>Web pages tested:</h2>
+        <p id="tblDescPagesTested">Pages tested during the uesr journey testing.</p>
+        <table aria-describedby="tblDescPagesTested">
+            <thead>
+                <tr>
+                    <th>Page</th>
+                    <th>Url</th>
+                    <th>Score</th>
+                    <th>Page Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{TableRowPageResult}}
+            </tbody>
+        </table>
+    </article>
+    <article>
+        <h2>Axe rules overview:</h2>
+        <p id="tblDescRulesList">A list of applicable rules and the result on each pages. Last column resumes the overall result for the rule.</p>
+        <table aria-describedby="tblDescRulesList">
+            <thead>
+                <tr>{{RowPageHeaderList}}</tr>
+            </thead>
+            <tbody>
+                {{RowRuleResults}}
+            </tbody>
+        </table>
+    </article>
+</body>
+
+</html>

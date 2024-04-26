@@ -22,7 +22,7 @@ namespace Samples.DataDriven.Actions
                 model.AntecedentDate.SendKeys(GetParameter(ParameterList.AccidentDate));
                 model.AntecedentResponsability.CheckByValue(GetParameter(ParameterList.AccidentResponsability));
             }
-
+            RunAccessibilityTest("Antecedents");
             model.NextStep.Click();
         }
 

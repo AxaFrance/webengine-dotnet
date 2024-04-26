@@ -27,6 +27,7 @@ namespace Samples.DataDriven.Actions
                 //if hometype is not house, run action for apartment
                 result = DoActionWithCheckpoint(typeof(HomeDetail_Apartment), Browser, ContextValues, this, Parameters);
             }
+            RunAccessibilityTest("HomeDetails");
             if (result)
             {
                 model.NextStep.Click();
