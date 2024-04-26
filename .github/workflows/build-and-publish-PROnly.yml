@@ -5,7 +5,10 @@ name: Build WebEngine (Main Branch Only)
 
 on:
   pull_request:
-    branches: [ "main", "preview" ]
+    branches:
+      - main
+      - 'preview/**'
+      - preview
 
 jobs:
   build:
