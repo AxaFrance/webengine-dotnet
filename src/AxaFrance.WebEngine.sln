@@ -39,7 +39,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{8943BF7F-960F-406E-B415-6527828B602A}"
 	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\build-and-publish-Preview.yml = ..\.github\workflows\build-and-publish-Preview.yml
 		..\.github\workflows\build-and-publish-PROnly.yml = ..\.github\workflows\build-and-publish-PROnly.yml
 		..\.github\workflows\build-develop.yml = ..\.github\workflows\build-develop.yml
 	EndProjectSection
