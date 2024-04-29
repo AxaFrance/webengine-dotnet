@@ -18,6 +18,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
     /// </summary>
     public class PageReportBuilder
     {
+        /// <summary>
+        /// Options for the page report.
+        /// </summary>
         public PageReportOptions Options { get; set; }
 
 
@@ -70,7 +73,6 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Initilaize axe-core engine with customed RGAA rules.
         /// </summary>
-        /// <param name="config"></param>
         /// <returns></returns>
         /// <remarks>
         /// This method is not compatible with other <see cref="WithConfig(JObject)"/> method.
@@ -82,6 +84,11 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return this;
         }
 
+        /// <summary>
+        /// Initilaize axe-core engine with customed configuration
+        /// </summary>
+        /// <param name="configFile">axe core configuration file (in json format)</param>
+        /// <returns></returns>
         public PageReportBuilder WithConfig(string configFile)
         {
             var content = File.ReadAllText(configFile);
@@ -117,6 +124,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return this;
         }
 
+        /// <summary>
+        /// Test result of the page.
+        /// </summary>
         public AxePageResult Result
         {
             get; private set;
@@ -125,7 +135,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Export Enhanced AxeResult (with Screenshots) to expected format.
         /// </summary>
-        /// <param name="result">Processed AxeResult with screenshot</param>
+        /// <param name="fileName">The filename of the exported report. Default value is "index.html"</param>
         /// <returns>
         /// absolute path of the exported test report.
         /// </returns>
@@ -241,10 +251,10 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         );
                 }
                 string tags = string.Join(" ", item.Item.Tags.Select(x => $"<div class='regularition'>{x}</div>"));
-                var rgaaTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
-                if (rgaaTags != null)
+                var additinalTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
+                if (additinalTags != null)
                 {
-                    tags += string.Join(" ", rgaaTags.Select(x => $"<div class='regularition'>RGAA {x}</div>"));
+                    tags += string.Join(" ", additinalTags.Select(x => $"<div class='regularition'>{x}</div>"));
                 }
                 overall.Append(
                     template.Replace("{{RuleId}}", item.Item.Id)
@@ -283,10 +293,25 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return "No rules have audited for " + label;
         }
 
+        /// <summary>
+        /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
+        /// </summary>
         public GetScreenshotDelegate GetScreenshot { get; internal set; }
+        
+        /// <summary>
+        /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
+        /// </summary>
         public AnalyzeDelegate Analyze { get; internal set; }
 
+        /// <summary>
+        /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
+        /// </summary>
+
         public delegate byte[] GetScreenshotDelegate(AxeResultNode node, PageReportOptions options);
+
+        /// <summary>
+        /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
+        /// </summary>
         public delegate AxeResult AnalyzeDelegate(JObject axeConfig);
 
 

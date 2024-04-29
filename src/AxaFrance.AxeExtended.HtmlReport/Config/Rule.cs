@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport.Config
 {
+
+    /// <summary>
+    /// Represents a rule in the axe configuration.
+    /// </summary>
     public class Rule
     {
         /// <summary>
