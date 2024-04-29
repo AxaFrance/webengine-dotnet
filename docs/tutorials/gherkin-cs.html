@@ -136,8 +136,10 @@ Now build the test project again, you can see the variables of the test is highl
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-2 14:33
 using AxaFrance.WebEngine.Web;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Xml;
 
 namespace Samples.Gherkin.StepDefinitions
 {
@@ -170,6 +172,14 @@ namespace Samples.Gherkin.StepDefinitions
             pageModel.SelectLanguage.SelectByText(language);
             pageModel.RadioChooseToBuy.CheckByValue(drink);
             pageModel.NextButton.Click();
+
+            // read a json data from the file data.json
+            string json = File.ReadAllText(&quot;data.json&quot;);
+
+            
+
+            // transforme json to xml
+            XmlDocument doc = JsonConvert.DeserializeXmlNode(json, &quot;root&quot;);
         }
 
         [Then(@&quot;I got &#39;([^&#39;]*)&#39;&quot;)]

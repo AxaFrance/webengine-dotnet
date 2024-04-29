@@ -139,12 +139,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 
                 //Add tags
                 ruleResults.AppendLine($"<td>");
-                var rgaaTags = options.AdditionalTags?.GetTagsByRule(ruleId);
-                if (rgaaTags != null)
+                var additionalTags = options.AdditionalTags?.GetTagsByRule(ruleId);
+                if (additionalTags != null)
                 {
-                    foreach (var tag in rgaaTags)
+                    foreach (var tag in additionalTags)
                     {
-                        ruleResults.AppendLine($"<span class='tag'>RGAA {tag}</span>");
+                        ruleResults.AppendLine($"<span class='tag'>{tag}</span>");
                     }
                 }
                 ruleResults.AppendLine($"</td>");

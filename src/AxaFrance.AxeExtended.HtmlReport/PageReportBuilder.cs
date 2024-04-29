@@ -251,10 +251,10 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         );
                 }
                 string tags = string.Join(" ", item.Item.Tags.Select(x => $"<div class='regularition'>{x}</div>"));
-                var rgaaTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
-                if (rgaaTags != null)
+                var additinalTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
+                if (additinalTags != null)
                 {
-                    tags += string.Join(" ", rgaaTags.Select(x => $"<div class='regularition'>RGAA {x}</div>"));
+                    tags += string.Join(" ", additinalTags.Select(x => $"<div class='regularition'>{x}</div>"));
                 }
                 overall.Append(
                     template.Replace("{{RuleId}}", item.Item.Id)
