@@ -24,7 +24,6 @@
     <None Remove="Assets\overall-tablerow.html" />
     <None Remove="Assets\page-result.html" />
     <None Remove="Assets\rule-part.html" />
-    <None Remove="Assets\axe-rgaa-extension.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,10 +33,6 @@
     <EmbeddedResource Include="Assets\page-result.html" />
     <EmbeddedResource Include="Assets\node-part.html" />
     <EmbeddedResource Include="Assets\rule-part.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\axe-rgaa-extension.json" />
   </ItemGroup>
 
   <ItemGroup>

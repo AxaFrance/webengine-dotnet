@@ -3905,6 +3905,318 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.html",
+          "hash": "BbU/XBprPyS1GLhIXSOlMiqwAxM6nm9PV02V+1PJg4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeOverallResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeOverallResult.html",
+          "hash": "gO9naHwNDBmzeyGDt2OyovJcpyORahACpm0eKP5ZgFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxePageResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxePageResult.html",
+          "hash": "0gnZPA30Wzy41jJ0cnUhAQ9DvaK9puaaxdhQZ3IDLOk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.html",
+          "hash": "oHOSNH5+nABW1HmlY3u12015Kb9e35SGxKAsQ8bAbEo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.html",
+          "hash": "4/k1E4XLL8fjzGu7G4xns1hEUDlmKc0/WvaXsrDjP+Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.BaseResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.BaseResult.html",
+          "hash": "atYycBVMvs58oIlyfLUSUY3xuz4ocQ7FFk0Wn6AaEM8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Branding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Branding.html",
+          "hash": "V/kVqZEoRC5Aefxi1romrEct+4movOYfpWBNM9M0m4k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Check.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Check.html",
+          "hash": "eh+g7KJJbg2b70452qrUq5HsjX7/+9IZJsC/Asmosvo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.html",
+          "hash": "G82X+aRXPUZAVSdFEeTfR4LXndYSUO1m5yvJJPl8PyA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Option.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Option.html",
+          "hash": "cu+CqaItp/CF/D954JHlyZs8VffLCTn8lYtP2Q+jRn4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Rule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.Rule.html",
+          "hash": "waP9szICA2x5z0NMXr8csBLvYV5iZ49taU2bciMecj4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Config.html",
+          "hash": "S8i6qh7KKdmnlQJTPtkMIEJjRyKyhA45hA1C5WlQxsw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.html",
+          "hash": "ly62KOUJ77cJvxVmDfpfFgFycCUiDVlYRwF4YbMcfLk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Language.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.Language.html",
+          "hash": "CZsecYHh2z1xd6TnpSdf0lKKLDithnIIcBHgSrcJrLw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OutputFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OutputFormat.html",
+          "hash": "Hg9gjr3OafFzWU9pCZMDWf3S3UvBu8PvcW5gLXUKgIM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html",
+          "hash": "vK4BQqi1+t++uE+sBuRcBPHVtOHBaWMz5Ic2ScrTrjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OverallResultItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.OverallResultItem.html",
+          "hash": "/ZDTg5HGMd85jPYCC9l870OL3bl5zV6vH5G+yfsjKcg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.AnalyzeDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.AnalyzeDelegate.html",
+          "hash": "P6cRBOjVDWAL8sYZO+cj9NbjBrA0Fu3OYU70x2Sj8nc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.GetScreenshotDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.GetScreenshotDelegate.html",
+          "hash": "AGuxg79HxyP7m5sY1lM5Otr4EZ2+95CyxHzaF9cwAm8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html",
+          "hash": "FIeULe4nVQjnjqoecGt+FH695oTkaa6qjH4WMQEut7c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportOptions.html",
+          "hash": "uvjM9Bu5Ppjkb67FEATQuEZOUB7SpmfUXY03yvrG2r4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.ScoringMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.ScoringMode.html",
+          "hash": "Vf6UlxcQlhSVXkmSl7XCq3zweJnRfnaXgPKL6DZM43I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.html",
+          "hash": "Iyv3hGdu3bLRHWlg34tk1wsoQhI9Uq7PE4H+NhFG2kU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html",
+          "hash": "vdpXnMLm8CSgGKkaWUEpQmwFLviDMeyHas1cHUADf98="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.Selenium.SeleniumHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.Selenium.SeleniumHelper.html",
+          "hash": "GmF1JJrwLj733Vw7+M8WIeYRLX2YT9S+zeJT2KC3MQ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.Selenium.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.Selenium.html",
+          "hash": "WLEX4brxtCebQBsuZ6MJQQ/DYjdDYhlzQ4hR+iVFW7c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api_net/AxaFrance.WebEngine.ActionNotFoundException.yml",
       "output": {
         ".html": {
@@ -4540,324 +4852,12 @@
       "version": ""
     },
     {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.AdditionalTagsProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.AdditionalTagsProvider.html",
-          "hash": "tPqHF2p8l3ZIdv2SyIsXh6Cv1heOZjh/XW0+8n7Mtvs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.AxeOverallResult.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.AxeOverallResult.html",
-          "hash": "N8vSUJ0ezwwlvgXaKtDiAWqMzw6d/OJgPUI4SJ2BtDY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.AxePageResult.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.AxePageResult.html",
-          "hash": "F6htwH2w6KkXlRyeyeV9bjq69vBPDRMDGhR1AeEhkvc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.AxeResultEnhancedItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.AxeResultEnhancedItem.html",
-          "hash": "oL2SVGQhvw7pup9euWUlIi8y++AbLHKWwkvrStpB7AA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.AxeResultEnhancedNode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.AxeResultEnhancedNode.html",
-          "hash": "Kd4kmLs9SQu0pmm3Lvh9TpxtsWu72pC92945dbbEMBA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.BaseResult.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.BaseResult.html",
-          "hash": "EMpibzvfYhcf//8R2oCvgUpf/uezrLJ8w/Vda9/Qz9k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.Branding.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.Branding.html",
-          "hash": "eyPl6BJdaAFQyjPU5UN/iJy3o9HvP1TFe4MhkKBc0AY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.Check.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.Check.html",
-          "hash": "T2d7bjWNCI4m+KzLXpuQ2v5pzCM7JbMU4cBPhbuffms="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.ConfigurationOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.ConfigurationOptions.html",
-          "hash": "z/IMr0CbrNwp96g7ek6UtgF7dayu+D6MbHmq1M9+zrQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.Option.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.Option.html",
-          "hash": "Y9mgHV/+PlQJmjHFefzFlKgnu/BqbHOELh/J2vAVI4E="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.Rule.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.Rule.html",
-          "hash": "f7u0j7S3VrWxdXwnLHqaXzD0HfsAXXA+jAWHI7nKO5I="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Config.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Config.html",
-          "hash": "unphFmpKo3BUFx/DiauSgdi/zzzI+5jwxKxU95nPUKQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.ExtensionMethods.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.ExtensionMethods.html",
-          "hash": "MOV3SRBZqrya4v+HCb6uP+AhOE6ZmNu/n1fnv4WElBs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.Language.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.Language.html",
-          "hash": "tv/wsiMzueWSFDgwczqpE9i2u4+W++rRHZr+StzvRHs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.OutputFormat.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.OutputFormat.html",
-          "hash": "kmnLiiACQ8GAunQdsdB/OwY3+Vk04UtZmM77Lj0U4Wc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.OverallReportBuilder.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.OverallReportBuilder.html",
-          "hash": "JKcEuFGts1Gon+hja7uzYVd1sB64USdrTxvrzhrImeQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.OverallResultItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.OverallResultItem.html",
-          "hash": "l6YtXS8XNXT1DwiRzJY9XihW7bVBzHPfgDlCenCWmWQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.AnalyzeDelegate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.AnalyzeDelegate.html",
-          "hash": "XSzrPc1Z0uBaNiME5p569d8zz/eReBxUSWJgd4DNl9A="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.GetScreenshotDelegate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.GetScreenshotDelegate.html",
-          "hash": "5st+nvHGjKOxpvWgOY0YCtuK2/ljinK1ObfyZLfURe0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.PageReportBuilder.html",
-          "hash": "yNh6c24C356fK/dbQKrMOks6v71tTTP6nxcgVF/dTWY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.PageReportOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.PageReportOptions.html",
-          "hash": "7xrghUTIhYlw1zRlfKsVHzMIjyn1+WMY/XUv0wIDytE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.ScoringMode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.ScoringMode.html",
-          "hash": "XNNZZHFiaoG1S1n+iMAGZTZfHpPz1dUDKlMylkizKtk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.HtmlReport.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.HtmlReport.html",
-          "hash": "n+XGIVThMKjeG1W3LlDD6SXce8sLmkDidRfPmcGcLAQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.Selenium.AxeExtendedBuilder.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.Selenium.AxeExtendedBuilder.html",
-          "hash": "KDFy/cSwPyVSWLEOXalY/UfUSX0MIbZMtT7vEYq8h68="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.Selenium.SeleniumHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.Selenium.SeleniumHelper.html",
-          "hash": "drQS2mWxDq8xXGclXIRSvKARYFsbuDMVeuuON1A8BQg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/Axe.Extended.Selenium.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/Axe.Extended.Selenium.html",
-          "hash": "T3p5NC0UQ2J8zeODUQtzz9RhUsYyCDfx5RGNiiRfOuE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Toc",
       "source_relative_path": "api_net/toc.yml",
       "output": {
         ".html": {
           "relative_path": "api_net/toc.html",
-          "hash": "CwnhSRdp+mgQPatvttVJacisVRKNIFD/7Vghuqrv1yA="
+          "hash": "YAJWFt+Zyo+6QQfRsCbOskKIoFhUK52Qq0yUZta+ZOg="
         }
       },
       "is_incremental": false,
@@ -6741,7 +6741,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "3+Zj2YaP9lOk/tt6CIosWTIgiIAd5tZPWxT2HwzdLe0="
+          "hash": "6v9xlBlXBLjraqaQA0PEBtpwpHypHoiVyJcYRiLBxn4="
         }
       },
       "is_incremental": false,
@@ -6760,15 +6760,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "tutorials/appium-driver.md",
       "output": {
         ".html": {
           "relative_path": "tutorials/appium-driver.html",
-          "hash": "5hvbZ7J+qr3nCMsHK8CP/3UUUyb3HuA9U+o7mvZrOUU="
+          "hash": "NtGGIz8I4H/wI0MnrK11lIIU0rU3WL6o3cgMjqQKYIA="
         }
       },
       "is_incremental": false,
@@ -7022,11 +7019,11 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot build incrementally because config changed.",
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "ConfigChanged"
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
@@ -7059,8 +7056,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
