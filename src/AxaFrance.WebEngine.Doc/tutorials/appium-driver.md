@@ -59,5 +59,5 @@ For example, using UNC paths: `settings.AppId = "\\\\SeleniumShare\\package\\mya
 
 ## Connecting to BrowserStack
 Browserstack is one of the supported cloud providers by the Framework.
-You can use <xref:AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)> to upload local app package to the remote server and gets AppId in `bs://<id>` format.
+When *.browserstack.com as endpoint location, the framework will automaticaly upload local app package to broserstack platform and gets AppId in `bs://<id>` format. 
 If you are working with Keyword driven test approach, the upload and conversation of AppId is automatic.

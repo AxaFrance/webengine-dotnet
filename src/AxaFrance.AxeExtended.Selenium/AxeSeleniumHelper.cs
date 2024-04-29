@@ -12,6 +12,10 @@ using System.Xml.Linq;
 
 namespace AxaFrance.AxeExtended.Selenium
 {
+
+    /// <summary>
+    /// Helper class to implement analyze and screenshot report with Selenium WebDriver.
+    /// </summary>
     public static class SeleniumHelper
     {
         /// <summary>

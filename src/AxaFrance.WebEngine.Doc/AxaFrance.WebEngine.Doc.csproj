@@ -30,8 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AxaFrance.AxeExtended.HtmlReport\AxaFrance.AxeExtended.HtmlReport.csproj" />
-    <ProjectReference Include="..\AxaFrance.AxeExtended.Selenium\AxaFrance.AxeExtended.Selenium.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.MobileApp\AxaFrance.WebEngine.MobileApp.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />

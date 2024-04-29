@@ -57,42 +57,6 @@
   ],
   "rules": [
     {
-      "id": "always-fail",
-      "impact": "critical",
-      "metadata": {
-        "description": "[TEST] this rule will always fail",
-        "help": "And there is no way to pass",
-        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1.1"
-      },
-      "selector": "html",
-      "any": [],
-      "all": [
-        "always-fail"
-      ],
-      "none": [],
-      "tags": [
-        "test"
-      ]
-    },
-    {
-      "id": "always-pass",
-      "impact": "critical",
-      "metadata": {
-        "description": "[PASS] this rule will always pass",
-        "help": "And there is no way to pass",
-        "helpUrl": "https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1.1"
-      },
-      "selector": "h1, h2, h3, h4",
-      "any": [],
-      "all": [
-        "always-pass"
-      ],
-      "none": [],
-      "tags": [
-        "test"
-      ]
-    },
-    {
       "id": "rgaa-1.1",
       "impact": "critical",
       "metadata": {

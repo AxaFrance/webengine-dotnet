@@ -9,21 +9,36 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
+    /// <summary>
+    /// Builder to be used to build overall report. Overall report represents all scanned pages within a user journey.
+    /// </summary>
     public class OverallReportBuilder
     {
         private PageReportOptions options;
 
+        /// <summary>
+        /// Initialize OverallReportBuilder with default options.
+        /// </summary>
         public OverallReportBuilder() {
             options = new PageReportOptions();
             PageBuilders = new List<PageReportBuilder>();
         }
 
+        /// <summary>
+        /// Initialize OverallReportBuilder with options. This options will be applied to all page reports.
+        /// </summary>
+        /// <param name="options"></param>
         public OverallReportBuilder(PageReportOptions options)
         {
             this.options = options;
             PageBuilders = new List<PageReportBuilder>();
         }
 
+        /// <summary>
+        /// Set default options for all page report
+        /// </summary>
+        /// <param name="options">The default options for each page report to be applied.</param>
+        /// <returns></returns>
         public OverallReportBuilder WithDefaultOptions(PageReportOptions options)
         {
             this.options = options;
@@ -33,7 +48,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Build overall report from scanned pages which are built by PageReportBuilder.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The builder</returns>
         public OverallReportBuilder Build()
         {
             AxeOverallResult overallResult = new AxeOverallResult()
@@ -124,12 +139,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 
                 //Add tags
                 ruleResults.AppendLine($"<td>");
-                var rgaaTags = options.AdditionalTags?.GetTagsByRule(ruleId);
-                if (rgaaTags != null)
+                var additionalTags = options.AdditionalTags?.GetTagsByRule(ruleId);
+                if (additionalTags != null)
                 {
-                    foreach (var tag in rgaaTags)
+                    foreach (var tag in additionalTags)
                     {
-                        ruleResults.AppendLine($"<span class='tag'>RGAA {tag}</span>");
+                        ruleResults.AppendLine($"<span class='tag'>{tag}</span>");
                     }
                 }
                 ruleResults.AppendLine($"</td>");
@@ -182,12 +197,22 @@ namespace AxaFrance.AxeExtended.HtmlReport
             }
         }
 
+        /// <summary>
+        /// Options that will be used for all page reports.
+        /// </summary>
         public PageReportOptions Options
         {
             get { return this.options; }
         }
 
+        /// <summary>
+        /// The list of page builders used to hold evaluations of each pages.
+        /// </summary>
         public List<PageReportBuilder> PageBuilders { get; internal set; }
+        
+        /// <summary>
+        /// Overall result of all scanned pages.
+        /// </summary>
         public AxeOverallResult Result { get; private set; }
     }
 }
