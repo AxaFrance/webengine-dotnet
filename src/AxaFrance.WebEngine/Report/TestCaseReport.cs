@@ -104,7 +104,12 @@ namespace AxaFrance.WebEngine.Report
         /// </summary>
         public List<ActionReport> ActionReports { get; set; } = new List<ActionReport>();
 
-        internal void AttachFile(string fileName, string fileType)
+        /// <summary>
+        /// Attach a external file to the test report.
+        /// </summary>
+        /// <param name="fileName">the fullpath of the file.</param>
+        /// <param name="fileType">the type of the file, possible values: AccessibilityReport</param>
+        public void AttachFile(string fileName, string fileType)
         {
             AttachedData.Add(new AdditionalData()
             {

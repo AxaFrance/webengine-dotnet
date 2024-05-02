@@ -80,9 +80,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
             if (!hasBuilt) Build();
             string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            
+
             //clean the folder
-            Directory.Delete(path, true);
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+            }
             Directory.CreateDirectory(path);
             int sequence = 1;
 
