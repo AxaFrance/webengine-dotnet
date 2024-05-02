@@ -120,6 +120,10 @@ namespace AxaFrance.WebEngine.Report
             {
                 filename = Path.Combine(path, filePrefix + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xml");
             }
+            if(!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(TestSuiteReport));

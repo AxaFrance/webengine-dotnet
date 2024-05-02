@@ -27,7 +27,7 @@ namespace WebEngine.Test.UnitTests
         public void AuditAndExportHtml()
         {
             //Execute mon test automatisé
-            using (var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge))
+            using (var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome))
             {
                 driver.Navigate().GoToUrl("https://www.axa.fr");
                 try
@@ -42,7 +42,8 @@ namespace WebEngine.Test.UnitTests
                 var filename = new PageReportBuilder()
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
-                Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                Assert.IsTrue(File.Exists(filename));
+                //Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
             }
         }
 
@@ -74,7 +75,8 @@ namespace WebEngine.Test.UnitTests
                     })
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
-                Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                Assert.IsTrue(File.Exists(filename));
+                //Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
             }
         }
 
@@ -96,6 +98,7 @@ namespace WebEngine.Test.UnitTests
                 .WithRgaaExtension()
                 .WithSelenium(driver).Build().Export();
             Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+            Assert.IsTrue(File.Exists(filename));
             // Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
 
         }
@@ -103,7 +106,7 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void UserJourneyTest()
         {
-            using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge))
+            using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
             var defaultOptions = new PageReportOptions()
             {
                 Title = "AXA.FR",

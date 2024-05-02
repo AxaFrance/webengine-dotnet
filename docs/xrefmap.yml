@@ -3134,6 +3134,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.TestCaseReport.AttachedData
   nameWithType: TestCaseReport.AttachedData
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String,System.String)
+  name: AttachFile(String, String)
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_System_String_System_String_
+  commentId: M:AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String,System.String)
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String, System.String)
+  nameWithType: TestCaseReport.AttachFile(String, String)
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile*
+  name: AttachFile
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestCaseReport.AttachFile
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile
+  nameWithType: TestCaseReport.AttachFile
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.ContextValues
   name: ContextValues
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_ContextValues
