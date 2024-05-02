@@ -135,32 +135,83 @@ Now build the test project again, you can see the variables of the test is highl
 <pre><code class="lang-csharp" name="Main" title="DrinkMachineStepDefinition.cs">// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-2 14:33
+using AxaFrance.AxeExtended.HtmlReport;
+using AxaFrance.AxeExtended.Selenium;
+using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System.Xml;
 
 namespace Samples.Gherkin.StepDefinitions
 {
     [Binding]
     public class DrinkMachineStepDefinitions
     {
+
         // local variable to pass driver across scneario
         WebDriver driver;
+        OverallReportBuilder reportBuilder;
+        private readonly ScenarioContext _scenarioContext;
+
+        public DrinkMachineStepDefinitions(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
 
         // clean up the driver after each scneario
         [AfterScenario]
         public void Cleanup()
         {
+            //export accessibility report
+            var report = reportBuilder.Build().Export();
+            TestCaseReport tcr = (TestCaseReport)_scenarioContext[&quot;report&quot;];
+            tcr.Result = _scenarioContext.TestError == null ? Result.Passed : Result.Failed;
+            tcr.AttachFile(report, &quot;AccessibilityReport&quot;);
             driver?.Close();
             driver?.Dispose();
+
+            //save test report with embedded accessibility test result.
+            TestSuiteReport tsr = new TestSuiteReport();
+            tsr.TestResult.Add(tcr);
+            var filename = tsr.SaveAs(Path.GetRandomFileName(), &quot;test-report&quot;, false);
+           Console.WriteLine($&quot;Report saved to {filename}&quot;);
+        }
+
+        /// &lt;summary&gt;
+        /// After each step, generates 
+        /// &lt;/summary&gt;
+        [AfterStep]
+        public void AfterStep()
+        {
+            var keyword = _scenarioContext.StepContext.StepInfo.StepInstance.Keyword;
+            TestCaseReport tcr = (TestCaseReport)_scenarioContext[&quot;report&quot;];
+            tcr.ActionReports.Add(new ActionReport()
+            {
+                Name = _scenarioContext.StepContext.StepInfo.Text,
+                StartTime = DateTime.Now,
+                Result = _scenarioContext.TestError == null ? Result.Passed : Result.Failed
+            });
+        }
+
+        [BeforeScenario]
+        public void Setup()
+        {
+            driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
+            reportBuilder = new OverallReportBuilder().WithDefaultOptions(new PageReportOptions()
+            {
+                OutputFormat = OutputFormat.Zip
+            });
+            TestCaseReport tcr = new TestCaseReport()
+            {
+                TestName = _scenarioContext.ScenarioInfo.Title,
+            };
+            _scenarioContext[&quot;report&quot;] = tcr;
         }
 
         [Given(@&quot;I turn on the drink machine&quot;)]
         public void GivenITurnOnTheDrinkMachine()
-        {
-            driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
+        {            
             driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
         }
 
@@ -172,20 +223,14 @@ namespace Samples.Gherkin.StepDefinitions
             pageModel.SelectLanguage.SelectByText(language);
             pageModel.RadioChooseToBuy.CheckByValue(drink);
             pageModel.NextButton.Click();
-
-            // read a json data from the file data.json
-            string json = File.ReadAllText(&quot;data.json&quot;);
-
-            
-
-            // transforme json to xml
-            XmlDocument doc = JsonConvert.DeserializeXmlNode(json, &quot;root&quot;);
+            reportBuilder.WithSelenium(driver, &quot;Language&quot;).Build();
         }
 
         [Then(@&quot;I got &#39;([^&#39;]*)&#39;&quot;)]
         public void ThenIGot(string tea)
         {
             MyPageModel pageModel = new MyPageModel(driver);
+            reportBuilder.WithSelenium(driver, &quot;Result&quot;).Build();
             Assert.That(pageModel.Page2Title.Exists());
         }
     }

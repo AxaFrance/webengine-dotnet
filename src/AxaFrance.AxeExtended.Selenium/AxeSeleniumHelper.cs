@@ -153,7 +153,8 @@ namespace AxaFrance.AxeExtended.Selenium
             else
             {
                 driver.SwitchTo().DefaultContent();
-                throw new WebDriverException("The element can not be converted to type WebElement for screenshot.");
+                return new byte[0];
+                //throw new WebDriverException("The element can not be converted to type WebElement for screenshot.");
             }
 
 
