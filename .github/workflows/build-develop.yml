@@ -5,10 +5,10 @@ name: Build WebEngine (Develop)
 
 on:
   push:
-    branches: [ "develop"]
-  pull_request:
-    branches: [ "develop" ]
-
+    branches:
+      - develop
+      - main
+      - preview
 jobs:
   build:
     runs-on: windows-latest
