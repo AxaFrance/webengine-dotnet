@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Hummingbird.UI;component/Styles/DefaultStyle.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Hummingbird.UI;component/Styles/ColorShemes/Dark_Blue.xaml" />
+                <!-- <ResourceDictionary Source="pack://application:,,,/Hummingbird.UI;component/Styles/ColorShemes/Dark_Blue.xaml" /> -->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -94,7 +94,7 @@ namespace AxaFrance.WebEngine
                 foreach (var p in obj.RequiredParameters)
                 {
                     //Test if the value is given
-                    var param = parameters.FirstOrDefault(x => x.Name == p.Name);
+                    var param = Array.Find(parameters, x => x.Name == p.Name);
                     if (param == null)
                     {
                         if (p.Value != null)
@@ -349,7 +349,7 @@ namespace AxaFrance.WebEngine
                 Type[] types = ass.GetTypes();
                 Type t;
 
-                t = types.FirstOrDefault(x => x.Name == action);
+                t = Array.Find(types, x => x.Name == action);
                 if (t != null)
                 {
                     return t;

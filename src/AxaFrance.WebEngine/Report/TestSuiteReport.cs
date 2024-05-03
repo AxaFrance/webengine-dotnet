@@ -79,12 +79,12 @@ namespace AxaFrance.WebEngine.Report
         /// The hostname where the test has been executed.
         /// </summary>
         public string HostName { get; set; }
-        
+
         /// <summary>
         /// The raw output of the test execution.
         /// </summary>
         public string SystemOut { get; set; }
-        
+
         /// <summary>
         /// The raw error otput of the test execution.
         /// </summary>
@@ -110,7 +110,7 @@ namespace AxaFrance.WebEngine.Report
         {
             this.Passed = TestResult.Count(x => x.Result == Result.Passed);
             this.Failed = TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
-            this.Ignored = TestResult.Count() - Passed - Failed;
+            this.Ignored = TestResult.Count - Passed - Failed;
             string filename;
             if (uniqueName)
             {
@@ -119,6 +119,10 @@ namespace AxaFrance.WebEngine.Report
             else
             {
                 filename = Path.Combine(path, filePrefix + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xml");
+            }
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
             }
             using (StreamWriter sw = new StreamWriter(filename))
             {
@@ -146,14 +150,16 @@ namespace AxaFrance.WebEngine.Report
                 v.AddItem("_RESULT", tc.Result.ToString());
                 v.AddRange(tc.ContextValues);
                 v.AddRange(tc.GlobalContextValues);
-                
-                foreach (var context in tc.ContextValues)
+                AllLines.Add(v);
+
+                foreach (var context in tc.ContextValues.Select(x => x.Name))
                 {
-                    if (!Labels.Contains(context.Name))
+                    if (!Labels.Contains(context))
                     {
-                        Labels.Add(context.Name);
+                        Labels.Add(context);
                     }
                 }
+
                 
             }
 
@@ -162,11 +168,11 @@ namespace AxaFrance.WebEngine.Report
             using (StreamWriter sw = new StreamWriter(fileLocation, false, Encoding.UTF8))
             {
                 sw.WriteLine(string.Join(seperator, Labels.ToArray()));
-                foreach(var line in AllLines)
+                foreach (var line in AllLines)
                 {
-                    foreach(string key in Labels)
+                    foreach (string key in Labels)
                     {
-                        if(line.Exists(x=>x.Name == key))
+                        if (line.Exists(x => x.Name == key))
                         {
                             sw.Write(line.Find(x => x.Name == key).Value + seperator);
                         }

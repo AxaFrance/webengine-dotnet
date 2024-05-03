@@ -21,7 +21,7 @@ namespace AxaFrance.WebEngine.ReportViewer
 
         public static string LogFile { get; set; }
         public static string Filter { get; set; }
-        public static bool FilterFailed { get; set; }
+        public static bool FailedTestOnly { get; set; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

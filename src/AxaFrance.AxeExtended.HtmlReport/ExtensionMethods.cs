@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
+    /// <summary>
+    /// Extension methods for AxeResultItem
+    /// </summary>
     public static class ExtensionMethods
     {
+
+        /// <summary>
+        /// Get the impact of the AxeResultItem.
+        /// </summary>
+        /// <param name="item"><see cref="AxeResultItem"/> object</param>
+        /// <returns>The impact value</returns>
         public static string GetImpact(this AxeResultItem item)
         {
             
