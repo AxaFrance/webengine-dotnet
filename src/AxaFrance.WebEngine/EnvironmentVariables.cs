@@ -94,7 +94,7 @@ namespace AxaFrance.WebEngine
             else
             {
                 string value = this.Variables.Find(x => x.Name == name).Value;
-                while (value.StartsWith('$'))
+                while (value.StartsWith("$"))
                 {
                     value = this.Variables.Find(x => x.Name == value.Substring(1)).Value;
                 }

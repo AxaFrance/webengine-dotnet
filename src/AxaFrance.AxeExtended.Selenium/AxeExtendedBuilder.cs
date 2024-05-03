@@ -14,7 +14,7 @@ namespace AxaFrance.AxeExtended.Selenium
 {
     /// <summary>
     /// ExtendedBuilder for Axe Core. This class is used to configure and run axe against a web page.
-    /// This class is a fork of original AxeBuilder class from Deque AxeCore. 
+    /// This class is a fork of original AxeBuilder class from Deque AxeCore per https://github.com/dequelabs/axe-core-nuget/issues/146
     /// There is no possibility to use a custom configuration file with the original AxeBuilder class, so we need to create this class and expose the WithAxeConfig method.
     /// With this method, we can pass a custom configuration file to the axe engine and run custom rules in addition to default axe rules.
     /// </summary>
@@ -87,7 +87,7 @@ namespace AxaFrance.AxeExtended.Selenium
 
         /// <summary>
         ///  Run configuration data that is passed to axe for scanning the web page.
-        ///  This will override the value set by <see cref="WithRules(string[])"/>, <see cref="WithTags(string[])"/> & <see cref="DisableRules(string[])"/>
+        ///  This will override the value set by <see cref="WithRules(string[])"/>, <see cref="WithTags(string[])"/> &amp; <see cref="DisableRules(string[])"/>
         /// </summary>
         /// <param name="runOptions">run options to be used for scanning</param>
         public AxeExtendedBuilder WithOptions(AxeRunOptions runOptions)
@@ -120,7 +120,7 @@ namespace AxaFrance.AxeExtended.Selenium
         /// <summary>
         /// Limit analysis to only the specified rules.
         /// Refer https://dequeuniversity.com/rules/axe/ to get the complete listing of available rule IDs.
-        /// Cannot be used with <see cref="WithTags(string[])"/> & <see cref="Options"/>
+        /// Cannot be used with <see cref="WithTags(string[])"/> &amp; <see cref="WithOptions(AxeRunOptions)"/>
         /// </summary>
         /// <param name="rules">rule IDs to be used for scanning</param>
         public AxeExtendedBuilder WithRules(params string[] rules)
@@ -474,7 +474,7 @@ namespace AxaFrance.AxeExtended.Selenium
 
         private static void ValidateNotNullParameter<T>(T parameterValue, string parameterName)
         {
-            if (parameterValue is null)
+            if (parameterValue == null)
             {
                 throw new ArgumentNullException(parameterName);
             }

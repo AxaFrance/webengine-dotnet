@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.Selenium
 {
+
+    /// <summary>
+    /// This classe if forked from Deque Axe Core project to add capability to run customized rules like other language.
+    /// per https://github.com/dequelabs/axe-core-nuget/issues/146
+    /// </summary>
     internal static class WebDriverInjectorExtensions
     {
         /// <summary>
