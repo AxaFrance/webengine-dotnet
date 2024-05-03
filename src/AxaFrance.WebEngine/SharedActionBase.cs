@@ -349,7 +349,7 @@ namespace AxaFrance.WebEngine
                 Type[] types = ass.GetTypes();
                 Type t;
 
-                t = Array.Find(types, x => x.Name == action));
+                t = Array.Find(types, x => x.Name == action);
                 if (t != null)
                 {
                     return t;

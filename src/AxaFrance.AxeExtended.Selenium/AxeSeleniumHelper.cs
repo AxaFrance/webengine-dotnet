@@ -93,7 +93,7 @@ namespace AxaFrance.AxeExtended.Selenium
                 else
                 {
                     //it contains iFrame
-                    Console.WriteLine("[Ally] Warning unable to get screenshot of an element inside iFrame.");
+                    Console.WriteLine("[A11y] Warning unable to get screenshot of an element inside iFrame.");
                     var iFrameSelector = node.Target.FrameSelectors.ToArray();
                     element = driver.FindElement(By.CssSelector(iFrameSelector[0]));
                 }
@@ -159,7 +159,7 @@ namespace AxaFrance.AxeExtended.Selenium
                 var screenshot = MarkOnImage(imageViewPort, location, size, options);
                 return screenshot;
             }
-            Console.WriteLine("[Ally] Unable to get screenshot: Element has 0 height or width.");
+            Console.WriteLine("[A11y] Unable to get screenshot: Element has 0 height or width.");
             return Array.Empty<byte>();
         }
 
