@@ -13,6 +13,8 @@ namespace AxaFrance.AxeExtended.HtmlReport.Config
     /// </summary>
     public class Rule
     {
+        private static Check[] emptyCheck = new Check[0];
+
         /// <summary>
         /// string(required). This uniquely identifies the rule. If the rule already exists, it will be overridden with any of the attributes supplied. 
         /// The attributes below that are marked required, are only required for new rules.
@@ -61,16 +63,16 @@ namespace AxaFrance.AxeExtended.HtmlReport.Config
         /// array(optional, default []). This is a list of checks that, if none "pass", will generate a violation
         /// </summary>
         [JsonProperty]
-        public Check[] Any { get; set; } = new Check[0];
+        public Check[] Any { get; set; } = emptyCheck;
 
         /// <summary>
         /// array(optional, default []). This is a list of checks that, if any "fails", will generate a violation.
         /// </summary>
-        public Check[] All { get; set; } = new Check[0];
+        public Check[] All { get; set; } = emptyCheck;
 
         /// <summary>
         /// array(optional, default []). This is a list of checks that, if any "pass", will generate a violation.
         /// </summary>
-        public Check[] None { get; set; } = new Check[0];
+        public Check[] None { get; set; } = emptyCheck;
     }
 }

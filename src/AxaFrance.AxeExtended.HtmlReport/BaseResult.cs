@@ -51,7 +51,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
             get
             {
-                if (_scoreRotation == null) GetScore(); return _scoreRotation;
+                if (_scoreRotation == null) GetScore();
+                return _scoreRotation;
             }
             set
             {

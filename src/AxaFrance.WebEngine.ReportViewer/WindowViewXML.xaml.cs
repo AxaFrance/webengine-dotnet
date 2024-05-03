@@ -29,7 +29,6 @@ namespace AxaFrance.WebEngine.ReportViewer
         {
             InitializeComponent();
             txtXmlReport.Text = text;
-            txtXmlReport.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("XML_DARK");
             var foldingManager = FoldingManager.Install(txtXmlReport.TextArea);
             var foldingStrategy = new XmlFoldingStrategy();
             foldingStrategy.UpdateFoldings(foldingManager, txtXmlReport.Document);

@@ -11,12 +11,15 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
+using static System.Net.WebRequestMethods;
 
 namespace AxaFrance.WebEngine.ReportViewer
 {
@@ -43,12 +46,19 @@ namespace AxaFrance.WebEngine.ReportViewer
         string xmlReport;
         private bool ShouldSkip(TestCaseReport tc)
         {
-            if (!string.IsNullOrEmpty(App.Filter) && !(tc.TestName.IndexOf(App.Filter, StringComparison.OrdinalIgnoreCase) >= 0))
+            if (!string.IsNullOrEmpty(App.Filter))
             {
-                return true;
+                if (tc.TestName != null && tc.TestName.IndexOf(App.Filter, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
 
-            if (App.FilterFailed && tc.Result != Result.Failed && tc.Result != Result.CriticalError)
+            if (App.FailedTestOnly && tc.Result != Result.Failed && tc.Result != Result.CriticalError)
             {
                 return true;
             }
@@ -59,148 +69,149 @@ namespace AxaFrance.WebEngine.ReportViewer
         private void Load()
         {
             string filename = App.LogFile;
-            if (string.IsNullOrEmpty(filename)) return;
+            if (string.IsNullOrEmpty(filename))
+            {
+                emptyPresenter.Visibility = Visibility.Visible;
+                return;
+            }
             try
             {
 
-                int passed = 0, ignored = 0, failed = 0, none = 0;
                 XmlSerializer serializer = new XmlSerializer(typeof(AxaFrance.WebEngine.Report.TestSuiteReport));
                 using (StreamReader sr = new StreamReader(filename))
                 {
                     xmlReport = sr.ReadToEnd();
                 }
-                TestSuiteReport ts = (TestSuiteReport)serializer.Deserialize(new StreamReader(filename));
-                txtSystemOut.Text = ts.SystemOut + "\n" + ts.SystemError;
-                lvTestcases.Items.Clear();
-                double totalSeconds = ts.Duration.TotalSeconds;
-                foreach (var tc in ts.TestResult)
-                {
-                    if (this.ShouldSkip(tc))
-                    {
-                        continue;
-                    }
-                    lvTestcases.Items.Add(tc);
-                    switch (tc.Result)
-                    {
-                        case Result.Passed:
-                            passed++;
-                            break;
-                        case Result.Ignored:
-                            ignored++;
-                            break;
-                        case Result.Failed:
-                        case Result.CriticalError:
-                            failed++;
-                            break;
-                        default:
-                            none++;
-                            break;
-                    }
-                }
+                currentReport = (TestSuiteReport)serializer.Deserialize(new StreamReader(filename));
+                txtSystemOut.Text = currentReport.SystemOut + "\n" + currentReport.SystemError;
 
-                IntializeErrorStatistic(ts);
-                if (lvTestcases.Items.Count > 0)
-                {
-                    lvTestcases.SelectedIndex = 0;
-                }
+                double totalSeconds = currentReport.Duration.TotalSeconds;
+                ApplyFilter();
+
+                IntializeErrorStatistic();
+                emptyPresenter.Visibility = Visibility.Collapsed;
             }
             catch (Exception ex)
             {
                 ShowMessageBox("Error", $"Unable to load the report file from {filename}: {ex.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+                emptyPresenter.Visibility = Visibility.Visible;
             }
         }
 
-        private void IntializeErrorStatistic(TestSuiteReport ts)
+        private void ApplyFilter()
         {
+            lvTestcases.Items.Clear();
+            foreach (var tc in currentReport.TestResult)
+            {
+                if (this.ShouldSkip(tc))
+                {
+                    continue;
+                }
+                lvTestcases.Items.Add(tc);
+            }
+            if (lvTestcases.Items.Count > 0)
+            {
+                lvTestcases.SelectedIndex = 0;
+            }
+
+        }
+
+        private TestSuiteReport currentReport;
+
+        private void IntializeErrorStatistic()
+        {
+            //TODO: This is a placeholder for the error statistic 
+            int passed = 0, ignored = 0, failed = 0, none = 0;
+            passed = currentReport.TestResult.Count(x => x.Result == Result.Passed);
+            ignored = currentReport.TestResult.Count(x => x.Result == Result.Ignored);
+            failed = currentReport.TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
+            none = currentReport.TestResult.Count(x => x.Result == Result.None);
 
         }
 
         private void lvTestcases_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count > 0)
+            if (e.AddedItems.Count == 0) return;
+
+            lvTeststeps.Items.Clear();
+            TestCaseReport tc = e.AddedItems[0] as TestCaseReport;
+            spScreenShots.Children.Clear();
+            lbTestData.DataContext = tc.TestData;
+
+            lbTestData.Items.Clear();
+            if (tc.TestData != null)
             {
-                lvTeststeps.Items.Clear();
-                TestCaseReport tc = e.AddedItems[0] as TestCaseReport;
-                spScreenShots.Children.Clear();
-                lbTestData.DataContext = tc.TestData;
-
-                lbTestData.Items.Clear();
-                if (tc.TestData != null)
+                foreach (var c in tc.TestData)
                 {
-                    foreach (var c in tc.TestData)
-                    {
-                        lbTestData.Items.Add(c);
-                    }
-                }
-                if (lbTestData.Items.Count == 0)
-                {
-                    lbTestData.Visibility = System.Windows.Visibility.Collapsed;
-                }
-                else
-                {
-                    lbTestData.Visibility = System.Windows.Visibility.Visible;
-                }
-
-                if (tc.ActionReports != null)
-                {
-                    foreach (var step in tc.ActionReports)
-                    {
-                        StackPanel sp = new StackPanel()
-                        {
-                            Orientation = System.Windows.Controls.Orientation.Horizontal,
-                            Margin = new Thickness(4),
-                        };
-                        ImageSource source;
-                        if (step.Result != Result.None)
-                        {
-                            source = new BitmapImage(new Uri("/Icons/icon_" + step.Result + ".png", UriKind.RelativeOrAbsolute));
-                        }
-                        else
-                        {
-                            source = new BitmapImage(new Uri("/Icons/icon_Ignored.png", UriKind.RelativeOrAbsolute));
-                        }
-                        sp.Children.Add(new Image() { Source = source, Margin = new Thickness(4, 0, 4, 0) });
-
-                        sp.Children.Add(new TextBlock()
-                        {
-                            Text = step.Name ?? "(Unnamed step)"
-                        });
-
-                        sp.Children.Add(new TextBlock()
-                        {
-                            Text = step.DurationText,
-                            Margin = new Thickness(8, 0, 4, 0),
-                            Foreground = new SolidColorBrush(Colors.Gray),
-                        });
-
-                        TreeViewItem tvi = new TreeViewItem()
-                        {
-                            Header = sp
-                        };
-                        tvi.Tag = step;
-                        lvTeststeps.Items.Add(tvi);
-                        if (step.SubActionReports != null && step.SubActionReports.Count > 0)
-                        {
-                            FillTreeViewItem(tvi, step);
-                        }
-                    }
-                }
-
-                if(tc.AttachedData.FirstOrDefault(x=>x.Name == "AccessibilityReport") != null)
-                {
-                    var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport").Value;
-                    OpenAccessibilityReport(data);
-                    tabAccessibility.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    tabAccessibility.Visibility = Visibility.Collapsed;
-                    tabControl.SelectedIndex = 0;
+                    lbTestData.Items.Add(c);
                 }
             }
+            lbTestData.Visibility = lbTestData.Items.Count == 0 ? System.Windows.Visibility.Collapsed : System.Windows.Visibility.Visible;
+
+            if (tc.ActionReports != null)
+            {
+                FillActionReports(tc);
+            }
+
+            if (tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport") != null)
+            {
+                var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport")?.Value;
+                OpenAccessibilityReport(data);
+                tabAccessibility.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tabAccessibility.Visibility = Visibility.Collapsed;
+                tabControl.SelectedIndex = 0;
+            }
+
 
         }
 
+        private void FillActionReports(TestCaseReport tc)
+        {
+            foreach (var step in tc.ActionReports)
+            {
+                StackPanel sp = new StackPanel()
+                {
+                    Orientation = System.Windows.Controls.Orientation.Horizontal,
+                    Margin = new Thickness(4),
+                };
+                ImageSource source;
+                if (step.Result != Result.None)
+                {
+                    source = new BitmapImage(new Uri("/Icons/icon_" + step.Result + ".png", UriKind.RelativeOrAbsolute));
+                }
+                else
+                {
+                    source = new BitmapImage(new Uri("/Icons/icon_Ignored.png", UriKind.RelativeOrAbsolute));
+                }
+                sp.Children.Add(new Image() { Source = source, Margin = new Thickness(4, 0, 4, 0) });
+
+                sp.Children.Add(new TextBlock()
+                {
+                    Text = step.Name ?? "(Unnamed step)"
+                });
+
+                sp.Children.Add(new TextBlock()
+                {
+                    Text = step.DurationText,
+                    Margin = new Thickness(8, 0, 4, 0),
+                    Foreground = new SolidColorBrush(Colors.Gray),
+                });
+
+                TreeViewItem tvi = new TreeViewItem()
+                {
+                    Header = sp
+                };
+                tvi.Tag = step;
+                lvTeststeps.Items.Add(tvi);
+                if (step.SubActionReports != null && step.SubActionReports.Count > 0)
+                {
+                    FillTreeViewItem(tvi, step);
+                }
+            }
+        }
 
         private void FillTreeViewItem(TreeViewItem parent, ActionReport action)
         {
@@ -401,7 +412,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             {
                 return;
             }
-            Load();
+            ApplyFilter();
         }
 
         private void CheckedChanged()
@@ -410,12 +421,12 @@ namespace AxaFrance.WebEngine.ReportViewer
             {
                 return;
             }
-            App.FilterFailed = cbFailed.IsChecked.HasValue && cbFailed.IsChecked.Value;
+            App.FailedTestOnly = cbFailed.IsChecked.HasValue && cbFailed.IsChecked.Value;
             if (this.Reseting)
             {
                 return;
             }
-            Load();
+            ApplyFilter();
         }
 
         private void CbFailed_OnChecked(object sender, RoutedEventArgs e)
@@ -431,7 +442,8 @@ namespace AxaFrance.WebEngine.ReportViewer
         private void OpenAccessibilityReport(byte[] data)
         {
             //extract data as zip stream to temp folder
-            using (var stream = new MemoryStream(data)) {
+            using (var stream = new MemoryStream(data))
+            {
                 ZipArchive archive = new ZipArchive(stream);
                 var tempFolder = Path.Combine(Path.GetTempPath(), "AccessibilityReport");
                 if (Directory.Exists(tempFolder))
@@ -462,10 +474,33 @@ namespace AxaFrance.WebEngine.ReportViewer
 
         private void btnViewInBrowser_Click(object sender, RoutedEventArgs e)
         {
-            if(btnViewInBrowser.Tag != null)
+            if (btnViewInBrowser.Tag != null)
             {
                 ProcessStartInfo psi = new ProcessStartInfo(btnViewInBrowser.Tag.ToString()) { UseShellExecute = true };
                 Process.Start(psi);
+            }
+        }
+
+        private void Grid_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effects = DragDropEffects.Copy;
+        }
+
+        private void Grid_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length >= 1)
+                {
+                    App.LogFile = files[0];
+                    this.Reseting = true;
+                    txFilter.Text = string.Empty;
+                    cbFailed.IsChecked = false;
+                    this.Reseting = false;
+                    Load();
+                }
             }
         }
     }

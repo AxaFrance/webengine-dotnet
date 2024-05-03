@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
-    /// Outpur format of the HTML report
+    /// Output format of the test report.
     /// </summary>
     public enum OutputFormat
     {

@@ -73,7 +73,7 @@ namespace AxaFrance.AxeExtended.Selenium
 
 
         /// <summary>
-        /// Takes the screenshot. this function will be called by <see cref="PageReportBuilder.GetScreenshot" delegation/>
+        /// Takes the screenshot. this function will be called by <see cref="PageReportBuilder.GetScreenshot" />
         /// </summary>
         /// <param name="driver">WebDriver</param>
         /// <param name="node">Node in AxeResult</param>
@@ -93,24 +93,9 @@ namespace AxaFrance.AxeExtended.Selenium
                 else
                 {
                     //it contains iFrame
+                    Console.WriteLine("[A11y] Warning unable to get screenshot of an element inside iFrame.");
                     var iFrameSelector = node.Target.FrameSelectors.ToArray();
-
-                    //TODO: Unable to locate and screenshot elements inside frames.
-                    //At current state, 
                     element = driver.FindElement(By.CssSelector(iFrameSelector[0]));
-                    /*
-                    foreach(var s in iFrameSelector)
-                    {
-                        element = driver.FindElement(By.CssSelector(s));
-                        if(element.TagName == "iframe")
-                        {
-                            driver.SwitchTo().Frame(element);
-                        }
-                        else
-                        {
-                            element = driver.FindElement(By.CssSelector(s));
-                        }
-                    }*/
                 }
 
             }
@@ -123,19 +108,20 @@ namespace AxaFrance.AxeExtended.Selenium
                 try
                 {
                     element = driver.FindElement(By.CssSelector(cssSelector));
-                    if (element == null)
+                    if (element is null)
                     {
                         element = driver.FindElement(By.XPath(xPath));
                     }
                 }catch(Exception ex)
                 {
-                    Console.WriteLine("[Ally] Unable to get element from cssSelector or xPath");
                     //sometimes the cssSelector provided by axe can not be used by selenium.
                     //in this case can't make screenshot on the element.
+
+                    Console.WriteLine("[A11y] Unable to get element from cssSelector or xPath");
                 }
             }
 
-            if (element != null && element is WebElement we)
+            if (element is WebElement we)
             {
                 try
                 {
@@ -146,15 +132,15 @@ namespace AxaFrance.AxeExtended.Selenium
                 catch (Exception ex)
                 {
                     //in some cases (hidden element, 0 height element, etc. the screeshot is not possible, leave these cases behind.
-                    Console.WriteLine("[Ally] Unable to get screenshot:" + ex.ToString());
+                    Console.WriteLine("[A11y] Unable to get screenshot:" + ex.ToString());
                     return new byte[0];
                 }
             }
             else
             {
                 driver.SwitchTo().DefaultContent();
-                return new byte[0];
-                //throw new WebDriverException("The element can not be converted to type WebElement for screenshot.");
+                Console.WriteLine("[A11y] The element can not be converted to type WebElement for screenshot.");
+                return Array.Empty<byte>();                
             }
 
 
@@ -163,8 +149,7 @@ namespace AxaFrance.AxeExtended.Selenium
         private static byte[] AdvancedScreenshot(WebDriver driver, WebElement element, PageReportOptions options)
         {
             BringToView(element, driver);
-            var imageViewPort = driver.GetScreenshot();
-            var windowSize = driver.Manage().Window.Size;
+            var imageViewPort = driver.GetScreenshot();            
             var locatable = (ILocatable)element;
 
             var location = locatable.Coordinates.LocationInViewport; //location and size are for 100% dpi
@@ -174,8 +159,8 @@ namespace AxaFrance.AxeExtended.Selenium
                 var screenshot = MarkOnImage(imageViewPort, location, size, options);
                 return screenshot;
             }
-            Console.WriteLine("[Ally] Unable to get screenshot: Element has 0 height or width.");
-            return new byte[0];
+            Console.WriteLine("[A11y] Unable to get screenshot: Element has 0 height or width.");
+            return Array.Empty<byte>();
         }
 
         /// <summary>

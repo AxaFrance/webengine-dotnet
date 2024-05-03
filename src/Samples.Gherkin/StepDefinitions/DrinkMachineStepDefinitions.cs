@@ -30,7 +30,7 @@ namespace Samples.Gherkin.StepDefinitions
         public void Cleanup()
         {
             //export accessibility report
-            var report = reportBuilder.Build().Export();
+            var report = reportBuilder?.Build().Export();
             TestCaseReport tcr = (TestCaseReport)_scenarioContext["report"];
             tcr.Result = _scenarioContext.TestError == null ? Result.Passed : Result.Failed;
             tcr.AttachFile(report, "AccessibilityReport");
@@ -54,7 +54,7 @@ namespace Samples.Gherkin.StepDefinitions
             TestCaseReport tcr = (TestCaseReport)_scenarioContext["report"];
             tcr.ActionReports.Add(new ActionReport()
             {
-                Name = _scenarioContext.StepContext.StepInfo.Text,
+                Name = keyword,
                 StartTime = DateTime.Now,
                 Result = _scenarioContext.TestError == null ? Result.Passed : Result.Failed
             });
@@ -64,10 +64,12 @@ namespace Samples.Gherkin.StepDefinitions
         public void Setup()
         {
             driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
-            reportBuilder = new OverallReportBuilder().WithDefaultOptions(new PageReportOptions()
+            reportBuilder = new OverallReportBuilder(new PageReportOptions()
             {
-                OutputFormat = OutputFormat.Zip
+                Title = "Drink Machine Accessibility",
+                OutputFormat = OutputFormat.Zip,
             });
+            
             TestCaseReport tcr = new TestCaseReport()
             {
                 TestName = _scenarioContext.ScenarioInfo.Title,
