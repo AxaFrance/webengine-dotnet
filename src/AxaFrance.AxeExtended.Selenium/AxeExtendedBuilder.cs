@@ -12,6 +12,12 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.Selenium
 {
+    /// <summary>
+    /// ExtendedBuilder for Axe Core. This class is used to configure and run axe against a web page.
+    /// This class is a fork of original AxeBuilder class from Deque AxeCore. 
+    /// There is no possibility to use a custom configuration file with the original AxeBuilder class, so we need to create this class and expose the WithAxeConfig method.
+    /// With this method, we can pass a custom configuration file to the axe engine and run custom rules in addition to default axe rules.
+    /// </summary>
     public class AxeExtendedBuilder
     {
         private readonly WebDriver _webDriver;
@@ -30,11 +36,22 @@ namespace AxaFrance.AxeExtended.Selenium
         {
         }
 
+        /// <summary>
+        /// Initialize an instance of <see cref="AxeBuilder"/>
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="config"></param>
         public AxeExtendedBuilder(WebDriver webDriver, JObject config) : this(webDriver, new AxeBuilderOptions { ScriptProvider = new BundledAxeScriptProvider() })
         {
             axeConfig = config;
         }
 
+        /// <summary>
+        /// Initialize an instance of <see cref="AxeBuilder"/>
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="config"></param>
+        /// <param name="options"></param>
         public AxeExtendedBuilder(WebDriver webDriver, JObject config, AxeBuilderOptions options) : this(webDriver, options)
         {
             axeConfig = config;
@@ -457,7 +474,7 @@ namespace AxaFrance.AxeExtended.Selenium
 
         private static void ValidateNotNullParameter<T>(T parameterValue, string parameterName)
         {
-            if (parameterValue == null)
+            if (parameterValue is null)
             {
                 throw new ArgumentNullException(parameterName);
             }
