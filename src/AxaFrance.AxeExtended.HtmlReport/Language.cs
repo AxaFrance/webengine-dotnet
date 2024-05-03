@@ -20,6 +20,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// French
         /// </summary>
         French,
-        //TODO: Other languages, necearry to translate role descriptions into these languages.
+        
+        //Remark: Other languages, necearry to translate role descriptions into these languages.
     }
 }

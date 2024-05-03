@@ -34,7 +34,9 @@ namespace WebEngine.Test.UnitTests
                 {
                     driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
                 }
-                catch { }
+                catch {
+                    //if the cookie button does not exist, it's not a problem
+                }
 
                 var sw = Stopwatch.StartNew();
 
@@ -43,7 +45,6 @@ namespace WebEngine.Test.UnitTests
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
                 Assert.IsTrue(File.Exists(filename));
-                //Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
             }
         }
 
@@ -58,7 +59,9 @@ namespace WebEngine.Test.UnitTests
                 {
                     driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
                 }
-                catch { }
+                catch {
+                    //if the cookie button does not exist, it's not a problem
+                }
 
                 var sw = Stopwatch.StartNew();
 
@@ -76,7 +79,6 @@ namespace WebEngine.Test.UnitTests
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
                 Assert.IsTrue(File.Exists(filename));
-                //Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
             }
         }
 
@@ -90,7 +92,9 @@ namespace WebEngine.Test.UnitTests
             {
                 driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
             }
-            catch { }
+            catch {
+                //if the cookie button does not exist, it's not a problem
+            }
 
             var sw = Stopwatch.StartNew();
 
@@ -99,7 +103,6 @@ namespace WebEngine.Test.UnitTests
                 .WithSelenium(driver).Build().Export();
             Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
             Assert.IsTrue(File.Exists(filename));
-            // Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
 
         }
 
@@ -120,7 +123,9 @@ namespace WebEngine.Test.UnitTests
             {
                 driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
             }
-            catch { }
+            catch {
+                //if the cookie button does not exist, it's not a problem
+            }
             builder.WithSelenium(driver, "Main Page").Build();
 
             //Analyze second page
@@ -129,7 +134,9 @@ namespace WebEngine.Test.UnitTests
             {
                 driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
             }
-            catch { }
+            catch {
+                //if the cookie button does not exist, it's not a problem
+            }
             builder.WithSelenium(driver, "Pro").Build();
 
             //Analyze third page
@@ -147,6 +154,7 @@ namespace WebEngine.Test.UnitTests
             builder.WithSelenium(driver, "Compte Bancaire").Build();
 
             string report = builder.Build().Export();
+            Assert.IsTrue(File.Exists(report));
         }
 
     }

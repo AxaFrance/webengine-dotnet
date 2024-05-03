@@ -56,13 +56,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 Title = options.Title,
                 TimeStamp = DateTime.Now
             };
-            foreach(var pageBuilder in PageBuilders)
-            {
-                if (pageBuilder.Result != null)
-                {
-                    overallResult.PageResults.Add(pageBuilder.Result);
-                }
-            }
+            overallResult.PageResults.AddRange(PageBuilders.Where(x=>x.Result != null).Select(x => x.Result));
             this.Result = overallResult;
             hasBuilt = true;
             return this;
@@ -153,15 +147,15 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 ruleResults.AppendLine($"</td>");
                 foreach (var page in Result.PageResults)
                 {
-                    if (page.Violations.FirstOrDefault(x => x.Item.Id == ruleId) != null)
+                    if (Array.Find(page.Violations, x => x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Violations'>Violations</span></td>");
                     }
-                    else if (page.Incomplete.FirstOrDefault(x => x.Item.Id == ruleId) != null)
+                    else if (Array.Find(page.Incomplete, x => x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Incomplele'>Incomplele</span></td>");
                     }
-                    else if (page.Passes.FirstOrDefault(x=>x.Item.Id == ruleId) != null)
+                    else if (Array.Find(page.Passes, x=>x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Passes'>Passes</span></td>");
                     }
@@ -185,7 +179,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 case OutputFormat.Html:
                     return fullname;
                 case OutputFormat.Zip:
-                    var file = Path.GetTempFileName();
+                    var file = Path.GetRandomFileName();
                     var zipName = Path.Combine(path, "report.zip");
                     File.Delete(file);
                     ZipFile.CreateFromDirectory(path, file);
