@@ -15,9 +15,9 @@ jobs:
     steps:
    
     # checkout
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.1.4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4.0.0
       with:
         dotnet-version: 6.0.x
         
@@ -31,12 +31,12 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
         
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4.1.4
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     
     - name: Replace tokens
-      uses: cschleiden/replace-tokens@v1.2
+      uses: cschleiden/replace-tokens@v1.3
       with:
         tokenPrefix: '#{'
         tokenSuffix: '}#'
@@ -50,7 +50,7 @@ jobs:
         restore-keys: ${{ runner.os }}-sonar
     - name: Cache SonarCloud scanner
       id: cache-sonar-scanner
-      uses: actions/cache@v1
+      uses: actions/cache@v4.0.2
       with:
         path: .\.sonar\scanner
         key: ${{ runner.os }}-sonar-scanner
@@ -91,7 +91,7 @@ jobs:
         Get-ChildItem ./src -Recurse -File -Filter Axa*.nupkg | % {Copy-Item -Path $_.FullName -Destination "./nuget/$_"}
     
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
        name: build-artifact
        path: "./nuget"

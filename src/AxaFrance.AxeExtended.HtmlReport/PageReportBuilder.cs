@@ -18,6 +18,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
     /// </summary>
     public class PageReportBuilder
     {
+        /// <summary>
+        /// Options for the page report.
+        /// </summary>
         public PageReportOptions Options { get; set; }
 
 
@@ -27,6 +30,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </summary>
         public JObject Config { get; set; }
 
+        /// <summary>
+        /// Indicate whether Screenshot is available in the currenct context. Internally, it means GetScreenshot delegate is provided.
+        /// </summary>
         public bool CanGetScreenshot => GetScreenshot != EmptyGetScreenshot && GetScreenshot != null;
 
         /// <summary>
@@ -50,11 +56,31 @@ namespace AxaFrance.AxeExtended.HtmlReport
             Options = options;
         }
 
+        /// <summary>
+        /// Provide a custom test options
+        /// </summary>
+        /// <param name="options">Options</param>
+        /// <returns>ReportBuilder with updated options</returns>
         public PageReportBuilder WithOptions(PageReportOptions options)
         {
             Options = options;
             return this;
         }
+
+        /// <summary>
+        /// Initilaize axe-core engine with customed RGAA rules.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// This method is not compatible with other <see cref="WithConfig(JObject)"/> method.
+        /// </remarks>
+        public PageReportBuilder WithRgaaExtension()
+        {
+            var content = GetRessource("axe-rgaa-extension.json");
+            Config = JObject.Parse(content);
+            return this;
+        }
+
 
         /// <summary>
         /// Initilaize axe-core engine with custom configuration.
@@ -67,21 +93,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return this;
         }
 
-        /// <summary>
-        /// Initilaize axe-core engine with customed RGAA rules.
-        /// </summary>
-        /// <param name="config"></param>
-        /// <returns></returns>
-        /// <remarks>
-        /// This method is not compatible with other <see cref="WithConfig(JObject)"/> method.
-        /// </remarks>
-        public PageReportBuilder WithRgaaExtension()
-        {
-            var content = GetRessource("axe-rgaa-extension.json");
-            Config = JObject.Parse(content);
-            return this;
-        }
 
+        /// <summary>
+        /// Initilaize axe-core engine with customed configuration
+        /// </summary>
+        /// <param name="configFile">axe core configuration file (in json format)</param>
+        /// <returns></returns>
         public PageReportBuilder WithConfig(string configFile)
         {
             var content = File.ReadAllText(configFile);
@@ -91,7 +108,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
 
         private byte[] EmptyGetScreenshot(AxeResultNode node, PageReportOptions options)
         {
-            return null;
+            return Array.Empty<byte>();
         }
 
 
@@ -117,6 +134,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return this;
         }
 
+        /// <summary>
+        /// Test result of the page.
+        /// </summary>
         public AxePageResult Result
         {
             get; private set;
@@ -125,7 +145,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Export Enhanced AxeResult (with Screenshots) to expected format.
         /// </summary>
-        /// <param name="result">Processed AxeResult with screenshot</param>
+        /// <param name="fileName">The filename of the exported report. Default value is "index.html"</param>
         /// <returns>
         /// absolute path of the exported test report.
         /// </returns>
@@ -133,7 +153,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
             if (Result == null) throw new InvalidDataException("The report has not been built, please call Build or Analyze before exporting");
             var guid = Guid.NewGuid().ToString();
-            string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), guid);
             Directory.CreateDirectory(path);
             string violations = GenerateRuleSection(Result.Violations, path);
             string passes = GenerateRuleSection(Result.Passes, path);
@@ -150,12 +170,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 .Replace("{{Violations}}", violations)
                 .Replace("{{Passed}}", passes)
                 .Replace("{{Incomplete}}", incomplete)
-                .Replace("{{ViolationRules}}", Result.Violations.Count().ToString())
-                .Replace("{{ViolationNodes}}", Result.Violations.Sum(x => x.Nodes.Count()).ToString())
+                .Replace("{{ViolationRules}}", Result.Violations.Length.ToString())
+                .Replace("{{ViolationNodes}}", Result.Violations.Sum(x => x.Nodes.Length).ToString())
                 .Replace("{{NonApplicable}}", inapplicable)
-                .Replace("{{IncompleteRules}}", Result.Incomplete.Count().ToString())
-                .Replace("{{NonApplicableRules}}", Result.Inapplicable.Count().ToString())
-                .Replace("{{PassedRules}}", Result.Passes.Count().ToString());
+                .Replace("{{IncompleteRules}}", Result.Incomplete.Length.ToString())
+                .Replace("{{NonApplicableRules}}", Result.Inapplicable.Length.ToString())
+                .Replace("{{PassedRules}}", Result.Passes.Length.ToString());
 
             string fullname = Path.Combine(path, fileName ?? "index.html");
             File.WriteAllText(fullname, html);
@@ -165,7 +185,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 case OutputFormat.Html:
                     return fullname;
                 case OutputFormat.Zip:
-                    var file = Path.GetTempFileName();
+                    var file = Path.GetRandomFileName();
                     var zipName = Path.Combine(path, "report.zip");
                     File.Delete(file);
                     ZipFile.CreateFromDirectory(path, file);
@@ -188,7 +208,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == null)
-                    throw new Exception($"Unable to find resource {resourceName} in assembly {assembly.FullName}");
+                    throw new FileNotFoundException($"Unable to find resource {resourceName} in assembly {assembly.FullName}");
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     return reader.ReadToEnd();
@@ -219,7 +239,6 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     //generate node (occurances of rule)
                     var nodeTemplate = GetRessource("node-part.html");
                     var cssSelector = node.Node.Target;
-                    var xpath = node.Node.XPath;
                     var display = node.Screenshot != null ? "block" : "none";
                     string filename = string.Empty;
                     if (node.Screenshot != null)
@@ -241,10 +260,10 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         );
                 }
                 string tags = string.Join(" ", item.Item.Tags.Select(x => $"<div class='regularition'>{x}</div>"));
-                var rgaaTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
-                if (rgaaTags != null)
+                var additinalTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
+                if (additinalTags != null)
                 {
-                    tags += string.Join(" ", rgaaTags.Select(x => $"<div class='regularition'>RGAA {x}</div>"));
+                    tags += string.Join(" ", additinalTags.Select(x => $"<div class='regularition'>{x}</div>"));
                 }
                 overall.Append(
                     template.Replace("{{RuleId}}", item.Item.Id)
@@ -283,10 +302,25 @@ namespace AxaFrance.AxeExtended.HtmlReport
             return "No rules have audited for " + label;
         }
 
+        /// <summary>
+        /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
+        /// </summary>
         public GetScreenshotDelegate GetScreenshot { get; internal set; }
+        
+        /// <summary>
+        /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
+        /// </summary>
         public AnalyzeDelegate Analyze { get; internal set; }
 
+        /// <summary>
+        /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
+        /// </summary>
+
         public delegate byte[] GetScreenshotDelegate(AxeResultNode node, PageReportOptions options);
+
+        /// <summary>
+        /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
+        /// </summary>
         public delegate AxeResult AnalyzeDelegate(JObject axeConfig);
 
 

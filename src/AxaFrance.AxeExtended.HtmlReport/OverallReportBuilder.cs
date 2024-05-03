@@ -9,21 +9,36 @@ using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
+    /// <summary>
+    /// Builder to be used to build overall report. Overall report represents all scanned pages within a user journey.
+    /// </summary>
     public class OverallReportBuilder
     {
         private PageReportOptions options;
 
+        /// <summary>
+        /// Initialize OverallReportBuilder with default options.
+        /// </summary>
         public OverallReportBuilder() {
             options = new PageReportOptions();
             PageBuilders = new List<PageReportBuilder>();
         }
 
+        /// <summary>
+        /// Initialize OverallReportBuilder with options. This options will be applied to all page reports.
+        /// </summary>
+        /// <param name="options"></param>
         public OverallReportBuilder(PageReportOptions options)
         {
             this.options = options;
             PageBuilders = new List<PageReportBuilder>();
         }
 
+        /// <summary>
+        /// Set default options for all page report
+        /// </summary>
+        /// <param name="options">The default options for each page report to be applied.</param>
+        /// <returns></returns>
         public OverallReportBuilder WithDefaultOptions(PageReportOptions options)
         {
             this.options = options;
@@ -33,7 +48,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Build overall report from scanned pages which are built by PageReportBuilder.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The builder</returns>
         public OverallReportBuilder Build()
         {
             AxeOverallResult overallResult = new AxeOverallResult()
@@ -41,13 +56,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 Title = options.Title,
                 TimeStamp = DateTime.Now
             };
-            foreach(var pageBuilder in PageBuilders)
-            {
-                if (pageBuilder.Result != null)
-                {
-                    overallResult.PageResults.Add(pageBuilder.Result);
-                }
-            }
+            overallResult.PageResults.AddRange(PageBuilders.Where(x=>x.Result != null).Select(x => x.Result));
             this.Result = overallResult;
             hasBuilt = true;
             return this;
@@ -65,9 +74,12 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
             if (!hasBuilt) Build();
             string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            
+
             //clean the folder
-            Directory.Delete(path, true);
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+            }
             Directory.CreateDirectory(path);
             int sequence = 1;
 
@@ -124,26 +136,26 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 
                 //Add tags
                 ruleResults.AppendLine($"<td>");
-                var rgaaTags = options.AdditionalTags?.GetTagsByRule(ruleId);
-                if (rgaaTags != null)
+                var additionalTags = options.AdditionalTags?.GetTagsByRule(ruleId);
+                if (additionalTags != null)
                 {
-                    foreach (var tag in rgaaTags)
+                    foreach (var tag in additionalTags)
                     {
-                        ruleResults.AppendLine($"<span class='tag'>RGAA {tag}</span>");
+                        ruleResults.AppendLine($"<span class='tag'>{tag}</span>");
                     }
                 }
                 ruleResults.AppendLine($"</td>");
                 foreach (var page in Result.PageResults)
                 {
-                    if (page.Violations.FirstOrDefault(x => x.Item.Id == ruleId) != null)
+                    if (Array.Find(page.Violations, x => x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Violations'>Violations</span></td>");
                     }
-                    else if (page.Incomplete.FirstOrDefault(x => x.Item.Id == ruleId) != null)
+                    else if (Array.Find(page.Incomplete, x => x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Incomplele'>Incomplele</span></td>");
                     }
-                    else if (page.Passes.FirstOrDefault(x=>x.Item.Id == ruleId) != null)
+                    else if (Array.Find(page.Passes, x=>x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Passes'>Passes</span></td>");
                     }
@@ -167,7 +179,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 case OutputFormat.Html:
                     return fullname;
                 case OutputFormat.Zip:
-                    var file = Path.GetTempFileName();
+                    var file = Path.GetRandomFileName();
                     var zipName = Path.Combine(path, "report.zip");
                     File.Delete(file);
                     ZipFile.CreateFromDirectory(path, file);
@@ -182,12 +194,22 @@ namespace AxaFrance.AxeExtended.HtmlReport
             }
         }
 
+        /// <summary>
+        /// Options that will be used for all page reports.
+        /// </summary>
         public PageReportOptions Options
         {
             get { return this.options; }
         }
 
+        /// <summary>
+        /// The list of page builders used to hold evaluations of each pages.
+        /// </summary>
         public List<PageReportBuilder> PageBuilders { get; internal set; }
+        
+        /// <summary>
+        /// Overall result of all scanned pages.
+        /// </summary>
         public AxeOverallResult Result { get; private set; }
     }
 }
