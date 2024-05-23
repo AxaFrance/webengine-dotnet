@@ -828,6 +828,9 @@
   <data name="dwlrobotLabel.Text" xml:space="preserve">
     <value>Téléchargement du robot</value>
   </data>
+  <data name="dwlrobotLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;dwlrobotLabel.Name" xml:space="preserve">
     <value>dwlrobotLabel</value>
   </data>

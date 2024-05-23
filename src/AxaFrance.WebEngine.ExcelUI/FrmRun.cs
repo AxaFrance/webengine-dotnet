@@ -250,7 +250,7 @@ namespace AxaFrance.WebEngine.ExcelUI
 
                 if (!String.IsNullOrEmpty(txtPropertiesFile.Text))
                 {
-                    parameters += "\"--spring.config.location = file:///" + checkEnvInDir(txtPropertiesFile.Text)+"\"";
+                    parameters += " \"--spring.config.location=classpath:file:///" + checkEnvInDir(txtPropertiesFile.Text)+"\"";
                 }
                 else
                 {
