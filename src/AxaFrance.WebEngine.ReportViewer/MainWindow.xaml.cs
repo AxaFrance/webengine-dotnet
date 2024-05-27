@@ -87,7 +87,9 @@ namespace AxaFrance.WebEngine.ReportViewer
 
                 double totalSeconds = currentReport.Duration.TotalSeconds;
                 ApplyFilter();
-
+                pgPassrate.Value = currentReport.Failed;
+                pgPassrate.Maximum = currentReport.Passed + currentReport.Failed;
+                pgPassrate.ToolTip = $"{currentReport.Passed} passed, {currentReport.Failed} failed";
                 IntializeErrorStatistic();
                 emptyPresenter.Visibility = Visibility.Collapsed;
             }
@@ -113,7 +115,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             {
                 lvTestcases.SelectedIndex = 0;
             }
-
+            txtTitle.Text = $"Test cases ({lvTestcases.Items.Count}/{currentReport.TestResult.Count})";
         }
 
         private TestSuiteReport currentReport;

@@ -25,7 +25,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Test Cases:" Grid.Row="1" Style="{DynamicResource TextBlockViewHeaderHighlighted}"  VerticalAlignment="Center" Margin="8,4" />
+            <ProgressBar Grid.ColumnSpan="2" Background="Green" Value="20" Maximum="100" Foreground="Red" x:Name="pgPassrate" />
+            <TextBlock Text="Test Cases:" Grid.Row="1" Style="{DynamicResource TextBlockViewHeaderHighlighted}"  VerticalAlignment="Center" Margin="8,4" x:Name="txtTitle" />
             <StackPanel Orientation="Horizontal"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" Panel.ZIndex="10">
                 <Button Style="{DynamicResource FlatButtonStyle}" Click="ShowXmlReport_Click">
                     <StackPanel Orientation="Horizontal">
