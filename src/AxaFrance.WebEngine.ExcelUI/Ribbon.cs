@@ -1005,7 +1005,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 updateCell(s.Cells[1, 5], "Référence/Exclusion",
                     "Indique si la ligne est à prendre en compte par rapport à la colonne des valeurs choisie.\n Un '!' indique que la ligne est à ignorée");
                 updateCell(s.Cells[1, 6], "Liste_1_des_valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
-                updateCell(s.Cells[1, 7], "Liste 2 des valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
+                updateCell(s.Cells[1, 7], "Liste_2_des_valeurs", "Colonne des valeurs de votre JDD, vous pouvez modifier le nom de cette colonne");
 
             }
             dwl.PerformLayout();
