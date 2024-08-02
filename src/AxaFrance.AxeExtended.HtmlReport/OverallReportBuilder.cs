@@ -136,7 +136,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 
                 //Add tags
                 ruleResults.AppendLine($"<td>");
-                var additionalTags = options.AdditionalTags?.GetTagsByRule(ruleId);
+                /*
+                var additionalTags = options.AdditionalTags?.GetTagsByRule(rule.Key);
                 if (additionalTags != null)
                 {
                     foreach (var tag in additionalTags)
@@ -144,7 +145,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         ruleResults.AppendLine($"<span class='tag'>{tag}</span>");
                     }
                 }
+                */
                 ruleResults.AppendLine($"</td>");
+                
                 foreach (var page in Result.PageResults)
                 {
                     if (Array.Find(page.Violations, x => x.Item.Id == ruleId) != null)

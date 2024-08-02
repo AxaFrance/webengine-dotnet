@@ -51,6 +51,23 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
+        public void BrowserstackTest()
+        {
+            var settings = Settings.Instance;
+            settings.Username = "cugnetpascal1";
+            settings.Password = "qTJD3xCzAxsuU3xykyQt";
+            settings.GridServerUrl = "https://hub-cloud.browserstack.com/wd/hub";
+            settings.AppId = "bs://6448e8709276b8c8c179bcb1d7ec6b1b2414e7c2";
+            settings.Device = "IPhone 13";
+            settings.OsVersion = "17";
+            using (var driver = AppFactory.GetDriver(Platform.iOS))
+            {
+                driver.Quit();
+            }
+
+        }
+
+        [TestMethod]
         public void UnitTest()
         {
             var settings = Settings.Instance;

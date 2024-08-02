@@ -260,7 +260,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         );
                 }
                 string tags = string.Join(" ", item.Item.Tags.Select(x => $"<div class='regularition'>{x}</div>"));
-                var additinalTags = Options.AdditionalTags?.GetTagsByRule(item.Item.Id);
+                var additinalTags = Options.AdditionalTags?.GetTagsByRule(item.Item);
                 if (additinalTags != null)
                 {
                     tags += string.Join(" ", additinalTags.Select(x => $"<div class='regularition'>{x}</div>"));
