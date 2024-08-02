@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.iOS;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -230,10 +231,11 @@ namespace AxaFrance.WebEngine.MobileApp
 
             options.AddAdditionalAppiumOption("newCommandTimeout", 90);
             options.AddAdditionalAppiumOption("nativeWebScreenshot", true);
+            options.AcceptInsecureCertificates = s.AllowAnyCertificate;
 
             if (!string.IsNullOrEmpty(s.OsVersion))
             {
-                options.AddAdditionalAppiumOption("os_version", s.OsVersion);
+                options.PlatformVersion = s.OsVersion;
             }
 
 
@@ -258,12 +260,14 @@ namespace AxaFrance.WebEngine.MobileApp
             if (s.Platform == Platform.Android)
             {
                 options.AutomationName = "UiAutomator2";
-                driver = new AndroidDriver(new Uri(appiumServerAddress), options);
+                driver = new AndroidDriver(new Uri(appiumServerAddress), options, TimeSpan.FromSeconds(180));
             }
             else if (s.Platform == Platform.iOS)
             {
                 options.AutomationName = "XCUITest";
-                driver = new IOSDriver(new Uri(appiumServerAddress), options);
+                options.AddAdditionalAppiumOption("includeSafariInWebviews", true);
+                options.AddAdditionalAppiumOption("connectHardwareKeyboard", true);               
+                driver = new IOSDriver(new Uri(appiumServerAddress), options, TimeSpan.FromSeconds(180));
             }
             else
             {
