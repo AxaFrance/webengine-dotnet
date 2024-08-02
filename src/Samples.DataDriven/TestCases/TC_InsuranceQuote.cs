@@ -7,8 +7,7 @@ namespace Samples.DataDriven.TestCases
     //Test case: Insurance Quote
     public class TC_InsuranceQuote : TestCaseWeb
     {
-        public TC_InsuranceQuote() {
-            
+        public TC_InsuranceQuote() {            
             //Define Test steps 
             TestSteps = new TestStep[] {
                 new TestStep{ Action = nameof(Login)},

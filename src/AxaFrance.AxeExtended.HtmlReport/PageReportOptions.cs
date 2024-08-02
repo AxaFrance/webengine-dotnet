@@ -28,10 +28,10 @@ namespace AxaFrance.AxeExtended.HtmlReport
         public Language ReportLanguage { get; set; } = Language.English;
 
         /// <summary>
-        /// In the report, show the RGAA tags (equivalent RGAA Test Methdologie) for each rule. Default is true.
+        /// In the report, show additional tags  
         /// Default value: will use additional tags provider to get equivalent RGAA test tags.
         /// </summary>
-        public AdditionalTagsProvider AdditionalTags { get; set; } = new RgaaTagsProvider();
+        public TagsProvider AdditionalTags { get; set; } = new WcagTagsProvider();
 
         /// <summary>
         /// Gets or sets the value indicating if advanced screenshot should be used. Default is true.
