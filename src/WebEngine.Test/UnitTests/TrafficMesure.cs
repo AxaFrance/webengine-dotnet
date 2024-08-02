@@ -24,6 +24,7 @@ namespace WebEngine.Test.UnitTests
         public static void Cleanup()
         {
             networkIntercepter?.StopMonitoring();
+            jsEngine?.StopEventMonitoring();
             Thread.Sleep(10000);
             long totalRequestSize = 0;
             long totalResponseSize = 0;
@@ -66,6 +67,18 @@ namespace WebEngine.Test.UnitTests
                 Console.WriteLine($"Total Request Size: {totalRequestSize}");
                 Console.WriteLine($"Total Response Size: {totalResponseSize}");
                 Console.WriteLine($"Total Network I/O: {totalRequestSize + totalResponseSize}");
+
+                Console.WriteLine("============ CONSOLE MESSAGES =============");
+                foreach (var msg in jsConsoleMessages)
+                {
+                    Console.WriteLine($"{msg.MessageType}: {msg.MessageContent}");
+                }
+
+                Console.WriteLine("============ JAVASCRIPT EXCEPTIONS =============");
+                foreach (var ex in jsExceptions)
+                {
+                    Console.WriteLine($"{ex.Message}");
+                }
             }
             try
             {
@@ -85,6 +98,9 @@ namespace WebEngine.Test.UnitTests
         }
         static INetwork networkIntercepter;
         static Dictionary<string, NetworkTraffic> networkTraffics = new Dictionary<string, NetworkTraffic>();
+        static List<JavaScriptConsoleApiCalledEventArgs> jsConsoleMessages = new List<JavaScriptConsoleApiCalledEventArgs>();
+        static List<JavaScriptExceptionThrownEventArgs> jsExceptions = new List<JavaScriptExceptionThrownEventArgs>();
+        static IJavaScriptEngine jsEngine;
 
         [ClassInitialize]
         public static void Initialize(TestContext context)
@@ -94,6 +110,16 @@ namespace WebEngine.Test.UnitTests
                 driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
             }
             ws.Start();
+            jsEngine = new JavaScriptEngine(driver);
+            jsEngine.JavaScriptExceptionThrown += (_, e) =>
+            {
+                jsExceptions.Add(e);
+            };
+            jsEngine.JavaScriptConsoleApiCalled += (_, e) =>
+            {
+                jsConsoleMessages.Add(e);
+            };
+            jsEngine.StartEventMonitoring().ConfigureAwait(false);
             networkIntercepter = driver.Manage().Network;
             networkIntercepter.NetworkRequestSent += (_, e) =>
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Deque.AxeCore.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
     /// A mapping of Axe rules to RGAA rules, for future use
     /// refers to the Mapping Rules Excel file
     /// </summary>
-    internal class RgaaTagsProvider : AdditionalTagsProvider
+    internal class RgaaTagsProvider : TagsProvider
     {
 
         private static Dictionary<string, IEnumerable<string>> Mapping { get; } = new Dictionary<string, IEnumerable<string>>()
@@ -73,9 +74,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
             {"table-fake-caption", new string[] {"RGAA 5.1.1"}},
         };
 
-        public override IEnumerable<string> GetTagsByRule(string ruleId)
+        public override IEnumerable<string> GetTagsByRule(AxeResultItem rule)
         {
-
+            var ruleId = rule.Id;
             if (Mapping.ContainsKey(ruleId))
             {
                 return Mapping[ruleId];
