@@ -50,7 +50,6 @@ namespace WebEngine.Test.UnitTests
             System.IO.File.Delete(junitReport);
         }
 
-
         [TestMethod]
         public void UnitTest()
         {
