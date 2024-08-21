@@ -86,75 +86,83 @@ namespace WebEngine.Test.UnitTests
         public void AuditWithRGAAAndExportHtml()
         {
             //Execute mon test automatisé
-            using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
-            driver.Navigate().GoToUrl("https://www.axa.fr");
-            try
+            using (var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge))
             {
-                driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
-            }
-            catch {
-                //if the cookie button does not exist, it's not a problem
-            }
+                driver.Navigate().GoToUrl("https://www.axa.fr");
+                try
+                {
+                    driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
+                }
+                catch
+                {
+                    //if the cookie button does not exist, it's not a problem
+                }
 
-            var sw = Stopwatch.StartNew();
+                var sw = Stopwatch.StartNew();
 
-            var filename = new PageReportBuilder()
-                .WithRgaaExtension()
-                .WithSelenium(driver).Build().Export();
-            Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
-            Assert.IsTrue(File.Exists(filename));
+                var filename = new PageReportBuilder()
+                    .WithOptions(new PageReportOptions() { ReportLanguage = Language.French })
+                    .WithRgaaExtension()
+                    .WithSelenium(driver).Build().Export();
+                Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Assert.IsTrue(File.Exists(filename));
+            }
 
         }
 
         [TestMethod]
         public void UserJourneyTest()
         {
-            using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
-            var defaultOptions = new PageReportOptions()
+            using (var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge))
             {
-                Title = "AXA.FR",
-                OutputFormat = OutputFormat.Zip
-            };
-            var builder = new OverallReportBuilder().WithDefaultOptions(defaultOptions);
+                var defaultOptions = new PageReportOptions()
+                {
+                    Title = "AXA.FR",
+                    OutputFormat = OutputFormat.Zip
+                };
+                var builder = new OverallReportBuilder().WithDefaultOptions(defaultOptions);
 
-            //Analyze first page
-            driver.Navigate().GoToUrl("https://www.axa.fr/");
-            try
-            {
-                driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
+                //Analyze first page
+                driver.Navigate().GoToUrl("https://www.axa.fr/");
+                try
+                {
+                    driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
+                }
+                catch
+                {
+                    //if the cookie button does not exist, it's not a problem
+                }
+                builder.WithSelenium(driver, "Main Page").Build();
+
+                //Analyze second page
+                driver.Navigate().GoToUrl("https://www.axa.fr/pro.html");
+                try
+                {
+                    driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
+                }
+                catch
+                {
+                    //if the cookie button does not exist, it's not a problem
+                }
+                builder.WithSelenium(driver, "Pro").Build();
+
+                //Analyze third page
+                driver.Navigate().GoToUrl("https://www.axa.fr/pro/services-assistance.html");
+                builder.WithSelenium(driver, "Assistance").Build();
+
+                //Demarche Inondation
+                driver.Navigate().GoToUrl("https://www.axa.fr/assurance-habitation/demarches-inondation.html");
+                builder.WithSelenium(driver, "Inondation").Build();
+
+                driver.Navigate().GoToUrl("https://www.axa.fr/pro/devis-assurance-professionnelle.html");
+                builder.WithSelenium(driver, "Devis Pro").Build();
+
+                driver.Navigate().GoToUrl("https://www.axa.fr/compte-bancaire.html");
+                builder.WithSelenium(driver, "Compte Bancaire").Build();
+
+                string report = builder.Build().Export();
+                Assert.IsTrue(File.Exists(report));
             }
-            catch {
-                //if the cookie button does not exist, it's not a problem
-            }
-            builder.WithSelenium(driver, "Main Page").Build();
-
-            //Analyze second page
-            driver.Navigate().GoToUrl("https://www.axa.fr/pro.html");
-            try
-            {
-                driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
-            }
-            catch {
-                //if the cookie button does not exist, it's not a problem
-            }
-            builder.WithSelenium(driver, "Pro").Build();
-
-            //Analyze third page
-            driver.Navigate().GoToUrl("https://www.axa.fr/pro/services-assistance.html");
-            builder.WithSelenium(driver, "Assistance").Build();
-
-            //Demarche Inondation
-            driver.Navigate().GoToUrl("https://www.axa.fr/assurance-habitation/demarches-inondation.html");
-            builder.WithSelenium(driver, "Inondation").Build();
-
-            driver.Navigate().GoToUrl("https://www.axa.fr/pro/devis-assurance-professionnelle.html");
-            builder.WithSelenium(driver, "Devis Pro").Build();
-
-            driver.Navigate().GoToUrl("https://www.axa.fr/compte-bancaire.html");
-            builder.WithSelenium(driver, "Compte Bancaire").Build();
-
-            string report = builder.Build().Export();
-            Assert.IsTrue(File.Exists(report));
         }
 
     }

@@ -72,7 +72,7 @@ namespace AxaFrance.WebEngine.Web
         /// <returns>WebDriver object</returns>
         /// <remarks>
         /// <para>
-        /// If you are another test framework, you must provide additional information to <see cref="Settings.Instance"/>, especially when testing on Mobile Devices.
+        /// If you are using another test framework, additional information must be provided to <see cref="Settings.Instance"/>, especially when testing on Mobile Devices.
         /// </para>
         /// <para>
         /// This method will take account Desktop browsers and Mobile Devices. If <paramref name="platform"/> is valorized to 'Android'
@@ -415,7 +415,7 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetIEDriver()
         {
-            throw new Exception("Internet Explorer is not supported anymore. Please update the browser and run tests in one of supported browsers: Chrome, Edge, Firefox and Safari");
+            throw new NotSupportedException("Internet Explorer is not supported anymore. Please update the browser and run tests in one of supported browsers: Chrome, Edge, Firefox and Safari");
         }
 
         private static WebDriver GetEdgeDriver(IEnumerable<string> browserOptions)
