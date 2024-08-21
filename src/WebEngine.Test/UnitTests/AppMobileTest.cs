@@ -27,10 +27,10 @@ namespace WebEngine.Test.UnitTests
 
             TestSuiteApp app = new TestSuiteApp();
             Settings settings = Settings.Instance;
-            settings.AppId = "TestData\\ApiDemos-debug.apk";
+            settings.AppId = "bs://e431031f604644eab52611190ccb96da80744c87";
             settings.Platform = Platform.Android;
             settings.Browser = BrowserType.AndroidNative;
-            settings.Device = "Android API 30";
+            settings.Device = "Xiaomi Redmi Note 11";
             var testsuite = settings.TestSuite = app;
             testsuite.Initialize(settings);
             var result = testsuite.Run();
@@ -50,22 +50,6 @@ namespace WebEngine.Test.UnitTests
             System.IO.File.Delete(junitReport);
         }
 
-        [TestMethod]
-        public void BrowserstackTest()
-        {
-            var settings = Settings.Instance;
-            settings.Username = "cugnetpascal1";
-            settings.Password = "qTJD3xCzAxsuU3xykyQt";
-            settings.GridServerUrl = "https://hub-cloud.browserstack.com/wd/hub";
-            settings.AppId = "bs://6448e8709276b8c8c179bcb1d7ec6b1b2414e7c2";
-            settings.Device = "IPhone 13";
-            settings.OsVersion = "17";
-            using (var driver = AppFactory.GetDriver(Platform.iOS))
-            {
-                driver.Quit();
-            }
-
-        }
 
         [TestMethod]
         public void UnitTest()
