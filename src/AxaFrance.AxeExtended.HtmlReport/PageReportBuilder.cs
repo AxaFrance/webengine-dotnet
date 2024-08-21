@@ -129,7 +129,14 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <returns></returns>
         public PageReportBuilder Build()
         {
-            var result = this.Analyze(Config);
+             var config = Config.DeepClone();
+            if (Options.ReportLanguage == Language.French)
+            {
+                var locale = GetRessource("axe-core.fr.json");
+                //add or update the field "locale" in json object config, with the content of fr.json
+                config["locale"] = JObject.Parse(locale);
+            }
+            var result = this.Analyze(config as JObject);
             Result = new AxePageResult(result, this);
             return this;
         }
