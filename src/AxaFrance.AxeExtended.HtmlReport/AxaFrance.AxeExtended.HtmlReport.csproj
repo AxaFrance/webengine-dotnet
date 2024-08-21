@@ -18,6 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\axe-core.fr.json" />
+    <None Remove="Assets\axe-rgaa-extension.json" />
     <None Remove="Assets\check-part.html" />
     <None Remove="Assets\node-part.html" />
     <None Remove="Assets\overall-result.html" />
@@ -27,7 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\axe-rgaa-extension.json" />
     <EmbeddedResource Include="Assets\check-part.html" />
+    <EmbeddedResource Include="Assets\axe-core.fr.json" />
     <EmbeddedResource Include="Assets\overall-result.html" />
     <EmbeddedResource Include="Assets\overall-tablerow.html" />
     <EmbeddedResource Include="Assets\page-result.html" />

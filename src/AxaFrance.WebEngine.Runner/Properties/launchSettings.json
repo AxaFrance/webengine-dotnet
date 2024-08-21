@@ -2,12 +2,12 @@
   "profiles": {
     "WSL": {
       "commandName": "WSL2",
-      "environmentVariables": {},
       "distributionName": ""
     },
     "WebRunner": {
       "commandName": "Project",
-      "commandLineArgs": "-encrypt helloworld -encryptionkey:abcdefghijklmn"
+      "commandLineArgs": "-browser:AndroidNative \"-device:Xiaomi Redmi Note 11\" -osVersion:11 -data:AXAPLUS_PARCOURS_CLES_SANTE_REMBOURSSEMENT.xml -a:AxaPlus.Automation.dll -appid:app-recette.apk -platform:Android",
+      "workingDirectory": "C:\\Users\\A269OL\\source\\repos\\webengine-dotnet-github\\src\\AxaFrance.WebEngine.Runner\\bin\\Debug\\net8.0"
     }
   }
 }

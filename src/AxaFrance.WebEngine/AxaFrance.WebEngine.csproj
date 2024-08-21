@@ -45,7 +45,14 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="appsettings.json.bak" />
     <None Remove="html-report.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -53,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="appsettings.json">
+    <Resource Include="appsettings.json.bak">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
