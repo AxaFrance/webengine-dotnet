@@ -51,24 +51,6 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
-        public void BrowserstackTest()
-        {
-            var settings = Settings.Instance;
-            settings.Username = "cugnetpascal1";
-            settings.Password = "qTJD3xCzAxsuU3xykyQt";
-            settings.GridServerUrl = "https://hub-cloud.browserstack.com/wd/hub";
-            settings.AppId = "bs://79f0618f987c01d89a48cb1ce50e17724f3d1aac";
-            settings.Device = "Xiaomi Redmi Note 11";
-            settings.OsVersion = "11";
-            settings.DataSourceName = "DataSource";            
-            using (var driver = AppFactory.GetDriver(Platform.Android))
-            {
-                driver.Quit();
-            }
-
-        }
-
-        [TestMethod]
         public void UnitTest()
         {
             var settings = Settings.Instance;
