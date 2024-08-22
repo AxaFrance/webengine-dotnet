@@ -132,7 +132,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
              var config = Config.DeepClone();
             if (Options.ReportLanguage == Language.French)
             {
-                var locale = GetRessource("axe-core.fr.json");
+                var locale = GetRessource("axe-core-fr.json");
                 //add or update the field "locale" in json object config, with the content of fr.json
                 config["locale"] = JObject.Parse(locale);
             }
