@@ -15,28 +15,15 @@
     <PackageTags>AXA WebEngine Automation Framework Accessibility</PackageTags>
     <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
     <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
+    <VersionPrefix>1.1.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\axe-core.fr.json" />
-    <None Remove="Assets\axe-rgaa-extension.json" />
-    <None Remove="Assets\check-part.html" />
-    <None Remove="Assets\node-part.html" />
-    <None Remove="Assets\overall-result.html" />
-    <None Remove="Assets\overall-tablerow.html" />
-    <None Remove="Assets\page-result.html" />
-    <None Remove="Assets\rule-part.html" />
+    <None Remove="Assets\*" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\axe-rgaa-extension.json" />
-    <EmbeddedResource Include="Assets\check-part.html" />
-    <EmbeddedResource Include="Assets\axe-core.fr.json" />
-    <EmbeddedResource Include="Assets\overall-result.html" />
-    <EmbeddedResource Include="Assets\overall-tablerow.html" />
-    <EmbeddedResource Include="Assets\page-result.html" />
-    <EmbeddedResource Include="Assets\node-part.html" />
-    <EmbeddedResource Include="Assets\rule-part.html" />
+    <EmbeddedResource Include="Assets\*" />
   </ItemGroup>
 
   <ItemGroup>
