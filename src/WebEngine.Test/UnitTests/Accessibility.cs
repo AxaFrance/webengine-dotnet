@@ -76,7 +76,8 @@ namespace WebEngine.Test.UnitTests
                         Tags = PageReportOptions.WcagAATags,
                         ScreenshotIncomplete = true,
                         UseAdvancedScreenshot = true,
-                        ReportLanguage = Language.SimplifiedChinese,
+                        ReportLanguage = Language.Spanish,
+                        Title = "Homepage AXA.FR"
                     })
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
