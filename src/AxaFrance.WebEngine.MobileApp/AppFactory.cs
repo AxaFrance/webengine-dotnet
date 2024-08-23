@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using AngleSharp.Common;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -240,7 +241,7 @@ namespace AxaFrance.WebEngine.MobileApp
 
 
 
-            DebugLogger.WriteLine($"Connecting to device: {s.Device}, os: {s.OsVersion} ");
+            DebugLogger.WriteLine($"Connecting to device: {s.Device} on {s.Platform}, version: {s.OsVersion} ");
 
             string appiumServerAddress = s.GridServerUrl;
             if (appiumServerAddress == null)
@@ -274,6 +275,15 @@ namespace AxaFrance.WebEngine.MobileApp
                 DebugLogger.WriteError($"The platform {s.Platform} is not supported for mobile testing.");
                 throw new NotSupportedException(s.Platform.ToString());
             }
+
+            if (driver.SessionId is null || string.IsNullOrWhiteSpace(driver.SessionId.ToString()))
+            {
+                //session not created (maybe a bug while there should be an exception)
+                //convert driver.Capabilities of type ICapabilities to a string
+                var cap = driver.Capabilities;
+                throw new WebEngineGeneralException("The driver has no session id. returning capabilities from grid:" + cap.ToString());
+            }
+
             return driver;
         }
 
@@ -286,9 +296,9 @@ namespace AxaFrance.WebEngine.MobileApp
             var name = assembly?.GetName();
             if (name != null)
             {
-                browserstackOptions.Add("projectName", name.Name);
-                browserstackOptions.Add("buildName", name.Version.ToString());
-                browserstackOptions.Add("sessionName", name.FullName);
+                browserstackOptions.Add("projectName", s.DataSourceName ?? name.Name);
+                browserstackOptions.Add("buildName", name.Name);
+                browserstackOptions.Add("sessionName", name.Version.ToString() + " " + s.Device);
             }
             else
             {

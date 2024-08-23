@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>{{Title}}</title>
@@ -207,7 +207,7 @@
 </head>
 <body>
     <div class="navbar" role="banner">
-        <div class='donut-container' aria-label="Overall score of the application: {{Score}} percent.">
+        <div class='donut-container' aria-label="${txt-overall-score-aria-label}">
             <div class='donut' role="none">
             </div>
             <div class="donut-label" role="none">
@@ -217,20 +217,20 @@
             </div>
         </div>
         <div>
-            <h1>Accessibility Report: Application {{Title}}</h1>
-            <h3>Test performed at: {{TimeStamp}}</h3>
+            <h1>${txt-overall-banner-title}</h1>
+            <h3>${txt-overall-banner-performed-at}</h3>
         </div>
     </div>
     <article>
-        <h2>Web pages tested:</h2>
-        <p id="tblDescPagesTested">Pages tested during the uesr journey testing.</p>
+        <h2>${txt-overall-pages-tested}</h2>
+        <p id="tblDescPagesTested">${txt-overall-pages-tested-desc}</p>
         <table aria-describedby="tblDescPagesTested">
             <thead>
                 <tr>
-                    <th>Page</th>
-                    <th>Url</th>
-                    <th>Score</th>
-                    <th>Page Report</th>
+                    <th>${txt-overall-page}</th>
+                    <th>${txt-overall-url}</th>
+                    <th>${txt-overall-score}</th>
+                    <th>${txt-overall-page-preort}</th>
                 </tr>
             </thead>
             <tbody>
@@ -239,8 +239,8 @@
         </table>
     </article>
     <article>
-        <h2>Axe rules overview:</h2>
-        <p id="tblDescRulesList">A list of applicable rules and the result on each pages. Last column resumes the overall result for the rule.</p>
+        <h2>${txt-overall-rules-overview}</h2>
+        <p id="tblDescRulesList">${txt-overall-rules-overview-desc}</p>
         <table aria-describedby="tblDescRulesList">
             <thead>
                 <tr>{{RowPageHeaderList}}</tr>
