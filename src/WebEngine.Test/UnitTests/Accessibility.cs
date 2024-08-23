@@ -44,6 +44,7 @@ namespace WebEngine.Test.UnitTests
                 var filename = new PageReportBuilder()
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report generated at {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
         }
@@ -75,9 +76,11 @@ namespace WebEngine.Test.UnitTests
                         Tags = PageReportOptions.WcagAATags,
                         ScreenshotIncomplete = true,
                         UseAdvancedScreenshot = true,
+                        ReportLanguage = Language.SimplifiedChinese,
                     })
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report generated at {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
         }
@@ -118,7 +121,8 @@ namespace WebEngine.Test.UnitTests
                 var defaultOptions = new PageReportOptions()
                 {
                     Title = "AXA.FR",
-                    OutputFormat = OutputFormat.Zip
+                    OutputFormat = OutputFormat.Zip,
+                    ReportLanguage = Language.French,
                 };
                 var builder = new OverallReportBuilder().WithDefaultOptions(defaultOptions);
 

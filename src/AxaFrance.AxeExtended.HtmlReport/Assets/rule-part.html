@@ -6,9 +6,9 @@
 </button>
 <div class="content">   
     <ul>
-        <li>Tags: {{RuleTags}}</li>
-        <li>Rule Id: <div class='label' aria-label="Tag of rule id: {{RuleId}}">{{RuleId}}</div></li>
-        <li>Link to the description: <a href={{HelpUrl}}>{{Help}}</a></li>
+        <li>${txt-rule-tags} {{RuleTags}}</li>
+        <li>${txt-rule-id} <div class='label' aria-label="${txt-rule-aria-lable}">{{RuleId}}</div></li>
+        <li>${txt-rule-link-description} <a href={{HelpUrl}}>{{Help}}</a></li>
     </ul>
     {{RuleNodes}}
 </div>

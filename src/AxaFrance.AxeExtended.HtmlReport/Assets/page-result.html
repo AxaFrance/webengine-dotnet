@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>{{Title}}</title>
@@ -462,41 +462,41 @@
             </div>
         </div>
         <div>
-            <h1>Accessibility Report - Page {{Title}}</h1>
-            <h2>Url: {{PageUrl}}</h2>
-            <h3>Timestamp: {{TimeStamp}}</h3>
+            <h1>${txt-page-navbar-title}</h1>
+            <h2>${txt-page-navbar-url} {{PageUrl}}</h2>
+            <h3>${txt-page-navbar-timestamp} {{TimeStamp}}</h3>
         </div>
     </div>
 
     <div class="tab">
-        <button class="tablinks" id="defaultTab" onclick="openTab(event, 'Violations')">🔴 Violations ({{ViolationRules}})</button>
-        <button class="tablinks" onclick="openTab(event, 'Incomplete')">🟡 Incomplete ({{IncompleteRules}})</button>
-        <button class="tablinks" onclick="openTab(event, 'NonApplicable')">⚪ Inapplicable ({{NonApplicableRules}})</button>
-        <button class="tablinks" onclick="openTab(event, 'Passed')">🟢 Passed ({{PassedRules}})</button>
+        <button class="tablinks" id="defaultTab" onclick="openTab(event, 'Violations')">🔴 ${txt-page-tab-violations} ({{ViolationRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'Incomplete')">🟡 ${txt-page-tab-incomplete} ({{IncompleteRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'NonApplicable')">⚪ ${txt-page-tab-inapplicable} ({{NonApplicableRules}})</button>
+        <button class="tablinks" onclick="openTab(event, 'Passed')">🟢 ${txt-page-tab-passed} ({{PassedRules}})</button>
     </div>
 
     <div id="Violations" class="tabcontent">
-        <h3>Following are {{ViolationRules}} rules having Accessibility issues, with a total of {{ViolationNodes}} occurrences</h3>
+        <h3>${txt-page-violations-summary}</h3>
         <div>
             {{Violations}}
         </div>
     </div>
 
     <div id="Incomplete" class="tabcontent">
-        <h3>These rules can not be covered by automated testing tool. It is recommanded to conduct an accessbility review on these items.</h3>
+        <h3>${txt-page-incomplete-summary}</h3>
         <div>
             {{Incomplete}}
         </div>
     </div>
 
     <div id="NonApplicable" class="tabcontent">
-        <h3>These rules are not applicable on the current page.</h3>
+        <h3>${txt-page-inapplicable-summary}</h3>
         <div>
             {{NonApplicable}}
         </div>
     </div>
     <div id="Passed" class="tabcontent">
-        <h3>These rules have been audited as passed.</h3>
+        <h3>${txt-page-passed-summary}</h3>
         <div>
             {{Passed}}
         </div>

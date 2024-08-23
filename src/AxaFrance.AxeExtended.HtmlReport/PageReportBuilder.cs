@@ -129,12 +129,31 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <returns></returns>
         public PageReportBuilder Build()
         {
-             var config = Config.DeepClone();
-            if (Options.ReportLanguage == Language.French)
+            var config = Config?.DeepClone() ?? new JObject();
+            switch(Options.ReportLanguage)
             {
-                var locale = GetRessource("axe-core-fr.json");
-                //add or update the field "locale" in json object config, with the content of fr.json
-                config["locale"] = JObject.Parse(locale);
+                case Language.French:
+                    var localefr = GetRessource("axe-core-fr.json");
+                    //add or update the field "locale" in json object config, with the content of fr.json
+                    config["locale"] = JObject.Parse(localefr);
+                    break;
+                case Language.Spanish:
+                    var localees = GetRessource("axe-core-es.json");
+                    //add or update the field "locale" in json object config, with the content of es.json
+                    config["locale"] = JObject.Parse(localees);
+                    break;
+                case Language.German:
+                    var localede = GetRessource("axe-core-de.json");
+                    //add or update the field "locale" in json object config, with the content of de.json
+                    config["locale"] = JObject.Parse(localede);
+                    break;
+                case Language.SimplifiedChinese:
+                    var localezh = GetRessource("axe-core-zhcn.json");
+                    //add or update the field "locale" in json object config, with the content of zhcn.json
+                    config["locale"] = JObject.Parse(localezh);
+                    break;
+                default:
+                    break;
             }
             var result = this.Analyze(config as JObject);
             Result = new AxePageResult(result, this);
@@ -166,7 +185,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             string passes = GenerateRuleSection(Result.Passes, path);
             string incomplete = GenerateRuleSection(Result.Incomplete, path);
             string inapplicable = GenerateRuleSection(Result.Inapplicable, path);
-            string html = GetRessource("page-result.html");
+            string html = GetRessource("page-result.html").ToLocale(Options.ReportLanguage);
             html = html.Replace("{{Title}}", Options.Title)
                 .Replace("{{PageUrl}}", Result.Url)
                 .Replace("{{TimeStamp}}", Result.AxeResult.Timestamp.ToString())
@@ -223,7 +242,6 @@ namespace AxaFrance.AxeExtended.HtmlReport
             }
         }
 
-
         static int uniqueCheckId = 0;
         static int UniqueCheckId
         {
@@ -237,14 +255,14 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
 
             StringBuilder overall = new StringBuilder();
-            var template = GetRessource("rule-part.html");
+            var template = GetRessource("rule-part.html").ToLocale(Options.ReportLanguage);
             foreach (var item in items)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var node in item.Nodes)
                 {
                     //generate node (occurances of rule)
-                    var nodeTemplate = GetRessource("node-part.html");
+                    var nodeTemplate = GetRessource("node-part.html").ToLocale(Options.ReportLanguage);
                     var cssSelector = node.Node.Target;
                     var display = node.Screenshot != null ? "block" : "none";
                     string filename = string.Empty;
@@ -296,7 +314,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 var sb = new StringBuilder();
                 foreach (AxeResultCheck item in any)
                 {
-                    var template = GetRessource("check-part.html")
+                    var template = GetRessource("check-part.html").ToLocale(Options.ReportLanguage)
                         .Replace("{{CheckId}}", item.Id)
                         .Replace("{{Impact}}", item.Impact)
                         .Replace("{{Message}}", WebUtility.HtmlEncode(item.Message))
@@ -313,6 +331,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
         /// </summary>
         public GetScreenshotDelegate GetScreenshot { get; internal set; }
+
+        private JObject locale = null;
         
         /// <summary>
         /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
