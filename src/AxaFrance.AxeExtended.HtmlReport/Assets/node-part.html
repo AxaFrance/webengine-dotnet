@@ -1,11 +1,11 @@
 ﻿<button type="button" class="collapsible inner">🔗 {{Selector}}</button>
 <div class="content inner" style="display:{{Display}}">
-    <h3>Html Code</h3>
+    <h3>${txt-node-html-code}</h3>
     <pre><code class="language-html">{{HtmlCode}}</code></pre>
     <table>
         <tr>
-            <td width="99%"><h3>Checks performed</h3></td>
-            <td style="min-width: 350px; white-space: nowrap;"><h3>Screenshot</h3></td>
+            <td width="99%"><h3>${txt-node-checks-performed}</h3></td>
+            <td style="min-width: 350px; white-space: nowrap;"><h3>${txt-node-screenshot}</h3></td>
         </tr>
         <tr>
             <td>
@@ -14,21 +14,21 @@
                     <table class="nospace">
                         <tr>
                             <td>
-                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'anyChecks-{{UniqueCheckId}}')">ANY</button></div>
-                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'allchecks-{{UniqueCheckId}}')">ALL</button></div>
-                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'nonechecks-{{UniqueCheckId}}')">NONE</button></div>
+                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'anyChecks-{{UniqueCheckId}}')">${txt-node-any}</button></div>
+                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'allchecks-{{UniqueCheckId}}')">${txt-node-none}</button></div>
+                                <div><button class="horizontalLinks" onclick="openHorizontalTab(event, 'nonechecks-{{UniqueCheckId}}')">${txt-node-all}</button></div>
                             </td>
                             <td>
                                 <div id="anyChecks-{{UniqueCheckId}}" class="horizontalTabContent">
-                                    <H3>Any Checks: Checks where at least one must have passed:</H3>
+                                    <H3>${txt-node-any-desc}</H3>
                                     {{AnyChecks}}
                                 </div>
                                 <div id="allchecks-{{UniqueCheckId}}" class="horizontalTabContent">
-                                    <h3>All Checks: Checks that were made where all must have passed:</h3>
+                                    <h3>${txt-node-none-desc}</h3>
                                     {{AllChecks}}
                                 </div>
                                 <div id="nonechecks-{{UniqueCheckId}}" class="horizontalTabContent">
-                                    <h3>None Checks: Checks that were made where all must have not passed:</h3>
+                                    <h3>${txt-node-all-desc}</h3>
                                     {{NoneChecks}}
                                 </div>
                             </td>
@@ -37,7 +37,7 @@
                 </div>
             </td>
             <td>
-                <img src="{{Filename}}" alt="Screenshot of checked rules" class="thumbnail" onclick="showCanvas(this)" />
+                <img src="{{Filename}}" alt="${txt-node-screenshot-alt}" class="thumbnail" onclick="showCanvas(this)" />
             </td>
         </tr>
     </table>
