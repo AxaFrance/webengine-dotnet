@@ -1,4 +1,5 @@
 ﻿using Deque.AxeCore.Commons;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
     public class OverallReportBuilder
     {
         private PageReportOptions options;
+        internal JObject locale = null;
 
         /// <summary>
         /// Initialize OverallReportBuilder with default options.
@@ -84,8 +86,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
             int sequence = 1;
 
             //export the overallpage
-            var html = PageReportBuilder.GetRessource("overall-result.html");
-            var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html");
+            var html = PageReportBuilder.GetRessource("overall-result.html").ToLocale(options.ReportLanguage);
+            var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html").ToLocale(options.ReportLanguage);
             var TableRowPageResult = new StringBuilder();
             
             //export each subpages and generation of 
