@@ -109,6 +109,7 @@ namespace WebEngine.Test.UnitTests
                     .WithRgaaExtension()
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
 
@@ -167,6 +168,7 @@ namespace WebEngine.Test.UnitTests
 
                 string report = builder.Build().Export();
                 Assert.IsTrue(File.Exists(report));
+                Console.WriteLine(report);
             }
         }
 

@@ -71,16 +71,16 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </summary>
         /// <param name="fileName">the filename of export report, default value "index.html"</param>
         /// <returns>the complete path of report</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public string Export(string fileName = null)
         {
             if (!hasBuilt) Build();
             string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
 
-            //clean the folder
-            if (Directory.Exists(path))
+
+            // if the outpur format is Zip. we need to create a sub-folder and zip the content of that folder.
+            if(Options.OutputFormat == OutputFormat.Zip)
             {
-                Directory.Delete(path, true);
+                path = Path.Combine(path, Guid.NewGuid().ToString());
             }
             Directory.CreateDirectory(path);
             int sequence = 1;
