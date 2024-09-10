@@ -7,6 +7,7 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -112,11 +113,11 @@ namespace AxaFrance.AxeExtended.Selenium
                     {
                         element = driver.FindElement(By.XPath(xPath));
                     }
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     //sometimes the cssSelector provided by axe can not be used by selenium.
                     //in this case can't make screenshot on the element.
-
                     Console.WriteLine("[A11y] Unable to get element from cssSelector or xPath");
                 }
             }
@@ -125,7 +126,7 @@ namespace AxaFrance.AxeExtended.Selenium
             {
                 try
                 {
-                    var screenshot = options.UseAdvancedScreenshot ? AdvancedScreenshot(driver, we, options) : we.GetScreenshot().AsByteArray;
+                    var screenshot = options.UseAdvancedScreenshot ? AdvancedScreenshot(driver, we, options) : ToWebpByteArray(we.GetScreenshot());
                     driver.SwitchTo().DefaultContent(); //goes back to default context (leaving iframes)
                     return screenshot;
                 }
@@ -140,16 +141,37 @@ namespace AxaFrance.AxeExtended.Selenium
             {
                 driver.SwitchTo().DefaultContent();
                 Console.WriteLine("[A11y] The element can not be converted to type WebElement for screenshot.");
-                return Array.Empty<byte>();                
+                return Array.Empty<byte>();
             }
 
+
+        }
+
+        /// <summary>
+        /// Convert selenium screenshot in png format to webp format.
+        /// </summary>
+        /// <param name="screenshot">Selenium screenshot object.</param>
+        /// <returns>Byte array of an image in webp format</returns>
+        private static byte[] ToWebpByteArray(Screenshot screenshot)
+        {
+            //covert screenshot in png format to webp
+            using (SKBitmap bitmap = SKBitmap.Decode(screenshot.AsByteArray))
+            {
+                using (SKImage img = SKImage.FromBitmap(bitmap))
+                {
+                    using (SKData data = img.Encode(SKEncodedImageFormat.Webp, 80))
+                    {
+                        return data.ToArray();
+                    }
+                }
+            }
 
         }
 
         private static byte[] AdvancedScreenshot(WebDriver driver, WebElement element, PageReportOptions options)
         {
             BringToView(element, driver);
-            var imageViewPort = driver.GetScreenshot();            
+            var imageViewPort = driver.GetScreenshot();
             var locatable = (ILocatable)element;
 
             var location = locatable.Coordinates.LocationInViewport; //location and size are for 100% dpi
@@ -189,7 +211,7 @@ namespace AxaFrance.AxeExtended.Selenium
                             Style = SKPaintStyle.Stroke,
                             StrokeWidth = options.HighlightThickness
                         });
-                    using (var data = bitmap.Encode(SKEncodedImageFormat.Png, 100))
+                    using (var data = bitmap.Encode(SKEncodedImageFormat.Webp, 80))
                     {
                         return data.ToArray();
                     }
