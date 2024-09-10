@@ -269,7 +269,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     if (node.Screenshot != null)
                     {
                         Guid id = Guid.NewGuid();
-                        filename = id.ToString() + ".png";
+                        filename = id.ToString() + ".webp";
                         File.WriteAllBytes(Path.Combine(path, filename), node.Screenshot);
                     }
 
