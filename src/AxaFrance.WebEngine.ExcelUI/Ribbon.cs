@@ -50,7 +50,8 @@ namespace AxaFrance.WebEngine.ExcelUI
 
         private bool isNoCode = false;
         private static Microsoft.Office.Interop.Excel.Worksheet activeWorksheet;
-        internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelWithDriveSetting.xml");
+        internal static string settingFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine");
+        internal static string settingFile = Path.Combine(settingFolder, "excelWithDriveSetting.xml");
 
         internal static string TestDataFile;
         internal static List<string> TestCases = new List<string>();

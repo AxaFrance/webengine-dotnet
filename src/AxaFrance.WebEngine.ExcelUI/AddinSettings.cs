@@ -60,6 +60,11 @@ namespace AxaFrance.WebEngine.ExcelUI
         public string NoCodeRunnerPath { get; set; }
 
         /// <summary>
+        /// Java path for Java based test automation solution and NoCodeRunner
+        /// </summary>
+        public string JavaPath { get; set; }
+
+        /// <summary>
         /// get the snapshot jar or release jar.
         /// </summary>
         public bool GetNoCodeBetaRunnerFile { get; set; }

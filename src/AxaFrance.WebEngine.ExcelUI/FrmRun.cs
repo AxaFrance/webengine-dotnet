@@ -15,12 +15,19 @@ using System.Security;
 using static System.Environment;
 using System.Security.Cryptography;
 using System.Reflection;
+using Microsoft.Win32.SafeHandles;
+using System.IO.Compression;
+using System.Drawing;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {
     public partial class FrmRun : Form
     {
         private const string NocodeSuffixRepository = "\\AxaFrance.WebEngine\\WebRunnerJar";
+        private const string JDK_21_inner_folder = "/jdk-21.0.1+12";
+        private const string JDK_unzip_path = "/jdk-21";
+        private const string JDK_zip_file_path = JDK_unzip_path + ".zip";
+        private const string Java_alone_folder_path = "/Java";
         private bool isNoCode = false;
         private string noCodeColInfo = null;
         private bool useTempFIleForNocode = false;
@@ -104,7 +111,12 @@ namespace AxaFrance.WebEngine.ExcelUI
         }
 
         private void btnStart_Click(object sender, EventArgs e)
-        {            
+        {
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls |
+                System.Net.SecurityProtocolType.Tls11 |
+                System.Net.SecurityProtocolType.Tls12 |
+                System.Net.SecurityProtocolType.Ssl3; 
+            
             string assembly = Ribbon.Settings.TestAssembly;
 
             if (string.IsNullOrEmpty(assembly) && !isNoCode)
@@ -127,14 +139,65 @@ namespace AxaFrance.WebEngine.ExcelUI
 
             if (isNoCode)
             {
-                Microsoft.Office.Interop.Excel.Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
                 string outputDir = txtOutputFolder.Text;
-                Ribbon.Settings.NoCodeExportPath = outputDir;
-
                 if (outputDir.EndsWith("\\"))
                 {
                     outputDir = outputDir.Substring(0, outputDir.Length - 1);
                 }
+                Ribbon.Settings.NoCodeExportPath = outputDir;
+
+                if (String.IsNullOrEmpty(Ribbon.Settings.JavaPath) || !Directory.Exists(Ribbon.Settings.JavaPath) || !File.Exists(Ribbon.Settings.JavaPath + "/bin/java.exe"))
+                {
+                    //check Java_home and Java path
+                    string userPath = System.Environment.GetEnvironmentVariable("PATH");
+                    string javaHome = System.Environment.GetEnvironmentVariable("JAVA_HOME");
+
+                    if (!string.IsNullOrEmpty(javaHome) || (!string.IsNullOrEmpty(userPath) && userPath.Contains("java.exe")))
+                    {
+                        //get java version
+                        ProcessStartInfo psi = new ProcessStartInfo();
+                        psi.FileName = "java.exe";
+                        psi.Arguments = " -version";
+                        psi.RedirectStandardError = true;
+                        psi.UseShellExecute = false;
+                        try
+                        {
+                            Process pr = Process.Start(psi);
+                            string java_version = pr.StandardError.ReadLine();
+                            java_version=java_version.Split(' ')[2].Replace("\"", "");
+                            //String java_version = p.StandardOutput.ReadToEnd();
+                            if (string.IsNullOrEmpty(java_version) 
+                                || string.IsNullOrEmpty(Ribbon.Settings.JavaPath) 
+                                || !Ribbon.Settings.JavaPath.Contains("21.") 
+                                || !Directory.Exists(Ribbon.Settings.JavaPath))
+                            {
+                                downloadJDK21(outputDir);
+                            }
+                            else
+                            {
+                                if (java_version.Contains("openjdk version \"21."))
+                                {
+                                    Ribbon.Settings.JavaPath = pr.StartInfo.WorkingDirectory;
+                                }
+                                else
+                                {
+                                    downloadJDK21(outputDir);
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Veuillez svp installer version de java 21");
+                        }
+                    }
+                    else
+                    {
+                        downloadJDK21(outputDir);
+                    }
+                }
+
+                Microsoft.Office.Interop.Excel.Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+
                 String currentPath = "";
 
                 try
@@ -188,6 +251,56 @@ namespace AxaFrance.WebEngine.ExcelUI
             Ribbon.Settings.GetNoCodeBetaRunnerFile = cbGetBeta.Checked;
             Ribbon.SaveSettings();
             
+        }
+
+        private void downloadJDK21(string outputDir)
+        {
+            MessageBox.Show("La version de Java 21 compatible avec le NoCode doit être télécharger sur votre machine");
+            dwlrobotLabel.Show();
+            dwlProgressBar.Show();
+            dwlrobotLabel.Text = "Télécharg. de Java 21 en cours...";
+            dwlProgressBar.PerformStep();
+            string folder = Ribbon.settingFolder + "\\WebRunnerJar";
+            string javaPath = folder + Java_alone_folder_path;
+            string currentUnzipPath = javaPath + JDK_unzip_path;
+
+
+            if (!File.Exists(currentUnzipPath + "/bin/java.exe"))
+            {
+                if (Directory.Exists(currentUnzipPath))
+                {
+                    Directory.Delete(currentUnzipPath, true);
+                    Directory.CreateDirectory(currentUnzipPath);
+                }
+
+
+                string jdk21_url = ConfigurationManager.AppSettings.Get("jdk21_url");
+                string jdkZipPath = javaPath + JDK_zip_file_path;
+
+                dwlProgressBar.PerformStep();
+
+                if (!File.Exists(jdkZipPath))
+                {
+                    WebClient client = new WebClient();
+                    Directory.CreateDirectory(javaPath);
+                    client.DownloadFile(jdk21_url, jdkZipPath);
+                    dwlProgressBar.PerformStep();
+                    dwlrobotLabel.Text = "Décompression de Java 21 en cours...";
+                }
+                ZipFile.ExtractToDirectory(jdkZipPath, javaPath);
+                //rename the folder to jdk-21
+                if (Directory.Exists(javaPath + JDK_21_inner_folder))
+                {
+                    Directory.Move(javaPath + JDK_21_inner_folder, currentUnzipPath);
+                }
+
+            }
+            Ribbon.Settings.JavaPath = currentUnzipPath;
+
+            dwlProgressBar.PerformStep();
+            dwlrobotLabel.Text = "Java 21 téléchargé et décompressé avec succès!";
+            Ribbon.SaveSettings();
+            dwlrobotLabel.Text = "Téléchargement du robot";
         }
 
         private static string checkEnvInDir(string output)
@@ -316,7 +429,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 dwlProgressBar.PerformLayout();
                 getNoCodeRunnerFiles(txtOutputFolder.Text, ((int)GetJarOrCmdYaml.jar), cbGetBeta.Checked, dwlProgressBar, cbForce.Checked);
                 param = "-jar webrunner.jar " + parameters;
-                commandline = getJavaExePath(Ribbon.Settings.NoCodeRunnerPath);
+                commandline = Ribbon.Settings.JavaPath + "\\bin\\java.exe";
                 return true;
             }
             
@@ -376,11 +489,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             Directory.CreateDirectory(folder);
             dwlProgressBar.PerformStep();
             WebClient client = new WebClient();
-            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls | 
-                System.Net.SecurityProtocolType.Tls11 | 
-                System.Net.SecurityProtocolType.Tls12 | 
-                System.Net.SecurityProtocolType.Ssl3;
-
             if (!string.IsNullOrEmpty(noCodeArtifactPath) && !string.IsNullOrEmpty(mavenRepoUrl) && !noCodeArtifactPath.Contains("#{") && !mavenRepoUrl.Contains("#{"))
             {
                 string mvnSelectedRepo = (getBeta ? mavenSnapRepoUrl : mavenRepoUrl);
