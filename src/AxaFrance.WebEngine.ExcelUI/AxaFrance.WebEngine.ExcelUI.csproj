@@ -305,6 +305,7 @@
     <None Include="AXA.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx" />
     <None Include="AxaFrance.WebEngine.ExcelUI_4_TemporaryKey.pfx" />
+    <None Include="AxaFrance.WebEngine.ExcelUI_5_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -412,11 +413,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>AxaFrance.WebEngine.ExcelUI_5_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2F8473B2C7EB57415044533EE7C6AF34434AE8D3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6252C1A9E330C88BF90609E37157D37572E18AF9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
