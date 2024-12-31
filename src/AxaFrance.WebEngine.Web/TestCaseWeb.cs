@@ -10,6 +10,12 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Threading;
+using OpenQA.Selenium.BiDi.Communication;
+using System.Diagnostics;
+using System.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace AxaFrance.WebEngine.Web
 {
@@ -29,7 +35,15 @@ namespace AxaFrance.WebEngine.Web
         /// The test case report for the current test case.
         /// </summary>
         public bool IsAccessibilityTestEnabled { get; set; }
-        
+
+        /// <summary>
+        /// When activated, the framework will trace downloaded resources during your test and generates a report on the resources used.
+        /// </summary>
+        public bool MesureResourceUsage { get; set; }
+        Dictionary<string, NetworkRequest> requestLogs = new Dictionary<string, NetworkRequest>();
+        List<JSErrors> jSErrors = new List<JSErrors>();
+
+
         /// <summary>
         /// The title of the accessibility report.
         /// </summary>
@@ -41,15 +55,27 @@ namespace AxaFrance.WebEngine.Web
         /// <returns>Additional information which can be showed in the report. (not used)</returns>
         public override string Cleanup()
         {
-            
-            if(IsAccessibilityTestEnabled && reportBuilder != null)
+
+            if (IsAccessibilityTestEnabled && reportBuilder != null)
             {
                 var a11yReport = reportBuilder.Build().Export();
-                DebugLogger.WriteLine("[A11Y] Attaching Accessibility Report from:" + a11yReport) ;
+                DebugLogger.WriteLine("[A11Y] Attaching Accessibility Report from:" + a11yReport);
                 testCaseReport.AttachFile(a11yReport, "AccessibilityReport");
                 DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
             }
             WebDriver browser = this.Context as WebDriver;
+            if (MesureResourceUsage)
+            {
+                var network = browser.Manage().Network;
+                network.StopMonitoring();
+                stopwatch?.Stop();
+                testCaseReport.AttachedData.Add(
+                    new AdditionalData
+                    {
+                        Name = "ResourceUsage",
+                        Value = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(requestLogs))
+                    });
+            }
             if (browser != null)
             {
                 try
@@ -63,7 +89,10 @@ namespace AxaFrance.WebEngine.Web
                 }
             }
             return null;
+            
         }
+
+        Stopwatch stopwatch = null;
 
         /// <summary>
         /// Setup process to initialize selenium web driver according to the given settings, or connect to remote mobile devices.
@@ -71,15 +100,20 @@ namespace AxaFrance.WebEngine.Web
         public override void Initialize()
         {
             var a11y = TestData.TryGetValue("Accessibility");
-            if(IsTrue(a11y))
+            var resourceUsage = TestData.TryGetValue("ResourceUsage");
+            if (IsTrue(a11y))
             {
                 IsAccessibilityTestEnabled = true;
                 AccessibilityReportTitle = TestData.TestName;
             }
-            if(IsAccessibilityTestEnabled)
+            if (IsTrue(resourceUsage))
+            {
+                MesureResourceUsage = true;
+            }
+            if (IsAccessibilityTestEnabled)
             {
                 reportBuilder = InitializeA11yReportBuilder();
-            }            
+            }
             Settings s = Settings.Instance;
             string url = s.GridServerUrl;
             if (url != null && url.Contains("browserstack"))
@@ -92,7 +126,17 @@ namespace AxaFrance.WebEngine.Web
                 try
                 {
                     DebugLogger.WriteLine("Initializing Selenium WebDriver");
-                    Context = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
+                    var driver = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
+                    Context = driver;
+                    if (MesureResourceUsage)
+                    {
+                        DebugLogger.WriteLine("[DEBUG] Resource Usage Measurement is enabled.");
+                        var network = driver.Manage().Network;
+                        network.NetworkRequestSent += NetworkRequestSent;
+                        network.NetworkResponseReceived += NetworkRequestReceived;
+                        network.StartMonitoring();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -120,25 +164,74 @@ namespace AxaFrance.WebEngine.Web
 
         }
 
+        private void NetworkRequestReceived(object sender, NetworkResponseReceivedEventArgs e)
+        {
+                NetworkRequest request = null;
+                if (requestLogs.ContainsKey(e.RequestId))
+                {
+                    request = requestLogs[e.RequestId];
+                    request.Received = DateTime.Now;
+                }
+                else
+                {
+                    request = new NetworkRequest { RequestId = e.RequestId, Url = e.ResponseUrl };
+                    request.Sent = request.Received = DateTime.Now;
+                    requestLogs[request.RequestId] = request;
+                }
+                //calcualte the size of response by adding response headers and body
+                request.IsCached = IsCached(requestLogs, e);
+                request.Reponse = e.ResponseHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.ResponseBody?.Length ?? 0);
+                request.StatusCode = e.ResponseStatusCode;
+                request.ResourceType = e.ResponseResourceType;
+        }
+
+        private void NetworkRequestSent(object sender, NetworkRequestSentEventArgs e)
+        {
+            if (stopwatch is null)
+            {
+                stopwatch = new Stopwatch();
+                stopwatch.Start();
+            }
+            Console.WriteLine($"Request: {e.RequestId})");
+            var request = new NetworkRequest { RequestId = e.RequestId, Url = e.RequestUrl, Method = e.RequestMethod };
+            //calcualte the size of request by adding request headers and body
+            request.Request = e.RequestHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.RequestPostData?.Length ?? 0);
+            requestLogs[request.RequestId] = request;
+            request.Sent = DateTime.Now;
+
+            request.TimeStamp = stopwatch.ElapsedMilliseconds;
+        }
+
+        bool IsCached(Dictionary<string, NetworkRequest> requestLogs, NetworkResponseReceivedEventArgs e)
+        {
+            var hasRequestOfSameUrl = requestLogs.Values.Any(x => x.Url == e.ResponseUrl && x.Reponse != 0);
+            return hasRequestOfSameUrl;
+        }
+
         private bool IsTrue(string text)
         {
             if (string.IsNullOrWhiteSpace(text)) return false;
             if (text.Trim().Equals("true", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
-            }else if(text.Trim().Equals("yes", StringComparison.OrdinalIgnoreCase))
+            }
+            else if (text.Trim().Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
-            }else if(text.Trim().Equals("1", StringComparison.OrdinalIgnoreCase))
+            }
+            else if (text.Trim().Equals("1", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
-            }else if(text.Trim().Equals("on", StringComparison.OrdinalIgnoreCase))
+            }
+            else if (text.Trim().Equals("on", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
-            }else if(text.Trim().Equals("enabled", StringComparison.OrdinalIgnoreCase))
+            }
+            else if (text.Trim().Equals("enabled", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
-            }else if(text.Trim().Equals("oui", StringComparison.OrdinalIgnoreCase))
+            }
+            else if (text.Trim().Equals("oui", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
@@ -153,7 +246,7 @@ namespace AxaFrance.WebEngine.Web
             {
                 HighlightColor = Color.OrangeRed,
                 HighlightThickness = 5,
-                UseAdvancedScreenshot = true,                
+                UseAdvancedScreenshot = true,
                 OutputFormat = OutputFormat.Zip,
                 OutputFolder = Path.Combine(Settings.Instance.LogDir, "a11y"),
                 ScoringMode = ScoringMode.NonWeighted,
