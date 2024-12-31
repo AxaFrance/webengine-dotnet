@@ -89,7 +89,7 @@ namespace AxaFrance.WebEngine.Web
                 }
             }
             return null;
-            
+
         }
 
         Stopwatch stopwatch = null;
@@ -166,7 +166,9 @@ namespace AxaFrance.WebEngine.Web
 
         private void NetworkRequestReceived(object sender, NetworkResponseReceivedEventArgs e)
         {
-                NetworkRequest request = null;
+            NetworkRequest request = null;
+            lock (requestLogs)
+            {
                 if (requestLogs.ContainsKey(e.RequestId))
                 {
                     request = requestLogs[e.RequestId];
@@ -183,6 +185,7 @@ namespace AxaFrance.WebEngine.Web
                 request.Reponse = e.ResponseHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.ResponseBody?.Length ?? 0);
                 request.StatusCode = e.ResponseStatusCode;
                 request.ResourceType = e.ResponseResourceType;
+            }
         }
 
         private void NetworkRequestSent(object sender, NetworkRequestSentEventArgs e)
@@ -192,11 +195,13 @@ namespace AxaFrance.WebEngine.Web
                 stopwatch = new Stopwatch();
                 stopwatch.Start();
             }
-            Console.WriteLine($"Request: {e.RequestId})");
             var request = new NetworkRequest { RequestId = e.RequestId, Url = e.RequestUrl, Method = e.RequestMethod };
             //calcualte the size of request by adding request headers and body
             request.Request = e.RequestHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.RequestPostData?.Length ?? 0);
-            requestLogs[request.RequestId] = request;
+            lock (requestLogs)
+            {
+                requestLogs[request.RequestId] = request;
+            }
             request.Sent = DateTime.Now;
 
             request.TimeStamp = stopwatch.ElapsedMilliseconds;
