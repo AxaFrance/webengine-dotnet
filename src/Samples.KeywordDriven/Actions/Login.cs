@@ -10,9 +10,8 @@ namespace Samples.KeywordDriven.Actions
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
         {
-            var browser = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
-            browser.Navigate().GoToUrl(GetParameter("URL_RECETTE"));
-            PageModels.PageLogin login = new PageModels.PageLogin(browser);
+            Browser.Navigate().GoToUrl(GetParameter("URL_RECETTE"));
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
             login.UserName.SetValue(GetParameter("User"));
             login.UserName.SetSecure(GetParameter("EncPassword"));
             login.ButtonLogin.Click();

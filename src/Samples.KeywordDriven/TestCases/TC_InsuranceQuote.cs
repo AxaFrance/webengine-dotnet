@@ -14,6 +14,7 @@ namespace Samples.KeywordDriven.TestCases
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(ValidateContract)},
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(Logout)},
             };
+            MesureResourceUsage = true;
         }
     }
 }

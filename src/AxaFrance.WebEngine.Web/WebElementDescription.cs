@@ -3,7 +3,6 @@
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
