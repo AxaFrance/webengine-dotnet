@@ -112,10 +112,6 @@ namespace AxaFrance.WebEngine.Web
             }
             if (IsAccessibilityTestEnabled)
             {
-                MeasureResourceUsage = true;
-            }
-            if (IsAccessibilityTestEnabled)
-            {
                 reportBuilder = InitializeA11yReportBuilder();
             }
             Settings s = Settings.Instance;
@@ -166,6 +162,49 @@ namespace AxaFrance.WebEngine.Web
             }
 
 
+        }
+
+        private void NetworkRequestReceived(object sender, NetworkResponseReceivedEventArgs e)
+        {
+            NetworkRequest request = null;
+            lock (requestLogs)
+            {
+                if (requestLogs.ContainsKey(e.RequestId))
+                {
+                    request = requestLogs[e.RequestId];
+                    request.Received = DateTime.Now;
+                }
+                else
+                {
+                    request = new NetworkRequest { RequestId = e.RequestId, Url = e.ResponseUrl };
+                    request.Sent = request.Received = DateTime.Now;
+                    requestLogs[request.RequestId] = request;
+                }
+                //calcualte the size of response by adding response headers and body
+                request.IsCached = IsCached(requestLogs, e);
+                request.Reponse = e.ResponseHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.ResponseBody?.Length ?? 0);
+                request.StatusCode = e.ResponseStatusCode;
+                request.ResourceType = e.ResponseResourceType;
+            }
+        }
+
+        private void NetworkRequestSent(object sender, NetworkRequestSentEventArgs e)
+        {
+            if (stopwatch is null)
+            {
+                stopwatch = new Stopwatch();
+                stopwatch.Start();
+            }
+            var request = new NetworkRequest { RequestId = e.RequestId, Url = e.RequestUrl, Method = e.RequestMethod };
+            //calcualte the size of request by adding request headers and body
+            request.Request = e.RequestHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.RequestPostData?.Length ?? 0);
+            lock (requestLogs)
+            {
+                requestLogs[request.RequestId] = request;
+            }
+            request.Sent = DateTime.Now;
+
+            request.TimeStamp = stopwatch.ElapsedMilliseconds;
         }
 
         bool IsCached(Dictionary<string, NetworkRequest> requestLogs, NetworkResponseReceivedEventArgs e)
