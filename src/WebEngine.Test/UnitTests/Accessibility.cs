@@ -44,6 +44,7 @@ namespace WebEngine.Test.UnitTests
                 var filename = new PageReportBuilder()
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report generated at {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
         }
@@ -75,9 +76,12 @@ namespace WebEngine.Test.UnitTests
                         Tags = PageReportOptions.WcagAATags,
                         ScreenshotIncomplete = true,
                         UseAdvancedScreenshot = true,
+                        ReportLanguage = Language.Spanish,
+                        Title = "Homepage AXA.FR"
                     })
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report generated at {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
         }
@@ -105,6 +109,7 @@ namespace WebEngine.Test.UnitTests
                     .WithRgaaExtension()
                     .WithSelenium(driver).Build().Export();
                 Debug.WriteLine($"Report generated in {sw.Elapsed.TotalSeconds} seconds");
+                Debug.WriteLine($"Report {filename}");
                 Assert.IsTrue(File.Exists(filename));
             }
 
@@ -118,7 +123,8 @@ namespace WebEngine.Test.UnitTests
                 var defaultOptions = new PageReportOptions()
                 {
                     Title = "AXA.FR",
-                    OutputFormat = OutputFormat.Zip
+                    OutputFormat = OutputFormat.Zip,
+                    ReportLanguage = Language.French,
                 };
                 var builder = new OverallReportBuilder().WithDefaultOptions(defaultOptions);
 
@@ -162,6 +168,7 @@ namespace WebEngine.Test.UnitTests
 
                 string report = builder.Build().Export();
                 Assert.IsTrue(File.Exists(report));
+                Console.WriteLine(report);
             }
         }
 

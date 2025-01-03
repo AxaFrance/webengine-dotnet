@@ -102,6 +102,10 @@
                     </Grid>
 
                 </TabItem>
+                <TabItem Header="Impact" x:Name="tabResourceUsages">
+                    <DataGrid x:Name="dgImpacts" IsReadOnly="True">
+                    </DataGrid>
+                </TabItem>
             </TabControl>
 
             <TabControl Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Style="{DynamicResource SecondaryTabControlStyle}">

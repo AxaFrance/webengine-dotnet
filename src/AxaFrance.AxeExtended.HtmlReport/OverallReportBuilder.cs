@@ -1,4 +1,5 @@
 ﻿using Deque.AxeCore.Commons;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
     public class OverallReportBuilder
     {
         private PageReportOptions options;
+        internal JObject locale = null;
 
         /// <summary>
         /// Initialize OverallReportBuilder with default options.
@@ -69,23 +71,23 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </summary>
         /// <param name="fileName">the filename of export report, default value "index.html"</param>
         /// <returns>the complete path of report</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public string Export(string fileName = null)
         {
             if (!hasBuilt) Build();
             string path = Options.OutputFolder ?? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
 
-            //clean the folder
-            if (Directory.Exists(path))
+
+            // if the outpur format is Zip. we need to create a sub-folder and zip the content of that folder.
+            if(Options.OutputFormat == OutputFormat.Zip)
             {
-                Directory.Delete(path, true);
+                path = Path.Combine(path, Guid.NewGuid().ToString());
             }
             Directory.CreateDirectory(path);
             int sequence = 1;
 
             //export the overallpage
-            var html = PageReportBuilder.GetRessource("overall-result.html");
-            var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html");
+            var html = PageReportBuilder.GetRessource("overall-result.html").ToLocale(options.ReportLanguage);
+            var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html").ToLocale(options.ReportLanguage);
             var TableRowPageResult = new StringBuilder();
             
             //export each subpages and generation of 

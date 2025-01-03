@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net48;net6.0-windows;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0-windows;net9.0-windows</TargetFrameworks>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <AssemblyName>ReportViewer</AssemblyName>
@@ -29,6 +29,10 @@
     <None Remove="XmlDark.xshd" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\AxaFrance.WebEngine.Web\NetworkRequest.cs" Link="NetworkRequest.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <EmbeddedResource Include="XmlDark.xshd" />
@@ -37,7 +41,8 @@
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
     <PackageReference Include="Hummingbird.UI" Version="1.2.2772.2" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2651.64" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+
   </ItemGroup>
 
   <ItemGroup>

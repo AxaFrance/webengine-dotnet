@@ -6,7 +6,6 @@ using AxaFrance.WebEngine.MobileApp;
 using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.MultiTouch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
