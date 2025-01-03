@@ -4,7 +4,7 @@
       "commandName": "Executable",
       "executablePath": ".\\WebRunner.exe",
       "commandLineArgs": "\"-a:Samples.KeywordDriven.dll\" -browser:Chrome -showReport",
-      "workingDirectory": ".\\bin\\Debug\\net6.0-windows"
+      "workingDirectory": ".\\bin\\Debug\\net9.0"
     }
   }
 }

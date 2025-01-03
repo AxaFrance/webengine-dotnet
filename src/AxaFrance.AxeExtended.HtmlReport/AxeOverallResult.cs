@@ -89,6 +89,11 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 }
                 overall += impact;
             }
+            if(overall == 0)
+            {
+                //to avoir division by zero
+                return 0;
+            }
             var score = passed * 100 / overall;
             Score = score;
             ScoreRotation = Score * 360 / 100;

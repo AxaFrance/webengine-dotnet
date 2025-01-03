@@ -5,6 +5,7 @@ using AngleSharp.Common;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.Android.Enums;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Remote;
 using System;

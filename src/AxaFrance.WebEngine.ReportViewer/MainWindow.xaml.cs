@@ -2,10 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-1 10:22
 using AxaFrance.WebEngine.Report;
+using AxaFrance.WebEngine.Web;
 using Hummingbird.UI;
 using ICSharpCode.AvalonEdit.Folding;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -165,6 +167,19 @@ namespace AxaFrance.WebEngine.ReportViewer
             {
                 tabAccessibility.Visibility = Visibility.Collapsed;
                 tabControl.SelectedIndex = 0;
+            }
+
+            if(tc.AttachedData.FirstOrDefault(x=>x.Name == "ResourceUsage") != null)
+            {
+                tabResourceUsages.Visibility = Visibility.Visible;
+                var data = tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage")?.Value;
+                string json = System.Text.Encoding.UTF8.GetString(data);
+                var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
+                dgImpacts.ItemsSource = resourceUsage.Values.ToArray() ;
+            }
+            else
+            {
+                tabResourceUsages.Visibility = Visibility.Collapsed;
             }
 
 
