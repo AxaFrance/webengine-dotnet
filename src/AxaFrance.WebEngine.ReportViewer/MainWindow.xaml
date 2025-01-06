@@ -1,6 +1,7 @@
 ﻿<ui:BasicWindow xmlns:ui="clr-namespace:Hummingbird.UI;assembly=Hummingbird.UI" x:Class="AxaFrance.WebEngine.ReportViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:web="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -103,8 +104,22 @@
 
                 </TabItem>
                 <TabItem Header="Impact" x:Name="tabResourceUsages">
-                    <DataGrid x:Name="dgImpacts" IsReadOnly="True">
-                    </DataGrid>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <lvc:PieChart x:Name="pcUsage" Grid.Row="0" LegendPosition="Right">
+                            
+                        </lvc:PieChart>
+
+                        <DataGrid x:Name="dgImpacts" IsReadOnly="True" Grid.Row="1">
+                            
+                        </DataGrid>
+
+                    </Grid>
                 </TabItem>
             </TabControl>
 

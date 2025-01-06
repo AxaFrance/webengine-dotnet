@@ -5,6 +5,8 @@ using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using Hummingbird.UI;
 using ICSharpCode.AvalonEdit.Folding;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -176,6 +178,7 @@ namespace AxaFrance.WebEngine.ReportViewer
                 string json = System.Text.Encoding.UTF8.GetString(data);
                 var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
                 dgImpacts.ItemsSource = resourceUsage.Values.ToArray() ;
+                pcUsage.Series = GetSeries(resourceUsage);
             }
             else
             {
@@ -183,6 +186,38 @@ namespace AxaFrance.WebEngine.ReportViewer
             }
 
 
+        }
+
+        private IEnumerable<ISeries> GetSeries(Dictionary<string, NetworkRequest> resourceUsage)
+        {
+            Dictionary<string, long> data = new Dictionary<string, long>();
+            foreach (var item in resourceUsage)
+            {
+                if (item.Value.IsCached) continue;
+                if (data.ContainsKey(item.Value.ResourceType))
+                {
+                    data[item.Value.ResourceType] += item.Value.Reponse;
+                }
+                else
+                {
+                    data.Add(item.Value.ResourceType, item.Value.Reponse);
+                }
+            }
+
+            List<ISeries> Series = new List<ISeries>();
+            foreach (var item in data)
+            {
+                Series.Add(new PieSeries<long>
+                {
+                    Values = new long[] { item.Value },
+                    Name = item.Key,
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer,
+                    DataLabelsSize = 15,
+                    DataLabelsFormatter = value => $"{value.Label} : {value.Coordinate.PrimaryValue} Bytes",
+                    ToolTipLabelFormatter = value => $"{value.Label} : {value.Coordinate.PrimaryValue} Bytes",
+                });
+            }
+            return Series;
         }
 
         private void FillActionReports(TestCaseReport tc)
