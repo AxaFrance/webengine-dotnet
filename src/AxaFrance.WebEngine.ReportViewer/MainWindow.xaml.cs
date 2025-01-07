@@ -20,6 +20,7 @@ using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
@@ -178,7 +179,8 @@ namespace AxaFrance.WebEngine.ReportViewer
                 string json = System.Text.Encoding.UTF8.GetString(data);
                 var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
                 dgImpacts.ItemsSource = resourceUsage.Values.ToArray() ;
-                pcUsage.Series = GetSeries(resourceUsage);
+                pcUsage.Series = GetRessourcesSeries(resourceUsage);
+                pcHttpCode.Series = GetHttpCodeSeries(resourceUsage);
             }
             else
             {
@@ -188,7 +190,39 @@ namespace AxaFrance.WebEngine.ReportViewer
 
         }
 
-        private IEnumerable<ISeries> GetSeries(Dictionary<string, NetworkRequest> resourceUsage)
+        private IEnumerable<ISeries> GetHttpCodeSeries(Dictionary<string, NetworkRequest> resourceUsage)
+        {
+            Dictionary<long, long> response = new Dictionary<long, long>();
+            foreach (var kvp in resourceUsage)
+            {
+                var code = kvp.Value.StatusCode;
+                if (response.ContainsKey(code))
+                {
+                    response[code]++;
+                }
+                else
+                {
+                    response[code] = 1;
+                }
+            }
+
+            List<ISeries> Series = new List<ISeries>();
+            foreach (var item in response)
+            {
+                Series.Add(new PieSeries<long>
+                {
+                    Values = new long[] { item.Value },
+                    Name = item.Key.ToString(),
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer,
+                    DataLabelsSize = 15,
+                    DataLabelsFormatter = value => $"{value.Label} : {value.Coordinate.PrimaryValue}",
+                    ToolTipLabelFormatter = value => $"{value.Label} : {value.Coordinate.PrimaryValue}",
+                });
+            }
+            return Series;
+        }
+
+        private IEnumerable<ISeries> GetRessourcesSeries(Dictionary<string, NetworkRequest> resourceUsage)
         {
             Dictionary<string, long> data = new Dictionary<string, long>();
             foreach (var item in resourceUsage)

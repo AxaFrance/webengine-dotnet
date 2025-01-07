@@ -19,7 +19,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
@@ -51,9 +50,69 @@
 
             <TabControl Grid.Column="1" Grid.Row="2" x:Name="tabControl">
                 <TabItem Header="Test Steps">
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                        <TreeView x:Name="lvTeststeps"  BorderThickness="0" Margin="6,0" SelectedItemChanged="lvTeststeps_SelectedItemChanged" Background="Transparent" />
-                    </ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <TreeView x:Name="lvTeststeps"  BorderThickness="0" Margin="6,0" SelectedItemChanged="lvTeststeps_SelectedItemChanged" Background="Transparent" />
+                        </ScrollViewer>
+
+                        <TabControl Grid.Column="1" Grid.Row="1" Style="{DynamicResource SecondaryTabControlStyle}">
+                            <TabItem Header="Detailed Information">
+                                <ScrollViewer Margin="6,0" Grid.Row="5" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                    <StackPanel  x:Name="grdDetails"  >
+                                        <TextBlock Text="Information:" />
+                                        <TextBlock Text="Choose a test case or an test step to see the details" TextWrapping="Wrap" Margin="10,2" x:Name="txtInformation" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
+                                        <WrapPanel x:Name="spScreenShots" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Context Values">
+                                <ListView x:Name="lbContextValues" BorderThickness="0" Background="Transparent" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Name}" Margin="10,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Value" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Value}" Tag="{Binding Value}" Grid.Column="1" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Copy" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Tag="{Binding Value}" Grid.Column="1" Click="BtnCopyClipboard_Click" Style="{DynamicResource ToolbarButtonStyle}" >
+                                                            <ui:AppBarIcon IconKey="appbar_page_copy" Height="16" />
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </TabItem>
+
+                        </TabControl>
+
+                    </Grid>
+
                 </TabItem>
                 <TabItem Header="Test Data">
                     <ListView x:Name="lbTestData" BorderThickness="0" Background="Transparent" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -103,7 +162,7 @@
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Impact" x:Name="tabResourceUsages">
+                <TabItem Header="Impact" x:Name="tabResourceUsages" Visibility="Collapsed">
                     <Grid>
 
                         <Grid.RowDefinitions>
@@ -111,11 +170,20 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <lvc:PieChart x:Name="pcUsage" Grid.Row="0" LegendPosition="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <lvc:PieChart x:Name="pcUsage" Grid.Row="0" LegendPosition="Right" Grid.Column="0">
                             
                         </lvc:PieChart>
 
-                        <DataGrid x:Name="dgImpacts" IsReadOnly="True" Grid.Row="1">
+                        <lvc:PieChart x:Name="pcHttpCode" Grid.Row="0" LegendPosition="Right" Grid.Column="1">
+                            
+                        </lvc:PieChart>
+
+                        <DataGrid x:Name="dgImpacts" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="2">
                             
                         </DataGrid>
 
@@ -123,50 +191,6 @@
                 </TabItem>
             </TabControl>
 
-            <TabControl Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Style="{DynamicResource SecondaryTabControlStyle}">
-                <TabItem Header="Detailed Information">
-                    <ScrollViewer Margin="6,0" Grid.Row="5" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                        <StackPanel  x:Name="grdDetails"  >
-                            <TextBlock Text="Information:" />
-                            <TextBlock Text="Choose a test case or an test step to see the details" TextWrapping="Wrap" Margin="10,2" x:Name="txtInformation" MouseRightButtonDown="TextBlock_MouseRightButtonDown" />
-                            <WrapPanel x:Name="spScreenShots" />
-                        </StackPanel>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Context Values">
-                    <ListView x:Name="lbContextValues" BorderThickness="0" Background="Transparent" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Name">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Name}" Margin="10,0" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Value" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Value}" Tag="{Binding Value}" Grid.Column="1" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Copy" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button Tag="{Binding Value}" Grid.Column="1" Click="BtnCopyClipboard_Click" Style="{DynamicResource ToolbarButtonStyle}" >
-                                                <ui:AppBarIcon IconKey="appbar_page_copy" Height="16" />
-                                            </Button>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </TabItem>
-
-            </TabControl>
 
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
@@ -205,8 +229,6 @@
             </Grid>
 
             <GridSplitter Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Width="5" />
-            <GridSplitter Grid.Row="2" Grid.Column="1" Panel.ZIndex="10" Style="{DynamicResource HorizontalGridSplitter}" VerticalAlignment="Bottom"  />
-
         </Grid>
 
         <!-- empty content presenter + drag and drop -->
