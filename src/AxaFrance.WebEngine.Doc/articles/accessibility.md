@@ -102,7 +102,7 @@ When running accessibility test on an end-to-end test using keyword-driven metho
 Accessibility testing should be activated at Test Case level, so the scan engines are initialized and accessibility test result on each scan will be integrated in test report.
 To activate accessibility testing on Test Case level, Set the property <xref:AxaFrance.WebEngine.Web.TestCaseWeb.IsAccessibilityTestEnabled> of test case to `true`. If you want to activate it dynamically via test data, you can provide a test case named `Accessibility` and set it to `True`
 #### Scanning a page
-In a shared action, at the convenient moment call the method <xref:AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(string)>
+In a shared action, at the convenient moment call the method <xref:AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(System.String)>
 This function runs an accessibility scan at current location, then integrates test result to test report. The scan can be performed multiple times on different location within a user journey. With this method, you don’t need to interact directly with classes such as `OverallReportBuilder` or `PageReportBuilder`
 ### Gherkin based test case
 If you are using Gherkin based test case. You’ll need to follow the same steps:
