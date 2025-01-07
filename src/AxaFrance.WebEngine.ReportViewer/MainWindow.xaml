@@ -162,7 +162,7 @@
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Impact" x:Name="tabResourceUsages" Visibility="Collapsed">
+                <TabItem Header="Ressources" x:Name="tabRessourceUsages" Visibility="Collapsed">
                     <Grid>
 
                         <Grid.RowDefinitions>

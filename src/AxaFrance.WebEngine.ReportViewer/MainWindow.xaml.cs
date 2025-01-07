@@ -174,7 +174,7 @@ namespace AxaFrance.WebEngine.ReportViewer
 
             if(tc.AttachedData.FirstOrDefault(x=>x.Name == "ResourceUsage") != null)
             {
-                tabResourceUsages.Visibility = Visibility.Visible;
+                tabRessourceUsages.Visibility = Visibility.Visible;
                 var data = tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage")?.Value;
                 string json = System.Text.Encoding.UTF8.GetString(data);
                 var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
@@ -184,7 +184,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             }
             else
             {
-                tabResourceUsages.Visibility = Visibility.Collapsed;
+                tabRessourceUsages.Visibility = Visibility.Collapsed;
             }
 
 
