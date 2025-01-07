@@ -164,7 +164,6 @@
                 </TabItem>
                 <TabItem Header="Ressources" x:Name="tabRessourceUsages" Visibility="Collapsed">
                     <Grid>
-
                         <Grid.RowDefinitions>
                             <RowDefinition Height="200" />
                             <RowDefinition Height="*" />
