@@ -168,7 +168,6 @@
                             <RowDefinition Height="200" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
