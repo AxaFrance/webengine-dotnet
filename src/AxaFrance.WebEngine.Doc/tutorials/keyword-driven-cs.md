@@ -129,7 +129,7 @@ In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
 Then fill login, password to the click login button and verify there is no error message.
 
-All action keyword must inherit from <xref:AxaFrance.WebEngine.SharedActionBase>. For Web based keyword, inherit from <xref:AXA.WebEngine.Web.SharedActionWeb>, then implement `DoAction` and `DoCheckpoint` methods.
+All action keyword must inherit from <xref:AxaFrance.WebEngine.SharedActionBase>. For Web based keyword, inherit from <xref:AxaFrance.WebEngine.Web.SharedActionWeb>, then implement `DoAction` and `DoCheckpoint` methods.
 
 [!code-csharp[Main](../../Samples.KeywordDriven/Actions/Login.cs "Test Case")]
 ***

@@ -41,8 +41,8 @@
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
     <PackageReference Include="Hummingbird.UI" Version="1.2.2772.2" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc3.3" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
-
   </ItemGroup>
 
   <ItemGroup>

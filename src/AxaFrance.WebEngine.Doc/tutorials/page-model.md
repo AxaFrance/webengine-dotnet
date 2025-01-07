@@ -15,7 +15,7 @@ The general steps are shown as follow:
 ![Page Model Step](../images/page-model-step.png)
 
 * `Step 1`: Identify the elements which will be interacted during the test.
-* `Step 2`: Write a class inherated from PageModel and with <xref:AxaFrance.WebEngine.Web.WebElementDescription> or <xref:AXA.WebEngine.MobileApp.AppElementDescription>
+* `Step 2`: Write a class inherated from PageModel and with <xref:AxaFrance.WebEngine.Web.WebElementDescription> or <xref:AxaFrance.WebEngine.MobileApp.AppElementDescription>
 * `Step 3`: Instantiate PageModels in the script and use above elements to perform different actions.
 
 ### Advantages of Page Models and Element Descriptions

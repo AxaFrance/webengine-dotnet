@@ -20,7 +20,7 @@ To test mobile applications with WebEngine Framework, you'll need to have follow
 
 Before launching the automated tests on Mobile devices, you'll need to tell Appium Server to start the application under test.
 Or if the application is not yet installed, to install it.
-WebEngine Framework can upload the app package to compatible platforms, by calling the method <xref:AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)>, it returns the real `AppId` to be used to connect to remote devices.
+WebEngine Framework can upload the app package to compatible platforms, this actions is automatic according to the platform provider, it returns the real `AppId` to be used to connect to remote devices.
 
 Then you can use <xref:AxaFrance.WebEngine.MobileApp.AppFactory.GetDriver(AxaFrance.WebEngine.Platform)> to get AppiumDriver in order to interact with test scripts.
 According to your test settings, AppiumDriver can be either:

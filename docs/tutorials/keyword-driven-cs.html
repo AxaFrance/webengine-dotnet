@@ -159,6 +159,7 @@ namespace Samples.KeywordDriven.TestCases
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(ValidateContract)},
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(Logout)},
             };
+            MeasureResourceUsage = true;
         }
     }
 }
@@ -241,7 +242,7 @@ namespace Samples.PageModels
 <p>In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
 Then fill login, password to the click login button and verify there is no error message.</p>
-<p>All action keyword must inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherit from &lt;xref:AXA.WebEngine.Web.SharedActionWeb&gt;, then implement <code>DoAction</code> and <code>DoCheckpoint</code> methods.</p>
+<p>All action keyword must inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html">SharedActionWeb</a>, then implement <code>DoAction</code> and <code>DoCheckpoint</code> methods.</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 
@@ -254,9 +255,8 @@ namespace Samples.KeywordDriven.Actions
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
         {
-            var browser = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
-            browser.Navigate().GoToUrl(GetParameter(&quot;URL_RECETTE&quot;));
-            PageModels.PageLogin login = new PageModels.PageLogin(browser);
+            Browser.Navigate().GoToUrl(GetParameter(&quot;URL_RECETTE&quot;));
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
             login.UserName.SetValue(GetParameter(&quot;User&quot;));
             login.UserName.SetSecure(GetParameter(&quot;EncPassword&quot;));
             login.ButtonLogin.Click();
@@ -486,9 +486,6 @@ In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;l
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-cs.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
