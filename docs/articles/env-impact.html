@@ -76,11 +76,11 @@ communication and resource usage. However, when using the WebEngine Framework, y
 details; you just need to enable the feature and use the provided API to get the information you need.</p>
 <h2 id="how-to-activate-resource-usage-tracing">How to activate resource usage tracing?</h2>
 <p>Resource usage tracing is enabled at the test case level. The flag is defined at
-{xref:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage}. When the flag is enabled before test execution, the framework
+<a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MeasureResourceUsage">MeasureResourceUsage</a>. When the flag is enabled before test execution, the framework
 will start a network interceptor and save information of all incoming and outgoing traffic in the report.</p>
 <p>To enable the feature, there are two ways:</p>
 <ul>
-<li>Set the property <code>MeasureResourceUsage</code> of {xref:AxaFrance.WebEngine.Web.TestCaseWeb} to true in your code.</li>
+<li>Set the property <code>MeasureResourceUsage</code> of <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html">TestCaseWeb</a> to true in your code.</li>
 </ul>
 <pre><code class="lang-csharp">public class MyTestCase : TestCaseWeb
 {
@@ -98,12 +98,13 @@ will start a network interceptor and save information of all incoming and outgoi
 }
 </code></pre><ul>
 <li>Provide a test parameter named <code>ResourceUsage</code> and set it to True in your test data.
-For example, you can provide the parameter via Excel test data on the test cases you want to activate. Resource Usage
-[../images/resource-usage.png]</li>
+For example, you can provide the parameter via Excel test data on the test cases you want to activate. 
+<img src="../images/resource-usage.png" alt="Resource Usage"></li>
 </ul>
 <h2 id="how-are-the-results-displayed">How are the results displayed?</h2>
 <p>When resource usage tracing is enabled, the framework will save the related raw data in the report. The report will be analyzed
-and visualized in the Report Viewer: Resource Usage Report [../images/resource-usage-report.png]</p>
+and visualized in the Report Viewer:</p>
+<p><img src="../images/resource-usage-report.png" alt="Resource Usage Report"></p>
 <p>The report will show the following information:</p>
 <ul>
 <li>On the top-left, the size of responses (in bytes) categorized by type: Font, script, CSS, and the HTML document itself.</li>

@@ -5957,19 +5957,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.TestCaseWeb.IsAccessibilityTestEnabled
   nameWithType: TestCaseWeb.IsAccessibilityTestEnabled
-- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
-  name: MesureResourceUsage
-  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MesureResourceUsage
-  commentId: P:AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
-  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
-  nameWithType: TestCaseWeb.MesureResourceUsage
-- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage*
-  name: MesureResourceUsage
-  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MesureResourceUsage_
-  commentId: Overload:AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage
+  name: MeasureResourceUsage
+  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MeasureResourceUsage
+  commentId: P:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage
+  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage
+  nameWithType: TestCaseWeb.MeasureResourceUsage
+- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage*
+  name: MeasureResourceUsage
+  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MeasureResourceUsage_
+  commentId: Overload:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage
   isSpec: "True"
-  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
-  nameWithType: TestCaseWeb.MesureResourceUsage
+  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage
+  nameWithType: TestCaseWeb.MeasureResourceUsage
 - uid: AxaFrance.WebEngine.Web.WebElementDescription
   name: WebElementDescription
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html

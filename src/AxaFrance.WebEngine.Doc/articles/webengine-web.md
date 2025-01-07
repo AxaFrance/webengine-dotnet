@@ -7,8 +7,8 @@ To test web application, we usually need to open the web browser and perform thr
 * Compares the information retrieved from some Web Element with expected value.
 
 In WebEngine Framework, we have provided  : 
-* <xref:AXA.WebEngine.Web.BrowserFactory> to easily manage web browsers and selenium webdrivers 
-* <xref:AXA.WebEngine.Web.PageModel> and <xref:AXA.WebEngine.Web.WebElementDescription> to manage Web Elements.
+* <xref:AxaFrance.WebEngine.Web.BrowserFactory> to easily manage web browsers and selenium webdrivers 
+* <xref:AxaFrance.WebEngine.Web.PageModel> and <xref:AxaFrance.WebEngine.Web.WebElementDescription> to manage Web Elements.
 
 ## Prerequisites
 To test web applications with WebEngine Framework, you'll need to have follow knowledges as pre-requisites:

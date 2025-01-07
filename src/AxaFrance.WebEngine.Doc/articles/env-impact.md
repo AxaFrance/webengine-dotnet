@@ -11,12 +11,12 @@ details; you just need to enable the feature and use the provided API to get the
 ## How to activate resource usage tracing?
 
 Resource usage tracing is enabled at the test case level. The flag is defined at
-{xref:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage}. When the flag is enabled before test execution, the framework
+<xref:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage>. When the flag is enabled before test execution, the framework
 will start a network interceptor and save information of all incoming and outgoing traffic in the report.
 
 To enable the feature, there are two ways:
 
- * Set the property `MeasureResourceUsage` of {xref:AxaFrance.WebEngine.Web.TestCaseWeb} to true in your code.
+ * Set the property `MeasureResourceUsage` of <xref:AxaFrance.WebEngine.Web.TestCaseWeb> to true in your code.
    
 ```csharp
 public class MyTestCase : TestCaseWeb
@@ -36,14 +36,16 @@ public class MyTestCase : TestCaseWeb
 ```
 
  * Provide a test parameter named `ResourceUsage` and set it to True in your test data.
-For example, you can provide the parameter via Excel test data on the test cases you want to activate. Resource Usage
-[../images/resource-usage.png]
+For example, you can provide the parameter via Excel test data on the test cases you want to activate. 
+![Resource Usage](../images/resource-usage.png)
 
 
 ## How are the results displayed?
 
 When resource usage tracing is enabled, the framework will save the related raw data in the report. The report will be analyzed
-and visualized in the Report Viewer: Resource Usage Report [../images/resource-usage-report.png]
+and visualized in the Report Viewer:
+
+![Resource Usage Report](../images/resource-usage-report.png)
 
 The report will show the following information:
 

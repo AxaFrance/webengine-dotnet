@@ -159,7 +159,7 @@ namespace Samples.KeywordDriven.TestCases
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(ValidateContract)},
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(Logout)},
             };
-            MesureResourceUsage = true;
+            MeasureResourceUsage = true;
         }
     }
 }
@@ -242,7 +242,7 @@ namespace Samples.PageModels
 <p>In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
 Then fill login, password to the click login button and verify there is no error message.</p>
-<p>All action keyword must inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherit from &lt;xref:AXA.WebEngine.Web.SharedActionWeb&gt;, then implement <code>DoAction</code> and <code>DoCheckpoint</code> methods.</p>
+<p>All action keyword must inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.SharedActionBase.html">SharedActionBase</a>. For Web based keyword, inherit from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html">SharedActionWeb</a>, then implement <code>DoAction</code> and <code>DoCheckpoint</code> methods.</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 
