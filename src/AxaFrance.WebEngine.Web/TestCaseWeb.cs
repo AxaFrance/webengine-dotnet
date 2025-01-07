@@ -64,6 +64,18 @@ namespace AxaFrance.WebEngine.Web
                 DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
             }
             WebDriver browser = this.Context as WebDriver;
+            if (MeasureResourceUsage)
+            {
+                var network = browser.Manage().Network;
+                network.StopMonitoring();
+                stopwatch?.Stop();
+                testCaseReport.AttachedData.Add(
+                    new AdditionalData
+                    {
+                        Name = "ResourceUsage",
+                        Value = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(requestLogs))
+                    });
+            }
             if (browser != null)
             {
                 try
@@ -96,7 +108,7 @@ namespace AxaFrance.WebEngine.Web
             }
             if (IsTrue(resourceUsage))
             {
-                MesureResourceUsage = true;
+                MeasureResourceUsage = true;
             }
             if (IsAccessibilityTestEnabled)
             {
@@ -118,7 +130,17 @@ namespace AxaFrance.WebEngine.Web
                 try
                 {
                     DebugLogger.WriteLine("Initializing Selenium WebDriver");
-                    Context = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
+                    var driver = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
+                    Context = driver;
+                    if (MesureResourceUsage)
+                    {
+                        DebugLogger.WriteLine("[DEBUG] Resource Usage Measurement is enabled.");
+                        var network = driver.Manage().Network;
+                        network.NetworkRequestSent += NetworkRequestSent;
+                        network.NetworkResponseReceived += NetworkRequestReceived;
+                        network.StartMonitoring();
+                    }
+
                 }
                 catch (Exception ex)
                 {
