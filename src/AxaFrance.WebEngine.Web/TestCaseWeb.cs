@@ -128,7 +128,7 @@ namespace AxaFrance.WebEngine.Web
                     DebugLogger.WriteLine("Initializing Selenium WebDriver");
                     var driver = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
                     Context = driver;
-                    if (MesureResourceUsage)
+                    if (MeasureResourceUsage)
                     {
                         DebugLogger.WriteLine("[DEBUG] Resource Usage Measurement is enabled.");
                         var network = driver.Manage().Network;
