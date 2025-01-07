@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PageModel
+    <title>Class TagsProvider
    | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PageModel
+    <meta name="title" content="Class TagsProvider
    | AXA WebEngine Test Framework ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,54 +68,51 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="AxaFrance.WebEngine.Web.PageModel">
+            <article class="content wrap" id="_content" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider">
   
   
-  <h1 id="AxaFrance_WebEngine_Web_PageModel" data-uid="AxaFrance.WebEngine.Web.PageModel" class="text-break">Class PageModel
+  <h1 id="AxaFrance_AxeExtended_HtmlReport_TagsProvider" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider" class="text-break">Class TagsProvider
   </h1>
-  <div class="markdown level0 summary"><p>Page Model is the repository to store all test objets which are been used by the test script. 
-Page Model contains one or more <a class="xref" href="AxaFrance.WebEngine.Web.ElementDescription.html">ElementDescription</a>, each Element Description indicates how to identify the </p>
+  <div class="markdown level0 summary"><p>The provider to get additional tags for a rule.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">PageModel</span></div>
+    <div class="level1"><span class="xref">TagsProvider</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a></h6>
-  <h6><strong>Assembly</strong>: AxaFrance.WebEngine.Web.dll</h6>
-  <h5 id="AxaFrance_WebEngine_Web_PageModel_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.AxeExtended.HtmlReport.html">AxaFrance.AxeExtended.HtmlReport</a></h6>
+  <h6><strong>Assembly</strong>: AxaFrance.AxeExtended.HtmlReport.dll</h6>
+  <h5 id="AxaFrance_AxeExtended_HtmlReport_TagsProvider_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PageModel</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class TagsProvider</code></pre>
   </div>
-  <h3 id="constructors">Constructors
+  <h3 id="properties">Properties
   </h3>
   
   
-  <a id="AxaFrance_WebEngine_Web_PageModel__ctor_" data-uid="AxaFrance.WebEngine.Web.PageModel.#ctor*"></a>
-  <h4 id="AxaFrance_WebEngine_Web_PageModel__ctor_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.WebEngine.Web.PageModel.#ctor(OpenQA.Selenium.WebDriver)">PageModel(WebDriver)</h4>
-  <div class="markdown level1 summary"><p>Initialize the Page model with the associated Selenium WebDriver</p>
+  <a id="AxaFrance_AxeExtended_HtmlReport_TagsProvider_ShowOnOverallReportOnly_" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly*"></a>
+  <h4 id="AxaFrance_AxeExtended_HtmlReport_TagsProvider_ShowOnOverallReportOnly" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly">ShowOnOverallReportOnly</h4>
+  <div class="markdown level1 summary"><p>If additional tags should be shown only on overall report.
+The value is determined by tags provider</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PageModel(WebDriver driver)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool ShowOnOverallReportOnly { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">OpenQA.Selenium.WebDriver</span></td>
-        <td><span class="parametername">driver</span></td>
-        <td><p>The Webdriver to use for the localization of Web Elements </p>
-</td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -123,25 +120,14 @@ Page Model contains one or more <a class="xref" href="AxaFrance.WebEngine.Web.El
   </h3>
   
   
-  <a id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck_" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck*"></a>
-  <h4 id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck">AccessibilityCheck()</h4>
-  <div class="markdown level1 summary"><p>Run accessibility test on the current page</p>
+  <a id="AxaFrance_AxeExtended_HtmlReport_TagsProvider_GetTagsByRule_" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule*"></a>
+  <h4 id="AxaFrance_AxeExtended_HtmlReport_TagsProvider_GetTagsByRule_Deque_AxeCore_Commons_AxeResultItem_" data-uid="AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)">GetTagsByRule(AxeResultItem)</h4>
+  <div class="markdown level1 summary"><p>return a list of additional tags for a rule. if the rule is not found, return an empty list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AccessibilityCheck()</code></pre>
-  </div>
-  
-  
-  <a id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck_" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck*"></a>
-  <h4 id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck_AxaFrance_WebEngine_Web_ElementDescription_" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck(AxaFrance.WebEngine.Web.ElementDescription)">AccessibilityCheck(ElementDescription)</h4>
-  <div class="markdown level1 summary"><p>Run accessibility test on the given element</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AccessibilityCheck(ElementDescription context)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract IEnumerable&lt;string&gt; GetTagsByRule(AxeResultItem rule)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,37 +140,25 @@ Page Model contains one or more <a class="xref" href="AxaFrance.WebEngine.Web.El
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="AxaFrance.WebEngine.Web.ElementDescription.html">ElementDescription</a></td>
-        <td><span class="parametername">context</span></td>
+        <td><span class="xref">Deque.AxeCore.Commons.AxeResultItem</span></td>
+        <td><span class="parametername">rule</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck_" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck*"></a>
-  <h4 id="AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck_OpenQA_Selenium_IWebElement_" data-uid="AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck(OpenQA.Selenium.IWebElement)">AccessibilityCheck(IWebElement)</h4>
-  <div class="markdown level1 summary"><p>Run accessibiity test on the given element</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AccessibilityCheck(IWebElement context)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">OpenQA.Selenium.IWebElement</span></td>
-        <td><span class="parametername">context</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>a list of additional tags for a given rule.</p>
+</td>
       </tr>
     </tbody>
   </table>

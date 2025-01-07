@@ -73,7 +73,11 @@
   
   <h1 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder" class="text-break">Class AxeExtendedBuilder
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>ExtendedBuilder for Axe Core. This class is used to configure and run axe against a web page.
+This class is a fork of original AxeBuilder class from Deque AxeCore per <a href="https://github.com/dequelabs/axe-core-nuget/issues/146">https://github.com/dequelabs/axe-core-nuget/issues/146</a>
+There is no possibility to use a custom configuration file with the original AxeBuilder class, so we need to create this class and expose the WithAxeConfig method.
+With this method, we can pass a custom configuration file to the axe engine and run custom rules in addition to default axe rules.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -88,13 +92,8 @@
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.%23ctor(OpenQA.Selenium.WebDriver)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L29">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver)">AxeExtendedBuilder(WebDriver)</h4>
   <div class="markdown level1 summary"><p>Initialize an instance of <span class="xref">Deque.AxeCore.Selenium.AxeBuilder</span></p>
@@ -122,13 +121,8 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Deque_AxeCore_Selenium_AxeBuilderOptions_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.%23ctor(OpenQA.Selenium.WebDriver%2CDeque.AxeCore.Selenium.AxeBuilderOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L48">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Deque_AxeCore_Selenium_AxeBuilderOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Deque.AxeCore.Selenium.AxeBuilderOptions)">AxeExtendedBuilder(WebDriver, AxeBuilderOptions)</h4>
   <div class="markdown level1 summary"><p>Initialize an instance of <span class="xref">Deque.AxeCore.Selenium.AxeBuilder</span></p>
@@ -162,16 +156,12 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.%23ctor(OpenQA.Selenium.WebDriver%2CNewtonsoft.Json.Linq.JObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L33">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject)">AxeExtendedBuilder(WebDriver, JObject)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initialize an instance of <span class="xref">Deque.AxeCore.Selenium.AxeBuilder</span></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -199,16 +189,12 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_Deque_AxeCore_Selenium_AxeBuilderOptions_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.%23ctor(OpenQA.Selenium.WebDriver%2CNewtonsoft.Json.Linq.JObject%2CDeque.AxeCore.Selenium.AxeBuilderOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L38">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_Deque_AxeCore_Selenium_AxeBuilderOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject,Deque.AxeCore.Selenium.AxeBuilderOptions)">AxeExtendedBuilder(WebDriver, JObject, AxeBuilderOptions)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initialize an instance of <span class="xref">Deque.AxeCore.Selenium.AxeBuilder</span></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -243,13 +229,8 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L220">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze">Analyze()</h4>
   <div class="markdown level1 summary"><p>Run axe against the entire page.</p>
@@ -275,13 +256,8 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze_OpenQA_Selenium_IWebElement_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze(OpenQA.Selenium.IWebElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L211">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze_OpenQA_Selenium_IWebElement_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze(OpenQA.Selenium.IWebElement)">Analyze(IWebElement)</h4>
   <div class="markdown level1 summary"><p>Run axe against a specific WebElement (including its descendants).</p>
@@ -325,13 +301,8 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L128">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])">DisableRules(String[])</h4>
   <div class="markdown level1 summary"><p>Set the list of rules to skip when running an analysis
@@ -376,13 +347,8 @@ Cannot be used with <see cref="!:Options"></see></p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(Deque.AxeCore.Commons.AxeSelector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L184">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(Deque.AxeCore.Commons.AxeSelector)">Exclude(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Excludes the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants from analysis. This overload can exclude selectors inside iframes
@@ -427,13 +393,8 @@ To exclude multiple selectors, call Exclude multiple times.</p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_System_String_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L176">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)">Exclude(String)</h4>
   <div class="markdown level1 summary"><p>Excludes the given CSS selector and its descendants from analysis.
@@ -479,13 +440,8 @@ To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(Deque.AxeCore.Commons.AxeSelector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L160">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(Deque.AxeCore.Commons.AxeSelector)">Include(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants, instead of the whole page.
@@ -531,13 +487,8 @@ To include multiple selectors, call Include multiple times.</p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_System_String_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L151">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)">Include(String)</h4>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given CSS selector and its descendants, instead of the whole page.
@@ -583,13 +534,8 @@ To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_System_Boolean_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L64">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_System_Boolean_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)">UseLegacyMode(Boolean)</h4>
   <div class="markdown level1 summary"><p>Use frameMessenger with &lt;same_origin_only&gt;.
@@ -636,16 +582,13 @@ public AxeExtendedBuilder UseLegacyMode(bool legacyMode = true)</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions(Deque.AxeCore.Commons.AxeRunOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L76">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions(Deque.AxeCore.Commons.AxeRunOptions)">WithOptions(AxeRunOptions)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Run configuration data that is passed to axe for scanning the web page.
+This will override the value set by <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___">WithRules(String[])</a>, <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(String[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___">DisableRules(String[])</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -664,7 +607,8 @@ public AxeExtendedBuilder UseLegacyMode(bool legacyMode = true)</code></pre>
       <tr>
         <td><span class="xref">Deque.AxeCore.Commons.AxeRunOptions</span></td>
         <td><span class="parametername">runOptions</span></td>
-        <td></td>
+        <td><p>run options to be used for scanning</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -683,13 +627,8 @@ public AxeExtendedBuilder UseLegacyMode(bool legacyMode = true)</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_System_String_.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L198">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)">WithOutputFile(String)</h4>
   <div class="markdown level1 summary"><p>Causes <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze">Analyze()</a> to write the axe results as a JSON file, in addition to returning it in object format as usual.
@@ -733,16 +672,14 @@ File will be overwritten if already exists.</p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L109">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])">WithRules(String[])</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Limit analysis to only the specified rules.
+Refer <a href="https://dequeuniversity.com/rules/axe/">https://dequeuniversity.com/rules/axe/</a> to get the complete listing of available rule IDs.
+Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(String[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_">WithOptions(AxeRunOptions)</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -761,7 +698,8 @@ File will be overwritten if already exists.</p>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
         <td><span class="parametername">rules</span></td>
-        <td></td>
+        <td><p>rule IDs to be used for scanning</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -780,13 +718,8 @@ File will be overwritten if already exists.</p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L91">View Source</a>
-  </span>
+  
+  
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])">WithTags(String[])</h4>
   <div class="markdown level1 summary"></div>
@@ -834,12 +767,6 @@ File will be overwritten if already exists.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L15" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

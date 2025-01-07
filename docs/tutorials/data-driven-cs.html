@@ -312,9 +312,8 @@ namespace Samples.KeywordDriven.Actions
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
         {
-            var browser = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Chrome);
-            browser.Navigate().GoToUrl(GetParameter(&quot;URL_RECETTE&quot;));
-            PageModels.PageLogin login = new PageModels.PageLogin(browser);
+            Browser.Navigate().GoToUrl(GetParameter(&quot;URL_RECETTE&quot;));
+            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
             login.UserName.SetValue(GetParameter(&quot;User&quot;));
             login.UserName.SetSecure(GetParameter(&quot;EncPassword&quot;));
             login.ButtonLogin.Click();
@@ -639,9 +638,6 @@ This can be done exclusively within Excel without the need to motify the code or
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/data-driven-cs.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

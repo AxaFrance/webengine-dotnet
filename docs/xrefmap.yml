@@ -7,25 +7,6 @@ references:
   commentId: N:AxaFrance.AxeExtended.HtmlReport
   fullName: AxaFrance.AxeExtended.HtmlReport
   nameWithType: AxaFrance.AxeExtended.HtmlReport
-- uid: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider
-  name: AdditionalTagsProvider
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.html
-  commentId: T:AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider
-  fullName: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider
-  nameWithType: AdditionalTagsProvider
-- uid: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule(System.String)
-  name: GetTagsByRule(String)
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.html#AxaFrance_AxeExtended_HtmlReport_AdditionalTagsProvider_GetTagsByRule_System_String_
-  commentId: M:AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule(System.String)
-  fullName: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule(System.String)
-  nameWithType: AdditionalTagsProvider.GetTagsByRule(String)
-- uid: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule*
-  name: GetTagsByRule
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.html#AxaFrance_AxeExtended_HtmlReport_AdditionalTagsProvider_GetTagsByRule_
-  commentId: Overload:AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule
-  isSpec: "True"
-  fullName: AxaFrance.AxeExtended.HtmlReport.AdditionalTagsProvider.GetTagsByRule
-  nameWithType: AdditionalTagsProvider.GetTagsByRule
 - uid: AxaFrance.AxeExtended.HtmlReport.AxeOverallResult
   name: AxeOverallResult
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeOverallResult.html
@@ -745,25 +726,6 @@ references:
   isSpec: "True"
   fullName: AxaFrance.AxeExtended.HtmlReport.Config.Rule.Selector
   nameWithType: Rule.Selector
-- uid: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods
-  name: ExtensionMethods
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.html
-  commentId: T:AxaFrance.AxeExtended.HtmlReport.ExtensionMethods
-  fullName: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods
-  nameWithType: ExtensionMethods
-- uid: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact(Deque.AxeCore.Commons.AxeResultItem)
-  name: GetImpact(AxeResultItem)
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.html#AxaFrance_AxeExtended_HtmlReport_ExtensionMethods_GetImpact_Deque_AxeCore_Commons_AxeResultItem_
-  commentId: M:AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact(Deque.AxeCore.Commons.AxeResultItem)
-  fullName: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact(Deque.AxeCore.Commons.AxeResultItem)
-  nameWithType: ExtensionMethods.GetImpact(AxeResultItem)
-- uid: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact*
-  name: GetImpact
-  href: api_net/AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.html#AxaFrance_AxeExtended_HtmlReport_ExtensionMethods_GetImpact_
-  commentId: Overload:AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact
-  isSpec: "True"
-  fullName: AxaFrance.AxeExtended.HtmlReport.ExtensionMethods.GetImpact
-  nameWithType: ExtensionMethods.GetImpact
 - uid: AxaFrance.AxeExtended.HtmlReport.Language
   name: Language
   href: api_net/AxaFrance.AxeExtended.HtmlReport.Language.html
@@ -782,6 +744,24 @@ references:
   commentId: F:AxaFrance.AxeExtended.HtmlReport.Language.French
   fullName: AxaFrance.AxeExtended.HtmlReport.Language.French
   nameWithType: Language.French
+- uid: AxaFrance.AxeExtended.HtmlReport.Language.German
+  name: German
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.Language.html#AxaFrance_AxeExtended_HtmlReport_Language_German
+  commentId: F:AxaFrance.AxeExtended.HtmlReport.Language.German
+  fullName: AxaFrance.AxeExtended.HtmlReport.Language.German
+  nameWithType: Language.German
+- uid: AxaFrance.AxeExtended.HtmlReport.Language.SimplifiedChinese
+  name: SimplifiedChinese
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.Language.html#AxaFrance_AxeExtended_HtmlReport_Language_SimplifiedChinese
+  commentId: F:AxaFrance.AxeExtended.HtmlReport.Language.SimplifiedChinese
+  fullName: AxaFrance.AxeExtended.HtmlReport.Language.SimplifiedChinese
+  nameWithType: Language.SimplifiedChinese
+- uid: AxaFrance.AxeExtended.HtmlReport.Language.Spanish
+  name: Spanish
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.Language.html#AxaFrance_AxeExtended_HtmlReport_Language_Spanish
+  commentId: F:AxaFrance.AxeExtended.HtmlReport.Language.Spanish
+  fullName: AxaFrance.AxeExtended.HtmlReport.Language.Spanish
+  nameWithType: Language.Spanish
 - uid: AxaFrance.AxeExtended.HtmlReport.OutputFormat
   name: OutputFormat
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OutputFormat.html
@@ -1371,6 +1351,38 @@ references:
   commentId: F:AxaFrance.AxeExtended.HtmlReport.ScoringMode.WeightedOccurence
   fullName: AxaFrance.AxeExtended.HtmlReport.ScoringMode.WeightedOccurence
   nameWithType: ScoringMode.WeightedOccurence
+- uid: AxaFrance.AxeExtended.HtmlReport.TagsProvider
+  name: TagsProvider
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.TagsProvider.html
+  commentId: T:AxaFrance.AxeExtended.HtmlReport.TagsProvider
+  fullName: AxaFrance.AxeExtended.HtmlReport.TagsProvider
+  nameWithType: TagsProvider
+- uid: AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  name: GetTagsByRule(AxeResultItem)
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.TagsProvider.html#AxaFrance_AxeExtended_HtmlReport_TagsProvider_GetTagsByRule_Deque_AxeCore_Commons_AxeResultItem_
+  commentId: M:AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  fullName: AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  nameWithType: TagsProvider.GetTagsByRule(AxeResultItem)
+- uid: AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule*
+  name: GetTagsByRule
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.TagsProvider.html#AxaFrance_AxeExtended_HtmlReport_TagsProvider_GetTagsByRule_
+  commentId: Overload:AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule
+  isSpec: "True"
+  fullName: AxaFrance.AxeExtended.HtmlReport.TagsProvider.GetTagsByRule
+  nameWithType: TagsProvider.GetTagsByRule
+- uid: AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly
+  name: ShowOnOverallReportOnly
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.TagsProvider.html#AxaFrance_AxeExtended_HtmlReport_TagsProvider_ShowOnOverallReportOnly
+  commentId: P:AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly
+  fullName: AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly
+  nameWithType: TagsProvider.ShowOnOverallReportOnly
+- uid: AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly*
+  name: ShowOnOverallReportOnly
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.TagsProvider.html#AxaFrance_AxeExtended_HtmlReport_TagsProvider_ShowOnOverallReportOnly_
+  commentId: Overload:AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly
+  isSpec: "True"
+  fullName: AxaFrance.AxeExtended.HtmlReport.TagsProvider.ShowOnOverallReportOnly
+  nameWithType: TagsProvider.ShowOnOverallReportOnly
 - uid: AxaFrance.AxeExtended.Selenium
   name: AxaFrance.AxeExtended.Selenium
   href: api_net/AxaFrance.AxeExtended.Selenium.html
@@ -5551,6 +5563,168 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.HtmlAttribute.Value
   nameWithType: HtmlAttribute.Value
+- uid: AxaFrance.WebEngine.Web.NetworkRequest
+  name: NetworkRequest
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html
+  commentId: T:AxaFrance.WebEngine.Web.NetworkRequest
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest
+  nameWithType: NetworkRequest
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Duration
+  name: Duration
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Duration
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Duration
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Duration
+  nameWithType: NetworkRequest.Duration
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Duration*
+  name: Duration
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Duration_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Duration
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Duration
+  nameWithType: NetworkRequest.Duration
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.IsCached
+  name: IsCached
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_IsCached
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.IsCached
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.IsCached
+  nameWithType: NetworkRequest.IsCached
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.IsCached*
+  name: IsCached
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_IsCached_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.IsCached
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.IsCached
+  nameWithType: NetworkRequest.IsCached
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Method
+  name: Method
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Method
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Method
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Method
+  nameWithType: NetworkRequest.Method
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Method*
+  name: Method
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Method_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Method
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Method
+  nameWithType: NetworkRequest.Method
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Received
+  name: Received
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Received
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Received
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Received
+  nameWithType: NetworkRequest.Received
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Received*
+  name: Received
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Received_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Received
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Received
+  nameWithType: NetworkRequest.Received
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Reponse
+  name: Reponse
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Reponse
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Reponse
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Reponse
+  nameWithType: NetworkRequest.Reponse
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Reponse*
+  name: Reponse
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Reponse_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Reponse
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Reponse
+  nameWithType: NetworkRequest.Reponse
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Request
+  name: Request
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Request
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Request
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Request
+  nameWithType: NetworkRequest.Request
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Request*
+  name: Request
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Request_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Request
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Request
+  nameWithType: NetworkRequest.Request
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.RequestId
+  name: RequestId
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_RequestId
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.RequestId
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.RequestId
+  nameWithType: NetworkRequest.RequestId
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.RequestId*
+  name: RequestId
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_RequestId_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.RequestId
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.RequestId
+  nameWithType: NetworkRequest.RequestId
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.ResourceType
+  name: ResourceType
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_ResourceType
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.ResourceType
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.ResourceType
+  nameWithType: NetworkRequest.ResourceType
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.ResourceType*
+  name: ResourceType
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_ResourceType_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.ResourceType
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.ResourceType
+  nameWithType: NetworkRequest.ResourceType
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Sent
+  name: Sent
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Sent
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Sent
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Sent
+  nameWithType: NetworkRequest.Sent
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Sent*
+  name: Sent
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Sent_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Sent
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Sent
+  nameWithType: NetworkRequest.Sent
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.StatusCode
+  name: StatusCode
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_StatusCode
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.StatusCode
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.StatusCode
+  nameWithType: NetworkRequest.StatusCode
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.StatusCode*
+  name: StatusCode
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_StatusCode_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.StatusCode
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.StatusCode
+  nameWithType: NetworkRequest.StatusCode
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp
+  name: TimeStamp
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_TimeStamp
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp
+  nameWithType: NetworkRequest.TimeStamp
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp*
+  name: TimeStamp
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_TimeStamp_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.TimeStamp
+  nameWithType: NetworkRequest.TimeStamp
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Url
+  name: Url
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Url
+  commentId: P:AxaFrance.WebEngine.Web.NetworkRequest.Url
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Url
+  nameWithType: NetworkRequest.Url
+- uid: AxaFrance.WebEngine.Web.NetworkRequest.Url*
+  name: Url
+  href: api_net/AxaFrance.WebEngine.Web.NetworkRequest.html#AxaFrance_WebEngine_Web_NetworkRequest_Url_
+  commentId: Overload:AxaFrance.WebEngine.Web.NetworkRequest.Url
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.NetworkRequest.Url
+  nameWithType: NetworkRequest.Url
 - uid: AxaFrance.WebEngine.Web.PageModel
   name: PageModel
   href: api_net/AxaFrance.WebEngine.Web.PageModel.html
@@ -5783,6 +5957,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.TestCaseWeb.IsAccessibilityTestEnabled
   nameWithType: TestCaseWeb.IsAccessibilityTestEnabled
+- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+  name: MesureResourceUsage
+  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MesureResourceUsage
+  commentId: P:AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+  nameWithType: TestCaseWeb.MesureResourceUsage
+- uid: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage*
+  name: MesureResourceUsage
+  href: api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MesureResourceUsage_
+  commentId: Overload:AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.TestCaseWeb.MesureResourceUsage
+  nameWithType: TestCaseWeb.MesureResourceUsage
 - uid: AxaFrance.WebEngine.Web.WebElementDescription
   name: WebElementDescription
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html
