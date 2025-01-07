@@ -10,6 +10,8 @@
   href: webengine-app.md
 - name: Web Accessibility Testing
   href: accessibility.md
+- name: Measure Environmental Impact
+  href: env-impact.md
 - name: WebEngine Add-in for Excel
   href: excel-addin.md
   items:
