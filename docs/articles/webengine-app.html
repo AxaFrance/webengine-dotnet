@@ -87,7 +87,7 @@ To test Web applications on a Web Browser, please use <a class="xref" href="../a
 <p><a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html">AppFactory</a> is used to initialize Device cloud connection and app package uploading.</p>
 <p>Before launching the automated tests on Mobile devices, you&#39;ll need to tell Appium Server to start the application under test.
 Or if the application is not yet installed, to install it.
-WebEngine Framework can upload the app package to compatible platforms, by calling the method &lt;xref:AxaFrance.WebEngine.MobileApp.AppFactory.UploadAppPackage(System.String,System.String,System.String,System.String)&gt;, it returns the real <code>AppId</code> to be used to connect to remote devices.</p>
+WebEngine Framework can upload the app package to compatible platforms, this actions is automatic according to the platform provider, it returns the real <code>AppId</code> to be used to connect to remote devices.</p>
 <p>Then you can use <a class="xref" href="../api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_GetDriver_AxaFrance_WebEngine_Platform_">GetDriver(Platform)</a> to get AppiumDriver in order to interact with test scripts.
 According to your test settings, AppiumDriver can be either:</p>
 <ul>
@@ -145,9 +145,6 @@ To switch context, Use <a class="xref" href="../api_net/AxaFrance.WebEngine.Mobi
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/AxaGuilDEv/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/webengine-app.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

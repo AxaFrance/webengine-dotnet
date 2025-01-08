@@ -78,7 +78,11 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html">AxeExtendedBuilder</a></h4>
-      <section></section>
+      <section><p>ExtendedBuilder for Axe Core. This class is used to configure and run axe against a web page.
+This class is a fork of original AxeBuilder class from Deque AxeCore per <a href="https://github.com/dequelabs/axe-core-nuget/issues/146">https://github.com/dequelabs/axe-core-nuget/issues/146</a>
+There is no possibility to use a custom configuration file with the original AxeBuilder class, so we need to create this class and expose the WithAxeConfig method.
+With this method, we can pass a custom configuration file to the axe engine and run custom rules in addition to default axe rules.</p>
+</section>
       <h4><a class="xref" href="AxaFrance.AxeExtended.Selenium.SeleniumHelper.html">SeleniumHelper</a></h4>
       <section><p>Helper class to implement analyze and screenshot report with Selenium WebDriver.</p>
 </section>

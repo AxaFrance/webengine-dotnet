@@ -39,7 +39,7 @@ namespace AxaFrance.WebEngine.Web
         /// <summary>
         /// When activated, the framework will trace downloaded resources during your test and generates a report on the resources used.
         /// </summary>
-        public bool MesureResourceUsage { get; set; }
+        public bool MeasureResourceUsage { get; set; }
         Dictionary<string, NetworkRequest> requestLogs = new Dictionary<string, NetworkRequest>();
         List<JSErrors> jSErrors = new List<JSErrors>();
 
@@ -64,7 +64,7 @@ namespace AxaFrance.WebEngine.Web
                 DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
             }
             WebDriver browser = this.Context as WebDriver;
-            if (MesureResourceUsage)
+            if (MeasureResourceUsage)
             {
                 var network = browser.Manage().Network;
                 network.StopMonitoring();
@@ -108,7 +108,7 @@ namespace AxaFrance.WebEngine.Web
             }
             if (IsTrue(resourceUsage))
             {
-                MesureResourceUsage = true;
+                MeasureResourceUsage = true;
             }
             if (IsAccessibilityTestEnabled)
             {
@@ -128,7 +128,7 @@ namespace AxaFrance.WebEngine.Web
                     DebugLogger.WriteLine("Initializing Selenium WebDriver");
                     var driver = BrowserFactory.GetDriver(Settings.Instance.Platform, Settings.Instance.Browser, Settings.Instance.BrowserOptions);
                     Context = driver;
-                    if (MesureResourceUsage)
+                    if (MeasureResourceUsage)
                     {
                         DebugLogger.WriteLine("[DEBUG] Resource Usage Measurement is enabled.");
                         var network = driver.Manage().Network;
