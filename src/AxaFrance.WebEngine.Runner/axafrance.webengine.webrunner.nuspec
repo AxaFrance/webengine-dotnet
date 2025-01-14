@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AxaFrance.WebEngine.Runner</id>
-    <version>1.0.0.0</version>
+    <version>{{version}}</version>
     <authors>AxaFrance, Huaxing YUAN</authors>
     <projectUrl>https://github.com/AxaFrance/webengine-dotnet</projectUrl>
     <description>WebRunner executable to run keyword driven automated tests.</description>
@@ -11,22 +11,22 @@
     <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" commit="bed5761482312266078d19c5577cda20c060c2df" />
     <dependencies>
       <group targetFramework=".NETFramework4.8">
-        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net6.0">
-        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net8.0">
-        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0">
-        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
