@@ -18,17 +18,6 @@
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="geckodriver.exe" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="geckodriver.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-    </Content>
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="7.0.0" />

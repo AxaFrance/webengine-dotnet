@@ -48,7 +48,7 @@ namespace WebEngine.Test.UnitTests
             {
                 Assert.Fail("other:capability is not a JObject");
             }
-            
+
         }
 
         [TestMethod]
@@ -86,7 +86,17 @@ namespace WebEngine.Test.UnitTests
             using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge))
             {
                 driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
-                 driver.Quit();
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void WebDriver_Firefox()
+        {
+            using (var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Firefox))
+            {
+                driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
+                driver.Quit();
             }
         }
 

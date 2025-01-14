@@ -22,6 +22,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 using static System.Environment;
 
 [assembly: InternalsVisibleTo("WebRunner")]
@@ -450,18 +451,13 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetFirefoxDriver(IEnumerable<string> browserOptions)
         {
-            object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe", "", null);
-            if (path == null)
-            {
-                path = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe", "", null);
-            }
-
+            var binaryPath = new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig(), VersionResolveStrategy.Latest);
             var directories = System.IO.Directory.GetDirectories($"{Environment.GetEnvironmentVariable("APPDATA")}\\Mozilla\\Firefox\\Profiles");
             var d = directories.First(x => x.EndsWith("default"));
             OpenQA.Selenium.Firefox.FirefoxProfile profile = new OpenQA.Selenium.Firefox.FirefoxProfile(d);
             OpenQA.Selenium.Firefox.FirefoxOptions firefoxOptions = new OpenQA.Selenium.Firefox.FirefoxOptions();
             firefoxOptions.AcceptInsecureCertificates = true;
-            firefoxOptions.BrowserExecutableLocation = path?.ToString();
+            firefoxOptions.BinaryLocation = binaryPath?.ToString();
             firefoxOptions.Profile = profile;
             if (browserOptions != null) firefoxOptions.AddArguments(browserOptions);
             OpenQA.Selenium.Firefox.FirefoxDriver driver = new OpenQA.Selenium.Firefox.FirefoxDriver(firefoxOptions);
