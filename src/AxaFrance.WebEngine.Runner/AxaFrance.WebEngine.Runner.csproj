@@ -11,7 +11,7 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Copyright>AXA France</Copyright>
     <Platforms>AnyCPU</Platforms>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <AssemblyName>WebRunner</AssemblyName>
     <IsPublishable>True</IsPublishable>
     <Deterministic>False</Deterministic>

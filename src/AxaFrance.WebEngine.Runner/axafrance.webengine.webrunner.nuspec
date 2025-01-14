@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AxaFrance.WebEngine.Runner</id>
+    <version>{{version}}</version>
+    <authors>AxaFrance, Huaxing YUAN</authors>
+    <projectUrl>https://github.com/AxaFrance/webengine-dotnet</projectUrl>
+    <description>WebRunner executable to run keyword driven automated tests.</description>
+    <copyright>AXA France</copyright>
+    <tags>AXA WebEngine Automation Framework</tags>
+    <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" commit="bed5761482312266078d19c5577cda20c060c2df" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.IO.Compression" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.IO" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Algorithms" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Encoding" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Primitives" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.X509Certificates" targetFramework=".NETFramework4.8" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <!-- Include net48 -->
+    <file src="net48\**\*.*" target="lib\net48" />
+    
+    <!-- Include net6.0 -->
+    <file src="net6.0\**\*.*" target="lib\net6.0" />
+    
+    <!-- Include net7.0 -->
+    <file src="net8.0\**\*.*" target="lib\net8.0" />
+	
+	<file src="net9.0\**\*.*" target="lib\net9.0" />
+  </files>
+</package>
