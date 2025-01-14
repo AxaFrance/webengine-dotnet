@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AxaFrance.WebEngine.Runner</id>
-    <version>{{version}}</version>
+    <version>1.0.0.0</version>
     <authors>AxaFrance, Huaxing YUAN</authors>
     <projectUrl>https://github.com/AxaFrance/webengine-dotnet</projectUrl>
     <description>WebRunner executable to run keyword driven automated tests.</description>
@@ -11,22 +11,22 @@
     <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" commit="bed5761482312266078d19c5577cda20c060c2df" />
     <dependencies>
       <group targetFramework=".NETFramework4.8">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net6.0">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net8.0">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AxaFrance.WebEngine" version="1.0.0.0" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
@@ -44,14 +44,22 @@
   </metadata>
   <files>
     <!-- Include net48 -->
-    <file src="net48\**\*.*" target="lib\net48" />
+    <file src="net48\**\*.dll" target="lib\net48" />
+	<file src="net48\**\*.exe" target="lib\net48" />
+	<file src="net48\**\*.config" target="contentFiles\any\net48" />
     
     <!-- Include net6.0 -->
-    <file src="net6.0\**\*.*" target="lib\net6.0" />
-    
-    <!-- Include net7.0 -->
-    <file src="net8.0\**\*.*" target="lib\net8.0" />
+    <file src="net6.0\**\*.dll" target="lib\net6.0" />
+    <file src="net6.0\**\*.exe" target="lib\net6.0" />
+	<file src="net6.0\**\*.json" target="contentFiles\any\net6.0" />
 	
-	<file src="net9.0\**\*.*" target="lib\net9.0" />
+    <!-- Include net7.0 -->
+    <file src="net8.0\**\*.dll" target="lib\net8.0" />
+	<file src="net8.0\**\*.exe" target="lib\net8.0" />
+	<file src="net8.0\**\*.json" target="contentFiles\any\net8.0" />
+	
+    <file src="net9.0\**\*.dll" target="lib\net9.0" />
+	<file src="net9.0\**\*.exe" target="lib\net9.0" />
+	<file src="net9.0\**\*.json" target="contentFiles\any\net9.0" />
   </files>
 </package>
