@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net48;net6.0-windows;net9.0-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net8.0-windows;net9.0-windows</TargetFrameworks>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <AssemblyName>ReportViewer</AssemblyName>
     <IsPublishable>False</IsPublishable>
     <UseWindowsForms>False</UseWindowsForms>
     <ApplicationIcon>Icons\ReportViewer.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <PackageId>AxaFrance.WebEngine.ReportViewer</PackageId>

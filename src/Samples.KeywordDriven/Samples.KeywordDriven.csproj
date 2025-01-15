@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPublishable>False</IsPublishable>
@@ -9,8 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AxaFrance.WebEngine.Runner" Version="3.25.14.6-preview" />
-    <PackageReference Include="AxaFrance.WebEngine.Web" Version="3.25.14.6-preview" />
+    <ProjectReference Include="..\AxaFrance.WebEngine.ReportViewer\AxaFrance.WebEngine.ReportViewer.csproj" />
+    <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
+    <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />
   </ItemGroup>
 
 </Project>

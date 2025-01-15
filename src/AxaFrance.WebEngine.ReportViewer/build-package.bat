@@ -20,16 +20,16 @@ rem Loop through all files in the current directory and subdirectories
 for /r %%f in (*) do (
     set "filename=%%~nxf"
     rem Check if the filename starts with WebRunner.
-    if /i "!filename!" neq "WebRunner.exe" (
-        if /i "!filename!" neq "WebRunner.dll" (
-            if /i "!filename:~0,10!" neq "WebRunner." (
+    if /i "!filename!" neq "ReportViewer.exe" (
+        if /i "!filename!" neq "ReportViewer.dll" (
+            if /i "!filename:~0,13!" neq "ReportViewer." (
                 del "%%f"
             )
         )
     )
 )
 endlocal
-set file=AxaFrance.webengine.webrunner.nuspec
+set file=AxaFrance.WebEngine.ReportViewer.nuspec
 copy ..\%file% %buildType%
 cd %buildType%
 echo Generate Nuget Package.
@@ -37,5 +37,5 @@ powershell -Command "(Get-Content '%file%') -replace '{{Version}}', '%version%' 
 cd ..
 cd ..
 cd ..
-nuget pack AxaFrance.WebEngine.Runner\bin\%buildType%
+nuget pack AxaFrance.WebEngine.ReportViewer\bin\%buildType%
 @echo on
