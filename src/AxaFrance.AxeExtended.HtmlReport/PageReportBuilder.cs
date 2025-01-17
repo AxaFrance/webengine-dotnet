@@ -5,8 +5,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 
@@ -130,7 +128,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         public PageReportBuilder Build()
         {
             var config = Config?.DeepClone() ?? new JObject();
-            switch(Options.ReportLanguage)
+            switch (Options.ReportLanguage)
             {
                 case Language.French:
                     var localefr = GetRessource("axe-core-fr.json");
@@ -301,8 +299,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     .Replace("{{RuleNodes}}", sb.ToString()));
             }
 
-            
-            
+
+
 
             return overall.ToString();
         }
@@ -333,7 +331,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         public GetScreenshotDelegate GetScreenshot { get; internal set; }
 
         private JObject locale = null;
-        
+
         /// <summary>
         /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.
         /// </summary>

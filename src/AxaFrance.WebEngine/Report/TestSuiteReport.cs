@@ -160,7 +160,7 @@ namespace AxaFrance.WebEngine.Report
                     }
                 }
 
-                
+
             }
 
             if (sort) { Labels.Sort(); }

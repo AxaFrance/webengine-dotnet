@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AxaFrance.AxeExtended.HtmlReport
+﻿namespace AxaFrance.AxeExtended.HtmlReport
 {
     /// <summary>
     /// Mode to calculate the score. Different calculation mode may influenc

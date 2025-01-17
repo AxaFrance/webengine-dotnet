@@ -1,13 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace AxaFrance.AxeExtended.HtmlReport.Config
 {
@@ -46,6 +38,6 @@ namespace AxaFrance.AxeExtended.HtmlReport.Config
         /// The rules attribute is an Array of rule objects
         /// each rule object can contain the following attributes
         /// </summary>
-        public Rule[] Rules{get;set;}
+        public Rule[] Rules { get; set; }
     }
 }

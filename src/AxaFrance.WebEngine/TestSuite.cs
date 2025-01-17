@@ -36,7 +36,8 @@ namespace AxaFrance.WebEngine
         /// <summary>
         /// Cleanup the global context for the test suite.
         /// </summary>
-        public virtual void CleanUp(Settings s) {
+        public virtual void CleanUp(Settings s)
+        {
 
         }
 

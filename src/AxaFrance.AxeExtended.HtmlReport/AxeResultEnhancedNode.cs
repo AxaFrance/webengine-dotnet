@@ -1,9 +1,4 @@
 ﻿using Deque.AxeCore.Commons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -27,8 +22,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// Original Axe result node
         /// </summary>
         public AxeResultNode Node { get; internal set; }
-        
-        
+
+
         /// <summary>
         /// The screenshot of the node, if available.
         /// in byte array format, representing the image in PNG format.

@@ -4,8 +4,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System;
-using System.Threading;
-using System.Linq;
 
 namespace AxaFrance.WebEngine.MobileApp
 {

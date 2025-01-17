@@ -5,7 +5,8 @@ namespace Samples.KeywordDriven.TestCases
 {
     public class TC_InsuranceQuote : TestCaseWeb
     {
-        public TC_InsuranceQuote() {
+        public TC_InsuranceQuote()
+        {
             TestSteps = new AxaFrance.WebEngine.TestStep[] {
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(Login)},
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(SearchProspect)},

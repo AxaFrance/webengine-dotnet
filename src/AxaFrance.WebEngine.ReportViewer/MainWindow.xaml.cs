@@ -4,7 +4,6 @@
 using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using Hummingbird.UI;
-using ICSharpCode.AvalonEdit.Folding;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using Microsoft.Win32;
@@ -14,17 +13,12 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
-using static System.Net.WebRequestMethods;
 
 namespace AxaFrance.WebEngine.ReportViewer
 {
@@ -172,13 +166,13 @@ namespace AxaFrance.WebEngine.ReportViewer
                 tabControl.SelectedIndex = 0;
             }
 
-            if(tc.AttachedData.FirstOrDefault(x=>x.Name == "ResourceUsage") != null)
+            if (tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage") != null)
             {
                 tabRessourceUsages.Visibility = Visibility.Visible;
                 var data = tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage")?.Value;
                 string json = System.Text.Encoding.UTF8.GetString(data);
                 var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
-                dgImpacts.ItemsSource = resourceUsage.Values.ToArray() ;
+                dgImpacts.ItemsSource = resourceUsage.Values.ToArray();
                 pcUsage.Series = GetRessourcesSeries(resourceUsage);
                 pcHttpCode.Series = GetHttpCodeSeries(resourceUsage);
             }

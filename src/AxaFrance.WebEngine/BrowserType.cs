@@ -41,7 +41,7 @@ namespace AxaFrance.WebEngine
         /// Android Application.The application package must be provided via AppId parameter.
         /// </summary>
         AndroidNative,
-        
+
         /// <summary>
         /// Test will be run on Safari browser onder MacOS or iOS device.
         /// </summary>

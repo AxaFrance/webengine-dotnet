@@ -14,12 +14,12 @@ namespace AxaFrance.WebEngine.Report
     [XmlRoot(Namespace = GlobalConstants.XmlNamespace)]
     public class ScreenshotReport
     {
-        
+
         /// <summary>
         /// The identifier of the screenshot for html report viewing experience.
         /// </summary>
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        
+
         /// <summary>
         /// The name or brief descrption of the screenshot.
         /// </summary>

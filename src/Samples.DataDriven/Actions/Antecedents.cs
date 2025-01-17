@@ -16,7 +16,7 @@ namespace Samples.DataDriven.Actions
 
             // If the data provided by antecedent, there is nothing else to do.
             // otherwise, fill the details of the antecedent.
-            if(antecedent == "yes")
+            if (antecedent == "yes")
             {
                 model.AntecedentType.SelectByText(GetParameter(ParameterList.AccidentType));
                 model.AntecedentDate.SendKeys(GetParameter(ParameterList.AccidentDate));

@@ -1,12 +1,10 @@
-﻿using Deque.AxeCore.Commons;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -21,7 +19,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// Initialize OverallReportBuilder with default options.
         /// </summary>
-        public OverallReportBuilder() {
+        public OverallReportBuilder()
+        {
             options = new PageReportOptions();
             PageBuilders = new List<PageReportBuilder>();
         }
@@ -58,7 +57,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 Title = options.Title,
                 TimeStamp = DateTime.Now
             };
-            overallResult.PageResults.AddRange(PageBuilders.Where(x=>x.Result != null).Select(x => x.Result));
+            overallResult.PageResults.AddRange(PageBuilders.Where(x => x.Result != null).Select(x => x.Result));
             this.Result = overallResult;
             hasBuilt = true;
             return this;
@@ -78,7 +77,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
 
 
             // if the outpur format is Zip. we need to create a sub-folder and zip the content of that folder.
-            if(Options.OutputFormat == OutputFormat.Zip)
+            if (Options.OutputFormat == OutputFormat.Zip)
             {
                 path = Path.Combine(path, Guid.NewGuid().ToString());
             }
@@ -89,7 +88,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             var html = PageReportBuilder.GetRessource("overall-result.html").ToLocale(options.ReportLanguage);
             var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html").ToLocale(options.ReportLanguage);
             var TableRowPageResult = new StringBuilder();
-            
+
             //export each subpages and generation of 
             foreach (var pageBuilder in PageBuilders)
             {
@@ -117,25 +116,25 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     .Replace("{{ScoreRotation}}", this.Result.ScoreRotation.ToString());
 
 
-            StringBuilder ruleTitles= new StringBuilder();
+            StringBuilder ruleTitles = new StringBuilder();
             StringBuilder ruleResults = new StringBuilder();
 
             //The header of the overall view table
             ruleTitles.AppendLine("<th>Rule Id</th>");
             ruleTitles.AppendLine("<th>Tags</th>");
-            foreach(var page in Result.PageResults)
+            foreach (var page in Result.PageResults)
             {
-                ruleTitles.AppendLine($"<th>{page.Builder.Options.Title}</th>");               
+                ruleTitles.AppendLine($"<th>{page.Builder.Options.Title}</th>");
             }
             ruleTitles.AppendLine($"<th>Overall</th>");
 
             //The content of the overall view table
-            foreach (var rule in Result.overallResults.OrderBy(x=>x.Key))
+            foreach (var rule in Result.overallResults.OrderBy(x => x.Key))
             {
                 var ruleId = rule.Key;
                 var rResult = rule.Value;
                 ruleResults.AppendLine($"<tr><td>{ruleId}</td>");
-                
+
                 //Add tags
                 ruleResults.AppendLine($"<td>");
                 /*
@@ -149,7 +148,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 }
                 */
                 ruleResults.AppendLine($"</td>");
-                
+
                 foreach (var page in Result.PageResults)
                 {
                     if (Array.Find(page.Violations, x => x.Item.Id == ruleId) != null)
@@ -160,7 +159,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     {
                         ruleResults.AppendLine($"<td><span class='Incomplele'>Incomplele</span></td>");
                     }
-                    else if (Array.Find(page.Passes, x=>x.Item.Id == ruleId) != null)
+                    else if (Array.Find(page.Passes, x => x.Item.Id == ruleId) != null)
                     {
                         ruleResults.AppendLine($"<td><span class='Passes'>Passes</span></td>");
                     }
@@ -211,7 +210,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// The list of page builders used to hold evaluations of each pages.
         /// </summary>
         public List<PageReportBuilder> PageBuilders { get; internal set; }
-        
+
         /// <summary>
         /// Overall result of all scanned pages.
         /// </summary>

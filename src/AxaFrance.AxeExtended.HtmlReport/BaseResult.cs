@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -25,7 +21,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         public int Scorebase { get; set; }
 
         private int? _score;
-        
+
         /// <summary>
         /// The score of the test result.
         /// </summary>

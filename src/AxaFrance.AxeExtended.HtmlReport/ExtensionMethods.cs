@@ -1,10 +1,8 @@
 ﻿using Deque.AxeCore.Commons;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -21,13 +19,13 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <returns>The impact value</returns>
         public static string GetImpact(this AxeResultItem item)
         {
-            
+
             var impact = item.Impact;
             if (impact == null)
             {
                 impact = item.Nodes.FirstOrDefault()?.Impact;
             }
-            if(impact == null)
+            if (impact == null)
             {
                 impact = item.Nodes.FirstOrDefault()?.All.FirstOrDefault()?.Impact;
             }

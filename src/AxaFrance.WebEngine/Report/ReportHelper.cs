@@ -8,11 +8,10 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Xml.Linq;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
-using System.Runtime.InteropServices;
 
 namespace AxaFrance.WebEngine.Report
 {
@@ -81,7 +80,7 @@ namespace AxaFrance.WebEngine.Report
             string xmlContent = Serialize<JUnit.testsuite>(jr);
             Directory.CreateDirectory(outputPath);
             string reportFullPath = Path.Combine(outputPath, $"TEST-{testname}.xml");
-            using(StreamWriter sw = new StreamWriter(reportFullPath))
+            using (StreamWriter sw = new StreamWriter(reportFullPath))
             {
                 sw.Write(xmlContent);
             }
@@ -125,7 +124,7 @@ namespace AxaFrance.WebEngine.Report
             //copy images to img folder
             var imgPath = Path.Combine(outputPath, "assets", "img");
             Directory.CreateDirectory(imgPath);
-            foreach(ScreenshotReport img in GetScreenshots(report))
+            foreach (ScreenshotReport img in GetScreenshots(report))
             {
                 string targetPath = Path.Combine(imgPath, img.Id + ".png");
                 File.WriteAllBytes(targetPath, img.Data);
@@ -136,9 +135,9 @@ namespace AxaFrance.WebEngine.Report
         private static IEnumerable<ScreenshotReport> GetScreenshots(TestSuiteReport report)
         {
             List<ScreenshotReport> screenshots = new List<ScreenshotReport>();
-            foreach(var tc in report.TestResult)
+            foreach (var tc in report.TestResult)
             {
-                foreach(var a in tc.ActionReports)
+                foreach (var a in tc.ActionReports)
                 {
                     GetScreenshots(a, screenshots);
                 }
@@ -149,9 +148,9 @@ namespace AxaFrance.WebEngine.Report
         private static void GetScreenshots(ActionReport a, List<ScreenshotReport> screenshots)
         {
             a.Screenshots.ForEach(x => screenshots.Add(x));
-            if(a.SubActionReports != null)
+            if (a.SubActionReports != null)
             {
-                foreach(var sa in a.SubActionReports)
+                foreach (var sa in a.SubActionReports)
                 {
                     GetScreenshots(sa, screenshots);
                 }
@@ -161,7 +160,7 @@ namespace AxaFrance.WebEngine.Report
         private static string TransformXSLT(string xmlContent, string xslt)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
-            
+
             transformer.Load(xslt);
             var xmlDoc = XDocument.Parse(xmlContent);
             var arguments = new XsltArgumentList();
@@ -169,7 +168,7 @@ namespace AxaFrance.WebEngine.Report
             {
                 using (MemoryStream html = new MemoryStream())
                 {
-                    transformer.Transform(junit, arguments,  html);
+                    transformer.Transform(junit, arguments, html);
                     html.Flush();
                     string result = Encoding.UTF8.GetString(html.ToArray());
                     return result;
@@ -186,7 +185,7 @@ namespace AxaFrance.WebEngine.Report
             if (name == null) throw new FileNotFoundException($"Resource {resourceName} not found in assembly {assembly.FullName}");
             using (Stream stream = assembly.GetManifestResourceStream(name))
             {
-                using(ZipArchive archive = new ZipArchive(stream))
+                using (ZipArchive archive = new ZipArchive(stream))
                 {
                     string outputPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
                     archive.ExtractToDirectory(outputPath);
