@@ -25,7 +25,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <summary>
         /// German
         /// </summary>
-        [Obsolete("German language is not not working due to axe core ressource issues.")]
+        [Obsolete("German language is not not working due to axe core Resource issues.")]
         German,
 
         /// <summary>

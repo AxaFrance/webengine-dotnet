@@ -168,20 +168,35 @@ namespace AxaFrance.WebEngine.ReportViewer
 
             if (tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage") != null)
             {
-                tabRessourceUsages.Visibility = Visibility.Visible;
+                tabResourceUsages.Visibility = Visibility.Visible;
                 var data = tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage")?.Value;
                 string json = System.Text.Encoding.UTF8.GetString(data);
                 var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
                 dgImpacts.ItemsSource = resourceUsage.Values.ToArray();
-                pcUsage.Series = GetRessourcesSeries(resourceUsage);
+                pcUsage.Series = GetResourcesSeries(resourceUsage);
                 pcHttpCode.Series = GetHttpCodeSeries(resourceUsage);
+                lblDownloadSize.Text = GetSize(resourceUsage.Values.Where(x=>x.IsCached == false).Sum(x => x.Reponse));
+                lblTotalResources.Text = resourceUsage.Count.ToString();
             }
             else
             {
-                tabRessourceUsages.Visibility = Visibility.Collapsed;
+                tabResourceUsages.Visibility = Visibility.Collapsed;
             }
 
 
+        }
+
+        private string GetSize(long bytes)
+        {
+            string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+            double len = bytes;
+            int order = 0;
+            while (len >= 1024 && order < sizes.Length - 1)
+            {
+                order++;
+                len = len / 1024;
+            }
+            return $"{len:0.##} {sizes[order]}";
         }
 
         private IEnumerable<ISeries> GetHttpCodeSeries(Dictionary<string, NetworkRequest> resourceUsage)
@@ -216,7 +231,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             return Series;
         }
 
-        private IEnumerable<ISeries> GetRessourcesSeries(Dictionary<string, NetworkRequest> resourceUsage)
+        private IEnumerable<ISeries> GetResourcesSeries(Dictionary<string, NetworkRequest> resourceUsage)
         {
             Dictionary<string, long> data = new Dictionary<string, long>();
             foreach (var item in resourceUsage)
@@ -272,6 +287,18 @@ namespace AxaFrance.WebEngine.ReportViewer
                 {
                     Text = step.Name ?? "(Unnamed step)"
                 });
+
+                //checks if the step has screenshots. If so, add a camera icon
+                if (step.Screenshots?.Count > 0)
+                {
+                    sp.Children.Add(new Image()
+                    {
+                        Source = new BitmapImage(new Uri("/Icons/icon_Camera.png", UriKind.RelativeOrAbsolute)),
+                        Margin = new Thickness(4, 0, 4, 0),
+                        Width = 16,
+                        Height = 16,
+                    });
+                }
 
                 sp.Children.Add(new TextBlock()
                 {

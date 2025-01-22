@@ -85,8 +85,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
             int sequence = 1;
 
             //export the overallpage
-            var html = PageReportBuilder.GetRessource("overall-result.html").ToLocale(options.ReportLanguage);
-            var rowTemplate = PageReportBuilder.GetRessource("overall-tablerow.html").ToLocale(options.ReportLanguage);
+            var html = PageReportBuilder.GetResource("overall-result.html").ToLocale(options.ReportLanguage);
+            var rowTemplate = PageReportBuilder.GetResource("overall-tablerow.html").ToLocale(options.ReportLanguage);
             var TableRowPageResult = new StringBuilder();
 
             //export each subpages and generation of 

@@ -74,7 +74,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </remarks>
         public PageReportBuilder WithRgaaExtension()
         {
-            var content = GetRessource("axe-rgaa-extension.json");
+            var content = GetResource("axe-rgaa-extension.json");
             Config = JObject.Parse(content);
             return this;
         }
@@ -131,22 +131,22 @@ namespace AxaFrance.AxeExtended.HtmlReport
             switch (Options.ReportLanguage)
             {
                 case Language.French:
-                    var localefr = GetRessource("axe-core-fr.json");
+                    var localefr = GetResource("axe-core-fr.json");
                     //add or update the field "locale" in json object config, with the content of fr.json
                     config["locale"] = JObject.Parse(localefr);
                     break;
                 case Language.Spanish:
-                    var localees = GetRessource("axe-core-es.json");
+                    var localees = GetResource("axe-core-es.json");
                     //add or update the field "locale" in json object config, with the content of es.json
                     config["locale"] = JObject.Parse(localees);
                     break;
                 case Language.German:
-                    var localede = GetRessource("axe-core-de.json");
+                    var localede = GetResource("axe-core-de.json");
                     //add or update the field "locale" in json object config, with the content of de.json
                     config["locale"] = JObject.Parse(localede);
                     break;
                 case Language.SimplifiedChinese:
-                    var localezh = GetRessource("axe-core-zhcn.json");
+                    var localezh = GetResource("axe-core-zhcn.json");
                     //add or update the field "locale" in json object config, with the content of zhcn.json
                     config["locale"] = JObject.Parse(localezh);
                     break;
@@ -183,7 +183,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             string passes = GenerateRuleSection(Result.Passes, path);
             string incomplete = GenerateRuleSection(Result.Incomplete, path);
             string inapplicable = GenerateRuleSection(Result.Inapplicable, path);
-            string html = GetRessource("page-result.html").ToLocale(Options.ReportLanguage);
+            string html = GetResource("page-result.html").ToLocale(Options.ReportLanguage);
             html = html.Replace("{{Title}}", Options.Title)
                 .Replace("{{PageUrl}}", Result.Url)
                 .Replace("{{TimeStamp}}", Result.AxeResult.Timestamp.ToString())
@@ -224,7 +224,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             }
         }
 
-        internal static string GetRessource(string filename)
+        internal static string GetResource(string filename)
         {
             //read content from Embeded Resource `Assets/index.html`
             var assembly = typeof(PageReportBuilder).Assembly;
@@ -253,14 +253,14 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
 
             StringBuilder overall = new StringBuilder();
-            var template = GetRessource("rule-part.html").ToLocale(Options.ReportLanguage);
+            var template = GetResource("rule-part.html").ToLocale(Options.ReportLanguage);
             foreach (var item in items)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var node in item.Nodes)
                 {
                     //generate node (occurances of rule)
-                    var nodeTemplate = GetRessource("node-part.html").ToLocale(Options.ReportLanguage);
+                    var nodeTemplate = GetResource("node-part.html").ToLocale(Options.ReportLanguage);
                     var cssSelector = node.Node.Target;
                     var display = node.Screenshot != null ? "block" : "none";
                     string filename = string.Empty;
@@ -312,7 +312,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 var sb = new StringBuilder();
                 foreach (AxeResultCheck item in any)
                 {
-                    var template = GetRessource("check-part.html").ToLocale(Options.ReportLanguage)
+                    var template = GetResource("check-part.html").ToLocale(Options.ReportLanguage)
                         .Replace("{{CheckId}}", item.Id)
                         .Replace("{{Impact}}", item.Impact)
                         .Replace("{{Message}}", WebUtility.HtmlEncode(item.Message))

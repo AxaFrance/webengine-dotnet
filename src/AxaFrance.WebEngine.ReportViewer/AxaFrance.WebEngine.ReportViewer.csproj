@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <None Remove="Icons\axalogo.png" />
+    <None Remove="Icons\icon_Camera.png" />
     <None Remove="Icons\icon_CriticalError.png" />
     <None Remove="Icons\icon_Failed.png" />
     <None Remove="Icons\icon_Ignored.png" />
@@ -61,6 +62,10 @@
     <Resource Include="Icons\icon_Passed.png" />
     <Resource Include="Icons\ReportViewer.ico" />
     <Resource Include="Icons\ReportViewer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\icon_Camera.png" />
   </ItemGroup>
 
 </Project>
