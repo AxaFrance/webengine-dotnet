@@ -14,7 +14,6 @@
         <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
         <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net6.0-windows7.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
