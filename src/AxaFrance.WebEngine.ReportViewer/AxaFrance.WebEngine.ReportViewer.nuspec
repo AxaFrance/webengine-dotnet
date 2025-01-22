@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>AxaFrance.WebEngine.ReportViewer</id>
+    <version>{{version}}</version>
+    <authors>AxaFrance, Huaxing YUAN</authors>
+    <description>Package Description</description>
+    <tags>AXA WebEngine Automation Framework</tags>
+    <repository type="git" commit="2c0a8dce84107eb28dd7526499dd73b91abd20b7" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
+        <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
+        <dependenct id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
+        <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
+        <dependenct id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0-windows7.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
+        <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
+        <dependenct id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0-windows7.0">
+        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
+        <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
+        <dependenct id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+      <group targetFramework="net9.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+      <group targetFramework=".NETFramework4.8" />
+    </frameworkReferences>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.IO.Compression" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.IO" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Algorithms" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Encoding" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.Primitives" targetFramework=".NETFramework4.8" />
+      <frameworkAssembly assemblyName="System.Security.Cryptography.X509Certificates" targetFramework=".NETFramework4.8" />
+    </frameworkAssemblies>
+    <contentFiles>
+      <files include="any/net48/*.config" buildAction="None" copyToOutput="true" />
+      <files include="any/net6.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
+      <files include="any/net8.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
+      <files include="any/net9.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <!-- Include net48 -->
+    <file src="net48\*.exe" target="lib\net48" />
+    <file src="net48\*.config" target="contentFiles\any\net48" />
+
+    <!-- Include net6.0 -->
+    <file src="net6.0-windows\*.dll" target="lib\net6.0-windows7.0" />
+    <file src="net6.0-windows\*.exe" target="lib\net6.0-windows7.0" />
+    <file src="net6.0-windows\*.json" target="contentFiles\any\net6.0-windows7.0" />
+
+    <!-- Include net8.0 -->
+    <file src="net8.0-windows\*.dll" target="lib\net8.0-windows7.0" />
+    <file src="net8.0-windows\**\*.exe" target="lib\net8.0-windows7.0" />
+    <file src="net8.0-windows\*.json" target="contentFiles\any\net8.0-windows7.0" />
+
+    <!-- Include net9.0 -->
+    <file src="net9.0-windows\**\*.dll" target="lib\net9.0-windows7.0" />
+    <file src="net9.0-windows\**\*.exe" target="lib\net9.0-windows7.0" />
+    <file src="net9.0-windows\*.json" target="contentFiles\any\net9.0-windows7.0" />
+  </files>
+</package>

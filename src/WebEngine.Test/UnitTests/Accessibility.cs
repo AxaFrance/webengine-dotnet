@@ -5,17 +5,9 @@ using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using Point = System.Drawing.Point;
-using Size = System.Drawing.Size;
 
 namespace WebEngine.Test.UnitTests
 {
@@ -34,7 +26,8 @@ namespace WebEngine.Test.UnitTests
                 {
                     driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
                 }
-                catch {
+                catch
+                {
                     //if the cookie button does not exist, it's not a problem
                 }
 
@@ -60,7 +53,8 @@ namespace WebEngine.Test.UnitTests
                 {
                     driver.FindElement(By.Id("footer_tc_privacy_button")).Click();
                 }
-                catch {
+                catch
+                {
                     //if the cookie button does not exist, it's not a problem
                 }
 

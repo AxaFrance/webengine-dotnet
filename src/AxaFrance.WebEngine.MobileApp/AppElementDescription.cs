@@ -214,7 +214,7 @@ namespace AxaFrance.WebEngine.MobileApp
 
             actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, x, startY, TimeSpan.Zero));
             actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
-            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, x, endY, new TimeSpan(0,0,1)));
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, x, endY, new TimeSpan(0, 0, 1)));
             actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
 
 
@@ -233,7 +233,7 @@ namespace AxaFrance.WebEngine.MobileApp
                 return chains;
             }
 
-            if(UIAutomatorSelector != null)
+            if (UIAutomatorSelector != null)
             {
                 var locators = driver.FindElements(MobileBy.AndroidUIAutomator(UIAutomatorSelector));
                 return locators;

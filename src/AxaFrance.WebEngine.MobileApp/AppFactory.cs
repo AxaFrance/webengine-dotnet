@@ -1,13 +1,11 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using AngleSharp.Common;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Android.Enums;
 using OpenQA.Selenium.Appium.iOS;
-using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -268,7 +266,7 @@ namespace AxaFrance.WebEngine.MobileApp
             {
                 options.AutomationName = "XCUITest";
                 options.AddAdditionalAppiumOption("includeSafariInWebviews", true);
-                options.AddAdditionalAppiumOption("connectHardwareKeyboard", true);               
+                options.AddAdditionalAppiumOption("connectHardwareKeyboard", true);
                 driver = new IOSDriver(new Uri(appiumServerAddress), options, TimeSpan.FromSeconds(180));
             }
             else

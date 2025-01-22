@@ -150,7 +150,8 @@ namespace Samples.KeywordDriven.TestCases
 {
     public class TC_InsuranceQuote : TestCaseWeb
     {
-        public TC_InsuranceQuote() {
+        public TC_InsuranceQuote()
+        {
             TestSteps = new AxaFrance.WebEngine.TestStep[] {
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(Login)},
                 new AxaFrance.WebEngine.TestStep{ Action = nameof(SearchProspect)},
@@ -377,7 +378,7 @@ namespace Samples.KeywordDriven.Actions
         {
             var model = new PageModels.PageUnderWriting(Browser);
             string hometype = &quot;apartment&quot;;
-            
+
             model.TypeOfHomeRadioGroup.CheckByValue(hometype);
             model.NumberOfRoomSelect.SelectByValue(&quot;3&quot;);
             model.HomeSurface.SetValue(&quot;67.31&quot;);
@@ -486,6 +487,9 @@ In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;l
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-cs.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

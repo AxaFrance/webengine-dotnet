@@ -178,7 +178,7 @@ namespace AxaFrance.WebEngine.Web
                     ex = ex1;
                     Thread.Sleep(1000);
                 }
-                catch(ElementNotInteractableException ex2)
+                catch (ElementNotInteractableException ex2)
                 {
                     ex = ex2;
                     Thread.Sleep(1000);
@@ -238,7 +238,7 @@ namespace AxaFrance.WebEngine.Web
                     action(param);
                     return;
                 }
-                catch(NoSuchElementException ex2)
+                catch (NoSuchElementException ex2)
                 {
                     ex = ex2;
                     Thread.Sleep(1000);
@@ -369,7 +369,8 @@ namespace AxaFrance.WebEngine.Web
             try
             {
                 return Perform(InternalGetScreenshot);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 DebugLogger.WriteError($"Unable to generate screenshot. {ex.Message}");
                 return null;
@@ -458,9 +459,9 @@ namespace AxaFrance.WebEngine.Web
         /// </summary>
         protected virtual void InternalClick()
         {
-            var e = FindElement();       
+            var e = FindElement();
             e.Click();
-            
+
         }
 
         /// <summary>
@@ -588,7 +589,7 @@ namespace AxaFrance.WebEngine.Web
             DateTime dTimeout = DateTime.Now.AddSeconds(Settings.Instance.SynchronzationTimeout);
             bool value = false;
             while (DateTime.Now < dTimeout)
-            {                   
+            {
                 var e = FindElement();
                 value = e.Displayed;
                 if (value) return value;
@@ -692,7 +693,7 @@ namespace AxaFrance.WebEngine.Web
                 {
                     ex = ex1;
                 }
-                catch( Exception ex3)
+                catch (Exception ex3)
                 {
                     ex = ex3;
                 }

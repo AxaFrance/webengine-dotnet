@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AxaFrance.WebEngine
 {
@@ -19,6 +17,6 @@ namespace AxaFrance.WebEngine
         /// Initializing an instance of ActionNotFoundException with detailed error message.
         /// </summary>
         /// <param name="message">error message</param>
-        public ActionNotFoundException(string message): base(message){}
+        public ActionNotFoundException(string message) : base(message) { }
     }
 }

@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: Huaxing YUAN, at: 2022-8-1 10:19
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,7 +15,7 @@ namespace AxaFrance.WebEngine
     /// </summary>
     public static class Encrypter
     {
-        
+
         /// <summary>
         /// Encrypt original text with the default encryption key and store the encrypted data into base64 string
         /// </summary>
@@ -30,7 +29,7 @@ namespace AxaFrance.WebEngine
 
             Array.Resize(ref encryptionKey, 32);
             Array.Copy(encryptionKey, iv, 16);
-            
+
             aes.Key = encryptionKey;
             aes.IV = iv;
             aes.Mode = CipherMode.CBC;

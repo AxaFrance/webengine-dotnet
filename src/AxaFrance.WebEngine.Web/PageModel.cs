@@ -64,9 +64,9 @@ namespace AxaFrance.WebEngine.Web
         private void CheckFindsByAttribute(MemberInfo memberInfo, ElementDescription e)
         {
             var attributes = memberInfo.GetCustomAttributes<FindsByAttribute>();
-            if(attributes != null)
+            if (attributes != null)
             {
-                foreach(var attr in attributes)
+                foreach (var attr in attributes)
                 {
                     e.ApplyAttribute(attr);
                 }

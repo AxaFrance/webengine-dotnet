@@ -5,9 +5,6 @@ using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Diagnostics;
 
 namespace WebEngine.Test.UnitTests
 {
@@ -98,7 +95,8 @@ namespace WebEngine.Test.UnitTests
             try
             {
                 inputBox.SetSecure(password);    //-> Error with Not supported Exception
-            } catch
+            }
+            catch
             {
                 return;
             }
@@ -122,7 +120,7 @@ namespace WebEngine.Test.UnitTests
             }
 
             [FindsBy(How.ClassName, "class1 class2")]
-            public WebElementDescription descWithAttribute { get; set; } 
+            public WebElementDescription descWithAttribute { get; set; }
 
             public WebElementDescription desc { get; set; } = new WebElementDescription()
             {
@@ -292,7 +290,7 @@ namespace WebEngine.Test.UnitTests
                 Name = "fav_language"
             };
             var check = radioGroup.CheckByValue("CSS");
-            var value = check.GetDomProperty("checked");            
+            var value = check.GetDomProperty("checked");
             var check2 = radioGroup.CheckByValue("HTML");
             var value2 = check2.GetDomProperty("checked");
             var value3 = check.GetDomProperty("checked");

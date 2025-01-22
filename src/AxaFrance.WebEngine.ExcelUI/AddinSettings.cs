@@ -2,10 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {
@@ -16,12 +12,12 @@ namespace AxaFrance.WebEngine.ExcelUI
         /// Full path where TestData and Environment Variables will be exported.
         /// </summary>
         public string ExportPath { get; set; }
-        
+
         /// <summary>
         /// Full path where WebRunner.exe is located (often the same location of your Test Automation Solution)
         /// </summary>
         public string WebRunnerPath { get; set; }
-        
+
         /// <summary>
         /// The tabs excluded by exportall function.
         /// </summary>

@@ -12,7 +12,7 @@ namespace Samples.KeywordDriven.Actions
         {
             var model = new PageModels.PageUnderWriting(Browser);
             string hometype = "apartment";
-            
+
             model.TypeOfHomeRadioGroup.CheckByValue(hometype);
             model.NumberOfRoomSelect.SelectByValue("3");
             model.HomeSurface.SetValue("67.31");

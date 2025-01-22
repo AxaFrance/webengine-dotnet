@@ -1,18 +1,16 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
-using Microsoft.Office.Tools.Ribbon;
-using System.IO.IsolatedStorage;
-using System.Xml.Serialization;
-using System.IO;
-using AxaFrance.WebEngine;
-using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
-using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace AxaFrance.WebEngine.ExcelUI
 {

@@ -4,7 +4,6 @@
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using System;
 
 namespace WebEngine.Test.UnitTests
 {

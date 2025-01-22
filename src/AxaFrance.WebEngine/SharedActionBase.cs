@@ -4,7 +4,6 @@
 using AxaFrance.WebEngine.Report;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -226,7 +225,7 @@ namespace AxaFrance.WebEngine
             }
             actionReport.ContextValues = action.ContextValues.ToList();
             actionReport.EndTime = DateTime.Now;
-            actionReport.Result = action.ActionResult == Result.None? Result.Passed : Result.Failed;
+            actionReport.Result = action.ActionResult == Result.None ? Result.Passed : Result.Failed;
             actionReport.Screenshots = action.Screenshots;
             return returnvalue;
         }
@@ -248,7 +247,7 @@ namespace AxaFrance.WebEngine
         {
             ActionReport action = new ActionReport();
             CallingAction.ActionReport.SubActionReports.Add(action);
-            return DoActionWithCheckpoint(sharedActionType, Context, ContextValues, action, parameters);  
+            return DoActionWithCheckpoint(sharedActionType, Context, ContextValues, action, parameters);
         }
 
         /// <summary>

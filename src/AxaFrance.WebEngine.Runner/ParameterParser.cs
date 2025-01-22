@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-1 10:28
 using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,7 +10,7 @@ namespace AxaFrance.WebEngine.Runner
 {
     internal static class ParameterParser
     {
-        
+
 
         /// <summary>
         /// Parse parameters from command-line parameters and configuration file
@@ -53,7 +52,7 @@ namespace AxaFrance.WebEngine.Runner
 
         private static void ParseShowReportOption(string[] args, Settings s)
         {
-            if(args.FirstOrDefault(x=> x.Equals("-showreport", StringComparison.OrdinalIgnoreCase)) != null)
+            if (args.FirstOrDefault(x => x.Equals("-showreport", StringComparison.OrdinalIgnoreCase)) != null)
             {
                 s.ShowReportAfterTest = true;
                 DebugLogger.WriteLine("[CONFIG] Show Report in ReportViewer after test execution.");
@@ -95,7 +94,7 @@ namespace AxaFrance.WebEngine.Runner
             {
                 outputDir = outputDir.Replace(arg, string.Empty);
                 s.LogDir = outputDir;
-                
+
             }
             DebugLogger.WriteLine("[CONFIG] Output Directory: " + s.LogDir);
         }

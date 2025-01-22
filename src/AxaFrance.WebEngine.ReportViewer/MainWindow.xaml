@@ -145,9 +145,6 @@
                         </ListView.View>
                     </ListView>
                 </TabItem>
-                <TabItem Header="System Output" ToolTip="The standard output from console.">
-                    <avalon:TextEditor x:Name="txtSystemOut" IsReadOnly="True" FontFamily="Consolas" Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" />
-                </TabItem>
                 <TabItem Header="Accessibility" x:Name="tabAccessibility" Visibility="Collapsed" >
                     <Grid>
                         <Grid.RowDefinitions>
@@ -162,30 +159,74 @@
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Ressources" x:Name="tabRessourceUsages" Visibility="Collapsed">
+                <TabItem Header="Resource Usage" x:Name="tabResourceUsages" Visibility="Collapsed">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="200" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
 
-                        <lvc:PieChart x:Name="pcUsage" Grid.Row="0" LegendPosition="Right" Grid.Column="0">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Grid Margin="30,10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="180" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Style="{DynamicResource TextBlockInformation}" Text="Total Downloaded" HorizontalAlignment="Center" />
+                                    <TextBlock Style="{DynamicResource TextBlockHugeHeader}" x:Name="lblDownloadSize" FontSize="48" Text="8.3 MB" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+
+
                             
-                        </lvc:PieChart>
+                                <Grid Margin="30,10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="180" />
+                                </Grid.RowDefinitions>
 
-                        <lvc:PieChart x:Name="pcHttpCode" Grid.Row="0" LegendPosition="Right" Grid.Column="1">
-                            
-                        </lvc:PieChart>
+                                <TextBlock Style="{DynamicResource TextBlockInformation}" Text="Resources Types"  HorizontalAlignment="Center" />
+                                <lvc:PieChart x:Name="pcUsage" LegendPosition="Right" Grid.Row="1" MinWidth="350">
 
-                        <DataGrid x:Name="dgImpacts" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="2">
+                                </lvc:PieChart>
+                            </Grid>
+
+                                <Grid Margin="30,10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="180" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Style="{DynamicResource TextBlockInformation}" Text="Total Resources" HorizontalAlignment="Center" />
+                                    <TextBlock Style="{DynamicResource TextBlockHugeHeader}" x:Name="lblTotalResources" FontSize="48" Text="67 rss" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Grid>
+
+                                <Grid Margin="30,10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="180" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Style="{DynamicResource TextBlockInformation}" Text="Http codes" HorizontalAlignment="Center" />
+                                <lvc:PieChart x:Name="pcHttpCode" Grid.Row="1" LegendPosition="Right" MinWidth="300">
+
+                                </lvc:PieChart>
+                            </Grid>
+
+
+                        </StackPanel>
+                        </ScrollViewer>
+                        <TextBlock Text="Resource List" Style="{DynamicResource TextBlockViewHeaderHighlighted}" Grid.Row="1" />
+                        <DataGrid x:Name="dgImpacts" IsReadOnly="True" Grid.Row="2">
                             
                         </DataGrid>
 
                     </Grid>
+                </TabItem>
+                <TabItem Header="System Output" ToolTip="The standard output from console.">
+                    <avalon:TextEditor x:Name="txtSystemOut" IsReadOnly="True" FontFamily="Consolas" Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" />
                 </TabItem>
             </TabControl>
 

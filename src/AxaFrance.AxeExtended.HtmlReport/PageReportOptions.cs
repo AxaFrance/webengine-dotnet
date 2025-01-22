@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -73,7 +69,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// The mode to calculate the accessbility scoring, default method = <see cref="ScoringMode.Weighted"/>
         /// </summary>
         public ScoringMode ScoringMode { get; set; } = ScoringMode.Weighted;
-        
+
         /// <summary>
         /// Title of the report
         /// </summary>

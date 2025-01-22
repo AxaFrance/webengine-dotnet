@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace AxaFrance.WebEngine.Report
@@ -15,8 +13,8 @@ namespace AxaFrance.WebEngine.Report
         /// <summary>
         /// Name of the additional data: possible value: "AccessibilityReport", ... may be extended in future
         /// </summary>
-        public string Name { get; set; }    
-        
+        public string Name { get; set; }
+
         /// <summary>
         /// RAW content of the additional data
         /// </summary>

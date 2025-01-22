@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AxaFrance.WebEngine.MobileApp
+﻿namespace AxaFrance.WebEngine.MobileApp
 {
     /// <summary>
     /// Defines the direction of the scroll.
@@ -13,7 +9,7 @@ namespace AxaFrance.WebEngine.MobileApp
         /// The scroll is in the up direction.
         /// </summary>
         Up,
-                            
+
         /// <summary>
         /// The scroll is in the down direction.
         /// </summary>

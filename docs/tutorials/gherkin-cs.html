@@ -175,7 +175,7 @@ namespace Samples.Gherkin.StepDefinitions
             TestSuiteReport tsr = new TestSuiteReport();
             tsr.TestResult.Add(tcr);
             var filename = tsr.SaveAs(Path.GetRandomFileName(), &quot;test-report&quot;, false);
-           Console.WriteLine($&quot;Report saved to {filename}&quot;);
+            Console.WriteLine($&quot;Report saved to {filename}&quot;);
         }
 
         /// &lt;summary&gt;
@@ -203,7 +203,7 @@ namespace Samples.Gherkin.StepDefinitions
                 Title = &quot;Drink Machine Accessibility&quot;,
                 OutputFormat = OutputFormat.Zip,
             });
-            
+
             TestCaseReport tcr = new TestCaseReport()
             {
                 TestName = _scenarioContext.ScenarioInfo.Title,
@@ -213,7 +213,7 @@ namespace Samples.Gherkin.StepDefinitions
 
         [Given(@&quot;I turn on the drink machine&quot;)]
         public void GivenITurnOnTheDrinkMachine()
-        {            
+        {
             driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
         }
 
@@ -247,6 +247,9 @@ namespace Samples.Gherkin.StepDefinitions
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/gherkin-cs.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
