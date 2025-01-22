@@ -11,7 +11,7 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Copyright>AXA France</Copyright>
     <Platforms>AnyCPU</Platforms>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <AssemblyName>WebRunner</AssemblyName>
     <IsPublishable>True</IsPublishable>
     <Deterministic>False</Deterministic>
@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
   </ItemGroup>
 
 </Project>

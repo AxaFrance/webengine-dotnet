@@ -12,12 +12,12 @@ namespace AxaFrance.WebEngine
         /// Default value: Windows
         /// </summary>
         Windows,
-        
+
         /// <summary>
         /// Android devices: Phones and Tablets
         /// </summary>
         Android,
-        
+
         /// <summary>
         /// iOS devices: iPhones and iPads
         /// </summary>
@@ -27,6 +27,6 @@ namespace AxaFrance.WebEngine
         /// MacOS devices for Safari Web testing.
         /// </summary>
         MacOS
-           
+
     }
 }

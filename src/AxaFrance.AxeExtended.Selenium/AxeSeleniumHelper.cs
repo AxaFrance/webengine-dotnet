@@ -1,15 +1,12 @@
 ﻿using AxaFrance.AxeExtended.HtmlReport;
 using Deque.AxeCore.Commons;
-using Deque.AxeCore.Selenium;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace AxaFrance.AxeExtended.Selenium
 {

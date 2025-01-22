@@ -151,132 +151,126 @@ The solution can be improved with the time by increasing test coverage in width 
 </ul>
 </section>
 <section id="tabpanel_GxZVkLapNS-1_content-parameter-list" role="tabpanel" data-tab="content-parameter-list" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-csharp" name="Main" title="ParameterList">using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Samples.DataDriven
+<pre><code class="lang-csharp" name="Main" title="ParameterList">namespace Samples.DataDriven
 {
-	public static class ParameterList
-	{
+    public static class ParameterList
+    {
 
-		///&lt;Summary&gt;Parameter: Name of the test case &lt;/Summary&gt;
-		public static string TESTCASE { get; } = &quot;TESTCASE&quot;;
+        ///&lt;Summary&gt;Parameter: Name of the test case &lt;/Summary&gt;
+        public static string TESTCASE { get; } = &quot;TESTCASE&quot;;
 
-		///&lt;Summary&gt;Parameter: Test environment &lt;/Summary&gt;
-		public static string Environment { get; } = &quot;Environment&quot;;
+        ///&lt;Summary&gt;Parameter: Test environment &lt;/Summary&gt;
+        public static string Environment { get; } = &quot;Environment&quot;;
 
-		///&lt;Summary&gt;Parameter: Login &lt;/Summary&gt;
-		public static string Login { get; } = &quot;Login&quot;;
+        ///&lt;Summary&gt;Parameter: Login &lt;/Summary&gt;
+        public static string Login { get; } = &quot;Login&quot;;
 
-		///&lt;Summary&gt;Parameter: username &lt;/Summary&gt;
-		public static string Username { get; } = &quot;Username&quot;;
+        ///&lt;Summary&gt;Parameter: username &lt;/Summary&gt;
+        public static string Username { get; } = &quot;Username&quot;;
 
-		///&lt;Summary&gt;Parameter: Password &lt;/Summary&gt;
-		public static string Password { get; } = &quot;Password&quot;;
+        ///&lt;Summary&gt;Parameter: Password &lt;/Summary&gt;
+        public static string Password { get; } = &quot;Password&quot;;
 
-		///&lt;Summary&gt;Parameter: provide if search by customer id, or provide customer name &lt;/Summary&gt;
-		public static string CustomerId { get; } = &quot;CustomerId&quot;;
+        ///&lt;Summary&gt;Parameter: provide if search by customer id, or provide customer name &lt;/Summary&gt;
+        public static string CustomerId { get; } = &quot;CustomerId&quot;;
 
-		///&lt;Summary&gt;Parameter: provide if search by customer name. &lt;/Summary&gt;
-		public static string CustomerName { get; } = &quot;CustomerName&quot;;
+        ///&lt;Summary&gt;Parameter: provide if search by customer name. &lt;/Summary&gt;
+        public static string CustomerName { get; } = &quot;CustomerName&quot;;
 
-		///&lt;Summary&gt;Parameter: HomeLocation &lt;/Summary&gt;
-		public static string HomeLocation { get; } = &quot;HomeLocation&quot;;
+        ///&lt;Summary&gt;Parameter: HomeLocation &lt;/Summary&gt;
+        public static string HomeLocation { get; } = &quot;HomeLocation&quot;;
 
-		///&lt;Summary&gt;Parameter: Street number of home location &lt;/Summary&gt;
-		public static string StreetNumber { get; } = &quot;StreetNumber&quot;;
+        ///&lt;Summary&gt;Parameter: Street number of home location &lt;/Summary&gt;
+        public static string StreetNumber { get; } = &quot;StreetNumber&quot;;
 
-		///&lt;Summary&gt;Parameter: Street name of home location &lt;/Summary&gt;
-		public static string SteetName { get; } = &quot;SteetName&quot;;
+        ///&lt;Summary&gt;Parameter: Street name of home location &lt;/Summary&gt;
+        public static string SteetName { get; } = &quot;SteetName&quot;;
 
-		///&lt;Summary&gt;Parameter: City of home location &lt;/Summary&gt;
-		public static string City { get; } = &quot;City&quot;;
+        ///&lt;Summary&gt;Parameter: City of home location &lt;/Summary&gt;
+        public static string City { get; } = &quot;City&quot;;
 
-		///&lt;Summary&gt;Parameter: Post code of home location &lt;/Summary&gt;
-		public static string PostCode { get; } = &quot;PostCode&quot;;
+        ///&lt;Summary&gt;Parameter: Post code of home location &lt;/Summary&gt;
+        public static string PostCode { get; } = &quot;PostCode&quot;;
 
-		///&lt;Summary&gt;Parameter: Region, State or Province of home location &lt;/Summary&gt;
-		public static string Region { get; } = &quot;Region&quot;;
+        ///&lt;Summary&gt;Parameter: Region, State or Province of home location &lt;/Summary&gt;
+        public static string Region { get; } = &quot;Region&quot;;
 
-		///&lt;Summary&gt;Parameter: Name of the country &lt;/Summary&gt;
-		public static string Country { get; } = &quot;Country&quot;;
+        ///&lt;Summary&gt;Parameter: Name of the country &lt;/Summary&gt;
+        public static string Country { get; } = &quot;Country&quot;;
 
-		///&lt;Summary&gt;Parameter: HomeDetails &lt;/Summary&gt;
-		public static string HomeDetails { get; } = &quot;HomeDetails&quot;;
+        ///&lt;Summary&gt;Parameter: HomeDetails &lt;/Summary&gt;
+        public static string HomeDetails { get; } = &quot;HomeDetails&quot;;
 
-		///&lt;Summary&gt;Parameter: Type of home, possible values: appartment, house &lt;/Summary&gt;
-		public static string HomeType { get; } = &quot;HomeType&quot;;
+        ///&lt;Summary&gt;Parameter: Type of home, possible values: appartment, house &lt;/Summary&gt;
+        public static string HomeType { get; } = &quot;HomeType&quot;;
 
-		///&lt;Summary&gt;Parameter: Number of rooms. Possible values: 1, 2, 3, 4, 5 (more than 5 rooms, use 5) &lt;/Summary&gt;
-		public static string NumberOfRoom { get; } = &quot;NumberOfRoom&quot;;
+        ///&lt;Summary&gt;Parameter: Number of rooms. Possible values: 1, 2, 3, 4, 5 (more than 5 rooms, use 5) &lt;/Summary&gt;
+        public static string NumberOfRoom { get; } = &quot;NumberOfRoom&quot;;
 
-		///&lt;Summary&gt;Parameter: the surface of home in sqr meters &lt;/Summary&gt;
-		public static string HomeSurface { get; } = &quot;HomeSurface&quot;;
+        ///&lt;Summary&gt;Parameter: the surface of home in sqr meters &lt;/Summary&gt;
+        public static string HomeSurface { get; } = &quot;HomeSurface&quot;;
 
-		///&lt;Summary&gt;Parameter: Apartement only parameters &lt;/Summary&gt;
-		public static string ApartementDetails { get; } = &quot;ApartementDetails&quot;;
+        ///&lt;Summary&gt;Parameter: Apartement only parameters &lt;/Summary&gt;
+        public static string ApartementDetails { get; } = &quot;ApartementDetails&quot;;
 
-		///&lt;Summary&gt;Parameter: Total number of floors of the building &lt;/Summary&gt;
-		public static string ApptTotalFloors { get; } = &quot;ApptTotalFloors&quot;;
+        ///&lt;Summary&gt;Parameter: Total number of floors of the building &lt;/Summary&gt;
+        public static string ApptTotalFloors { get; } = &quot;ApptTotalFloors&quot;;
 
-		///&lt;Summary&gt;Parameter: Floor number of my appartment &lt;/Summary&gt;
-		public static string ApptMyFloors { get; } = &quot;ApptMyFloors&quot;;
+        ///&lt;Summary&gt;Parameter: Floor number of my appartment &lt;/Summary&gt;
+        public static string ApptMyFloors { get; } = &quot;ApptMyFloors&quot;;
 
-		///&lt;Summary&gt;Parameter: If the building as an elevator &lt;/Summary&gt;
-		public static string ApptHasElevator { get; } = &quot;ApptHasElevator&quot;;
+        ///&lt;Summary&gt;Parameter: If the building as an elevator &lt;/Summary&gt;
+        public static string ApptHasElevator { get; } = &quot;ApptHasElevator&quot;;
 
-		///&lt;Summary&gt;Parameter: House only parameters &lt;/Summary&gt;
-		public static string HouseDetails { get; } = &quot;HouseDetails&quot;;
+        ///&lt;Summary&gt;Parameter: House only parameters &lt;/Summary&gt;
+        public static string HouseDetails { get; } = &quot;HouseDetails&quot;;
 
-		///&lt;Summary&gt;Parameter: Total number of floors of the house &lt;/Summary&gt;
-		public static string HouseFloors { get; } = &quot;HouseFloors&quot;;
+        ///&lt;Summary&gt;Parameter: Total number of floors of the house &lt;/Summary&gt;
+        public static string HouseFloors { get; } = &quot;HouseFloors&quot;;
 
-		///&lt;Summary&gt;Parameter: the surface of backyard in sqr meters &lt;/Summary&gt;
-		public static string BackyardSurface { get; } = &quot;BackyardSurface&quot;;
+        ///&lt;Summary&gt;Parameter: the surface of backyard in sqr meters &lt;/Summary&gt;
+        public static string BackyardSurface { get; } = &quot;BackyardSurface&quot;;
 
-		///&lt;Summary&gt;Parameter: If the house has a swimming pool &lt;/Summary&gt;
-		public static string HasSwimmingPool { get; } = &quot;HasSwimmingPool&quot;;
+        ///&lt;Summary&gt;Parameter: If the house has a swimming pool &lt;/Summary&gt;
+        public static string HasSwimmingPool { get; } = &quot;HasSwimmingPool&quot;;
 
-		///&lt;Summary&gt;Parameter: Antecedents &lt;/Summary&gt;
-		public static string Antecedents { get; } = &quot;Antecedents&quot;;
+        ///&lt;Summary&gt;Parameter: Antecedents &lt;/Summary&gt;
+        public static string Antecedents { get; } = &quot;Antecedents&quot;;
 
-		///&lt;Summary&gt;Parameter: If there are accidents declared &lt;/Summary&gt;
-		public static string HasAntecedents { get; } = &quot;HasAntecedents&quot;;
+        ///&lt;Summary&gt;Parameter: If there are accidents declared &lt;/Summary&gt;
+        public static string HasAntecedents { get; } = &quot;HasAntecedents&quot;;
 
-		///&lt;Summary&gt;Parameter: Type of the accident, possible values: Vandalism, Fire, Floor &lt;/Summary&gt;
-		public static string AccidentType { get; } = &quot;AccidentType&quot;;
+        ///&lt;Summary&gt;Parameter: Type of the accident, possible values: Vandalism, Fire, Floor &lt;/Summary&gt;
+        public static string AccidentType { get; } = &quot;AccidentType&quot;;
 
-		///&lt;Summary&gt;Parameter: Date of the accident &lt;/Summary&gt;
-		public static string AccidentDate { get; } = &quot;AccidentDate&quot;;
+        ///&lt;Summary&gt;Parameter: Date of the accident &lt;/Summary&gt;
+        public static string AccidentDate { get; } = &quot;AccidentDate&quot;;
 
-		///&lt;Summary&gt;Parameter: If the home owner is responsible for the accident &lt;/Summary&gt;
-		public static string AccidentResponsability { get; } = &quot;AccidentResponsability&quot;;
+        ///&lt;Summary&gt;Parameter: If the home owner is responsible for the accident &lt;/Summary&gt;
+        public static string AccidentResponsability { get; } = &quot;AccidentResponsability&quot;;
 
-		///&lt;Summary&gt;Parameter: Offer &lt;/Summary&gt;
-		public static string Offer { get; } = &quot;Offer&quot;;
+        ///&lt;Summary&gt;Parameter: Offer &lt;/Summary&gt;
+        public static string Offer { get; } = &quot;Offer&quot;;
 
-		///&lt;Summary&gt;Parameter: Choose the offer, Economic, Balanced or Optimized &lt;/Summary&gt;
-		public static string OfferType { get; } = &quot;OfferType&quot;;
+        ///&lt;Summary&gt;Parameter: Choose the offer, Economic, Balanced or Optimized &lt;/Summary&gt;
+        public static string OfferType { get; } = &quot;OfferType&quot;;
 
-		///&lt;Summary&gt;Parameter: If the option 24x7 is selected: yes, no &lt;/Summary&gt;
-		public static string Option24x7 { get; } = &quot;Option24x7&quot;;
+        ///&lt;Summary&gt;Parameter: If the option 24x7 is selected: yes, no &lt;/Summary&gt;
+        public static string Option24x7 { get; } = &quot;Option24x7&quot;;
 
-		///&lt;Summary&gt;Parameter: If annual payment is selected: yes, no &lt;/Summary&gt;
-		public static string OptionAnnualPayment { get; } = &quot;OptionAnnualPayment&quot;;
+        ///&lt;Summary&gt;Parameter: If annual payment is selected: yes, no &lt;/Summary&gt;
+        public static string OptionAnnualPayment { get; } = &quot;OptionAnnualPayment&quot;;
 
-		///&lt;Summary&gt;Parameter: If provided, verify the amount of balanced offer &lt;/Summary&gt;
-		public static string VerifyAmountBalanced { get; } = &quot;VerifyAmountBalanced&quot;;
+        ///&lt;Summary&gt;Parameter: If provided, verify the amount of balanced offer &lt;/Summary&gt;
+        public static string VerifyAmountBalanced { get; } = &quot;VerifyAmountBalanced&quot;;
 
-		///&lt;Summary&gt;Parameter: ValidateAndSign &lt;/Summary&gt;
-		public static string ValidateAndSign { get; } = &quot;ValidateAndSign&quot;;
+        ///&lt;Summary&gt;Parameter: ValidateAndSign &lt;/Summary&gt;
+        public static string ValidateAndSign { get; } = &quot;ValidateAndSign&quot;;
 
-		///&lt;Summary&gt;Parameter: If customer will sign the contract digitally, otherwise the contract will be printed. &lt;/Summary&gt;
-		public static string DigitalSign { get; } = &quot;DigitalSign&quot;;
+        ///&lt;Summary&gt;Parameter: If customer will sign the contract digitally, otherwise the contract will be printed. &lt;/Summary&gt;
+        public static string DigitalSign { get; } = &quot;DigitalSign&quot;;
 
-	}
+    }
 
 }
 </code></pre></section>
@@ -354,7 +348,7 @@ namespace Samples.DataDriven.Actions
             login.Password.SetValue(GetParameter(ParameterList.Password));
             Screenshot();
             RunAccessibilityTest(&quot;Login&quot;);
-            login.ButtonLogin.Click();            
+            login.ButtonLogin.Click();
         }
 
         // Verifies if this action goes well.
@@ -461,7 +455,7 @@ namespace Samples.DataDriven.Actions
 
             // If the data provided by antecedent, there is nothing else to do.
             // otherwise, fill the details of the antecedent.
-            if(antecedent == &quot;yes&quot;)
+            if (antecedent == &quot;yes&quot;)
             {
                 model.AntecedentType.SelectByText(GetParameter(ParameterList.AccidentType));
                 model.AntecedentDate.SendKeys(GetParameter(ParameterList.AccidentDate));
@@ -638,6 +632,9 @@ This can be done exclusively within Excel without the need to motify the code or
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/data-driven-cs.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -324,11 +324,11 @@ namespace AxaFrance.WebEngine.Web
             if (driver is AppiumDriver ad)
             {
                 var touch = new Actions(driver);
-                touch.ClickAndHold(e).Pause(new TimeSpan(0,0,2)).Click();
+                touch.ClickAndHold(e).Pause(new TimeSpan(0, 0, 2)).Click();
             }
             else
             {
-                
+
                 Actions act = new Actions(driver);
                 act.MoveToElement(e).ContextClick(e).Build().Perform();
             }
@@ -580,30 +580,30 @@ namespace AxaFrance.WebEngine.Web
             switch (attr.How)
             {
                 case How.Id:
-                    if(Id==null) Id = attr.Using;
+                    if (Id == null) Id = attr.Using;
                     break;
                 case How.Name:
-                    if(Name==null) Name = attr.Using;
+                    if (Name == null) Name = attr.Using;
                     break;
                 case How.TagName:
-                    if(TagName==null) TagName = attr.Using;
+                    if (TagName == null) TagName = attr.Using;
                     break;
                 case How.ClassName:
-                    if(ClassName==null) ClassName = attr.Using;
+                    if (ClassName == null) ClassName = attr.Using;
                     break;
                 case How.LinkText:
                 case How.PartialLinkText:
-                    if (LinkText==null) LinkText = attr.Using;
+                    if (LinkText == null) LinkText = attr.Using;
                     break;
                 case How.CssSelector:
-                    if(CssSelector==null) CssSelector = attr.Using;
+                    if (CssSelector == null) CssSelector = attr.Using;
                     break;
                 case How.XPath:
-                    if(XPath==null) XPath = attr.Using;
+                    if (XPath == null) XPath = attr.Using;
                     break;
                 case How.Custom:
                 default:
-                    throw new NotSupportedException("FindsByAttribute does not support Custom yet.");                
+                    throw new NotSupportedException("FindsByAttribute does not support Custom yet.");
             }
         }
     }

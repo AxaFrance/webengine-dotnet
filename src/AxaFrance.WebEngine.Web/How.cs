@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AxaFrance.WebEngine.Web
+﻿namespace AxaFrance.WebEngine.Web
 {
     /// <summary>
     /// Provides the lookup methods for the FindsBy attribute (for using in PageObjects)

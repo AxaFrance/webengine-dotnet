@@ -1,14 +1,11 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Security;
 using System.Xml.Serialization;
 
 [assembly: InternalsVisibleTo("WebRunner")]
@@ -38,7 +35,7 @@ namespace AxaFrance.WebEngine
         /// The directory where the test framework will write the logs. WebEngine will generate a consolated report for the whole execution and may generate detailed report for teach test case.
         /// </summary>
 
-        public string LogDir { get; set; } 
+        public string LogDir { get; set; }
 
 
         /// <summary>
@@ -51,7 +48,8 @@ namespace AxaFrance.WebEngine
         /// </summary>
         public Dictionary<string, object> Capabilities { get; set; }
 
-        private Settings() {
+        private Settings()
+        {
             string appconfig = Path.Combine(new FileInfo(typeof(Settings).Assembly.Location).DirectoryName, "appsettings.json");
             DebugLogger.WriteLine($"Search configuration file '{appconfig}'");
             if (File.Exists(appconfig))
@@ -59,7 +57,7 @@ namespace AxaFrance.WebEngine
                 DebugLogger.WriteLine("Load test parameters from configuration file `appsettings.json`");
                 string content = File.ReadAllText(appconfig);
                 var settings = Newtonsoft.Json.JsonConvert.DeserializeObject(content) as Newtonsoft.Json.Linq.JObject;
-               
+
                 if (settings.ContainsKey("LogDir"))
                 {
                     this.LogDir = settings.Value<string>("LogDir");
@@ -112,9 +110,9 @@ namespace AxaFrance.WebEngine
                 {
                     Capabilities = new Dictionary<string, object>();
                     var kv = settings.GetValue("Capabilities");
-                    if(kv != null && kv is Newtonsoft.Json.Linq.JObject caps)
+                    if (kv != null && kv is Newtonsoft.Json.Linq.JObject caps)
                     {
-                        foreach(var cap in caps.Properties())
+                        foreach (var cap in caps.Properties())
                         {
                             var name = cap.Name;
                             var v = cap.Value;
@@ -160,7 +158,7 @@ namespace AxaFrance.WebEngine
 
         }
 
-        
+
         /// <summary>
         /// Get a list of browser options according to current selected browser <see cref="Browser"/> loaded from appsettings.json
         /// </summary>
@@ -187,7 +185,7 @@ namespace AxaFrance.WebEngine
                 }
                 if (source != null)
                 {
-                    foreach(var option in source)
+                    foreach (var option in source)
                     {
                         options.Add(option.ToString());
                     }
@@ -247,7 +245,7 @@ namespace AxaFrance.WebEngine
         /// [MobileApp Only] Optional. The application package name used to test Mobile Applications, for example: fr.AxaFrance.customermgmt
         /// </summary>
         public string AppPackageName { get; set; }
-        
+
         /// <summary>
         /// When testing Mobile Application, This url is used to upload app packages such as APK or IPA. The upload method is implemented according to cloud provider based on this url.
         /// </summary>
@@ -310,12 +308,12 @@ namespace AxaFrance.WebEngine
         /// The filename of the data source.
         /// </summary>
         public string DataSourceName { get; set; }
-        
+
         /// <summary>
         /// If webrunner should try to show test report after test execution.
         /// </summary>
         public bool ShowReportAfterTest { get; set; }
-        
+
         /// <summary>
         /// The CSV Seperator used during the data process. default value is semicolon (;)
         /// </summary>
@@ -325,12 +323,12 @@ namespace AxaFrance.WebEngine
         /// Allow any HTTPS Certificate when creating Selenium Grid connection.
         /// </summary>
         public bool AllowAnyCertificate { get; set; }
-        
+
         /// <summary>
         /// Active JavaScript Click. Mainly used for SafariDriver and Mobile Chrome based driver because native click may not work.
         /// </summary>
         public bool UseJavaScriptClick { get; internal set; }
-        
+
         /// <summary>
         /// BrowserVersion to be used for Web Tests,
         /// </summary>

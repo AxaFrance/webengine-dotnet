@@ -1,10 +1,7 @@
 ﻿using Deque.AxeCore.Commons;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -14,7 +11,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
     /// <remarks>
     /// On a complete audit of an application, the test should be performed on all pages.
     /// </remarks>
-    public class AxePageResult: BaseResult
+    public class AxePageResult : BaseResult
     {
 
         /// <summary>
@@ -125,7 +122,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             int passeScore = 0;
             var mode = Builder.Options.ScoringMode;
 
-            
+
             foreach (var violation in this.Violations)
             {
                 switch (mode)
@@ -137,13 +134,13 @@ namespace AxaFrance.AxeExtended.HtmlReport
                         violationScore += 1;
                         break;
                     case ScoringMode.WeightedOccurence:
-                        violationScore += ScorePerImpact(violation.Item) * violation.Nodes.Length; 
+                        violationScore += ScorePerImpact(violation.Item) * violation.Nodes.Length;
                         break;
                 }
             }
             foreach (var passed in this.Passes)
             {
-                if(this.Violations.FirstOrDefault(x=>x.Item.Id == passed.Item.Id) != null)
+                if (this.Violations.FirstOrDefault(x => x.Item.Id == passed.Item.Id) != null)
                 {
                     //In this case, there are elements passed but other elements faied the.
                     //we don't count check passed
@@ -164,7 +161,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 }
             }
             Scorebase = passeScore + violationScore;
-            if(Scorebase == 0)
+            if (Scorebase == 0)
             {
                 return 0;
             }

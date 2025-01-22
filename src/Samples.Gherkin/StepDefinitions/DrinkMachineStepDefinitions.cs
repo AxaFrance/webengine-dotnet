@@ -41,7 +41,7 @@ namespace Samples.Gherkin.StepDefinitions
             TestSuiteReport tsr = new TestSuiteReport();
             tsr.TestResult.Add(tcr);
             var filename = tsr.SaveAs(Path.GetRandomFileName(), "test-report", false);
-           Console.WriteLine($"Report saved to {filename}");
+            Console.WriteLine($"Report saved to {filename}");
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Samples.Gherkin.StepDefinitions
                 Title = "Drink Machine Accessibility",
                 OutputFormat = OutputFormat.Zip,
             });
-            
+
             TestCaseReport tcr = new TestCaseReport()
             {
                 TestName = _scenarioContext.ScenarioInfo.Title,
@@ -79,7 +79,7 @@ namespace Samples.Gherkin.StepDefinitions
 
         [Given(@"I turn on the drink machine")]
         public void GivenITurnOnTheDrinkMachine()
-        {            
+        {
             driver.Navigate().GoToUrl("https://webengine-test.azurewebsites.net/Step1.html");
         }
 

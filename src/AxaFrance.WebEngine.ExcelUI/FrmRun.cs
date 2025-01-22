@@ -1,19 +1,8 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using AxaFrance.WebEngine;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Management;
-using System.ServiceModel;
-using System.ServiceModel.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AxaFrance.WebEngine.ExcelUI
@@ -39,15 +28,16 @@ namespace AxaFrance.WebEngine.ExcelUI
                 return;
             };
 
-            
+
             BrowserType browser = GetSelectedBrowser(out string platform, out string appid, out string device);
             Ribbon.Settings.Browser = browser;
             string parameters = BuildParameter(browser, assembly, platform, device, appid);
-            
 
-            bool success= DetermineWebRunner(parameters, out string commandline, out string param);
 
-            if (success) {
+            bool success = DetermineWebRunner(parameters, out string commandline, out string param);
+
+            if (success)
+            {
                 System.Diagnostics.Process p = new System.Diagnostics.Process()
                 {
                     StartInfo = new System.Diagnostics.ProcessStartInfo()
@@ -112,7 +102,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             {
                 //Not .Net version/
                 f = di.GetFiles("WebRunner.jar");
-                if(f == null || f.Length == 0)
+                if (f == null || f.Length == 0)
                 {
                     MessageBox.Show($"WebRunner.exe or WebRunner.jar is not found in the given folder:\n{Ribbon.Settings.WebRunnerPath}\nPlease configure correctly in Settings.");
                     Ribbon.SaveSettings();
@@ -131,7 +121,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             else
             {
                 param = parameters;
-                commandline =  "WebRunner.exe";
+                commandline = "WebRunner.exe";
                 return true;
             }
         }
@@ -245,7 +235,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                     break;
             }
 
-            if(Ribbon.Settings.Device != null && Ribbon.Settings.Browser == BrowserType.Chrome)
+            if (Ribbon.Settings.Device != null && Ribbon.Settings.Browser == BrowserType.Chrome)
             {
                 rbChromeAndroid.Checked = true;
             }

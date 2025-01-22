@@ -1,21 +1,18 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
-using AxaFrance.WebEngine.Report;
 using AxaFrance.AxeExtended.HtmlReport;
-using Deque.AxeCore.Selenium;
+using AxaFrance.WebEngine.Report;
+using Newtonsoft.Json;
 using OpenQA.Selenium;
 using System;
-using System.Configuration;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Threading;
-using OpenQA.Selenium.BiDi.Communication;
-using System.Diagnostics;
 using System.Linq;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Text;
+using System.Threading;
 
 namespace AxaFrance.WebEngine.Web
 {

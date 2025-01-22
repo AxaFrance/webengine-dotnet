@@ -18,7 +18,7 @@ namespace Samples.DataDriven.Actions
             login.Password.SetValue(GetParameter(ParameterList.Password));
             Screenshot();
             RunAccessibilityTest("Login");
-            login.ButtonLogin.Click();            
+            login.ButtonLogin.Click();
         }
 
         // Verifies if this action goes well.

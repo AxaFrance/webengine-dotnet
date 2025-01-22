@@ -1,5 +1,4 @@
-﻿using AxaFrance.WebEngine.MobileApp;
-using AxaFrance.WebEngine.Web;
+﻿using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
 
 namespace WebEngine.Test.UnitTests

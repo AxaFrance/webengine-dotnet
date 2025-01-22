@@ -38,7 +38,7 @@ namespace Samples.DataDriven.Actions
 
             RunAccessibilityTest("Offer");
             this.Screenshot("screenshot for selected offer and option");
-            
+
         }
 
         public override bool DoCheckpoint()
@@ -51,7 +51,7 @@ namespace Samples.DataDriven.Actions
             {
                 ContextValues.AddItem("Expected Price", expectedPrice);
                 ContextValues.AddItem("Actual Price", actualPrice);
-                
+
                 if (actualPrice.Contains(expectedPrice))
                 {
                     //verification is passed

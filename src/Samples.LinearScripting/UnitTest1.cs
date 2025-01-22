@@ -5,7 +5,7 @@ using AxaFrance.WebEngine.Web;
 namespace Samples.LinearScripting
 {
     [TestClass]
-    public class UnitTest1 
+    public class UnitTest1
     {
         //WebDriver object will be used for each test case.
         OpenQA.Selenium.WebDriver? driver = null;

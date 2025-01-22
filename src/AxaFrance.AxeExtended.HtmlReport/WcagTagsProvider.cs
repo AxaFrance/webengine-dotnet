@@ -1,9 +1,5 @@
 ﻿using Deque.AxeCore.Commons;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -13,7 +9,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         {
             foreach (var tag in rule.Tags)
             {
-                if(tag.StartsWith("wcag"))
+                if (tag.StartsWith("wcag"))
                 {
                     yield return tag;
                 }

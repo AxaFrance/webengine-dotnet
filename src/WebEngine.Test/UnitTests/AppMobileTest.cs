@@ -4,13 +4,8 @@
 using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.MobileApp;
 using AxaFrance.WebEngine.Report;
-using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebEngine.Test.UnitTests
 {
@@ -27,7 +22,7 @@ namespace WebEngine.Test.UnitTests
 
             TestSuiteApp app = new TestSuiteApp();
             Settings settings = Settings.Instance;
-            settings.AppId = "bs://e431031f604644eab52611190ccb96da80744c87";
+            settings.AppId = "TestData\\ApiDemos-debug.apk";
             settings.Platform = Platform.Android;
             settings.Browser = BrowserType.AndroidNative;
             settings.Device = "Xiaomi Redmi Note 11";
@@ -56,7 +51,8 @@ namespace WebEngine.Test.UnitTests
             var settings = Settings.Instance;
             settings.GridServerUrl = "http://localhost:4723/wd/hub";
             settings.AppId = "TestData\\ApiDemos-debug.apk";
-            using(var driver = AppFactory.GetDriver(Platform.Android)){
+            using (var driver = AppFactory.GetDriver(Platform.Android))
+            {
 
                 MyModel m = new MyModel(driver);
                 m.menuViews.Click();

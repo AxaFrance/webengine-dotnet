@@ -65,7 +65,7 @@ jobs:
       run: |
         if("${{github.base_ref}}".Contains("main")) { $suffix = "" } else { $suffix = "-preview" }
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"AxaGuilDEv_webengine-dotnet" /o:"axaguildev" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-        dotnet build "./src" --no-restore --configuration Debug -p:AssemblyVersion=1.2.${{github.run_number}} -p:Version=1.2.${{github.run_number}}$suffix 
+        dotnet build "./src" --no-restore --configuration Debug -p:AssemblyVersion=1.2.${{github.run_number}} -p:Version=1.2.${{github.run_number}}-$suffix 
         dotnet-coverage collect 'dotnet test "./src/WebEngine.Test" --filter TestCategory!=Mobile' -f xml  -o 'coverage.xml'
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"     
     

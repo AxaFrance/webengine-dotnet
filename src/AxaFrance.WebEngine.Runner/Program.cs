@@ -5,7 +5,6 @@ using AxaFrance.WebEngine.Report;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 
 namespace AxaFrance.WebEngine.Runner
 {
@@ -19,7 +18,7 @@ namespace AxaFrance.WebEngine.Runner
             }
             else
             {
-                
+
                 if (args[0].Equals("-encrypt"))
                 {
                     Settings settings1 = Settings.Instance;

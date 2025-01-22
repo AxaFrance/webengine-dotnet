@@ -3,12 +3,9 @@
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AxaFrance.WebEngine.ExcelUI
@@ -20,10 +17,10 @@ namespace AxaFrance.WebEngine.ExcelUI
             InitializeComponent();
 
             //Select parameters listed in PARAMS but not used in TestCase
-            var paramsNotInTest = parameters.Where(x=> !testParameters.Contains(x));
+            var paramsNotInTest = parameters.Where(x => !testParameters.Contains(x));
 
             //Select parameters used in TestCase but not listed in PARAMS.
-            var paramsNotRefered = testParameters.Where(x=> ! parameters.Contains(x));
+            var paramsNotRefered = testParameters.Where(x => !parameters.Contains(x));
             var duplicateKeys = from x in testcases group x by x into grouped where grouped.Count() > 1 select grouped.Key;
 
             StringBuilder problems = new StringBuilder();

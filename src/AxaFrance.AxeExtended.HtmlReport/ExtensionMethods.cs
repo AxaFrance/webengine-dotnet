@@ -1,10 +1,8 @@
 ﻿using Deque.AxeCore.Commons;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -21,13 +19,13 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// <returns>The impact value</returns>
         public static string GetImpact(this AxeResultItem item)
         {
-            
+
             var impact = item.Impact;
             if (impact == null)
             {
                 impact = item.Nodes.FirstOrDefault()?.Impact;
             }
-            if(impact == null)
+            if (impact == null)
             {
                 impact = item.Nodes.FirstOrDefault()?.All.FirstOrDefault()?.Impact;
             }
@@ -53,19 +51,19 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 switch (lang)
                 {
                     case Language.French:
-                        locale = PageReportBuilder.GetRessource("report-fr.json");
+                        locale = PageReportBuilder.GetResource("report-fr.json");
                         break;
                     case Language.Spanish:
-                        locale = PageReportBuilder.GetRessource("report-es.json");
+                        locale = PageReportBuilder.GetResource("report-es.json");
                         break;
                     case Language.German:
-                        locale = PageReportBuilder.GetRessource("report-de.json");
+                        locale = PageReportBuilder.GetResource("report-de.json");
                         break;
                     case Language.SimplifiedChinese:
-                        locale = PageReportBuilder.GetRessource("report-zhcn.json");
+                        locale = PageReportBuilder.GetResource("report-zhcn.json");
                         break;
                     default:
-                        locale = PageReportBuilder.GetRessource("report-en.json");
+                        locale = PageReportBuilder.GetResource("report-en.json");
                         break;
 
                 }

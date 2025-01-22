@@ -1,10 +1,6 @@
 ﻿using Deque.AxeCore.Commons;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
@@ -26,8 +22,8 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// Title of the application showing in the report
         /// </summary>
         public string Title { get; internal set; }
-        
-        
+
+
         /// <summary>
         /// The time when the report is generated
         /// </summary>
@@ -80,7 +76,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
 
             int passed = 0;
             int overall = 0;
-            foreach(var key in overallResults.Keys)
+            foreach (var key in overallResults.Keys)
             {
                 int impact = rulePoints[key];
                 if (overallResults[key] == ResultType.Passes)
@@ -89,7 +85,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
                 }
                 overall += impact;
             }
-            if(overall == 0)
+            if (overall == 0)
             {
                 //to avoir division by zero
                 return 0;
