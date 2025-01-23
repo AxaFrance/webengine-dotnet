@@ -9,7 +9,34 @@ details; you just need to enable the feature and use the provided API to get the
 
 
 ## How to activate resource usage tracing?
+### Using Gherkin approach
+Using Gherkin, you need to activate Traffic Monitoring before the first action on the target application and stop monitoring after the last action.
 
+> [!NOTE]
+> Web pages may take time to load HTML documents and resources (such as images and scripts) requested by HTML and XHR.
+> Please wait until all user interactions are finished before stopping the traffic monitoring,
+> or the monitoring report may contain missing items.
+
+To start monitoring, you’ll need to run the following code
+
+```csharp
+var usageReport = BrowserFactory.StartMonitoring(driver);
+```
+After all user interactions, use following code to stop monitoring
+```csharp
+usageReport.StopMonitoring();
+```
+
+#### Attach usage monitoring result to Test Report
+Assuming you have the instance of TestCaseReport named tcReport, the following code will attach it to test report.
+```csharp
+tcr.Attach(usageReport, GlobalConstants.ResourceUsageReport);
+```
+
+
+
+
+### Using keyword driven approach
 Resource usage tracing is enabled at the test case level. The flag is defined at
 <xref:AxaFrance.WebEngine.Web.TestCaseWeb.MeasureResourceUsage>. When the flag is enabled before test execution, the framework
 will start a network interceptor and save information of all incoming and outgoing traffic in the report.

@@ -75,6 +75,20 @@ web server. This feature is useful for measuring the environmental impact of you
 communication and resource usage. However, when using the WebEngine Framework, you don&#39;t need to worry about the technical
 details; you just need to enable the feature and use the provided API to get the information you need.</p>
 <h2 id="how-to-activate-resource-usage-tracing">How to activate resource usage tracing?</h2>
+<h3 id="using-gherkin-approach">Using Gherkin approach</h3>
+<p>Using Gherkin, you need to activate Traffic Monitoring before the first action on the target application and stop monitoring after the last action.</p>
+<div class="NOTE"><h5>Note</h5><p>Web pages may take time to load HTML documents and resources (such as images and scripts) requested by HTML and XHR.
+Please wait until all user interactions are finished before stopping the traffic monitoring,
+or the monitoring report may contain missing items.</p>
+</div>
+<p>To start monitoring, you�ll need to run the following code</p>
+<pre><code class="lang-csharp">var usageReport = BrowserFactory.StartMonitoring(driver);
+</code></pre><p>After all user interactions, use following code to stop monitoring</p>
+<pre><code class="lang-csharp">usageReport.StopMonitoring();
+</code></pre><h4 id="attach-usage-monitoring-result-to-test-report">Attach usage monitoring result to Test Report</h4>
+<p>Assuming you have the instance of TestCaseReport named tcReport, the following code will attach it to test report.</p>
+<pre><code class="lang-csharp">tcr.Attach(usageReport, GlobalConstants.ResourceUsageReport);
+</code></pre><h3 id="using-keyword-driven-approach">Using keyword driven approach</h3>
 <p>Resource usage tracing is enabled at the test case level. The flag is defined at
 <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MeasureResourceUsage">MeasureResourceUsage</a>. When the flag is enabled before test execution, the framework
 will start a network interceptor and save information of all incoming and outgoing traffic in the report.</p>
@@ -120,6 +134,9 @@ optimize.</li>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/env-impact.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
