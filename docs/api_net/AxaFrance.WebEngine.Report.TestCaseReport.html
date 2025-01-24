@@ -126,11 +126,12 @@ public class TestCaseReport</code></pre>
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestCaseReport_AttachedData.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestCaseReport.AttachedData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestCaseReport.cs/#L121">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestCaseReport.cs/#L138">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Report_TestCaseReport_AttachedData_" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.AttachedData*"></a>
   <h4 id="AxaFrance_WebEngine_Report_TestCaseReport_AttachedData" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.AttachedData">AttachedData</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Additional data attached to the test report. for example: accessibility scan results, resource usage report, etc...</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -496,6 +497,46 @@ public class TestCaseReport</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestCaseReport_Attach_System_Object_System_String_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestCaseReport.Attach(System.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestCaseReport.cs/#L126">View Source</a>
+  </span>
+  <a id="AxaFrance_WebEngine_Report_TestCaseReport_Attach_" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.Attach*"></a>
+  <h4 id="AxaFrance_WebEngine_Report_TestCaseReport_Attach_System_Object_System_String_" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.Attach(System.Object,System.String)">Attach(Object, String)</h4>
+  <div class="markdown level1 summary"><p>Attach an object to the test report</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Attach(object o, string fileType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">o</span></td>
+        <td><p>object to attach, the object will be serialized as json</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileType</span></td>
+        <td><p>the type of the file, possible values: AccessibilityReport, ResourceUsage</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -503,7 +544,7 @@ public class TestCaseReport</code></pre>
   </span>
   <a id="AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.AttachFile*"></a>
   <h4 id="AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_System_String_System_String_" data-uid="AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String,System.String)">AttachFile(String, String)</h4>
-  <div class="markdown level1 summary"><p>Attach a external file to the test report.</p>
+  <div class="markdown level1 summary"><p>Attach an external file to the test report.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -529,7 +570,7 @@ public class TestCaseReport</code></pre>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fileType</span></td>
-        <td><p>the type of the file, possible values: AccessibilityReport</p>
+        <td><p>the type of the file, possible values: AccessibilityReport, ResourceUsage</p>
 </td>
       </tr>
     </tbody>

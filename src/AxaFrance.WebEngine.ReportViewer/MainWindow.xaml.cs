@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-1 10:22
 using AxaFrance.WebEngine.Report;
-using AxaFrance.WebEngine.Web;
 using Hummingbird.UI;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
@@ -154,9 +153,9 @@ namespace AxaFrance.WebEngine.ReportViewer
                 FillActionReports(tc);
             }
 
-            if (tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport") != null)
+            if (tc.AttachedData.FirstOrDefault(x => x.Name == GlobalConstants.AccessibilityReport) != null)
             {
-                var data = tc.AttachedData.FirstOrDefault(x => x.Name == "AccessibilityReport")?.Value;
+                var data = tc.AttachedData.FirstOrDefault(x => x.Name == GlobalConstants.AccessibilityReport)?.Value;
                 OpenAccessibilityReport(data);
                 tabAccessibility.Visibility = Visibility.Visible;
             }
@@ -166,24 +165,30 @@ namespace AxaFrance.WebEngine.ReportViewer
                 tabControl.SelectedIndex = 0;
             }
 
-            if (tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage") != null)
+            if (tc.AttachedData.FirstOrDefault(x => x.Name == GlobalConstants.ResourceUsageReport) != null)
             {
                 tabResourceUsages.Visibility = Visibility.Visible;
-                var data = tc.AttachedData.FirstOrDefault(x => x.Name == "ResourceUsage")?.Value;
+                var data = tc.AttachedData.FirstOrDefault(x => x.Name == GlobalConstants.ResourceUsageReport)?.Value;
                 string json = System.Text.Encoding.UTF8.GetString(data);
-                var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, NetworkRequest>>(json);
-                dgImpacts.ItemsSource = resourceUsage.Values.ToArray();
-                pcUsage.Series = GetResourcesSeries(resourceUsage);
-                pcHttpCode.Series = GetHttpCodeSeries(resourceUsage);
-                lblDownloadSize.Text = GetSize(resourceUsage.Values.Where(x=>x.IsCached == false).Sum(x => x.Reponse));
-                lblTotalResources.Text = resourceUsage.Count.ToString();
+                var resourceUsage = Newtonsoft.Json.JsonConvert.DeserializeObject<ResourceUsageReport>(json);
+                if (resourceUsage != null)
+                {
+                    var networkRequests = resourceUsage.NetworkRequests;
+                    dgImpacts.ItemsSource = networkRequests.Values.ToArray();
+                    pcUsage.Series = GetResourcesSeries(networkRequests);
+                    pcHttpCode.Series = GetHttpCodeSeries(networkRequests);
+                    lblDownloadSize.Text = GetSize(networkRequests.Values.Where(x => x.IsCached == false).Sum(x => x.Reponse));
+                    lblTotalResources.Text = networkRequests.Count.ToString();
+                }
+                else
+                {
+                    tabResourceUsages.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {
                 tabResourceUsages.Visibility = Visibility.Collapsed;
             }
-
-
         }
 
         private string GetSize(long bytes)
@@ -236,7 +241,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             Dictionary<string, long> data = new Dictionary<string, long>();
             foreach (var item in resourceUsage)
             {
-                if (item.Value.IsCached) continue;
+                if (item.Value.IsCached || item.Value.ResourceType == null) continue;
                 if (data.ContainsKey(item.Value.ResourceType))
                 {
                     data[item.Value.ResourceType] += item.Value.Reponse;

@@ -30,10 +30,6 @@
     <None Remove="XmlDark.xshd" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\AxaFrance.WebEngine.Web\NetworkRequest.cs" Link="NetworkRequest.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <EmbeddedResource Include="XmlDark.xshd" />

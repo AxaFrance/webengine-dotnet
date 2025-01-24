@@ -57,6 +57,26 @@ namespace AxaFrance.WebEngine.Web
             return GetDriver(platform, browserType, new string[0]);
         }
 
+
+        /// <summary>
+        /// Start monitoring web traffics.
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <returns></returns>
+        public static ResourceUsageReport StartMonitoring(WebDriver driver)
+        {
+            return ResourceUsageReportSelenium.StartMonitoring(driver);
+        }
+
+        /// <summary>
+        /// Stop monitoring web traffics. 
+        /// </summary>
+        /// <param name="report"></param>
+        public static void StopMonitoring(ResourceUsageReport report)
+        {
+            report.StopMonitoring();
+        }
+
         /// <summary>
         /// The unique function initialize the WebDriver on the target platform and browser and returns the WebDriver, AndroidDriver or IOSDriver according to contexte.
         /// </summary>
@@ -93,10 +113,10 @@ namespace AxaFrance.WebEngine.Web
                 }
             }
 
-
-
-#if NET48_OR_GREATER || NET6_0_OR_GREATER
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+#if NET9_0_OR_GREATER
+            //do nothing, it will be added in the configuration appsettings
+#elif NET48_OR_GREATER || NET6_0_OR_GREATER
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 #else
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 #endif
