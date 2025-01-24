@@ -76,18 +76,18 @@ communication and resource usage. However, when using the WebEngine Framework, y
 details; you just need to enable the feature and use the provided API to get the information you need.</p>
 <h2 id="how-to-activate-resource-usage-tracing">How to activate resource usage tracing?</h2>
 <h3 id="using-gherkin-approach">Using Gherkin approach</h3>
-<p>Using Gherkin, you need to activate Traffic Monitoring before the first action on the target application and stop monitoring after the last action.</p>
+<p>Using Gherkin, you need to activate Traffic Monitoring BEFORE the first action on the target aWpplication and stop monitoring after the last action.</p>
 <div class="NOTE"><h5>Note</h5><p>Web pages may take time to load HTML documents and resources (such as images and scripts) requested by HTML and XHR.
 Please wait until all user interactions are finished before stopping the traffic monitoring,
 or the monitoring report may contain missing items.</p>
 </div>
-<p>To start monitoring, you�ll need to run the following code</p>
+<p>To start monitoring, you&#39;ll need to run the following code</p>
 <pre><code class="lang-csharp">var usageReport = BrowserFactory.StartMonitoring(driver);
 </code></pre><p>After all user interactions, use following code to stop monitoring</p>
 <pre><code class="lang-csharp">usageReport.StopMonitoring();
 </code></pre><h4 id="attach-usage-monitoring-result-to-test-report">Attach usage monitoring result to Test Report</h4>
-<p>Assuming you have the instance of TestCaseReport named tcReport, the following code will attach it to test report.</p>
-<pre><code class="lang-csharp">tcr.Attach(usageReport, GlobalConstants.ResourceUsageReport);
+<p>Assuming you have an instance of TestCaseReport named <code>tcReport</code>, the following code will attach it to test report.</p>
+<pre><code class="lang-csharp">tcReport.Attach(usageReport, &quot;ResourceUsage&quot;);
 </code></pre><h3 id="using-keyword-driven-approach">Using keyword driven approach</h3>
 <p>Resource usage tracing is enabled at the test case level. The flag is defined at
 <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_MeasureResourceUsage">MeasureResourceUsage</a>. When the flag is enabled before test execution, the framework
