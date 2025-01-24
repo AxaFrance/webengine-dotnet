@@ -43,6 +43,7 @@
     <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj" />
+    <ProjectReference Include="..\Samples.LinearScripting\Samples.LinearScripting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

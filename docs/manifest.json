@@ -4224,7 +4224,7 @@
           "hash": "9p/bf34McCLqon/M9vhq+R2kFjxMh7tSDy8F1S/r8bs="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4236,7 +4236,7 @@
           "hash": "0sT4oHNMOiTsbUUtIW97YzjlPFlbOxBHXDk3J1yGzco="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4260,7 +4260,31 @@
           "hash": "+aroYefgK8jxj57ivWUJ34MmWBYgoL17+G4JK7g1VEA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.GlobalConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.GlobalConstants.html",
+          "hash": "aB6dyXn1UMCWcTE8iaZycH6Qc4t5Oj9Gz57AOhPRJ24="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.JavaScriptError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.JavaScriptError.html",
+          "hash": "KLRXktZylD35gfnafpVPwQkbGvlI8MzO5DsVT30Do00="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4272,7 +4296,7 @@
           "hash": "s2AlPjDK4Fl0u8AqVshHPKuRItp03Xl0N0qTktvuJpo="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4361,6 +4385,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.NetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.NetworkRequest.html",
+          "hash": "5kESLA9OcsnOqT3VYa3tEt5A0YScyUK9T8UwrzxP1Lo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api_net/AxaFrance.WebEngine.Platform.yml",
       "output": {
         ".html": {
@@ -4368,7 +4404,7 @@
           "hash": "JQ73OTMvHefAdXu3Hoe5eht8llD1dz6lfy4S8wf20BE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4404,7 +4440,7 @@
           "hash": "3SN08ziD/iBpFGX+CrdDqFmzb+gcuUf4Rf8+JOedbBE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4416,7 +4452,7 @@
           "hash": "g+tPQ9SOiu9W+Mq2dwYFHXMe1KrZL8puKb31ezJK1fA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4428,7 +4464,7 @@
           "hash": "PgInLXYaQbUDSFXjD6r5eaEF5UGkqGG9Eb75ChrgvsM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4440,7 +4476,7 @@
           "hash": "/cPEc4LFA3uu7n+eckKRUQNxa8L3wl5ip8aginXe2pE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4452,7 +4488,7 @@
           "hash": "Av1gr4Y3veShb7ng0tMBuKFyojw+cMTEIc9zFH0y9oc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4464,7 +4500,7 @@
           "hash": "UWv4MmRoBqztK7ecWmV5PLTdALl4RdhCf1u+1NHEbBY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4476,7 +4512,7 @@
           "hash": "FoVBJDQXBHVeBxglR8Oz9yLpqExT/dp2LcAaO5YAUYI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4488,7 +4524,7 @@
           "hash": "WrxCAejR14uSfZgcx0whS9t5viFpXpIVF4lZgn4GirQ="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4500,7 +4536,7 @@
           "hash": "dHXTjGcoYlPUGtQSrWsaxWvO6gdOoO2a/76jOsiY8H0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4524,7 +4560,7 @@
           "hash": "TRineEgvjVDu98RyYQ6ErXOatP7oWK0ob0bX1NdLMHY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4533,10 +4569,10 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.Report.TestCaseReport.html",
-          "hash": "FeGmBrE+NhEyCZoNBXksvAbwJupm6yjHJ+QkSiq9ELc="
+          "hash": "8X6lv+NEMWS1+JIGuLiYu+rf1KcERWdKQFzw+8x8XnE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4548,7 +4584,7 @@
           "hash": "cNW7yiXfuZmsYuMWlvrHKLLdc6mkUcFIZgh7UUhjf44="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4577,6 +4613,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.ResourceUsageReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.ResourceUsageReport.html",
+          "hash": "03x/tmvWpE34vSPPbK36IC3F5mQ0DTgAmlaJlF/ikd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api_net/AxaFrance.WebEngine.Result.yml",
       "output": {
         ".html": {
@@ -4584,7 +4632,7 @@
           "hash": "fO+XncBR95wEbh+ThHMg++f3R53fk9pah4g2v0WA5qg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4632,7 +4680,7 @@
           "hash": "wcTGSpwrRZp7dvrwniLWBYDKe/AoiD80cJuF8mcd0TA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4644,7 +4692,7 @@
           "hash": "+4EIopBgMztdXwgn18vL0Q/yOLaP1kYB6dQ3p7vJIsU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4668,7 +4716,7 @@
           "hash": "w5WzbWTHa73cjMod70rDt5Ixf0RtDtTC2GbiK4o+R0k="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4680,7 +4728,7 @@
           "hash": "9/TrfBixiA0jO1/oJ5OSJ3aPFkHvp66DFLUg3f+8BJ0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4692,7 +4740,7 @@
           "hash": "FiPSjaQkCe0pumOJAjUAltiQsLrtv2r74qlAj3P4jbY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4701,7 +4749,7 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.Web.BrowserFactory.html",
-          "hash": "P6ASQwAFV0IV347/O+ipNkDYKG99QxZlX4vqPW7A1V8="
+          "hash": "mPy7wM4idk2ZovkWC2zLw48nBTl8OJ/En5+P8DyV6s4="
         }
       },
       "is_incremental": false,
@@ -4752,18 +4800,6 @@
           "hash": "h14oCq8Tw63df2QEIjikeevzXY5WqjuUN42fHXhEoEg="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api_net/AxaFrance.WebEngine.Web.NetworkRequest.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api_net/AxaFrance.WebEngine.Web.NetworkRequest.html",
-          "hash": "yOfX4BrELNBwx2kJK+zz9of3rwDpaU9tysXctgVs+gs="
-        }
-      },
       "is_incremental": false,
       "version": ""
     },
@@ -4774,6 +4810,18 @@
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.Web.PageModel.html",
           "hash": "cwiPgSPy9oA180EB4EEoCSem0i5wLsX4UkW8AuoSp2A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.Web.ResourceUsageReportSelenium.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.Web.ResourceUsageReportSelenium.html",
+          "hash": "dHg08yC4lr0+xSVRiStdGaTBTNSdUpY5cgGVqZRm3mA="
         }
       },
       "is_incremental": false,
@@ -4797,7 +4845,7 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html",
-          "hash": "z+b1bE9zotQI/th2uE99DIgcltKBX1a+HZHI1j1VA2I="
+          "hash": "1XubPimmq+uPV8g0TrjYSrlJ8RB0Orz7SCS945Ez1tA="
         }
       },
       "is_incremental": false,
@@ -4821,7 +4869,7 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.Web.html",
-          "hash": "fTMD79oIX2P8GnZQ9tNJY847KXjCkSKRdihKN9rM+vw="
+          "hash": "ERqcwIbebezNL06sycMUFWwRMzOwMrSA13fIxBFGHtQ="
         }
       },
       "is_incremental": false,
@@ -4836,7 +4884,7 @@
           "hash": "p1d5Jn2mVeQu6FYi9P0T73dN/n7Arb1diKAoppMrXG4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4845,7 +4893,7 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.WebEngine.html",
-          "hash": "5nJvJoPrxpJsWzExKAwmxR5t6m4LKIxJQ5+aGC3oa6M="
+          "hash": "mNZQRyjr7cpSonFjfPoX89Hq8X0VAOdxoyxdRhlIbBc="
         }
       },
       "is_incremental": false,
@@ -4857,7 +4905,7 @@
       "output": {
         ".html": {
           "relative_path": "api_net/toc.html",
-          "hash": "32caWk00gtweVzyVEFSIlAJJ+dZ2Wi3RUVQPC9etq1o="
+          "hash": "6E/rVxEIj2+QEwaWO2q8Gv6IiLOGN46Coz/HDriLOHM="
         }
       },
       "is_incremental": false,
@@ -4917,7 +4965,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/env-impact.html",
-          "hash": "2TEP1iy4yI6XSy8sSZcILKGusUDEzPfUVxwDfbFu9AE="
+          "hash": "Xp9X1NjMyWnELOkDSoycDjLwKTsrgcsQ8a8uIHMznm4="
         }
       },
       "is_incremental": false,
@@ -5037,10 +5085,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/report-viewer.html",
-          "hash": "I1u9Tt1hfV0Q/Kj/yGs84R1THqpdU21O0/A/wvKnfN8="
+          "hash": "TUmYW121YTOV6+XBBP86sGjAm/C7SOJTSJ7Fc7x1Xh4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -6846,7 +6894,7 @@
           "hash": "7nfX5Ud1Mwgng0eBKtRRnKBgpnMc5PvLBUaNCDArDsM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -6954,7 +7002,7 @@
           "hash": "+sfFABmblMY6TaS1cM85Y1OmWeZ2L8bxPHR0neWzM70="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -6966,7 +7014,7 @@
           "hash": "ASbiu7CoXfkcjBszdcpqEwwioBKGeKJGhlu3cJTWZuE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -6990,7 +7038,7 @@
           "hash": "0kfmvUPXyOgetYx+pb9BNm9aepAiYjhuzSFQ/VDIeMU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -7079,13 +7127,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 40,
-          "skipped_file_count": 35
+          "skipped_file_count": 38
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 407,
-          "skipped_file_count": 365
+          "total_file_count": 411,
+          "skipped_file_count": 401
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

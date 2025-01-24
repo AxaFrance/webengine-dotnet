@@ -105,10 +105,10 @@ namespace AxaFrance.WebEngine.Report
         public List<ActionReport> ActionReports { get; set; } = new List<ActionReport>();
 
         /// <summary>
-        /// Attach a external file to the test report.
+        /// Attach an external file to the test report.
         /// </summary>
         /// <param name="fileName">the fullpath of the file.</param>
-        /// <param name="fileType">the type of the file, possible values: AccessibilityReport</param>
+        /// <param name="fileType">the type of the file, possible values: AccessibilityReport, ResourceUsage</param>
         public void AttachFile(string fileName, string fileType)
         {
             AttachedData.Add(new AdditionalData()
@@ -118,6 +118,23 @@ namespace AxaFrance.WebEngine.Report
             });
         }
 
+        /// <summary>
+        /// Attach an object to the test report
+        /// </summary>
+        /// <param name="o">object to attach, the object will be serialized as json</param>
+        /// <param name="fileType">the type of the file, possible values: AccessibilityReport, ResourceUsage</param>
+        public void Attach(object o, string fileType)
+        {
+            AttachedData.Add(new AdditionalData()
+            {
+                Name = fileType,
+                Value = System.Text.Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(o))
+            });
+        }
+
+        /// <summary>
+        /// Additional data attached to the test report. for example: accessibility scan results, resource usage report, etc...
+        /// </summary>
         public List<AdditionalData> AttachedData { get; set; } = new List<AdditionalData>();
     }
 }

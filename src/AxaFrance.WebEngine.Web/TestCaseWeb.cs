@@ -37,8 +37,7 @@ namespace AxaFrance.WebEngine.Web
         /// When activated, the framework will trace downloaded resources during your test and generates a report on the resources used.
         /// </summary>
         public bool MeasureResourceUsage { get; set; }
-        Dictionary<string, NetworkRequest> requestLogs = new Dictionary<string, NetworkRequest>();
-        List<JSErrors> jSErrors = new List<JSErrors>();
+        private ResourceUsageReport _resourceUsageReport = null;
 
 
         /// <summary>
@@ -57,21 +56,20 @@ namespace AxaFrance.WebEngine.Web
             {
                 var a11yReport = reportBuilder.Build().Export();
                 DebugLogger.WriteLine("[A11Y] Attaching Accessibility Report from:" + a11yReport);
-                testCaseReport.AttachFile(a11yReport, "AccessibilityReport");
+                testCaseReport.AttachFile(a11yReport, GlobalConstants.AccessibilityReport);
                 DebugLogger.WriteLine("Accessibility Test Report has been attached to the test case report.");
             }
             WebDriver browser = this.Context as WebDriver;
-            if (MeasureResourceUsage)
+            if (MeasureResourceUsage && _resourceUsageReport != null)
             {
-                var network = browser.Manage().Network;
-                network.StopMonitoring();
-                stopwatch?.Stop();
+                _resourceUsageReport.StopMonitoring();
                 testCaseReport.AttachedData.Add(
                     new AdditionalData
                     {
-                        Name = "ResourceUsage",
-                        Value = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(requestLogs))
+                        Name = GlobalConstants.ResourceUsageReport,
+                        Value = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_resourceUsageReport))
                     });
+                DebugLogger.WriteLine("Resources Usage Report has been attached to the test case report.");
             }
             if (browser != null)
             {
@@ -89,7 +87,7 @@ namespace AxaFrance.WebEngine.Web
 
         }
 
-        Stopwatch stopwatch = null;
+        
 
         /// <summary>
         /// Setup process to initialize selenium web driver according to the given settings, or connect to remote mobile devices.
@@ -127,11 +125,8 @@ namespace AxaFrance.WebEngine.Web
                     Context = driver;
                     if (MeasureResourceUsage)
                     {
-                        DebugLogger.WriteLine("[DEBUG] Resource Usage Measurement is enabled.");
-                        var network = driver.Manage().Network;
-                        network.NetworkRequestSent += NetworkRequestSent;
-                        network.NetworkResponseReceived += NetworkRequestReceived;
-                        network.StartMonitoring();
+                        DebugLogger.WriteLine("Resource Usage Measurement is enabled.");
+                        _resourceUsageReport = ResourceUsageReportSelenium.StartMonitoring(driver);
                     }
 
                 }
@@ -161,54 +156,10 @@ namespace AxaFrance.WebEngine.Web
 
         }
 
-        private void NetworkRequestReceived(object sender, NetworkResponseReceivedEventArgs e)
-        {
-            NetworkRequest request = null;
-            lock (requestLogs)
-            {
-                if (requestLogs.ContainsKey(e.RequestId))
-                {
-                    request = requestLogs[e.RequestId];
-                    request.Received = DateTime.Now;
-                }
-                else
-                {
-                    request = new NetworkRequest { RequestId = e.RequestId, Url = e.ResponseUrl };
-                    request.Sent = request.Received = DateTime.Now;
-                    requestLogs[request.RequestId] = request;
-                }
-                //calcualte the size of response by adding response headers and body
-                request.IsCached = IsCached(requestLogs, e);
-                request.Reponse = e.ResponseHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.ResponseBody?.Length ?? 0);
-                request.StatusCode = e.ResponseStatusCode;
-                request.ResourceType = e.ResponseResourceType;
-            }
-        }
 
-        private void NetworkRequestSent(object sender, NetworkRequestSentEventArgs e)
-        {
-            if (stopwatch is null)
-            {
-                stopwatch = new Stopwatch();
-                stopwatch.Start();
-            }
-            var request = new NetworkRequest { RequestId = e.RequestId, Url = e.RequestUrl, Method = e.RequestMethod };
-            //calcualte the size of request by adding request headers and body
-            request.Request = e.RequestHeaders.Sum(x => x.Key.Length + x.Value.Length) + (e.RequestPostData?.Length ?? 0);
-            lock (requestLogs)
-            {
-                requestLogs[request.RequestId] = request;
-            }
-            request.Sent = DateTime.Now;
 
-            request.TimeStamp = stopwatch.ElapsedMilliseconds;
-        }
 
-        bool IsCached(Dictionary<string, NetworkRequest> requestLogs, NetworkResponseReceivedEventArgs e)
-        {
-            var hasRequestOfSameUrl = requestLogs.Values.Any(x => x.Url == e.ResponseUrl && x.Reponse != 0);
-            return hasRequestOfSameUrl;
-        }
+
 
         private bool IsTrue(string text)
         {

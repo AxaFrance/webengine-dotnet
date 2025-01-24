@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace AxaFrance.WebEngine
 {
-    internal static class GlobalConstants
+    public static class GlobalConstants
     {
         /// <summary>
         /// XML Namespace (xmlns) used for XML nodes, such as Test Data and Test Report
@@ -16,6 +16,16 @@ namespace AxaFrance.WebEngine
         /// <summary>
         /// Indicates the loaded assembly (which contains SharedActions and/or TestSuites)
         /// </summary>
-        public static List<Assembly> LoadedAssemblies { get; internal set; } = new List<Assembly>();
+        internal static List<Assembly> LoadedAssemblies { get; set; } = new List<Assembly>();
+
+        /// <summary>
+        /// Constants for the Accessibility Report to be attached to test report
+        /// </summary>
+        public const string AccessibilityReport = "AccessibilityReport";
+
+        /// <summary>
+        /// Constants for the Resource Usage Report to be attached to test report
+        /// </summary>
+        public const string ResourceUsageReport = "ResourceUsage";
     }
 }
