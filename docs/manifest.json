@@ -4397,6 +4397,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.WebEngine.NetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.WebEngine.NetworkRequest.html",
+          "hash": "5kESLA9OcsnOqT3VYa3tEt5A0YScyUK9T8UwrzxP1Lo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api_net/AxaFrance.WebEngine.Platform.yml",
       "output": {
         ".html": {
@@ -6894,7 +6906,7 @@
           "hash": "7nfX5Ud1Mwgng0eBKtRRnKBgpnMc5PvLBUaNCDArDsM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -7002,7 +7014,7 @@
           "hash": "+sfFABmblMY6TaS1cM85Y1OmWeZ2L8bxPHR0neWzM70="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -7014,7 +7026,7 @@
           "hash": "ASbiu7CoXfkcjBszdcpqEwwioBKGeKJGhlu3cJTWZuE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -7038,7 +7050,7 @@
           "hash": "9VI89znSsYVCIKO+C/Fj/s5C4/EAJmZWq9zkPnGPIvE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
