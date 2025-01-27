@@ -175,12 +175,13 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <summary>
         /// Switch current context within a hybird application (native Application with web views)
         /// </summary>
-        /// <param name="appiumDriver"></param>
-        /// <param name="targetContext"></param>
+        /// <param name="appiumDriver">appiumDriver instance</param>
+        /// <param name="targetContext">The prefix of the </param>
+        /// <param name="timeoutInSeconds">Time in seconds to wait until </param>
         /// <exception cref="WebEngineGeneralException"></exception>
-        public static void SwitchContext(AppiumDriver appiumDriver, string targetContext)
+        public static void SwitchContext(AppiumDriver appiumDriver, string targetContext, int timeoutInSeconds)
         {
-            var timeout = DateTime.Now.AddSeconds(Settings.Instance.SynchronzationTimeout);
+            var timeout = DateTime.Now.AddSeconds(timeoutInSeconds);
             if (appiumDriver != null)
             {
                 if (targetContext == NativeAppContext)
@@ -202,7 +203,7 @@ namespace AxaFrance.WebEngine.MobileApp
                             continue;
                         }
                     }
-                    throw new WebEngineGeneralException("Unabled to switch to context: " + targetContext);
+                    throw new WebEngineGeneralException("Unabled to switch to context because the target context is not found: " + targetContext);
                 }
             }
             else
