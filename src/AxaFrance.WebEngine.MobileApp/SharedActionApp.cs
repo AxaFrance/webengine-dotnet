@@ -140,12 +140,30 @@ namespace AxaFrance.WebEngine.MobileApp
         protected const string NativeAppContext = "NATIVE_APP";
 
         /// <summary>
-        /// For Hybird application, use this method to switch to one of Webview or switch back to NATIVE_APP.
+        /// For Hybird application, use this method to switch to one of WEBVIEW or switch back to NATIVE_APP.
         /// </summary>
         /// <param name="targetContext">the prefix of the target context to switch.</param>
         public void SwitchContext(string targetContext)
         {
-            AppFactory.SwitchContext(appiumDriver, targetContext);
+            AppFactory.SwitchContext(appiumDriver, targetContext, Settings.Instance.SynchronzationTimeout);
+        }
+
+        /// <summary>
+        /// For Hybird application, use this method to switch to one of WEBVIEW or switch back to NATIVE_APP.
+        /// </summary>
+        /// <param name="targetContext">the prefix of the target context to switch.</param>
+        /// <param name="timeout">Time to wait until the context is in the list</param>
+        public void SwitchContext(string targetContext, int timeout)
+        {
+            AppFactory.SwitchContext(appiumDriver, targetContext, timeout);
+        }
+
+        /// <summary>
+        /// For Hybird application, use this method to switch to NATIVE_APP context if you are working on Webview previously.
+        /// </summary>
+        public void SwitchToNativeApp()
+        {
+            SwitchContext(NativeAppContext);
         }
 
     }

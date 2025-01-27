@@ -21,7 +21,7 @@ namespace WebEngine.Test.UnitTests
             if (model.ButtonWebView.ScrollIntoView())
             {
                 model.ButtonWebView.Click();
-                SwitchContext("WEBVIEW");
+                SwitchContext("WEBVIEW", 30);
                 model.FormInput.SetValue("helloworld");
                 SwitchContext(NativeAppContext);
                 driver.Navigate().Back();
