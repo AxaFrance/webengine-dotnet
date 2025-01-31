@@ -267,7 +267,6 @@
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx" />
-    <None Include="AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -340,11 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\google_android.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AdditionalFiles Include="..\.sonarlint\automateam.axa.webengine.dotnet\CSharp\SonarLint.xml">
-      <Link>SonarLint.xml</Link>
-    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\safari-icon.png" />

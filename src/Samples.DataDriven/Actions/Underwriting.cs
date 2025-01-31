@@ -6,7 +6,7 @@ namespace Samples.DataDriven.Actions
     public class Underwriting : SharedActionWeb
     {
         bool result = false;
-        public override Variable[]? RequiredParameters => null;
+        public override Variable[] RequiredParameters => null;
 
         public override void DoAction()
         {

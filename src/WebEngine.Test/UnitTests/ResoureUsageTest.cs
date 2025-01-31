@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebEngine.Test.UnitTests
@@ -16,9 +17,10 @@ namespace WebEngine.Test.UnitTests
     public class ResoureUsageTest
     {
         [TestMethod]
-        public void RunTestWithResourceMonitoring()
+        public async void RunTestWithResourceMonitoring()
         {
             using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
+            // Démarrer le monitoring de l'usage des ressources
             using var usageReport = BrowserFactory.StartMonitoring(driver);
 
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Step1.html");
@@ -26,7 +28,8 @@ namespace WebEngine.Test.UnitTests
 
             page.SelectLanguage.SelectByValue("fr");
             page.RadioChooseToBuy.CheckByValue("Coffee");
-            page.NextButton.Click();
+            page.NextButton.Click();            
+            await Task.Delay(2000);
 
             TestSuiteReport tsr = new TestSuiteReport();
             TestCaseReport tcr = new TestCaseReport()

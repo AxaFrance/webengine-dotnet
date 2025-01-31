@@ -1,4 +1,5 @@
 ﻿using AxaFrance.WebEngine;
+using System.Collections.Generic;
 
 namespace Samples.DataDriven
 {

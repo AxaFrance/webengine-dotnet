@@ -14,21 +14,25 @@
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net6.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.1" exclude="Build,Analyzers" />        
       </group>
       <group targetFramework="net8.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
         <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
     <frameworkAssemblies>

@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <WebView2UseWinRT>False</WebView2UseWinRT>
+    <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
+  </PropertyGroup>
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>net48;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
@@ -47,6 +52,10 @@
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Reference Include="System.IO.Compression" />
   </ItemGroup>
 
   <ItemGroup>

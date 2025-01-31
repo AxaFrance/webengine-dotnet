@@ -5,7 +5,7 @@ namespace Samples.DataDriven.Actions
 {
     public class Login : SharedActionWeb
     {
-        public override Variable[]? RequiredParameters => null;
+        public override Variable[] RequiredParameters => null;
 
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
