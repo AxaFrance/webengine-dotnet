@@ -15,7 +15,7 @@
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
-    <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
+    <Description>Test Automation Framework simplifies the way to build and run automated test for Web and Mobile applications. This package provides funcitonalies to build and run automated tests for Mobile Applications and Hybrid Application on Android and iOS devices.</Description>
     <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
   </PropertyGroup>
 

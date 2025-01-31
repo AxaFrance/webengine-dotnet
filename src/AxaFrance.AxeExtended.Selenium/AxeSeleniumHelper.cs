@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace AxaFrance.AxeExtended.Selenium
 {
@@ -99,23 +100,13 @@ namespace AxaFrance.AxeExtended.Selenium
             }
             else
             {
-                var cssSelector = node.Target?.Selector;
-                var xPath = node.XPath?.Selector;
-
-                //find given element
                 try
                 {
-                    element = driver.FindElement(By.CssSelector(cssSelector));
-                    if (element is null)
-                    {
-                        element = driver.FindElement(By.XPath(xPath));
-                    }
+                    element = GetDomElement(driver, node);
                 }
-                catch (Exception ex)
+                catch (InvalidOperationException ioe)
                 {
-                    //sometimes the cssSelector provided by axe can not be used by selenium.
-                    //in this case can't make screenshot on the element.
-                    Console.WriteLine("[A11y] Unable to get element from cssSelector or xPath");
+                    element = GetShadowFrameElement(driver, node);
                 }
             }
 
@@ -131,17 +122,46 @@ namespace AxaFrance.AxeExtended.Selenium
                 {
                     //in some cases (hidden element, 0 height element, etc. the screeshot is not possible, leave these cases behind.
                     Console.WriteLine("[A11y] Unable to get screenshot:" + ex.ToString());
-                    return new byte[0];
+                    return PageReportBuilder.GetRawResources("no-image.png");
                 }
             }
             else
             {
                 driver.SwitchTo().DefaultContent();
                 Console.WriteLine("[A11y] The element can not be converted to type WebElement for screenshot.");
-                return Array.Empty<byte>();
+                return PageReportBuilder.GetRawResources("no-image.png");
             }
 
 
+        }
+
+        private static IWebElement GetShadowFrameElement(WebDriver driver, AxeResultNode node)
+        {
+            return null;
+        }
+
+        private static IWebElement GetDomElement(WebDriver driver, AxeResultNode node)
+        {
+            IWebElement element = null;
+            var cssSelector = node.Target?.Selector;
+            var xPath = node.XPath?.Selector;
+
+            //find given element
+            try
+            {
+                element = driver.FindElement(By.CssSelector(cssSelector));
+                if (element is null)
+                {
+                    element = driver.FindElement(By.XPath(xPath));
+                }
+            }
+            catch (Exception ex)
+            {
+                //sometimes the cssSelector provided by axe can not be used by selenium.
+                //in this case can't make screenshot on the element.
+                Console.WriteLine("[A11y] Unable to get element from cssSelector or xPath");
+            }
+            return element;
         }
 
         /// <summary>
@@ -179,7 +199,7 @@ namespace AxaFrance.AxeExtended.Selenium
                 return screenshot;
             }
             Console.WriteLine("[A11y] Unable to get screenshot: Element has 0 height or width.");
-            return Array.Empty<byte>();
+            return PageReportBuilder.GetRawResources("no-image.png");
         }
 
         /// <summary>

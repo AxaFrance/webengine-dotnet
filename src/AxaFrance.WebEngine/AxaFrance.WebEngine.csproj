@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net48;net6.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -15,7 +15,7 @@
     <Company>AxaFrance</Company>
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
-    <Description>AXA WebEngine Automation Framework is made to run automated Data Driven Tests on local or distance machine</Description>
+    <Description>Test Automation Framework simplifies the way to build and run automated test for Web and Mobile applications. This package provides basic data structures, definitions and base logics.</Description>
     <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
   </PropertyGroup>
 

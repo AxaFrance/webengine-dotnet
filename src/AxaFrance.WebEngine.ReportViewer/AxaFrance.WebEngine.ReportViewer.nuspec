@@ -50,8 +50,7 @@
       </group>
       <group targetFramework="net9.0-windows7.0">
         <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
-      </group>
-      <group targetFramework=".NETFramework4.8" />
+      </group>      
     </frameworkReferences>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.IO.Compression" targetFramework=".NETFramework4.8" />

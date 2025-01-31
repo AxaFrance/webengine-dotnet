@@ -25,7 +25,12 @@
     <RepositoryUrl>https://github.com/AxaFrance/webengine-dotnet</RepositoryUrl>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <ApplicationIcon>ReportViewer.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ReportViewer.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
@@ -36,12 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="System.Text.Json" Version="9.0.1" />
   </ItemGroup>
 
 </Project>
