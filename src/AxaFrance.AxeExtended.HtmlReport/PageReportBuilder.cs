@@ -240,6 +240,23 @@ namespace AxaFrance.AxeExtended.HtmlReport
             }
         }
 
+        internal static byte[] GetRawResources(string filename)
+        {
+            //read content from Embeded Resource `Assets/index.html`
+            var assembly = typeof(PageReportBuilder).Assembly;
+            var resourceName = assembly.GetName().Name + ".Assets." + filename;
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                    throw new FileNotFoundException($"Unable to find resource {resourceName} in assembly {assembly.FullName}");
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    return ms.ToArray();
+                }
+            }
+        }
+
         static int uniqueCheckId = 0;
         static int UniqueCheckId
         {
