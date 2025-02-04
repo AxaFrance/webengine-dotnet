@@ -4,10 +4,17 @@ using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
+using SkiaSharp;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WebEngine.Test.UnitTests
 {
@@ -15,6 +22,7 @@ namespace WebEngine.Test.UnitTests
     [TestClass]
     public class AccessibilityUnitTest
     {
+
         [TestMethod]
         public void AuditAndExportHtml()
         {
