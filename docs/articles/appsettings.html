@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Test Configuration File | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Test Configuration File | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -69,7 +69,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="test-configuration-file">Test Configuration File</h1>
 
-<p>To simplify command line arguments, some parameters can be specified in a configuration file <code>appsettings.json</code>. 
+<p>To simplify command line arguments, some parameters can be specified in a configuration file <code>appsettings.json</code>.
 If a parameter is provided in both side, the value provided in command-line will be taken account.</p>
 <pre><code class="lang-json">{
   &quot;LogDir&quot;: null,
@@ -92,10 +92,11 @@ If a parameter is provided in both side, the value provided in command-line will
   &quot;edgeOptions&quot;: [ &quot;inprivate&quot;, &quot;start-maximized&quot; ],
   &quot;safariOptions&quot;: []
 }
-</code></pre><h2 id="general-options">General Options</h2>
+</code></pre>
+<h2 id="general-options">General Options</h2>
 <ul>
 <li><code>LogDir</code>: The directory to store the test report. if the value is null, then the default temporary folder will be used.</li>
-<li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests. </li>
+<li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests.</li>
 <li><code>GridForDesktop</code>: Normal Web Desktop execution will run locally and ignore selenium grid connection. If you want to run Desktop Web tests on a Selenium Grid, set this value to <code>true</code>. Mobile test will not be affected by this value.</li>
 <li><code>Username</code>: The username of Selenium Grid authentication.</li>
 <li><code>Password</code>: The password of Selenium Grid authentication.</li>
@@ -107,31 +108,34 @@ If the value is <code>null</code>, WebEngine will use default encryption key.</l
 </ul>
 <h2 id="options-for-browsers">Options for browsers</h2>
 <ul>
-<li><code>chromeOptions</code>, <code>firefoxOptions</code>, <code>edgeOptions</code> and <code>safariOptions</code>: These are default options for each browser. when <code>BrowserFactory.GetDriver</code> is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in <code>incongnito</code> mode, if running tests on Edge, the browser will be launched in <code>imprivate</code> mode with window maximized by default. </li>
+<li><code>chromeOptions</code>, <code>firefoxOptions</code>, <code>edgeOptions</code> and <code>safariOptions</code>: These are default options for each browser. when <code>BrowserFactory.GetDriver</code> is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in <code>incongnito</code> mode, if running tests on Edge, the browser will be launched in <code>imprivate</code> mode with window maximized by default.</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it&#39;s necessary.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it's necessary.</p>
 </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/appsettings.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/appsettings.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -139,14 +143,14 @@ If the value is <code>null</code>, WebEngine will use default encryption key.</l
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

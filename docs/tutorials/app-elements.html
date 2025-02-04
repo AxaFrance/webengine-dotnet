@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Identify Mobile App UI Elements | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Identify Mobile App UI Elements | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -86,15 +86,18 @@ please refer to the documentation of Appium <a href="http://appium.io/">http://a
 <p><img src="../images/appium-inspector.png" alt="Appium Inspector"></p>
 <ul>
 <li><code>Remote Path</code>: /wd/hub</li>
-<li><code>Desired Capabilities</code><ul>
+<li><code>Desired Capabilities</code>
+<ul>
 <li><code>appium:automation</code>: UIAutomator2</li>
 <li><code>platformName</code>: Android</li>
 </ul>
 </li>
 </ul>
 <p>This configuration helps you to connect to a local Appium server <code>http://localhost:4723/wd/hub</code></p>
-<div class="NOTE"><h5>Note</h5><p>You can also connect Appium inspector to your cloud provider. 
-In this case, please refer to service provider&#39;s website and provide necessary capabilities.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You can also connect Appium inspector to your cloud provider.
+In this case, please refer to service provider's website and provide necessary capabilities.</p>
 </div>
 <h2 id="observe-the-application">Observe the application</h2>
 <p>Appium inspector looks like the following image:</p>
@@ -107,7 +110,8 @@ In this case, please refer to service provider&#39;s website and provide necessa
 }
 
 digit5.Click()
-</code></pre><p>Like web applications, you can organize all UI elements of the same page into <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>. For example, this class defines some digit buttons, equals, multiply of the calculator app.</p>
+</code></pre>
+<p>Like web applications, you can organize all UI elements of the same page into <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>. For example, this class defines some digit buttons, equals, multiply of the calculator app.</p>
 <pre><code class="lang-csharp">public class CalculatorPage : PageModel
 {
     public AppElementDescription Digit0 = new AppElementDescription
@@ -130,7 +134,8 @@ digit5.Click()
     {
     }
 }
-</code></pre><p>You can use one or multiple selectors to locate an UI element:</p>
+</code></pre>
+<p>You can use one or multiple selectors to locate an UI element:</p>
 <ul>
 <li><code>AccessibilityId</code>: the <code>accessibility id</code> property</li>
 <li><code>ClassName</code>: the <code>class</code> property</li>
@@ -145,27 +150,28 @@ digit5.Click()
 <li><code>IosClassChain</code>: a native selector provided by iOS device.</li>
 </ul>
 <p>The above two selectors can only be used individually, when they are provided all other selectors will be ignored.</p>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/app-elements.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/app-elements.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -173,14 +179,14 @@ digit5.Click()
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

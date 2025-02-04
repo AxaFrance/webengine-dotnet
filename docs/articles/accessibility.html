@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Accessibility testing with WebEngine (or not) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Accessibility testing with WebEngine (or not) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -78,11 +78,13 @@
 <h2 id="features">Features</h2>
 <p>Compared to other accessibility testing tools based on axe-core, we provide you with the following features:</p>
 <ul>
-<li><strong>Adaptability</strong>: With just a single line of code. You can run accessibility tests on your existing selenium project. </li>
-<li><strong>Extensibility</strong>: You can test your application agasint additional rules you&#39;ve customized.</li>
+<li><strong>Adaptability</strong>: With just a single line of code. You can run accessibility tests on your existing selenium project.</li>
+<li><strong>Extensibility</strong>: You can test your application agasint additional rules you've customized.</li>
 <li><strong>RGAA</strong>: We have made the work to tag axe html rules with RGAA regularation. So after the test, you have an idea of which RGAA rules are respected. *</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>* The coverage of RGAA rule means that a rule is <em>covered</em> by test. It does not mean that the rule is <em>validated</em> by the test. To validate a rule, all test methodologies specified in the RGAA documentation must be checked and passed.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>* The coverage of RGAA rule means that a rule is <em>covered</em> by test. It does not mean that the rule is <em>validated</em> by the test. To validate a rule, all test methodologies specified in the RGAA documentation must be checked and passed.</p>
 </div>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Working on Windows or MacOS, having the following SDK packages:</p>
@@ -107,7 +109,8 @@ var filename = new PageReportBuilder()
     .Export();
 
 // filename will contain the path to the generated report
-</code></pre><p>In resume, what you need to do create a new instance of <code>PageReportBuilder</code>, pass the Selenium driver to it, and call the Build method to generate the report.</p>
+</code></pre>
+<p>In resume, what you need to do create a new instance of <code>PageReportBuilder</code>, pass the Selenium driver to it, and call the Build method to generate the report.</p>
 <h3 id="scan-options">Scan options</h3>
 <p>If you want to customize the scan options, you can use the following code snippet:</p>
 <pre><code class="lang-csharp">var filename = new PageReportBuilder()
@@ -121,7 +124,8 @@ var filename = new PageReportBuilder()
         UseAdvancedScreenshot = true,
     })
     .WithSelenium(driver).Build().Export();
-</code></pre><p>The above code snippet will run the accessibility tests with the following options:</p>
+</code></pre>
+<p>The above code snippet will run the accessibility tests with the following options:</p>
 <ul>
 <li><strong>HighlightColor</strong>: When using advanced screenshot, the identified element will be highlighred with Green color.</li>
 <li><strong>HighlightThickness</strong>: The thickness of the highlight, 5 pixels.</li>
@@ -154,7 +158,8 @@ driver.Navigate().GoToUrl(&quot;https://www.axa.fr/pro/services-assistance.html&
 builder.WithSelenium(driver, &quot;Assistance&quot;).Build();
 
 string report = builder.Build().Export();
-</code></pre><p>Observing the above code snippet, you can see that we are using <code>OverallReportBuilder</code> to generate the report using a default option which will be applied to all pages. Then, we are navigating to different pages and calling the <code>WithSelenium</code> method to pass the driver, on each individual page.</p>
+</code></pre>
+<p>Observing the above code snippet, you can see that we are using <code>OverallReportBuilder</code> to generate the report using a default option which will be applied to all pages. Then, we are navigating to different pages and calling the <code>WithSelenium</code> method to pass the driver, on each individual page.</p>
 <p>Finally, we are calling the <code>Build</code> method to analyze and generate report and <code>Export</code> method to get the path to the generated report. As provided in the options, the report will be generated in zip format.</p>
 <h2 id="run-accessibility-tests-on-projects-using-webengine">Run accessibility tests on projects using WebEngine</h2>
 <h3 id="keyword-driven-test-case">Keyword-Driven test case</h3>
@@ -167,13 +172,14 @@ To activate accessibility testing on Test Case level, Set the property <a class=
 This function runs an accessibility scan at current location, then integrates test result to test report. The scan can be performed multiple times on different location within a user journey. With this method, you don’t need to interact directly with classes such as <code>OverallReportBuilder</code> or <code>PageReportBuilder</code></p>
 <h3 id="gherkin-based-test-case">Gherkin based test case</h3>
 <p>If you are using Gherkin based test case. You’ll need to follow the same steps:
-•   Initilaize <code>OverallReportBuilder</code> before the execution of the scenario
-•   Calls <code>builder.WithSelenium(driver, &quot;Page Name&quot;).Build()</code> at the point you want to scan the page
-•   Export the test result, or attach the test result to test report
+•	Initilaize <code>OverallReportBuilder</code> before the execution of the scenario
+•	Calls <code>builder.WithSelenium(driver, &quot;Page Name&quot;).Build()</code> at the point you want to scan the page
+•	Export the test result, or attach the test result to test report
 Assuming <code>reportBuilder</code> is type of OverallReportBuilder and the export format is <strong>ZIP</strong>, use the following instructions to attach accessibility test result to your test report</p>
 <pre><code class="lang-csharp">var a11yReport = reportBuilder.Build().Export();
 testCaseReport.AttachFile(a11yReport, &quot;AccessibilityReport&quot;);
-</code></pre><p>The first statement exports test result to a zip file, then the second statement attachs it as <code>AccessibilityReport</code>.</p>
+</code></pre>
+<p>The first statement exports test result to a zip file, then the second statement attachs it as <code>AccessibilityReport</code>.</p>
 <h3 id="view-accessibility-test-result">View accessibility test result</h3>
 <p>In Report Viewer, if a test case has attached Accessibility test result, <code>Accessibility</code> tab will be available. View overall test result, or click on a specific page to see detailed report.
 It is also possible to view the report in a browser by clicking on the <code>View in Browser</code> button.</p>
@@ -183,33 +189,36 @@ It is also possible to view the report in a browser by clicking on the <code>Vie
 <a href="https://github.com/AxaFrance/webengine-dotnet/tree/main/src/Samples.DataDriven">https://github.com/AxaFrance/webengine-dotnet/tree/main/src/Samples.DataDriven</a></p>
 <ul>
 <li>Test data: <a href="../files/Data-HomeInsurance.xlsx">Data-HomeInsurance.xlsx</a> In the test data, we have added a row named <code>Accessibility</code> with value <code>True</code> to activate accessibility testing on the test case. Accessibility test is activated on the first test case.</li>
-<li>Scan, We have called <code>RunAccessibilityTest</code> to perform accessibility test on 3 pages: </li>
+<li>Scan, We have called <code>RunAccessibilityTest</code> to perform accessibility test on 3 pages:</li>
+</ul>
+<ol>
 <li>On Login action, perform test before submitting the form.</li>
 <li>On Home details action, perform test before clicking on the next button.</li>
 <li>On Choose offer and options page.</li>
-</ul>
+</ol>
 <p>The above steps will generate accessibility test results for 3 pages in the test report, as showing in the screenshot above.</p>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/accessibility.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/accessibility.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -217,14 +226,14 @@ It is also possible to view the report in a browser by clicking on the <code>Vie
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

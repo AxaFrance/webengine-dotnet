@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Linear Scripting Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -73,7 +73,9 @@
 Linear scripting approach is the most used approach in Unit Test and for simple test scenarios.
 In this approach, test cases are interpreted directly into test scripts, the method is fast for writing simple test cases but does not guarantee reuse of the functionality and part of test script across test projects.</p>
 <p>This tutorial is based on Unit Test Framework MsTest under Visual Studio 2022, if you are using NUnit or XUnit, or another development tool, the solution will be similar.</p>
-<div class="NOTE"><h5>Note</h5><p>Linear scripting approach is easy and fast to implement.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Linear scripting approach is easy and fast to implement.</p>
 <p>Linear scripting approach does not guarantee modeling and reuse. Please consider avoiding this approach for end-to-end tests, because it may be too complex to be evolved and maintained.</p>
 </div>
 <h2 id="required-framework-components">Required Framework components</h2>
@@ -100,13 +102,14 @@ You can use any recent versions of .NET (<code>.NET Framework 4.8</code> or <cod
         }
     }
 }
-</code></pre><p>Now we can build our test scripts based on Selenium. Our system under test is the application: <a href="http://webengine-test.azurewebsites.net/Step1.html">http://webengine-test.azurewebsites.net/Step1.html</a></p>
+</code></pre>
+<p>Now we can build our test scripts based on Selenium. Our system under test is the application: <a href="http://webengine-test.azurewebsites.net/Step1.html">http://webengine-test.azurewebsites.net/Step1.html</a></p>
 <p>After the project initialization, you need to install the NuGet Package:</p>
 <ul>
 <li>AxaFrance.WebEngine</li>
 <li>AxaFrance.WebEngine.Web</li>
 <li>Selenium WebDriver (&gt;= 4.1.0)</li>
-<li>Appium.WebDriver (&gt;= 5.0.0-beta01) (for beta version of Appium you&#39;ll need to check &quot;include prerelease&quot; in NuGet Package Manager)</li>
+<li>Appium.WebDriver (&gt;= 5.0.0-beta01) (for beta version of Appium you'll need to check &quot;include prerelease&quot; in NuGet Package Manager)</li>
 </ul>
 <h3 id="step-2-write-setup-and-teardown">Step 2: Write Setup and Teardown</h3>
 <p>In this step, we will write <code>Setup</code> and <code>Teardown</code> functions to initialize test environment before each test case and cleanup the test results after each test case.</p>
@@ -148,7 +151,8 @@ namespace Samples.LinearScripting
         }
     }
 }
-</code></pre><h3 id="step-3-observe-sut-and-identify-ui-elements">Step 3: Observe SUT and identify UI Elements</h3>
+</code></pre>
+<h3 id="step-3-observe-sut-and-identify-ui-elements">Step 3: Observe SUT and identify UI Elements</h3>
 <p>Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages from the Framework, we will put these 3 elements into a <code>PageModel</code>.</p>
 <p><img src="../images/ls-step3-uielements.png" alt="Step 3 UI Elements"></p>
 <p>When identifying an UI Element, we can combine multiple locators to make sure they can select only the element we want:</p>
@@ -212,7 +216,7 @@ namespace Samples.LinearScripting
 <li>Use the page model to interact with UI elements</li>
 </ul>
 <p>Instead of using native selenium commands, it is recommended to use actions implemented in <code>WebElementDescription</code>. The script will be easier to read, to understand and to maintain, because
-most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter <code>NoSuchElementException</code> and <code>StaleElementReferenceException</code>. </p>
+most of actions are protected for web page changes such as page reload or asynchronized JavaScript. Without the pattern, script may encounter <code>NoSuchElementException</code> and <code>StaleElementReferenceException</code>.</p>
 <p>Using PageModel, you can fill the function TestMethod1 with following code snippet</p>
 <pre><code class="lang-csharp">//initialize the page model with current driver
 MyPageModel page = new MyPageModel(driver);
@@ -227,7 +231,9 @@ page.NextButton.Click();
 //Verify if the current page title is page 2 
 Assert.IsTrue(page.Page2Title.Exists());
 //The above assertion will not fail because exists will wait until the second page has loaded within the timeout
-</code></pre><h3 id="run-tests">Run tests</h3>
+
+</code></pre>
+<h3 id="run-tests">Run tests</h3>
 <p>To run the test case, open Test -&gt; Test Explorer and select the test case we have just coded to run:</p>
 <p><img src="../images/ls-run-test.png" alt="Run Test"></p>
 <h3 id="improve-the-test-cases">Improve the test cases</h3>
@@ -237,30 +243,33 @@ Assert.IsTrue(page.Page2Title.Exists());
 <li>Manipulate these UI elements</li>
 <li>Retrieve information from these UI elements in order to compare with expected value</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>The source code of this exercise can be found in our Github repository.
+<div class="NOTE">
+<h5>Note</h5>
+<p>The source code of this exercise can be found in our Github repository.
 Project Name: Samples.LinearScripting</p>
 </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/linear-script-cs.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/linear-script-cs.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -268,14 +277,14 @@ Project Name: Samples.LinearScripting</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

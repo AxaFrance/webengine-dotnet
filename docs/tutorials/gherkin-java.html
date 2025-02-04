@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Writing test cases - Gherkin Approach (Java / Spring boot) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Writing test cases - Gherkin Approach (Java / Spring boot) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -72,7 +72,9 @@
 <p>In this article we will show you how to write test cases using Gherkin approach.
 Gherkin approach is often used to test features in Behavior-Driven Development (for example: acceptance criteria of a user story) and in Agile environment. The test cases are represented by test scenarios written in gherkin language, and each sentence is implemented by code-behind. You can reuse the same sentence across the test project so the code-behind can also be reused.</p>
 <p>With this method, testers (or business users) and automation engineers can work together: One can maintain the repository of test scenarios in Gherkin and the other can maintain automation implementations. When a scenario is not yet automated, it can still be served for manual execution.</p>
-<div class="NOTE"><h5>Note</h5><p>Gherkin approach is perfect for feature testing combined with BDD (Behavior-Driven Development).</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Gherkin approach is perfect for feature testing combined with BDD (Behavior-Driven Development).</p>
 <p>But it may not be suitable for complex end-to-end tests. For this use cases, Gherkin scenarios may be too long, and the code-behind of each phrase may be difficult to maintain.
 For complex end-to-end tests, you may consider Keyword-driven/Data-driven testing approach.</p>
 </div>
@@ -124,7 +126,8 @@ For complex end-to-end tests, you may consider Keyword-driven/Data-driven testin
     &lt;/plugins&gt;
   &lt;/build&gt;
 &lt;/project&gt;
-</code></pre><p>For your information, we use junit 5 with the framework</p>
+</code></pre>
+<p>For your information, we use junit 5 with the framework</p>
 <h3 id="step-3-project-structure">Step 3: Project structure</h3>
 <p><img src="../images/java/gherkin/gherkin-project-structure.png" alt=""></p>
 <ul>
@@ -136,7 +139,7 @@ For complex end-to-end tests, you may consider Keyword-driven/Data-driven testin
 <h3 id="step-4-observe-sut-and-identify-ui-elements">Step 4: Observe SUT and identify UI Elements</h3>
 <p>Observing system under test from Developer tools provided with browser. Here in our tutorial, we will operate 3 elements, to benefits the advantages of the Framework, we will put these 3 elements into a <code>PageModel</code>.</p>
 <p><img src="../images/ls-step3-uielements.png" alt="Step 3 UI Elements"></p>
-<p>This is exactly the same step we&#39;ve discussed in Linear Script Approach. Please refer to
+<p>This is exactly the same step we've discussed in Linear Script Approach. Please refer to
 <a href="linear-script-cs.html#step-3-observe-sut-and-identify-ui-elements">Observe SUT and Identify UI Elements</a> for more information.</p>
 <h3 id="step-5-write-test-scenarios-feature">Step 5: Write test scenarios (.feature)</h3>
 <p>Create a Feature file and name it <code>sample-flow.feature</code>, place it under the folder <code>features</code>
@@ -149,7 +152,8 @@ Paste this below code :</p>
     And I want to buy a coffee
     And I click on the first next button
     Then I go to the next page
-</code></pre><p>There is no limit how to write the scenario using the keywords given-when-then. But generally, people often use <code>Given</code> to specify the preconditions, <code>When</code> to specify actions and <code>Then</code> to specify expected results. 
+</code></pre>
+<p>There is no limit how to write the scenario using the keywords given-when-then. But generally, people often use <code>Given</code> to specify the preconditions, <code>When</code> to specify actions and <code>Then</code> to specify expected results.
 Following the same naming convention across teams can ensure good understanding of scenarios for all stakeholders.</p>
 <h3 id="step-6-generate-test-steps-from-features">Step 6: Generate test steps from features</h3>
 <p>Once the feature is written, place the caret at a step in your .feature file and press Alt + Enter.</p>
@@ -185,7 +189,8 @@ public void iVisitTheTestPage() {
     public void iGoToTheNextPage() {
     }
 }
-</code></pre><h3 id="step-5-complete-the-code-for-using-page-model-and-browser-factory">Step 5: Complete the code for using page model and browser factory</h3>
+</code></pre>
+<h3 id="step-5-complete-the-code-for-using-page-model-and-browser-factory">Step 5: Complete the code for using page model and browser factory</h3>
 <p>Create the page model :</p>
 <pre><code class="lang-java">package fr.axa.automation.feature.model;
 
@@ -219,7 +224,8 @@ public class FirstPageModel extends AbstractPageModel {
         populateDriver(webDriver);
     }
 }
-</code></pre><p>Complete the SampleFlowStep class</p>
+</code></pre>
+<p>Complete the SampleFlowStep class</p>
 <pre><code class="lang-java">package fr.axa.automation.feature.step;
 
 import fr.axa.automation.feature.model.FirstPageModel;
@@ -273,7 +279,8 @@ public class SampleFlowStep extends AbstractStep {
         getDriver().close();
     }
 }
-</code></pre><h3 id="step-7-create-the-runner-class">Step 7: Create the runner class</h3>
+</code></pre>
+<h3 id="step-7-create-the-runner-class">Step 7: Create the runner class</h3>
 <pre><code class="lang-java">package fr.axa.automation.feature;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
@@ -295,36 +302,40 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 public class CucumberRunnerTest {
 
 }
-</code></pre><h3 id="step-6-run-test-case">Step 6: Run test case</h3>
+</code></pre>
+<h3 id="step-6-run-test-case">Step 6: Run test case</h3>
 <p>Run :
 <img src="../images/java/gherkin/run-test-cases.png" alt=""></p>
 <p>Result :
 <img src="../images/java/gherkin/result-test-case.png" alt=""></p>
-<div class="NOTE"><h5>Note</h5><p>The source code of this exercise can be found in our Github repository.
+<div class="NOTE">
+<h5>Note</h5>
+<p>The source code of this exercise can be found in our Github repository.
 Project Name: sample-gerkhin-webengine
 <a href="https://github.com/AxaFrance/webengine-java/sample-gerkhin-webengine">https://github.com/AxaFrance/webengine-java/sample-gerkhin-webengine</a></p>
 </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/gherkin-java.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/gherkin-java.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -332,14 +343,14 @@ Project Name: sample-gerkhin-webengine
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
