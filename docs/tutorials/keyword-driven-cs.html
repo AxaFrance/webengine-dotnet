@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Keyword-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Keyword-Driven testing Approach (C#/.NET) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -74,7 +74,7 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 <p>Considering we are building a Test Automation Solution for Home Insurance Underwriting application: <a href="http://webengine-test.azurewebsites.net/home-insurance">http://webengine-test.azurewebsites.net/home-insurance</a></p>
 <h2 id="step-1-analyzing-and-modelling">Step 1: Analyzing and Modelling</h2>
 <p>In this step, we analyze application under test, create use cases and high-level actions (keywords), note that these actions can be possibly reused in different test cases.</p>
-<p>For example, we can separate the insurance underwriting scenario into several high-level action keywords: </p>
+<p>For example, we can separate the insurance underwriting scenario into several high-level action keywords:</p>
 <ul>
 <li>Login</li>
 <li>Search Prospect</li>
@@ -96,10 +96,12 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 <h3 id="21-create-a-class-library-project">2.1 Create a class library project</h3>
 <p>Create a new class library with Visual Studio.</p>
 <p><img src="../images/kd-classlibrary.png" alt="Kd Classlibrary"></p>
-<div class="NOTE"><h5>Note</h5><p>The project type can be <code>Class Library (.NET Framework)</code> based on .NET 4.8. or <code>Class Library</code> based on .NET Core</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The project type can be <code>Class Library (.NET Framework)</code> based on .NET 4.8. or <code>Class Library</code> based on .NET Core</p>
 </div>
 <h3 id="22-install-required-nuget-packages">2.2 Install required NuGet Packages</h3>
-<p>To build test automation solutions with keyword-driven testing approach, you&#39;ll need the following components:</p>
+<p>To build test automation solutions with keyword-driven testing approach, you'll need the following components:</p>
 <ul>
 <li><code>AxaFrance.WebEngine</code> - Required</li>
 <li><code>AxaFrance.WebEngine.Web</code> - Required</li>
@@ -108,13 +110,13 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
 <li><code>AxaFrance.WebEngine.ReportViewer</code> - Optional, make it possible to view the report locally.</li>
 </ul>
 <h3 id="23-initialize-project-structure">2.3 Initialize project structure</h3>
-<p>A typical WebEngine test project has following structures:
+<p>A typical WebEngine test project has following structures:</p>
 <table>
 <tr>
-<td width="40%" style="text-align:center"><p>
+<td width="40%" style="text-align:center">
 <p><img src="../images/tc-projectstructure.png" alt="Project Structure"></p>
-<p></td>
-<td><p>
+</td>
+<td>
 <h4 id="actions">Actions</h4>
 <p>This folder contains all Action Keywords.</p>
 <h4 id="page-models">Page Models</h4>
@@ -125,12 +127,12 @@ If a web page has too many UI elements to manipulate during the test, they can a
 <p>Defines test cases by reusing action keywords.
 A test case can be reused multiple times by giving different test data (combination with Data-driven approach)</p>
 <h4 id="test-suite">Test Suite</h4>
-<p>The entry point of the test project. It lists the test cases should be executed.
+<p>The entry point of the test project. It lists the test cases should be executed.</p>
 </td>
 </tr>
-</table></p>
+</table>
 <h3 id="24-define-page-models">2.4 Define page models</h3>
-<p>Similar to other methods, it is recommended to use Page model to separate object identification and test script. </p>
+<p>Similar to other methods, it is recommended to use Page model to separate object identification and test script.</p>
 <p>Please refer to <a href="page-model.html">Organize UI Elements with Page Model</a></p>
 <ul>
 <li>For Web application, use <a href="web-elements.html">WebElementDescription</a></li>
@@ -142,7 +144,7 @@ A test case can be reused multiple times by giving different test data (combinat
 </ul>
 <h3 id="25-define-test-cases">2.5 Define test cases</h3>
 <p>Test case is inherited from <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html">TestCaseWeb</a> to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
-And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet: </p>
+And defines which keywords will be executed one after another. As per modelling, the test case will seem to the following code snippet:</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine.Web;
 using Samples.KeywordDriven.Actions;
 
@@ -177,30 +179,34 @@ namespace Samples.KeywordDriven.TestCases
 </ul>
 <p>This action needs 3 parameters: <code>URL</code> of the application, <code>Username</code> and <code>Password</code></p>
 <p><code>Underwriting</code> is a complex action keyword. To improve readability and maintainability of the solution, this keyword will be separated into 3 sub-actions.</p>
-<div class="NOTE"><h5>Note</h5><p>In this tutorial, we will use hard coded test data for demonstration.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In this tutorial, we will use hard coded test data for demonstration.</p>
 <p>Externalized test data and dynamic test suite will be discussed in <a href="data-driven-cs.html">Data-Driven testing approach</a></p>
 </div>
 <h3 id="implementing-login-keyword">Implementing <code>Login</code> keyword</h3>
-<p>To implement Login Keyword, we&#39;ll need to analyze the login page.</p>
-<div class="tabGroup" id="tabgroup_+oFYteI1nb">
+<p>To implement Login Keyword, we'll need to analyze the login page.</p>
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb_webpage-login" role="tab" aria-controls="tabpanel_+oFYteI1nb_webpage-login" data-tab="webpage-login" tabindex="0" aria-selected="true">Web Page</a>
+<a href="#tabpanel_1_webpage-login" role="tab" aria-controls="tabpanel_1_webpage-login" data-tab="webpage-login" tabindex="0" aria-selected="true">Web Page</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb_model-login" role="tab" aria-controls="tabpanel_+oFYteI1nb_model-login" data-tab="model-login" tabindex="-1">Page Model</a>
+<a href="#tabpanel_1_model-login" role="tab" aria-controls="tabpanel_1_model-login" data-tab="model-login" tabindex="-1">Page Model</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb_action-login" role="tab" aria-controls="tabpanel_+oFYteI1nb_action-login" data-tab="action-login" tabindex="-1">Action Keyword</a>
+<a href="#tabpanel_1_action-login" role="tab" aria-controls="tabpanel_1_action-login" data-tab="action-login" tabindex="-1">Action Keyword</a>
 </li>
 </ul>
-<section id="tabpanel_+oFYteI1nb_webpage-login" role="tabpanel" data-tab="webpage-login">
+<section id="tabpanel_1_webpage-login" role="tabpanel" data-tab="webpage-login">
+
 <p>In this action keyword, the script will need to access 3 Web Elements: username, password, and login button and <strong>important</strong> the fourth one: error message.</p>
 <p>Use <code>Developer Tools</code> of the browser, lets create a Page Model <code>PageLogin.cs</code></p>
 <p><img src="../images/kd-login-web.png" alt="Login Web page"></p>
 </section>
-<section id="tabpanel_+oFYteI1nb_model-login" role="tabpanel" data-tab="model-login" aria-hidden="true" hidden="hidden">
-<p>This is the code snippet of <code>PageLogin.cs</code>. As we can see, by using element description, There is less need to comment everything if the name of the Page Model and the Web Elements are well named. </p>
+<section id="tabpanel_1_model-login" role="tabpanel" data-tab="model-login" aria-hidden="true" hidden="hidden">
+
+<p>This is the code snippet of <code>PageLogin.cs</code>. As we can see, by using element description, There is less need to comment everything if the name of the Page Model and the Web Elements are well named.</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
 
@@ -237,9 +243,11 @@ namespace Samples.PageModels
         }
     }
 }
-</code></pre><p>The page model will be used in action keyword <code>Login.cs</code></p>
+</code></pre>
+<p>The page model will be used in action keyword <code>Login.cs</code></p>
 </section>
-<section id="tabpanel_+oFYteI1nb_action-login" role="tabpanel" data-tab="action-login" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_action-login" role="tabpanel" data-tab="action-login" aria-hidden="true" hidden="hidden">
+
 <p>In the script of action keyword we navigate to the Url of the application.
 Then initialize a new instance of page model by given it the active WebDriver object.
 Then fill login, password to the click login button and verify there is no error message.</p>
@@ -279,28 +287,29 @@ namespace Samples.KeywordDriven.Actions
 </code></pre></section>
 </div>
 <h3 id="implementing-underwriting-keyword">Implementing <code>Underwriting</code> keyword</h3>
-<p>Underwriting keyword is complex, because we need to enter a lot of data in the form to get an insurance quote. So, We&#39;ll want to simplify the subject by separate this keyword into several sub-level keywords:</p>
+<p>Underwriting keyword is complex, because we need to enter a lot of data in the form to get an insurance quote. So, We'll want to simplify the subject by separate this keyword into several sub-level keywords:</p>
 <ul>
 <li>Specify Home Location</li>
 <li>Fill home details according to the type (House or Apartment)</li>
 <li>Fill antecedents (accidents previously declared)</li>
 </ul>
-<div class="tabGroup" id="tabgroup_+oFYteI1nb-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb-1_action-underwriting" role="tab" aria-controls="tabpanel_+oFYteI1nb-1_action-underwriting" data-tab="action-underwriting" tabindex="0" aria-selected="true">Underwriting Action</a>
+<a href="#tabpanel_2_action-underwriting" role="tab" aria-controls="tabpanel_2_action-underwriting" data-tab="action-underwriting" tabindex="0" aria-selected="true">Underwriting Action</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb-1_home-location" role="tab" aria-controls="tabpanel_+oFYteI1nb-1_home-location" data-tab="home-location" tabindex="-1">HomeLocation Action</a>
+<a href="#tabpanel_2_home-location" role="tab" aria-controls="tabpanel_2_home-location" data-tab="home-location" tabindex="-1">HomeLocation Action</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb-1_home-details" role="tab" aria-controls="tabpanel_+oFYteI1nb-1_home-details" data-tab="home-details" tabindex="-1">HomeDetails Action</a>
+<a href="#tabpanel_2_home-details" role="tab" aria-controls="tabpanel_2_home-details" data-tab="home-details" tabindex="-1">HomeDetails Action</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_+oFYteI1nb-1_antecedentes" role="tab" aria-controls="tabpanel_+oFYteI1nb-1_antecedentes" data-tab="antecedentes" tabindex="-1">Antecedentes Action</a>
+<a href="#tabpanel_2_antecedentes" role="tab" aria-controls="tabpanel_2_antecedentes" data-tab="antecedentes" tabindex="-1">Antecedentes Action</a>
 </li>
 </ul>
-<section id="tabpanel_+oFYteI1nb-1_action-underwriting" role="tabpanel" data-tab="action-underwriting">
+<section id="tabpanel_2_action-underwriting" role="tabpanel" data-tab="action-underwriting">
+
 <p>As we can see, the implementation of this underwriting is just to dispatch to sub-actions. Now you can implement each sub-actions which is much more easier to do.</p>
 <pre><code class="lang-csharp" name="Main" title="Unterwriting">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
@@ -332,7 +341,8 @@ namespace Samples.KeywordDriven.Actions
     }
 }
 </code></pre></section>
-<section id="tabpanel_+oFYteI1nb-1_home-location" role="tabpanel" data-tab="home-location" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_home-location" role="tabpanel" data-tab="home-location" aria-hidden="true" hidden="hidden">
+
 <p>Home location sub-action is called by Underwriting action. Sub-action can be used when the keyword action is too complexe.</p>
 <pre><code class="lang-csharp" name="Main" title="Home Location">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
@@ -362,7 +372,8 @@ namespace Samples.KeywordDriven.Actions
     }
 }
 </code></pre></section>
-<section id="tabpanel_+oFYteI1nb-1_home-details" role="tabpanel" data-tab="home-details" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_home-details" role="tabpanel" data-tab="home-details" aria-hidden="true" hidden="hidden">
+
 <p>Home Details sub-action is called by Underwriting action. Sub-action can be used when the keyword action is too complexe. As you can see, this action calls another sub-action according to the type of home (Apartment or House)</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
@@ -402,7 +413,7 @@ namespace Samples.KeywordDriven.Actions
     }
 }
 </code></pre></section>
-<section id="tabpanel_+oFYteI1nb-1_antecedentes" role="tabpanel" data-tab="antecedentes" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_antecedentes" role="tabpanel" data-tab="antecedentes" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Web;
 
@@ -428,12 +439,13 @@ namespace Samples.KeywordDriven.Actions
 }
 </code></pre></section>
 </div>
+
 <p>We can now use this technique to implement other action keywords and create page models if necessary.</p>
 <h2 id="step-4-define-test-suite">Step 4: Define Test Suite</h2>
 <p>A test suite defines a list of test cases to be executed.
 One Test Case can be used multiple times with different test data.
 Only one <code>TestSuite</code> per project is allowed.</p>
-<p>In this example, We don&#39;t use externalized test data, all test data is hard coded in the keyword action.
+<p>In this example, We don't use externalized test data, all test data is hard coded in the keyword action.
 In this case we will provide a hard-coded list of test cases with name:</p>
 <pre><code class="lang-csharp" name="Main" title="Test Case">using AxaFrance.WebEngine;
 
@@ -452,16 +464,21 @@ namespace Samples.KeywordDriven
         }
     }
 }
-</code></pre><div class="NOTE"><h5>Note</h5><p>Using hard coded test data and hard coded test case list is only for demonstration.
-In the real project, it is strongly recommanded to use variables in each keyword and run tests dynamically driven by external data. 
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Using hard coded test data and hard coded test case list is only for demonstration.
+In the real project, it is strongly recommanded to use variables in each keyword and run tests dynamically driven by external data.
 Please refer to <a href="data-driven-cs.html">Data-Driven Test Approach</a> after finished this tutoriel.</p>
 </div>
 <h2 id="step-5-debug-and-execute">Step 5: Debug and Execute</h2>
-<p>To launch or debug your solution, you&#39;ll need to configue the project properties to launch <code>WebRunner</code> with appropriate parameters.</p>
+<p>To launch or debug your solution, you'll need to configue the project properties to launch <code>WebRunner</code> with appropriate parameters.</p>
 <p><img src="../images/kd-launch-webrunner.png" alt="Launch Webrunner"></p>
 <p>Then you can set breakpoint in the code to debug step by step.
 For more information about <code>WebRunner</code> please refers to <a href="../articles/webrunner.html">WebRunner</a></p>
-<div class="NOTE"><h5>Note</h5><p>When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
+<div class="NOTE">
+<h5>Note</h5>
+<p>When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
 For more information about Excel Add-in, please refer to <a href="../articles/excel-addin.html">Working with WebEngine Add-in for Excel</a></p>
 </div>
 <h2 id="visualize-reports">Visualize Reports</h2>
@@ -470,37 +487,40 @@ For more information about Excel Add-in, please refer to <a href="../articles/ex
 <p>When running tests with <code>WebRunner</code> you can add <code>-showReport</code> to start ReportViwer after test execution.</p>
 <h2 id="resume">Resume</h2>
 <p>As you can see, with this method it takes longer to automatize the first test case. But in long term, you have a well structured, modelized testing project that makes easier to improve and to maintain. We recommand this approach for complex end-to-end scenarios.</p>
-<p>BUT, it&#39;s not finished. In this tutorial, everything is hard-coded:</p>
+<p>BUT, it's not finished. In this tutorial, everything is hard-coded:</p>
 <ul>
 <li>Url is hard coded, you may want to test under multiple test-environments</li>
 <li>Test data is hard coded, you may want to run the test case with other combination of test data</li>
 <li>Test suite is hard coded, you may want to execute one, more or all test cases according to the need.</li>
 <li>Logic is hard coded, you may want to change some logic of script based on the test data.
-In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;ll convert all these hard coded things dynamically.</li>
+In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we'll convert all these hard coded things dynamically.</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>The example project of this article can be found in Samples.KeywordDriven</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The example project of this article can be found in Samples.KeywordDriven</p>
 </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-cs.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-cs.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -508,14 +528,14 @@ In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;l
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Keyword-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Keyword-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -210,16 +210,19 @@ Please refer to <a href="keyworddriven.html">Keyword-Driven testing approach</a>
     &lt;/pluginManagement&gt;
   &lt;/build&gt;
 &lt;/project&gt;
-</code></pre><div class="NOTE"><h5>Note</h5><p>Run the command &quot;mvn clean install -U&quot;</p>
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Run the command &quot;mvn clean install -U&quot;</p>
 </div>
 <h2 id="step-3--initialize-project-structure">Step 3:  Initialize project structure</h2>
-<p>A typical WebEngine test project has following structures:
+<p>A typical WebEngine test project has following structures:</p>
 <table>
 <tr>
-<td width="40%" style="text-align:center"><p>
+<td width="40%" style="text-align:center">
 <p><img src="../images/java/keyword-driven/keyword-driven-project-structure.png" alt=""></p>
-<p></td>
-<td><p>
+</td>
+<td>
 <h4 id="model">model</h4>
 <p>This folder contains all page models.
 It is recommended to create one page model per web page (or screen).
@@ -233,9 +236,9 @@ If a web page has too many UI elements to manipulate during the test, they can a
 A test case can be reused multiple times by giving different test data (combination with Data-driven approach)</p>
 <h4 id="testsuite">Testsuite</h4>
 <p>The entry point of the test project. It lists the test cases should be executed.</p>
-<p></td>
+</td>
 </tr>
-</table></p>
+</table>
 <h2 id="step-4-define-page-models">Step 4: Define page models</h2>
 <p>Similar to other methods, it is recommended to use Page model to separate object identification and test script.</p>
 <p>Please refer to <a href="page-model.html">Organize UI Elements with Page Model</a></p>
@@ -246,16 +249,17 @@ A test case can be reused multiple times by giving different test data (combinat
 <ul>
 <li>Please refer to section <a href="#implementing-login-keyword">Implementing Login keyword</a></li>
 </ul>
-<div class="tabGroup" id="tabgroup_y-RiFPGq+H">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H_login-page-model" role="tab" aria-controls="tabpanel_y-RiFPGq+H_login-page-model" data-tab="login-page-model" tabindex="0" aria-selected="true">Login page model</a>
+<a href="#tabpanel_1_login-page-model" role="tab" aria-controls="tabpanel_1_login-page-model" data-tab="login-page-model" tabindex="0" aria-selected="true">Login page model</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H_search-prospect-page-model" role="tab" aria-controls="tabpanel_y-RiFPGq+H_search-prospect-page-model" data-tab="search-prospect-page-model" tabindex="-1">search prospect page model</a>
+<a href="#tabpanel_1_search-prospect-page-model" role="tab" aria-controls="tabpanel_1_search-prospect-page-model" data-tab="search-prospect-page-model" tabindex="-1">search prospect page model</a>
 </li>
 </ul>
-<section id="tabpanel_y-RiFPGq+H_login-page-model" role="tabpanel" data-tab="login-page-model">
+<section id="tabpanel_1_login-page-model" role="tabpanel" data-tab="login-page-model">
+
 <pre><code class="lang-java">package fr.axa.automation.model;
 
 import fr.axa.automation.webengine.core.AbstractPageModel;
@@ -282,8 +286,10 @@ public class LoginModel extends AbstractPageModel {
         populateDriver(webDriver);
     }
 }
-</code></pre></section>
-<section id="tabpanel_y-RiFPGq+H_search-prospect-page-model" role="tabpanel" data-tab="search-prospect-page-model" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_1_search-prospect-page-model" role="tabpanel" data-tab="search-prospect-page-model" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.model;
 
 import fr.axa.automation.webengine.core.AbstractPageModel;
@@ -310,10 +316,11 @@ public class ProspectModel extends AbstractPageModel {
         populateDriver(webDriver);
     }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h2 id="step-5-develop-test-scripts">Step 5: Develop test scripts</h2>
-<p>Now we are entering to the most interesting part: develop test scripts. 
+<p>Now we are entering to the most interesting part: develop test scripts.
 That is, implementing each action keyword with test script. In this article, we will show the implementation of 2 keywords:
 <code>Login</code> and <code>searching module</code></p>
 <p><code>Login</code> is a normal keyword doing following actions:</p>
@@ -325,29 +332,33 @@ That is, implementing each action keyword with test script. In this article, we 
 <li>Check the login is success</li>
 </ul>
 <p>This action needs 3 parameters: <code>URL</code> of the application, <code>Username</code> and <code>Password</code></p>
-<p><code>searching module</code> is a page for searching customer : 
+<p><code>searching module</code> is a page for searching customer :
 Enter the name or id of customer
-Click on the &quot;search&quot; button </p>
-<div class="NOTE"><h5>Note</h5><p>In this tutorial, we will use hard coded test data for demonstration.</p>
+Click on the &quot;search&quot; button</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In this tutorial, we will use hard coded test data for demonstration.</p>
 <p>Externalized test data and dynamic test suite will be discussed in <a href="data-driven-cs.html">Data-Driven testing approach</a></p>
 </div>
 <h3 id="implementing-login-keyword">Implementing <code>Login</code> keyword</h3>
-<div class="tabGroup" id="tabgroup_y-RiFPGq+H-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-1_login-page" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-page" data-tab="login-page" tabindex="0" aria-selected="true">Login page</a>
+<a href="#tabpanel_2_login-page" role="tab" aria-controls="tabpanel_2_login-page" data-tab="login-page" tabindex="0" aria-selected="true">Login page</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-1_login-action" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-action" data-tab="login-action" tabindex="-1">Login action</a>
+<a href="#tabpanel_2_login-action" role="tab" aria-controls="tabpanel_2_login-action" data-tab="login-action" tabindex="-1">Login action</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-1_login-step" role="tab" aria-controls="tabpanel_y-RiFPGq+H-1_login-step" data-tab="login-step" tabindex="-1">Login step</a>
+<a href="#tabpanel_2_login-step" role="tab" aria-controls="tabpanel_2_login-step" data-tab="login-step" tabindex="-1">Login step</a>
 </li>
 </ul>
-<section id="tabpanel_y-RiFPGq+H-1_login-page" role="tabpanel" data-tab="login-page">
+<section id="tabpanel_2_login-page" role="tabpanel" data-tab="login-page">
+
 <p><img src="../images/kd-login-web.png" alt="Login Web page"></p>
 </section>
-<section id="tabpanel_y-RiFPGq+H-1_login-action" role="tabpanel" data-tab="login-action" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_login-action" role="tabpanel" data-tab="login-action" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.action;
 
 import fr.axa.automation.model.LoginModel;
@@ -378,8 +389,10 @@ public class LoginAction extends AbstractActionWebBase {
         return true;
     }
 }
-</code></pre></section>
-<section id="tabpanel_y-RiFPGq+H-1_login-step" role="tabpanel" data-tab="login-step" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_2_login-step" role="tabpanel" data-tab="login-step" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.teststep;
 
 import fr.axa.automation.action.LoginAction;
@@ -392,25 +405,28 @@ public class LoginStep implements ITestStep {
       return LoginAction.class;   
   }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h3 id="implementing-searching-module-keyword">Implementing <code>searching module</code> keyword</h3>
-<div class="tabGroup" id="tabgroup_y-RiFPGq+H-2">
+<div class="tabGroup" id="tabgroup_3">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-2_searching-module-page" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-page" data-tab="searching-module-page" tabindex="0" aria-selected="true">Searching module page</a>
+<a href="#tabpanel_3_searching-module-page" role="tab" aria-controls="tabpanel_3_searching-module-page" data-tab="searching-module-page" tabindex="0" aria-selected="true">Searching module page</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-2_searching-module-action" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-action" data-tab="searching-module-action" tabindex="-1">Searching module action</a>
+<a href="#tabpanel_3_searching-module-action" role="tab" aria-controls="tabpanel_3_searching-module-action" data-tab="searching-module-action" tabindex="-1">Searching module action</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_y-RiFPGq+H-2_searching-module-step" role="tab" aria-controls="tabpanel_y-RiFPGq+H-2_searching-module-step" data-tab="searching-module-step" tabindex="-1">Searching module step</a>
+<a href="#tabpanel_3_searching-module-step" role="tab" aria-controls="tabpanel_3_searching-module-step" data-tab="searching-module-step" tabindex="-1">Searching module step</a>
 </li>
 </ul>
-<section id="tabpanel_y-RiFPGq+H-2_searching-module-page" role="tabpanel" data-tab="searching-module-page">
+<section id="tabpanel_3_searching-module-page" role="tabpanel" data-tab="searching-module-page">
+
 <p><img src="../images/search-prospect.png" alt=""></p>
 </section>
-<section id="tabpanel_y-RiFPGq+H-2_searching-module-action" role="tabpanel" data-tab="searching-module-action" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_3_searching-module-action" role="tabpanel" data-tab="searching-module-action" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.action;
 
 import fr.axa.automation.model.ProspectModel;
@@ -439,8 +455,10 @@ public class ProspectAction extends AbstractActionWebBase {
     return true;
   }
 }
-</code></pre></section>
-<section id="tabpanel_y-RiFPGq+H-2_searching-module-step" role="tabpanel" data-tab="searching-module-step" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_3_searching-module-step" role="tabpanel" data-tab="searching-module-step" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.teststep;
 
 
@@ -454,7 +472,8 @@ public class ProspectStep implements ITestStep {
         return ProspectAction.class;
     }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h2 id="step-6-define-test-cases">Step 6: Define test cases</h2>
 <p>Test case is inherited from &quot;fr.axa.automation.webengine.core.ITestCase&quot; to have common web testing behaviors such as: Checks WebDriver, Open the browser before the test and close the browser after test.
@@ -477,11 +496,12 @@ public class FindProspectTestCase implements ITestCase {
                                 new ProspectStep());
     }
 }
-</code></pre><h2 id="step-7-define-test-suite">Step 7: Define Test Suite</h2>
+</code></pre>
+<h2 id="step-7-define-test-suite">Step 7: Define Test Suite</h2>
 <p>A test suite defines a list of test cases to be executed.
 One Test Case can be used multiple times with different test data.
 Only one <code>TestSuite</code> per project is allowed.</p>
-<p>In this example, We don&#39;t use externalized test data, all test data is hard coded in the keyword action.
+<p>In this example, We don't use externalized test data, all test data is hard coded in the keyword action.
 In this case we will provide a hard-coded list of test cases with name:</p>
 <pre><code class="lang-java">package fr.axa.automation.testsuite;
 
@@ -504,7 +524,10 @@ public class TestSuite extends AbstractTestSuite {
         return testCaseList;
     }
 }
-</code></pre><div class="NOTE"><h5>Note</h5><p>Using hard coded test data and hard coded test case list is only for demonstration.
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Using hard coded test data and hard coded test case list is only for demonstration.
 In the real project, it is strongly recommanded to use variables in each keyword and run tests dynamically driven by external data.
 Please refer to <a href="data-driven-cs.html">Data-Driven Test Approach</a> after finished this tutoriel.</p>
 </div>
@@ -544,10 +567,13 @@ public class Application implements CommandLineRunner {
         bootProject.runFromProject(args);
     }
 }
-</code></pre><h2 id="step-9-execute-the-solution">Step 9: Execute the solution</h2>
+</code></pre>
+<h2 id="step-9-execute-the-solution">Step 9: Execute the solution</h2>
 <p>Run the class Application</p>
 <p>Then you can set breakpoint in the code to debug step by step.</p>
-<div class="NOTE"><h5>Note</h5><p>When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
+<div class="NOTE">
+<h5>Note</h5>
+<p>When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
 For more information about Excel Add-in, please refer to <a href="../articles/excel-addin.html">Working with WebEngine Add-in for Excel</a></p>
 </div>
 <h2 id="step-10-visualize-reports">Step 10: Visualize Reports</h2>
@@ -556,37 +582,40 @@ For more information about Excel Add-in, please refer to <a href="../articles/ex
 <p>When running you can add <code>-showReport</code> to open HTML report after test execution.</p>
 <h2 id="resume">Resume</h2>
 <p>As you can see, with this method it takes longer to automatize the first test case. But in long term, you have a well structured, modelized testing project that makes easier to improve and to maintain. We recommand this approach for complex end-to-end scenarios.</p>
-<p>BUT, it&#39;s not finished. In this tutorial, everything is hard-coded:</p>
+<p>BUT, it's not finished. In this tutorial, everything is hard-coded:</p>
 <ul>
 <li>Url is hard coded, you may want to test under multiple test-environments</li>
 <li>Test data is hard coded, you may want to run the test case with other combination of test data</li>
 <li>Test suite is hard coded, you may want to execute one, more or all test cases according to the need.</li>
 <li>Logic is hard coded, you may want to change some logic of script based on the test data.
-In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;ll convert all these hard coded things dynamically.</li>
+In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we'll convert all these hard coded things dynamically.</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>The example project of this article can be found in sample-keyword-driven</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The example project of this article can be found in sample-keyword-driven</p>
 </div>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-java.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/keyword-driven-java.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -594,14 +623,14 @@ In next article <a href="data-driven-cs.html">Data-Driven Approach</a>, we&#39;l
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

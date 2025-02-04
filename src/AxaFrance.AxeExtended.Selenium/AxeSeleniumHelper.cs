@@ -70,6 +70,58 @@ namespace AxaFrance.AxeExtended.Selenium
             return result;
         }
 
+        private static bool HasShadowRoot(IWebDriver driver, IWebElement element)
+        {
+            var shadowRoot = driver.ExecuteScript("return arguments[0].shadowRoot", element);
+            return shadowRoot != null;
+        }
+
+        private static IEnumerable<IWebElement> FindElementsFromShadow(WebDriver driver, IEnumerable<string> locators, ISearchContext context = null)
+        {
+            if (context == null) context = driver;
+            var currentLocator = locators.FirstOrDefault();
+            var remainingLocators = locators.Skip(1).ToArray();
+            IEnumerable<IWebElement> elements = null;
+            if (context is ShadowRoot || context is IWebDriver)
+            {
+                elements = context.FindElements(By.CssSelector(currentLocator));
+            }
+            else if (context is WebElement we)
+            {
+                //find elements inside, or find elements from Shadowroot.
+                
+                if (HasShadowRoot(driver,we))
+                {
+                    var root = we.GetShadowRoot();
+                    elements = root.FindElements(By.CssSelector(currentLocator));
+                }
+                else
+                {
+                    elements = context.FindElements(By.CssSelector(currentLocator));
+                }
+            }
+
+            if (elements == null || elements.Count() == 0)
+            {
+                return null;
+            }
+            else if (remainingLocators.Count() == 0)
+            {
+                return elements;
+            }
+            else
+            {
+                foreach (var element in elements)
+                {
+                    var subElements = FindElementsFromShadow(driver, remainingLocators, element);
+                    if (subElements != null)
+                    {
+                        return subElements;
+                    }
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// Takes the screenshot. this function will be called by <see cref="PageReportBuilder.GetScreenshot" />
@@ -86,13 +138,13 @@ namespace AxaFrance.AxeExtended.Selenium
             {
                 if (selectors.Any((IList<string> shadowSelectors) => shadowSelectors.Count > 1))
                 {
-                    //it contains shadow dom iFrame
-                    throw new NotImplementedException("Shadow Dom element not yet implemented.");
+                    //it contains shadow dom in iFrame
+                    Console.WriteLine("[Ally] Elements nested in Shadow DOM within iFrame are not yet supported.");
                 }
                 else
                 {
                     //it contains iFrame
-                    Console.WriteLine("[A11y] Warning unable to get screenshot of an element inside iFrame.");
+                    Console.WriteLine("[Ally] Elements nested in iFrame are not yet supported.");
                     var iFrameSelector = node.Target.FrameSelectors.ToArray();
                     element = driver.FindElement(By.CssSelector(iFrameSelector[0]));
                 }
@@ -100,13 +152,18 @@ namespace AxaFrance.AxeExtended.Selenium
             }
             else
             {
-                try
+                var selector = node.Target.FrameShadowSelectors[0];
+                if (selector.Count > 1)
+                {
+                    var elements = FindElementsFromShadow(driver, selector);
+                    if (elements != null)
+                    {
+                        element = elements.FirstOrDefault();
+                    }
+                }
+                else
                 {
                     element = GetDomElement(driver, node);
-                }
-                catch (InvalidOperationException ioe)
-                {
-                    element = GetShadowFrameElement(driver, node);
                 }
             }
 
@@ -133,11 +190,6 @@ namespace AxaFrance.AxeExtended.Selenium
             }
 
 
-        }
-
-        private static IWebElement GetShadowFrameElement(WebDriver driver, AxeResultNode node)
-        {
-            return null;
         }
 
         private static IWebElement GetDomElement(WebDriver driver, AxeResultNode node)
@@ -193,13 +245,11 @@ namespace AxaFrance.AxeExtended.Selenium
 
             var location = locatable.Coordinates.LocationInViewport; //location and size are for 100% dpi
             var size = element.Size;
-            if (size.Height != 0 && size.Width != 0)
-            {
-                var screenshot = MarkOnImage(imageViewPort, location, size, options);
-                return screenshot;
-            }
-            Console.WriteLine("[A11y] Unable to get screenshot: Element has 0 height or width.");
-            return PageReportBuilder.GetRawResources("no-image.png");
+            var width = size.Width == 0 ? 10 : size.Width;
+            var height = size.Height == 0 ? 10 : size.Height;
+            var newSize = new Size(width, height);
+            var screenshot = MarkOnImage(imageViewPort, location, newSize, options);
+            return screenshot;
         }
 
         /// <summary>

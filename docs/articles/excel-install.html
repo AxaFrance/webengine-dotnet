@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Install WebEngine Add-in for Excel | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Install WebEngine Add-in for Excel | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -86,9 +86,9 @@
 <p>If you are installing from a shared location, you may encounter this warning. Just click on run to continue the installation.</p>
 <h3 id="the-installation-is-forbidden-because-signature-certificate-is-not-trusted">The installation is forbidden because signature certificate is not trusted.</h3>
 <p><img src="../images/excel-install-3.png" alt="Excel Install 3"></p>
-<p>If your organization forbids installation of unsigned Office Add-in, you&#39;ll need to:</p>
+<p>If your organization forbids installation of unsigned Office Add-in, you'll need to:</p>
 <ul>
-<li>Compile Excel add-in from source code and sign it with your organization&#39;s certificate.</li>
+<li>Compile Excel add-in from source code and sign it with your organization's certificate.</li>
 <li>Install the default certificate in trusted store</li>
 </ul>
 <h3 id="install-default-certificate">Install default certificate</h3>
@@ -103,47 +103,46 @@
 <li>Open <code>Excel_certificate.cer</code> provided in the Add-in Package</li>
 </ol>
 <p><img src="../images/excel-install-4.png" alt="Excel Install 4"></p>
-<ol>
+<ol start="2">
 <li>Click <code>Install Certificate</code> and choose <code>Current User</code></li>
 </ol>
 <p><img src="../images/excel-install-5.png" alt="Excel Install 5"></p>
-<ol>
+<ol start="3">
 <li>Choose <code>Place all certificates in the following store</code> and click on <code>Browse</code></li>
 </ol>
 <p><img src="../images/excel-install-6.png" alt="Excel Install 6"></p>
-<ol>
+<ol start="4">
 <li>Select <code>Trusted Root Certification Authorities</code> and click <code>OK</code></li>
 </ol>
-<p><img src="../images/excel-install-7.png" alt="Excel Install 7"></p>
-<ol>
-<li>If the warning dialog shows like follow, accept it.</li>
-</ol>
+<p><img src="../images/excel-install-7.png" alt="Excel Install 7">
+5. If the warning dialog shows like follow, accept it.</p>
 <p><img src="../images/excel-install-8.png" alt="Excel Install 8"></p>
-<ol>
+<ol start="6">
 <li>Repeat the same procedure to install the same certificate in the store <code>Trusted Publisher</code></li>
 </ol>
 <p>After installation of the certificate, you should be able to install the WebEngine Add-in for Excel.</p>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/excel-install.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/excel-install.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -151,14 +150,14 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Data-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Data-Driven testing Approach (Java/Spring boot) | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -79,10 +79,12 @@ We will continue from the previous test project for application <a href="http://
 <h1 id="step-1-review-modulization-project-structure-and-keywords">Step 1: Review modulization, project structure and keywords</h1>
 <p>The modelling of Home Insurance Underwriting application may look like following diagram:</p>
 <p><img src="../images/kd-schemas.png" alt="Schemas"></p>
-<div class="NOTE"><h5>Note</h5><p>This tutorial is based on the outcome of <a href="keyword-driven-java.html">Keyword-Driven testing Approach (Java/Spring boot)</a>. If you don&#39;t have a working keyword-driven test project yet, please follow that article first.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This tutorial is based on the outcome of <a href="keyword-driven-java.html">Keyword-Driven testing Approach (Java/Spring boot)</a>. If you don't have a working keyword-driven test project yet, please follow that article first.</p>
 </div>
 <h1 id="step-2-identify-variables">Step 2: Identify variables</h1>
-<p>In this step, we&#39;ll need to identify variables used in the test automation solution.
+<p>In this step, we'll need to identify variables used in the test automation solution.
 To record and manage test data, the most convenient way is to use an Excel spreadsheet under WebEngine format.
 So you can run all your tests directly from Excel with WebEngine Excel Add-in.</p>
 <p>For more information about Excel test data</p>
@@ -92,33 +94,36 @@ So you can run all your tests directly from Excel with WebEngine Excel Add-in.</
 </ul>
 <p>Test data will have 3 sheets:</p>
 <ul>
-<li><code>PARAMS</code>: All the possible parameters of test case and it&#39;s description.</li>
+<li><code>PARAMS</code>: All the possible parameters of test case and it's description.</li>
 <li><code>ENV</code>: Test environment dependent variables such as URL or the site or the name of the server.</li>
 <li><code>TEST_SUITE</code>: represents the test suite (including a list of test cases)</li>
 </ul>
 <p>For this test, we developed following test data</p>
-<div class="tabGroup" id="tabgroup_bu2gTouIFx">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx_param" role="tab" aria-controls="tabpanel_bu2gTouIFx_param" data-tab="param" tabindex="0" aria-selected="true">PARAMS</a>
+<a href="#tabpanel_1_param" role="tab" aria-controls="tabpanel_1_param" data-tab="param" tabindex="0" aria-selected="true">PARAMS</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx_env" role="tab" aria-controls="tabpanel_bu2gTouIFx_env" data-tab="env" tabindex="-1">ENV</a>
+<a href="#tabpanel_1_env" role="tab" aria-controls="tabpanel_1_env" data-tab="env" tabindex="-1">ENV</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx_testsuite" role="tab" aria-controls="tabpanel_bu2gTouIFx_testsuite" data-tab="testsuite" tabindex="-1">TEST_SUITE</a>
+<a href="#tabpanel_1_testsuite" role="tab" aria-controls="tabpanel_1_testsuite" data-tab="testsuite" tabindex="-1">TEST_SUITE</a>
 </li>
 </ul>
-<section id="tabpanel_bu2gTouIFx_param" role="tabpanel" data-tab="param">
+<section id="tabpanel_1_param" role="tabpanel" data-tab="param">
+
 <p>Describes all the test parameters</p>
 <p><img src="../images/dd-excel-param-java.png" alt=""></p>
 </section>
-<section id="tabpanel_bu2gTouIFx_env" role="tabpanel" data-tab="env" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_env" role="tabpanel" data-tab="env" aria-hidden="true" hidden="hidden">
+
 <p>Here we lists all test environment dependent variables such as URLs.</p>
 <p>If you have more than one test environment, you can list all data with prefix or postfix</p>
 <p><img src="../images/dd-excelenv-java.png" alt=""></p>
 </section>
-<section id="tabpanel_bu2gTouIFx_testsuite" role="tabpanel" data-tab="testsuite" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_testsuite" role="tabpanel" data-tab="testsuite" aria-hidden="true" hidden="hidden">
+
 <p>In test data we will specify the test cases and test data used for each test case.</p>
 <p>For example: our test suite will have 3 test cases, covers Apartment, House and Apartment with previous accident.
 From spreadsheet we can clearly see how parameters are used and have an idea about the test coverage of each parameter.
@@ -126,23 +131,27 @@ To increase test coverage, we can simply create new columns without the need to 
 <p><img src="../images/dd-exceldata-java.png" alt=""></p>
 </section>
 </div>
-<div class="NOTE"><h5>Note</h5><p>There is no need to develop every parameter and the variable for every test case.
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>There is no need to develop every parameter and the variable for every test case.
 The solution can be improved with the time by increasing test coverage in width (by increasing test cases) and in depth (by increasing test parameters)</p>
 </div>
 <h1 id="step-3-using-test-parameters-in-the-script">Step 3: Using test parameters in the script.</h1>
 <h2 id="31-import-test-parameters-from-excel">3.1: Import test parameters from EXCEL</h2>
 <p>The function of WebEngine Addin -&gt; Tools -&gt; Code Generation can generate a Java class <code>ParameterList</code> for you, including all test parameters with their descriptions as comment</p>
 <p><img src="../images/excel-code-generation.png" alt="Excel Code Generation"></p>
-<div class="tabGroup" id="tabgroup_bu2gTouIFx-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-1_why-parameter-list" role="tab" aria-controls="tabpanel_bu2gTouIFx-1_why-parameter-list" data-tab="why-parameter-list" tabindex="0" aria-selected="true">Why use ParameterList</a>
+<a href="#tabpanel_2_why-parameter-list" role="tab" aria-controls="tabpanel_2_why-parameter-list" data-tab="why-parameter-list" tabindex="0" aria-selected="true">Why use ParameterList</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-1_content-parameter-list" role="tab" aria-controls="tabpanel_bu2gTouIFx-1_content-parameter-list" data-tab="content-parameter-list" tabindex="-1">Content of ParameterList</a>
+<a href="#tabpanel_2_content-parameter-list" role="tab" aria-controls="tabpanel_2_content-parameter-list" data-tab="content-parameter-list" tabindex="-1">Content of ParameterList</a>
 </li>
 </ul>
-<section id="tabpanel_bu2gTouIFx-1_why-parameter-list" role="tabpanel" data-tab="why-parameter-list">
+<section id="tabpanel_2_why-parameter-list" role="tabpanel" data-tab="why-parameter-list">
+
 <p>Using parameter list are following advantage:</p>
 <ul>
 <li>Benefit from code auto-completion from development tools.</li>
@@ -150,7 +159,8 @@ The solution can be improved with the time by increasing test coverage in width 
 <li>Avoid type error in the test script.</li>
 </ul>
 </section>
-<section id="tabpanel_bu2gTouIFx-1_content-parameter-list" role="tabpanel" data-tab="content-parameter-list" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_content-parameter-list" role="tabpanel" data-tab="content-parameter-list" aria-hidden="true" hidden="hidden">
+
 <p>You should split after into two classes for maintenability</p>
 <pre><code class="lang-java">package fr.axa.automation.parameter;
 
@@ -159,12 +169,14 @@ public class EnvironnementVariable {
     public static final String  LOGIN = &quot;LOGIN&quot;;
     public static final String  PASSWORD = &quot;PASSWORD&quot;;
 }
-</code></pre><pre><code class="lang-java">package fr.axa.automation.parameter;
+</code></pre>
+<pre><code class="lang-java">package fr.axa.automation.parameter;
 
 public class DataVariable {
     public static final String  PROSPECT_NAME = &quot;Nicolas&quot;;
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h2 id="32-use-variables-in-the-script">3.2: Use variables in the script</h2>
 <p>In actions, you can use <code>EnvironnementVariable.URL</code> contant to retrieve the URL value of an Environment Variable and use <code>DataVariable.PROSPECT_NAME</code> constant to retrieve test data.</p>
@@ -175,16 +187,17 @@ public class DataVariable {
 <li>Fill <code>username</code> and <code>password</code> with the value from parameter <code>Username</code> and <code>Password</code>
 This action can do whatever needed according to the test data provided.</li>
 </ul>
-<div class="tabGroup" id="tabgroup_bu2gTouIFx-2">
+<div class="tabGroup" id="tabgroup_3">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-2_login-hc" role="tab" aria-controls="tabpanel_bu2gTouIFx-2_login-hc" data-tab="login-hc" tabindex="0" aria-selected="true">Login.java (Hard Coded)</a>
+<a href="#tabpanel_3_login-hc" role="tab" aria-controls="tabpanel_3_login-hc" data-tab="login-hc" tabindex="0" aria-selected="true">Login.java (Hard Coded)</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-2_login-dd" role="tab" aria-controls="tabpanel_bu2gTouIFx-2_login-dd" data-tab="login-dd" tabindex="-1">Login.java (Data Driven)</a>
+<a href="#tabpanel_3_login-dd" role="tab" aria-controls="tabpanel_3_login-dd" data-tab="login-dd" tabindex="-1">Login.java (Data Driven)</a>
 </li>
 </ul>
-<section id="tabpanel_bu2gTouIFx-2_login-hc" role="tabpanel" data-tab="login-hc">
+<section id="tabpanel_3_login-hc" role="tabpanel" data-tab="login-hc">
+
 <pre><code class="lang-java">package fr.axa.automation.action;
 
 import fr.axa.automation.model.LoginModel;
@@ -216,8 +229,10 @@ public class LoginAction extends AbstractActionWebBase {
     return true;
   }
 }
-</code></pre></section>
-<section id="tabpanel_bu2gTouIFx-2_login-dd" role="tabpanel" data-tab="login-dd" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_3_login-dd" role="tabpanel" data-tab="login-dd" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">package fr.axa.automation.action;
 
 import fr.axa.automation.model.LoginModel;
@@ -253,11 +268,12 @@ public class LoginAction extends AbstractActionWebBase {
     return true;
   }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h1 id="step-4-data-driven-test-script">Step 4: Data-Driven test script</h1>
 <p>Repeat the step 3.2 on every keyword action, you can completely remove hard coded test data.
-But sometimes it&#39;s not enough, because test procedure may change as test data changes.</p>
+But sometimes it's not enough, because test procedure may change as test data changes.</p>
 <h2 id="41-manages-test-process-driven-by-data">4.1 Manages test process driven by data</h2>
 <p>In our application <code>home type</code> can be <code>apartment</code> or <code>house</code>, according to its value.
 The forms will be different.</p>
@@ -296,20 +312,22 @@ public class homeDetailTypeAppartmentAction extends AbstractActionWebBase {
     return true;
   }
 }
-</code></pre><h2 id="43-resume">4.3 Resume</h2>
+</code></pre>
+<h2 id="43-resume">4.3 Resume</h2>
 <p>With above technics, you can control the test process or optional actions by external data.
 That means if every keyword action is implemented like above examples,
 you can run tests with any combination of data without the need to modify and update the code.</p>
 <p>In general, simple controls can be implemented with <code>if</code> statement. but when the flow control becomes complex, it is recommended to separate these logics into sub-actions to keep an action at a reasonable complexity.</p>
 <h1 id="step-5-test-suite-driven-by-data">Step 5: Test suite driven by data</h1>
 <p>We have improved every keyword action, and technically we can run test case with any combination of test data.</p>
-<div class="tabGroup" id="tabgroup_bu2gTouIFx-3">
+<div class="tabGroup" id="tabgroup_4">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-3_ts-code" role="tab" aria-controls="tabpanel_bu2gTouIFx-3_ts-code" data-tab="ts-code" tabindex="0" aria-selected="true">Test Suite </a>
+<a href="#tabpanel_4_ts-code" role="tab" aria-controls="tabpanel_4_ts-code" data-tab="ts-code" tabindex="0" aria-selected="true">Test Suite </a>
 </li>
 </ul>
-<section id="tabpanel_bu2gTouIFx-3_ts-code" role="tabpanel" data-tab="ts-code">
+<section id="tabpanel_4_ts-code" role="tabpanel" data-tab="ts-code">
+
 <pre><code class="lang-java">package fr.axa.automation.testsuite;
 
 import fr.axa.automation.testcase.SubscriptionTypeAppartmentTestCase;
@@ -331,7 +349,8 @@ public class TestSuite extends AbstractTestSuite {
         return testCaseList;
     }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h1 id="step-6-export-test-data">Step 6: Export test data</h1>
 <p>Now go back to Excel test data and export Test Data and Environment Variables.
@@ -339,7 +358,7 @@ Save them in the resource directory.</p>
 <p><img src="../images/export-test-data-and-env.png" alt=""></p>
 <p><img src="../images/java/data-driven/test-suite-and-env.png" alt=""></p>
 <h1 id="step-7-debug-and-execute-test-cases">Step 7: Debug and Execute test cases</h1>
-<p>Similar to previous article, you&#39;ll need to configure the project properties to launch the Application class with appropriate parameters.</p>
+<p>Similar to previous article, you'll need to configure the project properties to launch the Application class with appropriate parameters.</p>
 <p><img src="../images/java/data-driven/run-data-driven.png" alt=""></p>
 <p>This time, we will provide 2 more parameters:</p>
 <ul>
@@ -364,70 +383,78 @@ In general, the output folder of your test projet in <code>bin\\debug</code></li
 </ul>
 <p>Once the settings is done, now we can run any and any number of tests directly:
 For example: run <code>TEST_02</code>:</p>
-<div class="tabGroup" id="tabgroup_bu2gTouIFx-4">
+<div class="tabGroup" id="tabgroup_5">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-4_run-step-1" role="tab" aria-controls="tabpanel_bu2gTouIFx-4_run-step-1" data-tab="run-step-1" tabindex="0" aria-selected="true">Select Test</a>
+<a href="#tabpanel_5_run-step-1" role="tab" aria-controls="tabpanel_5_run-step-1" data-tab="run-step-1" tabindex="0" aria-selected="true">Select Test</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-4_run-step-2" role="tab" aria-controls="tabpanel_bu2gTouIFx-4_run-step-2" data-tab="run-step-2" tabindex="-1">Launch Test</a>
+<a href="#tabpanel_5_run-step-2" role="tab" aria-controls="tabpanel_5_run-step-2" data-tab="run-step-2" tabindex="-1">Launch Test</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-4_run-step-3" role="tab" aria-controls="tabpanel_bu2gTouIFx-4_run-step-3" data-tab="run-step-3" tabindex="-1">Select Browser</a>
+<a href="#tabpanel_5_run-step-3" role="tab" aria-controls="tabpanel_5_run-step-3" data-tab="run-step-3" tabindex="-1">Select Browser</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bu2gTouIFx-4_run-step-4" role="tab" aria-controls="tabpanel_bu2gTouIFx-4_run-step-4" data-tab="run-step-4" tabindex="-1">Observe Test Execution</a>
+<a href="#tabpanel_5_run-step-4" role="tab" aria-controls="tabpanel_5_run-step-4" data-tab="run-step-4" tabindex="-1">Observe Test Execution</a>
 </li>
 </ul>
-<section id="tabpanel_bu2gTouIFx-4_run-step-1" role="tabpanel" data-tab="run-step-1">
+<section id="tabpanel_5_run-step-1" role="tabpanel" data-tab="run-step-1">
+
 <p>Select <code>SUBSCRIPTION_HOME</code> cell</p>
 <p><img src="../images/dd-step1-java.png" alt=""></p>
 </section>
-<section id="tabpanel_bu2gTouIFx-4_run-step-2" role="tabpanel" data-tab="run-step-2" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_5_run-step-2" role="tabpanel" data-tab="run-step-2" aria-hidden="true" hidden="hidden">
+
 <p>Click <code>Launch Test</code>
 <img src="../images/dd-step2.png" alt="Dd Step2"></p>
 </section>
-<section id="tabpanel_bu2gTouIFx-4_run-step-3" role="tabpanel" data-tab="run-step-3" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_5_run-step-3" role="tabpanel" data-tab="run-step-3" aria-hidden="true" hidden="hidden">
+
 <p>Choose a desktop browser, for example <code>Firefox</code>. Then click <code>Start</code>
 <img src="../images/dd-step3.png" alt="Dd Step3"></p>
 </section>
-<section id="tabpanel_bu2gTouIFx-4_run-step-4" role="tabpanel" data-tab="run-step-4" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_5_run-step-4" role="tabpanel" data-tab="run-step-4" aria-hidden="true" hidden="hidden">
+
 <p>Now you can see the framework is running Test_02 on Firefox:
 <img src="../images/dd-step4-java.png" alt=""></p>
 </section>
 </div>
-<div class="NOTE"><h5>Note</h5><p>By running tests directly from Excel, Webrunner is not attached with Visual Studio debugger. So it&#39;s not possible to debug the code line by line.
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>By running tests directly from Excel, Webrunner is not attached with Visual Studio debugger. So it's not possible to debug the code line by line.
 If you want to debug a particular test case or action, you can use Excel Add-in to export that particular test case, then launch the project with-in Visual Studio.</p>
 </div>
 <h1 id="conclusion">Conclusion</h1>
-<p>Congratulations! You&#39;ve reached here and have a dynamic data-driven test solution for your application.</p>
+<p>Congratulations! You've reached here and have a dynamic data-driven test solution for your application.</p>
 <p>Now you can study test coverage and develop other test cases, if necessary, in both directions:</p>
 <ul>
 <li>In Width: to develop additional test cases with new combination of test data.
 This can be done exclusively within Excel without the need to motify the code or the test project.</li>
-<li>In Depth: If we want to do more verifications or to cover more functionalities. we&#39;ll need to update appropriate keyword-actions or add new keyword action, then externalize test data for these newly added codes.</li>
+<li>In Depth: If we want to do more verifications or to cover more functionalities. we'll need to update appropriate keyword-actions or add new keyword action, then externalize test data for these newly added codes.</li>
 </ul>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/data-driven-java.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/tutorials/data-driven-java.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -435,14 +462,14 @@ This can be done exclusively within Excel without the need to motify the code or
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Tools integrated in the Excel Add-in | AXA WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tools integrated in the Excel Add-in | AXA WebEngine Test Framework ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="../images/logo_small.svg">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -47,7 +47,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -57,7 +57,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -74,105 +74,111 @@
 The code is copied to the clipboard, paste it in your IDE to update the class definition.</p>
 <p>As a result, with the example excel test data file. it will generate codes for <code>ParameterList</code> class as follow. You can paste the code in your data and use them in the test scripts.
 In test script, you can call <code>ParameterList.LASTNAME</code> to refer the name of the parameter or <code>GetParameter(ParameterList.LASTNAME)</code> to get its value.</p>
-<div class="TIP"><h5>Tip</h5><p>Use ParameterList class instead of parameters stored in <code>string</code>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Use ParameterList class instead of parameters stored in <code>string</code>
 can avoid typographical errors and it contributes on the maintainability of the test project.</p>
 </div>
-<div class="tabGroup" id="tabgroup_-vHezaya1E">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_-vHezaya1E_netcore" role="tab" aria-controls="tabpanel_-vHezaya1E_netcore" data-tab="netcore" tabindex="0" aria-selected="true">.NET</a>
+<a href="#tabpanel_1_netcore" role="tab" aria-controls="tabpanel_1_netcore" data-tab="netcore" tabindex="0" aria-selected="true">.NET</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_-vHezaya1E_java" role="tab" aria-controls="tabpanel_-vHezaya1E_java" data-tab="java" tabindex="-1">Java</a>
+<a href="#tabpanel_1_java" role="tab" aria-controls="tabpanel_1_java" data-tab="java" tabindex="-1">Java</a>
 </li>
 </ul>
-<section id="tabpanel_-vHezaya1E_netcore" role="tabpanel" data-tab="netcore">
+<section id="tabpanel_1_netcore" role="tabpanel" data-tab="netcore">
+
 <pre><code class="lang-C#">public static class ParameterList {
 
-    ///&lt;Summary&gt;Parameter: Le nom de cas de test. Il doit être unique dans chaque test suite (dont une feuille Excel) &lt;/Summary&gt;
-    public static string TESTCASE {get; } = &quot;TESTCASE&quot;;
+	///&lt;Summary&gt;Parameter: Le nom de cas de test. Il doit être unique dans chaque test suite (dont une feuille Excel) &lt;/Summary&gt;
+	public static string TESTCASE {get; } = &quot;TESTCASE&quot;;
 
-    ///&lt;Summary&gt;Parameter: Workflow of the current test case, decides which script will be used to test current scenario. SIMPLE for basic named based search, ADVANCED for multiple filter based search &lt;/Summary&gt;
-    public static string WORKFLOW {get; } = &quot;WORKFLOW&quot;;
+	///&lt;Summary&gt;Parameter: Workflow of the current test case, decides which script will be used to test current scenario. SIMPLE for basic named based search, ADVANCED for multiple filter based search &lt;/Summary&gt;
+	public static string WORKFLOW {get; } = &quot;WORKFLOW&quot;;
 
-    ///&lt;Summary&gt;Parameter: The test Environment. Possible values: DEV, TEST, STAGING &lt;/Summary&gt;
-    public static string ENVIRONMENT {get; } = &quot;ENVIRONMENT&quot;;
+	///&lt;Summary&gt;Parameter: The test Environment. Possible values: DEV, TEST, STAGING &lt;/Summary&gt;
+	public static string ENVIRONMENT {get; } = &quot;ENVIRONMENT&quot;;
 
-    ///&lt;Summary&gt;Parameter: Search_a_user &lt;/Summary&gt;
-    public static string Search_a_user {get; } = &quot;Search_a_user&quot;;
+	///&lt;Summary&gt;Parameter: Search_a_user &lt;/Summary&gt;
+	public static string Search_a_user {get; } = &quot;Search_a_user&quot;;
 
-    ///&lt;Summary&gt;Parameter: Last name of the person, used in SIMPLE MODE &lt;/Summary&gt;
-    public static string LASTNAME {get; } = &quot;LASTNAME&quot;;
+	///&lt;Summary&gt;Parameter: Last name of the person, used in SIMPLE MODE &lt;/Summary&gt;
+	public static string LASTNAME {get; } = &quot;LASTNAME&quot;;
 
-    ///&lt;Summary&gt;Parameter: First name of the person, used in SIMPLE MODE &lt;/Summary&gt;
-    public static string FIRSTNAME {get; } = &quot;FIRSTNAME&quot;;
+	///&lt;Summary&gt;Parameter: First name of the person, used in SIMPLE MODE &lt;/Summary&gt;
+	public static string FIRSTNAME {get; } = &quot;FIRSTNAME&quot;;
 
-    ///&lt;Summary&gt;Parameter: Agent Number, used in ADVANCED search mode &lt;/Summary&gt;
-    public static string AGENT_NO {get; } = &quot;AGENT_NO&quot;;
+	///&lt;Summary&gt;Parameter: Agent Number, used in ADVANCED search mode &lt;/Summary&gt;
+	public static string AGENT_NO {get; } = &quot;AGENT_NO&quot;;
 
-    ///&lt;Summary&gt;Parameter: Verifications &lt;/Summary&gt;
-    public static string Verifications {get; } = &quot;Verifications&quot;;
+	///&lt;Summary&gt;Parameter: Verifications &lt;/Summary&gt;
+	public static string Verifications {get; } = &quot;Verifications&quot;;
 
-    ///&lt;Summary&gt;Parameter: Y/N, if the test script will click on &quot;See Details&quot; and check expected values &lt;/Summary&gt;
-    public static string SEE_DETAILS {get; } = &quot;SEE_DETAILS&quot;;
+	///&lt;Summary&gt;Parameter: Y/N, if the test script will click on &quot;See Details&quot; and check expected values &lt;/Summary&gt;
+	public static string SEE_DETAILS {get; } = &quot;SEE_DETAILS&quot;;
 
-    ///&lt;Summary&gt;Parameter: Verify the company field in search result, empty value = ignore the check. &lt;/Summary&gt;
-    public static string COMPANY {get; } = &quot;COMPANY&quot;;
+	///&lt;Summary&gt;Parameter: Verify the company field in search result, empty value = ignore the check. &lt;/Summary&gt;
+	public static string COMPANY {get; } = &quot;COMPANY&quot;;
 
-    ///&lt;Summary&gt;Parameter: Verify the email field in search result, empty value = ignore the check. &lt;/Summary&gt;
-    public static string EMAIL {get; } = &quot;EMAIL&quot;;
+	///&lt;Summary&gt;Parameter: Verify the email field in search result, empty value = ignore the check. &lt;/Summary&gt;
+	public static string EMAIL {get; } = &quot;EMAIL&quot;;
 
-    ///&lt;Summary&gt;Parameter: Verify the phone number in search result. &lt;/Summary&gt;
-    public static string TELEPHONE {get; } = &quot;TELEPHONE&quot;;
+	///&lt;Summary&gt;Parameter: Verify the phone number in search result. &lt;/Summary&gt;
+	public static string TELEPHONE {get; } = &quot;TELEPHONE&quot;;
 
-    ///&lt;Summary&gt;Parameter: Verify the city name in search result. &lt;/Summary&gt;
-    public static string CITY {get; } = &quot;CITY&quot;;
+	///&lt;Summary&gt;Parameter: Verify the city name in search result. &lt;/Summary&gt;
+	public static string CITY {get; } = &quot;CITY&quot;;
 
 }
-</code></pre></section>
-<section id="tabpanel_-vHezaya1E_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_1_java" role="tabpanel" data-tab="java" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-java">public class ParameterList {
-    /** Parameter: Le nom de cas de test. Il doit être unique dans chaque test suite (dont une feuille Excel) */
-    public static final String TESTCASE = &quot;TESTCASE&quot;;
+	/** Parameter: Le nom de cas de test. Il doit être unique dans chaque test suite (dont une feuille Excel) */
+	public static final String TESTCASE = &quot;TESTCASE&quot;;
 
-    /** Parameter: Workflow of the current test case, decides which script will be used to test current scenario. SIMPLE for basic named based search, ADVANCED for multiple-filter based search */
-    public static final String WORKFLOW = &quot;WORKFLOW&quot;;
+	/** Parameter: Workflow of the current test case, decides which script will be used to test current scenario. SIMPLE for basic named based search, ADVANCED for multiple-filter based search */
+	public static final String WORKFLOW = &quot;WORKFLOW&quot;;
 
-    /** Parameter: The test Environment. Possible values: DEV, TEST, STAGING */
-    public static final String ENVIRONMENT = &quot;ENVIRONMENT&quot;;
+	/** Parameter: The test Environment. Possible values: DEV, TEST, STAGING */
+	public static final String ENVIRONMENT = &quot;ENVIRONMENT&quot;;
 
-    /** Parameter: Search_a_user */
-    public static final String Search_a_user = &quot;Search_a_user&quot;;
+	/** Parameter: Search_a_user */
+	public static final String Search_a_user = &quot;Search_a_user&quot;;
 
-    /** Parameter: Last name of the person, used in SIMPLE MODE */
-    public static final String LASTNAME = &quot;LASTNAME&quot;;
+	/** Parameter: Last name of the person, used in SIMPLE MODE */
+	public static final String LASTNAME = &quot;LASTNAME&quot;;
 
-    /** Parameter: First name of the person, used in SIMPLE MODE */
-    public static final String FIRSTNAME = &quot;FIRSTNAME&quot;;
+	/** Parameter: First name of the person, used in SIMPLE MODE */
+	public static final String FIRSTNAME = &quot;FIRSTNAME&quot;;
 
-    /** Parameter: Agent Number, used in ADVANCED search mode */
-    public static final String AGENT_NO = &quot;AGENT_NO&quot;;
+	/** Parameter: Agent Number, used in ADVANCED search mode */
+	public static final String AGENT_NO = &quot;AGENT_NO&quot;;
 
-    /** Parameter: Verifications */
-    public static final String Verifications = &quot;Verifications&quot;;
+	/** Parameter: Verifications */
+	public static final String Verifications = &quot;Verifications&quot;;
 
-    /** Parameter: Y/N, if the test script will click on &quot;See Details&quot; and check expected values */
-    public static final String SEE_DETAILS = &quot;SEE_DETAILS&quot;;
+	/** Parameter: Y/N, if the test script will click on &quot;See Details&quot; and check expected values */
+	public static final String SEE_DETAILS = &quot;SEE_DETAILS&quot;;
 
-    /** Parameter: Verify the company field in search result, empty value = ignore the check. */
-    public static final String COMPANY = &quot;COMPANY&quot;;
+	/** Parameter: Verify the company field in search result, empty value = ignore the check. */
+	public static final String COMPANY = &quot;COMPANY&quot;;
 
-    /** Parameter: Verify the email field in search result, empty value = ignore the check. */
-    public static final String EMAIL = &quot;EMAIL&quot;;
+	/** Parameter: Verify the email field in search result, empty value = ignore the check. */
+	public static final String EMAIL = &quot;EMAIL&quot;;
 
-    /** Parameter: Verify the phone number in search result. */
-    public static final String TELEPHONE = &quot;TELEPHONE&quot;;
+	/** Parameter: Verify the phone number in search result. */
+	public static final String TELEPHONE = &quot;TELEPHONE&quot;;
 
-    /** Parameter: Verify the city name in search result. */
-    public static final String CITY = &quot;CITY&quot;;
+	/** Parameter: Verify the city name in search result. */
+	public static final String CITY = &quot;CITY&quot;;
 
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h2 id="test-data-verification">Test Data Verification</h2>
 <p>Test data verification tool checks the test data parameter used in your current spreadsheet versus the parameters in PARAM sheet.</p>
@@ -181,27 +187,28 @@ can avoid typographical errors and it contributes on the maintainability of the 
 <h2 id="test-data-synchronization">Test Data Synchronization</h2>
 <p>Test data synchronization (or Data Merge) tool is similar to test data verification. but automatically adds missing parameters to your current data sheet.</p>
 <p>It is useful when you added parameters in PARAM sheet and add them to test data sheet.</p>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/excel-addin-tools.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/excel-addin-tools.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -209,14 +216,14 @@ can avoid typographical errors and it contributes on the maintainability of the 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright &reg; 2016-2024 AXA France, All rights reserved.
-            
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
