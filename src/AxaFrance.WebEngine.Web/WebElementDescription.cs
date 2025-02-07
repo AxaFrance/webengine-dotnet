@@ -170,14 +170,31 @@ namespace AxaFrance.WebEngine.Web
         protected override IReadOnlyCollection<IWebElement> InternalFindElements()
         {
             IEnumerable<IWebElement> elements = null;
-            if (this.Id != null)
+            ISearchContext context = driver;
+            if(this.ShadowRoot != null)
             {
-                elements = driver.FindElements(By.Id(this.Id));
+                ShadowRoot.UseDriver(driver);
+                var root = ShadowRoot.InternalFindElements();
+                if (root.Count > 1)
+                {
+                    throw new InvalidSelectorException("Multiple element has found with the given selection criteria for ShadowRoot");
+                }else if(root.Count == 0)
+                {
+                    throw new NoSuchElementException("No such Shadow Root found:" + ShadowRoot.ToString());
+                }
+                else
+                {
+                    context = root.First().GetShadowRoot();
+                }
+            }
+            if (this.Id != null) 
+            {
+                elements = context.FindElements(By.Id(this.Id));
             }
 
             if (this.Name != null)
             {
-                var names = driver.FindElements(By.Name(this.Name));
+                var names = context.FindElements(By.Name(this.Name));
                 if (elements == null)
                 {
                     elements = names;
@@ -191,7 +208,7 @@ namespace AxaFrance.WebEngine.Web
             if (this.ClassName != null)
             {
                 string xpath = $"//*[@class='{ClassName}']";
-                var cssnames = driver.FindElements(By.XPath(xpath));
+                var cssnames = context.FindElements(By.XPath(xpath));
                 if (elements == null)
                 {
                     elements = cssnames;
@@ -204,7 +221,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (this.LinkText != null)
             {
-                var links = driver.FindElements(By.LinkText(this.LinkText));
+                var links = context.FindElements(By.LinkText(this.LinkText));
                 if (elements == null)
                 {
                     elements = links;
@@ -217,7 +234,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (this.TagName != null)
             {
-                var tagNames = driver.FindElements(By.TagName(TagName.ToUpper()));
+                var tagNames = context.FindElements(By.TagName(TagName.ToUpper()));
                 if (elements == null)
                 {
                     elements = tagNames;
@@ -230,7 +247,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (this.CssSelector != null)
             {
-                var classes = driver.FindElements(By.CssSelector(CssSelector));
+                var classes = context.FindElements(By.CssSelector(CssSelector));
                 if (elements == null)
                 {
                     elements = classes;
@@ -244,7 +261,7 @@ namespace AxaFrance.WebEngine.Web
 
             if (this.XPath != null)
             {
-                var xpaths = driver.FindElements(By.XPath(this.XPath));
+                var xpaths = context.FindElements(By.XPath(this.XPath));
                 if (elements == null)
                 {
                     elements = xpaths;
@@ -263,7 +280,7 @@ namespace AxaFrance.WebEngine.Web
                 }
                 else
                 {
-                    elements = driver.FindElements(By.XPath($"//*[text()='{InnerText}']"));
+                    elements = context.FindElements(By.XPath($"//*[text()='{InnerText}']"));
                 }
             }
 
@@ -275,7 +292,7 @@ namespace AxaFrance.WebEngine.Web
                     attributes.Add($"[{a.Name}=\"{a.Value}\"]");
                 }
                 string cssSelector = $"{string.Join("", attributes)}";
-                var attr = driver.FindElements(By.CssSelector(cssSelector));
+                var attr = context.FindElements(By.CssSelector(cssSelector));
                 if (elements == null)
                 {
                     elements = attr;
@@ -366,6 +383,17 @@ namespace AxaFrance.WebEngine.Web
                 return Perform(InternalInViewPort);
             }
         }
+
+        /// <summary>
+        /// Describes the ShadowRoot if the element is placed in a shadow DOM.
+        /// The description of the current element wil be based in the scope of the ShadowRoot.
+        /// </summary>
+        /// <remarks>
+        /// <b>Warning:</b> When searching an element in the ShadowRoot: You can only use CssSelctor to describe the element.
+        /// 
+        /// </remarks>
+        /// 
+        public WebElementDescription ShadowRoot { get; set; }
 
         private bool InternalInViewPort()
         {

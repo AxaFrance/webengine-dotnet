@@ -46,6 +46,7 @@ namespace WebEngine.Test.UnitTests
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
         }
 
+
         [TestMethod]
         public void ElementTypeing()
         {
