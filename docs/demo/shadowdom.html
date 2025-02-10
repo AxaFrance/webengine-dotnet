@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .shadow-box {
+            padding: 10px;
+            border: 1px solid #000;
+            background-color: lightcoral;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shadow Dom Test page</h1>
+    <div class="shadow-box">This is a div called shadow-box but not in Shadow Dom</div>
+
+    <h2>Shadow Dom host 1:</h2>
+    <div id="host"></div>
+
+    <h2>Shadow Dom host 2:</h2>
+    <div id="host2"></div>
+
+    <script>
+    // Create a shadow root
+        const hostElement = document.getElementById('host');
+        const shadowRoot = hostElement.attachShadow({ mode: 'open' });
+
+        // Attach shadow DOM content
+        shadowRoot.innerHTML = `
+          <style>
+            .shadow-box {
+              padding: 10px;
+              border: 1px solid #000;
+              background-color: lightblue;
+              color: black;
+            }
+          </style>
+          <div class="shadow-box">Hello, Shadow DOM!</div>
+        `;
+
+
+        const host2Element = document.getElementById('host2');
+        const shadowRoot2 = host2Element.attachShadow({ mode: 'open' });
+
+        shadowRoot2.innerHTML = `
+                  <style>
+            .shadow-box {
+              padding: 10px;
+              border: 1px solid #000;
+              background-color: lightblue;
+              color: black;
+            }
+          </style>
+          <div class="shadow-box">Hello, Shadow DOM in the second div!</div>
+          <h3>Below is a shadow dom host inside a shadow dom</h3>
+          <div id="host3"></div>
+            `;
+
+        const host3Element = shadowRoot2.getElementById('host3');
+        const nestedRoot = host3Element.attachShadow({ mode: 'open' });
+
+        nestedRoot.innerHTML = `
+           <style>
+            .shadow-box {
+              padding: 10px;
+              border: 1px solid #000;
+              background-color: lightblue;
+              color: black;
+            }
+          </style>
+          <div class="shadow-box">Hello, Shadow DOM in a Shadow DOM!</div>`;
+
+    </script>
+
+    <h1>We have also shadowdom in an iFrame</h1>
+    <iframe src="shadowdom2.html" id="Frame1" style="min-height:400px; min-width: 600px;">
+    </iframe>
+</body>
+</html>
