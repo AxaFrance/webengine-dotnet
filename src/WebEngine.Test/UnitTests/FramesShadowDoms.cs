@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace WebEngine.Test.UnitTests
 {
+    [TestClass]
     public class FramesShadowDoms
     {
         static WebDriver driver = null;
@@ -59,6 +60,58 @@ namespace WebEngine.Test.UnitTests
             var element = wed.FindElement();
             var text = element.GetDomProperty("innerText");
             Assert.AreEqual("Hello, Shadow DOM!", text);
+        }
+
+        [TestMethod]
+        public void MultipleShadowDom()
+        {
+            WebElementDescription wed = new WebElementDescription(driver)
+            {
+                CssSelector = ".shadow-box",
+                ShadowRoot = new WebElementDescription()
+                {
+                    Id = "host2"
+                }
+            };
+            var element = wed.FindElement();
+            var text = element.GetDomProperty("innerText");
+            Assert.AreEqual("Hello, Shadow DOM in the second div!", text);
+        }
+
+        [TestMethod]
+        public void NestedShadowDom()
+        {
+            WebElementDescription wed = new WebElementDescription(driver)
+            {
+                CssSelector = ".shadow-box",
+                ShadowRoot = new WebElementDescription()
+                {
+                    Id = "host3",
+                    ShadowRoot = new WebElementDescription()
+                    {
+                        Id = "host2",
+                    }
+                }
+            };
+            var element = wed.FindElement();
+            var text = element.GetDomProperty("innerText");
+            Assert.AreEqual("Hello, Shadow DOM in a Shadow DOM!", text);
+        }
+
+        [TestMethod]
+        public void ElementInFrame()
+        {
+            var wed = new WebElementDescription(driver)
+            {
+                CssSelector = ".shadow-box",
+                Frame = new WebElementDescription()
+                {
+                    Id = "Frame1"
+                },
+            };
+            var element = wed.FindElement();
+            var text = element.GetDomProperty("innerText");
+            Assert.AreEqual("This is a div called shadow-box but not in Shadow Dom", text);
         }
     }
 }

@@ -171,14 +171,34 @@ namespace AxaFrance.WebEngine.Web
         {
             IEnumerable<IWebElement> elements = null;
             ISearchContext context = driver;
-            if(this.ShadowRoot != null)
+            if (this.Frame != null)
+            {
+                Frame.UseDriver(driver);
+                var iframe = Frame.InternalFindElements();
+                if (iframe.Count > 1)
+                {
+                    throw new InvalidSelectorException("Multiple element has found with the given selection criteria for iFrame");
+                }
+                else if (iframe.Count == 0)
+                {
+                    throw new NoSuchElementException("No such iFrame found:" + Frame.ToString());
+                }
+                else
+                {
+                    //goto frame 
+                    context = driver.SwitchTo().Frame(iframe.First());
+                    driver.SwitchTo().DefaultContent();
+                }
+            }
+            else if (this.ShadowRoot != null)
             {
                 ShadowRoot.UseDriver(driver);
                 var root = ShadowRoot.InternalFindElements();
                 if (root.Count > 1)
                 {
                     throw new InvalidSelectorException("Multiple element has found with the given selection criteria for ShadowRoot");
-                }else if(root.Count == 0)
+                }
+                else if (root.Count == 0)
                 {
                     throw new NoSuchElementException("No such Shadow Root found:" + ShadowRoot.ToString());
                 }
@@ -395,6 +415,7 @@ namespace AxaFrance.WebEngine.Web
 
         /// <summary>
         /// Describe the Frame if the element is placed in an iframe.
+        /// This property will be processed at priority if both Frame and ShadowRoot are set.
         /// </summary>
         public WebElementDescription Frame { get; set; }
 
