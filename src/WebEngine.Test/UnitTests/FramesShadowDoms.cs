@@ -42,7 +42,7 @@ namespace WebEngine.Test.UnitTests
                 driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
             }
 
-            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
+            driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/shadowdom.html");
         }
 
         [TestMethod]

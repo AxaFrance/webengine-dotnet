@@ -14,6 +14,9 @@
 <body>
     <div class="shadow-box">This is styled by the main document</div>
     <div id="host"></div>
+
+    <div id="host2"></div>
+
     <script>// Create a shadow root
     const hostElement = document.getElementById('host');
     const shadowRoot = hostElement.attachShadow({ mode: 'open' });
@@ -29,6 +32,30 @@
         }
       </style>
       <div class="shadow-box">Hello, Shadow DOM!</div>
-    `;</script>
+    `;
+
+
+        const host2Element = document.getElementById('host2');
+        const shadowRoot2 = host2Element.attachShadow({ mode: 'open' });
+
+        shadowRoot2.innerHTML = `
+              <style>
+        .shadow-box {
+          padding: 10px;
+          border: 1px solid #000;
+          background-color: lightblue;
+          color: black;
+        }
+      </style>
+      <div class="shadow-box">Hello, Shadow DOM in the second div!</div>
+        `;
+
+
+    </script>
+
+    <h1>We have also shadowdom in an iFrame</h1>
+    <iframe src="shadowdom.html" id="Frame1">
+
+    </iframe>
 </body>
 </html>

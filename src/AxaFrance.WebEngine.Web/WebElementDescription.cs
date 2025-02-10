@@ -390,9 +390,7 @@ namespace AxaFrance.WebEngine.Web
         /// </summary>
         /// <remarks>
         /// <b>Warning:</b> When searching an element in the ShadowRoot: You can only use CssSelctor to describe the element.
-        /// 
         /// </remarks>
-        /// 
         public WebElementDescription ShadowRoot { get; set; }
 
         private bool InternalInViewPort()
