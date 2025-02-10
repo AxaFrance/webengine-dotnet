@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/Users/A269OL/source/repos/webengine-dotnet/src/AxaFrance.WebEngine.Doc",
+  "source_base_path": "C:/Users/A269OL/Source/Repos/webengine-dotnet/src/AxaFrance.WebEngine.Doc",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -4783,10 +4783,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "demo/shadondom.html",
+      "source_relative_path": "demo/shadowdom.html",
       "output": {
         "resource": {
-          "relative_path": "demo/shadondom.html"
+          "relative_path": "demo/shadowdom.html"
         }
       },
       "version": ""
