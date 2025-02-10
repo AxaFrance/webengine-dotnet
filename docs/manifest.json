@@ -4793,6 +4793,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "demo/shadowdom2.html",
+      "output": {
+        "resource": {
+          "relative_path": "demo/shadowdom2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "files/Data-HomeInsurance.xlsx",
       "output": {
         "resource": {

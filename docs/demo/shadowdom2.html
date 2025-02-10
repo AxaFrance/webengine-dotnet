@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-    <h1>Shadow Dom Test page</h1>
-    <div class="shadow-box">This is a div called shadow-box but not in Shadow Dom</div>
+    <h1>Shadow Dom in iFrame</h1>
+    <div class="shadow-box">This is a div in iFrame</div>
 
-    <h2>Shadow Dom host 1:</h2>
+    <h2>Shadow Dom in Frame:</h2>
     <div id="host"></div>
 
-    <h2>Shadow Dom host 2:</h2>
+    <h2>Shadow Dom in Frame 22:</h2>
     <div id="host2"></div>
 
     <script>
@@ -69,12 +69,10 @@
               color: black;
             }
           </style>
-          <div class="shadow-box">Hello, Shadow DOM in a Shadow DOM!</div>`;
+          <div class="shadow-box">Hello, Shadow DOM in a Shadow DOM in an iFrame!</div>`;
 
     </script>
 
-    <h1>We have also shadowdom in an iFrame</h1>
-    <iframe src="shadowdom2.html" id="Frame1" style="min-height:400px; min-width: 600px;">
-    </iframe>
+
 </body>
 </html>
