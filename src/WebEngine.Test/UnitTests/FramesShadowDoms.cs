@@ -111,7 +111,7 @@ namespace WebEngine.Test.UnitTests
             };
             var element = wed.FindElement();
             var text = element.GetDomProperty("innerText");
-            Assert.AreEqual("This is a div called shadow-box but not in Shadow Dom", text);
+            Assert.AreEqual("This is a div called shadow-box in iFrame", text);
         }
     }
 }
