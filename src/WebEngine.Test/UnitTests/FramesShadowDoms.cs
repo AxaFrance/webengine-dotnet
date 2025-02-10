@@ -40,7 +40,7 @@ namespace WebEngine.Test.UnitTests
         {
             if (driver == null)
             {
-                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
+                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.ChromiumEdge);
             }
 
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/shadowdom.html");
@@ -99,19 +99,30 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
-        public void ElementInFrame()
+        public void ShadowDomInFrame()
         {
-            var wed = new WebElementDescription(driver)
+            var Frame = new WebElementDescription(driver)
+            {
+                Id = "Frame1"
+            };
+
+            WebElementDescription wed = new WebElementDescription(driver)
             {
                 CssSelector = ".shadow-box",
-                Frame = new WebElementDescription()
+                ShadowRoot = new WebElementDescription()
                 {
-                    Id = "Frame1"
-                },
+                    Id = "host"
+                }
             };
+
+            //goto Frame1
+            driver.SwitchTo().Frame(Frame.FindElement());
             var element = wed.FindElement();
             var text = element.GetDomProperty("innerText");
-            Assert.AreEqual("This is a div called shadow-box in iFrame", text);
+            driver.SwitchTo().DefaultContent();
+            Assert.AreEqual("Hello, Shadow DOM in Frame!", text);
+
+            
         }
     }
 }

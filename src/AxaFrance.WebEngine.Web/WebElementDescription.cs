@@ -19,6 +19,8 @@ namespace AxaFrance.WebEngine.Web
     /// </summary>
     public class WebElementDescription : ElementDescription
     {
+        private bool isInFrame;
+
         /// <summary>
         /// Initialize the Element. If the element is not created within a <see cref="PageModel"/>, you should use <see cref="ElementDescription.UseDriver(WebDriver)"/> before us the element.
         /// </summary>
@@ -171,26 +173,7 @@ namespace AxaFrance.WebEngine.Web
         {
             IEnumerable<IWebElement> elements = null;
             ISearchContext context = driver;
-            if (this.Frame != null)
-            {
-                Frame.UseDriver(driver);
-                var iframe = Frame.InternalFindElements();
-                if (iframe.Count > 1)
-                {
-                    throw new InvalidSelectorException("Multiple element has found with the given selection criteria for iFrame");
-                }
-                else if (iframe.Count == 0)
-                {
-                    throw new NoSuchElementException("No such iFrame found:" + Frame.ToString());
-                }
-                else
-                {
-                    //goto frame 
-                    context = driver.SwitchTo().Frame(iframe.First());
-                    driver.SwitchTo().DefaultContent();
-                }
-            }
-            else if (this.ShadowRoot != null)
+            if (this.ShadowRoot != null)
             {
                 ShadowRoot.UseDriver(driver);
                 var root = ShadowRoot.InternalFindElements();
@@ -330,7 +313,6 @@ namespace AxaFrance.WebEngine.Web
             else
             {
                 return new ReadOnlyCollection<IWebElement>(elements.ToList());
-
             }
         }
 
@@ -412,12 +394,6 @@ namespace AxaFrance.WebEngine.Web
         /// <b>Warning:</b> When searching an element in the ShadowRoot: You can only use CssSelctor to describe the element.
         /// </remarks>
         public WebElementDescription ShadowRoot { get; set; }
-
-        /// <summary>
-        /// Describe the Frame if the element is placed in an iframe.
-        /// This property will be processed at priority if both Frame and ShadowRoot are set.
-        /// </summary>
-        public WebElementDescription Frame { get; set; }
 
         private bool InternalInViewPort()
         {
