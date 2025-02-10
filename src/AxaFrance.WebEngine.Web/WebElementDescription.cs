@@ -393,6 +393,11 @@ namespace AxaFrance.WebEngine.Web
         /// </remarks>
         public WebElementDescription ShadowRoot { get; set; }
 
+        /// <summary>
+        /// Describe the Frame if the element is placed in an iframe.
+        /// </summary>
+        public WebElementDescription Frame { get; set; }
+
         private bool InternalInViewPort()
         {
             //https://stackoverflow.com/questions/45243992/verification-of-element-in-viewport-in-selenium/45244889#45244889
