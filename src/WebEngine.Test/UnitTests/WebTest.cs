@@ -44,6 +44,15 @@ namespace WebEngine.Test.UnitTests
             }
 
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
+
+            PageLogin login = new PageLogin(driver);
+            login.TxtUsername.SetValue("admin");
+            login.TxtPassword.SetSecure("YWtsanNkaGY5MDg3MjkzNGhqMjM0"); 
+            login.ButtonSubmit.Click();
+            if (login.SpanErrorMessage.Exists())
+            {
+                Assert.Fail("login failed.");
+            }
         }
 
 
