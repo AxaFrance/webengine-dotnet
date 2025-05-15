@@ -65,7 +65,7 @@ namespace AxaFrance.WebEngine.MobileApp
                 }
                 else
                 {
-                    throw new ElementNotSelectableException("The context is not a valid AppiumDriver");
+                    throw new WebDriverException("The context is not a valid AppiumDriver");
                 }
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace AxaFrance.WebEngine.MobileApp
             }
             else
             {
-                throw new ElementNotSelectableException("The context is not a valid AppiumDriver");
+                throw new WebDriverException("The context is not a valid AppiumDriver");
             }
         }
 

@@ -60,6 +60,7 @@ namespace WebEngine.Test.UnitTests
             var element = wed.FindElement();
             var text = element.GetDomProperty("innerText");
             Assert.AreEqual("Hello, Shadow DOM!", text);
+            
         }
 
         [TestMethod]

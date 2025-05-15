@@ -112,7 +112,7 @@ namespace AxaFrance.WebEngine.Report
             this.Failed = TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
             this.Ignored = TestResult.Count - Passed - Failed;
             string filename;
-            if (uniqueName)
+            if (!uniqueName)
             {
                 filename = Path.Combine(path, filePrefix + ".xml");
             }
