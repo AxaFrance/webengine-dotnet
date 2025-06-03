@@ -16,6 +16,17 @@ namespace WebEngine.Test.UnitTests
     public class CoreTest
     {
         [TestMethod]
+        public void Encrypt()
+        {
+            var secret = "HelloWorld";
+            var encrypted = Encrypter.Encrypt(secret);
+            Assert.IsFalse(string.IsNullOrEmpty(encrypted), "Encrypted value should not be empty");
+
+            var original = Encrypter.Decrypt(encrypted);
+            Assert.AreEqual(secret, original, "Decrypted value should match the original secret");
+        }
+
+        [TestMethod]
         public void LoadEnvironmentVariables()
         {
             EnvironmentVariables.LoadFrom("TestData\\ENV.XML");
