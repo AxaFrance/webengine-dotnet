@@ -259,13 +259,14 @@ namespace Samples.KeywordDriven.Actions
 {
     public class Login : SharedActionWeb
     {
+        PageModels.PageLogin login;
         public override Variable[]? RequiredParameters =&gt; null;
 
         // Runs the action to fill username, password and lick on login button.
         public override void DoAction()
         {
             Browser.Navigate().GoToUrl(GetParameter(&quot;URL_RECETTE&quot;));
-            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
+            login = new PageModels.PageLogin(Browser);
             login.UserName.SetValue(GetParameter(&quot;User&quot;));
             login.UserName.SetSecure(GetParameter(&quot;EncPassword&quot;));
             login.ButtonLogin.Click();
@@ -274,7 +275,6 @@ namespace Samples.KeywordDriven.Actions
         // Verifies if this action goes well.
         public override bool DoCheckpoint()
         {
-            PageModels.PageLogin login = new PageModels.PageLogin(Browser);
             if (login.ErrorMessage.Exists(5) &amp;&amp; !string.IsNullOrWhiteSpace(login.ErrorMessage.InnerText))
             {
                 Information.AppendLine(&quot;Error message is shown, login failed&quot;);

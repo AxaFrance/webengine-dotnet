@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using GitHub Copilot with WebEngine Framework | AXA WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using GitHub Copilot with WebEngine Framework | AXA WebEngine Test Framework ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-github-copilot-with-webengine-framework">Using GitHub Copilot with WebEngine Framework</h1>
+
+<p>This documentation provides a guide on how to leverage GitHub Copilot for code completion and assistance in writing test automation scripts using the WebEngine framework. It also ensures that all generated scripts align with test automation best practices. Below, we detail the setup, structure, and guidelines to maximize Copilot's contextual understanding for test automation.</p>
+<h2 id="add-github-instructions-to-your-repository">Add github instructions to your repository</h2>
+<p>In your test automation project, create a new folder named <code>.github</code> in the root directory of your repository.
+Inside this folder, copy <code>copilot-instructions.md</code> from WebEngine repository to your project.
+Once you have restarted Visual Studio or Visual Studio Code, Copilot will use the instructions from this file to assist you in writing test automation scripts.</p>
+<h2 id="what-are-the-changes-by-using-this-instructions-file">What are the changes by using this instructions file?</h2>
+<p>The instructions.md file has been added to the project to provide Copilot with detailed context about WebEngine. This ensures that code suggestions are tailored to the framework and follow best practices.</p>
+<h3 id="key-highlights-of-the-instructionsmd-file">Key Highlights of the instructions.md File</h3>
+<ul>
+<li>Context: Describes the use of WebEngine with Selenium WebDriver for test automation.</li>
+<li>Test Approaches: Emphasizes Keyword-Driven Testing and BDD, with a preference for the former.</li>
+<li>Best Practices:
+<ul>
+<li>Use the Page Object Model (POM) design pattern.</li>
+<li>Avoid hardcoded locators; use ElementDescription or AppElementDescription.</li>
+<li>Externalize test data and access it via parameterization.</li>
+<li>Leverage native functions of WebEngine wherever possible.</li>
+<li>Organize project files into predefined folders for better maintainability.</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-of-prompting">Example of Prompting</h3>
+<p>You can ask Copilot to generate test automation scripts by providing a brief description of the actions, you can even copy and paste the html codes in the conversation window.
+Copilot will follow the guidelines specified in the instructions file to generate code that adheres to best practices:</p>
+<ul>
+<li>Generate Page Object Models for web pages and defin elements using ElementDescription.</li>
+<li>Generate SharedActions for reusable actions across test cases.</li>
+<li>etc.
+All generated code will be placed in the appropriate folders as per the project structure defined in the instructions.</li>
+</ul>
+<pre><code class="lang-text">&lt;ProjectFolder&gt;
+│
+├── PageModels      # Stores all Page Object Model classes
+├── Actions         # Contains reusable SharedAction classes
+├── TestCases       # Stores all test scenario classes
+├── TestData        # Contains test data files (e.g., XML, Excel)
+│
+└── &lt;OtherFiles&gt;
+</code></pre>
+<p>Here is an example of prompt that we ask copilot to generate test scriptm, and pasted the html fragment of the container:</p>
+<p><img src="../images/copilot-prompt.png" alt="Copilot Prompt"></p>
+<p>We can see that Github Copilot generates the code step by step:</p>
+<ol>
+<li>It first generates the Page Object Model for the container.</li>
+<li>Then it generates the SharedAction to click on the container.</li>
+<li>It generates the test parameters used in SharedAction.</li>
+</ol>
+<p><img src="../images/copilot-output.png" alt="Copilot output"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As we can see, using GitHub Copilot with the provided instructions file significantly enhances the development experience for test automation scripts in WebEngine. It ensures that the generated code is consistent, maintainable, and adheres to best practices, allowing developers to focus on writing effective tests rather than boilerplate code.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/github-copilot.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
