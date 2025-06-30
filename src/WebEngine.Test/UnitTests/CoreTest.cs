@@ -132,8 +132,6 @@ namespace WebEngine.Test.UnitTests
         public void BS_OSName()
         {
             var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Firefox);
-            
-            
             WebElementDescription submit = new WebElementDescription(driver) { Id = "submit" } ;
 
             //set global synchronization timeout to 30 seconds

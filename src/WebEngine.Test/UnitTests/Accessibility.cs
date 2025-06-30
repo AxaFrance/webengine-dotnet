@@ -127,6 +127,7 @@ namespace WebEngine.Test.UnitTests
                     Title = "AXA.FR",
                     OutputFormat = OutputFormat.Zip,
                     ReportLanguage = Language.French,
+                    AdditionalTags = new RgaaTagsProvider(),
                 };
                 var builder = new OverallReportBuilder().WithDefaultOptions(defaultOptions);
 
@@ -140,7 +141,7 @@ namespace WebEngine.Test.UnitTests
                 {
                     //if the cookie button does not exist, it's not a problem
                 }
-                builder.WithSelenium(driver, "Main Page").Build();
+                builder.WithSelenium(driver, "Main Page").WithRgaaExtension().Build();
 
                 //Analyze second page
                 driver.Navigate().GoToUrl("https://www.axa.fr/pro.html");
@@ -152,21 +153,21 @@ namespace WebEngine.Test.UnitTests
                 {
                     //if the cookie button does not exist, it's not a problem
                 }
-                builder.WithSelenium(driver, "Pro").Build();
+                builder.WithSelenium(driver, "Pro").WithRgaaExtension().Build();
 
                 //Analyze third page
                 driver.Navigate().GoToUrl("https://www.axa.fr/pro/services-assistance.html");
-                builder.WithSelenium(driver, "Assistance").Build();
+                builder.WithSelenium(driver, "Assistance").WithRgaaExtension().Build();
 
                 //Demarche Inondation
                 driver.Navigate().GoToUrl("https://www.axa.fr/assurance-habitation/demarches-inondation.html");
-                builder.WithSelenium(driver, "Inondation").Build();
+                builder.WithSelenium(driver, "Inondation").WithRgaaExtension().Build();
 
                 driver.Navigate().GoToUrl("https://www.axa.fr/pro/devis-assurance-professionnelle.html");
-                builder.WithSelenium(driver, "Devis Pro").Build();
+                builder.WithSelenium(driver, "Devis Pro").WithRgaaExtension().Build();
 
                 driver.Navigate().GoToUrl("https://www.axa.fr/compte-bancaire.html");
-                builder.WithSelenium(driver, "Compte Bancaire").Build();
+                builder.WithSelenium(driver, "Compte Bancaire").WithRgaaExtension().Build();
 
                 string report = builder.Build().Export();
                 Assert.IsTrue(File.Exists(report));
