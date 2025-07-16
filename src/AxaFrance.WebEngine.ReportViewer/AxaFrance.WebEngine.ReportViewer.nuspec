@@ -10,35 +10,27 @@
     <dependencies>
       <group targetFramework=".NETFramework4.8">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
-        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.1.120" exclude="Build,Analyzers" />
         <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
         <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
-        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
-      </group>
-      <group targetFramework="net6.0-windows7.0">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
-        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
-        <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
-        <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
-        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.3351.48" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.119.0" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
-        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.1.120" exclude="Build,Analyzers" />
         <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
         <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
-        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.3351.48" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.119.0" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0-windows7.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
-        <dependency id="AvalonEdit" version="6.3.0.90" exclude="Build,Analyzers" />
+        <dependency id="AvalonEdit" version="6.3.1.120" exclude="Build,Analyzers" />
         <dependency id="Hummingbird.UI" version="1.2.2772.2" exclude="Build,Analyzers" />
         <dependency id="LiveChartsCore.SkiaSharpView.WPF" version="2.0.0-rc4.5" exclude="Build,Analyzers" />
-        <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.116.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.3351.48" exclude="Build,Analyzers" />
+        <dependency id="SkiaSharp" version="3.119.0" exclude="Build,Analyzers" />
       </group>
     </dependencies>
     <frameworkReferences>
@@ -64,7 +56,6 @@
     </frameworkAssemblies>
     <contentFiles>
       <files include="any/net48/*.config" buildAction="None" copyToOutput="true" />
-      <files include="any/net6.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
       <files include="any/net8.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
       <files include="any/net9.0-windows7.0/*.json" buildAction="None" copyToOutput="true" />
     </contentFiles>
@@ -73,11 +64,6 @@
     <!-- Include net48 -->
     <file src="net48\*.exe" target="lib\net48" />
     <file src="net48\*.config" target="contentFiles\any\net48" />
-
-    <!-- Include net6.0 -->
-    <file src="net6.0-windows\*.dll" target="lib\net6.0-windows7.0" />
-    <file src="net6.0-windows\*.exe" target="lib\net6.0-windows7.0" />
-    <file src="net6.0-windows\*.json" target="contentFiles\any\net6.0-windows7.0" />
 
     <!-- Include net8.0 -->
     <file src="net8.0-windows\*.dll" target="lib\net8.0-windows7.0" />
