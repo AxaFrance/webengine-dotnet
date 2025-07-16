@@ -29,6 +29,8 @@
       href: excel-addin-tools.md
 - name: View Test Report
   href: report-viewer.md
+- name: Github Copilot Instructions
+  href: github-copilot.md
 - name: Known issues and possible workarounds
   href: known-issues.md
 - name: Development status

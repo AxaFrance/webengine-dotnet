@@ -112,13 +112,13 @@ namespace AxaFrance.WebEngine.Report
             this.Failed = TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
             this.Ignored = TestResult.Count - Passed - Failed;
             string filename;
-            if (!uniqueName)
+            if (uniqueName)
             {
-                filename = Path.Combine(path, filePrefix + ".xml");
+                filename = Path.Combine(path, filePrefix + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xml");                
             }
             else
             {
-                filename = Path.Combine(path, filePrefix + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xml");
+                filename = Path.Combine(path, filePrefix + ".xml");
             }
             if (!Directory.Exists(path))
             {

@@ -4220,6 +4220,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/github-copilot.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/github-copilot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
@@ -4877,6 +4887,26 @@
       "output": {
         "resource": {
           "relative_path": "images/build.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copilot-output.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/copilot-output.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copilot-prompt.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/copilot-prompt.png"
         }
       },
       "version": ""

@@ -144,8 +144,6 @@ namespace AxaFrance.WebEngine.Web
                             return GetEdgeDriver(arguments);
                         case BrowserType.Firefox:
                             return GetFirefoxDriver(arguments);
-                        case BrowserType.InternetExplorer:
-                            return GetIEDriver();
                         case BrowserType.Safari:
                             return GetSafariDriver(arguments);
                         default:
@@ -412,24 +410,17 @@ namespace AxaFrance.WebEngine.Web
         {
             switch (browser)
             {
-                case BrowserType.InternetExplorer:
-                    return "IE";
                 case BrowserType.Chrome:
                     return "Chrome";
                 case BrowserType.Firefox:
                     return "Firefox";
-                case BrowserType.ChromiumEdge:
+                case BrowserType.ChromiumEdge:               
                     return "Edge";
                 case BrowserType.Safari:
                     return "Safari";
                 default:
                     throw new NotSupportedException($"{browser} is not a valid value on Desktop Web Browser on Browserstack platform");
             }
-        }
-
-        private static WebDriver GetIEDriver()
-        {
-            throw new NotSupportedException("Internet Explorer is not supported anymore. Please update the browser and run tests in one of supported browsers: Chrome, Edge, Firefox and Safari");
         }
 
         private static WebDriver GetEdgeDriver(IEnumerable<string> browserOptions)

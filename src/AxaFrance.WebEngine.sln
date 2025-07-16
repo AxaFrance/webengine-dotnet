@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
 		..\CONTRIBUTING.md = ..\CONTRIBUTING.md
+		..\copilot-instructions.md = ..\copilot-instructions.md
 		..\ISSUE_TEMPLATE.md = ..\ISSUE_TEMPLATE.md
 		..\LICENCE.md = ..\LICENCE.md
 		..\PULL_REQUEST_TEMPLATE.md = ..\PULL_REQUEST_TEMPLATE.md

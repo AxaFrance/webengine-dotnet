@@ -226,9 +226,8 @@ namespace AxaFrance.WebEngine.Runner
             {
                 case "IE":
                 case "INTERNETEXPLORER":
-                    s.Browser = BrowserType.InternetExplorer;
-                    DebugLogger.WriteLine("[CONFIG] Browser : Internet Explorer");
-                    break;
+                    DebugLogger.WriteLine("Internet Explorer is not supported anymore");
+                    throw new WebEngineGeneralException("Internet Explorer is not supported anymore. Please use Edge or other browsers.");
                 case "FIREFOX":
                     s.Browser = BrowserType.Firefox;
                     DebugLogger.WriteLine("[CONFIG] Browser : Firefox");

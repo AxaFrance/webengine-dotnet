@@ -9,7 +9,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
     /// A mapping of Axe rules to RGAA rules, for future use
     /// refers to the Mapping Rules Excel file
     /// </summary>
-    internal class RgaaTagsProvider : TagsProvider
+    public class RgaaTagsProvider : TagsProvider
     {
 
         private static Dictionary<string, IEnumerable<string>> Mapping { get; } = new Dictionary<string, IEnumerable<string>>()
