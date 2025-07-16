@@ -11,11 +11,6 @@ namespace AxaFrance.WebEngine
     [Serializable]
     public enum BrowserType
     {
-        /// <summary>
-        /// Microsoft Internet Explorer
-        /// </summary>
-        [Obsolete("Internet Explorer is deprecated and it's support is stopped by Microsoft.")]
-        InternetExplorer = 0,
 
         /// <summary>
         /// Mozilla Firefox
