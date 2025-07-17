@@ -450,9 +450,7 @@ namespace AxaFrance.WebEngine.Web
             options.AddArgument("no-default-browser-check");
             options.AddArgument("no-sandbox");
             if (browserOptions != null) options.AddArguments(browserOptions);
-            var service = ChromeDriverService.CreateDefaultService();
-            service.Port = 59904;
-            OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(service, options);
+            OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
             return cd;
         }
 
