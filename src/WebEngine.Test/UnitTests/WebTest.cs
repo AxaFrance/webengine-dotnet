@@ -40,7 +40,7 @@ namespace WebEngine.Test.UnitTests
         {
             if (driver == null)
             {
-                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Firefox);
+                driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, BrowserType.Chrome);
             }
 
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");

@@ -448,8 +448,11 @@ namespace AxaFrance.WebEngine.Web
             options.AddArgument("homepage=about:blank");
             options.AddArgument("disable-popup-blocking");
             options.AddArgument("no-default-browser-check");
+            options.AddArgument("no-sandbox");
             if (browserOptions != null) options.AddArguments(browserOptions);
-            OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
+            var service = ChromeDriverService.CreateDefaultService();
+            service.Port = 59904;
+            OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(service, options);
             return cd;
         }
 
