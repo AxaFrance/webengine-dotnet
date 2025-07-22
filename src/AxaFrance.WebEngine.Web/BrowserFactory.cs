@@ -10,6 +10,7 @@ using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -443,7 +444,10 @@ namespace AxaFrance.WebEngine.Web
             {
                 AcceptInsecureCertificates = true,
             };
-            options.AddArgument($"user-data-dir={GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\User Data");
+
+            string datadir = $"{GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\TestData";
+            Directory.CreateDirectory(datadir);
+            options.AddArgument($"user-data-dir={datadir}");
             options.AddArgument("dns-prefetch-disable");
             options.AddArgument("homepage=about:blank");
             options.AddArgument("disable-popup-blocking");
