@@ -17,6 +17,16 @@ namespace AxaFrance.WebEngine.Report
     {
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TestCaseReport"/> class.
+        /// </summary>
+        public TestCaseReport()
+        {
+            StartTime = DateTime.Now;
+            EndTime = DateTime.Now;
+            Result = Result.None;
+        }
+
+        /// <summary>
         /// The unique identifier of the report item, generated automaticaly and used for showing report
         /// </summary>
         public string Id { get; set; } = Guid.NewGuid().ToString();

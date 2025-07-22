@@ -97,6 +97,8 @@ namespace AxaFrance.WebEngine.Report
         {
             TestResult = new List<TestCaseReport>();
             EnvironmentVariables = new EnvironmentVariables();
+            StartTime = DateTime.Now;
+            EndTime = DateTime.Now;
         }
 
         /// <summary>

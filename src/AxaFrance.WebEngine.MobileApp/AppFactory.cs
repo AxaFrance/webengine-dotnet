@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
+using AngleSharp.Common;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
@@ -281,7 +282,10 @@ namespace AxaFrance.WebEngine.MobileApp
                 //session not created (maybe a bug while there should be an exception)
                 //convert driver.Capabilities of type ICapabilities to a string
                 var cap = driver.Capabilities;
-                throw new WebEngineGeneralException("The driver has no session id. returning capabilities from grid:" + cap.ToString());
+                string error = null;
+                if (cap.HasCapability("error")) error = cap.GetCapability("error").ToString();
+                else if(cap.HasCapability("message")) error = cap.GetCapability("message").ToString();
+                throw new WebEngineGeneralException("The driver has no session id. returning capabilities from grid:" + error?? cap.ToString());
             }
 
             return driver;
