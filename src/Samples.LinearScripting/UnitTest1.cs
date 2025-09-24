@@ -49,6 +49,7 @@ namespace Samples.LinearScripting
                 UnitTestOutcome.Error => Result.CriticalError,
                 _ => Result.None
             };
+
             testCaseReport.EndTime = DateTime.Now;
             //Close the driver (and browser) after each test case.
             driver?.Close();
@@ -60,7 +61,7 @@ namespace Samples.LinearScripting
         {
             //After all test cases, we will save the test suite report.
             testSuiteReport!.EndTime = DateTime.Now;
-            var reportPath = testSuiteReport.SaveAs("TestReport", "MyTestReport", false);
+            var reportPath = testSuiteReport.SaveAs("TestReport", "TEST-MyTestReport", false);
 
             //you can check the test report in folder bin\Debug\net8.0\TestReport of your test project.
             DebugLogger.WriteLine($"Test Suite Report saved at: {reportPath}");
@@ -73,21 +74,39 @@ namespace Samples.LinearScripting
         public void SelectDrinkTest()
         {
             driver!.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Step1.html");
-            
+
 
             //during the test execution, we can add some action reports to the test case report.
-            testCaseReport.ActionReports.Add(new ActionReport
+            var step1Report = new ActionReport
             {
                 Name = "Navigate to Step 1 page",
                 Result = Result.Passed,
                 Log = "Navigated to Step 1 page successfully."
-            });
+            };
+
+            testCaseReport.ActionReports.Add(step1Report);
 
             //Create a page model for the Drink Selection page.
             DrinkSelectionPageModel page = new DrinkSelectionPageModel(driver);
             page.SelectLanguage.SelectByValue("fr");
             page.RadioChooseToBuy.CheckByValue("Coffee");
+            var screenshot = driver!.GetScreenshot();
             page.NextButton.Click();
+
+            var actionReport = new ActionReport
+            {
+                Name = "Select language and drink",
+                Result = Result.Passed,
+                Log = "Selected French language and Coffee drink.",
+            };
+            actionReport.Screenshots.Add(new ScreenshotReport
+            {
+                Name = "DrinkSelectionPageScreenshot",
+                Data = screenshot.AsByteArray,
+            });
+            step1Report.SubActionReports.Add(actionReport);
+
+
 
             testCaseReport.ActionReports.Add(new ActionReport
             {
