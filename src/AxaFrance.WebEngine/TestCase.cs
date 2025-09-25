@@ -22,7 +22,7 @@ namespace AxaFrance.WebEngine
         /// <summary>
         /// A flag marks ignoring all remaining test steps.
         /// </summary>
-        internal static bool IgnoreAllSteps { get; set; }
+        internal bool IgnoreAllSteps { get; set; }
 
         /// <summary>
         /// Test Information. to privide more detailed information during test execution.
@@ -122,7 +122,7 @@ namespace AxaFrance.WebEngine
             SharedActionBase.Indent = indentLength;
             StartDate = DateTime.Now;
             this.TestCaseResult = Result.None;
-
+            this.IgnoreAllSteps = false;
             try
             {
                 TestData = TestSuiteData.Current.GetTestData(Name);
@@ -162,22 +162,22 @@ namespace AxaFrance.WebEngine
                 ActionReport ar = new ActionReport();
                 ar.Result = Result.None;
                 report.ActionReports.Add(ar);
+                string action = step.Action;
+                Type t = Utilities.GetTypeByClassName(action, this);
+                string name = Utilities.GetDescriptionByClassName(action);
+                ar.Name = name;
 
                 if (IgnoreAllSteps)
                 {
                     step.Result = Result.Ignored;
+                    ar.Result = Result.Ignored;
                     continue;
                 }
 
                 try
                 {
-                    string action = step.Action;
-                    Type t = Utilities.GetTypeByClassName(action, this);
-                    string name = Utilities.GetDescriptionByClassName(action);
-                    ar.Name = name;
                     Variable[] parameters = TestData?.Data ?? new Variable[1] { new Variable { Name = "Empty", Value = string.Empty } };
                     var actionObj = SharedActionBase.DoAction(t, this, Context, ContextValues, ar, parameters);
-
                     ContextValues = actionObj.ContextValues;
                     bool result = true;
                     if (actionObj.ActionResult != Result.Ignored)
@@ -283,7 +283,7 @@ namespace AxaFrance.WebEngine
                     step.Result = Result.CriticalError;
                     this.TestCaseResult = Result.Failed;
                     step.Details.AppendLine($"This action returns Fatal Error: {step.Action}");
-                    SetIgnoreAllStepsFlag();
+                    IgnoreAllSteps = true;
                 }
                 else if (actionObj.ActionResult == Result.Ignored)
                 {
@@ -304,14 +304,9 @@ namespace AxaFrance.WebEngine
                 step.Result = Result.CriticalError;
                 this.TestCaseResult = Result.Failed;
                 step.Details.AppendLine("\nThe checkpoint of the action " + step.Action + " did not pass");
-                SetIgnoreAllStepsFlag();
+                IgnoreAllSteps = true;
 
             }
-        }
-
-        private static void SetIgnoreAllStepsFlag()
-        {
-            IgnoreAllSteps = true;
         }
 
         /// <summary>

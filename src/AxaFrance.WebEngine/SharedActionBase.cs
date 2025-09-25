@@ -32,6 +32,7 @@ namespace AxaFrance.WebEngine
         /// <param name="Context">Application Context used for the action, for LeanFT actions, it will be an object of type AppModelBase</param>
         public abstract void DoAction(object Context);
 
+
         /// <summary>
         /// This method should be called after calling DoAction() Method in order to check whether the action is correctly running.
         /// </summary>
@@ -77,7 +78,7 @@ namespace AxaFrance.WebEngine
             actionReport.StartTime = StartTime;
             UpdateTime = DateTime.Now;
 
-            if (TestCase.IgnoreAllSteps)
+            if (relatedTestCase.IgnoreAllSteps)
             {
                 DebugLogger.WriteWarning("[DEBUG] Abort Requested, Ignoring current action:  " + sharedActionType.Name);
                 return null;
@@ -266,6 +267,21 @@ namespace AxaFrance.WebEngine
             catch (Exception ex)
             {
                 throw new WebEngineGeneralException(name + " is not found in the parameters list", ex);
+            }
+        }
+
+        /// <summary>
+        /// If you want to stop the execution of current test case from this shared action, call this method.
+        /// </summary>
+        protected void StopTestCase()
+        {
+            if (testCase != null)
+            {
+                DebugLogger.WriteLine("[DEBUG] Stop Requested, Ignoring all following steps in the current test case: " + testCase.Name);
+                testCase.IgnoreAllSteps = true;
+            }
+            {
+                DebugLogger.WriteWarning("[DEBUG] StopTestCase() is called, but the current action is not attached to any test case.");
             }
         }
 

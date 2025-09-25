@@ -76,10 +76,10 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">Object</span></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">EnvironmentVariables</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.WebEngine.html">AxaFrance.WebEngine</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.html">AxaFrance</a>.<a class="xref" href="AxaFrance.WebEngine.html">WebEngine</a></h6>
   <h6><strong>Assembly</strong>: AxaFrance.WebEngine.dll</h6>
   <h5 id="AxaFrance_WebEngine_EnvironmentVariables_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -164,7 +164,7 @@ public class EnvironmentVariables</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="AxaFrance.WebEngine.Variable.html">Variable</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="AxaFrance.WebEngine.Variable.html">Variable</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -179,7 +179,7 @@ public class EnvironmentVariables</code></pre>
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/EnvironmentVariables.cs/#L84">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_EnvironmentVariables_GetValue_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.GetValue*"></a>
-  <h4 id="AxaFrance_WebEngine_EnvironmentVariables_GetValue_System_String_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.GetValue(System.String)">GetValue(String)</h4>
+  <h4 id="AxaFrance_WebEngine_EnvironmentVariables_GetValue_System_String_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.GetValue(System.String)">GetValue(string)</h4>
   <div class="markdown level1 summary"><p>Returns the value of the environment variable by its given name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -198,7 +198,7 @@ public class EnvironmentVariables</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td><p>Name of the variable to find.</p>
 </td>
@@ -215,7 +215,7 @@ public class EnvironmentVariables</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><p>Value of the variable</p>
 </td>
       </tr>
@@ -249,7 +249,7 @@ the stream data is in XML format</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
         <td><span class="parametername">stream</span></td>
         <td><p>the stream which the environment variables are stored</p>
 </td>
@@ -264,11 +264,9 @@ the stream data is in XML format</p>
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/EnvironmentVariables.cs/#L59">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_EnvironmentVariables_LoadFrom_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.LoadFrom*"></a>
-  <h4 id="AxaFrance_WebEngine_EnvironmentVariables_LoadFrom_System_String_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.String)">LoadFrom(String)</h4>
+  <h4 id="AxaFrance_WebEngine_EnvironmentVariables_LoadFrom_System_String_" data-uid="AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.String)">LoadFrom(string)</h4>
   <div class="markdown level1 summary"><p>Load the environment variables from an XML file.</p>
-<p>the path should be full path</p>
-<p>UNC path is supported: \\netshare\path\somefile.xml</p>
-<p>Web path is NOT supported. e.g.: http://somewhere.com/somefile.xml </p>
+<p>the path should be full path</p><p>UNC path is supported: \\netshare\path\somefile.xml</p><p>Web path is NOT supported. e.g.: http://somewhere.com/somefile.xml </p>
 Make sure that the automation solution has the access rights to the file, or an exception will be thrown.
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -287,7 +285,7 @@ Make sure that the automation solution has the access rights to the file, or an 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">xmlFile</span></td>
         <td><p>The path of the XML file</p>
 </td>

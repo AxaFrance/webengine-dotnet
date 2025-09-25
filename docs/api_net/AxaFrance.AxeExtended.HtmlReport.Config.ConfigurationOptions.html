@@ -77,10 +77,10 @@ if you have additional checks or rules this structure can be used.</p>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">Object</span></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">ConfigurationOptions</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.AxeExtended.HtmlReport.Config.html">AxaFrance.AxeExtended.HtmlReport.Config</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.html">AxaFrance</a>.<a class="xref" href="AxaFrance.AxeExtended.html">AxeExtended</a>.<a class="xref" href="AxaFrance.AxeExtended.HtmlReport.html">HtmlReport</a>.<a class="xref" href="AxaFrance.AxeExtended.HtmlReport.Config.html">Config</a></h6>
   <h6><strong>Assembly</strong>: AxaFrance.AxeExtended.HtmlReport.dll</h6>
   <h5 id="AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -156,6 +156,39 @@ Each check object can contain the following attributes</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.HtmlReport/Config/ConfigurationOptions.cs/#L41">View Source</a>
+  </span>
+  <a id="AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules_" data-uid="AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules*"></a>
+  <h4 id="AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules" data-uid="AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules">Rules</h4>
+  <div class="markdown level1 summary"><p>Used to add rules to the existing set of rules, or to override the properties of existing rules
+The rules attribute is an Array of rule objects
+each rule object can contain the following attributes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rule[] Rules { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AxaFrance.AxeExtended.HtmlReport.Config.Rule.html">Rule</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_reporter.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.reporter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -185,40 +218,7 @@ no - passes to return only violation results: axe.configure({ reporter: &quot;no
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules.md&amp;value=---%0Auid%3A%20AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.HtmlReport/Config/ConfigurationOptions.cs/#L41">View Source</a>
-  </span>
-  <a id="AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules_" data-uid="AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules*"></a>
-  <h4 id="AxaFrance_AxeExtended_HtmlReport_Config_ConfigurationOptions_Rules" data-uid="AxaFrance.AxeExtended.HtmlReport.Config.ConfigurationOptions.Rules">Rules</h4>
-  <div class="markdown level1 summary"><p>Used to add rules to the existing set of rules, or to override the properties of existing rules
-The rules attribute is an Array of rule objects
-each rule object can contain the following attributes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Rule[] Rules { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="AxaFrance.AxeExtended.HtmlReport.Config.Rule.html">Rule</a>[]</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>

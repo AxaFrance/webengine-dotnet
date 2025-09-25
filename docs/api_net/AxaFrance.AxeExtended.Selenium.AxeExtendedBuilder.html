@@ -79,10 +79,10 @@ With this method, we can pass a custom configuration file to the axe engine and 
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">Object</span></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">AxeExtendedBuilder</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.AxeExtended.Selenium.html">AxaFrance.AxeExtended.Selenium</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.html">AxaFrance</a>.<a class="xref" href="AxaFrance.AxeExtended.html">AxeExtended</a>.<a class="xref" href="AxaFrance.AxeExtended.Selenium.html">Selenium</a></h6>
   <h6><strong>Assembly</strong>: AxaFrance.AxeExtended.Selenium.dll</h6>
   <h5 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -337,10 +337,10 @@ With this method, we can pass a custom configuration file to the axe engine and 
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L144">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])">DisableRules(String[])</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])">DisableRules(params string[])</h4>
   <div class="markdown level1 summary"><p>Set the list of rules to skip when running an analysis
 Refer <a href="https://dequeuniversity.com/rules/axe/">https://dequeuniversity.com/rules/axe/</a> to get the complete listing of available rule IDs.
-Cannot be used with <see cref="!:Options"></see></p>
+Cannot be used with Options</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -358,7 +358,7 @@ Cannot be used with <see cref="!:Options"></see></p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span>[]</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
         <td><span class="parametername">rules</span></td>
         <td><p>rule IDs to be skipped from analysis</p>
 </td>
@@ -390,7 +390,7 @@ Cannot be used with <see cref="!:Options"></see></p>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(Deque.AxeCore.Commons.AxeSelector)">Exclude(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Excludes the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants from analysis. This overload can exclude selectors inside iframes
-(with <span class="xref">Deque.AxeCore.Commons.AxeSelector.#ctor(System.String,System.Collections.Generic.List{System.String})</span>) or shadow DOMs (<see cref="!:AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string>>)"></see>).
+(with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>) or shadow DOMs (AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;)).
 To exclude multiple selectors, call Exclude multiple times.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -439,11 +439,11 @@ To exclude multiple selectors, call Exclude multiple times.</p>
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L192">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)">Exclude(String)</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)">Exclude(string)</h4>
   <div class="markdown level1 summary"><p>Excludes the given CSS selector and its descendants from analysis.
 To exclude multiple selectors, call Exclude multiple times.
-To exclude a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and <span class="xref">Deque.AxeCore.Commons.AxeSelector.#ctor(System.String,System.Collections.Generic.List{System.String})</span>.
-To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and <see cref="!:AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string>>)"></see>.</p>
+To exclude a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>.
+To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -461,7 +461,7 @@ To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">selector</span></td>
         <td><p>A CSS selector in the topmost frame of the page</p>
 </td>
@@ -493,8 +493,8 @@ To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(Deque.AxeCore.Commons.AxeSelector)">Include(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants, instead of the whole page.
-This overload can include selectors inside iframes (with <span class="xref">Deque.AxeCore.Commons.AxeSelector.#ctor(System.String,System.Collections.Generic.List{System.String})</span>) or shadow DOMs
-(<see cref="!:AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string>>)"></see>).
+This overload can include selectors inside iframes (with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>) or shadow DOMs
+(AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;)).
 To include multiple selectors, call Include multiple times.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -543,11 +543,11 @@ To include multiple selectors, call Include multiple times.</p>
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L167">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)">Include(String)</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)">Include(string)</h4>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given CSS selector and its descendants, instead of the whole page.
 To include multiple selectors, call Include multiple times.
-To include a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and <span class="xref">Deque.AxeCore.Commons.AxeSelector.#ctor(System.String,System.Collections.Generic.List{System.String})</span>.
-To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and <see cref="!:AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string>>)"></see>.</p>
+To include a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>.
+To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -565,7 +565,7 @@ To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">selector</span></td>
         <td><p>A CSS selector in the topmost frame of the page</p>
 </td>
@@ -595,7 +595,7 @@ To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L80">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_System_Boolean_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)">UseLegacyMode(Boolean)</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_System_Boolean_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)">UseLegacyMode(bool)</h4>
   <div class="markdown level1 summary"><p>Use frameMessenger with &lt;same_origin_only&gt;.
 This disables use of axe.runPartial() which is called in each frame, and
 axe.finishRun() which is called in a blank page. This uses axe.run() instead,
@@ -618,7 +618,7 @@ public AxeExtendedBuilder UseLegacyMode(bool legacyMode = true)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">legacyMode</span></td>
         <td><p>Whether to enable or disable Legacy Mode</p>
 </td>
@@ -650,7 +650,7 @@ public AxeExtendedBuilder UseLegacyMode(bool legacyMode = true)</code></pre>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions(Deque.AxeCore.Commons.AxeRunOptions)">WithOptions(AxeRunOptions)</h4>
   <div class="markdown level1 summary"><p>Run configuration data that is passed to axe for scanning the web page.
-This will override the value set by <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___">WithRules(String[])</a>, <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(String[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___">DisableRules(String[])</a></p>
+This will override the value set by <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___">WithRules(params string[])</a>, <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(params string[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___">DisableRules(params string[])</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -698,7 +698,7 @@ This will override the value set by <a class="xref" href="AxaFrance.AxeExtended.
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L214">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)">WithOutputFile(String)</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_System_String_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)">WithOutputFile(string)</h4>
   <div class="markdown level1 summary"><p>Causes <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze">Analyze()</a> to write the axe results as a JSON file, in addition to returning it in object format as usual.
 File will be overwritten if already exists.</p>
 </div>
@@ -718,7 +718,7 @@ File will be overwritten if already exists.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">path</span></td>
         <td><p>Path to the output file. Will be passed as-is to the System.IO APIs.</p>
 </td>
@@ -748,10 +748,10 @@ File will be overwritten if already exists.</p>
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L125">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])">WithRules(String[])</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])">WithRules(params string[])</h4>
   <div class="markdown level1 summary"><p>Limit analysis to only the specified rules.
 Refer <a href="https://dequeuniversity.com/rules/axe/">https://dequeuniversity.com/rules/axe/</a> to get the complete listing of available rule IDs.
-Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(String[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_">WithOptions(AxeRunOptions)</a></p>
+Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___">WithTags(params string[])</a> &amp; <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOptions_Deque_AxeCore_Commons_AxeRunOptions_">WithOptions(AxeRunOptions)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -769,7 +769,7 @@ Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExte
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span>[]</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
         <td><span class="parametername">rules</span></td>
         <td><p>rule IDs to be used for scanning</p>
 </td>
@@ -799,7 +799,7 @@ Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExte
     <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.AxeExtended.Selenium/AxeExtendedBuilder.cs/#L107">View Source</a>
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags*"></a>
-  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])">WithTags(String[])</h4>
+  <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])">WithTags(params string[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -817,7 +817,7 @@ Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExte
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span>[]</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
         <td><span class="parametername">tags</span></td>
         <td></td>
       </tr>

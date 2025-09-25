@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/Users/A269OL/Source/Repos/webengine-dotnet/src/AxaFrance.WebEngine.Doc",
+  "source_base_path": "C:/Users/A269OL/source/repos/webengine-dotnet/src/AxaFrance.WebEngine.Doc",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -3441,6 +3441,16 @@
       "output": {
         ".html": {
           "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.PageReportOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_net/AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.html"
         }
       },
       "version": ""
