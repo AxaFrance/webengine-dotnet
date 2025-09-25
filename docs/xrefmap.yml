@@ -75,15 +75,21 @@ references:
   name: AxePageResult(AxeResult, PageReportBuilder)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxePageResult.html#AxaFrance_AxeExtended_HtmlReport_AxePageResult__ctor_Deque_AxeCore_Commons_AxeResult_AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.AxePageResult.#ctor(Deque.AxeCore.Commons.AxeResult,AxaFrance.AxeExtended.HtmlReport.PageReportBuilder)
+  name.vb: New(AxeResult, PageReportBuilder)
   fullName: AxaFrance.AxeExtended.HtmlReport.AxePageResult.AxePageResult(Deque.AxeCore.Commons.AxeResult, AxaFrance.AxeExtended.HtmlReport.PageReportBuilder)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxePageResult.New(Deque.AxeCore.Commons.AxeResult, AxaFrance.AxeExtended.HtmlReport.PageReportBuilder)
   nameWithType: AxePageResult.AxePageResult(AxeResult, PageReportBuilder)
+  nameWithType.vb: AxePageResult.New(AxeResult, PageReportBuilder)
 - uid: AxaFrance.AxeExtended.HtmlReport.AxePageResult.#ctor*
   name: AxePageResult
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxePageResult.html#AxaFrance_AxeExtended_HtmlReport_AxePageResult__ctor_
   commentId: Overload:AxaFrance.AxeExtended.HtmlReport.AxePageResult.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.HtmlReport.AxePageResult.AxePageResult
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxePageResult.New
   nameWithType: AxePageResult.AxePageResult
+  nameWithType.vb: AxePageResult.New
 - uid: AxaFrance.AxeExtended.HtmlReport.AxePageResult.AxeResult
   name: AxeResult
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxePageResult.html#AxaFrance_AxeExtended_HtmlReport_AxePageResult_AxeResult
@@ -250,18 +256,21 @@ references:
   name: AxeResultEnhancedItem(AxeResultItem, AxeResultEnhancedNode[])
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedItem__ctor_Deque_AxeCore_Commons_AxeResultItem_AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedNode___
   commentId: M:AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.#ctor(Deque.AxeCore.Commons.AxeResultItem,AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode[])
-  name.vb: AxeResultEnhancedItem(AxeResultItem, AxeResultEnhancedNode())
+  name.vb: New(AxeResultItem, AxeResultEnhancedNode())
   fullName: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.AxeResultEnhancedItem(Deque.AxeCore.Commons.AxeResultItem, AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode[])
-  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.AxeResultEnhancedItem(Deque.AxeCore.Commons.AxeResultItem, AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode())
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.New(Deque.AxeCore.Commons.AxeResultItem, AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode())
   nameWithType: AxeResultEnhancedItem.AxeResultEnhancedItem(AxeResultItem, AxeResultEnhancedNode[])
-  nameWithType.vb: AxeResultEnhancedItem.AxeResultEnhancedItem(AxeResultItem, AxeResultEnhancedNode())
+  nameWithType.vb: AxeResultEnhancedItem.New(AxeResultItem, AxeResultEnhancedNode())
 - uid: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.#ctor*
   name: AxeResultEnhancedItem
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedItem__ctor_
   commentId: Overload:AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.AxeResultEnhancedItem
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.New
   nameWithType: AxeResultEnhancedItem.AxeResultEnhancedItem
+  nameWithType.vb: AxeResultEnhancedItem.New
 - uid: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.Item
   name: Item
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedItem.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedItem_Item
@@ -298,15 +307,21 @@ references:
   name: AxeResultEnhancedNode(AxeResultNode)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedNode__ctor_Deque_AxeCore_Commons_AxeResultNode_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.#ctor(Deque.AxeCore.Commons.AxeResultNode)
+  name.vb: New(AxeResultNode)
   fullName: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.AxeResultEnhancedNode(Deque.AxeCore.Commons.AxeResultNode)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.New(Deque.AxeCore.Commons.AxeResultNode)
   nameWithType: AxeResultEnhancedNode.AxeResultEnhancedNode(AxeResultNode)
+  nameWithType.vb: AxeResultEnhancedNode.New(AxeResultNode)
 - uid: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.#ctor*
   name: AxeResultEnhancedNode
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedNode__ctor_
   commentId: Overload:AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.AxeResultEnhancedNode
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.New
   nameWithType: AxeResultEnhancedNode.AxeResultEnhancedNode
+  nameWithType.vb: AxeResultEnhancedNode.New
 - uid: AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.Node
   name: Node
   href: api_net/AxaFrance.AxeExtended.HtmlReport.AxeResultEnhancedNode.html#AxaFrance_AxeExtended_HtmlReport_AxeResultEnhancedNode_Node
@@ -790,21 +805,30 @@ references:
   name: OverallReportBuilder()
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder__ctor
   commentId: M:AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.#ctor
+  name.vb: New()
   fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.OverallReportBuilder()
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.New()
   nameWithType: OverallReportBuilder.OverallReportBuilder()
+  nameWithType.vb: OverallReportBuilder.New()
 - uid: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.#ctor(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
   name: OverallReportBuilder(PageReportOptions)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder__ctor_AxaFrance_AxeExtended_HtmlReport_PageReportOptions_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.#ctor(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
+  name.vb: New(PageReportOptions)
   fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.OverallReportBuilder(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.New(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
   nameWithType: OverallReportBuilder.OverallReportBuilder(PageReportOptions)
+  nameWithType.vb: OverallReportBuilder.New(PageReportOptions)
 - uid: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.#ctor*
   name: OverallReportBuilder
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder__ctor_
   commentId: Overload:AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.OverallReportBuilder
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.New
   nameWithType: OverallReportBuilder.OverallReportBuilder
+  nameWithType.vb: OverallReportBuilder.New
 - uid: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Build
   name: Build()
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder_Build
@@ -819,11 +843,14 @@ references:
   fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Build
   nameWithType: OverallReportBuilder.Build
 - uid: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export(System.String)
-  name: Export(String)
+  name: Export(string)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder_Export_System_String_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export(System.String)
-  fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export(System.String)
-  nameWithType: OverallReportBuilder.Export(String)
+  name.vb: Export(String)
+  fullName: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export(string)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export(String)
+  nameWithType: OverallReportBuilder.Export(string)
+  nameWithType.vb: OverallReportBuilder.Export(String)
 - uid: AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.Export*
   name: Export
   href: api_net/AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder_Export_
@@ -964,21 +991,30 @@ references:
   name: PageReportBuilder()
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder__ctor
   commentId: M:AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.#ctor
+  name.vb: New()
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.PageReportBuilder()
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.New()
   nameWithType: PageReportBuilder.PageReportBuilder()
+  nameWithType.vb: PageReportBuilder.New()
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.#ctor(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
   name: PageReportBuilder(PageReportOptions)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder__ctor_AxaFrance_AxeExtended_HtmlReport_PageReportOptions_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.#ctor(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
+  name.vb: New(PageReportOptions)
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.PageReportBuilder(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.New(AxaFrance.AxeExtended.HtmlReport.PageReportOptions)
   nameWithType: PageReportBuilder.PageReportBuilder(PageReportOptions)
+  nameWithType.vb: PageReportBuilder.New(PageReportOptions)
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.#ctor*
   name: PageReportBuilder
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder__ctor_
   commentId: Overload:AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.PageReportBuilder
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.New
   nameWithType: PageReportBuilder.PageReportBuilder
+  nameWithType.vb: PageReportBuilder.New
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Analyze
   name: Analyze
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_Analyze
@@ -1044,11 +1080,14 @@ references:
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Config
   nameWithType: PageReportBuilder.Config
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export(System.String)
-  name: Export(String)
+  name: Export(string)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_Export_System_String_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export(System.String)
-  fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export(System.String)
-  nameWithType: PageReportBuilder.Export(String)
+  name.vb: Export(String)
+  fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export(string)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export(String)
+  nameWithType: PageReportBuilder.Export(string)
+  nameWithType.vb: PageReportBuilder.Export(String)
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.Export*
   name: Export
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_Export_
@@ -1108,11 +1147,14 @@ references:
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(Newtonsoft.Json.Linq.JObject)
   nameWithType: PageReportBuilder.WithConfig(JObject)
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(System.String)
-  name: WithConfig(String)
+  name: WithConfig(string)
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_WithConfig_System_String_
   commentId: M:AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(System.String)
-  fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(System.String)
-  nameWithType: PageReportBuilder.WithConfig(String)
+  name.vb: WithConfig(String)
+  fullName: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(string)
+  fullName.vb: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig(String)
+  nameWithType: PageReportBuilder.WithConfig(string)
+  nameWithType.vb: PageReportBuilder.WithConfig(String)
 - uid: AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.WithConfig*
   name: WithConfig
   href: api_net/AxaFrance.AxeExtended.HtmlReport.PageReportBuilder.html#AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_WithConfig_
@@ -1327,6 +1369,25 @@ references:
   commentId: F:AxaFrance.AxeExtended.HtmlReport.PageReportOptions.WcagAATags
   fullName: AxaFrance.AxeExtended.HtmlReport.PageReportOptions.WcagAATags
   nameWithType: PageReportOptions.WcagAATags
+- uid: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider
+  name: RgaaTagsProvider
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.html
+  commentId: T:AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider
+  fullName: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider
+  nameWithType: RgaaTagsProvider
+- uid: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  name: GetTagsByRule(AxeResultItem)
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.html#AxaFrance_AxeExtended_HtmlReport_RgaaTagsProvider_GetTagsByRule_Deque_AxeCore_Commons_AxeResultItem_
+  commentId: M:AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  fullName: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule(Deque.AxeCore.Commons.AxeResultItem)
+  nameWithType: RgaaTagsProvider.GetTagsByRule(AxeResultItem)
+- uid: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule*
+  name: GetTagsByRule
+  href: api_net/AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.html#AxaFrance_AxeExtended_HtmlReport_RgaaTagsProvider_GetTagsByRule_
+  commentId: Overload:AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule
+  isSpec: "True"
+  fullName: AxaFrance.AxeExtended.HtmlReport.RgaaTagsProvider.GetTagsByRule
+  nameWithType: RgaaTagsProvider.GetTagsByRule
 - uid: AxaFrance.AxeExtended.HtmlReport.ScoringMode
   name: ScoringMode
   href: api_net/AxaFrance.AxeExtended.HtmlReport.ScoringMode.html
@@ -1399,33 +1460,48 @@ references:
   name: AxeExtendedBuilder(WebDriver)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver)
+  name.vb: New(WebDriver)
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.AxeExtendedBuilder(OpenQA.Selenium.WebDriver)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.New(OpenQA.Selenium.WebDriver)
   nameWithType: AxeExtendedBuilder.AxeExtendedBuilder(WebDriver)
+  nameWithType.vb: AxeExtendedBuilder.New(WebDriver)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Deque.AxeCore.Selenium.AxeBuilderOptions)
   name: AxeExtendedBuilder(WebDriver, AxeBuilderOptions)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Deque_AxeCore_Selenium_AxeBuilderOptions_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Deque.AxeCore.Selenium.AxeBuilderOptions)
+  name.vb: New(WebDriver, AxeBuilderOptions)
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.AxeExtendedBuilder(OpenQA.Selenium.WebDriver, Deque.AxeCore.Selenium.AxeBuilderOptions)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.New(OpenQA.Selenium.WebDriver, Deque.AxeCore.Selenium.AxeBuilderOptions)
   nameWithType: AxeExtendedBuilder.AxeExtendedBuilder(WebDriver, AxeBuilderOptions)
+  nameWithType.vb: AxeExtendedBuilder.New(WebDriver, AxeBuilderOptions)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject)
   name: AxeExtendedBuilder(WebDriver, JObject)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject)
+  name.vb: New(WebDriver, JObject)
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.AxeExtendedBuilder(OpenQA.Selenium.WebDriver, Newtonsoft.Json.Linq.JObject)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.New(OpenQA.Selenium.WebDriver, Newtonsoft.Json.Linq.JObject)
   nameWithType: AxeExtendedBuilder.AxeExtendedBuilder(WebDriver, JObject)
+  nameWithType.vb: AxeExtendedBuilder.New(WebDriver, JObject)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject,Deque.AxeCore.Selenium.AxeBuilderOptions)
   name: AxeExtendedBuilder(WebDriver, JObject, AxeBuilderOptions)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_OpenQA_Selenium_WebDriver_Newtonsoft_Json_Linq_JObject_Deque_AxeCore_Selenium_AxeBuilderOptions_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor(OpenQA.Selenium.WebDriver,Newtonsoft.Json.Linq.JObject,Deque.AxeCore.Selenium.AxeBuilderOptions)
+  name.vb: New(WebDriver, JObject, AxeBuilderOptions)
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.AxeExtendedBuilder(OpenQA.Selenium.WebDriver, Newtonsoft.Json.Linq.JObject, Deque.AxeCore.Selenium.AxeBuilderOptions)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.New(OpenQA.Selenium.WebDriver, Newtonsoft.Json.Linq.JObject, Deque.AxeCore.Selenium.AxeBuilderOptions)
   nameWithType: AxeExtendedBuilder.AxeExtendedBuilder(WebDriver, JObject, AxeBuilderOptions)
+  nameWithType.vb: AxeExtendedBuilder.New(WebDriver, JObject, AxeBuilderOptions)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor*
   name: AxeExtendedBuilder
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder__ctor_
   commentId: Overload:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.AxeExtendedBuilder
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.New
   nameWithType: AxeExtendedBuilder.AxeExtendedBuilder
+  nameWithType.vb: AxeExtendedBuilder.New
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze
   name: Analyze()
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Analyze
@@ -1446,14 +1522,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Analyze
   nameWithType: AxeExtendedBuilder.Analyze
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])
-  name: DisableRules(String[])
+  name: DisableRules(params string[])
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])
-  name.vb: DisableRules(String())
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])
-  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String())
-  nameWithType: AxeExtendedBuilder.DisableRules(String[])
-  nameWithType.vb: AxeExtendedBuilder.DisableRules(String())
+  name.vb: DisableRules(ParamArray String())
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(params string[])
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(ParamArray String())
+  nameWithType: AxeExtendedBuilder.DisableRules(params string[])
+  nameWithType.vb: AxeExtendedBuilder.DisableRules(ParamArray String())
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules*
   name: DisableRules
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_
@@ -1468,11 +1544,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(Deque.AxeCore.Commons.AxeSelector)
   nameWithType: AxeExtendedBuilder.Exclude(AxeSelector)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)
-  name: Exclude(String)
+  name: Exclude(string)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_System_String_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(System.String)
-  nameWithType: AxeExtendedBuilder.Exclude(String)
+  name.vb: Exclude(String)
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(string)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(String)
+  nameWithType: AxeExtendedBuilder.Exclude(string)
+  nameWithType.vb: AxeExtendedBuilder.Exclude(String)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*
   name: Exclude
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_
@@ -1487,11 +1566,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(Deque.AxeCore.Commons.AxeSelector)
   nameWithType: AxeExtendedBuilder.Include(AxeSelector)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)
-  name: Include(String)
+  name: Include(string)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_System_String_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(System.String)
-  nameWithType: AxeExtendedBuilder.Include(String)
+  name.vb: Include(String)
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(string)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(String)
+  nameWithType: AxeExtendedBuilder.Include(string)
+  nameWithType.vb: AxeExtendedBuilder.Include(String)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include*
   name: Include
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_
@@ -1500,11 +1582,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include
   nameWithType: AxeExtendedBuilder.Include
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)
-  name: UseLegacyMode(Boolean)
+  name: UseLegacyMode(bool)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_System_Boolean_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(System.Boolean)
-  nameWithType: AxeExtendedBuilder.UseLegacyMode(Boolean)
+  name.vb: UseLegacyMode(Boolean)
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(bool)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode(Boolean)
+  nameWithType: AxeExtendedBuilder.UseLegacyMode(bool)
+  nameWithType.vb: AxeExtendedBuilder.UseLegacyMode(Boolean)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.UseLegacyMode*
   name: UseLegacyMode
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_UseLegacyMode_
@@ -1526,11 +1611,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOptions
   nameWithType: AxeExtendedBuilder.WithOptions
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)
-  name: WithOutputFile(String)
+  name: WithOutputFile(string)
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_System_String_
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(System.String)
-  nameWithType: AxeExtendedBuilder.WithOutputFile(String)
+  name.vb: WithOutputFile(String)
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(string)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile(String)
+  nameWithType: AxeExtendedBuilder.WithOutputFile(string)
+  nameWithType.vb: AxeExtendedBuilder.WithOutputFile(String)
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile*
   name: WithOutputFile
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithOutputFile_
@@ -1539,14 +1627,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithOutputFile
   nameWithType: AxeExtendedBuilder.WithOutputFile
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])
-  name: WithRules(String[])
+  name: WithRules(params string[])
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])
-  name.vb: WithRules(String())
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String[])
-  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(System.String())
-  nameWithType: AxeExtendedBuilder.WithRules(String[])
-  nameWithType.vb: AxeExtendedBuilder.WithRules(String())
+  name.vb: WithRules(ParamArray String())
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(params string[])
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules(ParamArray String())
+  nameWithType: AxeExtendedBuilder.WithRules(params string[])
+  nameWithType.vb: AxeExtendedBuilder.WithRules(ParamArray String())
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules*
   name: WithRules
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_
@@ -1555,14 +1643,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithRules
   nameWithType: AxeExtendedBuilder.WithRules
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])
-  name: WithTags(String[])
+  name: WithTags(params string[])
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___
   commentId: M:AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])
-  name.vb: WithTags(String())
-  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])
-  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String())
-  nameWithType: AxeExtendedBuilder.WithTags(String[])
-  nameWithType.vb: AxeExtendedBuilder.WithTags(String())
+  name.vb: WithTags(ParamArray String())
+  fullName: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(params string[])
+  fullName.vb: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(ParamArray String())
+  nameWithType: AxeExtendedBuilder.WithTags(params string[])
+  nameWithType.vb: AxeExtendedBuilder.WithTags(ParamArray String())
 - uid: AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags*
   name: WithTags
   href: api_net/AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_
@@ -1577,11 +1665,14 @@ references:
   fullName: AxaFrance.AxeExtended.Selenium.SeleniumHelper
   nameWithType: SeleniumHelper
 - uid: AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder,OpenQA.Selenium.WebDriver,System.String)
-  name: WithSelenium(OverallReportBuilder, WebDriver, String)
+  name: WithSelenium(OverallReportBuilder, WebDriver, string)
   href: api_net/AxaFrance.AxeExtended.Selenium.SeleniumHelper.html#AxaFrance_AxeExtended_Selenium_SeleniumHelper_WithSelenium_AxaFrance_AxeExtended_HtmlReport_OverallReportBuilder_OpenQA_Selenium_WebDriver_System_String_
   commentId: M:AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder,OpenQA.Selenium.WebDriver,System.String)
-  fullName: AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder, OpenQA.Selenium.WebDriver, System.String)
-  nameWithType: SeleniumHelper.WithSelenium(OverallReportBuilder, WebDriver, String)
+  name.vb: WithSelenium(OverallReportBuilder, WebDriver, String)
+  fullName: AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder, OpenQA.Selenium.WebDriver, string)
+  fullName.vb: AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.OverallReportBuilder, OpenQA.Selenium.WebDriver, String)
+  nameWithType: SeleniumHelper.WithSelenium(OverallReportBuilder, WebDriver, string)
+  nameWithType.vb: SeleniumHelper.WithSelenium(OverallReportBuilder, WebDriver, String)
 - uid: AxaFrance.AxeExtended.Selenium.SeleniumHelper.WithSelenium(AxaFrance.AxeExtended.HtmlReport.PageReportBuilder,OpenQA.Selenium.WebDriver)
   name: WithSelenium(PageReportBuilder, WebDriver)
   href: api_net/AxaFrance.AxeExtended.Selenium.SeleniumHelper.html#AxaFrance_AxeExtended_Selenium_SeleniumHelper_WithSelenium_AxaFrance_AxeExtended_HtmlReport_PageReportBuilder_OpenQA_Selenium_WebDriver_
@@ -1611,21 +1702,30 @@ references:
   name: ActionNotFoundException()
   href: api_net/AxaFrance.WebEngine.ActionNotFoundException.html#AxaFrance_WebEngine_ActionNotFoundException__ctor
   commentId: M:AxaFrance.WebEngine.ActionNotFoundException.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.ActionNotFoundException.ActionNotFoundException()
+  fullName.vb: AxaFrance.WebEngine.ActionNotFoundException.New()
   nameWithType: ActionNotFoundException.ActionNotFoundException()
+  nameWithType.vb: ActionNotFoundException.New()
 - uid: AxaFrance.WebEngine.ActionNotFoundException.#ctor(System.String)
-  name: ActionNotFoundException(String)
+  name: ActionNotFoundException(string)
   href: api_net/AxaFrance.WebEngine.ActionNotFoundException.html#AxaFrance_WebEngine_ActionNotFoundException__ctor_System_String_
   commentId: M:AxaFrance.WebEngine.ActionNotFoundException.#ctor(System.String)
-  fullName: AxaFrance.WebEngine.ActionNotFoundException.ActionNotFoundException(System.String)
-  nameWithType: ActionNotFoundException.ActionNotFoundException(String)
+  name.vb: New(String)
+  fullName: AxaFrance.WebEngine.ActionNotFoundException.ActionNotFoundException(string)
+  fullName.vb: AxaFrance.WebEngine.ActionNotFoundException.New(String)
+  nameWithType: ActionNotFoundException.ActionNotFoundException(string)
+  nameWithType.vb: ActionNotFoundException.New(String)
 - uid: AxaFrance.WebEngine.ActionNotFoundException.#ctor*
   name: ActionNotFoundException
   href: api_net/AxaFrance.WebEngine.ActionNotFoundException.html#AxaFrance_WebEngine_ActionNotFoundException__ctor_
   commentId: Overload:AxaFrance.WebEngine.ActionNotFoundException.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.ActionNotFoundException.ActionNotFoundException
+  fullName.vb: AxaFrance.WebEngine.ActionNotFoundException.New
   nameWithType: ActionNotFoundException.ActionNotFoundException
+  nameWithType.vb: ActionNotFoundException.New
 - uid: AxaFrance.WebEngine.BrowserType
   name: BrowserType
   href: api_net/AxaFrance.WebEngine.BrowserType.html
@@ -1662,12 +1762,6 @@ references:
   commentId: F:AxaFrance.WebEngine.BrowserType.IOSNative
   fullName: AxaFrance.WebEngine.BrowserType.IOSNative
   nameWithType: BrowserType.IOSNative
-- uid: AxaFrance.WebEngine.BrowserType.InternetExplorer
-  name: InternetExplorer
-  href: api_net/AxaFrance.WebEngine.BrowserType.html#AxaFrance_WebEngine_BrowserType_InternetExplorer
-  commentId: F:AxaFrance.WebEngine.BrowserType.InternetExplorer
-  fullName: AxaFrance.WebEngine.BrowserType.InternetExplorer
-  nameWithType: BrowserType.InternetExplorer
 - uid: AxaFrance.WebEngine.BrowserType.Safari
   name: Safari
   href: api_net/AxaFrance.WebEngine.BrowserType.html#AxaFrance_WebEngine_BrowserType_Safari
@@ -1681,11 +1775,14 @@ references:
   fullName: AxaFrance.WebEngine.DebugLogger
   nameWithType: DebugLogger
 - uid: AxaFrance.WebEngine.DebugLogger.WriteError(System.String)
-  name: WriteError(String)
+  name: WriteError(string)
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteError_System_String_
   commentId: M:AxaFrance.WebEngine.DebugLogger.WriteError(System.String)
-  fullName: AxaFrance.WebEngine.DebugLogger.WriteError(System.String)
-  nameWithType: DebugLogger.WriteError(String)
+  name.vb: WriteError(String)
+  fullName: AxaFrance.WebEngine.DebugLogger.WriteError(string)
+  fullName.vb: AxaFrance.WebEngine.DebugLogger.WriteError(String)
+  nameWithType: DebugLogger.WriteError(string)
+  nameWithType.vb: DebugLogger.WriteError(String)
 - uid: AxaFrance.WebEngine.DebugLogger.WriteError*
   name: WriteError
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteError_
@@ -1694,11 +1791,14 @@ references:
   fullName: AxaFrance.WebEngine.DebugLogger.WriteError
   nameWithType: DebugLogger.WriteError
 - uid: AxaFrance.WebEngine.DebugLogger.WriteLine(System.String)
-  name: WriteLine(String)
+  name: WriteLine(string)
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteLine_System_String_
   commentId: M:AxaFrance.WebEngine.DebugLogger.WriteLine(System.String)
-  fullName: AxaFrance.WebEngine.DebugLogger.WriteLine(System.String)
-  nameWithType: DebugLogger.WriteLine(String)
+  name.vb: WriteLine(String)
+  fullName: AxaFrance.WebEngine.DebugLogger.WriteLine(string)
+  fullName.vb: AxaFrance.WebEngine.DebugLogger.WriteLine(String)
+  nameWithType: DebugLogger.WriteLine(string)
+  nameWithType.vb: DebugLogger.WriteLine(String)
 - uid: AxaFrance.WebEngine.DebugLogger.WriteLine(System.Text.StringBuilder)
   name: WriteLine(StringBuilder)
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteLine_System_Text_StringBuilder_
@@ -1713,11 +1813,14 @@ references:
   fullName: AxaFrance.WebEngine.DebugLogger.WriteLine
   nameWithType: DebugLogger.WriteLine
 - uid: AxaFrance.WebEngine.DebugLogger.WriteWarning(System.String)
-  name: WriteWarning(String)
+  name: WriteWarning(string)
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteWarning_System_String_
   commentId: M:AxaFrance.WebEngine.DebugLogger.WriteWarning(System.String)
-  fullName: AxaFrance.WebEngine.DebugLogger.WriteWarning(System.String)
-  nameWithType: DebugLogger.WriteWarning(String)
+  name.vb: WriteWarning(String)
+  fullName: AxaFrance.WebEngine.DebugLogger.WriteWarning(string)
+  fullName.vb: AxaFrance.WebEngine.DebugLogger.WriteWarning(String)
+  nameWithType: DebugLogger.WriteWarning(string)
+  nameWithType.vb: DebugLogger.WriteWarning(String)
 - uid: AxaFrance.WebEngine.DebugLogger.WriteWarning*
   name: WriteWarning
   href: api_net/AxaFrance.WebEngine.DebugLogger.html#AxaFrance_WebEngine_DebugLogger_WriteWarning_
@@ -1732,11 +1835,14 @@ references:
   fullName: AxaFrance.WebEngine.Encrypter
   nameWithType: Encrypter
 - uid: AxaFrance.WebEngine.Encrypter.Encrypt(System.String)
-  name: Encrypt(String)
+  name: Encrypt(string)
   href: api_net/AxaFrance.WebEngine.Encrypter.html#AxaFrance_WebEngine_Encrypter_Encrypt_System_String_
   commentId: M:AxaFrance.WebEngine.Encrypter.Encrypt(System.String)
-  fullName: AxaFrance.WebEngine.Encrypter.Encrypt(System.String)
-  nameWithType: Encrypter.Encrypt(String)
+  name.vb: Encrypt(String)
+  fullName: AxaFrance.WebEngine.Encrypter.Encrypt(string)
+  fullName.vb: AxaFrance.WebEngine.Encrypter.Encrypt(String)
+  nameWithType: Encrypter.Encrypt(string)
+  nameWithType.vb: Encrypter.Encrypt(String)
 - uid: AxaFrance.WebEngine.Encrypter.Encrypt*
   name: Encrypt
   href: api_net/AxaFrance.WebEngine.Encrypter.html#AxaFrance_WebEngine_Encrypter_Encrypt_
@@ -1754,15 +1860,21 @@ references:
   name: EnvironmentVariables()
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables__ctor
   commentId: M:AxaFrance.WebEngine.EnvironmentVariables.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.EnvironmentVariables.EnvironmentVariables()
+  fullName.vb: AxaFrance.WebEngine.EnvironmentVariables.New()
   nameWithType: EnvironmentVariables.EnvironmentVariables()
+  nameWithType.vb: EnvironmentVariables.New()
 - uid: AxaFrance.WebEngine.EnvironmentVariables.#ctor*
   name: EnvironmentVariables
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables__ctor_
   commentId: Overload:AxaFrance.WebEngine.EnvironmentVariables.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.EnvironmentVariables.EnvironmentVariables
+  fullName.vb: AxaFrance.WebEngine.EnvironmentVariables.New
   nameWithType: EnvironmentVariables.EnvironmentVariables
+  nameWithType.vb: EnvironmentVariables.New
 - uid: AxaFrance.WebEngine.EnvironmentVariables.Current
   name: Current
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables_Current
@@ -1777,11 +1889,14 @@ references:
   fullName: AxaFrance.WebEngine.EnvironmentVariables.Current
   nameWithType: EnvironmentVariables.Current
 - uid: AxaFrance.WebEngine.EnvironmentVariables.GetValue(System.String)
-  name: GetValue(String)
+  name: GetValue(string)
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables_GetValue_System_String_
   commentId: M:AxaFrance.WebEngine.EnvironmentVariables.GetValue(System.String)
-  fullName: AxaFrance.WebEngine.EnvironmentVariables.GetValue(System.String)
-  nameWithType: EnvironmentVariables.GetValue(String)
+  name.vb: GetValue(String)
+  fullName: AxaFrance.WebEngine.EnvironmentVariables.GetValue(string)
+  fullName.vb: AxaFrance.WebEngine.EnvironmentVariables.GetValue(String)
+  nameWithType: EnvironmentVariables.GetValue(string)
+  nameWithType.vb: EnvironmentVariables.GetValue(String)
 - uid: AxaFrance.WebEngine.EnvironmentVariables.GetValue*
   name: GetValue
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables_GetValue_
@@ -1796,11 +1911,14 @@ references:
   fullName: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.IO.Stream)
   nameWithType: EnvironmentVariables.LoadFrom(Stream)
 - uid: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.String)
-  name: LoadFrom(String)
+  name: LoadFrom(string)
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables_LoadFrom_System_String_
   commentId: M:AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.String)
-  fullName: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(System.String)
-  nameWithType: EnvironmentVariables.LoadFrom(String)
+  name.vb: LoadFrom(String)
+  fullName: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(string)
+  fullName.vb: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom(String)
+  nameWithType: EnvironmentVariables.LoadFrom(string)
+  nameWithType.vb: EnvironmentVariables.LoadFrom(String)
 - uid: AxaFrance.WebEngine.EnvironmentVariables.LoadFrom*
   name: LoadFrom
   href: api_net/AxaFrance.WebEngine.EnvironmentVariables.html#AxaFrance_WebEngine_EnvironmentVariables_LoadFrom_
@@ -1874,13 +1992,13 @@ references:
   nameWithType: MethodExtensions.AddItem(List<Variable>, Variable)
   nameWithType.vb: MethodExtensions.AddItem(List(Of Variable), Variable)
 - uid: AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String,System.String)
-  name: AddItem(List<Variable>, String, String)
+  name: AddItem(List<Variable>, string, string)
   href: api_net/AxaFrance.WebEngine.MethodExtensions.html#AxaFrance_WebEngine_MethodExtensions_AddItem_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__System_String_System_String_
   commentId: M:AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String,System.String)
   name.vb: AddItem(List(Of Variable), String, String)
-  fullName: AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, System.String, System.String)
-  fullName.vb: AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), System.String, System.String)
-  nameWithType: MethodExtensions.AddItem(List<Variable>, String, String)
+  fullName: AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, string, string)
+  fullName.vb: AxaFrance.WebEngine.MethodExtensions.AddItem(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), String, String)
+  nameWithType: MethodExtensions.AddItem(List<Variable>, string, string)
   nameWithType.vb: MethodExtensions.AddItem(List(Of Variable), String, String)
 - uid: AxaFrance.WebEngine.MethodExtensions.AddItem*
   name: AddItem
@@ -1890,13 +2008,13 @@ references:
   fullName: AxaFrance.WebEngine.MethodExtensions.AddItem
   nameWithType: MethodExtensions.AddItem
 - uid: AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String)
-  name: Item(List<Variable>, String)
+  name: Item(List<Variable>, string)
   href: api_net/AxaFrance.WebEngine.MethodExtensions.html#AxaFrance_WebEngine_MethodExtensions_Item_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__System_String_
   commentId: M:AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String)
   name.vb: Item(List(Of Variable), String)
-  fullName: AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, System.String)
-  fullName.vb: AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), System.String)
-  nameWithType: MethodExtensions.Item(List<Variable>, String)
+  fullName: AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, string)
+  fullName.vb: AxaFrance.WebEngine.MethodExtensions.Item(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), String)
+  nameWithType: MethodExtensions.Item(List<Variable>, string)
   nameWithType.vb: MethodExtensions.Item(List(Of Variable), String)
 - uid: AxaFrance.WebEngine.MethodExtensions.Item*
   name: Item
@@ -1906,13 +2024,13 @@ references:
   fullName: AxaFrance.WebEngine.MethodExtensions.Item
   nameWithType: MethodExtensions.Item
 - uid: AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String)
-  name: RemoveItem(List<Variable>, String)
+  name: RemoveItem(List<Variable>, string)
   href: api_net/AxaFrance.WebEngine.MethodExtensions.html#AxaFrance_WebEngine_MethodExtensions_RemoveItem_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__System_String_
   commentId: M:AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List{AxaFrance.WebEngine.Variable},System.String)
   name.vb: RemoveItem(List(Of Variable), String)
-  fullName: AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, System.String)
-  fullName.vb: AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), System.String)
-  nameWithType: MethodExtensions.RemoveItem(List<Variable>, String)
+  fullName: AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, string)
+  fullName.vb: AxaFrance.WebEngine.MethodExtensions.RemoveItem(System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), String)
+  nameWithType: MethodExtensions.RemoveItem(List<Variable>, string)
   nameWithType.vb: MethodExtensions.RemoveItem(List(Of Variable), String)
 - uid: AxaFrance.WebEngine.MethodExtensions.RemoveItem*
   name: RemoveItem
@@ -1937,21 +2055,30 @@ references:
   name: AppElementDescription()
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription__ctor
   commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AppElementDescription()
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.New()
   nameWithType: AppElementDescription.AppElementDescription()
+  nameWithType.vb: AppElementDescription.New()
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.#ctor(OpenQA.Selenium.WebDriver)
   name: AppElementDescription(WebDriver)
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription__ctor_OpenQA_Selenium_WebDriver_
   commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.#ctor(OpenQA.Selenium.WebDriver)
+  name.vb: New(WebDriver)
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AppElementDescription(OpenQA.Selenium.WebDriver)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.New(OpenQA.Selenium.WebDriver)
   nameWithType: AppElementDescription.AppElementDescription(WebDriver)
+  nameWithType.vb: AppElementDescription.New(WebDriver)
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.#ctor*
   name: AppElementDescription
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription__ctor_
   commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AppElementDescription
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.New
   nameWithType: AppElementDescription.AppElementDescription
+  nameWithType.vb: AppElementDescription.New
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.AccessbilityId
   name: AccessbilityId
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_AccessbilityId
@@ -2096,17 +2223,23 @@ references:
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollDown
   nameWithType: AppElementDescription.ScrollDown
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection,System.Int32)
-  name: ScrollIntoView(ScrollDirection, Int32)
+  name: ScrollIntoView(ScrollDirection, int)
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_AxaFrance_WebEngine_MobileApp_ScrollDirection_System_Int32_
   commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection,System.Int32)
-  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection, System.Int32)
-  nameWithType: AppElementDescription.ScrollIntoView(ScrollDirection, Int32)
+  name.vb: ScrollIntoView(ScrollDirection, Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection, int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(AxaFrance.WebEngine.MobileApp.ScrollDirection, Integer)
+  nameWithType: AppElementDescription.ScrollIntoView(ScrollDirection, int)
+  nameWithType.vb: AppElementDescription.ScrollIntoView(ScrollDirection, Integer)
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
-  name: ScrollIntoView(Int32)
+  name: ScrollIntoView(int)
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_System_Int32_
   commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
-  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(System.Int32)
-  nameWithType: AppElementDescription.ScrollIntoView(Int32)
+  name.vb: ScrollIntoView(Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView(Integer)
+  nameWithType: AppElementDescription.ScrollIntoView(int)
+  nameWithType.vb: AppElementDescription.ScrollIntoView(Integer)
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollIntoView*
   name: ScrollIntoView
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ScrollIntoView_
@@ -2211,12 +2344,15 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppFactory.GetDriver
   nameWithType: AppFactory.GetDriver
-- uid: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String)
-  name: SwitchContext(AppiumDriver, String)
-  href: api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_SwitchContext_OpenQA_Selenium_Appium_AppiumDriver_System_String_
-  commentId: M:AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String)
-  fullName: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver, System.String)
-  nameWithType: AppFactory.SwitchContext(AppiumDriver, String)
+- uid: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String,System.Int32)
+  name: SwitchContext(AppiumDriver, string, int)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_SwitchContext_OpenQA_Selenium_Appium_AppiumDriver_System_String_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String,System.Int32)
+  name.vb: SwitchContext(AppiumDriver, String, Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver, string, int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver, String, Integer)
+  nameWithType: AppFactory.SwitchContext(AppiumDriver, string, int)
+  nameWithType.vb: AppFactory.SwitchContext(AppiumDriver, String, Integer)
 - uid: AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext*
   name: SwitchContext
   href: api_net/AxaFrance.WebEngine.MobileApp.AppFactory.html#AxaFrance_WebEngine_MobileApp_AppFactory_SwitchContext_
@@ -2252,24 +2388,30 @@ references:
   name: SharedActionApp()
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp__ctor
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SharedActionApp()
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.New()
   nameWithType: SharedActionApp.SharedActionApp()
+  nameWithType.vb: SharedActionApp.New()
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.#ctor(AxaFrance.WebEngine.Variable[])
   name: SharedActionApp(Variable[])
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp__ctor_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.#ctor(AxaFrance.WebEngine.Variable[])
-  name.vb: SharedActionApp(Variable())
+  name.vb: New(Variable())
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SharedActionApp(AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.SharedActionApp(AxaFrance.WebEngine.Variable())
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.New(AxaFrance.WebEngine.Variable())
   nameWithType: SharedActionApp.SharedActionApp(Variable[])
-  nameWithType.vb: SharedActionApp.SharedActionApp(Variable())
+  nameWithType.vb: SharedActionApp.New(Variable())
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.#ctor*
   name: SharedActionApp
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp__ctor_
   commentId: Overload:AxaFrance.WebEngine.MobileApp.SharedActionApp.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SharedActionApp
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.New
   nameWithType: SharedActionApp.SharedActionApp
+  nameWithType.vb: SharedActionApp.New
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(OpenQA.Selenium.Appium.AppiumDriver)
   name: DoAction(AppiumDriver)
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_DoAction_OpenQA_Selenium_Appium_AppiumDriver_
@@ -2277,11 +2419,14 @@ references:
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(OpenQA.Selenium.Appium.AppiumDriver)
   nameWithType: SharedActionApp.DoAction(AppiumDriver)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(System.Object)
-  name: DoAction(Object)
+  name: DoAction(object)
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_DoAction_System_Object_
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(System.Object)
-  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(System.Object)
-  nameWithType: SharedActionApp.DoAction(Object)
+  name.vb: DoAction(Object)
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(object)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction(Object)
+  nameWithType: SharedActionApp.DoAction(object)
+  nameWithType.vb: SharedActionApp.DoAction(Object)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoAction*
   name: DoAction
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_DoAction_
@@ -2296,11 +2441,14 @@ references:
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(OpenQA.Selenium.Appium.AppiumDriver)
   nameWithType: SharedActionApp.DoCheckpoint(AppiumDriver)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(System.Object)
-  name: DoCheckpoint(Object)
+  name: DoCheckpoint(object)
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_DoCheckpoint_System_Object_
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(System.Object)
-  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(System.Object)
-  nameWithType: SharedActionApp.DoCheckpoint(Object)
+  name.vb: DoCheckpoint(Object)
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(object)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint(Object)
+  nameWithType: SharedActionApp.DoCheckpoint(object)
+  nameWithType.vb: SharedActionApp.DoCheckpoint(Object)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.DoCheckpoint*
   name: DoCheckpoint
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_DoCheckpoint_
@@ -2321,11 +2469,14 @@ references:
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot()
   nameWithType: SharedActionApp.Screenshot()
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot(System.String)
-  name: Screenshot(String)
+  name: Screenshot(string)
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_Screenshot_System_String_
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot(System.String)
-  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot(System.String)
-  nameWithType: SharedActionApp.Screenshot(String)
+  name.vb: Screenshot(String)
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot(string)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot(String)
+  nameWithType: SharedActionApp.Screenshot(string)
+  nameWithType.vb: SharedActionApp.Screenshot(String)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot*
   name: Screenshot
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_Screenshot_
@@ -2334,11 +2485,23 @@ references:
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.Screenshot
   nameWithType: SharedActionApp.Screenshot
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(System.String)
-  name: SwitchContext(String)
+  name: SwitchContext(string)
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_SwitchContext_System_String_
   commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(System.String)
-  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(System.String)
-  nameWithType: SharedActionApp.SwitchContext(String)
+  name.vb: SwitchContext(String)
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(string)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(String)
+  nameWithType: SharedActionApp.SwitchContext(string)
+  nameWithType.vb: SharedActionApp.SwitchContext(String)
+- uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(System.String,System.Int32)
+  name: SwitchContext(string, int)
+  href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_SwitchContext_System_String_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(System.String,System.Int32)
+  name.vb: SwitchContext(String, Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(string, int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext(String, Integer)
+  nameWithType: SharedActionApp.SwitchContext(string, int)
+  nameWithType.vb: SharedActionApp.SwitchContext(String, Integer)
 - uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext*
   name: SwitchContext
   href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_SwitchContext_
@@ -2346,6 +2509,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchContext
   nameWithType: SharedActionApp.SwitchContext
+- uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp
+  name: SwitchToNativeApp()
+  href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_SwitchToNativeApp
+  commentId: M:AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp()
+  nameWithType: SharedActionApp.SwitchToNativeApp()
+- uid: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp*
+  name: SwitchToNativeApp
+  href: api_net/AxaFrance.WebEngine.MobileApp.SharedActionApp.html#AxaFrance_WebEngine_MobileApp_SharedActionApp_SwitchToNativeApp_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.SharedActionApp.SwitchToNativeApp
+  nameWithType: SharedActionApp.SwitchToNativeApp
 - uid: AxaFrance.WebEngine.MobileApp.TestCaseApp
   name: TestCaseApp
   href: api_net/AxaFrance.WebEngine.MobileApp.TestCaseApp.html
@@ -3227,11 +3403,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.ReportHelper
   nameWithType: ReportHelper
 - uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
-  name: GenerateHtmlReport(TestSuiteReport, String, String)
+  name: GenerateHtmlReport(TestSuiteReport, string, string)
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateHtmlReport_AxaFrance_WebEngine_Report_TestSuiteReport_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
-  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport, System.String, System.String)
-  nameWithType: ReportHelper.GenerateHtmlReport(TestSuiteReport, String, String)
+  name.vb: GenerateHtmlReport(TestSuiteReport, String, String)
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport, string, string)
+  fullName.vb: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport(AxaFrance.WebEngine.Report.TestSuiteReport, String, String)
+  nameWithType: ReportHelper.GenerateHtmlReport(TestSuiteReport, string, string)
+  nameWithType.vb: ReportHelper.GenerateHtmlReport(TestSuiteReport, String, String)
 - uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport*
   name: GenerateHtmlReport
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateHtmlReport_
@@ -3240,11 +3419,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateHtmlReport
   nameWithType: ReportHelper.GenerateHtmlReport
 - uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
-  name: GenerateJUnitReport(TestSuiteReport, String, String)
+  name: GenerateJUnitReport(TestSuiteReport, string, string)
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateJUnitReport_AxaFrance_WebEngine_Report_TestSuiteReport_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport,System.String,System.String)
-  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport, System.String, System.String)
-  nameWithType: ReportHelper.GenerateJUnitReport(TestSuiteReport, String, String)
+  name.vb: GenerateJUnitReport(TestSuiteReport, String, String)
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport, string, string)
+  fullName.vb: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport(AxaFrance.WebEngine.Report.TestSuiteReport, String, String)
+  nameWithType: ReportHelper.GenerateJUnitReport(TestSuiteReport, string, string)
+  nameWithType.vb: ReportHelper.GenerateJUnitReport(TestSuiteReport, String, String)
 - uid: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport*
   name: GenerateJUnitReport
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_GenerateJUnitReport_
@@ -3253,14 +3435,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.ReportHelper.GenerateJUnitReport
   nameWithType: ReportHelper.GenerateJUnitReport
 - uid: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String,System.String@)
-  name: LoadReport(String, out String)
+  name: LoadReport(string, out string)
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_LoadReport_System_String_System_String__
   commentId: M:AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String,System.String@)
-  name.vb: LoadReport(String, ByRef String)
-  fullName: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String, out System.String)
-  fullName.vb: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(System.String, ByRef System.String)
-  nameWithType: ReportHelper.LoadReport(String, out String)
-  nameWithType.vb: ReportHelper.LoadReport(String, ByRef String)
+  name.vb: LoadReport(String, String)
+  fullName: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(string, out string)
+  fullName.vb: AxaFrance.WebEngine.Report.ReportHelper.LoadReport(String, String)
+  nameWithType: ReportHelper.LoadReport(string, out string)
+  nameWithType.vb: ReportHelper.LoadReport(String, String)
 - uid: AxaFrance.WebEngine.Report.ReportHelper.LoadReport*
   name: LoadReport
   href: api_net/AxaFrance.WebEngine.Report.ReportHelper.html#AxaFrance_WebEngine_Report_ReportHelper_LoadReport_
@@ -3319,6 +3501,25 @@ references:
   commentId: T:AxaFrance.WebEngine.Report.TestCaseReport
   fullName: AxaFrance.WebEngine.Report.TestCaseReport
   nameWithType: TestCaseReport
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.#ctor
+  name: TestCaseReport()
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport__ctor
+  commentId: M:AxaFrance.WebEngine.Report.TestCaseReport.#ctor
+  name.vb: New()
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.TestCaseReport()
+  fullName.vb: AxaFrance.WebEngine.Report.TestCaseReport.New()
+  nameWithType: TestCaseReport.TestCaseReport()
+  nameWithType.vb: TestCaseReport.New()
+- uid: AxaFrance.WebEngine.Report.TestCaseReport.#ctor*
+  name: TestCaseReport
+  href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport__ctor_
+  commentId: Overload:AxaFrance.WebEngine.Report.TestCaseReport.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.TestCaseReport
+  fullName.vb: AxaFrance.WebEngine.Report.TestCaseReport.New
+  nameWithType: TestCaseReport.TestCaseReport
+  nameWithType.vb: TestCaseReport.New
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.ActionReports
   name: ActionReports
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_ActionReports
@@ -3333,11 +3534,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.TestCaseReport.ActionReports
   nameWithType: TestCaseReport.ActionReports
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.Attach(System.Object,System.String)
-  name: Attach(Object, String)
+  name: Attach(object, string)
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_Attach_System_Object_System_String_
   commentId: M:AxaFrance.WebEngine.Report.TestCaseReport.Attach(System.Object,System.String)
-  fullName: AxaFrance.WebEngine.Report.TestCaseReport.Attach(System.Object, System.String)
-  nameWithType: TestCaseReport.Attach(Object, String)
+  name.vb: Attach(Object, String)
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.Attach(object, string)
+  fullName.vb: AxaFrance.WebEngine.Report.TestCaseReport.Attach(Object, String)
+  nameWithType: TestCaseReport.Attach(object, string)
+  nameWithType.vb: TestCaseReport.Attach(Object, String)
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.Attach*
   name: Attach
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_Attach_
@@ -3346,11 +3550,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.TestCaseReport.Attach
   nameWithType: TestCaseReport.Attach
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String,System.String)
-  name: AttachFile(String, String)
+  name: AttachFile(string, string)
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String,System.String)
-  fullName: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(System.String, System.String)
-  nameWithType: TestCaseReport.AttachFile(String, String)
+  name.vb: AttachFile(String, String)
+  fullName: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(string, string)
+  fullName.vb: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile(String, String)
+  nameWithType: TestCaseReport.AttachFile(string, string)
+  nameWithType.vb: TestCaseReport.AttachFile(String, String)
 - uid: AxaFrance.WebEngine.Report.TestCaseReport.AttachFile*
   name: AttachFile
   href: api_net/AxaFrance.WebEngine.Report.TestCaseReport.html#AxaFrance_WebEngine_Report_TestCaseReport_AttachFile_
@@ -3524,15 +3731,21 @@ references:
   name: TestSuiteReport()
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport__ctor
   commentId: M:AxaFrance.WebEngine.Report.TestSuiteReport.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.TestSuiteReport()
+  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.New()
   nameWithType: TestSuiteReport.TestSuiteReport()
+  nameWithType.vb: TestSuiteReport.New()
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.#ctor*
   name: TestSuiteReport
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport__ctor_
   commentId: Overload:AxaFrance.WebEngine.Report.TestSuiteReport.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.TestSuiteReport
+  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.New
   nameWithType: TestSuiteReport.TestSuiteReport
+  nameWithType.vb: TestSuiteReport.New
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.Duration
   name: Duration
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_Duration
@@ -3586,11 +3799,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Failed
   nameWithType: TestSuiteReport.Failed
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String,System.String,System.Boolean)
-  name: GenereteCSV(String, String, Boolean)
+  name: GenereteCSV(string, string, bool)
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_System_String_System_String_System_Boolean_
   commentId: M:AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String,System.String,System.Boolean)
-  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String, System.String, System.Boolean)
-  nameWithType: TestSuiteReport.GenereteCSV(String, String, Boolean)
+  name.vb: GenereteCSV(String, String, Boolean)
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(string, string, bool)
+  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(String, String, Boolean)
+  nameWithType: TestSuiteReport.GenereteCSV(string, string, bool)
+  nameWithType.vb: TestSuiteReport.GenereteCSV(String, String, Boolean)
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV*
   name: GenereteCSV
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_
@@ -3638,11 +3854,14 @@ references:
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Passed
   nameWithType: TestSuiteReport.Passed
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)
-  name: SaveAs(String, String, Boolean)
+  name: SaveAs(string, string, bool)
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_
   commentId: M:AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)
-  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String, System.String, System.Boolean)
-  nameWithType: TestSuiteReport.SaveAs(String, String, Boolean)
+  name.vb: SaveAs(String, String, Boolean)
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(string, string, bool)
+  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(String, String, Boolean)
+  nameWithType: TestSuiteReport.SaveAs(string, string, bool)
+  nameWithType.vb: TestSuiteReport.SaveAs(String, String, Boolean)
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs*
   name: SaveAs
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_
@@ -4234,18 +4453,21 @@ references:
   name: SharedActionBase(Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase__ctor_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.#ctor(AxaFrance.WebEngine.Variable[])
-  name.vb: SharedActionBase(Variable())
+  name.vb: New(Variable())
   fullName: AxaFrance.WebEngine.SharedActionBase.SharedActionBase(AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.SharedActionBase(AxaFrance.WebEngine.Variable())
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.New(AxaFrance.WebEngine.Variable())
   nameWithType: SharedActionBase.SharedActionBase(Variable[])
-  nameWithType.vb: SharedActionBase.SharedActionBase(Variable())
+  nameWithType.vb: SharedActionBase.New(Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.#ctor*
   name: SharedActionBase
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase__ctor_
   commentId: Overload:AxaFrance.WebEngine.SharedActionBase.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.SharedActionBase.SharedActionBase
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.New
   nameWithType: SharedActionBase.SharedActionBase
+  nameWithType.vb: SharedActionBase.New
 - uid: AxaFrance.WebEngine.SharedActionBase.ActionReport
   name: ActionReport
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_ActionReport
@@ -4286,38 +4508,41 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.ContextValues
   nameWithType: SharedActionBase.ContextValues
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Object)
-  name: DoAction(Object)
+  name: DoAction(object)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Object_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoAction(System.Object)
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Object)
-  nameWithType: SharedActionBase.DoAction(Object)
+  name.vb: DoAction(Object)
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(object)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(Object)
+  nameWithType: SharedActionBase.DoAction(object)
+  nameWithType.vb: SharedActionBase.DoAction(Object)
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,AxaFrance.WebEngine.TestCase,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name: DoAction(Type, TestCase, Object, List<Variable>, ActionReport, Variable[])
+  name: DoAction(Type, TestCase, object, List<Variable>, ActionReport, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Type_AxaFrance_WebEngine_TestCase_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,AxaFrance.WebEngine.TestCase,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name.vb: DoAction(Type, TestCase, Object, List(Of Variable), ActionReport, Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, AxaFrance.WebEngine.TestCase, System.Object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, AxaFrance.WebEngine.TestCase, System.Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoAction(Type, TestCase, Object, List<Variable>, ActionReport, Variable[])
-  nameWithType.vb: SharedActionBase.DoAction(Type, TestCase, Object, List(Of Variable), ActionReport, Variable())
+  name.vb: DoAction(Type, TestCase, Object, List(Of Variable), ActionReport, ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, AxaFrance.WebEngine.TestCase, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, AxaFrance.WebEngine.TestCase, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoAction(Type, TestCase, object, List<Variable>, ActionReport, params Variable[])
+  nameWithType.vb: SharedActionBase.DoAction(Type, TestCase, Object, List(Of Variable), ActionReport, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name: DoAction(Type, Object, List<Variable>, ActionReport, Variable[])
+  name: DoAction(Type, object, List<Variable>, ActionReport, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name.vb: DoAction(Type, Object, List(Of Variable), ActionReport, Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, System.Object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, System.Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoAction(Type, Object, List<Variable>, ActionReport, Variable[])
-  nameWithType.vb: SharedActionBase.DoAction(Type, Object, List(Of Variable), ActionReport, Variable())
+  name.vb: DoAction(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoAction(Type, object, List<Variable>, ActionReport, params Variable[])
+  nameWithType.vb: SharedActionBase.DoAction(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Variable[])
-  name: DoAction(Type, Object, List<Variable>, Variable[])
+  name: DoAction(Type, object, List<Variable>, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Variable[])
-  name.vb: DoAction(Type, Object, List(Of Variable), Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, System.Object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, System.Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoAction(Type, Object, List<Variable>, Variable[])
-  nameWithType.vb: SharedActionBase.DoAction(Type, Object, List(Of Variable), Variable())
+  name.vb: DoAction(Type, Object, List(Of Variable), ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoAction(Type, object, List<Variable>, params Variable[])
+  nameWithType.vb: SharedActionBase.DoAction(Type, Object, List(Of Variable), ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction*
   name: DoAction
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_
@@ -4326,23 +4551,23 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.DoAction
   nameWithType: SharedActionBase.DoAction
 - uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name: DoActionWithCheckpoint(Type, Object, List<Variable>, ActionReport, Variable[])
+  name: DoActionWithCheckpoint(Type, object, List<Variable>, ActionReport, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name.vb: DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, System.Object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, System.Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, Object, List<Variable>, ActionReport, Variable[])
-  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, Variable())
+  name.vb: DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, object, List<Variable>, ActionReport, params Variable[])
+  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.SharedActionBase,AxaFrance.WebEngine.Variable[])
-  name: DoActionWithCheckpoint(Type, Object, List<Variable>, SharedActionBase, Variable[])
+  name: DoActionWithCheckpoint(Type, object, List<Variable>, SharedActionBase, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_SharedActionBase_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.SharedActionBase,AxaFrance.WebEngine.Variable[])
-  name.vb: DoActionWithCheckpoint(Type, Object, List(Of Variable), SharedActionBase, Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, System.Object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.SharedActionBase, AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, System.Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.SharedActionBase, AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, Object, List<Variable>, SharedActionBase, Variable[])
-  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, Object, List(Of Variable), SharedActionBase, Variable())
+  name.vb: DoActionWithCheckpoint(Type, Object, List(Of Variable), SharedActionBase, ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.SharedActionBase, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.SharedActionBase, ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, object, List<Variable>, SharedActionBase, params Variable[])
+  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, Object, List(Of Variable), SharedActionBase, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint*
   name: DoActionWithCheckpoint
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_
@@ -4351,11 +4576,14 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint
   nameWithType: SharedActionBase.DoActionWithCheckpoint
 - uid: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint(System.Object)
-  name: DoCheckpoint(Object)
+  name: DoCheckpoint(object)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoCheckpoint_System_Object_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.DoCheckpoint(System.Object)
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint(System.Object)
-  nameWithType: SharedActionBase.DoCheckpoint(Object)
+  name.vb: DoCheckpoint(Object)
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint(object)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint(Object)
+  nameWithType: SharedActionBase.DoCheckpoint(object)
+  nameWithType.vb: SharedActionBase.DoCheckpoint(Object)
 - uid: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint*
   name: DoCheckpoint
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoCheckpoint_
@@ -4364,20 +4592,23 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.DoCheckpoint
   nameWithType: SharedActionBase.DoCheckpoint
 - uid: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable{AxaFrance.WebEngine.Variable},System.String)
-  name: GetParameter(IEnumerable<Variable>, String)
+  name: GetParameter(IEnumerable<Variable>, string)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_GetParameter_System_Collections_Generic_IEnumerable_AxaFrance_WebEngine_Variable__System_String_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable{AxaFrance.WebEngine.Variable},System.String)
   name.vb: GetParameter(IEnumerable(Of Variable), String)
-  fullName: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable<AxaFrance.WebEngine.Variable>, System.String)
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable(Of AxaFrance.WebEngine.Variable), System.String)
-  nameWithType: SharedActionBase.GetParameter(IEnumerable<Variable>, String)
+  fullName: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable<AxaFrance.WebEngine.Variable>, string)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.Collections.Generic.IEnumerable(Of AxaFrance.WebEngine.Variable), String)
+  nameWithType: SharedActionBase.GetParameter(IEnumerable<Variable>, string)
   nameWithType.vb: SharedActionBase.GetParameter(IEnumerable(Of Variable), String)
 - uid: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.String)
-  name: GetParameter(String)
+  name: GetParameter(string)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_GetParameter_System_String_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.GetParameter(System.String)
-  fullName: AxaFrance.WebEngine.SharedActionBase.GetParameter(System.String)
-  nameWithType: SharedActionBase.GetParameter(String)
+  name.vb: GetParameter(String)
+  fullName: AxaFrance.WebEngine.SharedActionBase.GetParameter(string)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.GetParameter(String)
+  nameWithType: SharedActionBase.GetParameter(string)
+  nameWithType.vb: SharedActionBase.GetParameter(String)
 - uid: AxaFrance.WebEngine.SharedActionBase.GetParameter*
   name: GetParameter
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_GetParameter_
@@ -4386,11 +4617,14 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.GetParameter
   nameWithType: SharedActionBase.GetParameter
 - uid: AxaFrance.WebEngine.SharedActionBase.GetType(System.String)
-  name: GetType(String)
+  name: GetType(string)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_GetType_System_String_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.GetType(System.String)
-  fullName: AxaFrance.WebEngine.SharedActionBase.GetType(System.String)
-  nameWithType: SharedActionBase.GetType(String)
+  name.vb: GetType(String)
+  fullName: AxaFrance.WebEngine.SharedActionBase.GetType(string)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.GetType(String)
+  nameWithType: SharedActionBase.GetType(string)
+  nameWithType.vb: SharedActionBase.GetType(String)
 - uid: AxaFrance.WebEngine.SharedActionBase.GetType*
   name: GetType
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_GetType_
@@ -4451,11 +4685,14 @@ references:
   fullName: AxaFrance.WebEngine.SharedActionBase.RequiredParameters
   nameWithType: SharedActionBase.RequiredParameters
 - uid: AxaFrance.WebEngine.SharedActionBase.Screenshot(System.String)
-  name: Screenshot(String)
+  name: Screenshot(string)
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_Screenshot_System_String_
   commentId: M:AxaFrance.WebEngine.SharedActionBase.Screenshot(System.String)
-  fullName: AxaFrance.WebEngine.SharedActionBase.Screenshot(System.String)
-  nameWithType: SharedActionBase.Screenshot(String)
+  name.vb: Screenshot(String)
+  fullName: AxaFrance.WebEngine.SharedActionBase.Screenshot(string)
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.Screenshot(String)
+  nameWithType: SharedActionBase.Screenshot(string)
+  nameWithType.vb: SharedActionBase.Screenshot(String)
 - uid: AxaFrance.WebEngine.SharedActionBase.Screenshot*
   name: Screenshot
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_Screenshot_
@@ -4476,6 +4713,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.SharedActionBase.Screenshots
   nameWithType: SharedActionBase.Screenshots
+- uid: AxaFrance.WebEngine.SharedActionBase.StopTestCase
+  name: StopTestCase()
+  href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_StopTestCase
+  commentId: M:AxaFrance.WebEngine.SharedActionBase.StopTestCase
+  fullName: AxaFrance.WebEngine.SharedActionBase.StopTestCase()
+  nameWithType: SharedActionBase.StopTestCase()
+- uid: AxaFrance.WebEngine.SharedActionBase.StopTestCase*
+  name: StopTestCase
+  href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_StopTestCase_
+  commentId: Overload:AxaFrance.WebEngine.SharedActionBase.StopTestCase
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.SharedActionBase.StopTestCase
+  nameWithType: SharedActionBase.StopTestCase
 - uid: AxaFrance.WebEngine.SharedActionBase.UpdateTime
   name: UpdateTime
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_UpdateTime
@@ -4593,11 +4843,14 @@ references:
   fullName: AxaFrance.WebEngine.TestCase.Name
   nameWithType: TestCase.Name
 - uid: AxaFrance.WebEngine.TestCase.Run(AxaFrance.WebEngine.Report.TestCaseReport,System.Boolean)
-  name: Run(TestCaseReport, Boolean)
+  name: Run(TestCaseReport, bool)
   href: api_net/AxaFrance.WebEngine.TestCase.html#AxaFrance_WebEngine_TestCase_Run_AxaFrance_WebEngine_Report_TestCaseReport_System_Boolean_
   commentId: M:AxaFrance.WebEngine.TestCase.Run(AxaFrance.WebEngine.Report.TestCaseReport,System.Boolean)
-  fullName: AxaFrance.WebEngine.TestCase.Run(AxaFrance.WebEngine.Report.TestCaseReport, System.Boolean)
-  nameWithType: TestCase.Run(TestCaseReport, Boolean)
+  name.vb: Run(TestCaseReport, Boolean)
+  fullName: AxaFrance.WebEngine.TestCase.Run(AxaFrance.WebEngine.Report.TestCaseReport, bool)
+  fullName.vb: AxaFrance.WebEngine.TestCase.Run(AxaFrance.WebEngine.Report.TestCaseReport, Boolean)
+  nameWithType: TestCase.Run(TestCaseReport, bool)
+  nameWithType.vb: TestCase.Run(TestCaseReport, Boolean)
 - uid: AxaFrance.WebEngine.TestCase.Run*
   name: Run
   href: api_net/AxaFrance.WebEngine.TestCase.html#AxaFrance_WebEngine_TestCase_Run_
@@ -4716,11 +4969,14 @@ references:
   fullName: AxaFrance.WebEngine.TestData.Data
   nameWithType: TestData.Data
 - uid: AxaFrance.WebEngine.TestData.GetValue(System.String)
-  name: GetValue(String)
+  name: GetValue(string)
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_GetValue_System_String_
   commentId: M:AxaFrance.WebEngine.TestData.GetValue(System.String)
-  fullName: AxaFrance.WebEngine.TestData.GetValue(System.String)
-  nameWithType: TestData.GetValue(String)
+  name.vb: GetValue(String)
+  fullName: AxaFrance.WebEngine.TestData.GetValue(string)
+  fullName.vb: AxaFrance.WebEngine.TestData.GetValue(String)
+  nameWithType: TestData.GetValue(string)
+  nameWithType.vb: TestData.GetValue(String)
 - uid: AxaFrance.WebEngine.TestData.GetValue*
   name: GetValue
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_GetValue_
@@ -4729,11 +4985,14 @@ references:
   fullName: AxaFrance.WebEngine.TestData.GetValue
   nameWithType: TestData.GetValue
 - uid: AxaFrance.WebEngine.TestData.SetValue(System.String,System.String)
-  name: SetValue(String, String)
+  name: SetValue(string, string)
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_SetValue_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.TestData.SetValue(System.String,System.String)
-  fullName: AxaFrance.WebEngine.TestData.SetValue(System.String, System.String)
-  nameWithType: TestData.SetValue(String, String)
+  name.vb: SetValue(String, String)
+  fullName: AxaFrance.WebEngine.TestData.SetValue(string, string)
+  fullName.vb: AxaFrance.WebEngine.TestData.SetValue(String, String)
+  nameWithType: TestData.SetValue(string, string)
+  nameWithType.vb: TestData.SetValue(String, String)
 - uid: AxaFrance.WebEngine.TestData.SetValue*
   name: SetValue
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_SetValue_
@@ -4755,11 +5014,14 @@ references:
   fullName: AxaFrance.WebEngine.TestData.TestName
   nameWithType: TestData.TestName
 - uid: AxaFrance.WebEngine.TestData.TryGetValue(System.String)
-  name: TryGetValue(String)
+  name: TryGetValue(string)
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_TryGetValue_System_String_
   commentId: M:AxaFrance.WebEngine.TestData.TryGetValue(System.String)
-  fullName: AxaFrance.WebEngine.TestData.TryGetValue(System.String)
-  nameWithType: TestData.TryGetValue(String)
+  name.vb: TryGetValue(String)
+  fullName: AxaFrance.WebEngine.TestData.TryGetValue(string)
+  fullName.vb: AxaFrance.WebEngine.TestData.TryGetValue(String)
+  nameWithType: TestData.TryGetValue(string)
+  nameWithType.vb: TestData.TryGetValue(String)
 - uid: AxaFrance.WebEngine.TestData.TryGetValue*
   name: TryGetValue
   href: api_net/AxaFrance.WebEngine.TestData.html#AxaFrance_WebEngine_TestData_TryGetValue_
@@ -4777,15 +5039,21 @@ references:
   name: TestStep()
   href: api_net/AxaFrance.WebEngine.TestStep.html#AxaFrance_WebEngine_TestStep__ctor
   commentId: M:AxaFrance.WebEngine.TestStep.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.TestStep.TestStep()
+  fullName.vb: AxaFrance.WebEngine.TestStep.New()
   nameWithType: TestStep.TestStep()
+  nameWithType.vb: TestStep.New()
 - uid: AxaFrance.WebEngine.TestStep.#ctor*
   name: TestStep
   href: api_net/AxaFrance.WebEngine.TestStep.html#AxaFrance_WebEngine_TestStep__ctor_
   commentId: Overload:AxaFrance.WebEngine.TestStep.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.TestStep.TestStep
+  fullName.vb: AxaFrance.WebEngine.TestStep.New
   nameWithType: TestStep.TestStep
+  nameWithType.vb: TestStep.New
 - uid: AxaFrance.WebEngine.TestStep.Action
   name: Action
   href: api_net/AxaFrance.WebEngine.TestStep.html#AxaFrance_WebEngine_TestStep_Action
@@ -4893,15 +5161,21 @@ references:
   name: TestSuiteData()
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData__ctor
   commentId: M:AxaFrance.WebEngine.TestSuiteData.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.TestSuiteData.TestSuiteData()
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.New()
   nameWithType: TestSuiteData.TestSuiteData()
+  nameWithType.vb: TestSuiteData.New()
 - uid: AxaFrance.WebEngine.TestSuiteData.#ctor*
   name: TestSuiteData
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData__ctor_
   commentId: Overload:AxaFrance.WebEngine.TestSuiteData.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.TestSuiteData.TestSuiteData
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.New
   nameWithType: TestSuiteData.TestSuiteData
+  nameWithType.vb: TestSuiteData.New
 - uid: AxaFrance.WebEngine.TestSuiteData.Current
   name: Current
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_Current
@@ -4916,11 +5190,14 @@ references:
   fullName: AxaFrance.WebEngine.TestSuiteData.Current
   nameWithType: TestSuiteData.Current
 - uid: AxaFrance.WebEngine.TestSuiteData.GetTestData(System.String)
-  name: GetTestData(String)
+  name: GetTestData(string)
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_GetTestData_System_String_
   commentId: M:AxaFrance.WebEngine.TestSuiteData.GetTestData(System.String)
-  fullName: AxaFrance.WebEngine.TestSuiteData.GetTestData(System.String)
-  nameWithType: TestSuiteData.GetTestData(String)
+  name.vb: GetTestData(String)
+  fullName: AxaFrance.WebEngine.TestSuiteData.GetTestData(string)
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.GetTestData(String)
+  nameWithType: TestSuiteData.GetTestData(string)
+  nameWithType.vb: TestSuiteData.GetTestData(String)
 - uid: AxaFrance.WebEngine.TestSuiteData.GetTestData*
   name: GetTestData
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_GetTestData_
@@ -4929,11 +5206,14 @@ references:
   fullName: AxaFrance.WebEngine.TestSuiteData.GetTestData
   nameWithType: TestSuiteData.GetTestData
 - uid: AxaFrance.WebEngine.TestSuiteData.GetValue(System.String,System.String)
-  name: GetValue(String, String)
+  name: GetValue(string, string)
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_GetValue_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.TestSuiteData.GetValue(System.String,System.String)
-  fullName: AxaFrance.WebEngine.TestSuiteData.GetValue(System.String, System.String)
-  nameWithType: TestSuiteData.GetValue(String, String)
+  name.vb: GetValue(String, String)
+  fullName: AxaFrance.WebEngine.TestSuiteData.GetValue(string, string)
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.GetValue(String, String)
+  nameWithType: TestSuiteData.GetValue(string, string)
+  nameWithType.vb: TestSuiteData.GetValue(String, String)
 - uid: AxaFrance.WebEngine.TestSuiteData.GetValue*
   name: GetValue
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_GetValue_
@@ -4955,11 +5235,14 @@ references:
   fullName: AxaFrance.WebEngine.TestSuiteData.InitializeEmpty
   nameWithType: TestSuiteData.InitializeEmpty
 - uid: AxaFrance.WebEngine.TestSuiteData.LoadFrom(System.String)
-  name: LoadFrom(String)
+  name: LoadFrom(string)
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_LoadFrom_System_String_
   commentId: M:AxaFrance.WebEngine.TestSuiteData.LoadFrom(System.String)
-  fullName: AxaFrance.WebEngine.TestSuiteData.LoadFrom(System.String)
-  nameWithType: TestSuiteData.LoadFrom(String)
+  name.vb: LoadFrom(String)
+  fullName: AxaFrance.WebEngine.TestSuiteData.LoadFrom(string)
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.LoadFrom(String)
+  nameWithType: TestSuiteData.LoadFrom(string)
+  nameWithType.vb: TestSuiteData.LoadFrom(String)
 - uid: AxaFrance.WebEngine.TestSuiteData.LoadFrom*
   name: LoadFrom
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_LoadFrom_
@@ -4968,11 +5251,14 @@ references:
   fullName: AxaFrance.WebEngine.TestSuiteData.LoadFrom
   nameWithType: TestSuiteData.LoadFrom
 - uid: AxaFrance.WebEngine.TestSuiteData.SetValue(System.String,System.String,System.String)
-  name: SetValue(String, String, String)
+  name: SetValue(string, string, string)
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_SetValue_System_String_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.TestSuiteData.SetValue(System.String,System.String,System.String)
-  fullName: AxaFrance.WebEngine.TestSuiteData.SetValue(System.String, System.String, System.String)
-  nameWithType: TestSuiteData.SetValue(String, String, String)
+  name.vb: SetValue(String, String, String)
+  fullName: AxaFrance.WebEngine.TestSuiteData.SetValue(string, string, string)
+  fullName.vb: AxaFrance.WebEngine.TestSuiteData.SetValue(String, String, String)
+  nameWithType: TestSuiteData.SetValue(string, string, string)
+  nameWithType.vb: TestSuiteData.SetValue(String, String, String)
 - uid: AxaFrance.WebEngine.TestSuiteData.SetValue*
   name: SetValue
   href: api_net/AxaFrance.WebEngine.TestSuiteData.html#AxaFrance_WebEngine_TestSuiteData_SetValue_
@@ -5000,11 +5286,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities
   nameWithType: Utilities
 - uid: AxaFrance.WebEngine.Utilities.ExtractDateFromText(System.String)
-  name: ExtractDateFromText(String)
+  name: ExtractDateFromText(string)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_ExtractDateFromText_System_String_
   commentId: M:AxaFrance.WebEngine.Utilities.ExtractDateFromText(System.String)
-  fullName: AxaFrance.WebEngine.Utilities.ExtractDateFromText(System.String)
-  nameWithType: Utilities.ExtractDateFromText(String)
+  name.vb: ExtractDateFromText(String)
+  fullName: AxaFrance.WebEngine.Utilities.ExtractDateFromText(string)
+  fullName.vb: AxaFrance.WebEngine.Utilities.ExtractDateFromText(String)
+  nameWithType: Utilities.ExtractDateFromText(string)
+  nameWithType.vb: Utilities.ExtractDateFromText(String)
 - uid: AxaFrance.WebEngine.Utilities.ExtractDateFromText*
   name: ExtractDateFromText
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_ExtractDateFromText_
@@ -5013,11 +5302,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.ExtractDateFromText
   nameWithType: Utilities.ExtractDateFromText
 - uid: AxaFrance.WebEngine.Utilities.GenerateEmail(System.String,System.String,System.Boolean,System.String)
-  name: GenerateEmail(String, String, Boolean, String)
+  name: GenerateEmail(string, string, bool, string)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GenerateEmail_System_String_System_String_System_Boolean_System_String_
   commentId: M:AxaFrance.WebEngine.Utilities.GenerateEmail(System.String,System.String,System.Boolean,System.String)
-  fullName: AxaFrance.WebEngine.Utilities.GenerateEmail(System.String, System.String, System.Boolean, System.String)
-  nameWithType: Utilities.GenerateEmail(String, String, Boolean, String)
+  name.vb: GenerateEmail(String, String, Boolean, String)
+  fullName: AxaFrance.WebEngine.Utilities.GenerateEmail(string, string, bool, string)
+  fullName.vb: AxaFrance.WebEngine.Utilities.GenerateEmail(String, String, Boolean, String)
+  nameWithType: Utilities.GenerateEmail(string, string, bool, string)
+  nameWithType.vb: Utilities.GenerateEmail(String, String, Boolean, String)
 - uid: AxaFrance.WebEngine.Utilities.GenerateEmail*
   name: GenerateEmail
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GenerateEmail_
@@ -5026,11 +5318,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.GenerateEmail
   nameWithType: Utilities.GenerateEmail
 - uid: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber(System.String)
-  name: GeneratePhoneNumber(String)
+  name: GeneratePhoneNumber(string)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GeneratePhoneNumber_System_String_
   commentId: M:AxaFrance.WebEngine.Utilities.GeneratePhoneNumber(System.String)
-  fullName: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber(System.String)
-  nameWithType: Utilities.GeneratePhoneNumber(String)
+  name.vb: GeneratePhoneNumber(String)
+  fullName: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber(string)
+  fullName.vb: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber(String)
+  nameWithType: Utilities.GeneratePhoneNumber(string)
+  nameWithType.vb: Utilities.GeneratePhoneNumber(String)
 - uid: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber*
   name: GeneratePhoneNumber
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GeneratePhoneNumber_
@@ -5039,11 +5334,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.GeneratePhoneNumber
   nameWithType: Utilities.GeneratePhoneNumber
 - uid: AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(System.String,System.Char)
-  name: GetRandomItemFromEnvironmentVariable(String, Char)
+  name: GetRandomItemFromEnvironmentVariable(string, char)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GetRandomItemFromEnvironmentVariable_System_String_System_Char_
   commentId: M:AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(System.String,System.Char)
-  fullName: AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(System.String, System.Char)
-  nameWithType: Utilities.GetRandomItemFromEnvironmentVariable(String, Char)
+  name.vb: GetRandomItemFromEnvironmentVariable(String, Char)
+  fullName: AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(string, char)
+  fullName.vb: AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable(String, Char)
+  nameWithType: Utilities.GetRandomItemFromEnvironmentVariable(string, char)
+  nameWithType.vb: Utilities.GetRandomItemFromEnvironmentVariable(String, Char)
 - uid: AxaFrance.WebEngine.Utilities.GetRandomItemFromEnvironmentVariable*
   name: GetRandomItemFromEnvironmentVariable
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GetRandomItemFromEnvironmentVariable_
@@ -5065,11 +5363,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.GetRandomLetter
   nameWithType: Utilities.GetRandomLetter
 - uid: AxaFrance.WebEngine.Utilities.GetRandomNumber(System.Int32)
-  name: GetRandomNumber(Int32)
+  name: GetRandomNumber(int)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GetRandomNumber_System_Int32_
   commentId: M:AxaFrance.WebEngine.Utilities.GetRandomNumber(System.Int32)
-  fullName: AxaFrance.WebEngine.Utilities.GetRandomNumber(System.Int32)
-  nameWithType: Utilities.GetRandomNumber(Int32)
+  name.vb: GetRandomNumber(Integer)
+  fullName: AxaFrance.WebEngine.Utilities.GetRandomNumber(int)
+  fullName.vb: AxaFrance.WebEngine.Utilities.GetRandomNumber(Integer)
+  nameWithType: Utilities.GetRandomNumber(int)
+  nameWithType.vb: Utilities.GetRandomNumber(Integer)
 - uid: AxaFrance.WebEngine.Utilities.GetRandomNumber*
   name: GetRandomNumber
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GetRandomNumber_
@@ -5078,13 +5379,13 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.GetRandomNumber
   nameWithType: Utilities.GetRandomNumber
 - uid: AxaFrance.WebEngine.Utilities.GetRandomStringFromList(System.Object[])
-  name: GetRandomStringFromList(Object[])
+  name: GetRandomStringFromList(object[])
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_GetRandomStringFromList_System_Object___
   commentId: M:AxaFrance.WebEngine.Utilities.GetRandomStringFromList(System.Object[])
   name.vb: GetRandomStringFromList(Object())
-  fullName: AxaFrance.WebEngine.Utilities.GetRandomStringFromList(System.Object[])
-  fullName.vb: AxaFrance.WebEngine.Utilities.GetRandomStringFromList(System.Object())
-  nameWithType: Utilities.GetRandomStringFromList(Object[])
+  fullName: AxaFrance.WebEngine.Utilities.GetRandomStringFromList(object[])
+  fullName.vb: AxaFrance.WebEngine.Utilities.GetRandomStringFromList(Object())
+  nameWithType: Utilities.GetRandomStringFromList(object[])
   nameWithType.vb: Utilities.GetRandomStringFromList(Object())
 - uid: AxaFrance.WebEngine.Utilities.GetRandomStringFromList*
   name: GetRandomStringFromList
@@ -5094,11 +5395,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.GetRandomStringFromList
   nameWithType: Utilities.GetRandomStringFromList
 - uid: AxaFrance.WebEngine.Utilities.LoremIpsum(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name: LoremIpsum(Int32, Int32, Int32, Int32, Int32)
+  name: LoremIpsum(int, int, int, int, int)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_LoremIpsum_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
   commentId: M:AxaFrance.WebEngine.Utilities.LoremIpsum(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  fullName: AxaFrance.WebEngine.Utilities.LoremIpsum(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
-  nameWithType: Utilities.LoremIpsum(Int32, Int32, Int32, Int32, Int32)
+  name.vb: LoremIpsum(Integer, Integer, Integer, Integer, Integer)
+  fullName: AxaFrance.WebEngine.Utilities.LoremIpsum(int, int, int, int, int)
+  fullName.vb: AxaFrance.WebEngine.Utilities.LoremIpsum(Integer, Integer, Integer, Integer, Integer)
+  nameWithType: Utilities.LoremIpsum(int, int, int, int, int)
+  nameWithType.vb: Utilities.LoremIpsum(Integer, Integer, Integer, Integer, Integer)
 - uid: AxaFrance.WebEngine.Utilities.LoremIpsum*
   name: LoremIpsum
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_LoremIpsum_
@@ -5107,11 +5411,14 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.LoremIpsum
   nameWithType: Utilities.LoremIpsum
 - uid: AxaFrance.WebEngine.Utilities.SaveFile(System.String,System.String)
-  name: SaveFile(String, String)
+  name: SaveFile(string, string)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_SaveFile_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Utilities.SaveFile(System.String,System.String)
-  fullName: AxaFrance.WebEngine.Utilities.SaveFile(System.String, System.String)
-  nameWithType: Utilities.SaveFile(String, String)
+  name.vb: SaveFile(String, String)
+  fullName: AxaFrance.WebEngine.Utilities.SaveFile(string, string)
+  fullName.vb: AxaFrance.WebEngine.Utilities.SaveFile(String, String)
+  nameWithType: Utilities.SaveFile(string, string)
+  nameWithType.vb: Utilities.SaveFile(String, String)
 - uid: AxaFrance.WebEngine.Utilities.SaveFile*
   name: SaveFile
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_SaveFile_
@@ -5127,13 +5434,13 @@ references:
   fullName: AxaFrance.WebEngine.Utilities.ShiftDateByDuration
   nameWithType: Utilities.ShiftDateByDuration
 - uid: AxaFrance.WebEngine.Utilities.ShiftDateByDuration``1(System.String,``0)
-  name: ShiftDateByDuration<T>(String, T)
+  name: ShiftDateByDuration<T>(string, T)
   href: api_net/AxaFrance.WebEngine.Utilities.html#AxaFrance_WebEngine_Utilities_ShiftDateByDuration__1_System_String___0_
   commentId: M:AxaFrance.WebEngine.Utilities.ShiftDateByDuration``1(System.String,``0)
   name.vb: ShiftDateByDuration(Of T)(String, T)
-  fullName: AxaFrance.WebEngine.Utilities.ShiftDateByDuration<T>(System.String, T)
-  fullName.vb: AxaFrance.WebEngine.Utilities.ShiftDateByDuration(Of T)(System.String, T)
-  nameWithType: Utilities.ShiftDateByDuration<T>(String, T)
+  fullName: AxaFrance.WebEngine.Utilities.ShiftDateByDuration<T>(string, T)
+  fullName.vb: AxaFrance.WebEngine.Utilities.ShiftDateByDuration(Of T)(String, T)
+  nameWithType: Utilities.ShiftDateByDuration<T>(string, T)
   nameWithType.vb: Utilities.ShiftDateByDuration(Of T)(String, T)
 - uid: AxaFrance.WebEngine.Variable
   name: Variable
@@ -5145,35 +5452,47 @@ references:
   name: Variable()
   href: api_net/AxaFrance.WebEngine.Variable.html#AxaFrance_WebEngine_Variable__ctor
   commentId: M:AxaFrance.WebEngine.Variable.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Variable.Variable()
+  fullName.vb: AxaFrance.WebEngine.Variable.New()
   nameWithType: Variable.Variable()
+  nameWithType.vb: Variable.New()
 - uid: AxaFrance.WebEngine.Variable.#ctor(System.String)
-  name: Variable(String)
+  name: Variable(string)
   href: api_net/AxaFrance.WebEngine.Variable.html#AxaFrance_WebEngine_Variable__ctor_System_String_
   commentId: M:AxaFrance.WebEngine.Variable.#ctor(System.String)
-  fullName: AxaFrance.WebEngine.Variable.Variable(System.String)
-  nameWithType: Variable.Variable(String)
+  name.vb: New(String)
+  fullName: AxaFrance.WebEngine.Variable.Variable(string)
+  fullName.vb: AxaFrance.WebEngine.Variable.New(String)
+  nameWithType: Variable.Variable(string)
+  nameWithType.vb: Variable.New(String)
 - uid: AxaFrance.WebEngine.Variable.#ctor(System.String,System.String)
-  name: Variable(String, String)
+  name: Variable(string, string)
   href: api_net/AxaFrance.WebEngine.Variable.html#AxaFrance_WebEngine_Variable__ctor_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Variable.#ctor(System.String,System.String)
-  fullName: AxaFrance.WebEngine.Variable.Variable(System.String, System.String)
-  nameWithType: Variable.Variable(String, String)
+  name.vb: New(String, String)
+  fullName: AxaFrance.WebEngine.Variable.Variable(string, string)
+  fullName.vb: AxaFrance.WebEngine.Variable.New(String, String)
+  nameWithType: Variable.Variable(string, string)
+  nameWithType.vb: Variable.New(String, String)
 - uid: AxaFrance.WebEngine.Variable.#ctor*
   name: Variable
   href: api_net/AxaFrance.WebEngine.Variable.html#AxaFrance_WebEngine_Variable__ctor_
   commentId: Overload:AxaFrance.WebEngine.Variable.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Variable.Variable
+  fullName.vb: AxaFrance.WebEngine.Variable.New
   nameWithType: Variable.Variable
+  nameWithType.vb: Variable.New
 - uid: AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable{AxaFrance.WebEngine.Variable},System.String)
-  name: GetValue(IEnumerable<Variable>, String)
+  name: GetValue(IEnumerable<Variable>, string)
   href: api_net/AxaFrance.WebEngine.Variable.html#AxaFrance_WebEngine_Variable_GetValue_System_Collections_Generic_IEnumerable_AxaFrance_WebEngine_Variable__System_String_
   commentId: M:AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable{AxaFrance.WebEngine.Variable},System.String)
   name.vb: GetValue(IEnumerable(Of Variable), String)
-  fullName: AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable<AxaFrance.WebEngine.Variable>, System.String)
-  fullName.vb: AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable(Of AxaFrance.WebEngine.Variable), System.String)
-  nameWithType: Variable.GetValue(IEnumerable<Variable>, String)
+  fullName: AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable<AxaFrance.WebEngine.Variable>, string)
+  fullName.vb: AxaFrance.WebEngine.Variable.GetValue(System.Collections.Generic.IEnumerable(Of AxaFrance.WebEngine.Variable), String)
+  nameWithType: Variable.GetValue(IEnumerable<Variable>, string)
   nameWithType.vb: Variable.GetValue(IEnumerable(Of Variable), String)
 - uid: AxaFrance.WebEngine.Variable.GetValue*
   name: GetValue
@@ -5240,13 +5559,13 @@ references:
   fullName: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType)
   nameWithType: BrowserFactory.GetDriver(Platform, BrowserType)
 - uid: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})
-  name: GetDriver(Platform, BrowserType, IEnumerable<String>)
+  name: GetDriver(Platform, BrowserType, IEnumerable<string>)
   href: api_net/AxaFrance.WebEngine.Web.BrowserFactory.html#AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__
   commentId: M:AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})
   name.vb: GetDriver(Platform, BrowserType, IEnumerable(Of String))
-  fullName: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable(Of System.String))
-  nameWithType: BrowserFactory.GetDriver(Platform, BrowserType, IEnumerable<String>)
+  fullName: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform, AxaFrance.WebEngine.BrowserType, System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: BrowserFactory.GetDriver(Platform, BrowserType, IEnumerable<string>)
   nameWithType.vb: BrowserFactory.GetDriver(Platform, BrowserType, IEnumerable(Of String))
 - uid: AxaFrance.WebEngine.Web.BrowserFactory.GetDriver*
   name: GetDriver
@@ -5346,11 +5665,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.Exists()
   nameWithType: ElementDescription.Exists()
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Exists(System.Int32)
-  name: Exists(Int32)
+  name: Exists(int)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Exists_System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Exists(System.Int32)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Exists(System.Int32)
-  nameWithType: ElementDescription.Exists(Int32)
+  name.vb: Exists(Integer)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Exists(int)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Exists(Integer)
+  nameWithType: ElementDescription.Exists(int)
+  nameWithType.vb: ElementDescription.Exists(Integer)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Exists*
   name: Exists
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Exists_
@@ -5371,17 +5693,23 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By)
   nameWithType: ElementDescription.FindElement(By)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By,System.Int32)
-  name: FindElement(By, Int32)
+  name: FindElement(By, int)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_FindElement_OpenQA_Selenium_By_System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By,System.Int32)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By, System.Int32)
-  nameWithType: ElementDescription.FindElement(By, Int32)
+  name.vb: FindElement(By, Integer)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By, int)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.FindElement(OpenQA.Selenium.By, Integer)
+  nameWithType: ElementDescription.FindElement(By, int)
+  nameWithType.vb: ElementDescription.FindElement(By, Integer)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.FindElement(System.Int32)
-  name: FindElement(Int32)
+  name: FindElement(int)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_FindElement_System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.FindElement(System.Int32)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElement(System.Int32)
-  nameWithType: ElementDescription.FindElement(Int32)
+  name.vb: FindElement(Integer)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElement(int)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.FindElement(Integer)
+  nameWithType: ElementDescription.FindElement(int)
+  nameWithType.vb: ElementDescription.FindElement(Integer)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.FindElement*
   name: FindElement
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_FindElement_
@@ -5402,11 +5730,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElements(OpenQA.Selenium.By)
   nameWithType: ElementDescription.FindElements(By)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.FindElements(System.Int32)
-  name: FindElements(Int32)
+  name: FindElements(int)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_FindElements_System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.FindElements(System.Int32)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElements(System.Int32)
-  nameWithType: ElementDescription.FindElements(Int32)
+  name.vb: FindElements(Integer)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElements(int)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.FindElements(Integer)
+  nameWithType: ElementDescription.FindElements(int)
+  nameWithType.vb: ElementDescription.FindElements(Integer)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.FindElements*
   name: FindElements
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_FindElements_
@@ -5415,11 +5746,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.FindElements
   nameWithType: ElementDescription.FindElements
 - uid: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(System.String)
-  name: GetAttribute(String)
+  name: GetAttribute(string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_GetAttribute_System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(System.String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(System.String)
-  nameWithType: ElementDescription.GetAttribute(String)
+  name.vb: GetAttribute(String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute(String)
+  nameWithType: ElementDescription.GetAttribute(string)
+  nameWithType.vb: ElementDescription.GetAttribute(String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute*
   name: GetAttribute
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_GetAttribute_
@@ -5428,11 +5762,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.GetAttribute
   nameWithType: ElementDescription.GetAttribute
 - uid: AxaFrance.WebEngine.Web.ElementDescription.GetProperty(System.String)
-  name: GetProperty(String)
+  name: GetProperty(string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_GetProperty_System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.GetProperty(System.String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.GetProperty(System.String)
-  nameWithType: ElementDescription.GetProperty(String)
+  name.vb: GetProperty(String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.GetProperty(string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.GetProperty(String)
+  nameWithType: ElementDescription.GetProperty(string)
+  nameWithType.vb: ElementDescription.GetProperty(String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.GetProperty*
   name: GetProperty
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_GetProperty_
@@ -5564,67 +5901,67 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action)
   nameWithType: ElementDescription.Perform(Action)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.Int32},System.Int32)
-  name: Perform(Action<Int32>, Int32)
+  name: Perform(Action<int>, int)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Action_System_Int32__System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.Int32},System.Int32)
-  name.vb: Perform(Action(Of Int32), Int32)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action<System.Int32>, System.Int32)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action(Of System.Int32), System.Int32)
-  nameWithType: ElementDescription.Perform(Action<Int32>, Int32)
-  nameWithType.vb: ElementDescription.Perform(Action(Of Int32), Int32)
+  name.vb: Perform(Action(Of Integer), Integer)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action<int>, int)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action(Of Integer), Integer)
+  nameWithType: ElementDescription.Perform(Action<int>, int)
+  nameWithType.vb: ElementDescription.Perform(Action(Of Integer), Integer)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.String},System.String)
-  name: Perform(Action<String>, String)
+  name: Perform(Action<string>, string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Action_System_String__System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action{System.String},System.String)
   name.vb: Perform(Action(Of String), String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action<System.String>, System.String)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action(Of System.String), System.String)
-  nameWithType: ElementDescription.Perform(Action<String>, String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action<string>, string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Action(Of String), String)
+  nameWithType: ElementDescription.Perform(Action<string>, string)
   nameWithType.vb: ElementDescription.Perform(Action(Of String), String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Boolean})
-  name: Perform(Func<Boolean>)
+  name: Perform(Func<bool>)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_Boolean__
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Boolean})
   name.vb: Perform(Func(Of Boolean))
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<System.Boolean>)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of System.Boolean))
-  nameWithType: ElementDescription.Perform(Func<Boolean>)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<bool>)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of Boolean))
+  nameWithType: ElementDescription.Perform(Func<bool>)
   nameWithType.vb: ElementDescription.Perform(Func(Of Boolean))
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Byte[]})
-  name: Perform(Func<Byte[]>)
+  name: Perform(Func<byte[]>)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_Byte____
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.Byte[]})
   name.vb: Perform(Func(Of Byte()))
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<System.Byte[]>)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of System.Byte()))
-  nameWithType: ElementDescription.Perform(Func<Byte[]>)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<byte[]>)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of Byte()))
+  nameWithType: ElementDescription.Perform(Func<byte[]>)
   nameWithType.vb: ElementDescription.Perform(Func(Of Byte()))
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,OpenQA.Selenium.IWebElement},System.String)
-  name: Perform(Func<String, IWebElement>, String)
+  name: Perform(Func<string, IWebElement>, string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String_OpenQA_Selenium_IWebElement__System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,OpenQA.Selenium.IWebElement},System.String)
   name.vb: Perform(Func(Of String, IWebElement), String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<System.String, OpenQA.Selenium.IWebElement>, System.String)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of System.String, OpenQA.Selenium.IWebElement), System.String)
-  nameWithType: ElementDescription.Perform(Func<String, IWebElement>, String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<string, OpenQA.Selenium.IWebElement>, string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of String, OpenQA.Selenium.IWebElement), String)
+  nameWithType: ElementDescription.Perform(Func<string, IWebElement>, string)
   nameWithType.vb: ElementDescription.Perform(Func(Of String, IWebElement), String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,System.String},System.String)
-  name: Perform(Func<String, String>, String)
+  name: Perform(Func<string, string>, string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String_System_String__System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String,System.String},System.String)
   name.vb: Perform(Func(Of String, String), String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<System.String, System.String>, System.String)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of System.String, System.String), System.String)
-  nameWithType: ElementDescription.Perform(Func<String, String>, String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<string, string>, string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of String, String), String)
+  nameWithType: ElementDescription.Perform(Func<string, string>, string)
   nameWithType.vb: ElementDescription.Perform(Func(Of String, String), String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String})
-  name: Perform(Func<String>)
+  name: Perform(Func<string>)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_Perform_System_Func_System_String__
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func{System.String})
   name.vb: Perform(Func(Of String))
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<System.String>)
-  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of System.String))
-  nameWithType: ElementDescription.Perform(Func<String>)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func<string>)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.Perform(System.Func(Of String))
+  nameWithType: ElementDescription.Perform(Func<string>)
   nameWithType.vb: ElementDescription.Perform(Func(Of String))
 - uid: AxaFrance.WebEngine.Web.ElementDescription.Perform*
   name: Perform
@@ -5634,11 +5971,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.Perform
   nameWithType: ElementDescription.Perform
 - uid: AxaFrance.WebEngine.Web.ElementDescription.SendKeys(System.String)
-  name: SendKeys(String)
+  name: SendKeys(string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SendKeys_System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.SendKeys(System.String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.SendKeys(System.String)
-  nameWithType: ElementDescription.SendKeys(String)
+  name.vb: SendKeys(String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.SendKeys(string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.SendKeys(String)
+  nameWithType: ElementDescription.SendKeys(string)
+  nameWithType.vb: ElementDescription.SendKeys(String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.SendKeys*
   name: SendKeys
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SendKeys_
@@ -5647,11 +5987,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.ElementDescription.SendKeys
   nameWithType: ElementDescription.SendKeys
 - uid: AxaFrance.WebEngine.Web.ElementDescription.SetValue(System.String)
-  name: SetValue(String)
+  name: SetValue(string)
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SetValue_System_String_
   commentId: M:AxaFrance.WebEngine.Web.ElementDescription.SetValue(System.String)
-  fullName: AxaFrance.WebEngine.Web.ElementDescription.SetValue(System.String)
-  nameWithType: ElementDescription.SetValue(String)
+  name.vb: SetValue(String)
+  fullName: AxaFrance.WebEngine.Web.ElementDescription.SetValue(string)
+  fullName.vb: AxaFrance.WebEngine.Web.ElementDescription.SetValue(String)
+  nameWithType: ElementDescription.SetValue(string)
+  nameWithType.vb: ElementDescription.SetValue(String)
 - uid: AxaFrance.WebEngine.Web.ElementDescription.SetValue*
   name: SetValue
   href: api_net/AxaFrance.WebEngine.Web.ElementDescription.html#AxaFrance_WebEngine_Web_ElementDescription_SetValue_
@@ -5701,21 +6044,30 @@ references:
   name: FindsByAttribute()
   href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor
   commentId: M:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute()
+  fullName.vb: AxaFrance.WebEngine.Web.FindsByAttribute.New()
   nameWithType: FindsByAttribute.FindsByAttribute()
+  nameWithType.vb: FindsByAttribute.New()
 - uid: AxaFrance.WebEngine.Web.FindsByAttribute.#ctor(AxaFrance.WebEngine.Web.How,System.String)
-  name: FindsByAttribute(How, String)
+  name: FindsByAttribute(How, string)
   href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor_AxaFrance_WebEngine_Web_How_System_String_
   commentId: M:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor(AxaFrance.WebEngine.Web.How,System.String)
-  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute(AxaFrance.WebEngine.Web.How, System.String)
-  nameWithType: FindsByAttribute.FindsByAttribute(How, String)
+  name.vb: New(How, String)
+  fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute(AxaFrance.WebEngine.Web.How, string)
+  fullName.vb: AxaFrance.WebEngine.Web.FindsByAttribute.New(AxaFrance.WebEngine.Web.How, String)
+  nameWithType: FindsByAttribute.FindsByAttribute(How, string)
+  nameWithType.vb: FindsByAttribute.New(How, String)
 - uid: AxaFrance.WebEngine.Web.FindsByAttribute.#ctor*
   name: FindsByAttribute
   href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute__ctor_
   commentId: Overload:AxaFrance.WebEngine.Web.FindsByAttribute.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Web.FindsByAttribute.FindsByAttribute
+  fullName.vb: AxaFrance.WebEngine.Web.FindsByAttribute.New
   nameWithType: FindsByAttribute.FindsByAttribute
+  nameWithType.vb: FindsByAttribute.New
 - uid: AxaFrance.WebEngine.Web.FindsByAttribute.How
   name: How
   href: api_net/AxaFrance.WebEngine.Web.FindsByAttribute.html#AxaFrance_WebEngine_Web_FindsByAttribute_How
@@ -5812,27 +6164,39 @@ references:
   name: HtmlAttribute()
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html#AxaFrance_WebEngine_Web_HtmlAttribute__ctor
   commentId: M:AxaFrance.WebEngine.Web.HtmlAttribute.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute()
+  fullName.vb: AxaFrance.WebEngine.Web.HtmlAttribute.New()
   nameWithType: HtmlAttribute.HtmlAttribute()
+  nameWithType.vb: HtmlAttribute.New()
 - uid: AxaFrance.WebEngine.Web.HtmlAttribute.#ctor(System.String)
-  name: HtmlAttribute(String)
+  name: HtmlAttribute(string)
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html#AxaFrance_WebEngine_Web_HtmlAttribute__ctor_System_String_
   commentId: M:AxaFrance.WebEngine.Web.HtmlAttribute.#ctor(System.String)
-  fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute(System.String)
-  nameWithType: HtmlAttribute.HtmlAttribute(String)
+  name.vb: New(String)
+  fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute(string)
+  fullName.vb: AxaFrance.WebEngine.Web.HtmlAttribute.New(String)
+  nameWithType: HtmlAttribute.HtmlAttribute(string)
+  nameWithType.vb: HtmlAttribute.New(String)
 - uid: AxaFrance.WebEngine.Web.HtmlAttribute.#ctor(System.String,System.String)
-  name: HtmlAttribute(String, String)
+  name: HtmlAttribute(string, string)
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html#AxaFrance_WebEngine_Web_HtmlAttribute__ctor_System_String_System_String_
   commentId: M:AxaFrance.WebEngine.Web.HtmlAttribute.#ctor(System.String,System.String)
-  fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute(System.String, System.String)
-  nameWithType: HtmlAttribute.HtmlAttribute(String, String)
+  name.vb: New(String, String)
+  fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute(string, string)
+  fullName.vb: AxaFrance.WebEngine.Web.HtmlAttribute.New(String, String)
+  nameWithType: HtmlAttribute.HtmlAttribute(string, string)
+  nameWithType.vb: HtmlAttribute.New(String, String)
 - uid: AxaFrance.WebEngine.Web.HtmlAttribute.#ctor*
   name: HtmlAttribute
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html#AxaFrance_WebEngine_Web_HtmlAttribute__ctor_
   commentId: Overload:AxaFrance.WebEngine.Web.HtmlAttribute.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Web.HtmlAttribute.HtmlAttribute
+  fullName.vb: AxaFrance.WebEngine.Web.HtmlAttribute.New
   nameWithType: HtmlAttribute.HtmlAttribute
+  nameWithType.vb: HtmlAttribute.New
 - uid: AxaFrance.WebEngine.Web.HtmlAttribute.Name
   name: Name
   href: api_net/AxaFrance.WebEngine.Web.HtmlAttribute.html#AxaFrance_WebEngine_Web_HtmlAttribute_Name
@@ -5869,15 +6233,21 @@ references:
   name: PageModel(WebDriver)
   href: api_net/AxaFrance.WebEngine.Web.PageModel.html#AxaFrance_WebEngine_Web_PageModel__ctor_OpenQA_Selenium_WebDriver_
   commentId: M:AxaFrance.WebEngine.Web.PageModel.#ctor(OpenQA.Selenium.WebDriver)
+  name.vb: New(WebDriver)
   fullName: AxaFrance.WebEngine.Web.PageModel.PageModel(OpenQA.Selenium.WebDriver)
+  fullName.vb: AxaFrance.WebEngine.Web.PageModel.New(OpenQA.Selenium.WebDriver)
   nameWithType: PageModel.PageModel(WebDriver)
+  nameWithType.vb: PageModel.New(WebDriver)
 - uid: AxaFrance.WebEngine.Web.PageModel.#ctor*
   name: PageModel
   href: api_net/AxaFrance.WebEngine.Web.PageModel.html#AxaFrance_WebEngine_Web_PageModel__ctor_
   commentId: Overload:AxaFrance.WebEngine.Web.PageModel.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Web.PageModel.PageModel
+  fullName.vb: AxaFrance.WebEngine.Web.PageModel.New
   nameWithType: PageModel.PageModel
+  nameWithType.vb: PageModel.New
 - uid: AxaFrance.WebEngine.Web.PageModel.AccessibilityCheck
   name: AccessibilityCheck()
   href: api_net/AxaFrance.WebEngine.Web.PageModel.html#AxaFrance_WebEngine_Web_PageModel_AccessibilityCheck
@@ -5945,24 +6315,30 @@ references:
   name: SharedActionWeb()
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb__ctor
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.SharedActionWeb()
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.New()
   nameWithType: SharedActionWeb.SharedActionWeb()
+  nameWithType.vb: SharedActionWeb.New()
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.#ctor(AxaFrance.WebEngine.Variable[])
   name: SharedActionWeb(Variable[])
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb__ctor_AxaFrance_WebEngine_Variable___
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.#ctor(AxaFrance.WebEngine.Variable[])
-  name.vb: SharedActionWeb(Variable())
+  name.vb: New(Variable())
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.SharedActionWeb(AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.SharedActionWeb(AxaFrance.WebEngine.Variable())
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.New(AxaFrance.WebEngine.Variable())
   nameWithType: SharedActionWeb.SharedActionWeb(Variable[])
-  nameWithType.vb: SharedActionWeb.SharedActionWeb(Variable())
+  nameWithType.vb: SharedActionWeb.New(Variable())
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.#ctor*
   name: SharedActionWeb
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb__ctor_
   commentId: Overload:AxaFrance.WebEngine.Web.SharedActionWeb.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.SharedActionWeb
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.New
   nameWithType: SharedActionWeb.SharedActionWeb
+  nameWithType.vb: SharedActionWeb.New
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.Browser
   name: Browser
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_Browser
@@ -5983,11 +6359,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction()
   nameWithType: SharedActionWeb.DoAction()
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction(System.Object)
-  name: DoAction(Object)
+  name: DoAction(object)
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_DoAction_System_Object_
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.DoAction(System.Object)
-  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction(System.Object)
-  nameWithType: SharedActionWeb.DoAction(Object)
+  name.vb: DoAction(Object)
+  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction(object)
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction(Object)
+  nameWithType: SharedActionWeb.DoAction(object)
+  nameWithType.vb: SharedActionWeb.DoAction(Object)
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.DoAction*
   name: DoAction
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_DoAction_
@@ -6002,11 +6381,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint()
   nameWithType: SharedActionWeb.DoCheckpoint()
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint(System.Object)
-  name: DoCheckpoint(Object)
+  name: DoCheckpoint(object)
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_DoCheckpoint_System_Object_
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint(System.Object)
-  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint(System.Object)
-  nameWithType: SharedActionWeb.DoCheckpoint(Object)
+  name.vb: DoCheckpoint(Object)
+  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint(object)
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint(Object)
+  nameWithType: SharedActionWeb.DoCheckpoint(object)
+  nameWithType.vb: SharedActionWeb.DoCheckpoint(Object)
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.DoCheckpoint*
   name: DoCheckpoint
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_DoCheckpoint_
@@ -6028,11 +6410,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.IsMobile
   nameWithType: SharedActionWeb.IsMobile
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(System.String)
-  name: RunAccessibilityTest(String)
+  name: RunAccessibilityTest(string)
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_RunAccessibilityTest_System_String_
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(System.String)
-  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(System.String)
-  nameWithType: SharedActionWeb.RunAccessibilityTest(String)
+  name.vb: RunAccessibilityTest(String)
+  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(string)
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest(String)
+  nameWithType: SharedActionWeb.RunAccessibilityTest(string)
+  nameWithType.vb: SharedActionWeb.RunAccessibilityTest(String)
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.RunAccessibilityTest*
   name: RunAccessibilityTest
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_RunAccessibilityTest_
@@ -6053,11 +6438,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(AxaFrance.WebEngine.Web.ElementDescription)
   nameWithType: SharedActionWeb.Screenshot(ElementDescription)
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(System.String)
-  name: Screenshot(String)
+  name: Screenshot(string)
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_Screenshot_System_String_
   commentId: M:AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(System.String)
-  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(System.String)
-  nameWithType: SharedActionWeb.Screenshot(String)
+  name.vb: Screenshot(String)
+  fullName: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(string)
+  fullName.vb: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot(String)
+  nameWithType: SharedActionWeb.Screenshot(string)
+  nameWithType.vb: SharedActionWeb.Screenshot(String)
 - uid: AxaFrance.WebEngine.Web.SharedActionWeb.Screenshot*
   name: Screenshot
   href: api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_Screenshot_
@@ -6146,21 +6534,30 @@ references:
   name: WebElementDescription()
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription__ctor
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.WebElementDescription()
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.New()
   nameWithType: WebElementDescription.WebElementDescription()
+  nameWithType.vb: WebElementDescription.New()
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.#ctor(OpenQA.Selenium.WebDriver)
   name: WebElementDescription(WebDriver)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription__ctor_OpenQA_Selenium_WebDriver_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.#ctor(OpenQA.Selenium.WebDriver)
+  name.vb: New(WebDriver)
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.WebElementDescription(OpenQA.Selenium.WebDriver)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.New(OpenQA.Selenium.WebDriver)
   nameWithType: WebElementDescription.WebElementDescription(WebDriver)
+  nameWithType.vb: WebElementDescription.New(WebDriver)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.#ctor*
   name: WebElementDescription
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription__ctor_
   commentId: Overload:AxaFrance.WebEngine.Web.WebElementDescription.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.WebElementDescription
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.New
   nameWithType: WebElementDescription.WebElementDescription
+  nameWithType.vb: WebElementDescription.New
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
   name: ApplyAttribute(FindsByAttribute)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_ApplyAttribute_AxaFrance_WebEngine_Web_FindsByAttribute_
@@ -6201,11 +6598,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.Attributes
   nameWithType: WebElementDescription.Attributes
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue(System.String)
-  name: CheckByValue(String)
+  name: CheckByValue(string)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_CheckByValue_System_String_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue(System.String)
-  fullName: AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue(System.String)
-  nameWithType: WebElementDescription.CheckByValue(String)
+  name.vb: CheckByValue(String)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue(string)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue(String)
+  nameWithType: WebElementDescription.CheckByValue(string)
+  nameWithType.vb: WebElementDescription.CheckByValue(String)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.CheckByValue*
   name: CheckByValue
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_CheckByValue_
@@ -6441,11 +6841,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.ScrollIntoView
   nameWithType: WebElementDescription.ScrollIntoView
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex(System.Int32)
-  name: SelectByIndex(Int32)
+  name: SelectByIndex(int)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByIndex_System_Int32_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex(System.Int32)
-  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex(System.Int32)
-  nameWithType: WebElementDescription.SelectByIndex(Int32)
+  name.vb: SelectByIndex(Integer)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex(int)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex(Integer)
+  nameWithType: WebElementDescription.SelectByIndex(int)
+  nameWithType.vb: WebElementDescription.SelectByIndex(Integer)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex*
   name: SelectByIndex
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByIndex_
@@ -6454,11 +6857,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByIndex
   nameWithType: WebElementDescription.SelectByIndex
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText(System.String)
-  name: SelectByText(String)
+  name: SelectByText(string)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByText_System_String_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.SelectByText(System.String)
-  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText(System.String)
-  nameWithType: WebElementDescription.SelectByText(String)
+  name.vb: SelectByText(String)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText(string)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText(String)
+  nameWithType: WebElementDescription.SelectByText(string)
+  nameWithType.vb: WebElementDescription.SelectByText(String)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText*
   name: SelectByText
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByText_
@@ -6467,11 +6873,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByText
   nameWithType: WebElementDescription.SelectByText
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue(System.String)
-  name: SelectByValue(String)
+  name: SelectByValue(string)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByValue_System_String_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue(System.String)
-  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue(System.String)
-  nameWithType: WebElementDescription.SelectByValue(String)
+  name.vb: SelectByValue(String)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue(string)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue(String)
+  nameWithType: WebElementDescription.SelectByValue(string)
+  nameWithType.vb: WebElementDescription.SelectByValue(String)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue*
   name: SelectByValue
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SelectByValue_
@@ -6480,11 +6889,14 @@ references:
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.SelectByValue
   nameWithType: WebElementDescription.SelectByValue
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure(System.String)
-  name: SetSecure(String)
+  name: SetSecure(string)
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SetSecure_System_String_
   commentId: M:AxaFrance.WebEngine.Web.WebElementDescription.SetSecure(System.String)
-  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure(System.String)
-  nameWithType: WebElementDescription.SetSecure(String)
+  name.vb: SetSecure(String)
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure(string)
+  fullName.vb: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure(String)
+  nameWithType: WebElementDescription.SetSecure(string)
+  nameWithType.vb: WebElementDescription.SetSecure(String)
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure*
   name: SetSecure
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_SetSecure_
@@ -6492,6 +6904,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Web.WebElementDescription.SetSecure
   nameWithType: WebElementDescription.SetSecure
+- uid: AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot
+  name: ShadowRoot
+  href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_ShadowRoot
+  commentId: P:AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot
+  nameWithType: WebElementDescription.ShadowRoot
+- uid: AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot*
+  name: ShadowRoot
+  href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_ShadowRoot_
+  commentId: Overload:AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.Web.WebElementDescription.ShadowRoot
+  nameWithType: WebElementDescription.ShadowRoot
 - uid: AxaFrance.WebEngine.Web.WebElementDescription.TagName
   name: TagName
   href: api_net/AxaFrance.WebEngine.Web.WebElementDescription.html#AxaFrance_WebEngine_Web_WebElementDescription_TagName
@@ -6541,27 +6966,39 @@ references:
   name: WebEngineGeneralException()
   href: api_net/AxaFrance.WebEngine.WebEngineGeneralException.html#AxaFrance_WebEngine_WebEngineGeneralException__ctor
   commentId: M:AxaFrance.WebEngine.WebEngineGeneralException.#ctor
+  name.vb: New()
   fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException()
+  fullName.vb: AxaFrance.WebEngine.WebEngineGeneralException.New()
   nameWithType: WebEngineGeneralException.WebEngineGeneralException()
+  nameWithType.vb: WebEngineGeneralException.New()
 - uid: AxaFrance.WebEngine.WebEngineGeneralException.#ctor(System.String)
-  name: WebEngineGeneralException(String)
+  name: WebEngineGeneralException(string)
   href: api_net/AxaFrance.WebEngine.WebEngineGeneralException.html#AxaFrance_WebEngine_WebEngineGeneralException__ctor_System_String_
   commentId: M:AxaFrance.WebEngine.WebEngineGeneralException.#ctor(System.String)
-  fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException(System.String)
-  nameWithType: WebEngineGeneralException.WebEngineGeneralException(String)
+  name.vb: New(String)
+  fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException(string)
+  fullName.vb: AxaFrance.WebEngine.WebEngineGeneralException.New(String)
+  nameWithType: WebEngineGeneralException.WebEngineGeneralException(string)
+  nameWithType.vb: WebEngineGeneralException.New(String)
 - uid: AxaFrance.WebEngine.WebEngineGeneralException.#ctor(System.String,System.Exception)
-  name: WebEngineGeneralException(String, Exception)
+  name: WebEngineGeneralException(string, Exception)
   href: api_net/AxaFrance.WebEngine.WebEngineGeneralException.html#AxaFrance_WebEngine_WebEngineGeneralException__ctor_System_String_System_Exception_
   commentId: M:AxaFrance.WebEngine.WebEngineGeneralException.#ctor(System.String,System.Exception)
-  fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException(System.String, System.Exception)
-  nameWithType: WebEngineGeneralException.WebEngineGeneralException(String, Exception)
+  name.vb: New(String, Exception)
+  fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException(string, System.Exception)
+  fullName.vb: AxaFrance.WebEngine.WebEngineGeneralException.New(String, System.Exception)
+  nameWithType: WebEngineGeneralException.WebEngineGeneralException(string, Exception)
+  nameWithType.vb: WebEngineGeneralException.New(String, Exception)
 - uid: AxaFrance.WebEngine.WebEngineGeneralException.#ctor*
   name: WebEngineGeneralException
   href: api_net/AxaFrance.WebEngine.WebEngineGeneralException.html#AxaFrance_WebEngine_WebEngineGeneralException__ctor_
   commentId: Overload:AxaFrance.WebEngine.WebEngineGeneralException.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: AxaFrance.WebEngine.WebEngineGeneralException.WebEngineGeneralException
+  fullName.vb: AxaFrance.WebEngine.WebEngineGeneralException.New
   nameWithType: WebEngineGeneralException.WebEngineGeneralException
+  nameWithType.vb: WebEngineGeneralException.New
 - uid: fr.axa.automation
   name: fr.axa.automation
   href: api_java/fr.axa.automation.html

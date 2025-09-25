@@ -168,7 +168,7 @@ string report = builder.Build().Export();
 <p>Accessibility testing should be activated at Test Case level, so the scan engines are initialized and accessibility test result on each scan will be integrated in test report.
 To activate accessibility testing on Test Case level, Set the property <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.TestCaseWeb.html#AxaFrance_WebEngine_Web_TestCaseWeb_IsAccessibilityTestEnabled">IsAccessibilityTestEnabled</a> of test case to <code>true</code>. If you want to activate it dynamically via test data, you can provide a test case named <code>Accessibility</code> and set it to <code>True</code></p>
 <h4 id="scanning-a-page">Scanning a page</h4>
-<p>In a shared action, at the convenient moment call the method <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_RunAccessibilityTest_System_String_">RunAccessibilityTest(String)</a>
+<p>In a shared action, at the convenient moment call the method <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.SharedActionWeb.html#AxaFrance_WebEngine_Web_SharedActionWeb_RunAccessibilityTest_System_String_">RunAccessibilityTest(string)</a>
 This function runs an accessibility scan at current location, then integrates test result to test report. The scan can be performed multiple times on different location within a user journey. With this method, you don’t need to interact directly with classes such as <code>OverallReportBuilder</code> or <code>PageReportBuilder</code></p>
 <h3 id="gherkin-based-test-case">Gherkin based test case</h3>
 <p>If you are using Gherkin based test case. You’ll need to follow the same steps:

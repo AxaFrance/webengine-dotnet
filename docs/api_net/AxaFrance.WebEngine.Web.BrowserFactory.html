@@ -76,10 +76,10 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">Object</span></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">BrowserFactory</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.WebEngine.Web.html">AxaFrance.WebEngine.Web</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AxaFrance.html">AxaFrance</a>.<a class="xref" href="AxaFrance.WebEngine.html">WebEngine</a>.<a class="xref" href="AxaFrance.WebEngine.Web.html">Web</a></h6>
   <h6><strong>Assembly</strong>: AxaFrance.WebEngine.Web.dll</h6>
   <h5 id="AxaFrance_WebEngine_Web_BrowserFactory_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -92,7 +92,7 @@
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform%2CAxaFrance.WebEngine.BrowserType)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L55">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L56">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver*"></a>
   <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType)">GetDriver(Platform, BrowserType)</h4>
@@ -148,9 +148,9 @@
 If you are another test framework, you must provide additional information to <a class="xref" href="AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Instance">Instance</a>, especially when testing on Mobile Devices.
 </p>
 <p>
-This method will take account Desktop browsers and Mobile Devices. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is valorized to &apos;Android&apos;
-the WebDriver object will be type of <span class="xref">OpenQA.Selenium.Appium.Android.AndroidDriver</span>, allows doing specific controls on the device. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is
-valorized to &apos;iOS&apos;, the WebDriver will be typeof <span class="xref">OpenQA.Selenium.Appium.iOS.IOSDriver</span>. Otherwise, An ordinary <span class="xref">OpenQA.Selenium.WebDriver</span> us returned.
+This method will take account Desktop browsers and Mobile Devices. If <code class="paramref">platform</code> is valorized to 'Android'
+the WebDriver object will be type of <span class="xref">OpenQA.Selenium.Appium.Android.AndroidDriver</span>, allows doing specific controls on the device. If <code class="paramref">platform</code> is
+valorized to 'iOS', the WebDriver will be typeof <span class="xref">OpenQA.Selenium.Appium.iOS.IOSDriver</span>. Otherwise, An ordinary <span class="xref">OpenQA.Selenium.WebDriver</span> us returned.
 </p>
 <p>
 When using mobile devices: under Android the native automation framework is UiAutomator2, under IOS the native automation framework used is XCUITest
@@ -166,7 +166,7 @@ When using mobile devices: under Android the native automation framework is UiAu
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.PlatformNotSupportedException</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception">PlatformNotSupportedException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -176,10 +176,10 @@ When using mobile devices: under Android the native automation framework is UiAu
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform%2CAxaFrance.WebEngine.BrowserType%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L101">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L102">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver*"></a>
-  <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})">GetDriver(Platform, BrowserType, IEnumerable&lt;String&gt;)</h4>
+  <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_System_Collections_Generic_IEnumerable_System_String__" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform,AxaFrance.WebEngine.BrowserType,System.Collections.Generic.IEnumerable{System.String})">GetDriver(Platform, BrowserType, IEnumerable&lt;string&gt;)</h4>
   <div class="markdown level1 summary"><p>The unique function initialize the WebDriver on the target platform and browser and returns the WebDriver, AndroidDriver or IOSDriver according to contexte.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -210,7 +210,7 @@ When using mobile devices: under Android the native automation framework is UiAu
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td><span class="parametername">browserOptions</span></td>
         <td><p>A List of webDriver options you want to use for Web testings.</p>
 </td>
@@ -238,9 +238,9 @@ When using mobile devices: under Android the native automation framework is UiAu
 If you are using another test framework, additional information must be provided to <a class="xref" href="AxaFrance.WebEngine.Settings.html#AxaFrance_WebEngine_Settings_Instance">Instance</a>, especially when testing on Mobile Devices.
 </p>
 <p>
-This method will take account Desktop browsers and Mobile Devices. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is valorized to &apos;Android&apos;
-the WebDriver object will be type of <span class="xref">OpenQA.Selenium.Appium.Android.AndroidDriver</span>, allows doing specific controls on the device. If <code data-dev-comment-type="paramref" class="paramref">platform</code> is
-valorized to &apos;iOS&apos;, the WebDriver will be typeof <span class="xref">OpenQA.Selenium.Appium.iOS.IOSDriver</span>. Otherwise, An ordinary <span class="xref">OpenQA.Selenium.WebDriver</span> us returned.
+This method will take account Desktop browsers and Mobile Devices. If <code class="paramref">platform</code> is valorized to 'Android'
+the WebDriver object will be type of <span class="xref">OpenQA.Selenium.Appium.Android.AndroidDriver</span>, allows doing specific controls on the device. If <code class="paramref">platform</code> is
+valorized to 'iOS', the WebDriver will be typeof <span class="xref">OpenQA.Selenium.Appium.iOS.IOSDriver</span>. Otherwise, An ordinary <span class="xref">OpenQA.Selenium.WebDriver</span> us returned.
 </p>
 <p>
 When using mobile devices: under Android the native automation framework is UiAutomator2, under IOS the native automation framework used is XCUITest
@@ -256,7 +256,7 @@ When using mobile devices: under Android the native automation framework is UiAu
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.PlatformNotSupportedException</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception">PlatformNotSupportedException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -266,7 +266,7 @@ When using mobile devices: under Android the native automation framework is UiAu
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory_StartMonitoring_OpenQA_Selenium_WebDriver_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory.StartMonitoring(OpenQA.Selenium.WebDriver)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L66">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L67">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_StartMonitoring_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.StartMonitoring*"></a>
   <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_StartMonitoring_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.StartMonitoring(OpenQA.Selenium.WebDriver)">StartMonitoring(WebDriver)</h4>
@@ -314,7 +314,7 @@ When using mobile devices: under Android the native automation framework is UiAu
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory_StopMonitoring_AxaFrance_WebEngine_ResourceUsageReport_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory.StopMonitoring(AxaFrance.WebEngine.ResourceUsageReport)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L75">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L76">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_StopMonitoring_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.StopMonitoring*"></a>
   <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_StopMonitoring_AxaFrance_WebEngine_ResourceUsageReport_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.StopMonitoring(AxaFrance.WebEngine.ResourceUsageReport)">StopMonitoring(ResourceUsageReport)</h4>
@@ -347,7 +347,7 @@ When using mobile devices: under Android the native automation framework is UiAu
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory_Sync_OpenQA_Selenium_WebDriver_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory.Sync(OpenQA.Selenium.WebDriver)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L484">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L480">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Web_BrowserFactory_Sync_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.Sync*"></a>
   <h4 id="AxaFrance_WebEngine_Web_BrowserFactory_Sync_OpenQA_Selenium_WebDriver_" data-uid="AxaFrance.WebEngine.Web.BrowserFactory.Sync(OpenQA.Selenium.WebDriver)">Sync(WebDriver)</h4>
@@ -388,7 +388,7 @@ When using mobile devices: under Android the native automation framework is UiAu
                     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Web_BrowserFactory.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Web.BrowserFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Web/BrowserFactory.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
