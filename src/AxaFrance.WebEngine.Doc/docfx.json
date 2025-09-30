@@ -40,8 +40,8 @@
   ],
   "build": {
     "globalMetadata": {
-      "_appTitle": "AXA WebEngine Test Framework",
-      "_appFooter": "Copyright &reg; 2016-2024 AXA France, All rights reserved.",
+      "_appTitle": "AXA - WebEngine Test Framework",
+      "_appFooter": "Copyright &reg; 2016-2025 AXA France, All rights reserved.",
       "_appLogoPath": "images/logo.svg"
     },
     "content": [
