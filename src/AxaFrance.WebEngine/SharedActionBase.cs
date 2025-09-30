@@ -66,7 +66,25 @@ namespace AxaFrance.WebEngine
         /// </summary>
         protected ActionReport ActionReport { get; set; }
 
+        /// <summary>
+        /// Test case of which the sharedaction belongs to.
+        /// </summary>
         protected TestCase testCase;
+
+
+        /// <summary>
+        /// Static function to run this shared action. the action:
+        /// 1. Check if all the required parameters are given, or by default using it's default value.
+        /// 2. for all those who the parameter has no default value (Parameter.Value == null), throw exception
+        /// 3. Create an instance of the action and run it.
+        /// </summary>
+        /// <param name="sharedActionType">the object type of sharedAction</param>
+        /// <param name="relatedTestCase">Test case of which the sharedaction belongs to.</param>
+        /// <param name="Context">The browser object</param>
+        /// <param name="ContextValues">The stored context content to be shared and be used with other actions.</param>
+        /// <param name="actionReport">The testaction report to use for generating </param>
+        /// <param name="parameters">Test parameters</param>
+        /// <returns>A SharedActionBase object which is created during the execution. this object can be used later to call DoCheckpoint()</returns>
 
         public static SharedActionBase DoAction(Type sharedActionType, TestCase relatedTestCase, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
         {
@@ -167,25 +185,8 @@ namespace AxaFrance.WebEngine
         }
 
         /// <summary>
-        /// Static function to run this shared action. the action:
-        /// 1. Check if all the required parameters are given, or by default using it's default value.
-        /// 2. for all those who the parameter has no default value (Parameter.Value == null), throw exception
-        /// 3. Create an instance of the action and run it.
-        /// </summary>
-        /// <param name="sharedActionType">the object type of sharedAction</param>
-        /// <param name="Context">The browser object</param>
-        /// <param name="ContextValues">The stored context content to be shared and be used with other actions.</param>
-        /// <param name="actionReport">The testaction report to use for generating </param>
-        /// <param name="parameters">Test parameters</param>
-        /// <returns>A SharedActionBase object which is created during the execution. this object can be used later to call DoCheckpoint()</returns>
-        public static SharedActionBase DoAction(Type sharedActionType, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
-        {
-            return DoAction(sharedActionType, null, Context, ContextValues, actionReport, parameters);
-        }
-
-        /// <summary>
         /// Funaction to run an sub action from the current one. 
-        /// This action reuses the <see cref="DoAction(Type, object, List{Variable}, ActionReport, Variable[])"/> and generates 
+        /// This action reuses the <see cref="DoAction(Type, TestCase object, List{Variable}, ActionReport, Variable[])"/> and generates 
         /// a <see cref="ActionReport"/> attached to <see cref="ActionReport.SubActionReports"/>
         /// </summary>
         /// <param name="sharedActionType">the object type of sharedAction</param>
@@ -197,7 +198,7 @@ namespace AxaFrance.WebEngine
         {
             ActionReport ar = new ActionReport();
             ActionReport.SubActionReports.Add(ar);
-            var action = DoAction(sharedActionType, Context, ContextValues, ar, parameters);
+            var action = SharedActionBase.DoAction(sharedActionType, this.testCase, Context, ContextValues, ar, parameters);
             return action;
         }
 
@@ -206,6 +207,7 @@ namespace AxaFrance.WebEngine
         /// <para>This action calls internally DoAction() and DoCheckpoint() together. it is recommended to call this function within an action.</para>
         /// </summary>
         /// <param name="sharedActionType">the Type of the SharedAction to run</param>
+        /// <param name="testCase">TestCase which this action belongs to.</param>
         /// <param name="Context">The Browser object</param>
         /// <param name="ContextValues">The stored context content to be shared and be used with other actions</param>
         /// <param name="actionReport">The report object of the target action to be used.</param>
@@ -214,15 +216,15 @@ namespace AxaFrance.WebEngine
         /// <remarks>
         /// When calling DoAction, DoCheckpoint or DoActionWithCheckpoint in another action, please consider promote the result to above level.
         /// </remarks>
-        public static bool DoActionWithCheckpoint(Type sharedActionType, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
+        public static bool DoActionWithCheckpoint(Type sharedActionType, TestCase testCase, object Context, List<Variable> ContextValues, ActionReport actionReport, params Variable[] parameters)
         {
             bool returnvalue = true;
-            SharedActionBase action = DoAction(sharedActionType, Context, ContextValues, actionReport, parameters);
+            SharedActionBase action = DoAction(sharedActionType, testCase, Context, ContextValues, actionReport, parameters);
             if (action.ActionResult == Result.CriticalError) returnvalue = false;
             else returnvalue = action.DoCheckpoint(Context);
             if (!returnvalue)
             {
-                action.Screenshot("Auto screenshot for failure");
+                action.Screenshot("Auto screenshot because DoCheckpoint returns failure");
             }
             actionReport.ContextValues = action.ContextValues.ToList();
             actionReport.EndTime = DateTime.Now;
@@ -246,9 +248,10 @@ namespace AxaFrance.WebEngine
         /// </remarks>
         public static bool DoActionWithCheckpoint(Type sharedActionType, object Context, List<Variable> ContextValues, SharedActionBase CallingAction, params Variable[] parameters)
         {
-            ActionReport action = new ActionReport();
-            CallingAction.ActionReport.SubActionReports.Add(action);
-            return DoActionWithCheckpoint(sharedActionType, Context, ContextValues, action, parameters);
+            var tc = CallingAction.testCase;
+            ActionReport actionReport = new ActionReport();
+            CallingAction.ActionReport.SubActionReports.Add(actionReport);
+            return DoActionWithCheckpoint(sharedActionType, tc, Context, ContextValues, actionReport, parameters);
         }
 
         /// <summary>
