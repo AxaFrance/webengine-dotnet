@@ -446,17 +446,19 @@ namespace AxaFrance.WebEngine.Web
             };
 
             // Handle binary location
-            if (browserOptions.Any(x => x.ToLower().StartsWith("binarylocation=")))
+            const string binaryLocationPrefix = "binarylocation=";
+            if (browserOptions.Any(x => x.ToLower().StartsWith(binaryLocationPrefix)))
             {
-                var location = browserOptions.First(x => x.ToLower().StartsWith("binarylocation="));
-                options.BinaryLocation = location.Substring("binarylocation=".Length);
+                var location = browserOptions.First(x => x.ToLower().StartsWith(binaryLocationPrefix));
+                options.BinaryLocation = location.Substring(binaryLocationPrefix.Length);
             }
 
             // Handle user preferences
-            var userPrefOption = browserOptions.FirstOrDefault(x => x.ToLower().StartsWith("userpreference="));
+            const string userPreferencePrefix = "userpreference=";
+            var userPrefOption = browserOptions.FirstOrDefault(x => x.ToLower().StartsWith("userPreferencePrefix"));
             if (!string.IsNullOrEmpty(userPrefOption))
             {
-                var userPrefJson = userPrefOption.Substring("userPreference=".Length);
+                var userPrefJson = userPrefOption.Substring("userPreferencePrefix".Length);
                 try
                 {
                     var prefs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(userPrefJson);
@@ -470,7 +472,7 @@ namespace AxaFrance.WebEngine.Web
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to parse userPreference JSON: {ex.Message}");
+                    AxaFrance.WebEngine.DebugLogger.WriteLine($"Failed to parse userPreference JSON: {ex.Message}");
                 }
             }
 
