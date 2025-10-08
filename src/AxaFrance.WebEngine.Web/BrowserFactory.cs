@@ -439,11 +439,40 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetChromeDriver(IEnumerable<string> browserOptions)
         {
-            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig(), "MatchingBrowser");
-            OpenQA.Selenium.Chrome.ChromeOptions options = new OpenQA.Selenium.Chrome.ChromeOptions()
+            string version = "MatchingBrowser";
+            var options = new OpenQA.Selenium.Chrome.ChromeOptions()
             {
                 AcceptInsecureCertificates = true,
             };
+
+            // Handle binary location
+            if (browserOptions.Any(x => x.ToLower().StartsWith("binarylocation=")))
+            {
+                var location = browserOptions.First(x => x.ToLower().StartsWith("binarylocation="));
+                options.BinaryLocation = location.Substring("binarylocation=".Length);
+            }
+
+            // Handle user preferences
+            var userPrefOption = browserOptions.FirstOrDefault(x => x.ToLower().StartsWith("userpreference="));
+            if (!string.IsNullOrEmpty(userPrefOption))
+            {
+                var userPrefJson = userPrefOption.Substring("userPreference=".Length);
+                try
+                {
+                    var prefs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(userPrefJson);
+                    if (prefs != null)
+                    {
+                        foreach (var kvp in prefs)
+                        {
+                            options.AddUserProfilePreference(kvp.Key, kvp.Value);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to parse userPreference JSON: {ex.Message}");
+                }
+            }
 
             string datadir = $"{GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\TestData";
             Directory.CreateDirectory(datadir);
@@ -451,9 +480,12 @@ namespace AxaFrance.WebEngine.Web
             options.AddArgument("dns-prefetch-disable");
             options.AddArgument("homepage=about:blank");
             options.AddArgument("disable-popup-blocking");
+            options.AddArgument("disable-dev-shm-usage");
             options.AddArgument("no-default-browser-check");
             options.AddArgument("no-sandbox");
             if (browserOptions != null) options.AddArguments(browserOptions);
+
+            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig(), version);
             OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
             return cd;
         }
