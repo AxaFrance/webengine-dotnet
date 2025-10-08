@@ -9,6 +9,14 @@ using OpenQA.Selenium;
 namespace WebEngine.Test.UnitTests
 {
 
+    /// <summary>
+    /// By default, the unit test is performed on Chrome.
+    /// You may change the browser as needed in <see cref="Initialize(TestContext)"/>.
+    /// If you want to test in specific conditions and user preferences, please open appsettings.json, and
+    /// modify [chromeOptions], [edgeOptions] for additional options.
+    /// for example, you can launch test on Chrome for Testing, or Chromium by giving `binaryLocation` in chromeOtions.
+    /// </summary>
+
     [TestClass]
     public class WebTest
     {
