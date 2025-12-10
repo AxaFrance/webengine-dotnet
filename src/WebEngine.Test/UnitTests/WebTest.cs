@@ -9,6 +9,14 @@ using OpenQA.Selenium;
 namespace WebEngine.Test.UnitTests
 {
 
+    /// <summary>
+    /// By default, the unit test is performed on Chrome.
+    /// You may change the browser as needed in <see cref="Initialize(TestContext)"/>.
+    /// If you want to test in specific conditions and user preferences, please open appsettings.json, and
+    /// modify [chromeOptions], [edgeOptions] for additional options.
+    /// for example, you can launch test on Chrome for Testing, or Chromium by giving `binaryLocation` in chromeOtions.
+    /// </summary>
+
     [TestClass]
     public class WebTest
     {
@@ -50,17 +58,21 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ElementTypeing()
         {
+            // Arrange
             WebElementDescription inputBox = new WebElementDescription(driver)
             {
                 Id = "inputValue"
             };
 
+            // Act
             inputBox.SetValue("abc");
             var value1 = inputBox.GetProperty("value");
             inputBox.SetValue("def");
             var value2 = inputBox.GetProperty("value");
             inputBox.SendKeys("abc");
             var value3 = inputBox.GetProperty("value");
+
+            // Assert
             Assert.AreEqual("abc", value1);
             Assert.AreEqual("def", value2);
             Assert.AreEqual("defabc", value3);
@@ -69,18 +81,23 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ElementIsEnabled()
         {
+            // Arrange
             WebElementDescription inputBox = new WebElementDescription(driver)
             {
                 Id = "inputValue"
             };
+
+            // Act
             var enabled = inputBox.IsEnabled;
+
+            // Assert
             Assert.IsTrue(enabled);
         }
-
 
         [TestMethod]
         public void SecurePassword()
         {
+            // Arrange
             WebElementDescription passwordBox = new WebElementDescription(driver)
             {
                 Id = "password"
@@ -92,6 +109,8 @@ namespace WebEngine.Test.UnitTests
             };
 
             var password = Encrypter.Encrypt("password");
+
+            // Act & Assert
             passwordBox.SetSecure(password); // -> OK
             try
             {
@@ -107,9 +126,14 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void PageModelTest()
         {
+            // Arrange
             TestPageModel model = new TestPageModel(driver);
+
+            // Act
             var element = model.desc.GetText();
             var element2 = model.descWithAttribute.GetText();
+
+            // Assert
             Assert.IsTrue(element.Contains("first line"));
             Assert.IsTrue(element2.Contains("first line"));
         }
@@ -132,13 +156,16 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ElementByClassName()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 ClassName = "class1 class2"
             };
+
+            // Act
             var element = desc.GetText();
 
-
+            // Assert
             Assert.IsTrue(element.Contains("first line"));
             Assert.IsTrue(element.Contains("second line"));
         }
@@ -146,61 +173,81 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void ElementBySelector()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 CssSelector = "#divDrop2",
             };
+
+            // Act
             var element = desc.GetText();
 
-
+            // Assert
             Assert.IsTrue(element.Contains("drag target 2"));
         }
 
         [TestMethod]
         public void ElementByXPath()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 XPath = "/html/body/label[3]",
             };
+
+            // Act
             var element = desc.GetText();
+
+            // Assert
             Assert.AreEqual("CSS", element);
         }
 
         [TestMethod]
         public void ElementByLongClassName()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "div",
                 ClassName = "class1 class1-1 class2 very-long-class-name the quick brown fox jumps over a lazy dog",
             };
+
+            // Act
             var element = desc.GetText();
+
+            // Assert
             Assert.AreEqual("TRUE", element);
         }
 
         [TestMethod]
         public void ElementById_AlertHandling()
         {
+            // Arrange
             WebElementDescription button = new WebElementDescription(driver)
             {
                 Id = "btnButtonOk"
             };
+
+            // Act
             button.Click();
             string alertText = driver.SwitchTo().Alert().Text;
-            Assert.AreEqual("hello world!", alertText);
             driver.SwitchTo().Alert().Accept();
             driver.Sync();
-            Assert.IsTrue(button.GetProperty("value") == "OK");
+            var value = button.GetProperty("value");
             var innerhtml = button.GetInnerHtml();
-            Assert.IsTrue(innerhtml == "");
             var outerhtml = button.GetOuterHtml();
+
+            // Assert
+            Assert.AreEqual("hello world!", alertText);
+            Assert.IsTrue(value == "OK");
+            Assert.IsTrue(innerhtml == "");
             Assert.IsTrue(outerhtml.StartsWith("<input type=\"button\" value=\"OK\" id=\"btnButtonOk\""));
         }
 
         [TestMethod]
         public void DragAndDrop()
         {
+            // Arrange
             WebElementDescription drop1 = new WebElementDescription(driver)
             {
                 Id = "divDrop1"
@@ -216,17 +263,22 @@ namespace WebEngine.Test.UnitTests
                 Id = "draggable_element",
             };
             string init = source.GetText();
+
+            // Act
             source.DragAndDropTo(drop1);
             string text1 = drop1.GetText();
-            Assert.IsTrue(text1.Contains(init));
             source.DragAndDropTo(drop2);
             string text2 = drop2.GetText();
+
+            // Assert
+            Assert.IsTrue(text1.Contains(init));
             Assert.IsTrue(text2.Contains(init));
         }
 
         [TestMethod]
         public void Confirm()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "input",
@@ -236,86 +288,109 @@ namespace WebEngine.Test.UnitTests
                 },
             };
 
-
+            // Act
             desc.Click();
             driver.SwitchTo().Alert().Dismiss();
+            // Assert: No exception means success
         }
 
         [TestMethod]
         public void DropDown_SelectByText()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "select",
                 Name = "cars"
             };
+
+            // Act
             desc.SelectByText("Mercedes-Benz");
             OpenQA.Selenium.Support.UI.SelectElement se = new OpenQA.Selenium.Support.UI.SelectElement(desc.FindElement());
             string mb = se.SelectedOption.Text;
+
+            // Assert
             Assert.AreEqual("Mercedes-Benz", mb);
         }
 
         [TestMethod]
         public void DropDown_SelectByValue()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "select",
                 Name = "cars"
             };
+
+            // Act
             desc.SelectByValue("mercedes");
             OpenQA.Selenium.Support.UI.SelectElement se = new OpenQA.Selenium.Support.UI.SelectElement(desc.FindElement());
             string mb = se.SelectedOption.Text;
+
+            // Assert
             Assert.AreEqual("Mercedes-Benz", mb);
         }
 
         [TestMethod]
         public void DropDown_SelectByIndex()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "select",
                 Name = "cars"
             };
+
+            // Act
             desc.SelectByIndex(2);
             OpenQA.Selenium.Support.UI.SelectElement se = new OpenQA.Selenium.Support.UI.SelectElement(desc.FindElement());
             string mb = se.SelectedOption.Text;
+
+            // Assert
             Assert.AreEqual("Mercedes-Benz", mb);
         }
 
         [TestMethod]
         public void RadioGroup()
         {
+            // Arrange
             var radioGroup = new WebElementDescription(driver)
             {
                 Name = "fav_language"
             };
+
+            // Act
             var check = radioGroup.CheckByValue("CSS");
             var value = check.GetDomProperty("checked");
             var check2 = radioGroup.CheckByValue("HTML");
             var value2 = check2.GetDomProperty("checked");
             var value3 = check.GetDomProperty("checked");
+
+            // Assert
             Assert.AreEqual(string.Compare("true", value, true), 0);
             Assert.AreEqual(string.Compare("true", value2, true), 0);
             Assert.AreNotEqual(string.Compare("true", value3, true), 0);
-
         }
 
         [TestMethod]
         public void Checkbox()
         {
+            // Arrange
             var check = new WebElementDescription(driver)
             {
                 TagName = "input",
                 Id = "scales"
             };
-            Assert.IsTrue(check.IsSelected);
 
             var check2 = new WebElementDescription(driver)
             {
                 TagName = "input",
                 Name = "horns"
             };
+
+            // Act & Assert
+            Assert.IsTrue(check.IsSelected);
             Assert.IsFalse(check2.IsSelected);
             check2.Click();
             Assert.IsTrue(check2.IsSelected);
@@ -326,6 +401,7 @@ namespace WebEngine.Test.UnitTests
         [TestMethod]
         public void Input()
         {
+            // Arrange
             WebElementDescription desc = new WebElementDescription(driver)
             {
                 TagName = "input",
@@ -334,6 +410,8 @@ namespace WebEngine.Test.UnitTests
                     new HtmlAttribute("value", "Input")
                 },
             };
+
+            // Act
             desc.Click();
             driver.SwitchTo().Alert().SendKeys("helloworld");
             driver.SwitchTo().Alert().Accept();
@@ -342,12 +420,15 @@ namespace WebEngine.Test.UnitTests
                 Id = "inputValue",
             };
             var text = result.Value;
+
+            // Assert
             Assert.AreEqual("helloworld", text);
         }
 
         [TestMethod]
         public void Hover()
         {
+            // Arrange
             WebElementDescription hover = new WebElementDescription(driver)
             {
                 Id = "hover_item"
@@ -358,14 +439,20 @@ namespace WebEngine.Test.UnitTests
                 Id = "hover_display",
             };
 
+            // Assert initial state
             Assert.AreEqual(false, display.IsDisplayed);
+
+            // Act
             hover.MouseHover();
+
+            // Assert after hover
             Assert.AreEqual(true, display.IsDisplayed);
         }
 
         [TestMethod]
         public void ScrollIntoView()
         {
+            // Arrange
             driver.Navigate().GoToUrl("https://axafrance.github.io/webengine-dotnet/demo/Test.html");
             var customDiv = new WebElementDescription(driver)
             {
@@ -374,10 +461,16 @@ namespace WebEngine.Test.UnitTests
                     new HtmlAttribute("custom_name", "scroll_intoview"),
                 }
             };
+
+            // Assert initial state
             Assert.IsTrue(customDiv.Exists());
             Assert.IsTrue(customDiv.IsDisplayed);
             Assert.IsFalse(customDiv.IsVisibleInViewPort);
+
+            // Act
             customDiv.ScrollIntoView();
+
+            // Assert after scroll
             Assert.IsTrue(customDiv.IsVisibleInViewPort);
         }
 
@@ -386,11 +479,11 @@ namespace WebEngine.Test.UnitTests
         {
             try
             {
+                // Arrange
                 WebElementDescription frame = new WebElementDescription(driver)
                 {
                     TagName = "iframe",
                 };
-
 
                 WebElementDescription title = new WebElementDescription(driver)
                 {
@@ -402,18 +495,20 @@ namespace WebEngine.Test.UnitTests
                     Id = "iframe_button"
                 };
 
-
                 WebElementDescription input = new WebElementDescription(driver)
                 {
                     Id = "inputValue"
                 };
 
+                // Act
                 var element = frame.FindElement();
                 driver.SwitchTo().Frame(element);
                 var text = title.GetText();
                 iframe_input.ScrollIntoView();
                 iframe_input.SetValue("hello 2");
                 var screenshot = iframe_input.GetScreenshot();
+
+                // Assert
                 Assert.IsTrue(text.Contains("content inside the"));
                 Assert.IsNotNull(screenshot);
                 driver.SwitchTo().ParentFrame();
@@ -426,6 +521,5 @@ namespace WebEngine.Test.UnitTests
                 throw;
             }
         }
-
     }
 }

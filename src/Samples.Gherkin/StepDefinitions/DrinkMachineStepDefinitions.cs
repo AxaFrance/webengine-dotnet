@@ -8,6 +8,7 @@ using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using Reqnroll;
 
 namespace Samples.Gherkin.StepDefinitions
 {
