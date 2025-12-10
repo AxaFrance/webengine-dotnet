@@ -1,28 +1,37 @@
 ---
-applies_to: **/*.cs
+applyTo: '**/*.cs'
+author: 'Huaxing YUAN'
 ---
-# Context for Copilot
+# Context for Copilot - Test Automation
 We are working on Test Automation using Selenium WebDriver customized with WebEngine Framework.
-Speak with me in french.
+Speak with me in French.
 
 Framework repository: https://github.com/AxaFrance/webengine-dotnet
 
-## We use two approaches to write tests: 
+## We use following approaches to write test cases: 
+- Linear Scripting : for unit or very simple scenarios. We translate test scenario to test scripts directly.
+- Behavior-Driven Development : where the test scenarios are written in gherkin format with `Reqnroll` (specflow is no more maintained).
 - Keyword-Driven Testing : where the test scenario are written using keywords that represent actions or verifications in the application under test.
-- Behavior-Driven Development : where the test scenarios are written in gherkin format with SpecFlow.
-by default, use keyword-driven approche.
 
-## When writing test case, follow these guidelines:
-- Apply PageObject Model design pattern to separate UI element locators to test script.
-- Add Web elements into PageObject Models and refer it in test actions.
-- In actions, perform actions using PageObject Models and their elements.
+You will analyze the structure of the projet to determine the approach, and tell me which approach is used.
+
+## When writing test case, follow these guidelines for every approaches :
 - Do not use hardcoded locators such as xpath or css selectors in test script when possible. Use ElementDescription instead.
+- Add Web elements into PageObject Models and refer it in test actions.
+- Apply PageObject Model design pattern to separate UI element locators to test script.
 - when suggest test script, use native functions from WebEngine Framework if possible.
 - **DO NOT** create ElementDescription directly in SharedActions, add them to approprate PageModels
-- Use parameters in actions, and use parameter list to store all parameters used in the test case.
 
-Project should be structured as follow based on current active project, using current projet's namespace.
-- folder PageModels: store all page object models
+For linear scripting and Reqroll, DO NOT use SharedActions or TestCaseWeb/TestCaseApp classes, write the script direcly by using PageObjectModel.
+For Keyword-Driven, you should use SharedActions to implemented reusable action groups.
+For Gherkin, you can also use shared action inside step definition to maximum reuse.
+- Use parameters in actions, and use parameter list to store all parameters used in the test case.
+- In actions, perform actions using PageObject Models and their elements.
+
+For Gherkin approach, if user not give the class of step definitions, ask user before create new one.
+
+For a Keyword-Driven test project, it should be structured as follow based on current active project, using current projet's namespace.
+- folder PageModels: store all page object models, under namespace
 - folder Actions: store all SharedActions (which should be reused in different test cases)
 - folder TestCases: store all test scenarios
 - folder TestData: store all test data files, such as XML or Excel files
@@ -31,9 +40,22 @@ folders should be inside project folder, not the solution folder.
 ## Nuget Packages required:
 - AxaFrance.WebEngine.Web: for web based tests (based on selenium)
 - AxaFrance.WebEngine.MobileApp: for mobile apps (based on appium)
+- AxeFrance.WebEngine.Runner: only used for Keyword-Driven approach
 Install required packages or ask user to install them if they are not referenced.
 
+# WebDriver or AppiumDriver
+Use BrowserFactory to get WebDriver or AppiumDriver instance.
+var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Edge);
+var driver = AppFactory.GetDriver(Platform.Android)
+
+Platform is defined in namespace: AxaFrance.WebEngine
+
 # Use ElementDescription to find web elements
+
+Prioritize stable identifiers such as TagName, Id, Name, or other html attributes (test-id, accessibility for example)
+to make sure the locators are stable and not likely to change. you can combine multiple locators to make it unique.
+Use CssSelector or XPath only when there is no other stable attributes available.
+
 ## WebElementDescription for elements on Web Page:
 WebElementDescription class has following properties:
 - ClassName: equivalent to html attribute class. class name can contain spaces.
@@ -48,7 +70,22 @@ WebElementDescription class has following properties:
 - Attributes.Name: the name of the attribute.
 - Attributes.Value: the value of the attribute.
 
-### Example of a WebElementDescription in C#:
+### Actions 
+WebElementDescription expose following methods to interact with web element:
+* Click()
+* SendKeys(string)
+* SetValue(string)
+* SetSecure(string) - Set the value of a password textbox using encrypted string.
+* Exists()
+* Clear()
+* MouseHover()
+* ScrollIntoView()
+* SelectByIndex(int) - Select an option from html tag by its displayed text.
+* SelectByText(string) - Select an option from html tag by its displayed text.
+* SelectByValue(string) - Select an option from html tag by its value.
+* CheckByValue(string) - Checks an RadioButton from a given RadioGroup (used for radio button group, elements)
+
+### Example of a WebElementDescription in C# used individualy:
 ```csharp
 using AxaFrance.WebEngine.Web;
 using AxaFrance.WebEngine;
@@ -94,34 +131,42 @@ The above two selectors can only be used individually, when they are provided al
 
 ## Organize UI Elements With PageModel
 AppElementDescription and WebElementDescription can be used to create Page Model classes.
+To test Web applications, use WebElementDescription instead of AppElementDescription.
 
 Example: CalculatorPage is the model used to test android application, which derives from PageModel class.
-To test Web applications, add WebElementDescription instead of AppElementDescription.
+Attention: 
+- Do not passe Driver in the constructor of WebElementDescription or AppElementDescription if it is used inside a PageModel.
+Page model will take care of it.
+- WebElementDescription and AppElementDescription are properties, with (get and set)
+
 ```csharp
 using OpenQA.Selenium;
+using AxaFrance.WebEngine.Web;
 using AxaFrance.WebEngine.MobileApp;
 
-public class CalculatorPage : PageModel
-{
-    public AppElementDescription Digit0 = new AppElementDescription
-    {
-        Id = "com.Android.calculator2:id/digit_0"
-    };
+namespace YouTestProjectNS.PageModels{
+	public class CalculatorPage : PageModel
+	{
+		public AppElementDescription Digit0 {get;set;} = new AppElementDescription
+		{
+			Id = "com.Android.calculator2:id/digit_0"
+		};
 
-    public AppElementDescription Equals = new AppElementDescription
-    {
-        Id = "com.Android.calculator2:id/eq"
-    };
+		public AppElementDescription Equals {get;set;} = new AppElementDescription
+		{
+			Id = "com.Android.calculator2:id/eq"
+		};
 
-    public AppElementDescription Multiply = new AppElementDescription
-    {
-        ClassName = "Android.widget.Button",
-        AccessbilityId = "multiply"
-    };
+		public AppElementDescription Multiply {get;set;} = new AppElementDescription
+		{
+			ClassName = "Android.widget.Button",
+			AccessbilityId = "multiply"
+		};
 
-    public CalculatorPage(WebDriver driver) : base(driver)
-    {
-    }
+		public CalculatorPage(WebDriver driver) : base(driver)
+		{
+		}
+	}
 }
 ```
 In Page mode, we use WebDriver and not IWebDriver
@@ -132,6 +177,7 @@ if use Keyword-Driven approaches, the test case will be defined like this:
 2. Each test step is assigned with an action which is a class that derives from SharedActionWeb or SharedActionApp.
 ```scharp
 using AxaFrance.WebEngine;
+using AxaFrance.WebEngine.Web;
 
 namespace Samples.KeywordDriven.TestCases
 {
@@ -199,6 +245,7 @@ public abstract bool DoCheckpoint(AppiumDriver driver);
 ## Test Data
 WebEngine supports XML format test data files. test data is in following structure:
 Each structure TestData contains a TestName and Data with Variables used for a test case.
+ParameterList is used only for Keyword Driven approach.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <TestSuiteData 
@@ -223,7 +270,9 @@ Each structure TestData contains a TestName and Data with Variables used for a t
 
 ## ParameterList
 To void using hardcoded variable name in the actions, we can use a class named ParameterList
-to store all parameters used in the test case, for example:
+to store all parameters used in the test case.
+ParameterList is used only for Keyword Driven approach.
+for example:
 ```csharp
 public static class ParameterList {
 

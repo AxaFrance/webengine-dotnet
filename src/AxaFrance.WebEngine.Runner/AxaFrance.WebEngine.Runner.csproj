@@ -43,7 +43,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="SkiaSharp" Version="3.119.1" />
-    <PackageReference Include="System.Text.Json" Version="9.0.9" />
   </ItemGroup>
 
 </Project>
