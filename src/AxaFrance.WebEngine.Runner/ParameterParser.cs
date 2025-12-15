@@ -36,6 +36,7 @@ namespace AxaFrance.WebEngine.Runner
             ParseOutputFolder(args, s);
             ParseReportOption(args, s);
             ParseShowReportOption(args, s);
+            ParseUniqueReportFolder(args, s);
             return s;
         }
 
@@ -57,6 +58,15 @@ namespace AxaFrance.WebEngine.Runner
                 s.ShowReportAfterTest = true;
                 DebugLogger.WriteLine("[CONFIG] Show Report in ReportViewer after test execution.");
 
+            }
+        }
+
+        private static void ParseUniqueReportFolder(string[] args, Settings s)
+        {
+            if (args.FirstOrDefault(x => x.Equals("-u", StringComparison.OrdinalIgnoreCase)) != null)
+            {
+                s.ReportSettings.UniqueReportFolder = true;
+                DebugLogger.WriteLine("[CONFIG] Reports will be saved to a unique folder suffixed by date and time.");
             }
         }
 

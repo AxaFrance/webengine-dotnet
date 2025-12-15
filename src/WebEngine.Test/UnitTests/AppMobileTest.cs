@@ -31,7 +31,7 @@ namespace WebEngine.Test.UnitTests
             var result = testsuite.Run();
             testsuite.CleanUp(settings);
             var path = System.IO.Path.GetTempPath();
-            var XmlReport = result.SaveAs(path, "testResult", true);
+            var XmlReport = result.SaveAs(path, "testResult", true, out string reportFolder);
             string junitReport = ReportHelper.GenerateJUnitReport(result, "mytest", path);
 
             Assert.IsTrue(result.Duration.TotalSeconds > 0);

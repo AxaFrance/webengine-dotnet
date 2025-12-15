@@ -62,7 +62,7 @@ namespace AxaFrance.WebEngine.ExcelUI
             string testdata = Ribbon.TestDataFile;
 
 
-            string parameters = string.Format(@"-a:{0} ""-data:{1}"" ""-env:{2}"" ""-browser:{3}""",
+            string parameters = string.Format(@"-a:{0} ""-data:{1}"" ""-env:{2}"" ""-browser:{3}"" -u",
                 assembly,
                 testdata,
                 env,
@@ -149,11 +149,7 @@ namespace AxaFrance.WebEngine.ExcelUI
         {
             BrowserType browser;
             platform = appid = device = null;
-            if (rbIE.Checked)
-            {
-                browser = BrowserType.InternetExplorer;
-            }
-            else if (rbFirefox.Checked)
+            if (rbFirefox.Checked)
             {
                 browser = BrowserType.Firefox;
             }
@@ -211,9 +207,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             lblSelectedTests.Text = message;
             switch (Ribbon.Settings.Browser)
             {
-                case BrowserType.InternetExplorer:
-                    rbIE.Checked = true;
-                    break;
                 case BrowserType.Firefox:
                     rbFirefox.Checked = true;
                     break;

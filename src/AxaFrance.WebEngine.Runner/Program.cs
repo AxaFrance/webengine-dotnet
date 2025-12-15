@@ -48,11 +48,11 @@ namespace AxaFrance.WebEngine.Runner
                     DebugLogger.WriteLine("HTML Report Generated: " + htmlReport);
                 }
 
-                var reportPath = result.SaveAs(settings.LogDir, logFileName, false);
+                var reportPath = result.SaveAs(settings.LogDir, logFileName, settings.ReportSettings.UniqueReportFolder, out string reportFolder);
                 DebugLogger.WriteLine("Report Generated: " + reportPath);
                 try
                 {
-                    result.GenereteCSV(Path.Combine(settings.LogDir, "GlobalOutput.csv"), Settings.Instance.Separator, false);
+                    result.GenereteCSV(Path.Combine(reportFolder, "GlobalOutput.csv"), Settings.Instance.Separator, false);
                 }
                 catch { }
                 if (settings.ShowReportAfterTest)

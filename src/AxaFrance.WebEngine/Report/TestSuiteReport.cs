@@ -107,8 +107,9 @@ namespace AxaFrance.WebEngine.Report
         /// <param name="filePrefix">the prefixe of the report (without .xml extension), suffixed automatially with the current datetime.</param>
         /// <param name="path">The path where the report file will be stored.</param>
         /// <param name="uniqueName">Whether the report name should be unique. True: the report name will be suffixed with timestamp, False: the report name will be fixed</param>
+        /// <param name="reportFolder"></param>
         /// <returns>the report Full Path name generated.</returns>
-        public string SaveAs(string path, string filePrefix, bool uniqueName)
+        public string SaveAs(string path, string filePrefix, bool uniqueName, out string reportFolder)
         {
             this.Passed = TestResult.Count(x => x.Result == Result.Passed);
             this.Failed = TestResult.Count(x => x.Result == Result.Failed || x.Result == Result.CriticalError);
@@ -116,15 +117,16 @@ namespace AxaFrance.WebEngine.Report
             string filename;
             if (uniqueName)
             {
-                filename = Path.Combine(path, filePrefix + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xml");                
+                reportFolder = path + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
             }
             else
             {
-                filename = Path.Combine(path, filePrefix + ".xml");
+                reportFolder = path;
             }
-            if (!Directory.Exists(path))
+            filename = Path.Combine(reportFolder, filePrefix + ".xml");
+            if (!Directory.Exists(reportFolder))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(reportFolder);
             }
             using (StreamWriter sw = new StreamWriter(filename))
             {
