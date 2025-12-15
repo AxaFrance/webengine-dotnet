@@ -39,7 +39,7 @@ namespace WebEngine.Test.UnitTests
             };
             tcr.Attach(usageReport, GlobalConstants.ResourceUsageReport);
             tsr.TestResult.Add(tcr);
-            var report = tsr.SaveAs(Path.GetTempPath(), "unit-test", true);
+            var report = tsr.SaveAs(Path.GetTempPath(), "unit-test", true, out string reportFolder);
         }
     }
 }

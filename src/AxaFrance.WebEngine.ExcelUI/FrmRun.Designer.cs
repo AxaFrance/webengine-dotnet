@@ -43,7 +43,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.rbEdge = new System.Windows.Forms.RadioButton();
             this.rbChrome = new System.Windows.Forms.RadioButton();
             this.rbFirefox = new System.Windows.Forms.RadioButton();
-            this.rbIE = new System.Windows.Forms.RadioButton();
             this.txtDeviceName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAppPackage = new System.Windows.Forms.TextBox();
@@ -117,7 +116,9 @@ namespace AxaFrance.WebEngine.ExcelUI
             // 
             this.rbEdge.BackgroundImage = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.edge;
             resources.ApplyResources(this.rbEdge, "rbEdge");
+            this.rbEdge.Checked = true;
             this.rbEdge.Name = "rbEdge";
+            this.rbEdge.TabStop = true;
             this.rbEdge.UseVisualStyleBackColor = false;
             // 
             // rbChrome
@@ -133,15 +134,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             resources.ApplyResources(this.rbFirefox, "rbFirefox");
             this.rbFirefox.Name = "rbFirefox";
             this.rbFirefox.UseVisualStyleBackColor = false;
-            // 
-            // rbIE
-            // 
-            this.rbIE.BackgroundImage = global::AxaFrance.WebEngine.ExcelUI.Properties.Resources.ie;
-            resources.ApplyResources(this.rbIE, "rbIE");
-            this.rbIE.Checked = true;
-            this.rbIE.Name = "rbIE";
-            this.rbIE.TabStop = true;
-            this.rbIE.UseVisualStyleBackColor = false;
             // 
             // txtDeviceName
             // 
@@ -218,7 +210,6 @@ namespace AxaFrance.WebEngine.ExcelUI
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.rbChrome);
             this.Controls.Add(this.rbFirefox);
-            this.Controls.Add(this.rbIE);
             this.Controls.Add(this.lblSelectedTests);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -237,7 +228,6 @@ namespace AxaFrance.WebEngine.ExcelUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblSelectedTests;
-        private System.Windows.Forms.RadioButton rbIE;
         private System.Windows.Forms.RadioButton rbFirefox;
         private System.Windows.Forms.RadioButton rbChrome;
         private System.Windows.Forms.Button btnStart;

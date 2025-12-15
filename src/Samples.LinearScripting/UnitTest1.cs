@@ -61,7 +61,7 @@ namespace Samples.LinearScripting
         {
             //After all test cases, we will save the test suite report.
             testSuiteReport!.EndTime = DateTime.Now;
-            var reportPath = testSuiteReport.SaveAs("TestReport", "TEST-MyTestReport", false);
+            var reportPath = testSuiteReport.SaveAs("TestReport", "TEST-MyTestReport", false, out string reportFolder);
 
             //you can check the test report in folder bin\Debug\net8.0\TestReport of your test project.
             DebugLogger.WriteLine($"Test Suite Report saved at: {reportPath}");

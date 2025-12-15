@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Launch Test with Web Runner | AXA WebEngine Test Framework </title>
+    <title>Launch Test with Web Runner | AXA - WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Launch Test with Web Runner | AXA WebEngine Test Framework ">
+    <meta name="title" content="Launch Test with Web Runner | AXA - WebEngine Test Framework ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../images/logo_small.svg">
@@ -69,12 +69,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="launch-test-with-web-runner">Launch Test with Web Runner</h1>
 
-<p><code>WebRunner</code> is the component to run automated test and provided rich XML report.
+<p><code>WebRunner</code> is the component to run automated tests and provides rich XML reports.
 Based on the programming language used to build a test automation solution, the command-line has a little difference.
 However, all behaviors and arguments remain the same.</p>
 <div class="WARNING">
 <h5>Warning</h5>
-<p>Spacing characters are not accepted as parameter values. Parameter with space must be enclosed in double-quotes.</p>
+<p>Spacing characters are not accepted as parameter values. Parameters with spaces must be enclosed in double-quotes.</p>
 </div>
 <div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
@@ -97,18 +97,21 @@ However, all behaviors and arguments remain the same.</p>
 </section>
 </div>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>To run tests build with WebEngine Framework, you have to provide compiled test automation solution.</p>
+<p>To run tests built with WebEngine Framework, you have to provide a compiled test automation solution and specify the browser type.</p>
+<h3 id="required-parameters">Required Parameters</h3>
 <ul>
-<li><code>-a:&lt;testproject&gt;</code>: the filename or full path of compiled test project: DLL library for .NET.</li>
+<li><code>-a:&lt;testproject&gt;</code>: <em>(.NET only)</em> The filename or full path of the compiled test project DLL library.</li>
+<li><code>-browser:&lt;browser-type&gt;</code>: The browser or platform to run the tests on. See <a href="#-browserbrowser">Browser Types</a> for supported values.</li>
 </ul>
-<p>If your solution use Data-Driven approach, it is required to provide at least one of following files:</p>
+<h3 id="data-driven-testing">Data-Driven Testing</h3>
+<p>If your solution uses a Data-Driven approach, you can provide the following files:</p>
 <ul>
-<li><code>-data:&lt;testdata&gt;</code>: Test Data to be used for data-driven test execution, in XML format. The file can be exported via <code>Excel Add-in</code></li>
-<li><code>-env:&lt;env_variable&gt;</code>: Environment Variables in XML format, to store test environment related test data, such as URLs, Hostnames or Credentials.</li>
+<li><code>-data:&lt;testdata&gt;</code>: Test Data to be used for data-driven test execution, in XML format. The file can be exported via the <code>Excel Add-in</code>. If not provided, tests will run without test data.</li>
+<li><code>-env:&lt;env_variable&gt;</code>: Environment Variables in XML format, to store test environment-related test data, such as URLs, Hostnames, or Credentials.</li>
 </ul>
 <h3 id="examples">Examples</h3>
 <h4 id="run-test-on-desktop-browsers">Run test on desktop browsers</h4>
-<p>For following command line launches the solution in <code>Firefox</code> browser and generate test reports in <code>C:\Temp</code></p>
+<p>The following command line launches the solution in the <code>Firefox</code> browser and generates test reports in <code>C:\Temp</code></p>
 <div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
@@ -130,7 +133,7 @@ However, all behaviors and arguments remain the same.</p>
 </section>
 </div>
 <h4 id="run-webapp-test-on-android-emulator">Run webapp test on Android Emulator</h4>
-<p>Following command line launches same test under emulated <code>Android</code> device (requires Android Emulator + Appium Server on local) using <code>Chrome</code> browser.</p>
+<p>The following command line launches the same test under an emulated <code>Android</code> device (requires Android Emulator + Appium Server on local) using the <code>Chrome</code> browser.</p>
 <div class="tabGroup" id="tabgroup_3">
 <ul role="tablist">
 <li role="presentation">
@@ -152,8 +155,12 @@ However, all behaviors and arguments remain the same.</p>
 </section>
 </div>
 <h4 id="run-app-test-on-selenium-compatible-device-cloud">Run app test on Selenium compatible Device Cloud</h4>
-<p>Following command line installs the application package, then launches test under <code>iPhone 12</code>, using provided device cloud.</p>
-<pre><code class="lang-batch">WebRunner.exe &quot;-a:AppProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; -platform:iOS -browser:IOSNative &quot;-device:iPhone 12&quot; &quot;-grid:http://seleniumgrid.com/wd/hub&quot; &quot;-appId:C:\app_under_test.ipa&quot;
+<p>The following command line installs the application package, then launches the test under <code>iPhone 12</code>, using the provided device cloud.</p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-a:AppProject.dll&quot; &quot;-data:Data.xml&quot; &quot;-env:Staging.xml&quot; &quot;-platform:iOS&quot; &quot;-browser:IOSNative&quot; &quot;-device:iPhone 12&quot; &quot;-grid:http://seleniumgrid.com/wd/hub&quot; &quot;-appId:C:\app_under_test.ipa&quot;
+</code></pre>
+<h4 id="encrypt-sensitive-data">Encrypt sensitive data</h4>
+<p>To encrypt sensitive data (such as passwords) for use in test data files:</p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-encrypt&quot; &quot;MySecretPassword&quot; &quot;-encryptionKey:MyEncryptionKey&quot;
 </code></pre>
 <h2 id="optional-parameters">Optional parameters</h2>
 <div class="NOTE">
@@ -166,40 +173,102 @@ However, all behaviors and arguments remain the same.</p>
 <blockquote>
 <p>Please refer to <a href="appsettings-java.html">Test Configuration JAVA</a> for Java</p>
 </blockquote>
-<h3 id="commun-parameters">Commun parameters</h3>
+<h3 id="common-parameters">Common parameters</h3>
 <h4 id="-browserbrowser">-browser:&lt;browser&gt;</h4>
-<p>Specifies the browser on which to run test. see: <a class="xref" href="../api_net/AxaFrance.WebEngine.BrowserType.html">BrowserType</a>.</p>
+<p><strong>Required.</strong> Specifies the browser or platform on which to run the test. Supported values:</p>
+<ul>
+<li><strong>Desktop Browsers:</strong>
+<ul>
+<li><code>Chrome</code> - Google Chrome</li>
+<li><code>Firefox</code> - Mozilla Firefox</li>
+<li><code>Edge</code> - Microsoft Edge (Chromium-based)</li>
+</ul>
+</li>
+<li><strong>Mobile Browsers:</strong>
+<ul>
+<li><code>Safari</code> - iOS Safari browser</li>
+<li><code>Chrome</code> - Google Chrome</li>
+</ul>
+</li>
+<li><strong>Mobile Native Applications:</strong>
+<ul>
+<li><code>IOSNative</code> - iOS native application</li>
+<li><code>AndroidNative</code> - Android native application</li>
+</ul>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Internet Explorer is no longer supported. Please use Edge or other modern browsers.</p>
+</div>
+<p>See: <a class="xref" href="../api_net/AxaFrance.WebEngine.BrowserType.html">BrowserType</a> for more details.</p>
 <h4 id="-platformplatform">-platform:&lt;platform&gt;</h4>
-<p>Specifies The platform for test execution: see: <a class="xref" href="../api_net/AxaFrance.WebEngine.Platform.html">Platform</a>. Default value is <code>Windows</code>.</p>
+<p>Specifies the platform for test execution. Supported values:</p>
+<ul>
+<li><code>Windows</code> (default)</li>
+<li><code>Android</code></li>
+<li><code>iOS</code></li>
+</ul>
+<p>See: <a class="xref" href="../api_net/AxaFrance.WebEngine.Platform.html">Platform</a> for more details.</p>
 <h4 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h4>
-<p>Specifies the folder to store output of test execution and test report. This parameter is can be defined in <code>appsetting.json</code> for C# and <code>application.yml</code> for JAVA.</p>
+<p>Specifies the folder to store the output of test execution and test reports. This parameter can also be defined in <code>appsettings.json</code> for C# and <code>application.yml</code> for Java.</p>
+<h4 id="-u">-u</h4>
+<p>Saves reports to a unique folder suffixed by date and time (format: <code>yyyyMMdd_hhmmss</code>). When this flag is present, each test run will create a separate timestamped folder, preventing reports from being overwritten.</p>
 <h4 id="-m">-m</h4>
-<p>Specifies the manual debug mode. Use this mode for debugging test scenarios locally. When the test is failed test will pause for manual intervention before clean-up process.</p>
+<p>Specifies manual debug mode. Use this mode for debugging test scenarios locally. When a test fails, execution will pause for manual intervention before the clean-up process.</p>
+<h4 id="-h-or--hide">-h or -hide</h4>
+<p><em>(Windows only)</em> Hides the console window during test execution.</p>
 <h4 id="-junitjunit-report-path">-junit:&lt;junit-report-path&gt;</h4>
-<p>In additional of default XML report, generates a JUnit 2.6 compliant test report. Useful to publish test result to a Continuous Integration Platform</p>
+<p>In addition to the default XML report, generates a JUnit 2.6 compliant test report. Useful for publishing test results to Continuous Integration platforms.</p>
 <h4 id="-htmlhtml-report-path">-html:&lt;html-report-path&gt;</h4>
-<p>In additional of default XML report, generates a HTML test report. Test report will be generated in the given folder. HTML report contains also css, javascript and screenshot files. If you want the share the report, you have to copy the whole folder.</p>
+<p>In addition to the default XML report, generates an HTML test report. The test report will be generated in the given folder. The HTML report contains CSS, JavaScript, and screenshot files. If you want to share the report, you have to copy the whole folder.</p>
 <h4 id="-showreport">-showReport</h4>
-<p>Launches <code>Report Viewer</code> after test execution.</p>
+<p>Launches <code>Report Viewer</code> after test execution to display the test results.</p>
+<h4 id="-encryptionkeykey">-encryptionKey:&lt;key&gt;</h4>
+<p>Specifies the encryption key to use when decrypting sensitive data in test data files. Use with the <code>-encrypt</code> command to encrypt sensitive values.</p>
 <h3 id="parameters-for-mobile-testing">Parameters for Mobile testing</h3>
-<p>To run tests on Mobile device, <code>-platform</code>, you should specify the following arguments <code>Android</code> or <code>iOS</code>.</p>
+<p>To run tests on mobile devices, specify <code>-platform</code> as <code>Android</code> or <code>iOS</code>, and use the following additional arguments:</p>
+<h4 id="-appidapplication-path">-appId:&lt;application-path&gt;</h4>
+<p><strong>Required for native mobile apps.</strong> Specifies the path to the application package to be tested:</p>
+<ul>
+<li>For Android: <code>.apk</code> or <code>.aab</code> file</li>
+<li>For iOS: <code>.ipa</code> or <code>.app</code> file</li>
+</ul>
+<p>This parameter is mandatory when using <code>-browser:AndroidNative</code> or <code>-browser:IOSNative</code>.</p>
 <h4 id="-gridgridurl">-grid:&lt;gridUrl&gt;</h4>
-<p>Indicates the Selenium Grid to connect to device cloud. Default value is <code>http://localhost:4723/wd/hub</code> for local Appium Server
-If you are using cloud-based device cloud, please refer to service providers documentation.
-If the argument is provided, option <code>desktopGrid</code> will be automatically set to <code>true</code></p>
+<p>Indicates the Selenium Grid URL to connect to a device cloud. Default value is <code>http://localhost:4723/wd/hub</code> for local Appium Server.
+If you are using a cloud-based device cloud, please refer to your service provider's documentation.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>When the <code>-grid</code> argument is provided, the <code>GridForDesktop</code> option will be automatically set to <code>true</code>, enabling Selenium Grid for both mobile and desktop tests.</p>
+</div>
 <h4 id="-desktopgrid">-desktopGrid</h4>
-<p>This option activates the usage of Selenium Grid for Web Desktop tests. If the value is false, the framework only use selenium grid for mobile based tests.</p>
+<p>Activates the usage of Selenium Grid for Web Desktop tests. When set, desktop browser tests will also run through the specified Selenium Grid.</p>
 <h4 id="-usernameusername">-username:&lt;username&gt;</h4>
-<p>Indicates the username to be used for Selenium Grid authentication.</p>
+<p>Specifies the username for Selenium Grid authentication. Required by some cloud-based device providers.</p>
 <h4 id="-passwordpassword">-password:&lt;password&gt;</h4>
-<p>Indicates the password to be used for Selenium Grid authentication.</p>
+<p>Specifies the password for Selenium Grid authentication. Required by some cloud-based device providers.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Use the <code>-encrypt</code> command to encrypt your password before storing it in configuration files.</p>
+</div>
 <h4 id="-devicedevicename">-device:&lt;deviceName&gt;</h4>
-<p>Indicates the device name for device selection. for example: <code>iPhone Xs</code>, <code>Huawei P30</code>. Refers your cloud provider.</p>
+<p>Specifies the device name for device selection. Examples: <code>iPhone Xs</code>, <code>Huawei P30</code>, <code>Emulator</code>. Refer to your cloud provider's documentation for available device names.</p>
 <h4 id="-osversionversion">-osVersion:&lt;version&gt;</h4>
-<p>Indicate the version of the OS for device selection. for example: <code>14.1</code>, <code>9.0</code>. Refers your cloud provider.</p>
+<p>Specifies the version of the operating system for device selection. Examples: <code>14.1</code>, <code>9.0</code>. Refer to your cloud provider's documentation for available OS versions.</p>
+<h3 id="special-commands">Special Commands</h3>
+<h4 id="-encrypt">-encrypt</h4>
+<p>Encrypts a string value for secure storage in test data files. This must be the first argument.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-encrypt&quot; &quot;&lt;data-to-encrypt&gt;&quot; &quot;-encryptionKey:&lt;your-key&gt;&quot;
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-batch">WebRunner.exe &quot;-encrypt&quot; &quot;MyPassword123&quot; &quot;-encryptionKey:MySecretKey&quot;
+</code></pre>
+<p>The encrypted value will be displayed in the console and can be used in your test data files.</p>
 <h3 id="where-to-find-webrunner-package">Where to find WebRunner package?</h3>
-<p>WebRunner package is installed via NuGet Package (.NET) or Maven (Java).
-After compilation of your test automation project, it will be found in project output folder.</p>
+<p>The WebRunner package is installed via NuGet Package (.NET) or Maven (Java).
+After compilation of your test automation project, it will be found in the project output folder.</p>
 
 </article>
           </div>
@@ -229,7 +298,7 @@ After compilation of your test automation project, it will be found in project o
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-      Copyright &reg; 2016-2024 AXA France, All rights reserved.
+      Copyright &reg; 2016-2025 AXA France, All rights reserved.
       
           </div>
         </div>

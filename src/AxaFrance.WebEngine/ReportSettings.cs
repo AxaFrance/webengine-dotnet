@@ -14,6 +14,11 @@ namespace AxaFrance.WebEngine
     public class ReportSettings
     {
         /// <summary>
+        /// Gets or sets a value indicating whether reports are saved to a unique folder suffixed by date and time.
+        /// </summary>
+        public bool UniqueReportFolder { get; set; } = false;
+
+        /// <summary>
         /// If a Junit compatible report should be generated after test execution
         /// </summary>
         public bool JUnitReport { get; set; }

@@ -41,7 +41,7 @@ namespace Samples.Gherkin.StepDefinitions
             //save test report with embedded accessibility test result.
             TestSuiteReport tsr = new TestSuiteReport();
             tsr.TestResult.Add(tcr);
-            var filename = tsr.SaveAs(Path.GetRandomFileName(), "test-report", false);
+            var filename = tsr.SaveAs(Path.GetRandomFileName(), "test-report", false, out string reportFolder);
             Console.WriteLine($"Report saved to {filename}");
         }
 
