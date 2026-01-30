@@ -364,3 +364,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /POC.Solaris
+*.cer
+/src/AxaFrance.WebEngine.ExcelUI/singingcertificate.cer
