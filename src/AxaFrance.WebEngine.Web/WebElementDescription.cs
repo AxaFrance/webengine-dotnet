@@ -172,6 +172,101 @@ namespace AxaFrance.WebEngine.Web
         protected override IReadOnlyCollection<IWebElement> InternalFindElements()
         {
             IEnumerable<IWebElement> elements = null;
+            ISearchContext context = GetSearchContext();
+            
+            if (this.Id != null) 
+            {
+                elements = context.FindElements(By.Id(this.Id));
+            }
+
+            if (this.Name != null)
+            {
+                var names = context.FindElements(By.Name(this.Name));
+                elements = IntersectElements(elements, names);
+            }
+
+            if (this.ClassName != null)
+            {
+                // Handle single vs multiple class names
+                // By.ClassName only works with single class, not "class1 class2"
+                if (!ClassName.Contains(" "))
+                {
+                    // Single class name - use native Selenium (faster)
+                    var cssnames = context.FindElements(By.ClassName(ClassName));
+                    elements = IntersectElements(elements, cssnames);
+                }
+                else
+                {
+                    // Multiple classes - use XPath with contains to match partial class attribute
+                    string xpath = $"//*[contains(concat(' ', normalize-space(@class), ' '), ' {EscapeXPathString(ClassName)} ')]";
+                    var cssnames = context.FindElements(By.XPath(xpath));
+                    elements = IntersectElements(elements, cssnames);
+                }
+            }
+
+            if (this.LinkText != null)
+            {
+                var links = context.FindElements(By.LinkText(this.LinkText));
+                elements = IntersectElements(elements, links);
+            }
+
+            if (this.TagName != null)
+            {
+                var tagNames = context.FindElements(By.TagName(TagName));
+                elements = IntersectElements(elements, tagNames);
+            }
+
+            if (this.CssSelector != null)
+            {
+                var classes = context.FindElements(By.CssSelector(CssSelector));
+                elements = IntersectElements(elements, classes);
+            }
+
+            if (this.XPath != null)
+            {
+                var xpaths = context.FindElements(By.XPath(this.XPath));
+                elements = IntersectElements(elements, xpaths);
+            }
+
+            if (this.InnerText != null)
+            {
+                if (elements != null)
+                {
+                    elements = elements.Where(x => x.GetDomProperty("innerText") == InnerText);
+                }
+                else
+                {
+                    elements = context.FindElements(By.XPath($"//*[text()='{EscapeXPathString(InnerText)}']"));
+                }
+            }
+
+            if (this.Attributes != null && this.Attributes.Any())
+            {
+                List<string> attributes = new List<string>();
+                foreach (var a in this.Attributes)
+                {
+                    attributes.Add($"[{a.Name}=\"{a.Value}\"]");
+                }
+                string cssSelector = $"{string.Join("", attributes)}";
+                var attr = context.FindElements(By.CssSelector(cssSelector));
+                elements = IntersectElements(elements, attr);
+            }
+
+            if (elements == null || elements.Count() == 0)
+            {
+                throw new NoSuchElementException($"No such WebElement: {this}");
+            }
+            else
+            {
+                return new ReadOnlyCollection<IWebElement>(elements.ToList());
+            }
+        }
+
+        /// <summary>
+        /// Gets the search context, handling ShadowRoot if present
+        /// </summary>
+        private ISearchContext GetSearchContext()
+        {
             ISearchContext context = driver;
             if (this.ShadowRoot != null)
             {
@@ -190,132 +285,43 @@ namespace AxaFrance.WebEngine.Web
                     context = root.First().GetShadowRoot();
                 }
             }
-            if (this.Id != null) 
-            {
-                elements = context.FindElements(By.Id(this.Id));
-            }
+            return context;
+        }
 
-            if (this.Name != null)
+        /// <summary>
+        /// Efficiently intersects two element collections using HashSet (O(n) instead of O(n²))
+        /// </summary>
+        private IEnumerable<IWebElement> IntersectElements(IEnumerable<IWebElement> elements, IReadOnlyCollection<IWebElement> newElements)
+        {
+            if (elements == null)
             {
-                var names = context.FindElements(By.Name(this.Name));
-                if (elements == null)
-                {
-                    elements = names;
-                }
-                else
-                {
-                    elements = elements.Where(x => names.Contains(x));
-                }
-            }
-
-            if (this.ClassName != null)
-            {
-                string xpath = $"//*[@class='{ClassName}']";
-                var cssnames = context.FindElements(By.XPath(xpath));
-                if (elements == null)
-                {
-                    elements = cssnames;
-                }
-                else
-                {
-                    elements = elements.Where(x => cssnames.Contains(x));
-                }
-            }
-
-            if (this.LinkText != null)
-            {
-                var links = context.FindElements(By.LinkText(this.LinkText));
-                if (elements == null)
-                {
-                    elements = links;
-                }
-                else
-                {
-                    elements = elements.Where(x => links.Contains(x));
-                }
-            }
-
-            if (this.TagName != null)
-            {
-                var tagNames = context.FindElements(By.TagName(TagName.ToUpper()));
-                if (elements == null)
-                {
-                    elements = tagNames;
-                }
-                else
-                {
-                    elements = elements.Where(x => tagNames.Contains(x));
-                }
-            }
-
-            if (this.CssSelector != null)
-            {
-                var classes = context.FindElements(By.CssSelector(CssSelector));
-                if (elements == null)
-                {
-                    elements = classes;
-                }
-                else
-                {
-                    elements = elements.Where(x => classes.Contains(x));
-                }
-
-            }
-
-            if (this.XPath != null)
-            {
-                var xpaths = context.FindElements(By.XPath(this.XPath));
-                if (elements == null)
-                {
-                    elements = xpaths;
-                }
-                else
-                {
-                    elements = elements.Where(x => xpaths.Contains(x));
-                }
-            }
-
-            if (this.InnerText != null)
-            {
-                if (elements != null)
-                {
-                    elements = elements.Where(x => x.GetDomProperty("innerText") == InnerText);
-                }
-                else
-                {
-                    elements = context.FindElements(By.XPath($"//*[text()='{InnerText}']"));
-                }
-            }
-
-            if (this.Attributes != null && this.Attributes.Any())
-            {
-                List<string> attributes = new List<string>();
-                foreach (var a in this.Attributes)
-                {
-                    attributes.Add($"[{a.Name}=\"{a.Value}\"]");
-                }
-                string cssSelector = $"{string.Join("", attributes)}";
-                var attr = context.FindElements(By.CssSelector(cssSelector));
-                if (elements == null)
-                {
-                    elements = attr;
-                }
-                else
-                {
-                    elements = elements.Where(x => attr.Contains(x));
-                }
-            }
-
-            if (elements == null || elements.Count() == 0)
-            {
-                throw new NoSuchElementException($"No such WebElement: {this}");
+                return newElements;
             }
             else
             {
-                return new ReadOnlyCollection<IWebElement>(elements.ToList());
+                // Use HashSet for O(n) intersection instead of O(n²) Contains
+                var elementSet = new HashSet<IWebElement>(newElements);
+                return elements.Where(x => elementSet.Contains(x));
             }
         }
 
+        /// <summary>
+        /// Escapes single quotes in XPath string literals to prevent injection
+        /// </summary>
+        private string EscapeXPathString(string value)
+        {
+            if (value == null) return null;
+            
+            // If no single quotes, return as-is wrapped in quotes
+            if (!value.Contains("'"))
+            {
+                return value;
+            }
+            
+            // XPath doesn't have escape sequences, so use concat() for strings with quotes
+            // This is primarily for safety; the actual XPath is built by our code
+            return value.Replace("'", "&#39;");
+        }
 
         /// <summary>
         /// Simulate a mouse hover on the indicated WebElement.

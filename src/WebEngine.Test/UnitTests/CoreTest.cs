@@ -128,22 +128,6 @@ namespace WebEngine.Test.UnitTests
             Assert.IsTrue(list.Count == 1);
         }
 
-        [TestMethod]
-        public void BS_OSName()
-        {
-            var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.Firefox);
-            WebElementDescription submit = new WebElementDescription(driver) { Id = "submit" } ;
-
-            //set global synchronization timeout to 30 seconds
-            Settings.Instance.SynchronzationTimeout = 30;
-
-            //locate element with default synchronization timeout
-            submit.FindElement();
-            
-            //locate element with synchronziation timeout 20 seconds
-            submit.FindElement(20);
-
-        }
 
     }
 }

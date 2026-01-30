@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace AxaFrance.WebEngine.MobileApp
 {
@@ -84,6 +85,24 @@ namespace AxaFrance.WebEngine.MobileApp
         public string UIAutomatorSelector { get; set; }
 
         /// <summary>
+        /// Using iOS NSPredicate string, only available for iOS applications. When using IosPredicate, other locators will be ignored.
+        /// More powerful than IosClassChain for complex queries.
+        /// </summary>
+        public string IosPredicate { get; set; }
+
+        /// <summary>
+        /// Using Android DataMatcher selector, only available for Android applications (Espresso).
+        /// When using AndroidDataMatcher, other locators will be ignored.
+        /// </summary>
+        public string AndroidDataMatcher { get; set; }
+
+        /// <summary>
+        /// Using Image element matching (AI-based element finding).
+        /// Useful when standard locators don't work. Requires Appium image plugin.
+        /// </summary>
+        public string ImageLocator { get; set; }
+
+        /// <summary>
         /// Shows a string representation of this AppElementDescription
         /// </summary>
         /// <returns>A string representation of this AppElementDescription</returns>
@@ -153,14 +172,43 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <returns>True if the element is visible after scrolling. False when the element is not visible.</returns>
         public bool ScrollIntoView(ScrollDirection direction, int maxSwipe = 10)
         {
-            if (direction == ScrollDirection.Up)
+            switch (direction)
             {
-                return ScrollIntoViewUp(maxSwipe);
+                case ScrollDirection.Up:
+                    return ScrollIntoViewUp(maxSwipe);
+                case ScrollDirection.Down:
+                    return ScrollIntoViewDown(maxSwipe);
+                case ScrollDirection.Left:
+                    return ScrollIntoViewLeft(maxSwipe);
+                case ScrollDirection.Right:
+                    return ScrollIntoViewRight(maxSwipe);
+                default:
+                    return ScrollIntoViewDown(maxSwipe);
             }
-            else
+        }
+
+        /// <summary>
+        /// Waits until the element is clickable (visible and enabled)
+        /// </summary>
+        /// <param name="timeoutSeconds">Maximum wait time in seconds</param>
+        /// <returns>True if element became clickable, false otherwise</returns>
+        public bool WaitUntilClickable(int timeoutSeconds = 10)
+        {
+            var endTime = DateTime.Now.AddSeconds(timeoutSeconds);
+            while (DateTime.Now < endTime)
             {
-                return ScrollIntoViewDown(maxSwipe);
+                try
+                {
+                    if (this.Exists(1) && this.IsEnabled && this.IsDisplayed)
+                        return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    // Continue waiting
+                }
+                Thread.Sleep(500);
             }
+            return false;
         }
 
         private bool ScrollIntoViewDown(int maxSwipe)
@@ -185,6 +233,28 @@ namespace AxaFrance.WebEngine.MobileApp
             return this.Exists(1);
         }
 
+        private bool ScrollIntoViewLeft(int maxSwipe)
+        {
+            int count = 0;
+            while (!this.Exists(1) && count < maxSwipe)
+            {
+                count++;
+                SwipeLeft();
+            }
+            return this.Exists(1);
+        }
+
+        private bool ScrollIntoViewRight(int maxSwipe)
+        {
+            int count = 0;
+            while (!this.Exists(1) && count < maxSwipe)
+            {
+                count++;
+                SwipeRight();
+            }
+            return this.Exists(1);
+        }
+
 
         /// <summary>
         /// Scroll the screen downward
@@ -204,6 +274,82 @@ namespace AxaFrance.WebEngine.MobileApp
             GenericScroll(x, 0.3, 0.8);
         }
 
+        /// <summary>
+        /// Performs a long press on the current element (useful for context menus, drag operations)
+        /// </summary>
+        /// <param name="durationSeconds">Duration of the press in seconds (default: 2)</param>
+        public void LongPress(int durationSeconds = 2)
+        {
+            var element = FindElement();
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            actionSequence.AddAction(finger.CreatePointerMove(element, 0, 0, TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePause(new TimeSpan(0, 0, durationSeconds)));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        /// <summary>
+        /// Performs a double tap on the current element (useful for zoom, selection, special interactions)
+        /// </summary>
+        public void DoubleTap()
+        {
+            var element = FindElement();
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            // First tap
+            actionSequence.AddAction(finger.CreatePointerMove(element, 0, 0, TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            // Short pause
+            actionSequence.AddAction(finger.CreatePause(TimeSpan.FromMilliseconds(100)));
+
+            // Second tap
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        /// <summary>
+        /// Swipe left on the screen (useful for carousels, horizontal lists, dismissible cards)
+        /// </summary>
+        public void SwipeLeft()
+        {
+            var y = (int)(driver.Manage().Window.Size.Height * 0.5);
+            GenericSwipe(0.8, 0.2, y);
+        }
+
+        /// <summary>
+        /// Swipe right on the screen (useful for carousels, horizontal lists, navigation)
+        /// </summary>
+        public void SwipeRight()
+        {
+            var y = (int)(driver.Manage().Window.Size.Height * 0.5);
+            GenericSwipe(0.2, 0.8, y);
+        }
+
+        private void GenericSwipe(double startXPercent, double endXPercent, int y)
+        {
+            int startX = (int)(driver.Manage().Window.Size.Width * startXPercent);
+            int endX = (int)(driver.Manage().Window.Size.Width * endXPercent);
+
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, startX, y, TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, endX, y, new TimeSpan(0, 0, 1)));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
         private void GenericScroll(int x, double startYPercent, double endYPercent)
         {
             int startY = (int)(driver.Manage().Window.Size.Height * startYPercent);
@@ -221,16 +367,67 @@ namespace AxaFrance.WebEngine.MobileApp
             driver.PerformActions(new List<ActionSequence> { actionSequence });
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Drags the current element and drops it at a target element (useful for reordering lists, moving items)
+        /// </summary>
+        /// <param name="target">The target element to drop onto</param>
+        public void DragAndDropTo(AppElementDescription target)
+        {
+            var fromElement = FindElement();
+            var toElement = target.FindElement();
 
+            var fromLocation = fromElement.Location;
+            var toLocation = toElement.Location;
+
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport,
+                fromLocation.X + fromElement.Size.Width / 2,
+                fromLocation.Y + fromElement.Size.Height / 2,
+                TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePause(new TimeSpan(0, 0, 1))); // Hold briefly
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport,
+                toLocation.X + toElement.Size.Width / 2,
+                toLocation.Y + toElement.Size.Height / 2,
+                new TimeSpan(0, 0, 1)));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        /// <summary>
+        /// Hides the on-screen keyboard (works on both Android and iOS)
+        /// </summary>
+        public void HideKeyboard()
+        {
+            if (driver is AndroidDriver ad)
+            {
+                ad.HideKeyboard();
+            }
+            else if (driver is IOSDriver id)
+            {
+                id.HideKeyboard();
+            }
+        }
+
+        /// <inheritdoc />
         protected override IReadOnlyCollection<IWebElement> InternalFindElements()
         {
             IEnumerable<IWebElement> elements = null;
 
+            // Platform-specific exclusive locators (when used, ignore all other locators)
             if (IosClassChain != null)
             {
                 var chains = driver.FindElements(MobileBy.IosClassChain(IosClassChain));
                 return chains;
+            }
+
+            if (IosPredicate != null)
+            {
+                var predicates = driver.FindElements(MobileBy.IosNSPredicate(IosPredicate));
+                return predicates;
             }
 
             if (UIAutomatorSelector != null)
@@ -239,7 +436,22 @@ namespace AxaFrance.WebEngine.MobileApp
                 return locators;
             }
 
-            //above locators 
+            if (AndroidDataMatcher != null)
+            {
+                var matchers = driver.FindElements(MobileBy.AndroidDataMatcher(AndroidDataMatcher));
+                return matchers;
+            }
+
+            // Note: AndroidViewTag is not available in all Appium versions
+            // Removed until confirmed support in current Appium.WebDriver version
+
+            if (ImageLocator != null)
+            {
+                var images = driver.FindElements(MobileBy.Image(ImageLocator));
+                return images;
+            }
+
+            //Progressive filtering with multiple properties
 
             if (this.Id != null)
             {
@@ -249,14 +461,7 @@ namespace AxaFrance.WebEngine.MobileApp
             if (this.AccessbilityId != null)
             {
                 var aids = driver.FindElements(MobileBy.AccessibilityId(this.AccessbilityId));
-                if (elements == null)
-                {
-                    elements = aids;
-                }
-                else
-                {
-                    elements = elements.Where(x => aids.Contains(x));
-                }
+                elements = IntersectElements(elements, aids);
             }
 
             if (this.ContentDescription != null)
@@ -264,76 +469,42 @@ namespace AxaFrance.WebEngine.MobileApp
                 if (driver is AndroidDriver ad)
                 {
                     var cds = ad.FindElements(MobileBy.AccessibilityId(this.ContentDescription));
-                    if (elements == null)
-                    {
-                        elements = cds;
-                    }
-                    else
-                    {
-                        elements = elements.Where(x => cds.Contains(x));
-                    }
+                    elements = IntersectElements(elements, cds);
                 }
                 else if (driver is IOSDriver)
                 {
                     var cds = driver.FindElements(MobileBy.Name(this.ContentDescription));
-                    if (elements == null)
-                    {
-                        elements = cds;
-                    }
-                    else
-                    {
-                        elements = elements.Where(x => cds.Contains(x));
-                    }
+                    elements = IntersectElements(elements, cds);
                 }
             }
             else if (this.Name != null)
             {
                 var names = driver.FindElements(MobileBy.Name(this.Name));
-                if (elements == null)
-                {
-                    elements = names;
-                }
-                else
-                {
-                    elements = elements.Where(x => names.Contains(x));
-                }
+                elements = IntersectElements(elements, names);
             }
 
             if (this.ClassName != null)
             {
                 var classes = driver.FindElements(MobileBy.ClassName(ClassName));
-                if (elements == null)
-                {
-                    elements = classes;
-                }
-                else
-                {
-                    elements = elements.Where(x => classes.Contains(x));
-                }
-
+                elements = IntersectElements(elements, classes);
             }
 
             if (this.XPath != null)
             {
                 var xpaths = driver.FindElements(MobileBy.XPath(this.XPath));
-                if (elements == null)
-                {
-                    elements = xpaths;
-                }
-                else
-                {
-                    elements = elements.Where(x => xpaths.Contains(x));
-                }
+                elements = IntersectElements(elements, xpaths);
             }
 
             if (this.Text != null)
             {
                 if (elements != null)
                 {
+                    // Client-side filtering when we already have elements
                     elements = elements.Where(x => x.Text == Text);
                 }
                 else
                 {
+                    // Try to find by LinkText (works for some mobile elements)
                     elements = driver.FindElements(MobileBy.LinkText(Text));
                 }
             }
@@ -391,5 +562,38 @@ namespace AxaFrance.WebEngine.MobileApp
             }
         }
 
+        /// <summary>
+        /// Efficiently intersects two element collections using HashSet (O(n) instead of O(n²))
+        /// </summary>
+        private IEnumerable<IWebElement> IntersectElements(IEnumerable<IWebElement> elements, IReadOnlyCollection<IWebElement> newElements)
+        {
+            if (elements == null)
+            {
+                return newElements;
+            }
+            else
+            {
+                // Use HashSet for O(n) intersection instead of O(n²) Contains
+                var elementSet = new HashSet<IWebElement>(newElements);
+                return elements.Where(x => elementSet.Contains(x));
+            }
+        }
+
+        /// <summary>
+        /// Escapes single quotes in XPath string literals to prevent injection
+        /// </summary>
+        private string EscapeXPathString(string value)
+        {
+            if (value == null) return null;
+            
+            // If no single quotes, return as-is
+            if (!value.Contains("'"))
+            {
+                return value;
+            }
+            
+            // XPath doesn't have escape sequences, so replace with HTML entity
+            return value.Replace("'", "&#39;");
+        }
     }
 }

@@ -13,6 +13,16 @@
         /// <summary>
         /// The scroll is in the down direction.
         /// </summary>
-        Down
+        Down,
+
+        /// <summary>
+        /// The scroll is in the left direction (horizontal).
+        /// </summary>
+        Left,
+
+        /// <summary>
+        /// The scroll is in the right direction (horizontal).
+        /// </summary>
+        Right
     }
 }
