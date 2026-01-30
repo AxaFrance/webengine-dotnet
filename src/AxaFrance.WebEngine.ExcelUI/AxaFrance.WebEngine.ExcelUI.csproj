@@ -39,10 +39,10 @@
     </NuGetPackageImportStamp>
     <CodeAnalysisRuleSet>..\.sonarlint\automateam.axa.webengine.dotnetcsharp.ruleset</CodeAnalysisRuleSet>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>\\prnas01.axa-fr.intraxa\16\Netshare_Dqsi\CommunauteDesAutomaticiens\02-Outils\Excel Addin3\</PublishUrl>
+    <PublishUrl>.\publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>3.0.0.72</ApplicationVersion>
+    <ApplicationVersion>3.0.0.74</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -267,6 +267,7 @@
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx" />
+    <None Include="AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -353,10 +354,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>96271E6190A8D7740CF12B1334391DEBCD78328E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BAA167C5CD43EB45EA4CE7F794878928D9DAA0BE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

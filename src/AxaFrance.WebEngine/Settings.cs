@@ -58,54 +58,65 @@ namespace AxaFrance.WebEngine
                 string content = File.ReadAllText(appconfig);
                 var settings = Newtonsoft.Json.JsonConvert.DeserializeObject(content) as Newtonsoft.Json.Linq.JObject;
 
-                if (settings.ContainsKey("LogDir"))
+                // Define mapping between JSON keys and setter actions
+                var stringMappings = new Dictionary<string, Action<string>>
                 {
-                    this.LogDir = settings.Value<string>("LogDir");
-                }
-                if (settings.ContainsKey("GridConnection"))
+                    { "LogDir", value => this.LogDir = value },
+                    { "CSVSeparator", value => this.Separator = value },
+                    { "GridConnection", value => this.GridServerUrl = value },
+                    { "Username", value => this.Username = value },
+                    { "Password", value => this.Password = value },
+                    { "PackageName", value => this.AppPackageName = value },
+                    { "PackageUploadTargetUrl", value => this.PackageUploadUrl = value },
+                    { "EncryptionKey", value => encryptionKey = value },
+                    { "BrowserVersion", value => this.BrowserVersion = value },
+                    { "OsVersion", value => this.OsVersion = value }
+                };
+
+                var boolMappings = new Dictionary<string, Action<bool>>
                 {
-                    this.GridServerUrl = settings.Value<string>("GridConnection");
-                }
-                if (settings.ContainsKey("Username"))
+                    { "AllowInsecureCertificate", value => this.AllowAnyCertificate = value },
+                    { "GridForDesktop", value => this.GridForDesktop = value },
+                    { "UseAppiumForWebMobile", value => this.UseAppiumForWebMobile = value }
+                };
+
+                var optionsMappings = new Dictionary<string, Action<IEnumerable<object>>>
                 {
-                    this.Username = settings.Value<string>("Username");
-                }
-                if (settings.ContainsKey("Password"))
+                    { "edgeOptions", value => EdgeOptions = value },
+                    { "firefoxOptions", value => FirefoxOptions = value },
+                    { "chromeOptions", value => ChromeOptions = value },
+                    { "safariOptions", value => SafariOptions = value }
+                };
+
+                // Process string mappings
+                foreach (var mapping in stringMappings)
                 {
-                    this.Password = settings.Value<string>("Password");
+                    if (settings.ContainsKey(mapping.Key))
+                    {
+                        mapping.Value(settings.Value<string>(mapping.Key));
+                    }
                 }
-                if (settings.ContainsKey("PackageName"))
+
+                // Process boolean mappings
+                foreach (var mapping in boolMappings)
                 {
-                    this.AppPackageName = settings.Value<string>("PackageName");
+                    if (settings.ContainsKey(mapping.Key))
+                    {
+                        mapping.Value(settings.Value<bool>(mapping.Key));
+                    }
                 }
-                if (settings.ContainsKey("PackageUploadTargetUrl"))
+
+                // Process options mappings
+                foreach (var mapping in optionsMappings)
                 {
-                    this.PackageUploadUrl = settings.Value<string>("PackageUploadTargetUrl");
+                    if (settings.ContainsKey(mapping.Key))
+                    {
+                        var options = settings.GetValue(mapping.Key);
+                        mapping.Value(options.AsJEnumerable());
+                    }
                 }
-                if (settings.ContainsKey("EncryptionKey"))
-                {
-                    encryptionKey = settings.Value<string>("EncryptionKey");
-                }
-                if (settings.ContainsKey("AllowInsecureCertificate"))
-                {
-                    this.AllowAnyCertificate = settings.Value<bool>("AllowInsecureCertificate");
-                }
-                if (settings.ContainsKey("GridForDesktop"))
-                {
-                    this.GridForDesktop = settings.Value<bool>("GridForDesktop");
-                }
-                if (settings.ContainsKey("UseAppiumForWebMobile"))
-                {
-                    this.UseAppiumForWebMobile = settings.Value<bool>("UseAppiumForWebMobile");
-                }
-                if (settings.ContainsKey("BrowserVersion"))
-                {
-                    this.BrowserVersion = settings.Value<string>("BrowserVersion");
-                }
-                if (settings.ContainsKey("OsVersion"))
-                {
-                    this.OsVersion = settings.Value<string>("OsVersion");
-                }
+
+                // Handle Capabilities separately due to special logic
                 if (settings.ContainsKey("Capabilities"))
                 {
                     Capabilities = new Dictionary<string, object>();
@@ -114,32 +125,9 @@ namespace AxaFrance.WebEngine
                     {
                         foreach (var cap in caps.Properties())
                         {
-                            var name = cap.Name;
-                            var v = cap.Value;
-                            Capabilities.Add(name, v);
+                            Capabilities.Add(cap.Name, cap.Value);
                         }
-
                     }
-                }
-                if (settings.ContainsKey("edgeOptions"))
-                {
-                    var options = settings.GetValue("edgeOptions");
-                    EdgeOptions = options.AsJEnumerable();
-                }
-                if (settings.ContainsKey("firefoxOptions"))
-                {
-                    var options = settings.GetValue("firefoxOptions");
-                    FirefoxOptions = options.AsJEnumerable();
-                }
-                if (settings.ContainsKey("chromeOptions"))
-                {
-                    var options = settings.GetValue("chromeOptions");
-                    ChromeOptions = options.AsJEnumerable();
-                }
-                if (settings.ContainsKey("safariOptions"))
-                {
-                    var options = settings.GetValue("safariOptions");
-                    SafariOptions = options.AsJEnumerable();
                 }
             }
             else
@@ -149,7 +137,7 @@ namespace AxaFrance.WebEngine
 
             if (string.IsNullOrEmpty(encryptionKey))
             {
-                encryptionKey = "#{EncryptionKey}#";    //<- default EncryptionKey will be replaced during build via DevOps process. Or to use customized encryption key in appsettings.json or via command-line argument.
+                encryptionKey = "#{EncryptionKey}#";
             }
             if (this.LogDir == null)
             {
@@ -317,7 +305,7 @@ namespace AxaFrance.WebEngine
         /// <summary>
         /// The CSV Seperator used during the data process. default value is semicolon (;)
         /// </summary>
-        public string Separator { get; set; }
+        public string Separator { get; set; } = ";";
 
         /// <summary>
         /// Allow any HTTPS Certificate when creating Selenium Grid connection.
