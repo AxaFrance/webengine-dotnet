@@ -50,7 +50,10 @@ namespace AxaFrance.WebEngine
 
         private Settings()
         {
-            string appconfig = Path.Combine(new FileInfo(typeof(Settings).Assembly.Location).DirectoryName, "appsettings.json");
+            var assemblyLocation = typeof(Settings).Assembly.Location;
+            string appconfig = !string.IsNullOrEmpty(assemblyLocation)
+                ? Path.Combine(new FileInfo(assemblyLocation).DirectoryName, "appsettings.json")
+                : Path.Combine(AppContext.BaseDirectory, "appsettings.json");
             DebugLogger.WriteLine($"Search configuration file '{appconfig}'");
             if (File.Exists(appconfig))
             {

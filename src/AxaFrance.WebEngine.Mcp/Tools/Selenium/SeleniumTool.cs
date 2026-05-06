@@ -1,4 +1,4 @@
-using AxaFrance.WebEngine.Web;
+﻿using AxaFrance.WebEngine.Web;
 using AxaFrance.WebEngine.Mcp.Tools.Selenium.Models;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
@@ -194,7 +194,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("The session ID returned by StartSession")] string sessionId,
         [Description("Element to click - MUST be from actual DOM inspection, not guessed. Use Id, Name, test-id, or TagName+InnerText.")] ElementDescriptor element)
     {
-        logger.LogInformation("[MCP ACTION] ClickElement: Id={Id}, Name={Name}, Text={InnerText}, sessionId={SessionId}", element.Id, element.Name, element.InnerText, sessionId);
+        logger.LogInformation("[MCP ACTION] ClickElement: Ref={Ref}, Id={Id}, Name={Name}, Text={InnerText}, sessionId={SessionId}", element.Ref, element.Id, element.Name, element.InnerText, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "Click", webElement, null, null, driver.Url);
@@ -213,7 +213,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("Text to type into the field")] string text,
         [Description("Clear the field before typing (default: true)")] bool clearFirst = true)
     {
-        logger.LogInformation("[MCP ACTION] TypeText: text={Text}, Id={Id}, Name={Name}, clearFirst={ClearFirst}, sessionId={SessionId}", text, element.Id, element.Name, clearFirst, sessionId);
+        logger.LogInformation("[MCP ACTION] TypeText: text={Text}, Ref={Ref}, Id={Id}, Name={Name}, clearFirst={ClearFirst}, sessionId={SessionId}", text, element.Ref, element.Id, element.Name, clearFirst, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "TypeText", webElement, text, null, driver.Url);
@@ -243,7 +243,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("Input element from DOM inspection (Id or Name preferred)")] ElementDescriptor element,
         [Description("Text to set in the field")] string text)
     {
-        logger.LogInformation("[MCP ACTION] SetText: text={Text}, Id={Id}, Name={Name}, sessionId={SessionId}", text, element.Id, element.Name, sessionId);
+        logger.LogInformation("[MCP ACTION] SetText: text={Text}, Ref={Ref}, Id={Id}, Name={Name}, sessionId={SessionId}", text, element.Ref, element.Id, element.Name, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "SetText", webElement, text, null, driver.Url);
@@ -260,7 +260,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("Select element from DOM inspection (Id or Name for <select> tags)")] ElementDescriptor element,
         [Description("The visible text of the option")] string text)
     {
-        logger.LogInformation("[MCP ACTION] SelectFromDropdownByText: text={Text}, Id={Id}, Name={Name}, sessionId={SessionId}", text, element.Id, element.Name, sessionId);
+        logger.LogInformation("[MCP ACTION] SelectFromDropdownByText: text={Text}, Ref={Ref}, Id={Id}, Name={Name}, sessionId={SessionId}", text, element.Ref, element.Id, element.Name, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "SelectByText", webElement, text, null, driver.Url);
@@ -278,7 +278,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("Select element from DOM (Id or Name)")] ElementDescriptor element,
         [Description("The value attribute of <option> (not visible text)")] string value)
     {
-        logger.LogInformation("[MCP ACTION] SelectFromDropdownByValue: value={Value}, Id={Id}, Name={Name}, sessionId={SessionId}", value, element.Id, element.Name, sessionId);
+        logger.LogInformation("[MCP ACTION] SelectFromDropdownByValue: value={Value}, Ref={Ref}, Id={Id}, Name={Name}, sessionId={SessionId}", value, element.Ref, element.Id, element.Name, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "SelectByValue", webElement, value, null, driver.Url);
@@ -294,7 +294,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("The session ID returned by StartSession")] string sessionId,
         [Description("Checkbox/radio from DOM inspection - use actual TagName (input/div/span) and attributes from DOM")] ElementDescriptor element)
     {
-        logger.LogInformation("[MCP ACTION] CheckElement: Id={Id}, Name={Name}, sessionId={SessionId}", element.Id, element.Name, sessionId);
+        logger.LogInformation("[MCP ACTION] CheckElement: Ref={Ref}, Id={Id}, Name={Name}, sessionId={SessionId}", element.Ref, element.Id, element.Name, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "Check", webElement, null, null, driver.Url);
@@ -311,7 +311,7 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
         [Description("The session ID returned by StartSession")] string sessionId,
         [Description("Checkbox from DOM inspection (Id or Name)")] ElementDescriptor element)
     {
-        logger.LogInformation("[MCP ACTION] UncheckElement: Id={Id}, Name={Name}, sessionId={SessionId}", element.Id, element.Name, sessionId);
+        logger.LogInformation("[MCP ACTION] UncheckElement: Ref={Ref}, Id={Id}, Name={Name}, sessionId={SessionId}", element.Ref, element.Id, element.Name, sessionId);
         var driver = sessionManager.GetDriver(sessionId);
         var webElement = Resolve(driver, element);
         var logEntry = ActionLogBuilder.Build(driver, "Uncheck", webElement, null, null, driver.Url);
@@ -410,10 +410,9 @@ public sealed class SeleniumTool(SeleniumSessionManager sessionManager, ILogger<
     {
         logger.LogDebug("[MCP] ClickAt: sessionId={SessionId}, x={X}, y={Y}", sessionId, x, y);
         var driver = sessionManager.GetDriver(sessionId);
-        new OpenQA.Selenium.Interactions.Actions(driver)
-            .MoveByOffset(x, y)
-            .Click()
-            .Perform();
+        ((IJavaScriptExecutor)driver).ExecuteScript(
+            "var el = document.elementFromPoint(arguments[0], arguments[1]); if (el) { el.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, clientX:arguments[0], clientY:arguments[1]})); }",
+            (long)x, (long)y);
         return driver.Url;
     }
 
