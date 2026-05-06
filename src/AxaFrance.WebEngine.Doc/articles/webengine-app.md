@@ -1,4 +1,4 @@
-# Test Mobile Applications
+﻿# Test Mobile Applications
 If you are already familiar with web application automation,
 it's not hard to build test automation solutions for native or hybrid applications.
 Similar to functionalities provided in <xref:AxaFrance.WebEngine.Web>,
@@ -65,7 +65,7 @@ If you are working on hybrid applications, you can even mix <xref:AxaFrance.WebE
 
 ## Hybrid applications
 Hybrid application is an application that contains WebViews. During the test, you may need to switch to web views, do something then switch back.
-To switch context, Use <xref:AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String)>.
+To switch context, Use <xref:AxaFrance.WebEngine.MobileApp.AppFactory.SwitchContext(OpenQA.Selenium.Appium.AppiumDriver,System.String,System.Int32)>.
 
 ## Example Project
 Sample projects are available using different language and test approaches, please follow this link:

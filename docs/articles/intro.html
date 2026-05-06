@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Introduction of WebEngine Framework | AXA - WebEngine Test Framework </title>
+    <title>Introduction to WebEngine Framework | AXA - WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Introduction of WebEngine Framework | AXA - WebEngine Test Framework ">
+    <meta name="title" content="Introduction to WebEngine Framework | AXA - WebEngine Test Framework ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../images/logo_small.svg">
@@ -67,49 +67,155 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="introduction-of-webengine-framework">Introduction of WebEngine Framework</h1>
+<h1 id="introduction-to-webengine-framework">Introduction to WebEngine Framework</h1>
 
-<p>WebEngine Test Framework permits to quickly start an Web and Mobile testing solution.
-The framework is built based on Selenium and Appium. But it can also be extended using other underlying technologies.
-It provides standardized approache including best practices and tool sets to run and review tests.</p>
-<p>These tests can be run locally, remotely, or be integrated in a Continuous Integration Platform.</p>
-<h2 id="overview">Overview</h2>
-<p>Below is the WebEngine Framework architecture. It is mainly composed with 6 components.</p>
+<p>WebEngine is a Test Automation Framework (TAF) that makes it easy to build reliable, maintainable test automation solutions for <strong>Web</strong>, <strong>Mobile Web</strong> and <strong>Mobile App</strong> testing.
+The framework is built on top of Selenium and Appium, and extends them with standardized approaches, built-in best practices and ready-to-use tooling so your team can focus on test logic rather than framework plumbing.</p>
+<p>Tests built with WebEngine can run locally, on a remote Selenium Grid, or be integrated into any Continuous Integration / Continuous Delivery pipeline.</p>
+<h2 id="why-webengine-instead-of-plain-selenium">Why WebEngine instead of plain Selenium?</h2>
+<p>Selenium and Appium are excellent low-level libraries, but using them alone means every team must solve the same infrastructure problems from scratch.
+WebEngine solves these problems once, for everyone:</p>
+<table>
+<thead>
+<tr>
+<th>Problem with plain Selenium / Appium</th>
+<th>WebEngine solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manual WebDriver download and version alignment</td>
+<td><code>BrowserFactory</code> detects browser version and fetches the right driver automatically</td>
+</tr>
+<tr>
+<td><code>StaleElementReferenceException</code> / timing issues</td>
+<td>Every element action has a built-in <strong>synchronized retry loop</strong></td>
+</tr>
+<tr>
+<td>Fragile single-locator element identification</td>
+<td><code>WebElementDescription</code> supports <strong>multiple combined locators</strong></td>
+</tr>
+<tr>
+<td>Passwords in plain text in scripts or data files</td>
+<td><code>SetSecure</code> + <code>Encrypter</code> — cipher text stored, decrypted on the fly</td>
+</tr>
+<tr>
+<td>Test data duplicated inside test scripts</td>
+<td>Excel-based externalization, environment switching without code changes</td>
+</tr>
+<tr>
+<td>No structure conventions — hard to onboard</td>
+<td>Recommended project layout enforced by Copilot instructions</td>
+</tr>
+<tr>
+<td>Selenium / Appium not accessible to AI tools</td>
+<td><strong>MCP server</strong> exposes live browser control to GitHub Copilot and other AI assistants</td>
+</tr>
+</tbody>
+</table>
+<p>For the full explanation of each practice, see <a href="best-practices.html">Best Practices in WebEngine Framework</a>.</p>
+<h2 id="framework-components">Framework Components</h2>
+<p>WebEngine is composed of <strong>7 components</strong>. Install only what you need.</p>
 <ul>
-<li><code>WebEngine Base Library</code>: The main library defines basic data structures for Test Suites, Test Cases, Test Steps, Test Datas, Environment Variables and Test Report.</li>
-<li><code>WebEngine Web</code>: This library handles Selenium WebDriver, Web Element Identification, Page Models, and all you need to develop test solution for Web/Mobile Applications.</li>
-<li><code>WebEngine MobileApp</code>: This library handles Appium WebDriver, App Element Identification and Device Connection to help developing test solutions for Android and iOS applications.</li>
-<li><code>Excel Add-in</code>: To adopt Data-Driven test approach, you can work with Excel and use <code>Excel Add-in</code> to easily manage, export and launch test execution directly.</li>
-<li><code>Test Runner</code>: The main executable component to run your automated test with given configuration. It generates a rich XML based report which can be viewed with ReportViewer.</li>
-<li><code>Report Viewer</code>: This tool shows test report in a graphic way. Gives you both synthetic and details view.</li>
+<li><code>WebEngine Base Library</code> (<code>AxaFrance.WebEngine</code>): Core data structures — Test Suites, Test Cases, Test Steps, Test Data, Environment Variables and Test Reports. Required by all other components.</li>
+<li><code>WebEngine Web</code> (<code>AxaFrance.WebEngine.Web</code>): Selenium WebDriver management, Web Element identification, Page Models and browser utilities for desktop and mobile browsers.</li>
+<li><code>WebEngine MobileApp</code> (<code>AxaFrance.WebEngine.MobileApp</code>): Appium WebDriver management, App Element identification and device connection for native Android and iOS applications.</li>
+<li><code>WebEngine MCP</code> (<code>AxaFrance.WebEngine.Mcp</code>): An MCP (Model Context Protocol) server that exposes live Selenium and Appium capabilities to AI assistants such as GitHub Copilot, enabling AI-driven browser and mobile automation.</li>
+<li><code>Excel Add-in</code>: Manage, export and launch test execution directly from Excel spreadsheets when using the Data-Driven approach.</li>
+<li><code>Test Runner</code> (<code>WebRunner</code>): The command-line executable to run automated tests with a given configuration. Produces a structured XML report consumable by Report Viewer.</li>
+<li><code>Report Viewer</code>: A graphical viewer for test reports — synthetic overview and detailed step-level trace in one tool.</li>
 </ul>
 <p><img src="../images/webengine-architecture.png" alt="Webengine Architecture"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Current development status and supported actions per component are listed in <a href="dev-status.html">Development Status</a>.</p>
+</div>
 <h2 id="installation">Installation</h2>
-<p>According to your test approach and technology, you can install one or more libraries. for example:</p>
-<h3 id="keyword-driven-approach-for-web-application">Keyword-Driven Approach for Web Application</h3>
-<p>To build test automation solution with keyword driven approach, you will need:</p>
-<ul>
-<li><strong>WebEngine Base Library</strong></li>
-<li><strong>WebEngine Web</strong> to benefits WebDriver management, WebElement Identification and Page Models.</li>
-<li>and <strong>Test Runner</strong> for test Execution</li>
-</ul>
-<h3 id="writing-unit-tests-for-ios-app">Writing Unit Tests for iOS App</h3>
-<p>To build Test automation solution using any Unit Test Framework (NUnit or JUnit for example), you'll need:</p>
-<ul>
-<li><strong>WebEngine Base Library</strong></li>
-<li><strong>WebEngine MobileApp</strong> to benefits AppiumDriver management, AppElement Identification, Page Models and App Package uploading.</li>
-<li>The Runner is provided by the Unit Test Framework that you have selected.</li>
-</ul>
-<h3 id="writing-gherkin-scenarios-for-web-application">Writing Gherkin Scenarios for Web Application</h3>
-<ul>
-<li><strong>WebEngine Base Library</strong></li>
-<li><strong>WebEngine Web</strong> to benefits WebDriver management, WebElement Identification and Page Models.</li>
-<li>NB : the Runner is provided by the Gherkin Test Framework that you have selected.</li>
-</ul>
+<p>Choose the packages matching your scenario. All packages are available on NuGet (.NET) and Maven (Java).</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Required packages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web testing — any approach</td>
+<td><code>AxaFrance.WebEngine</code> + <code>AxaFrance.WebEngine.Web</code></td>
+</tr>
+<tr>
+<td>Mobile browser testing</td>
+<td>above + Appium server or Selenium Grid</td>
+</tr>
+<tr>
+<td>Native Android / iOS app testing</td>
+<td><code>AxaFrance.WebEngine</code> + <code>AxaFrance.WebEngine.MobileApp</code></td>
+</tr>
+<tr>
+<td>Keyword-Driven or Data-Driven execution</td>
+<td>above + <code>AxaFrance.WebEngine.Runner</code> (WebRunner)</td>
+</tr>
+<tr>
+<td>Local report viewing</td>
+<td>+ <code>AxaFrance.WebEngine.ReportViewer</code></td>
+</tr>
+<tr>
+<td>AI-assisted automation via MCP</td>
+<td>+ <code>AxaFrance.WebEngine.Mcp</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-keyword-driven-approach-for-a-web-application">Example: Keyword-Driven approach for a Web Application</h3>
+<pre><code>AxaFrance.WebEngine
+AxaFrance.WebEngine.Web
+AxaFrance.WebEngine.Runner   ← for test execution via WebRunner
+</code></pre>
+<h3 id="example-unit-tests-for-an-ios-native-app">Example: Unit Tests for an iOS Native App</h3>
+<pre><code>AxaFrance.WebEngine
+AxaFrance.WebEngine.MobileApp
+</code></pre>
+<p>The test runner is provided by the unit test framework you choose (NUnit, MSTest, XUnit, JUnit).</p>
+<h3 id="example-gherkin--bdd-for-a-web-application">Example: Gherkin / BDD for a Web Application</h3>
+<pre><code>AxaFrance.WebEngine
+AxaFrance.WebEngine.Web
+</code></pre>
+<p>The runner is provided by your Gherkin framework (SpecFlow, Cucumber).</p>
 <h2 id="extension">Extension</h2>
-<p>If you are working with other technologies other than Selenium, it is possible to build an extension based on <code>WebEngine Base Library</code>.
-That give you the possibility to build test solution with the same approach with different tools.</p>
-<p>For example, some of teams in AXA use <em>MicroFocus UFT Developer</em>, and We have an WebEngine UFT Developer extension.</p>
+<p>If you need to automate an application that Selenium cannot reach, you can build an extension on top of <code>WebEngine Base Library</code>.
+Your extension inherits the same test structure, data management and reporting while using a different underlying driver.</p>
+<p>For example, some teams at AXA use <em>MicroFocus UFT Developer</em> alongside WebEngine.</p>
+<h2 id="going-further">Going Further</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Built-in best practices explained</td>
+<td><a href="best-practices.html">Best Practices</a></td>
+</tr>
+<tr>
+<td>Supported browsers, platforms and actions</td>
+<td><a href="dev-status.html">Development Status</a></td>
+</tr>
+<tr>
+<td>Configuration file reference</td>
+<td><a href="appsettings.html">Test Configuration (appsettings.json)</a></td>
+</tr>
+<tr>
+<td>GitHub Copilot integration</td>
+<td><a href="github-copilot.html">Using GitHub Copilot with WebEngine</a></td>
+</tr>
+<tr>
+<td>CI/CD integration</td>
+<td><a href="../tutorials/ci-cd.html">Tutorials → CI/CD</a></td>
+</tr>
+</tbody>
+</table>
 
 </article>
           </div>

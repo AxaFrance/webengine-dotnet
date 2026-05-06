@@ -71,7 +71,7 @@
 
 <p>In this series of documentation, we will learn how to develop Test Automation Solutions with the WebEngine Framework, and how this Framework can help you build these solutions easier and faster.</p>
 <h2 id="selenium-webdriver">Selenium WebDriver</h2>
-<p>AXA WebEngine Framework is based on Selenium WebDriver. In this document we assume that you know already following basic concepts of Selenium:</p>
+<p>AxaFrance WebEngine Framework is based on Selenium WebDriver. In this document we assume that you know already following basic concepts of Selenium:</p>
 <ul>
 <li>Locator Strategies: That is use Class name, Css selector, Id, Name, Xpath or other locators to identify one or more specific elements in the DOM.</li>
 <li>Find Web Elements: By using functions of FindElement (by id, by name, by xpath ...)</li>
@@ -89,8 +89,51 @@
 <li><a href="app-elements.html">How to identify UI Elements on Mobile Application</a></li>
 <li><a href="page-model.html">How to organize UI Elements into a Page Model</a></li>
 <li>How to initialize Web Driver for <a href="web-driver.html">Web Testing</a> and <a href="appium-driver.html">Mobile App Testing</a></li>
+<li><a href="secure-password.html">Handling secure passwords in test data</a></li>
+<li><a href="../articles/github-copilot.html">Using the MCP Server for AI-assisted browser automation</a></li>
 </ul>
 <h2 id="test-approach-and-sample-projects">Test Approach and sample projects</h2>
+<p>Not sure which approach to choose? Here is a quick guide:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Best suited for</th>
+<th>Reusability</th>
+<th>Test data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear Scripting</strong></td>
+<td>Quick scripts, unit-style tests</td>
+<td>Low</td>
+<td>Hardcoded</td>
+</tr>
+<tr>
+<td><strong>Gherkin / BDD</strong></td>
+<td>Feature acceptance tests in BDD teams</td>
+<td>Medium</td>
+<td>In scenario</td>
+</tr>
+<tr>
+<td><strong>Keyword-Driven</strong></td>
+<td>Complex end-to-end tests</td>
+<td>High</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>Keyword + Data-Driven</strong></td>
+<td>Large regression suites, multi-environment</td>
+<td>Highest</td>
+<td>Excel / external</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For most professional end-to-end test projects, the <strong>Keyword-Driven + Data-Driven</strong> combination is recommended. It gives the highest reusability and lowest long-term maintenance cost.</p>
+</div>
 <ul>
 <li><a href="keyworddriven.html">Introduction to Keyword-Driven Test Method</a></li>
 <li>Workarounds by using different approach as follow</li>
@@ -98,7 +141,7 @@
 <table>
 <thead>
 <tr>
-<th>Test Approachs</th>
+<th>Test Approach</th>
 <th>.NET Sample</th>
 <th>Java Sample</th>
 </tr>
@@ -126,6 +169,14 @@
 </tr>
 </tbody>
 </table>
+<h2 id="going-further">Going further</h2>
+<p>Once you have a working test automation project, explore these topics to make your solution production-ready:</p>
+<ul>
+<li><a href="../articles/appsettings.html">Test Configuration (appsettings.json)</a> — browser options, grid connection, encryption key</li>
+<li><a href="ci-cd.html">Integrate with CI/CD pipelines</a> — run your tests automatically on every build</li>
+<li><a href="../articles/best-practices.html">Built-in Best Practices</a> — overview of all practices the framework implements for you</li>
+<li><a href="../articles/github-copilot.html">GitHub Copilot integration</a> — let AI generate PageModels and Actions following WebEngine conventions</li>
+</ul>
 
 </article>
           </div>

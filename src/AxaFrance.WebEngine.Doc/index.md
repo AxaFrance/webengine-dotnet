@@ -1,25 +1,28 @@
-﻿# AXA WebEngine Framework
+﻿# AxaFrance WebEngine Framework
 
-A Test Automation Framework (TAF) is a set of guidelines, libraries for creating and designing test cases.
-It is a conceptual part of the automated testing, provides common functionalities and best practices that helps Test Automation Engineers to create reliable, maintainable, and well-structured Test Automation Solutions (TAS).
+A Test Automation Framework (TAF) is a set of guidelines and libraries for creating and designing test cases.
+It is a conceptual part of automated testing that provides common functionalities and best practices, helping Test Automation Engineers to build reliable, maintainable and well-structured Test Automation Solutions (TAS).
 
-AXA WebEngine Framework makes it easy to build highly effective test automation solutions for **Web**, **Mobile Web** and **Mobile App** testing.
+AxaFrance WebEngine Framework makes it easy to build highly effective test automation solutions for **Web**, **Mobile Web** and **Mobile App** testing.
 
-Built by Test Guild of AXA France, available in **.NET** and **JAVA** and used by a dozen of test automation projects within AXA France. We decided to open source this framework to share our knowledge on Test Automation to the community and hope we can improve the framework and the quality of IT Systems together, of course 😉 .
+Built by the Test Guild of AXA France, available in **.NET** and **Java**, and used across a dozen test automation projects within AXA France. We decided to open-source this framework to share our knowledge on Test Automation with the community and improve software quality together 😉.
 
 ## Why WebEngine Framework?
-WebEngine Framework resolves some common issues that we can encounter in several test automation project and it simplifies the writing of test scripts.
-* It supports all Selenium technologies based :
-    * on Desktop Browsers 
-    * Mobile Browsers on different Mobile Devices.
-* Using **Browser Factory**, there is no need to download various selenium WebDriver when browser and its version changes.
-* Description oriented **Web Element** identification and synchronization with browser out-of-box.
-* Organizing Web Element in **Page Model** makes test scripts easy to read and to maintain.
-* Fully object-oriented and compatible with **Keyword-Driven** and **Data-driven** approach.
-* Compatible with another Unit test frameworks such as NUnit, Cucumber
-* Easy configuration and Set-up for Execution: Run test directly from Excel, as well as on DevOps platforms
-* Graphical test report.
-* **Open Source**, free usage and let’s improve it together!
+
+WebEngine resolves common problems that arise in test automation projects, embedding best practices directly into the framework so every team benefits automatically.
+
+* **No more driver management headaches** - BrowserFactory detects your installed browser version and downloads the correct WebDriver automatically.
+* **Resilient element identification** - WebElementDescription lets you combine multiple locators (Id, Name, CSS, XPath, custom HTML attributes).
+* **Built-in synchronization** - Every element action has an automatic retry loop. StaleElementReferenceException and timing issues are handled by the framework, not by Thread.Sleep() in your code.
+* **Page Object Model by design** - PageModel cleanly separates element descriptions from test logic.
+* **Secure credential handling** - SetSecure decrypts and types passwords on the fly.
+* **Test data externalization** - Add new test cases and switch environments without changing code.
+* **AI-powered test authoring** - The built-in MCP server exposes live browser control to GitHub Copilot and other AI assistants.
+* **Cross-platform from one API** - The same BrowserFactory works for Windows, macOS, Android and iOS.
+* **Graphical test reports** - Report Viewer provides synthetic overview and step-level detail.
+* **Open Source** - Free to use. Contributions welcome!
+
+For a detailed explanation of every built-in practice, see [Best Practices in WebEngine Framework](articles/best-practices.md).
 
 <style>
 table {
@@ -40,7 +43,7 @@ td, th, tr {
 
 | <img src="images/info.svg" alt="Introduction" width="72" style="text-align: center" />|<img src="images/net_core.svg" alt=".NET API Reference" width="72" style="text-align: center" />| <img src="images/java.svg" alt="JAVA API Reference" width="72" style="text-align: center" />|<img src="images/build.svg" alt="Tutorials" width="72" style="text-align: center" />|
 |--------------|--------------|--------------|--------------|
-| [Introduction](articles/intro.md) | [.NET API<br />Reference](api_net/) | [JAVA API<br />Reference](api_java/) | [Tutorials &<br />Examples](tutorials/intro.md) |
+| [Introduction](articles/intro.md) | [.NET API<br />Reference](<xref:AxaFrance.WebEngine>) | <a href="api_java/">JAVA API<br />Reference</a> | [Tutorials &<br />Examples](tutorials/intro.md) |
 
 ## Show case
 <iframe frameborder="0"  src="https://www.dailymotion.com/embed/video/k7kedqwLLueznayqBmd" allowfullscreen allow="autoplay"/>

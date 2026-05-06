@@ -4,11 +4,12 @@
 
 |Component|.NET|Java|Description|
 |---------|----|----|-----------|
-|AXA.WebEngine|🟢|🟢|Provide basic data structure used in an automation project|
-|AXA.WebEngine.Web|🟢|🟢|Provide functionalities to test Web based application on Desktop and Mobile browsers (Based on Selenium 4)|
-|AXA.WebEngine.MobileApp|🟢|🔘|Provide functionalities to test Native and Hybrid mobile applications on Android and iOS (Based on Appium)|
-|AXA.WebEngine.WebRunner|🟢|🟢|Run automated tests using Keyword driven testing approach|
-|AXA.WebEngine.ReportViewer|🟢|🟢|View test reports (unique version for both .NET and Java version of the framework)|
+|AxaFrance.WebEngine|🟢|🟢|Provide basic data structure used in an automation project|
+|AxaFrance.WebEngine.Web|🟢|🟢|Provide functionalities to test Web based application on Desktop and Mobile browsers (Based on Selenium 4)|
+|AxaFrance.WebEngine.MobileApp|🟢|🔘|Provide functionalities to test Native and Hybrid mobile applications on Android and iOS (Based on Appium)|
+|AxaFrance.WebEngine.Mcp|🟢|🔘|MCP server exposing Selenium and Appium capabilities to AI assistants (e.g. GitHub Copilot)|
+|AxaFrance.WebEngine.Runner (WebRunner)|🟢|🟢|Run automated tests using Keyword driven testing approach|
+|AxaFrance.WebEngine.ReportViewer|🟢|🟢|View test reports (unique version for both .NET and Java version of the framework)|
 
 ## Actions for Web Elements (Via <xref:AxaFrance.WebEngine.Web.WebElementDescription>)
 These actions are available for WebElementDescription. Please note that some actions have different meaning on Desktop and Mobile browsers.

@@ -1,5 +1,7 @@
-- name: Introduction
+﻿- name: Introduction
   href: intro.md
+- name: Best Practices
+  href: best-practices.md
 - name: Web Runner
   href: webrunner.md
 - name: Test Configuration File

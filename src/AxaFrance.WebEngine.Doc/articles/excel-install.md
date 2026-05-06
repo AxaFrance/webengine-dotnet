@@ -1,7 +1,7 @@
-# Install WebEngine Add-in for Excel
+﻿# Install WebEngine Add-in for Excel
 
 ## How to install WebEngine Add-in
-* Download Excel add-in from [Here](http://download_link.)
+* Download the Excel Add-in package from the [GitHub releases page](https://github.com/AxaFrance/webengine-dotnet/releases)
 * Close all Excel instances
 * Launch `Setup.exe`
 

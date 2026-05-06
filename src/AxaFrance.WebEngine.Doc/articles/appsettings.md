@@ -8,6 +8,7 @@ If a parameter is provided in both side, the value provided in command-line will
   "LogDir": null,
   "GridConnection": "http://localhost:4723/wd/hub",
   "GridForDesktop": false,
+  "UseAppiumForWebMobile": false,
   "Username": "",
   "Password": "",
   "PackageUploadTargetUrl": "https://yourcloudprovider.com/apploader/upload",
@@ -28,20 +29,21 @@ If a parameter is provided in both side, the value provided in command-line will
 ```
 
 ## General Options
-* `LogDir`: The directory to store the test report. if the value is null, then the default temporary folder will be used.
-* `GridConnection`: The Selenium Grid/Appium Server Url to run Mobile based tests. 
-* `GridForDesktop`: Normal Web Desktop execution will run locally and ignore selenium grid connection. If you want to run Desktop Web tests on a Selenium Grid, set this value to `true`. Mobile test will not be affected by this value.
-* `Username`: The username of Selenium Grid authentication.
-* `Password`: The password of Selenium Grid authentication.
-* `PackageUploadTargetUrl`: The url handler to upload the app package (.apk or .ipa)
-* `PackageName`: The name of the app package (often in *com.company.product* format)
-* `EncryptionKey`: If you want to secure password used in your script, you can encrypt it via the customized Encryption Key.
-If the value is `null`, WebEngine will use default encryption key.
-* `Capabilities`: To provided necessary Appium capabilities or options for special need.
+* `LogDir`: The directory to store the test report. If the value is null, the default temporary folder will be used.
+* `GridConnection`: The Selenium Grid or Appium Server URL used for mobile or remote desktop tests.
+* `GridForDesktop`: Normal Web Desktop tests run locally and ignore Selenium Grid. Set to `true` to route desktop browser tests through the Selenium Grid as well. Mobile tests are not affected by this value.
+* `UseAppiumForWebMobile`: When set to `true`, forces the framework to use Appium for mobile web browser tests (e.g., Chrome on Android, Safari on iOS) instead of a pure Selenium Grid connection. Useful when your grid provider requires Appium for mobile web.
+* `Username`: The username for Selenium Grid authentication.
+* `Password`: The password for Selenium Grid authentication.
+* `PackageUploadTargetUrl`: The URL endpoint used to upload the app package (`.apk` or `.ipa`).
+* `PackageName`: The package name of the application under test (typically in *com.company.product* format).
+* `EncryptionKey`: A custom key used to encrypt and decrypt sensitive values (such as passwords) in test data files. If `null`, WebEngine uses a default built-in key. For security, avoid storing a real key in a shared configuration file — use token replacement on your DevOps platform instead.
+* `AllowInsecureCertificate`: When `true`, the browser will accept self-signed or untrusted SSL certificates. Useful for testing environments that do not have a trusted certificate.
+* `BrowserVersion`: Pins the browser version when connecting to a Selenium Grid that requires it.
+* `Capabilities`: Additional capabilities sent to Appium or Selenium Grid for special configuration needs.
 
 ## Options for browsers
-* `chromeOptions`, `firefoxOptions`, `edgeOptions` and `safariOptions`: These are default options for each browser. when `BrowserFactory.GetDriver` is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in `incongnito` mode, if running tests on Edge, the browser will be launched in `imprivate` mode with window maximized by default. 
-
+* `chromeOptions`, `firefoxOptions`, `edgeOptions` and `safariOptions`: Default launch options for each browser. When `BrowserFactory.GetDriver` is called, the options for the selected browser are applied automatically. For example, with the configuration above, Chrome will launch in `incognito` mode and Edge will launch in `inprivate` mode with the window maximized.
 
 > [!NOTE]
-> Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it's necessary.
+> Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing. Use only when necessary.

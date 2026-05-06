@@ -89,9 +89,7 @@ To test web application, we usually need to open the web browser and perform thr
 <li>Have basic knowledge on Selenium WebDriver, either in C# or Java</li>
 </ul>
 <h2 id="use-browserfactory-to-manage-selenium-webdriver">Use BrowserFactory to manage Selenium WebDriver</h2>
-<p><a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> is used to open selected browser of which the test suite will execute on. For example, a single line of code:</p>
-<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
-</code></pre>
+<p><a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html">BrowserFactory</a> is used to open the selected browser on which the test suite will execute. For example:</p>
 <div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
@@ -103,7 +101,7 @@ To test web application, we usually need to open the web browser and perform thr
 </ul>
 <section id="tabpanel_1_browserfactorynet" role="tabpanel" data-tab="browserfactorynet">
 
-<pre><code class="lang-csharp">var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+<pre><code class="lang-csharp">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 </code></pre>
 </section>
 <section id="tabpanel_1_browserfactoryjava" role="tabpanel" data-tab="browserfactoryjava" aria-hidden="true" hidden="hidden">
@@ -116,17 +114,17 @@ To test web application, we usually need to open the web browser and perform thr
 <p>Will perform following actions:</p>
 <ul>
 <li>Determines the Edge browser installed on your computer</li>
-<li>Downloads the Edge WebDriver from official repository according to its version</li>
+<li>Downloads the Edge WebDriver from the official repository according to its version</li>
 <li>Initializes the Selenium WebDriver</li>
 </ul>
-<p>For mobile testing, the following line of code:</p>
-<pre><code class="lang-cs">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
+<p>For mobile browser testing, the following line of code:</p>
+<pre><code class="lang-csharp">var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
 </code></pre>
-<p>Will perform following actions</p>
+<p>Will perform following actions:</p>
 <ul>
-<li>Connects to Selenium Grid or Appium Server</li>
-<li>Initializes Selenium WebDriver and open Chrome on selected device</li>
-<li>Returns an AppiumDriver to end user.</li>
+<li>Connects to a Selenium Grid or Appium Server</li>
+<li>Initializes Selenium WebDriver and opens Chrome on the selected device</li>
+<li>Returns an <code>AppiumDriver</code> to end user</li>
 </ul>
 <h2 id="use-elementdescription-to-identify-web-elements">Use ElementDescription to identify Web Elements</h2>
 <p><a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.

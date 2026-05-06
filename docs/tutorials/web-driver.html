@@ -72,12 +72,12 @@
 <p>With WebEngine there is a unique way to initialize Web Driver for any kind of platforms and any kind of browsers:
 <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html#AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_">GetDriver(Platform, BrowserType)</a></p>
 <h2 id="test-on-desktop-browsers">Test on desktop browsers</h2>
-<p>WebEngine support following desktop browsers:</p>
+<p>WebEngine supports the following desktop browsers:</p>
 <ul>
-<li><code>Internet Explorer</code>: (deprecated) WebEngine.Web library contains the IE WebDriver to run automated tests on Internet Explorer 11.</li>
-<li><code>Microsoft Edge</code>: WebEngine will automatically download and use Microsoft Edge driver from official repository according to the Edge installed on your computer.</li>
-<li><code>Google Chrome</code>: WebEngine will automatically download and use Chrome Driver from official repository according to the Chrome installed on your computer.</li>
-<li><code>Mozilla FireFox</code>: WebEngine library contains a geckodriver</li>
+<li><code>Microsoft Edge</code>: WebEngine will automatically download and use the Microsoft Edge driver from the official repository according to the Edge version installed on your computer.</li>
+<li><code>Google Chrome</code>: WebEngine will automatically download and use the Chrome driver from the official repository according to the Chrome version installed on your computer.</li>
+<li><code>Mozilla Firefox</code>: WebEngine uses geckodriver to automate Firefox.</li>
+<li><code>Safari</code>: Supported on macOS. Safari's WebDriver (SafariDriver) is built into macOS and requires no additional download. Enable it once with <code>safaridriver --enable</code> in Terminal.</li>
 </ul>
 <pre><code class="lang-csharp">var webdriver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 webdriver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quot;);
@@ -85,10 +85,7 @@ webdriver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quo
 <p>The returned <code>webdriver</code> object is type of <code>OpenQA.Selenium.WebDriver</code></p>
 <div class="IMPORTANT">
 <h5>Important</h5>
-<ol>
-<li>Earlier EdgeHTML based Edge is abandoned by Microsoft. WebEngine support chromium-based Edge browser.</li>
-<li>Internet Explorer is no longer supported; we will remove the support of IE in future release.</li>
-</ol>
+<p>WebEngine supports the Chromium-based Microsoft Edge only. The legacy EdgeHTML-based Edge is no longer supported.</p>
 </div>
 <h2 id="test-on-mobile-browsers">Test on Mobile browsers</h2>
 <p>WebEngine support following desktop browsers:</p>
@@ -119,13 +116,13 @@ driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/&quot;)
 <p>Selenium Grid connection, username and password can be configured in <a href="../articles/appsettings.html">configuration files</a>.</p>
 </div>
 <h2 id="firewall-consideration">Firewall consideration</h2>
-<p>During test execution, the target machine must have access to the following internet address to download the web driver according to the browser installed.</p>
+<p>During test execution, the target machine must have access to the following internet addresses to download the web driver matching the installed browser version.</p>
 <ul>
 <li>For Edge: <a href="https://msedgedriver.azureedge.net">https://msedgedriver.azureedge.net</a></li>
-<li>For Chrome: <a href="https://chromedriver.storage.googleapis.com">https://chromedriver.storage.googleapis.com</a></li>
+<li>For Chrome: <a href="https://googlechromelabs.github.io/chrome-for-testing/">https://googlechromelabs.github.io/chrome-for-testing/</a></li>
 </ul>
-<p>If test execution is performed in a controlled environment, please configure either proxy or firewall rules to make sure above URLs are accessible.
-WebEngine framework will take account system proxy settings.</p>
+<p>If test execution is performed in a controlled environment, please configure either a proxy or firewall rules to ensure the above URLs are accessible.
+WebEngine Framework respects system proxy settings.</p>
 
 </article>
           </div>

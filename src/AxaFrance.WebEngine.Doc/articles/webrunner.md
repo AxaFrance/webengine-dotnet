@@ -1,4 +1,4 @@
-# Launch Test with Web Runner
+﻿# Launch Test with Web Runner
 `WebRunner` is the component to run automated tests and provides rich XML reports.
 Based on the programming language used to build a test automation solution, the command-line has a little difference.
 However, all behaviors and arguments remain the same.
@@ -88,24 +88,24 @@ WebRunner.exe "-encrypt" "MySecretPassword" "-encryptionKey:MyEncryptionKey"
 - **Desktop Browsers:**
   - `Chrome` - Google Chrome
   - `Firefox` - Mozilla Firefox
-  - `Edge` - Microsoft Edge (Chromium-based)
-- **Mobile Browsers:**
-  - `Safari` - iOS Safari browser
-  - `Chrome` - Google Chrome
+  - `Edge` or `ChromiumEdge` - Microsoft Edge (Chromium-based)
+- **Mobile Browsers (requires Appium or Selenium Grid):**
+  - `Safari` - iOS Safari browser (iOS or MacOS devices)
+  - `Chrome` - Google Chrome on Android devices
 - **Mobile Native Applications:**
   - `IOSNative` - iOS native application
   - `AndroidNative` - Android native application
 
 > [!NOTE]
-> Internet Explorer is no longer supported. Please use Edge or other modern browsers.
+> Internet Explorer is no longer supported. Using `IE` or `InternetExplorer` as browser value will throw an error.
 
 See: <xref:AxaFrance.WebEngine.BrowserType> for more details.
 
 #### -platform:\<platform>
 Specifies the platform for test execution. Supported values:
-- `Windows` (default)
-- `Android`
-- `iOS`
+- `Windows` (default) — Desktop browser tests
+- `Android` — Android devices (browser or native app)
+- `iOS` — iOS devices (browser or native app)
 
 See: <xref:AxaFrance.WebEngine.Platform> for more details.
 
