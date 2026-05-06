@@ -7,13 +7,14 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net48;net8.0-windows;net10.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
     <Nullable>disable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <UseWPF>true</UseWPF>
     <AssemblyName>ReportViewer</AssemblyName>
     <IsPublishable>False</IsPublishable>
     <UseWindowsForms>False</UseWindowsForms>
+    <NoWarn>$(NoWarn);NU1701</NoWarn>
     <ApplicationIcon>Icons\ReportViewer.ico</ApplicationIcon>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
@@ -34,29 +35,25 @@
     <None Remove="Icons\ReportViewer.ico" />
     <None Remove="Icons\ReportViewer.png" />
     <None Remove="XmlDark.xshd" />
+    <None Remove="XmlLight.xshd" />
   </ItemGroup>
 
 
   <ItemGroup>
     <EmbeddedResource Include="XmlDark.xshd" />
+    <EmbeddedResource Include="XmlLight.xshd" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.1.120" />
-    <PackageReference Include="Hummingbird.UI" Version="1.2.2772.2" />
-    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.1" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3719.77" />
-    <PackageReference Include="SkiaSharp" Version="3.119.1" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3912.50" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AxaFrance.WebEngine\AxaFrance.WebEngine.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <Reference Include="System.IO.Compression" />
   </ItemGroup>
 
   <ItemGroup>

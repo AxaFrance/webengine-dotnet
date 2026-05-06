@@ -6,8 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Hummingbird.UI;component/Styles/DefaultStyle.xaml" />
-                <!-- <ResourceDictionary Source="pack://application:,,,/Hummingbird.UI;component/Styles/ColorShemes/Dark_Blue.xaml" /> -->
+                <!-- Theme is applied at runtime by App.xaml.cs based on OS setting -->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

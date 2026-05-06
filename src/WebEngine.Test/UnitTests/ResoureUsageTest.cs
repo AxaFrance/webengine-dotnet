@@ -17,7 +17,7 @@ namespace WebEngine.Test.UnitTests
     public class ResoureUsageTest
     {
         [TestMethod]
-        public async void RunTestWithResourceMonitoring()
+        public async Task RunTestWithResourceMonitoring()
         {
             using var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.Chrome);
             // Démarrer le monitoring de l'usage des ressources

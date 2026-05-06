@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFrameworks>net48</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <Nullable>disable</Nullable>
     <IsPublishable>False</IsPublishable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -44,12 +44,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="3.119.1" />
-    <PackageReference Include="System.Text.Json" Version="10.0.2" />
+    <PackageReference Include="SkiaSharp" Version="3.119.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AxaFrance.WebEngine.ReportViewer\AxaFrance.WebEngine.ReportViewer.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />
   </ItemGroup>

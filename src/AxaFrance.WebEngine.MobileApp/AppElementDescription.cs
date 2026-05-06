@@ -317,7 +317,9 @@ namespace AxaFrance.WebEngine.MobileApp
         }
 
         /// <summary>
-        /// Swipe left on the screen (useful for carousels, horizontal lists, dismissible cards)
+        /// Swipe left on the screen (useful for carousels, horizontal lists, dismissible cards).
+        /// Y coordinate is calculated as the vertical center of the screen.
+        /// If you want to swipe left on a specific element, please use <see cref="SwipeLeftOnElement"/> instead, which will calculate Y coordinate based on the element's position.
         /// </summary>
         public void SwipeLeft()
         {
@@ -326,7 +328,33 @@ namespace AxaFrance.WebEngine.MobileApp
         }
 
         /// <summary>
+        /// Performs a leftward swipe gesture on the currently located UI element.
+        /// </summary>
+        /// <remarks>Use this method to simulate a user swiping left on an element, typically for actions
+        /// such as revealing hidden options or dismissing items. The swipe is executed horizontally across the vertical
+        /// center of the element. Ensure that an element is available and visible before calling this method to avoid
+        /// unexpected behavior.</remarks>
+        public void SwipeLeftOnElement()
+        {
+            var element = FindElement();
+            var y = element.Location.Y + element.Size.Height / 2;
+            GenericSwipe(0.8, 0.2, y);
+        }
+
+        /// <summary>
+        /// Performs a rightward swipe gesture on the currently located UI element.
+        /// </summary>
+        public void SwipeRightOnElement()
+        {
+            var element = FindElement();
+            var y = element.Location.Y + element.Size.Height / 2;
+            GenericSwipe(0.2, 0.8, y);
+        }
+
+        /// <summary>
         /// Swipe right on the screen (useful for carousels, horizontal lists, navigation)
+        /// Y coordinate is calculated as the vertical center of the screen.
+        /// If you want to swipe left on a specific element, please use <see cref="SwipeLeftOnElement"/> instead, which will calculate Y coordinate based on the element's position.
         /// </summary>
         public void SwipeRight()
         {

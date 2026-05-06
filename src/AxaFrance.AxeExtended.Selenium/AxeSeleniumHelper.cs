@@ -2,12 +2,10 @@
 using Deque.AxeCore.Commons;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
-using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace AxaFrance.AxeExtended.Selenium
 {
@@ -171,7 +169,7 @@ namespace AxaFrance.AxeExtended.Selenium
             {
                 try
                 {
-                    var screenshot = options.UseAdvancedScreenshot ? AdvancedScreenshot(driver, we, options) : ToWebpByteArray(we.GetScreenshot());
+                    var screenshot = options.UseAdvancedScreenshot ? AdvancedScreenshot(driver, we, options) : ToPngByteArray(we.GetScreenshot());
                     driver.SwitchTo().DefaultContent(); //goes back to default context (leaving iframes)
                     return screenshot;
                 }
@@ -217,39 +215,44 @@ namespace AxaFrance.AxeExtended.Selenium
         }
 
         /// <summary>
-        /// Convert selenium screenshot in png format to webp format.
+        /// Returns the selenium screenshot bytes (PNG format).
         /// </summary>
         /// <param name="screenshot">Selenium screenshot object.</param>
-        /// <returns>Byte array of an image in webp format</returns>
-        private static byte[] ToWebpByteArray(Screenshot screenshot)
+        /// <returns>Byte array of an image in PNG format</returns>
+        private static byte[] ToPngByteArray(Screenshot screenshot)
         {
-            //covert screenshot in png format to webp
-            using (SKBitmap bitmap = SKBitmap.Decode(screenshot.AsByteArray))
-            {
-                using (SKImage img = SKImage.FromBitmap(bitmap))
-                {
-                    using (SKData data = img.Encode(SKEncodedImageFormat.Webp, 80))
-                    {
-                        return data.ToArray();
-                    }
-                }
-            }
-
+            return screenshot.AsByteArray;
         }
 
         private static byte[] AdvancedScreenshot(WebDriver driver, WebElement element, PageReportOptions options)
         {
             BringToView(element, driver);
-            var imageViewPort = driver.GetScreenshot();
             var locatable = (ILocatable)element;
-
-            var location = locatable.Coordinates.LocationInViewport; //location and size are for 100% dpi
+            var location = locatable.Coordinates.LocationInViewport;
             var size = element.Size;
             var width = size.Width == 0 ? 10 : size.Width;
             var height = size.Height == 0 ? 10 : size.Height;
-            var newSize = new Size(width, height);
-            var screenshot = MarkOnImage(imageViewPort, location, newSize, options);
-            return screenshot;
+            var color = options.HighlightColor;
+            var thickness = (int)options.HighlightThickness;
+            var border = $"{thickness}px solid rgb({color.R},{color.G},{color.B})";
+            var css = $"position:fixed;pointer-events:none;z-index:2147483647;box-sizing:border-box;" +
+                      $"left:{location.X}px;top:{location.Y}px;width:{width}px;height:{height}px;border:{border}";
+            try
+            {
+                driver.ExecuteScript(
+                    "var e=document.createElement('div');" +
+                    "e.id='__axe_highlight__';" +
+                    $"e.style.cssText='{css}';" +
+                    "document.documentElement.appendChild(e);");
+                var screenshot = driver.GetScreenshot();
+                return screenshot.AsByteArray;
+            }
+            finally
+            {
+                driver.ExecuteScript(
+                    "var e=document.getElementById('__axe_highlight__');" +
+                    "if(e) e.parentNode.removeChild(e);");
+            }
         }
 
         /// <summary>
@@ -260,30 +263,6 @@ namespace AxaFrance.AxeExtended.Selenium
         private static void BringToView(WebElement element, WebDriver driver)
         {
             driver.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-        }
-
-        //When using advanced screenshot, Use SkiaSharp to draw the element in question on the screenshot of containing view port.
-        private static byte[] MarkOnImage(Screenshot imageViewPort, Point location, Size size, PageReportOptions options)
-        {
-            SKColor color = new SKColor(options.HighlightColor.R, options.HighlightColor.G, options.HighlightColor.B);
-            using (SKBitmap bitmap = SKBitmap.Decode(imageViewPort.AsByteArray))
-            {
-                using (SKCanvas canvas = new SKCanvas(bitmap))
-                {
-                    canvas.DrawRect(location.X, location.Y,
-                        size.Width, size.Height,
-                        new SKPaint()
-                        {
-                            Color = color,
-                            Style = SKPaintStyle.Stroke,
-                            StrokeWidth = options.HighlightThickness
-                        });
-                    using (var data = bitmap.Encode(SKEncodedImageFormat.Webp, 80))
-                    {
-                        return data.ToArray();
-                    }
-                }
-            }
         }
     }
 }

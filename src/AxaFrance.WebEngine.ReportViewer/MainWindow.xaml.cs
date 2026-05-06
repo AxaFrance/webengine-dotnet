@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-8-1 10:22
 using AxaFrance.WebEngine.Report;
-using Hummingbird.UI;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using Microsoft.Win32;
@@ -24,7 +23,7 @@ namespace AxaFrance.WebEngine.ReportViewer
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : BasicWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -93,7 +92,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             }
             catch (Exception ex)
             {
-                ShowMessageBox("Error", $"Unable to load the report file from {filename}: {ex.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Unable to load the report file from {filename}: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 emptyPresenter.Visibility = Visibility.Visible;
             }
         }
@@ -429,7 +428,6 @@ namespace AxaFrance.WebEngine.ReportViewer
                             {
                                 var screenshot = App.ConvertToBitmap(img, 96);
                                 App.SaveImageToClipboard(screenshot);
-                                ShowMessageBox("The screenshot has been saved to clipboard", "Screenshot", MessageBoxButton.OK, MessageBoxImage.Information);
                             };
                             img.MouseLeftButtonDown += Img_MouseLeftButtonDown;
                             spScreenShots.Children.Add(img);
@@ -492,7 +490,6 @@ namespace AxaFrance.WebEngine.ReportViewer
             if (tag != null)
             {
                 Clipboard.SetText(tag);
-                ShowToastNotification($"'{tag}' copied to clipboard", NotificationLevel.Information, null, 2);
             }
         }
 
@@ -502,7 +499,6 @@ namespace AxaFrance.WebEngine.ReportViewer
             if (tag != null)
             {
                 Clipboard.SetText(tag);
-                ShowToastNotification($"'{tag}' copied to clipboard", NotificationLevel.Information, null, 2);
             }
         }
 
@@ -574,7 +570,7 @@ namespace AxaFrance.WebEngine.ReportViewer
                 }
                 else
                 {
-                    ShowMessageBox("Error", "Unable to find the index.html file in the accessibility report", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Unable to find the index.html file in the accessibility report", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
