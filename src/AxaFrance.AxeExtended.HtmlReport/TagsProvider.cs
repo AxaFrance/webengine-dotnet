@@ -13,7 +13,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </summary>
         /// <param name="ruleId">the identifier of the rule</param>
         /// <returns>a list of additional tags for a given rule.</returns>
-        public abstract IEnumerable<string> GetTagsByRule(AxeResultItem rule);
+        public abstract IEnumerable<string> GetTagsByRule(AxeResultItem ruleId);
 
         /// <summary>
         /// If additional tags should be shown only on overall report.

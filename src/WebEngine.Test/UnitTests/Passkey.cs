@@ -236,7 +236,7 @@ namespace WebEngine.Test.UnitTests
 
                 DebugLogger.WriteLine($"Login status: {(isLoggedIn ? "Success" : "Completed")}");
                 DebugLogger.WriteLine($"Error box visible: {pageModel.ErrorBox.IsDisplayed}");
-                Assert.IsTrue(true, "Login flow with passkey completed successfully");
+                // Login flow with passkey completed successfully
             }
             finally
             {

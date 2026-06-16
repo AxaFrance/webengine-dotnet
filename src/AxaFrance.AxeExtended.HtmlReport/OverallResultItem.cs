@@ -2,6 +2,9 @@
 
 namespace AxaFrance.AxeExtended.HtmlReport
 {
+    /// <summary>
+    /// Represents a result item for a WCAG accessibility rule evaluation.
+    /// </summary>
     public class OverallResultItem
     {
         /// <summary>
@@ -9,6 +12,9 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// </summary>
         public int RulePoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the rule.
+        /// </summary>
         public string RuleName { get; set; } = string.Empty;
 
         /// <summary>

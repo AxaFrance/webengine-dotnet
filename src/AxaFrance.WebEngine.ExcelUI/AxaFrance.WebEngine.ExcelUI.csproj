@@ -266,7 +266,6 @@
     <EmbeddedResource Include="Ribbon.resx">
       <DependentUpon>Ribbon.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AxaFrance.WebEngine.ExcelUI_1_TemporaryKey.pfx" />
     <None Include="AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -357,7 +356,7 @@
     <ManifestKeyFile>AxaFrance.WebEngine.ExcelUI_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BAA167C5CD43EB45EA4CE7F794878928D9DAA0BE</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A48DC5F3744AF850A5206E55E484C617E9403762</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

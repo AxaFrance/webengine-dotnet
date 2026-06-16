@@ -1,4 +1,4 @@
-using AxaFrance.WebEngine.MobileApp;
+﻿using AxaFrance.WebEngine.MobileApp;
 using AxaFrance.WebEngine.Mcp.Tools.Appium.Models;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
@@ -627,9 +627,12 @@ public sealed class AppiumTool(AppiumSessionManager sessionManager, ILogger<Appi
         {
             try
             {
-                var val = element.GetAttribute(attr);
-                if (!string.IsNullOrEmpty(val))
-                    parts.Append(' ').Append(attr).Append('=').Append('"').Append(val).Append('"');
+                if (attr != null)
+                {
+                    var val = element.GetAttribute(attr);
+                    if (!string.IsNullOrEmpty(val))
+                        parts.Append(' ').Append(attr).Append('=').Append('"').Append(val).Append('"');
+                }
             }
             catch { /* attribute not present on this platform */ }
         }

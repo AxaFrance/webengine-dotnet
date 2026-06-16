@@ -186,7 +186,7 @@ namespace AxaFrance.WebEngine
 
         /// <summary>
         /// Funaction to run an sub action from the current one. 
-        /// This action reuses the <see cref="DoAction(Type, TestCase object, List{Variable}, ActionReport, Variable[])"/> and generates 
+        /// This action reuses the <see cref="DoAction(Type, TestCase, object, List{Variable}, ActionReport, Variable[])"/> and generates 
         /// a <see cref="ActionReport"/> attached to <see cref="ActionReport.SubActionReports"/>
         /// </summary>
         /// <param name="sharedActionType">the object type of sharedAction</param>

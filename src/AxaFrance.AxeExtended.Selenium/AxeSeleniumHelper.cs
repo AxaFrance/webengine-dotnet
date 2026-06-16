@@ -205,7 +205,7 @@ namespace AxaFrance.AxeExtended.Selenium
                     element = driver.FindElement(By.XPath(xPath));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //sometimes the cssSelector provided by axe can not be used by selenium.
                 //in this case can't make screenshot on the element.

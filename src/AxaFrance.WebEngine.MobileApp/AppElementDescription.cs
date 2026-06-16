@@ -336,9 +336,7 @@ namespace AxaFrance.WebEngine.MobileApp
         /// unexpected behavior.</remarks>
         public void SwipeLeftOnElement()
         {
-            var element = FindElement();
-            var y = element.Location.Y + element.Size.Height / 2;
-            GenericSwipe(0.8, 0.2, y);
+            SwipeOnElement(0.8, 0.2, ScrollDirection.Left);
         }
 
         /// <summary>
@@ -346,9 +344,7 @@ namespace AxaFrance.WebEngine.MobileApp
         /// </summary>
         public void SwipeRightOnElement()
         {
-            var element = FindElement();
-            var y = element.Location.Y + element.Size.Height / 2;
-            GenericSwipe(0.2, 0.8, y);
+            SwipeOnElement(0.2, 0.8, ScrollDirection.Right);
         }
 
         /// <summary>
@@ -376,6 +372,42 @@ namespace AxaFrance.WebEngine.MobileApp
             actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
 
             driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        private void SwipeOnElement(double startXPercent, double endXPercent, ScrollDirection direction, int maxSwipe = 10)
+        {
+            if (!this.Exists(1) && !ScrollIntoView(direction, maxSwipe))
+            {
+                throw new NoSuchElementException($"Unable to locate element for {direction.ToString().ToLowerInvariant()} swipe. Locator: {this}");
+            }
+
+            var element = FindElement();
+            var xPadding = Math.Max(1, (int)(element.Size.Width * 0.1));
+            var y = element.Location.Y + (element.Size.Height / 2);
+            var leftX = element.Location.X + xPadding;
+            var rightX = element.Location.X + Math.Max(xPadding + 1, element.Size.Width - xPadding);
+            var startX = Interpolate(leftX, rightX, startXPercent);
+            var endX = Interpolate(leftX, rightX, endXPercent);
+
+            GenericSwipe(startX, endX, y);
+        }
+
+        private void GenericSwipe(int startX, int endX, int y)
+        {
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, startX, y, TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, endX, y, new TimeSpan(0, 0, 1)));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        private static int Interpolate(int min, int max, double percent)
+        {
+            return min + (int)Math.Round((max - min) * percent);
         }
 
         private void GenericScroll(int x, double startYPercent, double endYPercent)
