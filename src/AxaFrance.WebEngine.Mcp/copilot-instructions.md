@@ -1,10 +1,10 @@
----
+﻿---
 applyTo: '**/*.cs'
 author: 'Huaxing YUAN'
 ---
 # Context for Copilot - Test Automation
 We are working on Test Automation using Selenium WebDriver customized with WebEngine Framework.
-Speak with me in French.
+Reply in the same language as User's prompt. 
 
 Framework repository: https://github.com/AxaFrance/webengine-dotnet
 
@@ -276,7 +276,7 @@ for example:
 ```csharp
 public static class ParameterList {
 
-	///<Summary>Parameter: Le nom de cas de test. Il doit �tre unique dans chaque test suite (dont une feuille Excel) </Summary>
+	///<Summary>Parameter: Le nom de cas de test. Il doit être unique dans chaque test suite (dont une feuille Excel) </Summary>
 	public static string TESTCASE {get; } = "TESTCASE";
 
 	///<Summary>Parameter: Workflow of the current test case, decides which script will be used to test current scenario. SIMPLE for basic named based search, ADVANCED for multiple filter based search </Summary>

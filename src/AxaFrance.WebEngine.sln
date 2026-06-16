@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AxaFrance.WebEngine", "AxaFrance.WebEngine\AxaFrance.WebEngine.csproj", "{4CEE698C-D80E-4EF3-8A90-E59B9C1DD9B9}"
 EndProject
@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366
 		..\PULL_REQUEST_TEMPLATE.md = ..\PULL_REQUEST_TEMPLATE.md
 		..\README.md = ..\README.md
 		..\WebEngine2.0.md = ..\WebEngine2.0.md
+		WebEngineMCP.md = WebEngineMCP.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{8943BF7F-960F-406E-B415-6527828B602A}"

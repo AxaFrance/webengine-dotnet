@@ -31,6 +31,17 @@ The Framework is distributed via Package Management:
 When using .NET, please find AxaFrance.WebEngine packages on nuget.org
 When using JAVA, these pacakges will be available on Maven
 
+## MCP (Model Context Protocol) Integration
+
+WebEngine includes an **MCP server** that enables AI-powered coding agents (like GitHub Copilot) to observe your application, execute tests, and generate UI test scripts automatically.
+
+**Key Features:**
+- **Observe**: Capture page state, inspect elements, and analyze accessibility
+- **Execute**: Interact with UI elements and perform bulk actions on live applications
+- **Generate**: Automatically create PageModels and test scripts in WebEngine format
+
+**For detailed information on running the MCP server locally, available tools, and how to use it with coding agents, see [WebEngineMCP.md](WebEngineMCP.md).**
+
 ## WebEngine 2.0 Roadmap
 We are working on the next version of WebEngine Framework, in the next versions we will bring.
 - [ ] Enhanced Page-Object Model.
