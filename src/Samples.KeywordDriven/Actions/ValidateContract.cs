@@ -14,8 +14,8 @@ namespace Samples.KeywordDriven.Actions
             model.AcceptAgreement.Click();
             model.ValideButton.Click();
             model.PrintContract.Click();
-            string alertText = Browser.SwitchTo().Alert().Text;
-            if (!alertText.Contains("contract has been printed."))
+            var alertText = Browser.SwitchTo().Alert().Text;
+            if (!alertText!.Contains("contract has been printed."))
             {
                 this.ActionResult = Result.Failed;
                 this.Information.AppendLine("Message for success printing failed.");

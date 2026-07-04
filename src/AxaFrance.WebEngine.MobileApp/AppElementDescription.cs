@@ -317,7 +317,9 @@ namespace AxaFrance.WebEngine.MobileApp
         }
 
         /// <summary>
-        /// Swipe left on the screen (useful for carousels, horizontal lists, dismissible cards)
+        /// Swipe left on the screen (useful for carousels, horizontal lists, dismissible cards).
+        /// Y coordinate is calculated as the vertical center of the screen.
+        /// If you want to swipe left on a specific element, please use <see cref="SwipeLeftOnElement"/> instead, which will calculate Y coordinate based on the element's position.
         /// </summary>
         public void SwipeLeft()
         {
@@ -326,7 +328,29 @@ namespace AxaFrance.WebEngine.MobileApp
         }
 
         /// <summary>
+        /// Performs a leftward swipe gesture on the currently located UI element.
+        /// </summary>
+        /// <remarks>Use this method to simulate a user swiping left on an element, typically for actions
+        /// such as revealing hidden options or dismissing items. The swipe is executed horizontally across the vertical
+        /// center of the element. Ensure that an element is available and visible before calling this method to avoid
+        /// unexpected behavior.</remarks>
+        public void SwipeLeftOnElement()
+        {
+            SwipeOnElement(0.8, 0.2, ScrollDirection.Left);
+        }
+
+        /// <summary>
+        /// Performs a rightward swipe gesture on the currently located UI element.
+        /// </summary>
+        public void SwipeRightOnElement()
+        {
+            SwipeOnElement(0.2, 0.8, ScrollDirection.Right);
+        }
+
+        /// <summary>
         /// Swipe right on the screen (useful for carousels, horizontal lists, navigation)
+        /// Y coordinate is calculated as the vertical center of the screen.
+        /// If you want to swipe left on a specific element, please use <see cref="SwipeLeftOnElement"/> instead, which will calculate Y coordinate based on the element's position.
         /// </summary>
         public void SwipeRight()
         {
@@ -348,6 +372,42 @@ namespace AxaFrance.WebEngine.MobileApp
             actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
 
             driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        private void SwipeOnElement(double startXPercent, double endXPercent, ScrollDirection direction, int maxSwipe = 10)
+        {
+            if (!this.Exists(1) && !ScrollIntoView(direction, maxSwipe))
+            {
+                throw new NoSuchElementException($"Unable to locate element for {direction.ToString().ToLowerInvariant()} swipe. Locator: {this}");
+            }
+
+            var element = FindElement();
+            var xPadding = Math.Max(1, (int)(element.Size.Width * 0.1));
+            var y = element.Location.Y + (element.Size.Height / 2);
+            var leftX = element.Location.X + xPadding;
+            var rightX = element.Location.X + Math.Max(xPadding + 1, element.Size.Width - xPadding);
+            var startX = Interpolate(leftX, rightX, startXPercent);
+            var endX = Interpolate(leftX, rightX, endXPercent);
+
+            GenericSwipe(startX, endX, y);
+        }
+
+        private void GenericSwipe(int startX, int endX, int y)
+        {
+            var finger = new PointerInputDevice(PointerKind.Touch);
+            var actionSequence = new ActionSequence(finger, 0);
+
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, startX, y, TimeSpan.Zero));
+            actionSequence.AddAction(finger.CreatePointerDown(MouseButton.Touch));
+            actionSequence.AddAction(finger.CreatePointerMove(CoordinateOrigin.Viewport, endX, y, new TimeSpan(0, 0, 1)));
+            actionSequence.AddAction(finger.CreatePointerUp(MouseButton.Touch));
+
+            driver.PerformActions(new List<ActionSequence> { actionSequence });
+        }
+
+        private static int Interpolate(int min, int max, double percent)
+        {
+            return min + (int)Math.Round((max - min) * percent);
         }
 
         private void GenericScroll(int x, double startYPercent, double endYPercent)

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
+﻿// Copyright (c) 2016-2022 AXA France IARD / AXA France VIE. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // Modified By: YUAN Huaxing, at: 2022-5-13 18:26
 using AxaFrance.WebEngine;
@@ -31,7 +31,7 @@ namespace WebEngine.Test.UnitTests
         {
             EnvironmentVariables.LoadFrom("TestData\\ENV.XML");
             var value1 = EnvironmentVariables.Current.GetValue("NOM");
-            Assert.AreEqual(value1, "VALEUR");
+            Assert.AreEqual("VALEUR",value1);
             try
             {
                 EnvironmentVariables.Current.GetValue("NOT_EXISTS");
@@ -73,11 +73,11 @@ namespace WebEngine.Test.UnitTests
         public void LoadTestSuiteData()
         {
             string filename = TestSuiteData.LoadFrom("TestData\\TestData.xml");
-            Assert.AreEqual(filename, "TestData.xml");
+            Assert.AreEqual("TestData.xml",filename);
             var value = TestSuiteData.Current.GetValue("Addition1", "NUMBER_1");
-            Assert.AreEqual(value, "2");
+            Assert.AreEqual("2",value );
             var value2 = TestSuiteData.Current.GetValue("Addition2", "ENVIRONNEMENT");
-            Assert.AreEqual(value2, "UK");
+            Assert.AreEqual("UK",value2);
         }
 
         [TestMethod]

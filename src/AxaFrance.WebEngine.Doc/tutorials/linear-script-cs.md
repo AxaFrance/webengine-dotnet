@@ -1,4 +1,4 @@
-# Linear Scripting Approach (C#/.NET)
+﻿# Linear Scripting Approach (C#/.NET)
 In this article we will show you how to write test cases using linear scripting approach.
 Linear scripting approach is the most used approach in Unit Test and for simple test scenarios.
 In this approach, test cases are interpreted directly into test scripts, the method is fast for writing simple test cases but does not guarantee reuse of the functionality and part of test script across test projects.
@@ -20,7 +20,7 @@ Other components of WebEngine Framework is not used.
 ## Steps to build Test Automation Solution using Linear Scripting
 ### Step 1: Create a Test Project
 Using Visual Studio and Create a MSTest Project, bane it `Samples.LinearScripting`.
-You can use any recent versions of .NET (`.NET Framework 4.8` or `.NET 6.0` for example)
+You can use any supported version of .NET (`.NET 8` or later is recommended; `.NET Framework 4.8` is also supported)
 
 ![Ls Step1 Createproject](../images/ls-step1-createproject.png)
 

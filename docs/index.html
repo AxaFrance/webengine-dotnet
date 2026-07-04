@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AXA WebEngine Framework | AXA - WebEngine Test Framework </title>
+    <title>AxaFrance WebEngine Framework | AXA - WebEngine Test Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="AXA WebEngine Framework | AXA - WebEngine Test Framework ">
+    <meta name="title" content="AxaFrance WebEngine Framework | AXA - WebEngine Test Framework ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="images/logo_small.svg">
@@ -60,30 +60,27 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="axa-webengine-framework">AXA WebEngine Framework</h1>
+<h1 id="axafrance-webengine-framework">AxaFrance WebEngine Framework</h1>
 
-<p>A Test Automation Framework (TAF) is a set of guidelines, libraries for creating and designing test cases.
-It is a conceptual part of the automated testing, provides common functionalities and best practices that helps Test Automation Engineers to create reliable, maintainable, and well-structured Test Automation Solutions (TAS).</p>
-<p>AXA WebEngine Framework makes it easy to build highly effective test automation solutions for <strong>Web</strong>, <strong>Mobile Web</strong> and <strong>Mobile App</strong> testing.</p>
-<p>Built by Test Guild of AXA France, available in <strong>.NET</strong> and <strong>JAVA</strong> and used by a dozen of test automation projects within AXA France. We decided to open source this framework to share our knowledge on Test Automation to the community and hope we can improve the framework and the quality of IT Systems together, of course 😉 .</p>
+<p>A Test Automation Framework (TAF) is a set of guidelines and libraries for creating and designing test cases.
+It is a conceptual part of automated testing that provides common functionalities and best practices, helping Test Automation Engineers to build reliable, maintainable and well-structured Test Automation Solutions (TAS).</p>
+<p>AxaFrance WebEngine Framework makes it easy to build highly effective test automation solutions for <strong>Web</strong>, <strong>Mobile Web</strong> and <strong>Mobile App</strong> testing.</p>
+<p>Built by the Test Guild of AXA France, available in <strong>.NET</strong> and <strong>Java</strong>, and used across a dozen test automation projects within AXA France. We decided to open-source this framework to share our knowledge on Test Automation with the community and improve software quality together 😉.</p>
 <h2 id="why-webengine-framework">Why WebEngine Framework?</h2>
-<p>WebEngine Framework resolves some common issues that we can encounter in several test automation project and it simplifies the writing of test scripts.</p>
+<p>WebEngine resolves common problems that arise in test automation projects, embedding best practices directly into the framework so every team benefits automatically.</p>
 <ul>
-<li>It supports all Selenium technologies based :
-<ul>
-<li>on Desktop Browsers</li>
-<li>Mobile Browsers on different Mobile Devices.</li>
+<li><strong>No more driver management headaches</strong> - BrowserFactory detects your installed browser version and downloads the correct WebDriver automatically.</li>
+<li><strong>Resilient element identification</strong> - WebElementDescription lets you combine multiple locators (Id, Name, CSS, XPath, custom HTML attributes).</li>
+<li><strong>Built-in synchronization</strong> - Every element action has an automatic retry loop. StaleElementReferenceException and timing issues are handled by the framework, not by Thread.Sleep() in your code.</li>
+<li><strong>Page Object Model by design</strong> - PageModel cleanly separates element descriptions from test logic.</li>
+<li><strong>Secure credential handling</strong> - SetSecure decrypts and types passwords on the fly.</li>
+<li><strong>Test data externalization</strong> - Add new test cases and switch environments without changing code.</li>
+<li><strong>AI-powered test authoring</strong> - The built-in MCP server exposes live browser control to GitHub Copilot and other AI assistants.</li>
+<li><strong>Cross-platform from one API</strong> - The same BrowserFactory works for Windows, macOS, Android and iOS.</li>
+<li><strong>Graphical test reports</strong> - Report Viewer provides synthetic overview and step-level detail.</li>
+<li><strong>Open Source</strong> - Free to use. Contributions welcome!</li>
 </ul>
-</li>
-<li>Using <strong>Browser Factory</strong>, there is no need to download various selenium WebDriver when browser and its version changes.</li>
-<li>Description oriented <strong>Web Element</strong> identification and synchronization with browser out-of-box.</li>
-<li>Organizing Web Element in <strong>Page Model</strong> makes test scripts easy to read and to maintain.</li>
-<li>Fully object-oriented and compatible with <strong>Keyword-Driven</strong> and <strong>Data-driven</strong> approach.</li>
-<li>Compatible with another Unit test frameworks such as NUnit, Cucumber</li>
-<li>Easy configuration and Set-up for Execution: Run test directly from Excel, as well as on DevOps platforms</li>
-<li>Graphical test report.</li>
-<li><strong>Open Source</strong>, free usage and let’s improve it together!</li>
-</ul>
+<p>For a detailed explanation of every built-in practice, see <a href="articles/best-practices.html">Best Practices in WebEngine Framework</a>.</p>
 <style>
 table {
 	text-align: center
@@ -112,7 +109,7 @@ td, th, tr {
 <tbody>
 <tr>
 <td><a href="articles/intro.html">Introduction</a></td>
-<td><a href="api_net/">.NET API<br>Reference</a></td>
+<td><a class="xref" href="api_net/AxaFrance.WebEngine.html">.NET API<br>Reference</a></td>
 <td><a href="api_java/">JAVA API<br>Reference</a></td>
 <td><a href="tutorials/intro.html">Tutorials &amp;<br>Examples</a></td>
 </tr>

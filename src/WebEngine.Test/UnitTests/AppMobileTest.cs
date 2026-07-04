@@ -25,7 +25,7 @@ namespace WebEngine.Test.UnitTests
             settings.AppId = "TestData\\ApiDemos-debug.apk";
             settings.Platform = Platform.Android;
             settings.Browser = BrowserType.AndroidNative;
-            settings.Device = "Xiaomi Redmi Note 11";
+            settings.Device = "Medium_Phone_API_35";
             var testsuite = settings.TestSuite = app;
             testsuite.Initialize(settings);
             var result = testsuite.Run();

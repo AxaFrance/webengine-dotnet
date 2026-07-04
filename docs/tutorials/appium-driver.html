@@ -97,9 +97,13 @@ By default, WebEngine Framework uses following automation driver:</p>
 <p>More automation driver could be considered in the future.</p>
 <h2 id="connecting-to-local-appium-server">Connecting to local Appium Server</h2>
 <p>To connect to a local Appium Server which connects to a single device,
-we only need to specify the Server URL and the full path of the app package:</p>
+we only need to specify the Server URL and the full path of the app package.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Appium 2.x changed the default base path. Use <code>http://localhost:4723</code> instead of the Appium 1.x style <code>http://localhost:4723/wd/hub</code>.</p>
+</div>
 <pre><code class="lang-csharp">var settings = AxaFrance.WebEngine.Settings.Instance;
-settings.GridServerUrl = &quot;http://localhost:4723/wd/hub&quot;;
+settings.GridServerUrl = &quot;http://localhost:4723&quot;;
 settings.AppId = &quot;C:\\app-packages\\myapp-1.0.apk&quot;;
 var driver = AppFactory.GetDriver(AxaFrance.WebEngine.Platform.Android);
 </code></pre>
@@ -107,7 +111,7 @@ var driver = AppFactory.GetDriver(AxaFrance.WebEngine.Platform.Android);
 <h2 id="connecting-to-on-premise-selenium-grid">Connecting to On-Premise Selenium Grid</h2>
 <p>To test on on-premise selenium grid, you'll need to specify the <code>Settings.Device</code> and/or <code>Settings.OsVersion</code></p>
 <pre><code class="lang-csharp">var settings = AxaFrance.WebEngine.Settings.Instance;
-settings.GridServerUrl = &quot;http://remote-server.internal:8080/wd/hub&quot;;
+settings.GridServerUrl = &quot;http://remote-server.internal:8080&quot;;
 settings.AppId = &quot;C:\\app-packages\\myapp-1.0.apk&quot;;
 settings.Platform = Platform.Android;
 settings.Device = &quot;Android API 30&quot;;

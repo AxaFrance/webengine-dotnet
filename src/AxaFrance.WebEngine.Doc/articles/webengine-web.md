@@ -1,4 +1,4 @@
-# Test Web Applications
+﻿# Test Web Applications
 With functionalities provided by <xref:AxaFrance.WebEngine.Web>, it is easy to build tests using Selenium WebDriver running on Desktop and Mobile browsers.
 To test web application, we usually need to open the web browser and perform three kinds of actions on system under test:
 
@@ -18,15 +18,11 @@ To test web applications with WebEngine Framework, you'll need to have follow kn
 
 
 ## Use BrowserFactory to manage Selenium WebDriver
-<xref:AxaFrance.WebEngine.Web.BrowserFactory> is used to open selected browser of which the test suite will execute on. For example, a single line of code:
-
-```cs
-var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
-```
+<xref:AxaFrance.WebEngine.Web.BrowserFactory> is used to open the selected browser on which the test suite will execute. For example:
 
 # [.NET](#tab/browserfactorynet)
 ```csharp
-var driver = BrowserFactory.GetDriver(AXA.WebEngine.Platform.Windows, AXA.WebEngine.BrowserType.ChromiumEdge);
+var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Windows, AxaFrance.WebEngine.BrowserType.ChromiumEdge);
 ```
 
 # [JAVA](#tab/browserfactoryjava)
@@ -38,17 +34,17 @@ Optional<WebDriver> webDriver = BrowserFactory.getDriver(Platform.WINDOWS,Browse
 
 Will perform following actions:
 -	Determines the Edge browser installed on your computer
--	Downloads the Edge WebDriver from official repository according to its version
+-	Downloads the Edge WebDriver from the official repository according to its version
 -	Initializes the Selenium WebDriver
 
-For mobile testing, the following line of code:
-```cs
+For mobile browser testing, the following line of code:
+```csharp
 var driver = BrowserFactory.GetDriver(AxaFrance.WebEngine.Platform.Android, AxaFrance.WebEngine.BrowserType.Chrome);
 ```
-Will perform following actions
--	Connects to Selenium Grid or Appium Server
--	Initializes Selenium WebDriver and open Chrome on selected device
--	Returns an AppiumDriver to end user.
+Will perform following actions:
+-	Connects to a Selenium Grid or Appium Server
+-	Initializes Selenium WebDriver and opens Chrome on the selected device
+-	Returns an `AppiumDriver` to end user
 
 ## Use ElementDescription to identify Web Elements
 <xref:AxaFrance.WebEngine.Web.WebElementDescription> is used to identify a test object (Button, Text Box, Label, or other WebElements) on the web page.

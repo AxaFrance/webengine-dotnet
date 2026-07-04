@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -16,62 +17,33 @@ namespace AxaFrance.WebEngine.ExcelUI
 {
     public partial class Ribbon
     {
+        #region Constants
+        private const int VARIABLE_ROW = 1;
+        private const int VARIABLE_COLUMN = 1;
+        private const int TEST_CASE_START_COLUMN = 3;
+        private const int TEST_CASE_ROW = 3;
+        private const string ENV_WORKSHEET_NAME = "ENV";
+        private const string PARAMS_WORKSHEET_NAME = "PARAMS";
+        private const string ENV_FILENAME = "ENV.xml";
+        private const string XML_FILE_FILTER = "XML Files (*.xml)|*.xml";
+        private const string WEBRUNNER_PROCESS_NAME = "WebRunner";
+        #endregion
+
+        #region Fields
         internal static AddinSettings Settings = new AddinSettings();
-        bool noPopup = false;
-        int VariableRow = 1;
-        int VariableColumn = 1;
-        int TestCaseStartColumn = 3;
-        int TestCaseRow = 3;
-        internal static string settingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelSetting.xml");
+        private bool _noPopup = false;
+        internal static string SettingFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AxaFrance.WebEngine", "excelSetting.xml");
 
         internal static string TestDataFile;
         internal static List<string> TestCases = new List<string>();
         internal static string EnvironmentVariableFile;
-        internal static string categoryName;
+        internal static string CategoryName;
+        #endregion
 
+        #region Event Handlers
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
-            if (File.Exists(settingFile))
-            {
-                using (var stream = File.OpenRead(settingFile))
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(AddinSettings));
-                    AddinSettings settings = null;
-                    try
-                    {
-                        settings = (AddinSettings)serializer.Deserialize(stream);
-                    }
-                    catch
-                    {
-                        settings = new AddinSettings();
-                    }
-                    Ribbon.Settings = settings;
-                }
-            }
-            else
-            {
-                Ribbon.Settings = new AddinSettings();
-            }
-
-        }
-
-        internal static void SaveSettings()
-        {
-            Directory.CreateDirectory(new FileInfo(settingFile).Directory.FullName);
-            using (var stream = new FileStream(settingFile, FileMode.Create, FileAccess.Write))
-            {
-                MemoryStream ms = new MemoryStream();
-                XmlSerializer serializer = new XmlSerializer(typeof(AddinSettings));
-                serializer.Serialize(ms, Ribbon.Settings);
-                stream.Write(ms.ToArray(), 0, (int)ms.Length);
-                stream.Close();
-            }
-        }
-
-        private void btnSettings_Click(object sender, RibbonControlEventArgs e)
-        {
-            FrmSettings settings = new FrmSettings();
-            settings.ShowDialog();
+            LoadSettings();
         }
 
         private void Ribbon_Close(object sender, EventArgs e)
@@ -79,186 +51,24 @@ namespace AxaFrance.WebEngine.ExcelUI
             SaveSettings();
         }
 
+        private void btnSettings_Click(object sender, RibbonControlEventArgs e)
+        {
+            using (FrmSettings settings = new FrmSettings())
+            {
+                settings.ShowDialog();
+            }
+        }
+
         private void btnExportEnvironmentVariable_Click(object sender, RibbonControlEventArgs e)
         {
-            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            List<AxaFrance.WebEngine.Variable> parameters = new List<AxaFrance.WebEngine.Variable>();
             try
             {
-                Worksheet worksheet = workbook.Sheets["ENV"];
-                foreach (Range row in worksheet.UsedRange.Rows)
-                {
-                    string variableName, variableValue;
-                    Range cell_name = row.Cells[1];
-                    object name = cell_name.Value2;
-                    variableName = name != null ? name.ToString().Trim() : null;
-                    Range cell_value = row.Cells[2];
-                    object value = cell_value.Value2;
-                    variableValue = value != null ? value.ToString().Trim() : null;
-                    if (!string.IsNullOrEmpty(variableName))
-                    {
-                        parameters.Add(new AxaFrance.WebEngine.Variable()
-                        {
-                            Name = variableName,
-                            Value = variableValue,
-                        });
-                    }
-                }
-                EnvironmentVariables variables = new EnvironmentVariables();
-                variables.Variables = parameters;
-                EnvironmentVariableFile = Settings.ExportPath + "ENV.xml";
-
-                if (!noPopup)
-                {
-                    SaveFileDialog sfd = new SaveFileDialog()
-                    {
-                        InitialDirectory = Settings.ExportPath,
-                        FileName = "ENV.xml",
-                        CheckPathExists = true,
-                        OverwritePrompt = true,
-                        AddExtension = true,
-                        Filter = "XML Files (*.xml)|*.xml",
-                        Title = "Export Environment Variables",
-                    };
-
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        EnvironmentVariableFile = sfd.FileName;
-                        using (StreamWriter sw = new StreamWriter(EnvironmentVariableFile))
-                        {
-                            XmlSerializer serializer = new XmlSerializer(typeof(EnvironmentVariables));
-                            serializer.Serialize(sw, variables);
-                            sw.Close();
-                        }
-                        MessageBox.Show("Les variables d'environnement sont exporté dans le fichier:\n" + EnvironmentVariableFile);
-                    }
-                }
-                else
-                {
-                    using (StreamWriter sw = new StreamWriter(EnvironmentVariableFile))
-                    {
-                        XmlSerializer serializer = new XmlSerializer(typeof(EnvironmentVariables));
-                        serializer.Serialize(sw, variables);
-                        sw.Close();
-                    }
-                }
-
-
+                ValidateSettingsPath();
+                ExportEnvironmentVariables();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Export de variables échoué, message d'erreur:" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Returns if the test case is eligible to be selected by a filter
-        /// </summary>
-        /// <param name="filter">The filters of selection</param>
-        /// <param name="filterType">
-        /// True: export only matched test cases, False: export not matched test cases.
-        /// </param>
-        /// <param name="testCaseName">the test case name to be selected.</param>
-        /// <returns></returns>
-        private bool testCaseEligible(string[] filter, bool filterType, string testCaseName)
-        {
-            if (filterType)
-            {
-                return filter.Any(x => testCaseName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) > 0);
-            }
-            else
-            {
-                if (filter == null || filter.Length == 0) return true;
-                return !filter.Any(x => testCaseName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) > 0);
-            }
-        }
-
-        /// <summary>
-        /// Export all test cases of the current Tab
-        /// </summary>
-        /// <param name="filter">filter in text form</param>
-        /// <param name="filterType">
-        /// True: export only matched test cases, False: export not matched test cases.
-        /// </param>
-        private void ExportAll(string filter, bool filterType)
-        {
-            var filters = filter.Split(';');
-            List<string> exportedNames = new List<string>();
-            List<string> duplicatedNames = new List<string>();
-            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            Worksheet worksheet = workbook.ActiveSheet;
-            categoryName = worksheet.Name;
-            if (Settings.ExcludedTabs.Contains(categoryName))
-            {
-                return;
-            }
-            int maxColumns = worksheet.UsedRange.Columns.Count;
-            TestSuiteData list = new TestSuiteData();
-            list.TestDataList = ReadVariables(worksheet, null);
-            TestCases.Clear();
-            foreach (var t in list.TestDataList)
-            {
-                if (testCaseEligible(filters, filterType, t.TestName))
-                {
-
-                    if (exportedNames.Contains(t.TestName))
-                    {
-                        duplicatedNames.Add(t.TestName);
-                    }
-                    else
-                    {
-                        exportedNames.Add(t.TestName);
-                    }
-                    TestCases.Add("\"" + t.TestName + "\"");
-                }
-            }
-
-            if (duplicatedNames.Count > 0)
-            {
-                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            list.TestDataList.RemoveAll(x => !exportedNames.Contains(x.TestName));
-
-            SaveTestDataToFile(list);
-        }
-
-        private void SaveTestDataToFile(TestSuiteData list)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteData));
-            TestDataFile = Settings.ExportPath + categoryName + ".xml";
-
-
-            if (!noPopup)
-            {
-                SaveFileDialog sfd = new SaveFileDialog()
-                {
-                    InitialDirectory = Settings.ExportPath,
-                    FileName = categoryName + ".xml",
-                    CheckPathExists = true,
-                    OverwritePrompt = true,
-                    AddExtension = true,
-                    Filter = "XML Files (*.xml)|*.xml",
-                    Title = "Export Test Data",
-                };
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    TestDataFile = sfd.FileName;
-                    StreamWriter sw = new StreamWriter(TestDataFile);
-                    serializer.Serialize(sw, list);
-                    sw.Close();
-
-                }
-                MessageBox.Show("Test Data has exported to the following file:\n" + TestDataFile + "\n\nFile path has already copied to clipboard.", "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else
-            {
-                StreamWriter sw = new StreamWriter(TestDataFile);
-                serializer.Serialize(sw, list);
-                sw.Close();
+                MessageBox.Show($"Export failed: {ex.Message}", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -267,175 +77,44 @@ namespace AxaFrance.WebEngine.ExcelUI
             ExportAll(string.Empty, false);
         }
 
-        private List<TestData> ReadVariables(Worksheet worksheet, int[] columns)
-        {
-            int maxColumns = GetMaxColumns(worksheet);
-            int testcase_count = maxColumns - TestCaseStartColumn;
-            TestData[] testcases = new TestData[testcase_count];
-            List<AxaFrance.WebEngine.Variable>[] testcases_parameters = new List<AxaFrance.WebEngine.Variable>[testcase_count];
-            for (int i = 0; i < testcase_count; i++)
-            {
-                testcases[i] = new TestData();
-                testcases_parameters[i] = new List<AxaFrance.WebEngine.Variable>();
-            }
-            List<string> paramNames = new List<string>();
-            int currentRow = 1;
-            foreach (Range row in worksheet.UsedRange.Rows)
-            {
-                if (currentRow >= TestCaseRow)
-                {
-                    Range param_name = row.Cells[VariableColumn];
-                    //Exit reading if cannot read the name of the variable.
-                    string variableName = null;
-                    try
-                    {
-                        variableName = param_name.get_Value().ToString();
-                    }
-                    catch { break; }
-                    if (string.IsNullOrEmpty(variableName)) break;
-
-                    for (int column = TestCaseStartColumn; column < maxColumns; column++)
-                    {
-                        int i = column - TestCaseStartColumn;
-                        if (columns == null || columns.Contains(i))
-                        {
-
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
-                        Range cell = row.Cells[column];
-                        object obj = cell.get_Value();
-                        string variableValue = null;
-                        if (obj != null)
-                        {
-                            variableValue = obj.ToString();
-                        }
-
-                        if (variableValue == null) variableValue = string.Empty;
-                        testcases_parameters[i].Add(new AxaFrance.WebEngine.Variable()
-                        {
-                            Name = variableName,
-                            Value = variableValue
-                        });
-                    }
-                }
-                currentRow++;
-            }
-
-            for (int i = 0; i < testcase_count; i++)
-            {
-                if (columns == null || columns.Contains(i))
-                {
-
-                }
-                else
-                {
-                    continue;
-                }
-                testcases[i].Data = testcases_parameters[i].ToArray();
-                testcases[i].TestName = testcases_parameters[i].First(x => x.Name == "TESTCASE").Value;
-            }
-            List<TestData> testdata = new List<TestData>(testcases);
-            testdata.RemoveAll(x => x.TestName == null);
-            return testdata;
-        }
-
-        private int GetMaxColumns(Worksheet worksheet)
-        {
-            Range row = worksheet.Rows[3];
-            int currentColumn = TestCaseStartColumn;
-            int count = 0;
-            object value = null;
-            do
-            {
-                Range cell = row.Cells[currentColumn];
-                value = cell.get_Value();
-                currentColumn++;
-                count++;
-            } while (value != null && !string.IsNullOrWhiteSpace(value.ToString()));
-
-            return count - 1 + TestCaseStartColumn;
-        }
-
         private void btnExportSelection_Click(object sender, RibbonControlEventArgs e)
         {
-            List<string> exportedNames = new List<string>();
-            List<string> duplicatedNames = new List<string>();
-            List<int> selectedColumns = new List<int>();
-
-            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            Worksheet worksheet = workbook.ActiveSheet;
-            categoryName = worksheet.Name;
-            Range selectedRange = Globals.ThisAddIn.Application.Selection;
-            foreach (Range cell in selectedRange.Cells)
+            try
             {
-                int column = cell.Column - TestCaseStartColumn;
-                selectedColumns.Add(column);
+                ValidateSettingsPath();
+                ExportSelectedTestCases();
             }
-            TestSuiteData list = new TestSuiteData();
-            list.TestDataList = ReadVariables(worksheet, selectedColumns.ToArray());
-            TestCases.Clear();
-            foreach (var t in list.TestDataList)
+            catch (Exception ex)
             {
-                if (exportedNames.Contains(t.TestName))
-                {
-                    duplicatedNames.Add(t.TestName);
-                }
-                else
-                {
-                    exportedNames.Add(t.TestName);
-                }
-                TestCases.Add("\"" + t.TestName + "\"");
+                MessageBox.Show($"Export selection failed: {ex.Message}", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (duplicatedNames.Count > 0)
-            {
-                MessageBox.Show(string.Format("There are duplicated test cases: {0}\nPlease fix the issue before export can be executed.", string.Join(", ", duplicatedNames.ToArray())), "Test data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            SaveTestDataToFile(list);
-
         }
 
         private void btnStop_Click(object sender, RibbonControlEventArgs e)
         {
-            Process[] process = Process.GetProcessesByName("WebRunner");
-            if (process != null && process.Length > 0)
-            {
-                if (MessageBox.Show("Stopping the current test will L’arrêt de test va killer tous les test en cours d'execution.Voulez-vous continuer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-
-
-                    foreach (Process p in process)
-                    {
-                        p.Kill();
-                    }
-                }
-            }
-
+            StopRunningTests();
         }
 
         private void btnStartNow_Click(object sender, RibbonControlEventArgs e)
         {
             try
             {
-                noPopup = true;
+                _noPopup = true;
                 btnExportEnvironmentVariable_Click(null, null);
                 btnExportSelection_Click(null, null);
-                FrmRun run = new FrmRun(categoryName);
-                run.ShowDialog();
+                
+                using (FrmRun run = new FrmRun(CategoryName))
+                {
+                    run.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occurred: " + ex.Message);
+                MessageBox.Show($"Error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                noPopup = false;
+                _noPopup = false;
             }
         }
 
@@ -446,62 +125,7 @@ namespace AxaFrance.WebEngine.ExcelUI
                 "\t/** Parameter: {0} */",
                 "\n\t * ",
                 "\tpublic static final String {0} = \"{1}\";"
-                );
-        }
-
-        private void CodeGenerationGeneric(string classBegin, string singleLineCommentTemplate, string multiLineSeparator, string propertyTemplate)
-        {
-            StringBuilder sb = new StringBuilder();
-            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            List<AxaFrance.WebEngine.Variable> parameters = new List<AxaFrance.WebEngine.Variable>();
-            try
-            {
-                Worksheet worksheet = workbook.Sheets["PARAMS"];
-                #region append content
-                sb.AppendLine(classBegin);
-                foreach (Range row in worksheet.UsedRange.Rows)
-                {
-                    string paramname, description;
-                    Range cell_name = row.Cells[1];
-                    object name = cell_name.Value2;
-                    paramname = name != null ? name.ToString().Trim() : null;
-                    Range cell_value = row.Cells[2];
-                    object value = cell_value.Value2;
-                    description = value != null ? value.ToString().Trim() : null;
-
-                    // End generation 
-                    if (string.IsNullOrWhiteSpace(paramname) && string.IsNullOrWhiteSpace(description))
-                    {
-                        break;
-                    }
-                    //Ignore all names has white-spaces
-                    if (paramname.Contains(' ')) continue;
-
-                    //Add description in comment;
-                    if (description == null)
-                    {
-                        description = string.Format(singleLineCommentTemplate, paramname);
-                    }
-                    else
-                    {
-                        string content = description.Replace("\n", multiLineSeparator);
-                        description = string.Format(singleLineCommentTemplate, content);
-                    }
-                    sb.AppendLine(description);
-                    sb.AppendLine(string.Format(propertyTemplate, paramname, paramname));
-                    sb.AppendLine();
-
-                }
-                sb.AppendLine("}");
-                Clipboard.SetText(sb.ToString());
-                MessageBox.Show("The code generation for parameter list is complete.\nThe code is copied to your clipboard and you can paste it in your code.");
-                #endregion
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error when generation code. please make sure all parameters are present in [PARAMS] tab\n" + ex.Message);
-            }
+            );
         }
 
         private void btnCodeGenerationCSharp_Click(object sender, RibbonControlEventArgs e)
@@ -511,242 +135,1031 @@ namespace AxaFrance.WebEngine.ExcelUI
                 "\t///<Summary>Parameter: {0} </Summary>",
                 "\n\t/// ",
                 "\tpublic static string {0} {{get; }} = \"{1}\";"
-                );
+            );
         }
+
         private void btnHelp_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("https://github.com/AxaFrance/webengine-dotnet");
+            try
+            {
+                Process.Start("https://github.com/AxaFrance/webengine-dotnet");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to open help: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFeedback_Click(object sender, RibbonControlEventArgs e)
         {
-            Process.Start("https://github.com/AxaFrance/webengine-dotnet/issues");
+            try
+            {
+                Process.Start("https://github.com/AxaFrance/webengine-dotnet/issues");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to open feedback page: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAbout_Click(object sender, RibbonControlEventArgs e)
         {
-            FrmAbout about = new FrmAbout();
-            about.ShowDialog();
+            using (FrmAbout about = new FrmAbout())
+            {
+                about.ShowDialog();
+            }
         }
 
         private void btnSettingsSmall_Click(object sender, RibbonControlEventArgs e)
         {
-            FrmSettings settings = new FrmSettings();
-            settings.ShowDialog();
+            using (FrmSettings settings = new FrmSettings())
+            {
+                settings.ShowDialog();
+            }
         }
 
         private void btnDataCheck_Click(object sender, RibbonControlEventArgs e)
         {
-            List<string> parameters = GetParameters();
-            List<string> testcases = GetTestCases();
-            List<string> testParameters = GetTestParameters();
-            FrmCheckResult fcr = new FrmCheckResult(parameters, testParameters, testcases);
-            fcr.ShowDialog();
+            try
+            {
+                List<string> parameters = GetParameters();
+                List<string> testcases = GetTestCases();
+                List<string> testParameters = GetTestParameters();
+                
+                using (FrmCheckResult fcr = new FrmCheckResult(parameters, testParameters, testcases))
+                {
+                    fcr.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Data check failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private List<string> GetTestCases()
+        private void btnDataMerge_Click(object sender, RibbonControlEventArgs e)
         {
-            List<string> parameters = new List<string>();
-            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            Worksheet worksheet = workbook.ActiveSheet;
-            if (Settings.ExcludedTabs.Contains(worksheet.Name.ToUpper()))
+            if (MessageBox.Show("This function will create missing parameters in your active test suite. This action cannot be reversed.\nDo you want to continue?", 
+                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                throw new WebEngineGeneralException("The current worksheet is not test data but a special excluded worksheet. ");
-            }
-            Range r = worksheet.Rows[3];
-            int i = 1;
-            foreach (Range cell in r.Cells)
-            {
-                if (i >= TestCaseStartColumn)
+                try
                 {
+                    MergeParameters();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error when synchronizing: {ex.Message}\nPlease make sure all parameters are present in [PARAMS] tab", 
+                        "Synchronization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-                    string variableName;
-                    object name = cell.Value2;
-                    variableName = name != null ? name.ToString().Trim() : null;
-                    if (!string.IsNullOrEmpty(variableName))
+        private void BtnExportFilter_Click(object sender, RibbonControlEventArgs e)
+        {
+            using (FrmSelectFilter frmFilter = new FrmSelectFilter())
+            {
+                var result = frmFilter.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    ExportAll(frmFilter.Filter, frmFilter.FilterType);
+                }
+            }
+        }
+        #endregion
+
+        #region Settings Management
+        private void LoadSettings()
+        {
+            if (File.Exists(SettingFile))
+            {
+                try
+                {
+                    using (var stream = File.OpenRead(SettingFile))
                     {
-                        parameters.Add(variableName);
+                        XmlSerializer serializer = new XmlSerializer(typeof(AddinSettings));
+                        Ribbon.Settings = (AddinSettings)serializer.Deserialize(stream);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // If deserialization fails, use default settings
+                    Ribbon.Settings = new AddinSettings();
+                    Debug.WriteLine($"Failed to load settings: {ex.Message}");
+                }
+            }
+            else
+            {
+                Ribbon.Settings = new AddinSettings();
+            }
+        }
+
+        internal static void SaveSettings()
+        {
+            try
+            {
+                var directory = new FileInfo(SettingFile).Directory;
+                if (directory != null && !directory.Exists)
+                {
+                    directory.Create();
+                }
+
+                using (var fileStream = new FileStream(SettingFile, FileMode.Create, FileAccess.Write))
+                using (var memoryStream = new MemoryStream())
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(AddinSettings));
+                    serializer.Serialize(memoryStream, Ribbon.Settings);
+                    byte[] data = memoryStream.ToArray();
+                    fileStream.Write(data, 0, data.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to save settings: {ex.Message}");
+            }
+        }
+        #endregion
+
+        #region Validation
+        private void ValidateSettingsPath()
+        {
+            if (string.IsNullOrWhiteSpace(Settings.ExportPath))
+            {
+                throw new InvalidOperationException("Export path is not configured. Please configure settings first.");
+            }
+
+            if (!Directory.Exists(Settings.ExportPath))
+            {
+                Directory.CreateDirectory(Settings.ExportPath);
+            }
+        }
+        #endregion
+
+        #region Environment Variables Export
+        private void ExportEnvironmentVariables()
+        {
+            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            Worksheet worksheet = null;
+            
+            try
+            {
+                worksheet = workbook.Sheets[ENV_WORKSHEET_NAME];
+                var parameters = ReadEnvironmentVariablesFromWorksheet(worksheet);
+                
+                EnvironmentVariables variables = new EnvironmentVariables { Variables = parameters };
+                EnvironmentVariableFile = Path.Combine(Settings.ExportPath, ENV_FILENAME);
+
+                if (!_noPopup)
+                {
+                    EnvironmentVariableFile = GetSaveFilePathFromUser(Settings.ExportPath, ENV_FILENAME, "Export Environment Variables");
+                    if (string.IsNullOrEmpty(EnvironmentVariableFile))
+                    {
+                        return; // User cancelled
+                    }
+                }
+
+                SaveEnvironmentVariablesToFile(variables, EnvironmentVariableFile);
+
+                if (!_noPopup)
+                {
+                    MessageBox.Show($"Environment variables exported to:\n{EnvironmentVariableFile}", 
+                        "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            finally
+            {
+                ReleaseComObject(worksheet);
+            }
+        }
+
+        private List<AxaFrance.WebEngine.Variable> ReadEnvironmentVariablesFromWorksheet(Worksheet worksheet)
+        {
+            var parameters = new List<AxaFrance.WebEngine.Variable>();
+            Range usedRange = null;
+            
+            try
+            {
+                usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    Range cellName = null;
+                    Range cellValue = null;
+                    
+                    try
+                    {
+                        cellName = (Range)usedRange.Cells[i, 1];
+                        cellValue = (Range)usedRange.Cells[i, 2];
+
+                        string variableName = cellName.Value2?.ToString()?.Trim();
+                        string variableValue = cellValue.Value2?.ToString()?.Trim();
+
+                        if (!string.IsNullOrEmpty(variableName))
+                        {
+                            parameters.Add(new AxaFrance.WebEngine.Variable
+                            {
+                                Name = variableName,
+                                Value = variableValue
+                            });
+                        }
+                    }
+                    finally
+                    {
+                        ReleaseComObject(cellName);
+                        ReleaseComObject(cellValue);
+                    }
+                }
+            }
+            finally
+            {
+                ReleaseComObject(usedRange);
+            }
+
+            return parameters;
+        }
+
+        private void SaveEnvironmentVariablesToFile(EnvironmentVariables variables, string filePath)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(EnvironmentVariables));
+                serializer.Serialize(sw, variables);
+            }
+        }
+        #endregion
+
+        #region Test Data Export
+        private void ExportAll(string filter, bool filterType)
+        {
+            try
+            {
+                ValidateSettingsPath();
+                
+                var filters = string.IsNullOrEmpty(filter) ? new string[0] : filter.Split(';');
+                Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+                Worksheet worksheet = null;
+
+                try
+                {
+                    worksheet = workbook.ActiveSheet;
+                    CategoryName = worksheet.Name;
+                    
+                    if (Settings.ExcludedTabs.Contains(CategoryName))
+                    {
+                        return;
+                    }
+
+                    TestSuiteData list = new TestSuiteData();
+                    list.TestDataList = ReadVariables(worksheet, null);
+                    
+                    var (exportedNames, duplicatedNames) = FilterAndValidateTestCases(list.TestDataList, filters, filterType);
+
+                    if (duplicatedNames.Count > 0)
+                    {
+                        MessageBox.Show($"There are duplicated test cases: {string.Join(", ", duplicatedNames)}\nPlease fix the issue before export can be executed.", 
+                            "Test Data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    list.TestDataList.RemoveAll(x => !exportedNames.Contains(x.TestName));
+                    SaveTestDataToFile(list);
+                }
+                finally
+                {
+                    ReleaseComObject(worksheet);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Export failed: {ex.Message}", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportSelectedTestCases()
+        {
+            var exportedNames = new List<string>();
+            var duplicatedNames = new List<string>();
+            var selectedColumns = new List<int>();
+
+            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            Worksheet worksheet = null;
+            Range selectedRange = null;
+
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                CategoryName = worksheet.Name;
+                selectedRange = Globals.ThisAddIn.Application.Selection;
+
+                foreach (Range cell in selectedRange.Cells)
+                {
+                    int column = cell.Column - TEST_CASE_START_COLUMN;
+                    selectedColumns.Add(column);
+                    ReleaseComObject(cell);
+                }
+
+                TestSuiteData list = new TestSuiteData();
+                list.TestDataList = ReadVariables(worksheet, selectedColumns.ToArray());
+                TestCases.Clear();
+
+                foreach (var t in list.TestDataList)
+                {
+                    if (exportedNames.Contains(t.TestName))
+                    {
+                        duplicatedNames.Add(t.TestName);
                     }
                     else
                     {
-                        break;
+                        exportedNames.Add(t.TestName);
+                    }
+                    TestCases.Add($"\"{t.TestName}\"");
+                }
+
+                if (duplicatedNames.Count > 0)
+                {
+                    MessageBox.Show($"There are duplicated test cases: {string.Join(", ", duplicatedNames)}\nPlease fix the issue before export can be executed.", 
+                        "Test Data Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                SaveTestDataToFile(list);
+            }
+            finally
+            {
+                ReleaseComObject(selectedRange);
+                ReleaseComObject(worksheet);
+            }
+        }
+
+        private (List<string> exportedNames, List<string> duplicatedNames) FilterAndValidateTestCases(
+            List<TestData> testDataList, string[] filters, bool filterType)
+        {
+            var exportedNames = new List<string>();
+            var duplicatedNames = new List<string>();
+            TestCases.Clear();
+
+            foreach (var t in testDataList)
+            {
+                if (IsTestCaseEligible(filters, filterType, t.TestName))
+                {
+                    if (exportedNames.Contains(t.TestName))
+                    {
+                        duplicatedNames.Add(t.TestName);
+                    }
+                    else
+                    {
+                        exportedNames.Add(t.TestName);
+                    }
+                    TestCases.Add($"\"{t.TestName}\"");
+                }
+            }
+
+            return (exportedNames, duplicatedNames);
+        }
+
+        private void SaveTestDataToFile(TestSuiteData list)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteData));
+            TestDataFile = Path.Combine(Settings.ExportPath, $"{CategoryName}.xml");
+
+            if (!_noPopup)
+            {
+                TestDataFile = GetSaveFilePathFromUser(Settings.ExportPath, $"{CategoryName}.xml", "Export Test Data");
+                if (string.IsNullOrEmpty(TestDataFile))
+                {
+                    return; // User cancelled
+                }
+
+                MessageBox.Show($"Test Data has exported to the following file:\n{TestDataFile}\n\nFile path has already copied to clipboard.", 
+                    "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            using (StreamWriter sw = new StreamWriter(TestDataFile))
+            {
+                serializer.Serialize(sw, list);
+            }
+        }
+
+        private string GetSaveFilePathFromUser(string initialDirectory, string fileName, string title)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.InitialDirectory = initialDirectory;
+                sfd.FileName = fileName;
+                sfd.CheckPathExists = true;
+                sfd.OverwritePrompt = true;
+                sfd.AddExtension = true;
+                sfd.Filter = XML_FILE_FILTER;
+                sfd.Title = title;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    return sfd.FileName;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        #region Test Case Filtering
+        private bool IsTestCaseEligible(string[] filter, bool filterType, string testCaseName)
+        {
+            if (filter == null || filter.Length == 0)
+            {
+                return !filterType; // If no filter and filterType is false, include all
+            }
+
+            bool hasMatch = filter.Any(x => testCaseName.IndexOf(x, StringComparison.InvariantCultureIgnoreCase) >= 0);
+            return filterType ? hasMatch : !hasMatch;
+        }
+        #endregion
+
+        #region Read Variables from Worksheet
+        private List<TestData> ReadVariables(Worksheet worksheet, int[] columns)
+        {
+            int maxColumns = GetMaxColumns(worksheet);
+            int testCaseCount = maxColumns - TEST_CASE_START_COLUMN;
+            TestData[] testcases = new TestData[testCaseCount];
+            List<AxaFrance.WebEngine.Variable>[] testcasesParameters = new List<AxaFrance.WebEngine.Variable>[testCaseCount];
+            
+            for (int i = 0; i < testCaseCount; i++)
+            {
+                testcases[i] = new TestData();
+                testcasesParameters[i] = new List<AxaFrance.WebEngine.Variable>();
+            }
+
+            Range usedRange = null;
+            try
+            {
+                usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int currentRow = 1; currentRow <= rowCount; currentRow++)
+                {
+                    if (currentRow >= TEST_CASE_ROW)
+                    {
+                        Range paramNameCell = null;
+                        try
+                        {
+                            paramNameCell = (Range)usedRange.Cells[currentRow, VARIABLE_COLUMN];
+                            string variableName = GetCellValueAsString(paramNameCell);
+                            
+                            if (string.IsNullOrEmpty(variableName))
+                            {
+                                break;
+                            }
+
+                            ReadVariableValuesForRow(usedRange, currentRow, variableName, maxColumns, columns, testcasesParameters);
+                        }
+                        finally
+                        {
+                            ReleaseComObject(paramNameCell);
+                        }
                     }
                 }
-                i++;
-            }
-            return parameters;
 
+                PopulateTestCases(testcases, testcasesParameters, columns);
+            }
+            finally
+            {
+                ReleaseComObject(usedRange);
+            }
+
+            List<TestData> testdata = new List<TestData>(testcases);
+            testdata.RemoveAll(x => x.TestName == null);
+            return testdata;
+        }
+
+        private void ReadVariableValuesForRow(Range usedRange, int currentRow, string variableName, 
+            int maxColumns, int[] columns, List<AxaFrance.WebEngine.Variable>[] testcasesParameters)
+        {
+            for (int column = TEST_CASE_START_COLUMN; column < maxColumns; column++)
+            {
+                int i = column - TEST_CASE_START_COLUMN;
+                
+                if (columns != null && !columns.Contains(i))
+                {
+                    continue;
+                }
+
+                Range cell = null;
+                try
+                {
+                    cell = (Range)usedRange.Cells[currentRow, column];
+                    string variableValue = GetCellValueAsString(cell) ?? string.Empty;
+
+                    testcasesParameters[i].Add(new AxaFrance.WebEngine.Variable
+                    {
+                        Name = variableName,
+                        Value = variableValue
+                    });
+                }
+                finally
+                {
+                    ReleaseComObject(cell);
+                }
+            }
+        }
+
+        private void PopulateTestCases(TestData[] testcases, List<AxaFrance.WebEngine.Variable>[] testcasesParameters, int[] columns)
+        {
+            for (int i = 0; i < testcases.Length; i++)
+            {
+                if (columns != null && !columns.Contains(i))
+                {
+                    continue;
+                }
+
+                testcases[i].Data = testcasesParameters[i].ToArray();
+                var testCaseVar = testcasesParameters[i].FirstOrDefault(x => x.Name == "TESTCASE");
+                testcases[i].TestName = testCaseVar?.Value;
+            }
+        }
+
+        private int GetMaxColumns(Worksheet worksheet)
+        {
+            Range row = null;
+            try
+            {
+                row = (Range)worksheet.Rows[3];
+                int currentColumn = TEST_CASE_START_COLUMN;
+                int count = 0;
+
+                while (true)
+                {
+                    Range cell = null;
+                    try
+                    {
+                        cell = (Range)row.Cells[1, currentColumn];
+                        object value = cell.Value2;
+                        
+                        if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
+                        {
+                            break;
+                        }
+                        
+                        currentColumn++;
+                        count++;
+                    }
+                    finally
+                    {
+                        ReleaseComObject(cell);
+                    }
+                }
+
+                return count - 1 + TEST_CASE_START_COLUMN;
+            }
+            finally
+            {
+                ReleaseComObject(row);
+            }
+        }
+        #endregion
+
+        #region Process Management
+        private void StopRunningTests()
+        {
+            Process[] processes = Process.GetProcessesByName(WEBRUNNER_PROCESS_NAME);
+            
+            if (processes != null && processes.Length > 0)
+            {
+                if (MessageBox.Show("Stopping the current test will terminate all running tests. Do you want to continue?", 
+                    "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    foreach (Process p in processes)
+                    {
+                        try
+                        {
+                            if (!p.HasExited)
+                            {
+                                p.Kill();
+                                p.WaitForExit(5000); // Wait up to 5 seconds
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"Failed to kill process {p.Id}: {ex.Message}");
+                        }
+                        finally
+                        {
+                            p.Dispose();
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Code Generation
+        private void CodeGenerationGeneric(string classBegin, string singleLineCommentTemplate, 
+            string multiLineSeparator, string propertyTemplate)
+        {
+            StringBuilder sb = new StringBuilder();
+            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            Worksheet worksheet = null;
+            
+            try
+            {
+                worksheet = workbook.Sheets[PARAMS_WORKSHEET_NAME];
+                Range usedRange = null;
+                
+                try
+                {
+                    usedRange = worksheet.UsedRange;
+                    sb.AppendLine(classBegin);
+                    int rowCount = usedRange.Rows.Count;
+
+                    for (int i = 1; i <= rowCount; i++)
+                    {
+                        Range cellName = null;
+                        Range cellValue = null;
+                        
+                        try
+                        {
+                            cellName = (Range)usedRange.Cells[i, 1];
+                            cellValue = (Range)usedRange.Cells[i, 2];
+
+                            string paramName = cellName.Value2?.ToString()?.Trim();
+                            string description = cellValue.Value2?.ToString()?.Trim();
+
+                            // End generation if both are empty
+                            if (string.IsNullOrWhiteSpace(paramName) && string.IsNullOrWhiteSpace(description))
+                            {
+                                break;
+                            }
+
+                            // Ignore names with spaces
+                            if (!string.IsNullOrWhiteSpace(paramName) && !paramName.Contains(' '))
+                            {
+                                AppendParameterToCode(sb, paramName, description, singleLineCommentTemplate, 
+                                    multiLineSeparator, propertyTemplate);
+                            }
+                        }
+                        finally
+                        {
+                            ReleaseComObject(cellName);
+                            ReleaseComObject(cellValue);
+                        }
+                    }
+
+                    sb.AppendLine("}");
+                    Clipboard.SetText(sb.ToString());
+                    MessageBox.Show("The code generation for parameter list is complete.\nThe code is copied to your clipboard and you can paste it in your code.", 
+                        "Code Generation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                finally
+                {
+                    ReleaseComObject(usedRange);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error when generating code: {ex.Message}\nPlease make sure all parameters are present in [{PARAMS_WORKSHEET_NAME}] tab", 
+                    "Code Generation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ReleaseComObject(worksheet);
+            }
+        }
+
+        private void AppendParameterToCode(StringBuilder sb, string paramName, string description, 
+            string singleLineCommentTemplate, string multiLineSeparator, string propertyTemplate)
+        {
+            string comment;
+            if (string.IsNullOrWhiteSpace(description))
+            {
+                comment = string.Format(singleLineCommentTemplate, paramName);
+            }
+            else
+            {
+                string content = description.Replace("\n", multiLineSeparator);
+                comment = string.Format(singleLineCommentTemplate, content);
+            }
+            
+            sb.AppendLine(comment);
+            sb.AppendLine(string.Format(propertyTemplate, paramName, paramName));
+            sb.AppendLine();
+        }
+        #endregion
+
+        #region Parameter Management
+        private List<string> GetTestCases()
+        {
+            var testCases = new List<string>();
+            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            Worksheet worksheet = null;
+            Range row = null;
+
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                
+                if (Settings.ExcludedTabs.Contains(worksheet.Name.ToUpper()))
+                {
+                    throw new WebEngineGeneralException("The current worksheet is not test data but a special excluded worksheet.");
+                }
+
+                row = (Range)worksheet.Rows[3];
+                int columnIndex = 1;
+
+                foreach (Range cell in row.Cells)
+                {
+                    try
+                    {
+                        if (columnIndex >= TEST_CASE_START_COLUMN)
+                        {
+                            string variableName = GetCellValueAsString(cell);
+                            
+                            if (!string.IsNullOrEmpty(variableName))
+                            {
+                                testCases.Add(variableName);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        columnIndex++;
+                    }
+                    finally
+                    {
+                        ReleaseComObject(cell);
+                    }
+                }
+            }
+            finally
+            {
+                ReleaseComObject(row);
+                ReleaseComObject(worksheet);
+            }
+
+            return testCases;
         }
 
         private List<string> GetParameters()
         {
-            List<string> parameters = new List<string>();
+            var parameters = new List<string>();
             Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            Worksheet worksheet = workbook.Sheets["PARAMS"];
-            int i = 1;
-            foreach (Range row in worksheet.UsedRange.Rows)
+            Worksheet worksheet = null;
+            Range usedRange = null;
+
+            try
             {
-                if (i > 1)
+                worksheet = workbook.Sheets[PARAMS_WORKSHEET_NAME];
+                usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip header
                 {
-                    string variableName;
-                    Range cell_name = row.Cells[1];
-                    object name = cell_name.Value2;
-                    variableName = name != null ? name.ToString().Trim() : null;
-                    if (!string.IsNullOrEmpty(variableName))
+                    Range cellName = null;
+                    try
                     {
-                        parameters.Add(variableName);
+                        cellName = (Range)usedRange.Cells[i, 1];
+                        string variableName = GetCellValueAsString(cellName);
+                        
+                        if (!string.IsNullOrEmpty(variableName))
+                        {
+                            parameters.Add(variableName);
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
-                    else
+                    finally
                     {
-                        break;
+                        ReleaseComObject(cellName);
                     }
                 }
-                i++;
             }
+            finally
+            {
+                ReleaseComObject(usedRange);
+                ReleaseComObject(worksheet);
+            }
+
             return parameters;
         }
 
         private List<string> GetTestParameters()
         {
-            List<string> parameters = new List<string>();
+            var parameters = new List<string>();
             Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-            Worksheet worksheet = workbook.ActiveSheet;
-            if (Settings.ExcludedTabs.Contains(worksheet.Name.ToUpper()))
+            Worksheet worksheet = null;
+            Range usedRange = null;
+
+            try
             {
-                throw new WebEngineGeneralException("The current worksheet is not test data but a special excluded worksheet. ");
-            }
-            int currentRow = 1;
-            foreach (Range row in worksheet.UsedRange.Rows)
-            {
-                if (currentRow >= TestCaseRow)
+                worksheet = workbook.ActiveSheet;
+                
+                if (Settings.ExcludedTabs.Contains(worksheet.Name.ToUpper()))
                 {
-                    Range param_name = row.Cells[VariableColumn];
-                    //Exit reading if cannot read the name of the variable.
-                    string variableName = null;
+                    throw new WebEngineGeneralException("The current worksheet is not test data but a special excluded worksheet.");
+                }
+
+                usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int currentRow = TEST_CASE_ROW; currentRow <= rowCount; currentRow++)
+                {
+                    Range paramNameCell = null;
                     try
                     {
-                        variableName = param_name.get_Value().ToString();
-                        variableName = variableName.Trim();
-                        parameters.Add(variableName);
+                        paramNameCell = (Range)usedRange.Cells[currentRow, VARIABLE_COLUMN];
+                        string variableName = GetCellValueAsString(paramNameCell);
+                        
+                        if (!string.IsNullOrEmpty(variableName))
+                        {
+                            parameters.Add(variableName.Trim());
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
-                    catch { break; }
-
+                    finally
+                    {
+                        ReleaseComObject(paramNameCell);
+                    }
                 }
-                currentRow++;
+            }
+            finally
+            {
+                ReleaseComObject(usedRange);
+                ReleaseComObject(worksheet);
             }
 
             return parameters;
         }
 
-        private void btnDataMerge_Click(object sender, RibbonControlEventArgs e)
+        private void MergeParameters()
         {
+            Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            var parameters = new List<AxaFrance.WebEngine.Variable>();
+            Worksheet paramsWorksheet = null;
+            Worksheet activeSheet = null;
+            Range usedRange = null;
 
-            if (MessageBox.Show("This function will create missing parameters in your active test suite, This action cannot be reversed.\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            try
             {
-                Workbook workbook = Globals.ThisAddIn.Application.ActiveWorkbook;
-                List<AxaFrance.WebEngine.Variable> parameters = new List<AxaFrance.WebEngine.Variable>();
-                try
+                // Get Parameters from PARAMS worksheet
+                paramsWorksheet = workbook.Sheets[PARAMS_WORKSHEET_NAME];
+                usedRange = paramsWorksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int i = 1; i <= rowCount; i++)
                 {
-                    #region Get Parameters in PARAM
-
-                    Worksheet worksheet = workbook.Sheets["PARAMS"];
-                    foreach (Range row in worksheet.UsedRange.Rows)
+                    Range cellName = null;
+                    Range cellValue = null;
+                    
+                    try
                     {
-                        string paramname, description;
-                        Range cell_name = row.Cells[1];
-                        object name = cell_name.Value2;
-                        paramname = name != null ? name.ToString().Trim() : null;
-                        Range cell_value = row.Cells[2];
-                        object value = cell_value.Value2;
-                        description = value != null ? value.ToString().Trim() : null;
+                        cellName = (Range)usedRange.Cells[i, 1];
+                        cellValue = (Range)usedRange.Cells[i, 2];
 
-                        //Ignore all names has Spaces
-                        if (paramname.Contains(' ')) continue;
-                        if (string.IsNullOrWhiteSpace(paramname) && string.IsNullOrWhiteSpace(description))
+                        string paramName = cellName.Value2?.ToString()?.Trim();
+                        string description = cellValue.Value2?.ToString()?.Trim();
+
+                        // Ignore names with spaces
+                        if (!string.IsNullOrWhiteSpace(paramName) && !paramName.Contains(' '))
+                        {
+                            parameters.Add(new Variable(paramName, description));
+                        }
+
+                        if (string.IsNullOrWhiteSpace(paramName) && string.IsNullOrWhiteSpace(description))
                         {
                             break;
                         }
-
-                        parameters.Add(new Variable(paramname, description));
-
                     }
-                    #endregion
-
-                    #region Get Parameters in Active Sheet
-                    Worksheet sheet = workbook.ActiveSheet;
-                    if (!Ribbon.Settings.ExcludedTabs.Contains(sheet.Name.ToUpper()))
+                    finally
                     {
-                        var testParams = GetParametersInSheet(sheet);
-                        SyncParams(parameters, testParams, sheet);
+                        ReleaseComObject(cellName);
+                        ReleaseComObject(cellValue);
                     }
-                    else
-                    {
-                        MessageBox.Show("This function can only be used in Test DATA worksheets.");
-                    }
-
-                    #endregion
                 }
-                catch (Exception ex)
+
+                ReleaseComObject(usedRange);
+                usedRange = null;
+
+                // Get Parameters in Active Sheet
+                activeSheet = workbook.ActiveSheet;
+                if (!Ribbon.Settings.ExcludedTabs.Contains(activeSheet.Name.ToUpper()))
                 {
-                    MessageBox.Show("Error when synchronizing . please make sure all parameters are present in [PARAMS] tab\n" + ex.Message);
+                    var testParams = GetParametersInSheet(activeSheet);
+                    SyncParams(parameters, testParams, activeSheet);
                 }
+                else
+                {
+                    MessageBox.Show("This function can only be used in Test DATA worksheets.", 
+                        "Invalid Worksheet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            finally
+            {
+                ReleaseComObject(usedRange);
+                ReleaseComObject(activeSheet);
+                ReleaseComObject(paramsWorksheet);
             }
         }
 
-        /// <summary>
-        /// Synchronize Parameters defined in PARAM worksheet and Test Suite worksheet
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <param name="testParams"></param>
-        /// <param name="sheet"></param>
         private void SyncParams(List<Variable> parameters, List<string> testParams, Worksheet sheet)
         {
             foreach (var p in parameters)
             {
                 if (!testParams.Contains(p.Name))
                 {
-                    int index = parameters.IndexOf(p) + this.TestCaseRow + VariableRow - 1;
-                    Range range = sheet.get_Range("A" + index).EntireRow;
-                    range.Insert(XlInsertShiftDirection.xlShiftDown, Type.Missing);
-                    Range cell = sheet.get_Range("A" + index);
-                    cell.set_Value(XlRangeValueDataType.xlRangeValueDefault, p.Name);
+                    Range range = null;
+                    Range cell = null;
+                    
+                    try
+                    {
+                        int index = parameters.IndexOf(p) + TEST_CASE_ROW + VARIABLE_ROW - 1;
+                        range = sheet.get_Range($"A{index}").EntireRow;
+                        range.Insert(XlInsertShiftDirection.xlShiftDown, Type.Missing);
+                        
+                        cell = sheet.get_Range($"A{index}");
+                        cell.set_Value(XlRangeValueDataType.xlRangeValueDefault, p.Name);
+                    }
+                    finally
+                    {
+                        ReleaseComObject(cell);
+                        ReleaseComObject(range);
+                    }
                 }
             }
         }
 
         private List<string> GetParametersInSheet(Worksheet worksheet)
         {
-            List<string> paramNames = new List<string>();
-            int currentRow = 1;
-            foreach (Range row in worksheet.UsedRange.Rows)
+            var paramNames = new List<string>();
+            Range usedRange = null;
+            
+            try
             {
-                if (currentRow >= TestCaseRow)
+                usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                for (int currentRow = TEST_CASE_ROW; currentRow <= rowCount; currentRow++)
                 {
-                    Range param_name = row.Cells[VariableColumn];
-                    //Exit reading if cannot read the name of the variable.
-                    string variableName = null;
+                    Range paramNameCell = null;
                     try
                     {
-                        variableName = param_name.get_Value().ToString();
+                        paramNameCell = (Range)usedRange.Cells[currentRow, VARIABLE_COLUMN];
+                        string variableName = GetCellValueAsString(paramNameCell);
+                        
+                        if (string.IsNullOrEmpty(variableName))
+                        {
+                            break;
+                        }
+                        
+                        paramNames.Add(variableName);
                     }
-                    catch { break; }
-                    if (string.IsNullOrEmpty(variableName)) break;
-                    paramNames.Add(variableName);
+                    finally
+                    {
+                        ReleaseComObject(paramNameCell);
+                    }
                 }
-                currentRow++;
             }
-            return paramNames;
-
-        }
-
-        private void BtnExportFilter_Click(object sender, RibbonControlEventArgs e)
-        {
-            FrmSelectFilter frmFilter = new FrmSelectFilter();
-            var result = frmFilter.ShowDialog();
-            if (result == DialogResult.OK)
+            finally
             {
-                ExportAll(frmFilter.Filter, frmFilter.FilterType);
+                ReleaseComObject(usedRange);
+            }
+
+            return paramNames;
+        }
+        #endregion
+
+        #region Helper Methods
+        private string GetCellValueAsString(Range cell)
+        {
+            if (cell == null) return null;
+            
+            try
+            {
+                object value = cell.Value2;
+                return value?.ToString()?.Trim();
+            }
+            catch
+            {
+                return null;
             }
         }
+
+        private void ReleaseComObject(object obj)
+        {
+            if (obj != null)
+            {
+                try
+                {
+                    Marshal.ReleaseComObject(obj);
+                }
+                catch
+                {
+                    // Ignore errors during COM cleanup
+                }
+            }
+        }
+        #endregion
     }
 }

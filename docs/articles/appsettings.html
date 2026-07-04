@@ -75,6 +75,7 @@ If a parameter is provided in both side, the value provided in command-line will
   &quot;LogDir&quot;: null,
   &quot;GridConnection&quot;: &quot;http://localhost:4723/wd/hub&quot;,
   &quot;GridForDesktop&quot;: false,
+  &quot;UseAppiumForWebMobile&quot;: false,
   &quot;Username&quot;: &quot;&quot;,
   &quot;Password&quot;: &quot;&quot;,
   &quot;PackageUploadTargetUrl&quot;: &quot;https://yourcloudprovider.com/apploader/upload&quot;,
@@ -95,24 +96,26 @@ If a parameter is provided in both side, the value provided in command-line will
 </code></pre>
 <h2 id="general-options">General Options</h2>
 <ul>
-<li><code>LogDir</code>: The directory to store the test report. if the value is null, then the default temporary folder will be used.</li>
-<li><code>GridConnection</code>: The Selenium Grid/Appium Server Url to run Mobile based tests.</li>
-<li><code>GridForDesktop</code>: Normal Web Desktop execution will run locally and ignore selenium grid connection. If you want to run Desktop Web tests on a Selenium Grid, set this value to <code>true</code>. Mobile test will not be affected by this value.</li>
-<li><code>Username</code>: The username of Selenium Grid authentication.</li>
-<li><code>Password</code>: The password of Selenium Grid authentication.</li>
-<li><code>PackageUploadTargetUrl</code>: The url handler to upload the app package (.apk or .ipa)</li>
-<li><code>PackageName</code>: The name of the app package (often in <em>com.company.product</em> format)</li>
-<li><code>EncryptionKey</code>: If you want to secure password used in your script, you can encrypt it via the customized Encryption Key.
-If the value is <code>null</code>, WebEngine will use default encryption key.</li>
-<li><code>Capabilities</code>: To provided necessary Appium capabilities or options for special need.</li>
+<li><code>LogDir</code>: The directory to store the test report. If the value is null, the default temporary folder will be used.</li>
+<li><code>GridConnection</code>: The Selenium Grid or Appium Server URL used for mobile or remote desktop tests.</li>
+<li><code>GridForDesktop</code>: Normal Web Desktop tests run locally and ignore Selenium Grid. Set to <code>true</code> to route desktop browser tests through the Selenium Grid as well. Mobile tests are not affected by this value.</li>
+<li><code>UseAppiumForWebMobile</code>: When set to <code>true</code>, forces the framework to use Appium for mobile web browser tests (e.g., Chrome on Android, Safari on iOS) instead of a pure Selenium Grid connection. Useful when your grid provider requires Appium for mobile web.</li>
+<li><code>Username</code>: The username for Selenium Grid authentication.</li>
+<li><code>Password</code>: The password for Selenium Grid authentication.</li>
+<li><code>PackageUploadTargetUrl</code>: The URL endpoint used to upload the app package (<code>.apk</code> or <code>.ipa</code>).</li>
+<li><code>PackageName</code>: The package name of the application under test (typically in <em>com.company.product</em> format).</li>
+<li><code>EncryptionKey</code>: A custom key used to encrypt and decrypt sensitive values (such as passwords) in test data files. If <code>null</code>, WebEngine uses a default built-in key. For security, avoid storing a real key in a shared configuration file — use token replacement on your DevOps platform instead.</li>
+<li><code>AllowInsecureCertificate</code>: When <code>true</code>, the browser will accept self-signed or untrusted SSL certificates. Useful for testing environments that do not have a trusted certificate.</li>
+<li><code>BrowserVersion</code>: Pins the browser version when connecting to a Selenium Grid that requires it.</li>
+<li><code>Capabilities</code>: Additional capabilities sent to Appium or Selenium Grid for special configuration needs.</li>
 </ul>
 <h2 id="options-for-browsers">Options for browsers</h2>
 <ul>
-<li><code>chromeOptions</code>, <code>firefoxOptions</code>, <code>edgeOptions</code> and <code>safariOptions</code>: These are default options for each browser. when <code>BrowserFactory.GetDriver</code> is called, driver options of selected browser will be used. For example, if running tests on Chrome with above settings, Chrome will be launched in <code>incongnito</code> mode, if running tests on Edge, the browser will be launched in <code>imprivate</code> mode with window maximized by default.</li>
+<li><code>chromeOptions</code>, <code>firefoxOptions</code>, <code>edgeOptions</code> and <code>safariOptions</code>: Default launch options for each browser. When <code>BrowserFactory.GetDriver</code> is called, the options for the selected browser are applied automatically. For example, with the configuration above, Chrome will launch in <code>incognito</code> mode and Edge will launch in <code>inprivate</code> mode with the window maximized.</li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing, use it only when it's necessary.</p>
+<p>Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing. Use only when necessary.</p>
 </div>
 
 </article>

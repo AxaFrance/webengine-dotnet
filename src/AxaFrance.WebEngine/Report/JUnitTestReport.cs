@@ -15,6 +15,7 @@
 // 
 // Ce code source a été automatiquement généré par xsd, Version=4.8.3928.0.
 // 
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 namespace AxaFrance.WebEngine.Report.JUnit {
     using System.Xml.Serialization;
     
@@ -25,8 +26,10 @@ namespace AxaFrance.WebEngine.Report.JUnit {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+
     public partial class testsuite {
-        
+
+
         private testsuiteProperty[] propertiesField;
         
         private testsuiteTestcase[] testcaseField;
@@ -484,3 +487,4 @@ namespace AxaFrance.WebEngine.Report.JUnit {
         }
     }
 }
+#pragma warning restore CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.

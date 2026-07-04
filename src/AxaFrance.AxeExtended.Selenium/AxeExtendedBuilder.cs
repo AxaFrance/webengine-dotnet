@@ -101,7 +101,7 @@ namespace AxaFrance.AxeExtended.Selenium
         /// <summary>
         /// Limit analysis to only the specified tags.
         /// Refer https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#api-name-axegetrules to get the list of supported tag names
-        /// Cannot be used with <see cref="WithRules(string[])"/> & <see cref="Options"/>
+        /// Cannot be used with <see cref="WithRules(string[])"/> &amp; <see cref="AxeRunOptions"/>
         /// </summary>
         /// <param name="tags">tags to be used for scanning</param>
         public AxeExtendedBuilder WithTags(params string[] tags)
@@ -138,7 +138,7 @@ namespace AxaFrance.AxeExtended.Selenium
         /// <summary>
         ///  Set the list of rules to skip when running an analysis
         ///  Refer https://dequeuniversity.com/rules/axe/ to get the complete listing of available rule IDs.
-        ///  Cannot be used with <see cref="Options"/>
+        ///  Cannot be used with <see cref="AxeRunOptions"/>
         /// </summary>
         /// <param name="rules">rule IDs to be skipped from analysis</param>
         public AxeExtendedBuilder DisableRules(params string[] rules)
@@ -160,8 +160,8 @@ namespace AxaFrance.AxeExtended.Selenium
         /// <summary>
         /// Restricts the analysis to include only the given CSS selector and its descendants, instead of the whole page.
         /// To include multiple selectors, call Include multiple times.
-        /// To include a selector inside an iframe, see <see cref="Include(AxeSelector)"/> and <see cref="AxeSelector.AxeSelector(string, List{string})"/>.
-        /// To include a selector inside a shadow DOM, see <see cref="Include(AxeSelector)"/> and <see cref="AxeSelector.FromFrameShadowSelectors(List{List{string}})"/>.
+        /// To include a selector inside an iframe, see <see cref="Include(AxeSelector)"/> and <see cref="AxeSelector(string, List{string})"/>.
+        /// To include a selector inside a shadow DOM, see <see cref="Include(AxeSelector)"/> and <see cref="AxeSelector.FromFrameShadowSelectors(IList{IList{string}})"/>.
         /// </summary>
         /// <param name="selector">A CSS selector in the topmost frame of the page</param>
         public AxeExtendedBuilder Include(string selector) => this.Include(new AxeSelector(selector));
@@ -169,7 +169,7 @@ namespace AxaFrance.AxeExtended.Selenium
         /// <summary>
         /// Restricts the analysis to include only the given <see cref="AxeSelector"/> and its descendants, instead of the whole page.
         /// This overload can include selectors inside iframes (with <see cref="AxeSelector.AxeSelector(string, List{string})"/>) or shadow DOMs
-        /// (<see cref="AxeSelector.FromFrameShadowSelectors(List{List{string}})"/>).
+        /// (<see cref="AxeSelector.FromFrameShadowSelectors(IList{IList{string}})"/>).
         /// To include multiple selectors, call Include multiple times.
         /// </summary>
         /// <param name="selector">An <see cref="AxeSelector"/> representing an element anywhere in the page, including nested in an iframe or shadow DOM</param>
@@ -186,14 +186,14 @@ namespace AxaFrance.AxeExtended.Selenium
         /// Excludes the given CSS selector and its descendants from analysis.
         /// To exclude multiple selectors, call Exclude multiple times.
         /// To exclude a selector inside an iframe, see <see cref="Exclude(AxeSelector)"/> and <see cref="AxeSelector.AxeSelector(string, List{string})"/>.
-        /// To exclude a selector inside a shadow DOM, see <see cref="Exclude(AxeSelector)"/> and <see cref="AxeSelector.FromFrameShadowSelectors(List{List{string}})"/>.
+        /// To exclude a selector inside a shadow DOM, see <see cref="Exclude(AxeSelector)"/> and <see cref="AxeSelector.FromFrameShadowSelectors(IList{IList{string}})"/>.
         /// </summary>
         /// <param name="selector">A CSS selector in the topmost frame of the page</param>
         public AxeExtendedBuilder Exclude(string selector) => this.Exclude(new AxeSelector(selector));
 
         /// <summary>
         /// Excludes the given <see cref="AxeSelector"/> and its descendants from analysis. This overload can exclude selectors inside iframes
-        /// (with <see cref="AxeSelector.AxeSelector(string, List{string})"/>) or shadow DOMs (<see cref="AxeSelector.FromFrameShadowSelectors(List{List{string}})"/>).
+        /// (with <see cref="AxeSelector.AxeSelector(string, List{string})"/>) or shadow DOMs (<see cref="AxeSelector.FromFrameShadowSelectors(IList{IList{string}})"/>).
         /// To exclude multiple selectors, call Exclude multiple times.
         /// </summary>
         /// <param name="selector">An AxeSelector representing an element anywhere in the page, including nested in an iframe or shadow DOM</param>

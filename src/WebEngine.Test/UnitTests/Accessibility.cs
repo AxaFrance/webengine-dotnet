@@ -5,7 +5,6 @@ using AxaFrance.WebEngine.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
-using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -40,13 +40,17 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <returns>app_url, used to identify the application on the target modile device</returns>
         internal static async Task<string> UploadToBrowserstack(string packagePath, string username, string accessKey, string targetUrl = "https://api-cloud.browserstack.com/app-automate/upload")
         {
-            ServicePointManager.ServerCertificateValidationCallback += checkCertificate;
             DebugLogger.WriteLine($"Uploading the package {packagePath} to {targetUrl}");
             string boundary = $"--bswebengine-{DateTime.Now.Ticks.ToString("x")}";
             FileInfo fi = new FileInfo(packagePath);
             var fileContent = File.ReadAllBytes(packagePath);
             MemoryStream ms = new MemoryStream(fileContent);
-            using (var httpClient = new HttpClient())
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                return checkCertificate(message, cert, chain, errors);
+            };
+            using (var httpClient = new HttpClient(handler))
             {
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{accessKey}")));
@@ -77,13 +81,17 @@ namespace AxaFrance.WebEngine.MobileApp
         /// <returns>AppId returned by Mobile Lab</returns>
         internal static async Task<string> UploadToMobileLab(string accessToken, string packagePath, string targetUrl)
         {
-            ServicePointManager.ServerCertificateValidationCallback += checkCertificate;
             DebugLogger.WriteLine($"Uploading the package {packagePath} to {targetUrl}");
             string boundary = $"--mlwebengine-{DateTime.Now.Ticks.ToString("x")}";
             FileInfo fi = new FileInfo(packagePath);
             var fileContent = File.ReadAllBytes(packagePath);
             MemoryStream ms = new MemoryStream(fileContent);
-            using (var httpClient = new HttpClient())
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                return checkCertificate(message, cert, chain, errors);
+            };
+            using (var httpClient = new HttpClient(handler))
             {
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                 using (StreamContent sc = new StreamContent(ms))
@@ -224,12 +232,11 @@ namespace AxaFrance.WebEngine.MobileApp
         {
             AppiumDriver driver;
             Settings s = Settings.Instance;
-            AppiumOptions options = new AppiumOptions()
-            {
-                DeviceName = s.Device,
-                PlatformName = s.Platform.ToString(),
-                App = s.AppId,
-            };
+            AppiumOptions options = new AppiumOptions();
+
+            options.AddAdditionalAppiumOption("deviceName", s.Device);
+            options.PlatformName = s.Platform.ToString();
+            options.App = s.AppId;
 
             options.AddAdditionalAppiumOption("newCommandTimeout", 90);
             options.AddAdditionalAppiumOption("nativeWebScreenshot", true);
@@ -261,12 +268,12 @@ namespace AxaFrance.WebEngine.MobileApp
 
             if (s.Platform == Platform.Android)
             {
-                options.AutomationName = "UiAutomator2";
+                options.AddAdditionalAppiumOption("automationName", "UiAutomator2");
                 driver = new AndroidDriver(new Uri(appiumServerAddress), options, TimeSpan.FromSeconds(180));
             }
             else if (s.Platform == Platform.iOS)
             {
-                options.AutomationName = "XCUITest";
+                options.AddAdditionalAppiumOption("automationName", "XCUITest");
                 options.AddAdditionalAppiumOption("includeSafariInWebviews", true);
                 options.AddAdditionalAppiumOption("connectHardwareKeyboard", true);
                 driver = new IOSDriver(new Uri(appiumServerAddress), options, TimeSpan.FromSeconds(180));

@@ -92,6 +92,10 @@ Then assembly these keywords to form a test case, with associated test data.</li
 <h5>Note</h5>
 <p>As keywords are reused among different test cases, test data is often parameterized or externalized. This approach is usually associated with Data-driven testing approach.</p>
 </div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>When implementing keywords with WebEngine, you benefit from the <strong>built-in retry and synchronization</strong> on every element action. There is no need to add explicit waits or try/catch blocks for <code>StaleElementReferenceException</code> — the framework handles it transparently. See <a href="../articles/best-practices.html#3-built-in-retry-and-synchronization">Best Practices — Built-in Retry and Synchronization</a> for details.</p>
+</div>
 <h2 id="test-execution">Test Execution</h2>
 <p>Keyword driven test approach often combines with Data-Drive approach because keywords are made to be re-used in different scenarios.
 During test execution, you'll need to provide test data for the test case (or, say the test data for each keyword used in the test case).</p>

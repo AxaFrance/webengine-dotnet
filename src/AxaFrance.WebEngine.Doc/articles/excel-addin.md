@@ -1,4 +1,4 @@
-# Working with WebEngine Add-in for Excel
+﻿# Working with WebEngine Add-in for Excel
 
 In many enterprises, Excel is used a lot to do data related works. Many test teams use it to manage Test Data for manual or Automated Tests.
 Web Engine Excel Add-in is built to easily manage test data and execute tests on local computer.
@@ -23,7 +23,7 @@ The Excel add-in enables you to:
 > Instead, Test Data and Environment Variables are always provided in XML format, exported via the Add-in.
 
 ## Install WebEngine Excel Add-in
-Latest version of Excel add-in can be found on our repository: (https://www.github.com/replace_this_url_once_available)
+The latest version of the Excel Add-in can be found on the GitHub releases page: [https://github.com/AxaFrance/webengine-dotnet/releases](https://github.com/AxaFrance/webengine-dotnet/releases)
 
 ## Example Test Data File
 You can download a copy of example test data file here: [WebEngine-TestData.xlsx](../files/WebEngine-TestData.xlsx), and follow articles listed in this chapter to understand the structure of the test data file.
@@ -31,8 +31,8 @@ You can download a copy of example test data file here: [WebEngine-TestData.xlsx
 In this chapter, you can also find details about:
 * [Export Test Data](excel-addin-export.md)
 * [Settings](excel-addin-settings.md)
-* [Launch Test from Excel](excel-addin-settings.md)
-* [Integrated Tools](excel-addin-settings.md)
+* [Launch Test from Excel](excel-addin-launch.md)
+* [Integrated Tools](excel-addin-tools.md)
 
 
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32228.430
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AxaFrance.WebEngine", "AxaFrance.WebEngine\AxaFrance.WebEngine.csproj", "{4CEE698C-D80E-4EF3-8A90-E59B9C1DD9B9}"
 EndProject
@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8AB08366
 		..\PULL_REQUEST_TEMPLATE.md = ..\PULL_REQUEST_TEMPLATE.md
 		..\README.md = ..\README.md
 		..\WebEngine2.0.md = ..\WebEngine2.0.md
+		WebEngineMCP.md = WebEngineMCP.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{8943BF7F-960F-406E-B415-6527828B602A}"
@@ -59,6 +60,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.KeywordDriven", "Samples.KeywordDriven\Samples.KeywordDriven.csproj", "{0EF563D4-648F-460B-A22E-8ED4A234F375}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.LinearScripting", "Samples.LinearScripting\Samples.LinearScripting.csproj", "{C3EF2A73-9512-4798-AE92-53DD8C98BCDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaFrance.WebEngine.Mcp", "AxaFrance.WebEngine.Mcp\AxaFrance.WebEngine.Mcp.csproj", "{23487546-6DEB-6457-B6B0-C9E0C7C79D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +121,10 @@ Global
 		{C3EF2A73-9512-4798-AE92-53DD8C98BCDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3EF2A73-9512-4798-AE92-53DD8C98BCDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3EF2A73-9512-4798-AE92-53DD8C98BCDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23487546-6DEB-6457-B6B0-C9E0C7C79D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23487546-6DEB-6457-B6B0-C9E0C7C79D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23487546-6DEB-6457-B6B0-C9E0C7C79D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23487546-6DEB-6457-B6B0-C9E0C7C79D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

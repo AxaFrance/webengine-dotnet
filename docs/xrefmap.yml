@@ -2092,6 +2092,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AccessbilityId
   nameWithType: AppElementDescription.AccessbilityId
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher
+  name: AndroidDataMatcher
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_AndroidDataMatcher
+  commentId: P:AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher
+  nameWithType: AppElementDescription.AndroidDataMatcher
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher*
+  name: AndroidDataMatcher
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_AndroidDataMatcher_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.AndroidDataMatcher
+  nameWithType: AppElementDescription.AndroidDataMatcher
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ApplyAttribute(AxaFrance.WebEngine.Web.FindsByAttribute)
   name: ApplyAttribute(FindsByAttribute)
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ApplyAttribute_AxaFrance_WebEngine_Web_FindsByAttribute_
@@ -2131,6 +2144,45 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ContentDescription
   nameWithType: AppElementDescription.ContentDescription
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap
+  name: DoubleTap()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_DoubleTap
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap()
+  nameWithType: AppElementDescription.DoubleTap()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap*
+  name: DoubleTap
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_DoubleTap_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.DoubleTap
+  nameWithType: AppElementDescription.DoubleTap
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo(AxaFrance.WebEngine.MobileApp.AppElementDescription)
+  name: DragAndDropTo(AppElementDescription)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_DragAndDropTo_AxaFrance_WebEngine_MobileApp_AppElementDescription_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo(AxaFrance.WebEngine.MobileApp.AppElementDescription)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo(AxaFrance.WebEngine.MobileApp.AppElementDescription)
+  nameWithType: AppElementDescription.DragAndDropTo(AppElementDescription)
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo*
+  name: DragAndDropTo
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_DragAndDropTo_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.DragAndDropTo
+  nameWithType: AppElementDescription.DragAndDropTo
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard
+  name: HideKeyboard()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_HideKeyboard
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard()
+  nameWithType: AppElementDescription.HideKeyboard()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard*
+  name: HideKeyboard
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_HideKeyboard_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.HideKeyboard
+  nameWithType: AppElementDescription.HideKeyboard
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.Id
   name: Id
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_Id
@@ -2144,6 +2196,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.Id
   nameWithType: AppElementDescription.Id
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator
+  name: ImageLocator
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ImageLocator
+  commentId: P:AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator
+  nameWithType: AppElementDescription.ImageLocator
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator*
+  name: ImageLocator
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_ImageLocator_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ImageLocator
+  nameWithType: AppElementDescription.ImageLocator
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.InternalFindElement
   name: InternalFindElement()
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_InternalFindElement
@@ -2196,6 +2261,35 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.IosClassChain
   nameWithType: AppElementDescription.IosClassChain
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate
+  name: IosPredicate
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_IosPredicate
+  commentId: P:AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate
+  nameWithType: AppElementDescription.IosPredicate
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate*
+  name: IosPredicate
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_IosPredicate_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.IosPredicate
+  nameWithType: AppElementDescription.IosPredicate
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress(System.Int32)
+  name: LongPress(int)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_LongPress_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress(System.Int32)
+  name.vb: LongPress(Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress(int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress(Integer)
+  nameWithType: AppElementDescription.LongPress(int)
+  nameWithType.vb: AppElementDescription.LongPress(Integer)
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress*
+  name: LongPress
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_LongPress_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.LongPress
+  nameWithType: AppElementDescription.LongPress
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.Name
   name: Name
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_Name
@@ -2260,6 +2354,32 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.ScrollUp
   nameWithType: AppElementDescription.ScrollUp
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft
+  name: SwipeLeft()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeLeft
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft()
+  nameWithType: AppElementDescription.SwipeLeft()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft*
+  name: SwipeLeft
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeLeft_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft
+  nameWithType: AppElementDescription.SwipeLeft
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
+  name: SwipeRight()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeRight
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight()
+  nameWithType: AppElementDescription.SwipeRight()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight*
+  name: SwipeRight
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeRight_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
+  nameWithType: AppElementDescription.SwipeRight
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.Text
   name: Text
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_Text
@@ -2299,6 +2419,22 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.UIAutomatorSelector
   nameWithType: AppElementDescription.UIAutomatorSelector
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable(System.Int32)
+  name: WaitUntilClickable(int)
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_WaitUntilClickable_System_Int32_
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable(System.Int32)
+  name.vb: WaitUntilClickable(Integer)
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable(int)
+  fullName.vb: AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable(Integer)
+  nameWithType: AppElementDescription.WaitUntilClickable(int)
+  nameWithType.vb: AppElementDescription.WaitUntilClickable(Integer)
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable*
+  name: WaitUntilClickable
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_WaitUntilClickable_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.WaitUntilClickable
+  nameWithType: AppElementDescription.WaitUntilClickable
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.XPath
   name: XPath
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_XPath
@@ -2372,6 +2508,18 @@ references:
   commentId: F:AxaFrance.WebEngine.MobileApp.ScrollDirection.Down
   fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection.Down
   nameWithType: ScrollDirection.Down
+- uid: AxaFrance.WebEngine.MobileApp.ScrollDirection.Left
+  name: Left
+  href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html#AxaFrance_WebEngine_MobileApp_ScrollDirection_Left
+  commentId: F:AxaFrance.WebEngine.MobileApp.ScrollDirection.Left
+  fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection.Left
+  nameWithType: ScrollDirection.Left
+- uid: AxaFrance.WebEngine.MobileApp.ScrollDirection.Right
+  name: Right
+  href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html#AxaFrance_WebEngine_MobileApp_ScrollDirection_Right
+  commentId: F:AxaFrance.WebEngine.MobileApp.ScrollDirection.Right
+  fullName: AxaFrance.WebEngine.MobileApp.ScrollDirection.Right
+  nameWithType: ScrollDirection.Right
 - uid: AxaFrance.WebEngine.MobileApp.ScrollDirection.Up
   name: Up
   href: api_net/AxaFrance.WebEngine.MobileApp.ScrollDirection.html#AxaFrance_WebEngine_MobileApp_ScrollDirection_Up
@@ -3853,15 +4001,15 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.Report.TestSuiteReport.Passed
   nameWithType: TestSuiteReport.Passed
-- uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)
-  name: SaveAs(string, string, bool)
-  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_
-  commentId: M:AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)
-  name.vb: SaveAs(String, String, Boolean)
-  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(string, string, bool)
-  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(String, String, Boolean)
-  nameWithType: TestSuiteReport.SaveAs(string, string, bool)
-  nameWithType.vb: TestSuiteReport.SaveAs(String, String, Boolean)
+- uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean,System.String@)
+  name: SaveAs(string, string, bool, out string)
+  href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_System_String__
+  commentId: M:AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean,System.String@)
+  name.vb: SaveAs(String, String, Boolean, String)
+  fullName: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(string, string, bool, out string)
+  fullName.vb: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(String, String, Boolean, String)
+  nameWithType: TestSuiteReport.SaveAs(string, string, bool, out string)
+  nameWithType.vb: TestSuiteReport.SaveAs(String, String, Boolean, String)
 - uid: AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs*
   name: SaveAs
   href: api_net/AxaFrance.WebEngine.Report.TestSuiteReport.html#AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_
@@ -4005,6 +4153,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.ReportSettings.NUnitReportPath
   nameWithType: ReportSettings.NUnitReportPath
+- uid: AxaFrance.WebEngine.ReportSettings.UniqueReportFolder
+  name: UniqueReportFolder
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_UniqueReportFolder
+  commentId: P:AxaFrance.WebEngine.ReportSettings.UniqueReportFolder
+  fullName: AxaFrance.WebEngine.ReportSettings.UniqueReportFolder
+  nameWithType: ReportSettings.UniqueReportFolder
+- uid: AxaFrance.WebEngine.ReportSettings.UniqueReportFolder*
+  name: UniqueReportFolder
+  href: api_net/AxaFrance.WebEngine.ReportSettings.html#AxaFrance_WebEngine_ReportSettings_UniqueReportFolder_
+  commentId: Overload:AxaFrance.WebEngine.ReportSettings.UniqueReportFolder
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.ReportSettings.UniqueReportFolder
+  nameWithType: ReportSettings.UniqueReportFolder
 - uid: AxaFrance.WebEngine.ResourceUsageReport
   name: ResourceUsageReport
   href: api_net/AxaFrance.WebEngine.ResourceUsageReport.html
@@ -4525,15 +4686,6 @@ references:
   fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, AxaFrance.WebEngine.TestCase, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
   nameWithType: SharedActionBase.DoAction(Type, TestCase, object, List<Variable>, ActionReport, params Variable[])
   nameWithType.vb: SharedActionBase.DoAction(Type, TestCase, Object, List(Of Variable), ActionReport, ParamArray Variable())
-- uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name: DoAction(Type, object, List<Variable>, ActionReport, params Variable[])
-  href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
-  commentId: M:AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name.vb: DoAction(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoAction(Type, object, List<Variable>, ActionReport, params Variable[])
-  nameWithType.vb: SharedActionBase.DoAction(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoAction(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Variable[])
   name: DoAction(Type, object, List<Variable>, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoAction_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Variable___
@@ -4550,15 +4702,15 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.SharedActionBase.DoAction
   nameWithType: SharedActionBase.DoAction
-- uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name: DoActionWithCheckpoint(Type, object, List<Variable>, ActionReport, params Variable[])
-  href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
-  commentId: M:AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
-  name.vb: DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
-  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
-  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
-  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, object, List<Variable>, ActionReport, params Variable[])
-  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, Object, List(Of Variable), ActionReport, ParamArray Variable())
+- uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,AxaFrance.WebEngine.TestCase,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
+  name: DoActionWithCheckpoint(Type, TestCase, object, List<Variable>, ActionReport, params Variable[])
+  href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_System_Type_AxaFrance_WebEngine_TestCase_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_Report_ActionReport_AxaFrance_WebEngine_Variable___
+  commentId: M:AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,AxaFrance.WebEngine.TestCase,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.Report.ActionReport,AxaFrance.WebEngine.Variable[])
+  name.vb: DoActionWithCheckpoint(Type, TestCase, Object, List(Of Variable), ActionReport, ParamArray Variable())
+  fullName: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, AxaFrance.WebEngine.TestCase, object, System.Collections.Generic.List<AxaFrance.WebEngine.Variable>, AxaFrance.WebEngine.Report.ActionReport, params AxaFrance.WebEngine.Variable[])
+  fullName.vb: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type, AxaFrance.WebEngine.TestCase, Object, System.Collections.Generic.List(Of AxaFrance.WebEngine.Variable), AxaFrance.WebEngine.Report.ActionReport, ParamArray AxaFrance.WebEngine.Variable())
+  nameWithType: SharedActionBase.DoActionWithCheckpoint(Type, TestCase, object, List<Variable>, ActionReport, params Variable[])
+  nameWithType.vb: SharedActionBase.DoActionWithCheckpoint(Type, TestCase, Object, List(Of Variable), ActionReport, ParamArray Variable())
 - uid: AxaFrance.WebEngine.SharedActionBase.DoActionWithCheckpoint(System.Type,System.Object,System.Collections.Generic.List{AxaFrance.WebEngine.Variable},AxaFrance.WebEngine.SharedActionBase,AxaFrance.WebEngine.Variable[])
   name: DoActionWithCheckpoint(Type, object, List<Variable>, SharedActionBase, params Variable[])
   href: api_net/AxaFrance.WebEngine.SharedActionBase.html#AxaFrance_WebEngine_SharedActionBase_DoActionWithCheckpoint_System_Type_System_Object_System_Collections_Generic_List_AxaFrance_WebEngine_Variable__AxaFrance_WebEngine_SharedActionBase_AxaFrance_WebEngine_Variable___

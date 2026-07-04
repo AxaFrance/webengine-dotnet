@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace AxaFrance.WebEngine
 {
+    /// <summary>
+    /// Defines global constants and shared state for the test framework.
+    /// </summary>
     public static class GlobalConstants
     {
         /// <summary>

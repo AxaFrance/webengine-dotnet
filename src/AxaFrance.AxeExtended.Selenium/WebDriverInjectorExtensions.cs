@@ -17,6 +17,7 @@ namespace AxaFrance.AxeExtended.Selenium
         ///  To be used to take actions in every frame on a page.
         /// </summary>
         /// <param name="driver">An initialized WebDriver</param>
+        /// <param name="callback"></param>
         internal static void ForEachFrameContext(this IWebDriver driver, Action callback)
         {
             IList<IWebElement> parents = new List<IWebElement>();

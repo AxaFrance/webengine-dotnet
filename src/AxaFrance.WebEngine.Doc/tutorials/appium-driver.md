@@ -1,4 +1,4 @@
-# WebDriver for MobileApp testing
+﻿# WebDriver for MobileApp testing
 In this article, we will discuss how to test Mobile applications running on Android and iOS.
 It is easier to test Web based applications, because we can just open the browser and type the URL, then we are able to work on it.
 Mobile App testing is different, before launching the test script, we need to install the App package and open it in the first place.
@@ -28,11 +28,14 @@ More automation driver could be considered in the future.
 
 ## Connecting to local Appium Server
 To connect to a local Appium Server which connects to a single device,
-we only need to specify the Server URL and the full path of the app package: 
+we only need to specify the Server URL and the full path of the app package.
+
+> [!NOTE]
+> Appium 2.x changed the default base path. Use `http://localhost:4723` instead of the Appium 1.x style `http://localhost:4723/wd/hub`.
 
 ```csharp
 var settings = AxaFrance.WebEngine.Settings.Instance;
-settings.GridServerUrl = "http://localhost:4723/wd/hub";
+settings.GridServerUrl = "http://localhost:4723";
 settings.AppId = "C:\\app-packages\\myapp-1.0.apk";
 var driver = AppFactory.GetDriver(AxaFrance.WebEngine.Platform.Android);
 ```
@@ -43,7 +46,7 @@ To test on on-premise selenium grid, you'll need to specify the `Settings.Device
 
 ```csharp
 var settings = AxaFrance.WebEngine.Settings.Instance;
-settings.GridServerUrl = "http://remote-server.internal:8080/wd/hub";
+settings.GridServerUrl = "http://remote-server.internal:8080";
 settings.AppId = "C:\\app-packages\\myapp-1.0.apk";
 settings.Platform = Platform.Android;
 settings.Device = "Android API 30";

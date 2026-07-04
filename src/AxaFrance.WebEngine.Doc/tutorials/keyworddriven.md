@@ -1,4 +1,4 @@
-# Keyword-driven Testing approach
+﻿# Keyword-driven Testing approach
 
 **Keyword-driven testing**, or **Action Keyword based testing** is a testing methodology separates the documentation of test cases into different action keywords.
 
@@ -22,8 +22,12 @@ Test Script development in Keyword-driven approach means developing every action
 * Controls the SUT
 * Verifies expected result of the action keyword.
 Then assembly these keywords to form a test case, with associated test data.
+
 > [!NOTE]
 > As keywords are reused among different test cases, test data is often parameterized or externalized. This approach is usually associated with Data-driven testing approach.
+
+> [!TIP]
+> When implementing keywords with WebEngine, you benefit from the **built-in retry and synchronization** on every element action. There is no need to add explicit waits or try/catch blocks for `StaleElementReferenceException` — the framework handles it transparently. See [Best Practices — Built-in Retry and Synchronization](../articles/best-practices.md#3-built-in-retry-and-synchronization) for details.
 
 ## Test Execution
 Keyword driven test approach often combines with Data-Drive approach because keywords are made to be re-used in different scenarios.

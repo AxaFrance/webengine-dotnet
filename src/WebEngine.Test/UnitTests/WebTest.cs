@@ -368,9 +368,9 @@ namespace WebEngine.Test.UnitTests
             var value3 = check.GetDomProperty("checked");
 
             // Assert
-            Assert.AreEqual(string.Compare("true", value, true), 0);
-            Assert.AreEqual(string.Compare("true", value2, true), 0);
-            Assert.AreNotEqual(string.Compare("true", value3, true), 0);
+            Assert.AreEqual(0, string.Compare("true", value, true));
+            Assert.AreEqual(0, string.Compare("true", value2, true));
+            Assert.AreNotEqual(0, string.Compare("true", value3, true));
         }
 
         [TestMethod]

@@ -1,4 +1,4 @@
-using AxaFrance.WebEngine;
+﻿using AxaFrance.WebEngine;
 using AxaFrance.WebEngine.Report;
 using AxaFrance.WebEngine.Web;
 using OpenQA.Selenium;
@@ -11,7 +11,7 @@ namespace Samples.LinearScripting
     {
         //WebDriver object will be used for each test case.
         WebDriver? driver = null;
-        TestCaseReport testCaseReport;
+        TestCaseReport? testCaseReport;
         static TestSuiteReport? testSuiteReport = null;
 
         public TestContext? TestContext { get; set; }
@@ -41,7 +41,7 @@ namespace Samples.LinearScripting
         public void TestCleanup()
         {
             //After each test case, we will save the test case report.
-            testCaseReport.Result = TestContext!.CurrentTestOutcome switch
+            testCaseReport?.Result = TestContext!.CurrentTestOutcome switch
             {
                 UnitTestOutcome.Passed => Result.Passed,
                 UnitTestOutcome.Failed => Result.Failed,
@@ -50,7 +50,7 @@ namespace Samples.LinearScripting
                 _ => Result.None
             };
 
-            testCaseReport.EndTime = DateTime.Now;
+            testCaseReport?.EndTime = DateTime.Now;
             //Close the driver (and browser) after each test case.
             driver?.Close();
             driver?.Dispose();

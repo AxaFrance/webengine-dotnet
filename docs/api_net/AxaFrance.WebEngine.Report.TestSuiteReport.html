@@ -463,7 +463,7 @@ public class TestSuiteReport</code></pre>
     <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestSuiteReport.cs/#L144">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestSuiteReport.cs/#L146">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_" data-uid="AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV*"></a>
   <h4 id="AxaFrance_WebEngine_Report_TestSuiteReport_GenereteCSV_System_String_System_String_System_Boolean_" data-uid="AxaFrance.WebEngine.Report.TestSuiteReport.GenereteCSV(System.String,System.String,System.Boolean)">GenereteCSV(string, string, bool)</h4>
@@ -506,19 +506,19 @@ public class TestSuiteReport</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/new/develop/apiSpec/new?filename=AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_System_String__.md&amp;value=---%0Auid%3A%20AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String%2CSystem.String%2CSystem.Boolean%2CSystem.String%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestSuiteReport.cs/#L111">View Source</a>
+    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine/Report/TestSuiteReport.cs/#L112">View Source</a>
   </span>
   <a id="AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_" data-uid="AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs*"></a>
-  <h4 id="AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_" data-uid="AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean)">SaveAs(string, string, bool)</h4>
+  <h4 id="AxaFrance_WebEngine_Report_TestSuiteReport_SaveAs_System_String_System_String_System_Boolean_System_String__" data-uid="AxaFrance.WebEngine.Report.TestSuiteReport.SaveAs(System.String,System.String,System.Boolean,System.String@)">SaveAs(string, string, bool, out string)</h4>
   <div class="markdown level1 summary"><p>Write the test results into an XML file</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SaveAs(string path, string filePrefix, bool uniqueName)</code></pre>
+    <pre><code class="lang-csharp hljs">public string SaveAs(string path, string filePrefix, bool uniqueName, out string reportFolder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -547,6 +547,11 @@ public class TestSuiteReport</code></pre>
         <td><span class="parametername">uniqueName</span></td>
         <td><p>Whether the report name should be unique. True: the report name will be suffixed with timestamp, False: the report name will be fixed</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">reportFolder</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

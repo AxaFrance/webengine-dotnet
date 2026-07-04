@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Best Practices in WebEngine Framework | AXA - WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Best Practices in WebEngine Framework | AXA - WebEngine Test Framework ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="best-practices-in-webengine-framework">Best Practices in WebEngine Framework</h1>
+
+<p>A key goal of WebEngine Framework is to embed best practices directly into the framework rather than leaving them as separate guidelines that teams may or may not follow.
+This article explains each practice, why it matters, and exactly how the framework implements it so you benefit automatically.</p>
+<h2 id="1-automatic-webdriver-management">1. Automatic WebDriver Management</h2>
+<p><strong>Problem with plain Selenium:</strong> Every developer must manually download the correct ChromeDriver, EdgeDriver or GeckoDriver that matches their installed browser version.
+When a browser auto-updates, tests break until the matching driver is also updated. In a team this creates friction and inconsistency.</p>
+<p><strong>How WebEngine solves it:</strong> <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.BrowserFactory.html#AxaFrance_WebEngine_Web_BrowserFactory_GetDriver_AxaFrance_WebEngine_Platform_AxaFrance_WebEngine_BrowserType_">GetDriver(Platform, BrowserType)</a> handles everything automatically.</p>
+<pre><code class="lang-csharp">// One line — no driver download, no version tracking.
+var driver = BrowserFactory.GetDriver(Platform.Windows, BrowserType.ChromiumEdge);
+</code></pre>
+<p>At runtime the factory:</p>
+<ol>
+<li>Detects the installed browser version on the machine.</li>
+<li>Downloads the matching driver from the official repository if not already cached.</li>
+<li>Initializes and returns a ready-to-use <code>WebDriver</code>.</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The same <code>BrowserFactory</code> API works for desktop browsers (Windows, macOS), mobile browsers (Android Chrome, iOS Safari) and cloud Selenium Grids — your test code never changes.</p>
+</div>
+<hr>
+<h2 id="2-robust-element-identification-with-multiple-locators">2. Robust Element Identification with Multiple Locators</h2>
+<p><strong>Problem with plain Selenium:</strong> A single locator (e.g. an XPath) is fragile. Minor HTML changes break tests, and maintenance cost grows quickly.</p>
+<p><strong>How WebEngine solves it:</strong> <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.WebElementDescription.html">WebElementDescription</a> lets you combine multiple independent locators. The framework filters the DOM by each property in turn, so elements are identified more precisely and are resilient to partial HTML changes.</p>
+<pre><code class="lang-csharp">// Identify by TagName AND ClassName — both must match.
+var panel = new WebElementDescription(driver)
+{
+    TagName = &quot;div&quot;,
+    ClassName = &quot;summary-panel&quot;
+};
+
+// Identify using a non-standard HTML attribute (common in JS frameworks).
+var customButton = new WebElementDescription(driver)
+{
+    Attributes = new HtmlAttribute[]
+    {
+        new HtmlAttribute(&quot;data-action&quot;, &quot;submit&quot;)
+    }
+};
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You can use any combination of <code>Id</code>, <code>Name</code>, <code>TagName</code>, <code>ClassName</code>, <code>CssSelector</code>, <code>XPath</code>, <code>InnerText</code>, <code>LinkText</code> and <code>Attributes</code> in a single description.
+The more locators you provide, the more precisely and robustly the element will be identified.</p>
+</div>
+<hr>
+<h2 id="3-built-in-retry-and-synchronization">3. Built-in Retry and Synchronization</h2>
+<p><strong>Problem with plain Selenium:</strong> Modern web applications update the DOM asynchronously. Without explicit waits or retry logic, tests throw <code>StaleElementReferenceException</code> or <code>NoSuchElementException</code> when the page is still loading or JavaScript is still running.
+Developers typically add <code>Thread.Sleep()</code> calls or complex <code>WebDriverWait</code> chains, which are brittle and slow.</p>
+<p><strong>How WebEngine solves it:</strong> Every action on a <code>WebElementDescription</code> is wrapped in a <strong>synchronized retry loop</strong>. If the action fails because the DOM is updating, the framework automatically retries until the element is stable or the configurable timeout expires.</p>
+<p>This means:</p>
+<pre><code class="lang-csharp">// No Thread.Sleep(), no WebDriverWait — the framework handles it.
+page.NextButton.Click();
+
+// Waits until the title element exists (e.g. after a page navigation).
+Assert.IsTrue(page.Page2Title.Exists());
+</code></pre>
+<p>See the full list of synchronized actions in <a href="dev-status.html">Development Status</a>.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>The retry pattern is transparent. You write clean, linear test logic and the framework absorbs the timing complexity.</p>
+</div>
+<hr>
+<h2 id="4-page-model-pattern-separation-of-concerns">4. Page Model Pattern (Separation of Concerns)</h2>
+<p><strong>Problem with plain Selenium:</strong> Locators embedded directly inside test methods are impossible to reuse. When a UI changes, you must find and update every test that uses that element.</p>
+<p><strong>How WebEngine solves it:</strong> WebEngine formalizes the <strong>Page Object Model</strong> pattern through <a class="xref" href="../api_net/AxaFrance.WebEngine.Web.PageModel.html">PageModel</a>. Each page or screen is represented by a class. Element descriptions live in the page model; test logic lives in actions or test cases.</p>
+<pre><code class="lang-csharp">// Page model class — all element descriptions in one place.
+public class LoginPage : PageModel
+{
+    public LoginPage(WebDriver driver) : base(driver) { }
+
+    public WebElementDescription Username = new WebElementDescription
+    {
+        Id = &quot;username&quot;
+    };
+    public WebElementDescription Password = new WebElementDescription
+    {
+        Id = &quot;password&quot;
+    };
+    public WebElementDescription LoginButton = new WebElementDescription
+    {
+        TagName = &quot;button&quot;,
+        InnerText = &quot;Login&quot;
+    };
+}
+
+// Test script — reads like a specification, no locators in sight.
+var page = new LoginPage(driver);
+page.Username.SetValue(&quot;admin@example.com&quot;);
+page.Password.SetSecure(encryptedPassword);
+page.LoginButton.Click();
+</code></pre>
+<p>Benefits:</p>
+<ul>
+<li>A UI change requires updating only the page model, not every test that uses the element.</li>
+<li>Test scripts are readable by non-developers (QA analysts, business users).</li>
+<li>Page models are reused across Linear Scripting, Gherkin, Keyword-Driven and Data-Driven approaches.</li>
+</ul>
+<p>For detailed guidance, see <a href="../tutorials/page-model.html">Organize UI Elements With PageModel</a>.</p>
+<hr>
+<h2 id="5-secure-credential-handling">5. Secure Credential Handling</h2>
+<p><strong>Problem with plain Selenium / test frameworks:</strong> Passwords are often stored in plain text inside test scripts or test data files — a security risk especially for repositories and CI/CD pipelines.</p>
+<p><strong>How WebEngine solves it:</strong> The framework provides built-in encryption and a <code>SetSecure</code> method that decrypts and types the password on the fly, so the clear-text value never appears in source code, logs or test data.</p>
+<pre><code class="lang-csharp">// Encrypt once (e.g. from command line: WebRunner.exe -encrypt mypassword)
+// Then store the cipher text in your test data or appsettings.json.
+
+var passwordBox = new WebElementDescription(driver) { Id = &quot;password&quot; };
+passwordBox.SetSecure(&quot;Iw6buAX7oY97dbk/w3gXLA==&quot;); // decrypts internally, never logged
+</code></pre>
+<p>Key rules enforced by the framework:</p>
+<ul>
+<li><code>SetSecure</code> <strong>only works on <code>&lt;input type=&quot;password&quot;&gt;</code> elements</strong>. Calling it on any other element throws an exception, preventing accidental exposure.</li>
+<li>The decryption key can be supplied at runtime via <code>-encryptionKey</code> parameter, keeping it out of source control entirely.</li>
+</ul>
+<p>See <a href="../tutorials/secure-password.html">Secure Passwords</a> for the full guide.</p>
+<hr>
+<h2 id="6-test-data-externalization">6. Test Data Externalization</h2>
+<p><strong>Problem with plain Selenium:</strong> Test data embedded in the test script is not reusable. Adding a new test case means duplicating code. Coverage cannot grow without touching scripts.</p>
+<p><strong>How WebEngine solves it:</strong> The framework separates test data from test logic. Test data is stored in <strong>Excel spreadsheets</strong> under a standardized format and loaded at runtime by the Test Runner.</p>
+<ul>
+<li><code>PARAMS</code> sheet: Describes all possible parameters and their meaning.</li>
+<li><code>ENV</code> sheet: Environment-dependent values (URLs, server names) — the same test suite runs on Dev, QA and Production just by switching the environment column.</li>
+<li><code>TEST_SUITE</code> sheet: Lists test cases and assigns parameter values to each. Adding a new test case is adding a column in Excel — no code change required.</li>
+</ul>
+<pre><code>Test Coverage without code change:
+┌────────────────────┬──────────────────┬──────────────────┬──────────────────┐
+│ Parameter          │ TC_Apartment     │ TC_House         │ TC_Apartment+Acc │
+├────────────────────┼──────────────────┼──────────────────┼──────────────────┤
+│ HomeType           │ Apartment        │ House            │ Apartment        │
+│ HasPreviousAccident│ false            │ false            │ true             │
+│ ...                │ ...              │ ...              │ ...              │
+└────────────────────┴──────────────────┴──────────────────┴──────────────────┘
+</code></pre>
+<p>See <a href="../tutorials/data-driven-cs.html">Data-Driven Testing (.NET)</a> and the <a href="excel-addin.html">Excel Add-in</a> for details.</p>
+<hr>
+<h2 id="7-structured-project-organization">7. Structured Project Organization</h2>
+<p><strong>Problem with plain Selenium:</strong> Without conventions, a test project accumulates classes in random locations, making onboarding and maintenance hard.</p>
+<p><strong>How WebEngine solves it:</strong> The framework recommends a consistent folder structure, and the GitHub Copilot instructions file enforces it automatically when AI assistance is used.</p>
+<pre><code>&lt;TestProject&gt;
+├── PageModels/       # One class per page/screen — WebElementDescriptions only
+├── Actions/          # Reusable keywords / SharedActions
+├── TestCases/        # Test case classes — sequences of actions + assertions
+├── TestData/         # Excel or XML test data files
+└── &lt;OtherFiles&gt;
+</code></pre>
+<p>This structure is compatible with all four test approaches: Linear Scripting, Gherkin, Keyword-Driven and Data-Driven.</p>
+<hr>
+<h2 id="8-ai-assisted-test-authoring">8. AI-Assisted Test Authoring</h2>
+<p><strong>How WebEngine solves it:</strong> WebEngine ships a <strong>GitHub Copilot instructions file</strong> and an <strong>MCP server</strong> that expose the framework conventions directly to AI assistants.</p>
+<ul>
+<li>The <a href="github-copilot.html">Copilot instructions file</a> teaches Copilot to generate code that follows all the above best practices automatically: PageModels using <code>WebElementDescription</code>, actions in dedicated classes, test data externalized.</li>
+<li>The <a href="webengine-web.html">MCP server</a> (<code>AxaFrance.WebEngine.Mcp</code>) exposes live Selenium and Appium capabilities to AI assistants, allowing them to inspect, interact with, and reason about a running browser session — enabling AI-driven exploratory testing.</li>
+</ul>
+<hr>
+<h2 id="9-choosing-the-right-test-approach">9. Choosing the Right Test Approach</h2>
+<p>WebEngine supports four test approaches. Each has a clear use case:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Best for</th>
+<th>Reusability</th>
+<th>Data separation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear Scripting</strong></td>
+<td>Simple scenarios, unit-style tests</td>
+<td>Low</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Gherkin / BDD</strong></td>
+<td>Feature acceptance tests, BDD teams</td>
+<td>Medium</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>Keyword-Driven</strong></td>
+<td>Complex end-to-end tests, shared actions</td>
+<td>High</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>Keyword + Data-Driven</strong></td>
+<td>Large regression suites, multi-environment</td>
+<td>Highest</td>
+<td>Yes (Excel)</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For most professional test automation projects, the <strong>Keyword-Driven + Data-Driven</strong> combination is recommended. It gives the highest reusability, the lowest maintenance cost, and allows test coverage to grow without touching any code.</p>
+</div>
+<hr>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Best practice</th>
+<th>Framework feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No manual driver downloads</td>
+<td><code>BrowserFactory.GetDriver</code></td>
+</tr>
+<tr>
+<td>Robust element identification</td>
+<td>Multi-locator <code>WebElementDescription</code></td>
+</tr>
+<tr>
+<td>Automatic retry &amp; synchronization</td>
+<td>Synchronized actions on <code>WebElementDescription</code></td>
+</tr>
+<tr>
+<td>Separation of locators and logic</td>
+<td><code>PageModel</code> pattern</td>
+</tr>
+<tr>
+<td>Secure credential handling</td>
+<td><code>SetSecure</code> + <code>Encrypter</code></td>
+</tr>
+<tr>
+<td>Test data externalization</td>
+<td>Excel format + <code>WebRunner</code> data loading</td>
+</tr>
+<tr>
+<td>Consistent project structure</td>
+<td>Folder conventions + Copilot instructions</td>
+</tr>
+<tr>
+<td>AI-assisted authoring</td>
+<td>MCP server + Copilot instructions file</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/best-practices.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Copyright &reg; 2016-2025 AXA France, All rights reserved.
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

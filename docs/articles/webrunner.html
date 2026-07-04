@@ -181,13 +181,13 @@ However, all behaviors and arguments remain the same.</p>
 <ul>
 <li><code>Chrome</code> - Google Chrome</li>
 <li><code>Firefox</code> - Mozilla Firefox</li>
-<li><code>Edge</code> - Microsoft Edge (Chromium-based)</li>
+<li><code>Edge</code> or <code>ChromiumEdge</code> - Microsoft Edge (Chromium-based)</li>
 </ul>
 </li>
-<li><strong>Mobile Browsers:</strong>
+<li><strong>Mobile Browsers (requires Appium or Selenium Grid):</strong>
 <ul>
-<li><code>Safari</code> - iOS Safari browser</li>
-<li><code>Chrome</code> - Google Chrome</li>
+<li><code>Safari</code> - iOS Safari browser (iOS or MacOS devices)</li>
+<li><code>Chrome</code> - Google Chrome on Android devices</li>
 </ul>
 </li>
 <li><strong>Mobile Native Applications:</strong>
@@ -199,15 +199,15 @@ However, all behaviors and arguments remain the same.</p>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Internet Explorer is no longer supported. Please use Edge or other modern browsers.</p>
+<p>Internet Explorer is no longer supported. Using <code>IE</code> or <code>InternetExplorer</code> as browser value will throw an error.</p>
 </div>
 <p>See: <a class="xref" href="../api_net/AxaFrance.WebEngine.BrowserType.html">BrowserType</a> for more details.</p>
 <h4 id="-platformplatform">-platform:&lt;platform&gt;</h4>
 <p>Specifies the platform for test execution. Supported values:</p>
 <ul>
-<li><code>Windows</code> (default)</li>
-<li><code>Android</code></li>
-<li><code>iOS</code></li>
+<li><code>Windows</code> (default) — Desktop browser tests</li>
+<li><code>Android</code> — Android devices (browser or native app)</li>
+<li><code>iOS</code> — iOS devices (browser or native app)</li>
 </ul>
 <p>See: <a class="xref" href="../api_net/AxaFrance.WebEngine.Platform.html">Platform</a> for more details.</p>
 <h4 id="-outputdiroutputfolder">-outputDir:&lt;outputFolder&gt;</h4>
