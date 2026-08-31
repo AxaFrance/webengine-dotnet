@@ -15,8 +15,6 @@ using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
 using static System.Environment;
 
 [assembly: InternalsVisibleTo("WebRunner")]
@@ -426,7 +424,6 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetEdgeDriver(IEnumerable<string> browserOptions)
         {
-            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig(), "MatchingBrowser");
             OpenQA.Selenium.Edge.EdgeOptions options = new OpenQA.Selenium.Edge.EdgeOptions()
             {
                 AcceptInsecureCertificates = true,
@@ -439,7 +436,6 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetChromeDriver(IEnumerable<string> browserOptions)
         {
-            string version = "MatchingBrowser";
             var options = new OpenQA.Selenium.Chrome.ChromeOptions()
             {
                 AcceptInsecureCertificates = true,
@@ -487,20 +483,17 @@ namespace AxaFrance.WebEngine.Web
             options.AddArgument("no-sandbox");
             if (browserOptions != null) options.AddArguments(browserOptions);
 
-            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig(), version);
             OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
             return cd;
         }
 
         private static WebDriver GetFirefoxDriver(IEnumerable<string> browserOptions)
         {
-            var binaryPath = new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig(), VersionResolveStrategy.Latest);
             var directories = System.IO.Directory.GetDirectories($"{Environment.GetEnvironmentVariable("APPDATA")}\\Mozilla\\Firefox\\Profiles");
             var d = directories.First(x => x.EndsWith("default"));
             OpenQA.Selenium.Firefox.FirefoxProfile profile = new OpenQA.Selenium.Firefox.FirefoxProfile(d);
             OpenQA.Selenium.Firefox.FirefoxOptions firefoxOptions = new OpenQA.Selenium.Firefox.FirefoxOptions();
             firefoxOptions.AcceptInsecureCertificates = true;
-            firefoxOptions.BinaryLocation = binaryPath?.ToString();
             firefoxOptions.Profile = profile;
             if (browserOptions != null) firefoxOptions.AddArguments(browserOptions);
             OpenQA.Selenium.Firefox.FirefoxDriver driver = new OpenQA.Selenium.Firefox.FirefoxDriver(firefoxOptions);
