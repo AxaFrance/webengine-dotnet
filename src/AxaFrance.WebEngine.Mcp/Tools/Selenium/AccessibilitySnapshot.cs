@@ -108,7 +108,7 @@ internal static class AccessibilitySnapshot
                     } catch(e) {}
                 }
 
-                // 4. Enclosing <label> � strip the control's own text
+                // 4. Enclosing <label> & strip the control's own text
                 var pl = el.closest ? el.closest('label') : null;
                 if (pl) {
                     var clone = pl.cloneNode(true);
@@ -224,7 +224,7 @@ internal static class AccessibilitySnapshot
 
             return lines.length > 0
                 ? lines.join('\n')
-                : '(no accessibility tree found � the page likely has poor ARIA markup; use GetPageHtml as fallback)';
+                : '(no accessibility tree found. the page likely has poor ARIA markup; use GetPageHtml as fallback)';
         })();
         """;
 

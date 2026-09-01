@@ -209,9 +209,17 @@ namespace WebEngine.Test.UnitTests
         };
 
         /// <summary>
+        /// Profile section displayed after a successful authentication.
+        /// </summary>
+        public WebElementDescription ProfileSection { get; set; } = new WebElementDescription()
+        {
+            CssSelector = "#profile-div:not([hidden])"
+        };
+
+        /// <summary>
         /// Sign In page headline
         /// </summary>
-        private WebElementDescription SignInHeadline { get; set; } = new WebElementDescription()
+        public WebElementDescription SignInHeadline { get; set; } = new WebElementDescription()
         {
             TagName = "h1",
             ClassName = "hanko_headline hanko_grade1",
@@ -227,7 +235,15 @@ namespace WebEngine.Test.UnitTests
         /// </summary>
         public bool IsOnSignInPage()
         {
-            return SignInHeadline.Exists();
+            return SignInHeadline.Exists(1);
+        }
+
+        /// <summary>
+        /// Checks if the authenticated profile is displayed.
+        /// </summary>
+        public bool IsOnProfilePage()
+        {
+            return ProfileSection.Exists(1);
         }
 
         /// <summary>
