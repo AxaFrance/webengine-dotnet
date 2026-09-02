@@ -1,4 +1,6 @@
 @echo off
+setlocal EnableExtensions
+
 if "%~1"=="" (
     set "version=1.0.0.0"
 ) else (
@@ -11,31 +13,41 @@ if "%~2"=="" (
     set "buildType=%~2"
 )
 
-
 echo Build project Version: %version%, Type: %buildType%
-cd bin
-setlocal enabledelayedexpansion
+set "scriptDir=%~dp0"
+set "file=axafrance.webengine.webrunner.nuspec"
+set "nuspec=%scriptDir%%file%"
+set "buildDir=%scriptDir%bin\%buildType%"
+set "nuget=%scriptDir%..\nuget.exe"
 
-rem Loop through all files in the current directory and subdirectories
-for /r %%f in (*) do (
-    set "filename=%%~nxf"
-    rem Check if the filename starts with WebRunner.
-    if /i "!filename!" neq "WebRunner.exe" (
-        if /i "!filename!" neq "WebRunner.dll" (
-            if /i "!filename:~0,10!" neq "WebRunner." (
-                del "%%f"
-            )
-        )
-    )
+if not exist "%nuspec%" (
+    echo ERROR: Nuspec file not found: "%nuspec%"
+    exit /b 1
 )
-endlocal
-set file=AxaFrance.webengine.webrunner.nuspec
-copy ..\%file% %buildType%
-cd %buildType%
+
+if not exist "%buildDir%" (
+    echo ERROR: Build output directory not found: "%buildDir%"
+    exit /b 1
+)
+
+if not exist "%nuget%" (
+    echo ERROR: NuGet executable not found: "%nuget%"
+    exit /b 1
+)
+
+copy /Y "%nuspec%" "%buildDir%\%file%" >nul
+if errorlevel 1 (
+    echo ERROR: Could not copy the nuspec file.
+    exit /b 1
+)
+
 echo Generate Nuget Package.
-powershell -Command "(Get-Content '%file%') -replace '{{Version}}', '%version%' | Set-Content '%file%'"
-cd ..
-cd ..
-cd ..
-nuget pack AxaFrance.WebEngine.Runner\bin\%buildType%
-@echo on
+powershell -NoProfile -Command "$path = '%buildDir%\%file%'; $content = [System.IO.File]::ReadAllText($path); $content = $content.Replace('{{version}}', '%version%'); [System.IO.File]::WriteAllText($path, $content)"
+if errorlevel 1 (
+    echo ERROR: Could not apply the package version.
+    exit /b 1
+)
+
+"%nuget%" pack "%buildDir%\%file%" -OutputDirectory "%scriptDir%.."
+set "exitCode=%ERRORLEVEL%"
+endlocal & exit /b %exitCode%

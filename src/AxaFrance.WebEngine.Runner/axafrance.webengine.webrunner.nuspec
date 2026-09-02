@@ -10,52 +10,32 @@
     <tags>AXA WebEngine Automation Framework</tags>
     <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" />
     <dependencies>
-      <group targetFramework=".NETFramework4.8">
-        <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
-        <dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.119.1" exclude="Build,Analyzers" />
-      </group>
       <group targetFramework="net8.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.119.1" exclude="Build,Analyzers" />
       </group>
-      <group targetFramework="net9.0">
+      <group targetFramework="net10.0">
         <dependency id="AxaFrance.WebEngine" version="{{version}}" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
-        <dependency id="SkiaSharp" version="3.119.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.IO.Compression" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.IO" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Runtime" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Security.Cryptography.Algorithms" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Security.Cryptography.Encoding" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Security.Cryptography.Primitives" targetFramework=".NETFramework4.8" />
-      <frameworkAssembly assemblyName="System.Security.Cryptography.X509Certificates" targetFramework=".NETFramework4.8" />
-    </frameworkAssemblies>
     <contentFiles>
-      <files include="any/net48/*.config" buildAction="None" copyToOutput="true" />
       <files include="any/net8.0/*.json" buildAction="None" copyToOutput="true" />
       <files include="any/net10.0/*.json" buildAction="None" copyToOutput="true" />
     </contentFiles>
   </metadata>
   <files>
-    <!-- Include net48 -->
-    <file src="net48\*.exe" target="lib\net48" />
-    <file src="net48\*.config" target="contentFiles\any\net48" />
-
     <!-- Include net8.0 -->
-    <file src="net8.0\*.dll" target="lib\net8.0" />
-    <file src="net8.0\**\*.exe" target="lib\net8.0" />
-    <file src="net8.0\*.json" target="contentFiles\any\net8.0" />
+    <file src="net8.0\WebRunner.dll" target="lib\net8.0" />
+    <file src="net8.0\WebRunner.exe" target="lib\net8.0" />
+    <file src="net8.0\WebRunner.deps.json" target="contentFiles\any\net8.0" />
+    <file src="net8.0\WebRunner.runtimeconfig.json" target="contentFiles\any\net8.0" />
 
     <!-- Include net10.0 -->
-    <file src="net10.0\**\*.dll" target="lib\net10.0" />
-    <file src="net10.0\**\*.exe" target="lib\net10.0" />
-    <file src="net10.0\*.json" target="contentFiles\any\net10.0" />
+    <file src="net10.0\WebRunner.dll" target="lib\net10.0" />
+    <file src="net10.0\WebRunner.exe" target="lib\net10.0" />
+    <file src="net10.0\WebRunner.deps.json" target="contentFiles\any\net10.0" />
+    <file src="net10.0\WebRunner.runtimeconfig.json" target="contentFiles\any\net10.0" />
   </files>
 
 </package>
