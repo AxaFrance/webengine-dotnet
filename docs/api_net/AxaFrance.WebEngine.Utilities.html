@@ -570,7 +570,17 @@ If the field has single or double quotes, quotes are removed.</p>
   <a id="AxaFrance_WebEngine_Utilities_ShiftDateByDuration_" data-uid="AxaFrance.WebEngine.Utilities.ShiftDateByDuration*"></a>
   <h4 id="AxaFrance_WebEngine_Utilities_ShiftDateByDuration__1_System_String___0_" data-uid="AxaFrance.WebEngine.Utilities.ShiftDateByDuration``1(System.String,``0)">ShiftDateByDuration&lt;T&gt;(string, T)</h4>
   <div class="markdown level1 summary"><p>Returns a new date calculated from a given date and a duration.</p>
-<p>The duration is positive or negative with a unity.</p><p>The unity is (D or J), M or (Y or A) representing respectively : a duration expressed in days, month or year.</p><p>The sign indicates that the calculated date must be in the past (negative) or in the future (positive).</p><p>The start date is optional. If omitted, the current date is considered.</p><p>If passed as argument, the start date must be either a string with the following format "DD/MM/YYYY" or a DateTime or even a "differential" date like the duration itself.</p><p>In this last case, the startDate is recalculated from the current date.</p><p>Example:</p><p>MoveDateByDuration("7D"): returns Today+7 days.</p><p>MoveDateByDuration("-6M", DateTime(2017, 6, 25)): should return 25th of december 2016</p><p>MoveDateByDuration("-6M", "25/06/2017"): should return 25th of december 2016.</p><p>MoveDateByDuration("2D", "1D"): the day in 3 days (2 days from tomorrow).</p>
+<p>The duration is positive or negative with a unity.</p>
+<p>The unity is (D or J), M or (Y or A) representing respectively : a duration expressed in days, month or year.</p>
+<p>The sign indicates that the calculated date must be in the past (negative) or in the future (positive).</p>
+<p>The start date is optional. If omitted, the current date is considered.</p>
+<p>If passed as argument, the start date must be either a string with the following format "DD/MM/YYYY" or a DateTime or even a "differential" date like the duration itself.</p>
+<p>In this last case, the startDate is recalculated from the current date.</p> 
+<p>Example:</p>
+<p>MoveDateByDuration("7D"): returns Today+7 days.</p>
+<p>MoveDateByDuration("-6M", DateTime(2017, 6, 25)): should return 25th of december 2016</p>
+<p>MoveDateByDuration("-6M", "25/06/2017"): should return 25th of december 2016.</p>
+<p>MoveDateByDuration("2D", "1D"): the day in 3 days (2 days from tomorrow).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

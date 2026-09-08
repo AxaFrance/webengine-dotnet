@@ -340,7 +340,7 @@ With this method, we can pass a custom configuration file to the axe engine and 
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_DisableRules_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.DisableRules(System.String[])">DisableRules(params string[])</h4>
   <div class="markdown level1 summary"><p>Set the list of rules to skip when running an analysis
 Refer <a href="https://dequeuniversity.com/rules/axe/">https://dequeuniversity.com/rules/axe/</a> to get the complete listing of available rule IDs.
-Cannot be used with Options</p>
+Cannot be used with <span class="xref">Deque.AxeCore.Commons.AxeRunOptions</span></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -390,7 +390,7 @@ Cannot be used with Options</p>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Exclude(Deque.AxeCore.Commons.AxeSelector)">Exclude(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Excludes the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants from analysis. This overload can exclude selectors inside iframes
-(with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>) or shadow DOMs (AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;)).
+(with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>) or shadow DOMs (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">FromFrameShadowSelectors(IList&lt;IList&lt;string&gt;&gt;)</a>).
 To exclude multiple selectors, call Exclude multiple times.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -443,7 +443,7 @@ To exclude multiple selectors, call Exclude multiple times.</p>
   <div class="markdown level1 summary"><p>Excludes the given CSS selector and its descendants from analysis.
 To exclude multiple selectors, call Exclude multiple times.
 To exclude a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>.
-To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;).</p>
+To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Exclude_Deque_AxeCore_Commons_AxeSelector_">Exclude(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">FromFrameShadowSelectors(IList&lt;IList&lt;string&gt;&gt;)</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -494,7 +494,7 @@ To exclude a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.A
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.Include(Deque.AxeCore.Commons.AxeSelector)">Include(AxeSelector)</h4>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given <span class="xref">Deque.AxeCore.Commons.AxeSelector</span> and its descendants, instead of the whole page.
 This overload can include selectors inside iframes (with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>) or shadow DOMs
-(AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;)).
+(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">FromFrameShadowSelectors(IList&lt;IList&lt;string&gt;&gt;)</a>).
 To include multiple selectors, call Include multiple times.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -547,7 +547,7 @@ To include multiple selectors, call Include multiple times.</p>
   <div class="markdown level1 summary"><p>Restricts the analysis to include only the given CSS selector and its descendants, instead of the whole page.
 To include multiple selectors, call Include multiple times.
 To include a selector inside an iframe, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AxeSelector(string, List&lt;string&gt;)</a>.
-To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and AxeSelector.FromFrameShadowSelectors(List&lt;List&lt;string&gt;&gt;).</p>
+To include a selector inside a shadow DOM, see <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_Include_Deque_AxeCore_Commons_AxeSelector_">Include(AxeSelector)</a> and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">FromFrameShadowSelectors(IList&lt;IList&lt;string&gt;&gt;)</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -800,7 +800,10 @@ Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExte
   </span>
   <a id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags*"></a>
   <h4 id="AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithTags_System_String___" data-uid="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.WithTags(System.String[])">WithTags(params string[])</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Limit analysis to only the specified tags.
+Refer <a href="https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#api-name-axegetrules">https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#api-name-axegetrules</a> to get the list of supported tag names
+Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExtendedBuilder.html#AxaFrance_AxeExtended_Selenium_AxeExtendedBuilder_WithRules_System_String___">WithRules(params string[])</a> &amp; <span class="xref">Deque.AxeCore.Commons.AxeRunOptions</span></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -819,7 +822,8 @@ Cannot be used with <a class="xref" href="AxaFrance.AxeExtended.Selenium.AxeExte
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
         <td><span class="parametername">tags</span></td>
-        <td></td>
+        <td><p>tags to be used for scanning</p>
+</td>
       </tr>
     </tbody>
   </table>

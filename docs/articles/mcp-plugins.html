@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>WebEngine MCP Plugins for Coding Agents | AXA - WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="WebEngine MCP Plugins for Coding Agents | AXA - WebEngine Test Framework ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="webengine-mcp-plugins-for-coding-agents">WebEngine MCP Plugins for Coding Agents</h1>
+
+<p>WebEngine ships two plugins that turn any compatible coding agent into a browser/device operator: the agent observes the live application through MCP, interacts with it, then generates UI code in your stack (Playwright+TS, Selenium, WebEngine C#).</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Profile</th>
+<th>Tools</th>
+<th>Skills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plugins/webengine-web</code></td>
+<td><code>--profile web</code> (Selenium)</td>
+<td>29</td>
+<td><code>webengine-web</code>, <code>webengine-scaffold</code></td>
+</tr>
+<tr>
+<td><code>plugins/webengine-mobile</code></td>
+<td><code>--profile mobile</code> (Appium)</td>
+<td>17</td>
+<td><code>webengine-mobile</code>, <code>webengine-scaffold</code></td>
+</tr>
+</tbody>
+</table>
+<p>Both plugins share one server binary (<code>AxaFrance.WebEngine.Mcp</code>, command <code>webengine-mcp</code>) and carry two packaging formats in the same folder: Agent Plugins 1.0 (<code>plugin.json</code> + <code>mcp.json</code>) for VS Code/Copilot, and <code>.codex-plugin/plugin.json</code> + <code>.mcp.json</code> for Codex.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET 10 (the <code>dnx</code> launcher ships with the SDK) for the zero-install run below.</li>
+<li>The package published to NuGet (maintainers: <code>dotnet pack</code> + <code>dotnet nuget push</code>). Before that, use the local-build fallback in each plugin README.</li>
+<li>A browser (Chrome/Edge/Firefox) for web; an Appium server (default <code>http://localhost:4723</code>) for mobile.</li>
+</ul>
+<p>Test the server once (no agent needed):</p>
+<pre><code class="lang-powershell">dnx AxaFrance.WebEngine.Mcp --profile web --transport stdio
+# or, after dotnet tool install -g AxaFrance.WebEngine.Mcp:
+webengine-mcp --help
+</code></pre>
+<h2 id="github-copilot-vs-code">GitHub Copilot (VS Code)</h2>
+<p>Full plugin (skills + server, recommended):</p>
+<ol>
+<li>Run <code>Chat: Install Plugin From Source</code> and paste <code>https://github.com/AxaFrance/webengine-dotnet</code>, or register the marketplace <code>AxaFrance/webengine-dotnet</code> in <code>chat.plugins.marketplaces</code>, or point <code>chat.pluginLocations</code> at a local clone's <code>plugins/&lt;name&gt;</code> folder.</li>
+<li>Enable the plugin. Its MCP server starts automatically with it.</li>
+<li>Verify: <code>MCP: List Servers</code> shows <code>webengine-web</code>/<code>webengine-mobile</code>; <code>Chat: Configure Skills</code> lists the skills.</li>
+</ol>
+<p>Manual (no plugin install): copy <code>plugins/&lt;name&gt;/skills/*</code> to <code>.github/skills/</code> and the <code>mcp.json</code> content into <code>.vscode/mcp.json</code>. This repository's own <code>.vscode/mcp.json</code> is a working example (local build).</p>
+<h2 id="codex-cli-ide-extension-desktop">Codex (CLI, IDE extension, desktop)</h2>
+<pre><code class="lang-bash">codex plugin marketplace add AxaFrance/webengine-dotnet --sparse .agents/plugins
+# then install webengine-web / webengine-mobile from the Plugins Directory
+</code></pre>
+<p>This repository also ships <code>.agents/plugins/marketplace.json</code> for repo-scoped installs. Manual alternative:</p>
+<pre><code class="lang-bash">codex mcp add webengine-web -- dnx AxaFrance.WebEngine.Mcp --profile web --transport stdio
+</code></pre>
+<p>plus copying <code>plugins/&lt;name&gt;/skills/*</code> to <code>~/.codex/skills/</code> (restart Codex). Project-scoped MCP goes in <code>.codex/config.toml</code> (trusted projects); see <code>plugins/&lt;name&gt;/config.toml.snippet</code>.</p>
+<h2 id="claude-code">Claude Code</h2>
+<p>Copy <code>plugins/&lt;name&gt;/skills/*</code> to <code>.claude/skills/</code> (project) or <code>~/.claude/skills/</code> (personal), and register the server in <code>claude_desktop_config.json</code>:</p>
+<pre><code class="lang-json">{ &quot;mcpServers&quot;: { &quot;webengine-web&quot;: {
+  &quot;command&quot;: &quot;dnx&quot;,
+  &quot;args&quot;: [&quot;AxaFrance.WebEngine.Mcp&quot;, &quot;--profile&quot;, &quot;web&quot;, &quot;--transport&quot;, &quot;stdio&quot;]
+} } }
+</code></pre>
+<p>Restart Claude Code and verify the tools list.</p>
+<h2 id="opencode">OpenCode</h2>
+<p>Skills: copy <code>plugins/&lt;name&gt;/skills/*</code> to <code>.agents/skills/</code> (project, also picked up by Codex/Cursor) or <code>~/.config/opencode/skills/</code>. Server in <code>opencode.json</code>:</p>
+<pre><code class="lang-json">{ &quot;$schema&quot;: &quot;https://opencode.ai/config.json&quot;,
+  &quot;mcp&quot;: { &quot;webengine-web&quot;: { &quot;type&quot;: &quot;local&quot;,
+    &quot;command&quot;: [&quot;dnx&quot;, &quot;AxaFrance.WebEngine.Mcp&quot;, &quot;--profile&quot;, &quot;web&quot;, &quot;--transport&quot;, &quot;stdio&quot;],
+    &quot;enabled&quot;: true } } }
+</code></pre>
+<p>(OpenCode v2 nests servers under <code>mcp.servers</code>; check your version's docs.)</p>
+<h2 id="cursor">Cursor</h2>
+<p>Project skills in <code>.cursor/skills/</code> (global: <code>~/.cursor/skills/</code>), server in <code>.cursor/mcp.json</code> using the same stdio command as above.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>No tools / garbled handshake</strong>: plain <code>dotnet run</code> prints a launch banner to stdout, which breaks MCP stdio. Use <code>dnx</code>, <code>dotnet tool</code>, a published exe, or <code>dotnet exec &lt;dll&gt;</code>.</li>
+<li><strong><code>dnx</code> cannot resolve the package</strong>: it is not on NuGet yet — use the local-build fallback from the plugin README.</li>
+<li><strong>Mobile session fails</strong>: start the Appium server first and check <code>appsettings.json</code> (<code>Appium:DefaultServerUrl</code>).</li>
+<li><strong>Both tool sets collide</strong> (<code>StartSession</code> twice): never expose both profiles in one process; use <code>--profile web|mobile</code>.</li>
+<li><strong>Click intercepted / stale refs</strong>: this is page behavior, not an install issue — the skills' <code>references/blockers.md</code> (cookies, modals, SPA re-renders) covers the protocol.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/mcp-plugins.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Copyright &reg; 2016-2025 AXA France, All rights reserved.
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
