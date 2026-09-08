@@ -1,0 +1,14 @@
+# Codex CLI — copy into ~/.codex/config.toml (or .codex/config.toml for trusted projects)
+
+[mcp_servers.webengine-web]
+command = "dotnet"
+args = ["exec", "D:/Projets/Github/webengine-dotnet/src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll", "--profile", "web", "--transport", "stdio"]
+
+# NuGet/dnx variant (no local build, needs .NET 10):
+# [mcp_servers.webengine-web]
+# command = "dnx"
+# args = ["AxaFrance.WebEngine.Mcp", "--profile", "web", "--transport", "stdio"]
+
+# Skills: copy skills/webengine-web -> ~/.codex/skills/webengine-web
+#         copy skills/webengine-scaffold -> ~/.codex/skills/webengine-scaffold
+# Then: codex mcp list

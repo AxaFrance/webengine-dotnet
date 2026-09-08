@@ -7,6 +7,7 @@
     <projectUrl>https://github.com/AxaFrance/webengine-dotnet</projectUrl>
     <description>WebRunner executable to run keyword driven automated tests.</description>
     <copyright>AXA France</copyright>
+    <readme>README.md</readme>
     <tags>AXA WebEngine Automation Framework</tags>
     <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" />
     <dependencies>
@@ -25,6 +26,7 @@
     </contentFiles>
   </metadata>
   <files>
+    <file src="README.md" target="" />
     <!-- Include net8.0 -->
     <file src="net8.0\WebRunner.dll" target="lib\net8.0" />
     <file src="net8.0\WebRunner.exe" target="lib\net8.0" />

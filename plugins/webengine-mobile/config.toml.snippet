@@ -1,0 +1,14 @@
+# Codex CLI — copy into ~/.codex/config.toml (or .codex/config.toml for trusted projects)
+
+[mcp_servers.webengine-mobile]
+command = "dotnet"
+args = ["exec", "D:/Projets/Github/webengine-dotnet/src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll", "--profile", "mobile", "--transport", "stdio"]
+
+# NuGet/dnx variant (no local build, needs .NET 10):
+# [mcp_servers.webengine-mobile]
+# command = "dnx"
+# args = ["AxaFrance.WebEngine.Mcp", "--profile", "mobile", "--transport", "stdio"]
+
+# Skills: copy skills/webengine-mobile -> ~/.codex/skills/webengine-mobile
+#         copy skills/webengine-scaffold -> ~/.codex/skills/webengine-scaffold
+# Requires Appium server (default http://localhost:4723).

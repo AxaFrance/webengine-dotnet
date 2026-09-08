@@ -1,0 +1,7 @@
+{
+  "$comment": "Codex bundled MCP server (direct server map). Requires .NET 10 (dnx) and AxaFrance.WebEngine.Mcp published to NuGet. No local build needed.",
+  "webengine-web": {
+    "command": "dnx",
+    "args": ["AxaFrance.WebEngine.Mcp", "--profile", "web", "--transport", "stdio"]
+  }
+}

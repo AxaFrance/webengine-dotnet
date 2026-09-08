@@ -53,3 +53,6 @@ We can see that Github Copilot generates the code step by step:
 
 ## Conclusion
 As we can see, using GitHub Copilot with the provided instructions file significantly enhances the development experience for test automation scripts in WebEngine. It ensures that the generated code is consistent, maintainable, and adheres to best practices, allowing developers to focus on writing effective tests rather than boilerplate code.
+
+## Next step: let the agent drive the browser itself
+Static instructions only describe the framework. With the WebEngine MCP plugins, Copilot (and Codex, Claude Code, OpenCode) can observe your live application, interact with it, and generate code from what it actually sees. See [MCP Plugins for Coding Agents](mcp-plugins.md).

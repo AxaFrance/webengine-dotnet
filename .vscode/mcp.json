@@ -1,0 +1,31 @@
+{
+  "$comment": "Workspace MCP servers for contributors (local build, no NuGet needed). Build first: dotnet build src/AxaFrance.WebEngine.Mcp -c Release",
+  "servers": {
+    "webengine-web": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "exec",
+        "${workspaceFolder}/src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll",
+        "--profile",
+        "web",
+        "--transport",
+        "stdio"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
+    "webengine-mobile": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "exec",
+        "${workspaceFolder}/src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll",
+        "--profile",
+        "mobile",
+        "--transport",
+        "stdio"
+      ],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

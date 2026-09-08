@@ -6,13 +6,37 @@ The **WebEngine MCP (Model Context Protocol) Server** is a bridge between AI-pow
 
 - **Observe** application state in real-time
 - **Execute** tests and interact with UI elements
-- **Generate** production-ready WebEngine test scripts from observed behavior
+- **Generate** code in the user's stack (Playwright TS, Selenium C#/Java/Python, WebEngine C#) from observed behavior
 
-## Running the MCP Server Locally
+## Plugins (stdio, recommended for coding agents)
+
+One binary, two plugins. Each `plugins/<name>/` bundles skills + MCP server for Copilot (Agent Plugins 1.0) and Codex — see `plugins/README.md`.
+
+| Plugin | Command | Tools |
+|---|---|---|
+| `plugins/webengine-web` (Selenium) | `webengine-mcp --profile web --transport stdio` | 29 |
+| `plugins/webengine-mobile` (Appium) | `webengine-mcp --profile mobile --transport stdio` | 17 |
+
+```powershell
+# Build once, then launch stdio (VS Code: F5 profile 'stdio-web' / 'stdio-mobile')
+dotnet build src/AxaFrance.WebEngine.Mcp -c Release
+dotnet exec src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll --profile web --transport stdio
+dotnet exec src/AxaFrance.WebEngine.Mcp/bin/Release/net10.0/AxaFrance.WebEngine.Mcp.dll --profile mobile --transport stdio
+dotnet run --project src/AxaFrance.WebEngine.Mcp --no-launch-profile -- --profile web --transport stdio
+```
+
+> Do NOT use plain `dotnet run` for MCP clients: its "Using launch settings..." banner pollutes stdout (reserved for JSON-RPC). Use `dotnet exec`, published exe, or `dnx AxaFrance.WebEngine.Mcp`.
+
+- VS Code/Copilot: `Chat: Install Plugin From Source` with this repo URL, or marketplace `AxaFrance/webengine-dotnet`, or copy `plugins/<name>/skills/*` to `.github/skills/` + `mcp.json` into `.vscode/mcp.json`.
+- Codex: `codex plugin marketplace add AxaFrance/webengine-dotnet --sparse .agents/plugins`, or `codex mcp add <name> -- dnx AxaFrance.WebEngine.Mcp --profile <web|mobile> --transport stdio` + copy `skills/` to `~/.codex/skills/`.
+- Manual `config.toml`: see `plugins/<name>/config.toml.snippet`.
+- CLI: `webengine-mcp --help` lists `--profile web|mobile|both`, `--transport http|stdio`.
+
+## Running the MCP Server Locally (HTTP, legacy)
 
 ### Prerequisites
 
-- .NET 8 or later
+- .NET 10 SDK (MCP project targets `net10.0`)
 - One of the following browsers installed (for Selenium tests):
   - Google Chrome
   - Mozilla Firefox

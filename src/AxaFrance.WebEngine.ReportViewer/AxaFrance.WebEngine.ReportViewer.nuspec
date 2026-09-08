@@ -6,6 +6,8 @@
     <authors>AxaFrance, Huaxing YUAN</authors>
     <projectUrl>https://github.com/AxaFrance/webengine-dotnet</projectUrl>
     <description>Report viewer executable for AXA WebEngine test reports.</description>
+    <copyright>AXA France</copyright>
+    <readme>README.md</readme>
     <tags>AXA WebEngine Automation Framework</tags>
     <repository type="git" url="https://github.com/AxaFrance/webengine-dotnet" />
     <dependencies>
@@ -36,6 +38,7 @@
     </contentFiles>
   </metadata>
   <files>
+    <file src="README.md" target="" />
     <!-- Include net8.0 -->
     <file src="net8.0-windows\ReportViewer.dll" target="lib\net8.0-windows7.0" />
     <file src="net8.0-windows\ReportViewer.exe" target="lib\net8.0-windows7.0" />
