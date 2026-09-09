@@ -2367,6 +2367,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeft
   nameWithType: AppElementDescription.SwipeLeft
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement
+  name: SwipeLeftOnElement()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeLeftOnElement
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement()
+  nameWithType: AppElementDescription.SwipeLeftOnElement()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement*
+  name: SwipeLeftOnElement
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeLeftOnElement_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeLeftOnElement
+  nameWithType: AppElementDescription.SwipeLeftOnElement
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
   name: SwipeRight()
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeRight
@@ -2380,6 +2393,19 @@ references:
   isSpec: "True"
   fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRight
   nameWithType: AppElementDescription.SwipeRight
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement
+  name: SwipeRightOnElement()
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeRightOnElement
+  commentId: M:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement()
+  nameWithType: AppElementDescription.SwipeRightOnElement()
+- uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement*
+  name: SwipeRightOnElement
+  href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_SwipeRightOnElement_
+  commentId: Overload:AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement
+  isSpec: "True"
+  fullName: AxaFrance.WebEngine.MobileApp.AppElementDescription.SwipeRightOnElement
+  nameWithType: AppElementDescription.SwipeRightOnElement
 - uid: AxaFrance.WebEngine.MobileApp.AppElementDescription.Text
   name: Text
   href: api_net/AxaFrance.WebEngine.MobileApp.AppElementDescription.html#AxaFrance_WebEngine_MobileApp_AppElementDescription_Text

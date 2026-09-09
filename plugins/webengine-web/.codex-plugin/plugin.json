@@ -1,0 +1,15 @@
+{
+  "name": "webengine-web",
+  "version": "1.0.0",
+  "description": "Observe and interact with live web pages via WebEngine MCP (Selenium): snapshot, click/type/select, then generate UI code in any stack.",
+  "author": {
+    "name": "AXA France",
+    "url": "https://github.com/AxaFrance/webengine-dotnet"
+  },
+  "homepage": "https://github.com/AxaFrance/webengine-dotnet",
+  "repository": "https://github.com/AxaFrance/webengine-dotnet",
+  "license": "MIT",
+  "keywords": ["webengine", "selenium", "browser", "mcp", "testing"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

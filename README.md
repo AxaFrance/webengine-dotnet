@@ -38,9 +38,23 @@ WebEngine includes an **MCP server** that enables AI-powered coding agents (like
 **Key Features:**
 - **Observe**: Capture page state, inspect elements, and analyze accessibility
 - **Execute**: Interact with UI elements and perform bulk actions on live applications
-- **Generate**: Automatically create PageModels and test scripts in WebEngine format
+- **Generate**: Automatically create code in your stack (Playwright+TS, Selenium, WebEngine C#) from observed behavior
 
-**For detailed information on running the MCP server locally, available tools, and how to use it with coding agents, see [WebEngineMCP.md](WebEngineMCP.md).**
+**Plugins (stdio, recommended):** one `webengine-mcp` binary, two plugins — `plugins/webengine-web` (Selenium, 29 tools) and `plugins/webengine-mobile` (Appium, 17 tools) — each bundling Agent Skills + MCP server for Copilot (Agent Plugins 1.0) and Codex. Details in `plugins/README.md`.
+
+**Install the plugins in your coding agent:**
+
+| Agent | Install |
+|---|---|
+| GitHub Copilot (VS Code) | `Chat: Install Plugin From Source` → this repo URL, or marketplace `AxaFrance/webengine-dotnet` |
+| Codex (CLI/IDE/desktop) | `codex plugin marketplace add AxaFrance/webengine-dotnet --sparse .agents/plugins` |
+| Claude Code | copy `plugins/<name>/skills/*` to `.claude/skills/` + stdio entry in `mcpServers` |
+| OpenCode | copy skills to `.agents/skills/` + `type: local` entry in `opencode.json` |
+| Cursor | copy skills to `.cursor/skills/` + entry in `.cursor/mcp.json` |
+
+Server runs zero-install via `dnx AxaFrance.WebEngine.Mcp --profile <web\|mobile> --transport stdio` (.NET 10). Full per-agent guide: documentation article *MCP Plugins for Coding Agents*.
+
+**For detailed information on running the MCP server locally, available tools, and how to use it with coding agents, see [WebEngineMCP.md](src/WebEngineMCP.md).**
 
 ## WebEngine 2.0 Roadmap
 We are working on the next version of WebEngine Framework, in the next versions we will bring.

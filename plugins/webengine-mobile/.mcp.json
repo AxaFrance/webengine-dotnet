@@ -1,0 +1,7 @@
+{
+  "$comment": "Codex bundled MCP server (direct server map). Requires .NET 10 (dnx), AxaFrance.WebEngine.Mcp on NuGet, and an Appium server (default http://localhost:4723).",
+  "webengine-mobile": {
+    "command": "dnx",
+    "args": ["AxaFrance.WebEngine.Mcp", "--profile", "mobile", "--transport", "stdio"]
+  }
+}

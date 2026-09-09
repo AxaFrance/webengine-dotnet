@@ -1,0 +1,15 @@
+{
+  "name": "webengine-mobile",
+  "version": "1.0.0",
+  "description": "Observe and interact with live Android/iOS apps via WebEngine MCP (Appium): snapshot, tap/type/swipe, then generate mobile UI code.",
+  "author": {
+    "name": "AXA France",
+    "url": "https://github.com/AxaFrance/webengine-dotnet"
+  },
+  "homepage": "https://github.com/AxaFrance/webengine-dotnet",
+  "repository": "https://github.com/AxaFrance/webengine-dotnet",
+  "license": "MIT",
+  "keywords": ["webengine", "appium", "mobile", "mcp", "testing"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

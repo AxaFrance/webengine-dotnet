@@ -13,6 +13,7 @@
     <Deterministic>False</Deterministic>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Product>AXA WebEngine Automation Framework</Product>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
     <Description>Test Automation Framework simplifies the way to build and run automated test for Web and Mobile applications. This package provides basic data structures, definitions and base logics.</Description>
@@ -46,6 +47,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="html-report.zip" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,21 @@
 ﻿{
   "profiles": {
+    "stdio-web": {
+      "commandName": "Project",
+      "commandLineArgs": "--profile web --transport stdio",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "dotnetRunMessages": false
+    },
+    "stdio-mobile": {
+      "commandName": "Project",
+      "commandLineArgs": "--profile mobile --transport stdio",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "dotnetRunMessages": false
+    },
     "http": {
       "commandName": "Project",
       "launchBrowser": true,

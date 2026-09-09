@@ -136,7 +136,7 @@ The value is determined by tags provider</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract IEnumerable&lt;string&gt; GetTagsByRule(AxeResultItem rule)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract IEnumerable&lt;string&gt; GetTagsByRule(AxeResultItem ruleId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -150,8 +150,9 @@ The value is determined by tags provider</p>
     <tbody>
       <tr>
         <td><span class="xref">AxeResultItem</span></td>
-        <td><span class="parametername">rule</span></td>
-        <td></td>
+        <td><span class="parametername">ruleId</span></td>
+        <td><p>the identifier of the rule</p>
+</td>
       </tr>
     </tbody>
   </table>

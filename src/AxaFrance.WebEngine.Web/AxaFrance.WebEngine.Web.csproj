@@ -14,9 +14,14 @@
     <Description>Test Automation Framework simplifies the way to build and run automated test for Web and Mobile applications. This package provides funcitonalies to build and run automated tests for Web and Web Mobile based on Selenium WebDriver.</Description>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>AXA WebEngine Automation Framework</PackageTags>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="8.3.2" />

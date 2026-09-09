@@ -33,6 +33,8 @@
   href: report-viewer.md
 - name: Github Copilot Instructions
   href: github-copilot.md
+- name: MCP Plugins for Coding Agents
+  href: mcp-plugins.md
 - name: Known issues and possible workarounds
   href: known-issues.md
 - name: Development status

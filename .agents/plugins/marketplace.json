@@ -1,0 +1,32 @@
+{
+  "name": "webengine-plugins",
+  "interface": {
+    "displayName": "WebEngine Plugins"
+  },
+  "plugins": [
+    {
+      "name": "webengine-web",
+      "source": {
+        "source": "local",
+        "path": "./plugins/webengine-web"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Testing"
+    },
+    {
+      "name": "webengine-mobile",
+      "source": {
+        "source": "local",
+        "path": "./plugins/webengine-mobile"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Testing"
+    }
+  ]
+}

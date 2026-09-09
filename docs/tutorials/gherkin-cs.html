@@ -154,8 +154,8 @@ namespace Samples.Gherkin.StepDefinitions
     {
 
         // local variable to pass driver across scneario
-        WebDriver driver;
-        OverallReportBuilder reportBuilder;
+        WebDriver? driver;
+        OverallReportBuilder? reportBuilder;
         private readonly ScenarioContext _scenarioContext;
 
         public DrinkMachineStepDefinitions(ScenarioContext scenarioContext)
@@ -218,14 +218,14 @@ namespace Samples.Gherkin.StepDefinitions
         [Given(@&quot;I turn on the drink machine&quot;)]
         public void GivenITurnOnTheDrinkMachine()
         {
-            driver.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
+            driver!.Navigate().GoToUrl(&quot;https://webengine-test.azurewebsites.net/Step1.html&quot;);
         }
 
         // Select language and drink, this function can be reused for other language and drinks.
         [When(@&quot;I select '([^']*)' as language and order a '([^']*)'&quot;)]
         public void WhenISelectAsLanguageAndOrderA(string language, string drink)
         {
-            MyPageModel pageModel = new MyPageModel(driver);
+            MyPageModel pageModel = new MyPageModel(driver!);
             pageModel.SelectLanguage.SelectByText(language);
             pageModel.RadioChooseToBuy.CheckByValue(drink);
             pageModel.NextButton.Click();
@@ -235,7 +235,7 @@ namespace Samples.Gherkin.StepDefinitions
         [Then(@&quot;I got '([^']*)'&quot;)]
         public void ThenIGot(string tea)
         {
-            MyPageModel pageModel = new MyPageModel(driver);
+            MyPageModel pageModel = new MyPageModel(driver!);
             reportBuilder.WithSelenium(driver, &quot;Result&quot;).Build();
             Assert.That(pageModel.Page2Title.Exists());
         }
