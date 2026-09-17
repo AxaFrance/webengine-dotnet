@@ -11,8 +11,8 @@ Both plugins share one server binary (`AxaFrance.WebEngine.Mcp`, command `webeng
 
 ## Prerequisites
 
-- .NET 10 (the `dnx` launcher ships with the SDK) for the zero-install run below.
-- The package published to NuGet (maintainers: `dotnet pack` + `dotnet nuget push`). Before that, use the local-build fallback in each plugin README.
+- .NET 10 SDK 10.0.100 or later (the `dnx` launcher ships with the SDK) for the zero-install run below. Modern .NET is not included with Windows by default.
+- The package published to NuGet (maintainers: use `scripts/prepare-mcp-release.ps1` and the guarded release workflow). Before that, use the local-build fallback in each plugin README.
 - A browser (Chrome/Edge/Firefox) for web; an Appium server (default `http://localhost:4723`) for mobile.
 
 Test the server once (no agent needed):
@@ -23,11 +23,24 @@ dnx AxaFrance.WebEngine.Mcp --profile web --transport stdio
 webengine-mcp --help
 ```
 
+## GitHub Copilot CLI
+
+The Copilot CLI marketplace is repository-hosted; there is no separate package upload. After the repository metadata is pushed to GitHub:
+
+```bash
+copilot plugin marketplace add AxaFrance/webengine-dotnet
+copilot plugin marketplace browse webengine-plugins
+copilot plugin install webengine-web@webengine-plugins
+# or: copilot plugin install webengine-mobile@webengine-plugins
+```
+
+The catalog is `.github/plugin/marketplace.json`, and each plugin source is under `plugins/`. For a direct source install, use `AxaFrance/webengine-dotnet:plugins/webengine-web` or `AxaFrance/webengine-dotnet:plugins/webengine-mobile`.
+
 ## GitHub Copilot (VS Code)
 
-Full plugin (skills + server, recommended):
+Full plugin (skills + server):
 
-1. Run `Chat: Install Plugin From Source` and paste `https://github.com/AxaFrance/webengine-dotnet`, or register the marketplace `AxaFrance/webengine-dotnet` in `chat.plugins.marketplaces`, or point `chat.pluginLocations` at a local clone's `plugins/<name>` folder.
+1. Run `Chat: Install Plugin From Source` and paste `https://github.com/AxaFrance/webengine-dotnet`, or use a direct `AxaFrance/webengine-dotnet:plugins/<name>` source, or point `chat.pluginLocations` at a local clone's `plugins/<name>` folder.
 2. Enable the plugin. Its MCP server starts automatically with it.
 3. Verify: `MCP: List Servers` shows `webengine-web`/`webengine-mobile`; `Chat: Configure Skills` lists the skills.
 
@@ -60,6 +73,18 @@ Copy `plugins/<name>/skills/*` to `.claude/skills/` (project) or `~/.claude/skil
 ```
 
 Restart Claude Code and verify the tools list.
+
+## MCP Registry and release automation
+
+`server.json` publishes one combined stdio server entry (`io.github.AxaFrance/webengine-mcp`) for the `both` profile. The NuGet package README contains the ownership marker required by the MCP Registry. The Copilot marketplace remains split into web and mobile profiles so their tool names do not collide.
+
+To prepare locally without publishing:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/prepare-mcp-release.ps1
+```
+
+The guarded `.github/workflows/publish-mcp.yml` workflow publishes only tags named `mcp-v<version>`. Before using it, configure the `mcp-registry-publish` GitHub environment with a `NUGET_API_KEY`, protected release/tag rules, and (recommended) a required reviewer. The job uses GitHub OIDC for `mcp-publisher`; the publishing identity must be authorized for the `io.github.AxaFrance` namespace.
 
 ## OpenCode
 

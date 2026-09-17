@@ -12,14 +12,28 @@ plugins/webengine-web/
   skills/webengine-scaffold/# solution scaffolding skill
 ```
 
-Prerequisite (both agents): .NET 10 + package on NuGet (`dnx AxaFrance.WebEngine.Mcp ...`).
-Publish it once: `dotnet pack src/AxaFrance.WebEngine.Mcp -c Release` then `dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key <key>`.
+Prerequisite (both agents): .NET 10 SDK 10.0.100 or later + package on NuGet (`dnx AxaFrance.WebEngine.Mcp ...`). Modern .NET is not included with Windows by default. Maintainers can prepare a package with `powershell -ExecutionPolicy Bypass -File scripts/prepare-mcp-release.ps1`; the guarded `mcp-v<version>` workflow publishes NuGet and MCP Registry metadata.
 
-## Option A — GitHub Copilot (VS Code)
+## Option A — GitHub Copilot CLI
 
-1. `Chat: Install Plugin From Source` → paste `https://github.com/AxaFrance/webengine-dotnet` (or add marketplace `AxaFrance/webengine-dotnet` via `chat.plugins.marketplaces`, or register a local clone via `chat.pluginLocations`).
-2. Enable the plugin; its MCP server starts automatically (no separate trust prompt).
-3. Verify: `webengine-web` in `MCP: List Servers`, skills in `Chat: Configure Skills`.
+1. Add the repository marketplace:
+
+   ```text
+   copilot plugin marketplace add AxaFrance/webengine-dotnet
+   ```
+
+2. Install the web profile:
+
+   ```text
+   copilot plugin install webengine-web@webengine-plugins
+   ```
+
+   For a direct source install, use `AxaFrance/webengine-dotnet:plugins/webengine-web`.
+
+3. Enable the plugin; its MCP server starts automatically.
+4. Verify with `copilot plugin list`. In VS Code, `MCP: List Servers` should show `webengine-web` and `Chat: Configure Skills` should show its skills.
+
+For VS Code, use `Chat: Install Plugin From Source` with `AxaFrance/webengine-dotnet` or the direct plugin path `AxaFrance/webengine-dotnet:plugins/webengine-web`.
 
 Without plugin install (manual): copy `skills/webengine-web` (+ `skills/webengine-scaffold`) to `.github/skills/`, and `mcp.json` content into `.vscode/mcp.json`.
 

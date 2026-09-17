@@ -1,0 +1,159 @@
+# WebEngine .NET build and package pipeline.
+#
+# The pipeline creates a NuGet package artifact. Publication is intentionally
+# handled outside this build pipeline.
+
+parameters:
+- name: buildConfiguration
+  displayName: Build configuration
+  type: string
+  default: Release
+  values:
+  - Debug
+  - Release
+pool:
+  name: AzureForgev2Windows
+
+variables:
+  BuildConfiguration: ${{ parameters.buildConfiguration }}
+
+steps:
+- checkout: self
+  clean: true
+
+- powershell: |
+    $buildNumber = '$(Build.BuildNumber)'
+    if ([string]::IsNullOrWhiteSpace($buildNumber)) {
+      throw 'Build.BuildNumber is empty.'
+    }
+
+    if ($buildNumber -notmatch '^\d+\.\d+\.\d+(?:\.\d+)?$') {
+      throw "Build.BuildNumber '$buildNumber' is not a valid NuGet version. Set the pipeline build number to a numeric version such as 1.2.3 or 1.2.3.4."
+    }
+
+    if ('$(Build.SourceBranch)' -eq 'refs/heads/main') {
+      $suffix = ''
+    }
+    else {
+      $suffix = '-preview'
+    }
+
+    $packageVersion = "$buildNumber$suffix"
+    Write-Host "Building version $packageVersion."
+    Write-Host "##vso[task.setvariable variable=versionSuffix]$suffix"
+    Write-Host "##vso[task.setvariable variable=PackageVersion]$packageVersion"
+  displayName: 'Set package version'
+
+- task: qetza.replacetokens.replacetokens-task.replacetokens@6
+  displayName: 'Replace tokens in **/Settings.cs'
+  inputs:
+    sources: '**/Settings.cs'
+    addBOM: true
+    logLevel: debug
+    ifNoFilesFound: warn
+
+- task: UseDotNet@2
+  displayName: 'Use .NET SDK 10.x'
+  inputs:
+    packageType: sdk
+    version: 10.0.x
+    installationPath: '$(Agent.ToolsDirectory)/dotnet'
+
+- powershell: |
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(Build.SourcesDirectory)\scripts\validate-mcp-metadata.ps1"
+    if ($LASTEXITCODE -ne 0) {
+      throw "MCP metadata validation failed with exit code $LASTEXITCODE."
+    }
+  displayName: 'Validate MCP metadata'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: build
+    projects: '**/*.sln'
+    arguments: '--configuration $(BuildConfiguration) /p:Version=$(PackageVersion)'
+    verbosityRestore: Detailed
+
+- script: 'build-package.bat "$(PackageVersion)" "$(BuildConfiguration)"'
+  workingDirectory: 'src/AxaFrance.WebEngine.Runner'
+  displayName: 'Pack runner'
+
+- script: 'build-package.bat "$(PackageVersion)" "$(BuildConfiguration)"'
+  workingDirectory: 'src/AxaFrance.WebEngine.ReportViewer'
+  displayName: 'Pack reportviewer'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack MCP tool'
+  inputs:
+    command: pack
+    packagesToPack: 'src/AxaFrance.WebEngine.Mcp/AxaFrance.WebEngine.Mcp.csproj'
+    nobuild: true
+    arguments: '--configuration $(BuildConfiguration) --no-restore --output "$(Build.ArtifactStagingDirectory)\mcp" /p:Version=$(PackageVersion) /p:PackageVersion=$(PackageVersion)'
+
+- powershell: |
+    $packagePath = "$(Build.ArtifactStagingDirectory)\mcp\AxaFrance.WebEngine.Mcp.$(PackageVersion).nupkg"
+    if (-not (Test-Path -LiteralPath $packagePath -PathType Leaf)) {
+      throw "Expected MCP package was not created: $packagePath"
+    }
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [System.IO.Compression.ZipFile]::OpenRead($packagePath)
+    try {
+      $readme = $archive.GetEntry('README.md')
+      if ($null -eq $readme) {
+        throw 'The MCP package does not contain README.md.'
+      }
+
+      $reader = New-Object System.IO.StreamReader($readme.Open())
+      try {
+        $readmeContent = $reader.ReadToEnd()
+      }
+      finally {
+        $reader.Dispose()
+      }
+
+      if (-not $readmeContent.Contains('<!-- mcp-name: io.github.AxaFrance/webengine-mcp -->')) {
+        throw 'The MCP package README is missing the MCP Registry ownership marker.'
+      }
+    }
+    finally {
+      $archive.Dispose()
+    }
+  displayName: 'Verify MCP package'
+
+- task: PublishSymbols@2
+  displayName: 'Publish symbols path'
+  inputs:
+    SearchPattern: '**\bin\**\*.pdb'
+    PublishSymbols: false
+  continueOnError: true
+
+- task: CopyFiles@2
+  displayName: 'Copy packages to artifact staging'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      **\bin\**\*.nupkg
+      **\src\*.nupkg
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\nuget'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
+- task: CopyFiles@2
+  displayName: 'Copy MCP package to artifact staging'
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)\mcp'
+    Contents: '*.nupkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\nuget'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifact: nuget'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\nuget'
+    ArtifactName: nuget
+  condition: succeededOrFailed()
+
+# SonarCloud, Checkmarx, and documentation publication were disabled in the
+# Classic definition and are intentionally not active in this conversion.

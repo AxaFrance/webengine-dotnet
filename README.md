@@ -46,13 +46,14 @@ WebEngine includes an **MCP server** that enables AI-powered coding agents (like
 
 | Agent | Install |
 |---|---|
-| GitHub Copilot (VS Code) | `Chat: Install Plugin From Source` → this repo URL, or marketplace `AxaFrance/webengine-dotnet` |
+| GitHub Copilot CLI | `copilot plugin marketplace add AxaFrance/webengine-dotnet`, then install `webengine-web@webengine-plugins` or `webengine-mobile@webengine-plugins` |
+| GitHub Copilot (VS Code) | `Chat: Install Plugin From Source` → this repository or a plugin subdirectory |
 | Codex (CLI/IDE/desktop) | `codex plugin marketplace add AxaFrance/webengine-dotnet --sparse .agents/plugins` |
 | Claude Code | copy `plugins/<name>/skills/*` to `.claude/skills/` + stdio entry in `mcpServers` |
 | OpenCode | copy skills to `.agents/skills/` + `type: local` entry in `opencode.json` |
 | Cursor | copy skills to `.cursor/skills/` + entry in `.cursor/mcp.json` |
 
-Server runs zero-install via `dnx AxaFrance.WebEngine.Mcp --profile <web\|mobile> --transport stdio` (.NET 10). Full per-agent guide: documentation article *MCP Plugins for Coding Agents*.
+The standard NuGet distribution runs without a local repository clone via `dnx AxaFrance.WebEngine.Mcp --profile <web|mobile> --transport stdio`, but requires the **.NET 10 SDK 10.0.100 or later**. Modern .NET is not included with Windows by default. Full per-agent guide: documentation article *MCP Plugins for Coding Agents*.
 
 **For detailed information on running the MCP server locally, available tools, and how to use it with coding agents, see [WebEngineMCP.md](src/WebEngineMCP.md).**
 

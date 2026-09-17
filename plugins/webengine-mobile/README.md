@@ -10,13 +10,28 @@ plugins/webengine-mobile/
   skills/webengine-scaffold/            # solution scaffolding skill (mirror of web plugin's copy)
 ```
 
-Prerequisites: .NET 10 + `AxaFrance.WebEngine.Mcp` on NuGet (see web plugin README for publish) + Appium server (default `http://localhost:4723`).
+Prerequisites: .NET 10 SDK 10.0.100 or later + `AxaFrance.WebEngine.Mcp` on NuGet (see web plugin README for publish) + Appium server (default `http://localhost:4723`). Modern .NET is not included with Windows by default.
 
-## Option A — GitHub Copilot (VS Code)
+## Option A — GitHub Copilot CLI
 
-1. `Chat: Install Plugin From Source` → `https://github.com/AxaFrance/webengine-dotnet` (or marketplace / `chat.pluginLocations` for a local clone).
-2. Enable the plugin; its MCP server starts automatically.
-3. Verify: `webengine-mobile` in `MCP: List Servers`, skills in `Chat: Configure Skills`.
+1. Add the repository marketplace:
+
+   ```text
+   copilot plugin marketplace add AxaFrance/webengine-dotnet
+   ```
+
+2. Install the mobile profile:
+
+   ```text
+   copilot plugin install webengine-mobile@webengine-plugins
+   ```
+
+   For a direct source install, use `AxaFrance/webengine-dotnet:plugins/webengine-mobile`.
+
+3. Enable the plugin; its MCP server starts automatically.
+4. Verify with `copilot plugin list`. In VS Code, `MCP: List Servers` should show `webengine-mobile` and `Chat: Configure Skills` should show its skills.
+
+For VS Code, use `Chat: Install Plugin From Source` with `AxaFrance/webengine-dotnet` or the direct plugin path `AxaFrance/webengine-dotnet:plugins/webengine-mobile`.
 
 Manual: copy `skills/webengine-mobile` (+ `skills/webengine-scaffold`) to `.github/skills/`, and `mcp.json` into `.vscode/mcp.json`.
 

@@ -1,16 +1,16 @@
 {
-  "$comment": "Agent Plugins 1.0 portable MCP config (VS Code discovers this file). Requires .NET 10 (dnx), AxaFrance.WebEngine.Mcp on NuGet, and an Appium server (default http://localhost:4723). For a local build see README.md.",
-  "servers": {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
     "webengine-mobile": {
       "type": "stdio",
       "command": "dnx",
-      "args": ["AxaFrance.WebEngine.Mcp", "--profile", "mobile", "--transport", "stdio"]
-    }
-  },
-  "mcpServers": {
-    "webengine-mobile": {
-      "command": "dnx",
-      "args": ["AxaFrance.WebEngine.Mcp", "--profile", "mobile", "--transport", "stdio"]
+      "args": [
+        "AxaFrance.WebEngine.Mcp",
+        "--profile",
+        "mobile",
+        "--transport",
+        "stdio"
+      ]
     }
   }
 }

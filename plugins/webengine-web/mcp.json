@@ -1,16 +1,16 @@
 {
-  "$comment": "Agent Plugins 1.0 portable MCP config (VS Code discovers this file). Both keys carried: 'servers' (VS Code style) and 'mcpServers' (Claude style). Requires .NET 10 (dnx) and AxaFrance.WebEngine.Mcp on NuGet; for a local build see README.md.",
-  "servers": {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
     "webengine-web": {
       "type": "stdio",
       "command": "dnx",
-      "args": ["AxaFrance.WebEngine.Mcp", "--profile", "web", "--transport", "stdio"]
-    }
-  },
-  "mcpServers": {
-    "webengine-web": {
-      "command": "dnx",
-      "args": ["AxaFrance.WebEngine.Mcp", "--profile", "web", "--transport", "stdio"]
+      "args": [
+        "AxaFrance.WebEngine.Mcp",
+        "--profile",
+        "web",
+        "--transport",
+        "stdio"
+      ]
     }
   }
 }
