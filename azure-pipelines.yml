@@ -27,8 +27,10 @@ steps:
       throw 'Build.BuildNumber is empty.'
     }
 
-    if ($buildNumber -notmatch '^\d+\.\d+\.\d+(?:\.\d+)?$') {
-      throw "Build.BuildNumber '$buildNumber' is not a valid NuGet version. Set the pipeline build number to a numeric version such as 1.2.3 or 1.2.3.4."
+    # Azure DevOps commonly produces yyyyMMdd.Revision. NuGet accepts two to
+    # four numeric version components, so keep that build number unchanged.
+    if ($buildNumber -notmatch '^\d+(?:\.\d+){1,3}$') {
+      throw "Build.BuildNumber '$buildNumber' is not a valid NuGet version. Use a numeric version such as 1.2.3 or 1.2.3.4."
     }
 
     if ('$(Build.SourceBranch)' -eq 'refs/heads/main') {
