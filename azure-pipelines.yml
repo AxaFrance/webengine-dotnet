@@ -171,7 +171,8 @@ steps:
     command: pack
     packagesToPack: 'src/AxaFrance.WebEngine.Mcp/AxaFrance.WebEngine.Mcp.csproj'
     nobuild: true
-    arguments: '--configuration $(BuildConfiguration) --no-restore --output "$(Build.ArtifactStagingDirectory)\mcp" /p:Version=$(PackageVersion) /p:PackageVersion=$(PackageVersion) /p:AssemblyVersion=$(AssemblyVersion) /p:FileVersion=$(FileVersion) /p:InformationalVersion=$(InformationalVersion)'
+    packDirectory: '$(Build.ArtifactStagingDirectory)\mcp'
+    arguments: '--configuration $(BuildConfiguration) --no-restore /p:Version=$(PackageVersion) /p:PackageVersion=$(PackageVersion) /p:AssemblyVersion=$(AssemblyVersion) /p:FileVersion=$(FileVersion) /p:InformationalVersion=$(InformationalVersion)'
 
 - powershell: |
     $packagePath = "$(Build.ArtifactStagingDirectory)\mcp\AxaFrance.WebEngine.Mcp.$(PackageVersion).nupkg"
