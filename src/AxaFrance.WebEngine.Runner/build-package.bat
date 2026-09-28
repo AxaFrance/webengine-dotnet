@@ -17,6 +17,7 @@ echo Build project Version: %version%, Type: %buildType%
 set "scriptDir=%~dp0"
 set "file=axafrance.webengine.webrunner.nuspec"
 set "nuspec=%scriptDir%%file%"
+set "readme=%scriptDir%README.md"
 set "buildDir=%scriptDir%bin\%buildType%"
 set "nuget=%scriptDir%..\nuget.exe"
 
@@ -30,6 +31,11 @@ if not exist "%buildDir%" (
     exit /b 1
 )
 
+if not exist "%readme%" (
+    echo ERROR: README file not found: "%readme%"
+    exit /b 1
+)
+
 if not exist "%nuget%" (
     echo ERROR: NuGet executable not found: "%nuget%"
     exit /b 1
@@ -38,6 +44,12 @@ if not exist "%nuget%" (
 copy /Y "%nuspec%" "%buildDir%\%file%" >nul
 if errorlevel 1 (
     echo ERROR: Could not copy the nuspec file.
+    exit /b 1
+)
+
+copy /Y "%readme%" "%buildDir%\README.md" >nul
+if errorlevel 1 (
+    echo ERROR: Could not copy the README file.
     exit /b 1
 )
 

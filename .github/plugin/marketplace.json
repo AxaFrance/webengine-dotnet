@@ -1,0 +1,24 @@
+{
+  "name": "webengine-plugins",
+  "owner": {
+    "name": "AXA France"
+  },
+  "metadata": {
+    "description": "Web and mobile UI automation plugins powered by WebEngine MCP.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "webengine-web",
+      "description": "Observe and interact with live web pages through Selenium and WebEngine MCP.",
+      "version": "1.0.0",
+      "source": "./plugins/webengine-web"
+    },
+    {
+      "name": "webengine-mobile",
+      "description": "Observe and interact with Android and iOS apps through Appium and WebEngine MCP.",
+      "version": "1.0.0",
+      "source": "./plugins/webengine-mobile"
+    }
+  ]
+}

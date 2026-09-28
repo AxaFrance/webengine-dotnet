@@ -1,0 +1,48 @@
+name: Validate MCP packaging
+
+on:
+  pull_request:
+    paths:
+      - '.github/plugin/**'
+      - '.github/workflows/validate-mcp.yml'
+      - 'plugins/**'
+      - 'scripts/validate-mcp-metadata.ps1'
+      - 'scripts/prepare-mcp-release.ps1'
+      - 'server.json'
+      - 'src/**'
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '.github/plugin/**'
+      - '.github/workflows/validate-mcp.yml'
+      - 'plugins/**'
+      - 'scripts/validate-mcp-metadata.ps1'
+      - 'scripts/prepare-mcp-release.ps1'
+      - 'server.json'
+      - 'src/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          dotnet-quality: ga
+
+      - name: Validate metadata
+        shell: pwsh
+        run: ./scripts/validate-mcp-metadata.ps1
+
+      - name: Prepare package
+        shell: pwsh
+        run: ./scripts/prepare-mcp-release.ps1 -OutputDirectory '${{ runner.temp }}/mcp-package'

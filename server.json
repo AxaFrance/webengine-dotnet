@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.AxaFrance/webengine-mcp",
+  "title": "WebEngine MCP",
+  "description": "Local stdio MCP server for web and mobile UI automation with Selenium and Appium.",
+  "repository": {
+    "url": "https://github.com/AxaFrance/webengine-dotnet",
+    "source": "github",
+    "subfolder": "src/AxaFrance.WebEngine.Mcp"
+  },
+  "websiteUrl": "https://axafrance.github.io/webengine-dotnet/",
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "nuget",
+      "registryBaseUrl": "https://api.nuget.org/v3/index.json",
+      "identifier": "AxaFrance.WebEngine.Mcp",
+      "version": "1.0.0",
+      "runtimeHint": "dnx",
+      "packageArguments": [
+        {
+          "type": "named",
+          "name": "--profile",
+          "value": "both"
+        },
+        {
+          "type": "named",
+          "name": "--transport",
+          "value": "stdio"
+        }
+      ],
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

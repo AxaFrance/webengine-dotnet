@@ -1,8 +1,12 @@
 # AxaFrance.WebEngine.Mcp
 
+<!-- mcp-name: io.github.AxaFrance/webengine-mcp -->
+
 WebEngine MCP server: the interactive gate between AI coding agents and your applications. Observe live web pages (Selenium) and mobile apps (Appium), interact with them, then let the agent generate UI code in any stack (Playwright+TS, Selenium, WebEngine C#).
 
-Run without installing (.NET 10):
+The standard distribution requires the **.NET 10 SDK 10.0.100 or later**. Modern .NET is not included with Windows by default.
+
+Run without installing the tool:
 
 ```powershell
 dnx AxaFrance.WebEngine.Mcp --profile web --transport stdio
@@ -17,6 +21,8 @@ webengine-mcp --profile web --transport stdio
 ```
 
 Two plugins, one binary: `plugins/webengine-web` (29 tools, Selenium) and `plugins/webengine-mobile` (17 tools, Appium), each bundling Agent Skills + MCP server config for GitHub Copilot (Agent Plugins 1.0) and Codex. Install details in `plugins/README.md`.
+
+The MCP Registry descriptor for this package is `server.json`. It publishes the combined `both` profile; the Copilot marketplace provides separate web and mobile plugin profiles.
 
 ---
 Company: AXA France

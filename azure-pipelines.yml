@@ -1,0 +1,243 @@
+# WebEngine .NET build and package pipeline.
+#
+# The pipeline creates a NuGet package artifact. Publication is intentionally
+# handled outside this build pipeline.
+
+name: $(Date:yyyyMMdd).$(Rev:r)
+
+parameters:
+- name: buildConfiguration
+  displayName: Build configuration
+  type: string
+  default: Release
+  values:
+  - Debug
+  - Release
+pool:
+  name: AzureForgev2Windows
+
+variables:
+  BuildConfiguration: ${{ parameters.buildConfiguration }}
+  PackageMajorVersion: 3
+  # Define EncryptionKey as a secret variable in the Azure DevOps pipeline
+  # Variables tab, or link a variable group containing that secret. The
+  # ReplaceTokens task below reads it by name and never stores its value here.
+
+steps:
+- checkout: self
+  clean: true
+
+- powershell: |
+    $buildNumber = '$(Build.BuildNumber)'
+    if ([string]::IsNullOrWhiteSpace($buildNumber)) {
+      throw 'Build.BuildNumber is empty.'
+    }
+
+    $buildParts = $buildNumber -split '\.'
+    $buildDate = $null
+
+    # The default Azure DevOps build number is yyyyMMdd.Revision. Use that
+    # date and revision when available so failed/retried runs keep X stable.
+    if ($buildParts.Count -ge 2 -and $buildParts[0] -match '^20\d{6}$') {
+      try {
+        $buildDate = [DateTime]::ParseExact(
+          $buildParts[0],
+          'yyyyMMdd',
+          [Globalization.CultureInfo]::InvariantCulture
+        )
+      }
+      catch {
+        throw "Build.BuildNumber '$buildNumber' contains an invalid calendar date."
+      }
+
+      $revisionText = $buildParts[1]
+    }
+    elseif (
+      $buildParts.Count -eq 4 -and
+      $buildParts[0] -eq '$(PackageMajorVersion)' -and
+      $buildParts[1] -match '^\d{1,2}$' -and
+      $buildParts[2] -match '^\d{1,3}$'
+    ) {
+      # Also accept an existing legacy number such as 3.26.245.1.
+      $legacyYear = 2000 + [int]$buildParts[1]
+      $legacyDay = [int]$buildParts[2]
+      $lastDayOfYear = 365
+      if ([DateTime]::IsLeapYear($legacyYear)) {
+        $lastDayOfYear = 366
+      }
+
+      if ($legacyDay -lt 1 -or $legacyDay -gt $lastDayOfYear) {
+        throw "Build.BuildNumber '$buildNumber' contains an invalid day of year."
+      }
+
+      $buildDate = [DateTime]::ParseExact(
+        "$legacyYear-01-01",
+        'yyyy-MM-dd',
+        [Globalization.CultureInfo]::InvariantCulture
+      ).AddDays($legacyDay - 1)
+      $revisionText = $buildParts[3]
+    }
+    else {
+      # Fall back to the queue date if the pipeline uses another custom
+      # build-number format.
+      try {
+        $buildDate = [DateTimeOffset]::Parse(
+          '$(Build.QueuedDate)',
+          [Globalization.CultureInfo]::InvariantCulture,
+          [Globalization.DateTimeStyles]::RoundtripKind
+        ).DateTime
+      }
+      catch {
+        throw "Could not determine the build date from Build.BuildNumber '$buildNumber' or Build.QueuedDate."
+      }
+
+      $revisionText = $buildParts[-1]
+    }
+
+    if ('$(Build.SourceBranch)' -eq 'refs/heads/main') {
+      $suffix = ''
+    }
+    else {
+      $suffix = '-preview'
+    }
+
+    $revision = 0
+    if (-not [int]::TryParse($revisionText, [Globalization.NumberStyles]::None, [Globalization.CultureInfo]::InvariantCulture, [ref]$revision)) {
+      throw "Build.BuildNumber '$buildNumber' contains an invalid revision '$revisionText'."
+    }
+
+    if ($revision -gt 65535) {
+      throw "Build.BuildNumber '$buildNumber' cannot be used as an assembly version because its revision is greater than 65535."
+    }
+
+    $packageBaseVersion = '{0}.{1}.{2}.{3}' -f (
+      '$(PackageMajorVersion)',
+      ($buildDate.Year % 100),
+      $buildDate.DayOfYear,
+      $revision
+    )
+    $packageVersion = "$packageBaseVersion$suffix"
+    $assemblyVersion = $packageBaseVersion
+
+    Write-Host "Building package version $packageVersion with assembly version $assemblyVersion."
+    Write-Host "##vso[task.setvariable variable=versionSuffix]$suffix"
+    Write-Host "##vso[task.setvariable variable=PackageVersion]$packageVersion"
+    Write-Host "##vso[task.setvariable variable=AssemblyVersion]$assemblyVersion"
+    Write-Host "##vso[task.setvariable variable=FileVersion]$assemblyVersion"
+    Write-Host "##vso[task.setvariable variable=InformationalVersion]$packageVersion"
+  displayName: 'Set package version'
+
+- task: qetza.replacetokens.replacetokens-task.replacetokens@6
+  displayName: 'Replace tokens in **/Settings.cs'
+  inputs:
+    sources: '**/Settings.cs'
+    addBOM: true
+    logLevel: debug
+    ifNoFilesFound: warn
+
+- task: UseDotNet@2
+  displayName: 'Use .NET SDK 10.x'
+  inputs:
+    packageType: sdk
+    version: 10.0.x
+    installationPath: '$(Agent.ToolsDirectory)/dotnet'
+
+- powershell: |
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(Build.SourcesDirectory)\scripts\validate-mcp-metadata.ps1"
+    if ($LASTEXITCODE -ne 0) {
+      throw "MCP metadata validation failed with exit code $LASTEXITCODE."
+    }
+  displayName: 'Validate MCP metadata'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: build
+    projects: '**/*.sln'
+    arguments: '--configuration $(BuildConfiguration) /p:Version=$(PackageVersion) /p:AssemblyVersion=$(AssemblyVersion) /p:FileVersion=$(FileVersion) /p:InformationalVersion=$(InformationalVersion)'
+    verbosityRestore: Detailed
+
+- script: 'build-package.bat "$(PackageVersion)" "$(BuildConfiguration)"'
+  workingDirectory: 'src/AxaFrance.WebEngine.Runner'
+  displayName: 'Pack runner'
+
+- script: 'build-package.bat "$(PackageVersion)" "$(BuildConfiguration)"'
+  workingDirectory: 'src/AxaFrance.WebEngine.ReportViewer'
+  displayName: 'Pack reportviewer'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack MCP tool'
+  inputs:
+    command: pack
+    packagesToPack: 'src/AxaFrance.WebEngine.Mcp/AxaFrance.WebEngine.Mcp.csproj'
+    nobuild: true
+    packDirectory: '$(Build.ArtifactStagingDirectory)\mcp'
+    arguments: '--configuration $(BuildConfiguration) --no-restore /p:Version=$(PackageVersion) /p:PackageVersion=$(PackageVersion) /p:AssemblyVersion=$(AssemblyVersion) /p:FileVersion=$(FileVersion) /p:InformationalVersion=$(InformationalVersion)'
+
+- powershell: |
+    $packagePath = "$(Build.ArtifactStagingDirectory)\mcp\AxaFrance.WebEngine.Mcp.$(PackageVersion).nupkg"
+    if (-not (Test-Path -LiteralPath $packagePath -PathType Leaf)) {
+      throw "Expected MCP package was not created: $packagePath"
+    }
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [System.IO.Compression.ZipFile]::OpenRead($packagePath)
+    try {
+      $readme = $archive.GetEntry('README.md')
+      if ($null -eq $readme) {
+        throw 'The MCP package does not contain README.md.'
+      }
+
+      $reader = New-Object System.IO.StreamReader($readme.Open())
+      try {
+        $readmeContent = $reader.ReadToEnd()
+      }
+      finally {
+        $reader.Dispose()
+      }
+
+      if (-not $readmeContent.Contains('<!-- mcp-name: io.github.AxaFrance/webengine-mcp -->')) {
+        throw 'The MCP package README is missing the MCP Registry ownership marker.'
+      }
+    }
+    finally {
+      $archive.Dispose()
+    }
+  displayName: 'Verify MCP package'
+
+- task: PublishSymbols@2
+  displayName: 'Publish symbols path'
+  inputs:
+    SearchPattern: '**\bin\**\*.pdb'
+    PublishSymbols: false
+  continueOnError: true
+
+- task: CopyFiles@2
+  displayName: 'Copy packages to artifact staging'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      **\bin\**\*.nupkg
+      **\src\*.nupkg
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\nuget'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
+- task: CopyFiles@2
+  displayName: 'Copy MCP package to artifact staging'
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)\mcp'
+    Contents: '*.nupkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\nuget'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifact: nuget'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\nuget'
+    ArtifactName: nuget
+  condition: succeededOrFailed()
+
+# SonarCloud, Checkmarx, and documentation publication were disabled in the
+# Classic definition and are intentionally not active in this conversion.

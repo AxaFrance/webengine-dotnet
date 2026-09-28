@@ -1,0 +1,71 @@
+name: Publish MCP package and registry metadata
+
+on:
+  push:
+    tags:
+      - 'mcp-v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: mcp-registry-publish
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set release version
+        id: version
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#mcp-v}"
+          if [[ -z "$version" || "$version" == "$GITHUB_REF_NAME" ]]; then
+            echo "Tag must use the mcp-v<version> format." >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Set up .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          dotnet-quality: ga
+
+      - name: Prepare release package
+        shell: pwsh
+        run: ./scripts/prepare-mcp-release.ps1 -Version '${{ steps.version.outputs.version }}' -OutputDirectory '${{ runner.temp }}/mcp-package'
+
+      - name: Publish package to NuGet
+        shell: bash
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [[ -z "$NUGET_API_KEY" ]]; then
+            echo "NUGET_API_KEY must be configured on the mcp-registry-publish environment." >&2
+            exit 1
+          fi
+          dotnet nuget push "${RUNNER_TEMP}/mcp-package/AxaFrance.WebEngine.Mcp.${{ steps.version.outputs.version }}.nupkg" \
+            --source https://api.nuget.org/v3/index.json \
+            --api-key "$NUGET_API_KEY" \
+            --skip-duplicate
+
+      - name: Install mcp-publisher
+        shell: bash
+        run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+          chmod +x ./mcp-publisher
+
+      - name: Validate registry metadata
+        shell: bash
+        run: ./mcp-publisher validate server.json
+
+      - name: Authenticate to MCP Registry
+        shell: bash
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server to MCP Registry
+        shell: bash
+        run: ./mcp-publisher publish
