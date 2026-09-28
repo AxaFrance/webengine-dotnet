@@ -28,6 +28,10 @@ jobs:
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
+      - name: Apply release version to MCP metadata
+        shell: pwsh
+        run: ./scripts/set-mcp-release-version.ps1 -Version '${{ steps.version.outputs.version }}'
+
       - name: Set up .NET 10 SDK
         uses: actions/setup-dotnet@v4
         with:

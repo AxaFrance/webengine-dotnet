@@ -4,8 +4,10 @@ on:
   pull_request:
     paths:
       - '.github/plugin/**'
+      - '.github/workflows/publish-mcp.yml'
       - '.github/workflows/validate-mcp.yml'
       - 'plugins/**'
+      - 'scripts/set-mcp-release-version.ps1'
       - 'scripts/validate-mcp-metadata.ps1'
       - 'scripts/prepare-mcp-release.ps1'
       - 'server.json'
@@ -16,8 +18,10 @@ on:
       - develop
     paths:
       - '.github/plugin/**'
+      - '.github/workflows/publish-mcp.yml'
       - '.github/workflows/validate-mcp.yml'
       - 'plugins/**'
+      - 'scripts/set-mcp-release-version.ps1'
       - 'scripts/validate-mcp-metadata.ps1'
       - 'scripts/prepare-mcp-release.ps1'
       - 'server.json'
