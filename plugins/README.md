@@ -58,14 +58,17 @@ For VS Code, use `Chat: Install Plugin From Source` with `AxaFrance/webengine-do
 Use this path when the organization does not permit MCP servers:
 
 ```powershell
-dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
 copilot plugin install webengine-cli@webengine-plugins
 webengine daemon start --json
 ```
 
-The CLI tool currently requires the .NET 10 SDK. The daemon lifecycle is the
-first implementation slice. Web session commands are now available for
-Chrome, Edge, and Firefox. For multiline text, use exactly one of
+On first use, the plugin skill checks for `webengine` and installs the stable
+NuGet tool automatically. If no stable package is available, it retries with
+`--prerelease`; SDK, permission, network, and other installation errors are
+reported directly. The CLI currently requires the .NET 10 SDK.
+
+The daemon lifecycle is the first implementation slice. Web session commands
+are now available for Chrome, Edge, and Firefox. For multiline text, use exactly one of
 `--text`, `--text-file`, or `--stdin`; use `web key --key Enter` when an
 intentional key press is required. Mobile/Appium commands will follow after
 the shared automation service is extracted from the MCP project.

@@ -4,10 +4,14 @@ This plugin provides agent skills for the `webengine` .NET tool and its local
 daemon. It deliberately contains no MCP configuration, for environments where
 MCP servers are not permitted.
 
-Install the CLI first:
+The skill checks for the `webengine` command on first use. If it is missing,
+the agent installs the stable NuGet package. When no stable package is
+available, it retries with `--prerelease`. Installation and SDK, permission,
+or network errors are reported instead of being hidden by an unconditional
+fallback.
 
 ```powershell
-dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
+webengine --version
 ```
 
 The daemon owns browser sessions across CLI invocations. The current web
