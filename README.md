@@ -57,6 +57,66 @@ The standard NuGet distribution runs without a local repository clone via `dnx A
 
 **For detailed information on running the MCP server locally, available tools, and how to use it with coding agents, see [WebEngineMCP.md](src/WebEngineMCP.md).**
 
+## CLI-only distribution
+
+Some organizations do not allow MCP servers. WebEngine also provides a
+standalone `webengine` .NET tool: the short-lived CLI is a thin client and a
+local daemon owns persistent Selenium browser sessions. This path does not
+use MCP or require a repository checkout.
+
+The tool requires the **.NET 10 SDK 10.0.100 or later**. Install it from
+[Microsoft](https://dotnet.microsoft.com/download/dotnet/10.0), then install
+the prerelease package while it is being validated:
+
+```powershell
+dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
+webengine daemon start --json
+```
+
+The current web command surface includes persistent sessions, navigation,
+DOM inspection, CSS/ref-based click and type actions, native `<select>`
+selection, and an action log:
+
+```powershell
+webengine web session open --headless --json
+webengine web navigate --session <id> --url https://example.test --json
+webengine web inspect --session <id> --json
+webengine web click --session <id> --ref ref=3 --json
+webengine web type --session <id> --selector '#notes' --text-file .\notes.txt --json
+Get-Content .\notes.txt -Raw | webengine web type --session <id> --selector '#notes' --stdin --json
+webengine web key --session <id> --selector '#query' --key Enter --json
+webengine web actions --session <id> --json
+webengine web session close --session <id> --json
+webengine daemon stop --json
+```
+
+`web type` accepts exactly one of `--text`, `--text-file`, or `--stdin`.
+UTF-8 file and stdin input preserves embedded CR/LF characters as one value.
+File and stdin input avoid command-line exposure but do not bypass the action
+log; only recognized password fields are redacted. Use the explicit
+`web key --key <name>` command for Enter, Tab, Escape,
+Backspace, Delete, Space, Home, End, PageUp, PageDown, or arrow keys.
+
+Use the `webengine-cli` plugin when MCP is prohibited:
+
+```text
+copilot plugin install webengine-cli@webengine-plugins
+```
+
+Browser commands currently target Chrome, Edge, and Firefox. Mobile/Appium
+commands and package publication are planned follow-up work. Do not submit
+real quotes, personal data, credentials, payment details, or other
+irreversible transactions during exploratory agent runs.
+
+## Build the documentation
+
+The documentation build uses the pinned DocFX .NET tool and writes the site
+to `docs/`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build-docs.ps1
+```
+
 ## WebEngine 2.0 Roadmap
 We are working on the next version of WebEngine Framework, in the next versions we will bring.
 - [ ] Enhanced Page-Object Model.

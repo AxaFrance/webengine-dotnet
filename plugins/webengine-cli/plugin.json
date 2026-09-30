@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "webengine-cli",
+  "version": "0.1.0",
+  "description": "Use the WebEngine CLI and local daemon for persistent browser automation without MCP.",
+  "author": {
+    "name": "AXA France"
+  },
+  "homepage": "https://github.com/AxaFrance/webengine-dotnet",
+  "repository": "https://github.com/AxaFrance/webengine-dotnet",
+  "license": "MIT",
+  "keywords": ["webengine", "cli", "daemon", "browser", "selenium", "automation"]
+}

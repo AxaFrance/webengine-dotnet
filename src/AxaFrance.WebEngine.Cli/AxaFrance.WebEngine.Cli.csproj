@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>webengine</ToolCommandName>
+    <PackageId>AxaFrance.WebEngine.Cli</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>AxaFrance, Huaxing YUAN</Authors>
+    <Company>AxaFrance</Company>
+    <Copyright>AXA France</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/AxaFrance/webengine-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AxaFrance/webengine-dotnet</RepositoryUrl>
+    <Description>WebEngine CLI and local daemon for persistent Selenium browser automation sessions.</Description>
+    <PackageTags>webengine;cli;daemon;selenium;browser;automation</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Selenium.Support" Version="4.46.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.46.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
