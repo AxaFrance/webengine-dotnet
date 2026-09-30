@@ -149,6 +149,13 @@ steps:
     }
   displayName: 'Validate MCP metadata'
 
+- powershell: |
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(Build.SourcesDirectory)\scripts\build-docs.ps1"
+    if ($LASTEXITCODE -ne 0) {
+      throw "Documentation build failed with exit code $LASTEXITCODE."
+    }
+  displayName: 'Build documentation'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
@@ -205,6 +212,33 @@ steps:
     }
   displayName: 'Verify MCP package'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Pack WebEngine CLI tool'
+  inputs:
+    command: pack
+    packagesToPack: 'src/AxaFrance.WebEngine.Cli/AxaFrance.WebEngine.Cli.csproj'
+    nobuild: true
+    packDirectory: '$(Build.ArtifactStagingDirectory)\cli'
+    arguments: '--configuration $(BuildConfiguration) --no-restore /p:Version=$(PackageVersion) /p:PackageVersion=$(PackageVersion) /p:AssemblyVersion=$(AssemblyVersion) /p:FileVersion=$(FileVersion) /p:InformationalVersion=$(InformationalVersion)'
+
+- powershell: |
+    $packagePath = "$(Build.ArtifactStagingDirectory)\cli\AxaFrance.WebEngine.Cli.$(PackageVersion).nupkg"
+    if (-not (Test-Path -LiteralPath $packagePath -PathType Leaf)) {
+      throw "Expected CLI package was not created: $packagePath"
+    }
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [System.IO.Compression.ZipFile]::OpenRead($packagePath)
+    try {
+      if ($null -eq $archive.GetEntry('README.md')) {
+        throw 'The CLI package does not contain README.md.'
+      }
+    }
+    finally {
+      $archive.Dispose()
+    }
+  displayName: 'Verify WebEngine CLI package'
+
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:
@@ -232,6 +266,15 @@ steps:
     flattenFolders: true
   condition: succeededOrFailed()
 
+- task: CopyFiles@2
+  displayName: 'Copy CLI package to artifact staging'
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)\cli'
+    Contents: '*.nupkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\nuget'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifact: nuget'
   inputs:
@@ -239,5 +282,20 @@ steps:
     ArtifactName: nuget
   condition: succeededOrFailed()
 
-# SonarCloud, Checkmarx, and documentation publication were disabled in the
-# Classic definition and are intentionally not active in this conversion.
+- task: CopyFiles@2
+  displayName: 'Copy documentation to artifact staging'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\docs'
+    Contents: '**\*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\doc'
+    flattenFolders: false
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifact: doc'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\doc'
+    ArtifactName: doc
+  condition: succeededOrFailed()
+
+# SonarCloud and Checkmarx remain disabled as in the Classic definition.

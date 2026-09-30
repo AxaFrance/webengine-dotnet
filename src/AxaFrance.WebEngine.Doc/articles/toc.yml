@@ -35,6 +35,8 @@
   href: github-copilot.md
 - name: MCP Plugins for Coding Agents
   href: mcp-plugins.md
+- name: WebEngine CLI and local daemon
+  href: webengine-cli.md
 - name: Known issues and possible workarounds
   href: known-issues.md
 - name: Development status

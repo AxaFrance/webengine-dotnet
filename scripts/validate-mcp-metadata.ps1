@@ -52,8 +52,11 @@ if ($null -ne $marketplace) {
     }
 
     $marketplacePlugins = @($marketplace.plugins)
-    if ($marketplacePlugins.Count -ne 2) {
-        Add-ValidationError 'Copilot marketplace must list exactly the web and mobile plugins.'
+    $marketplacePluginNames = @($marketplacePlugins | ForEach-Object { [string]$_.name })
+    foreach ($requiredPluginName in @('webengine-web', 'webengine-mobile', 'webengine-cli')) {
+        if ($marketplacePluginNames -notcontains $requiredPluginName) {
+            Add-ValidationError "Copilot marketplace must list the $requiredPluginName plugin."
+        }
     }
 
     foreach ($marketplacePlugin in $marketplacePlugins) {
@@ -81,6 +84,15 @@ if ($null -ne $marketplace) {
             if ([string]::IsNullOrWhiteSpace([string]$pluginManifest.version)) {
                 Add-ValidationError "$pluginName plugin.json must declare a version."
             }
+        }
+
+        if ($pluginName -eq 'webengine-cli') {
+            $mcpPath = Join-Path $pluginRoot 'mcp.json'
+            if (Test-Path -LiteralPath $mcpPath -PathType Leaf) {
+                Add-ValidationError 'webengine-cli must not contain an MCP manifest.'
+            }
+
+            continue
         }
 
         $mcpPath = Join-Path $pluginRoot 'mcp.json'

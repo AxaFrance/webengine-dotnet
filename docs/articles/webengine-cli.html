@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>WebEngine CLI and local daemon | AXA - WebEngine Test Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="WebEngine CLI and local daemon | AXA - WebEngine Test Framework ">
+    <meta name="generator" content="docfx ">
+  
+    <link rel="shortcut icon" href="../images/logo_small.svg">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="webengine-cli-and-local-daemon">WebEngine CLI and local daemon</h1>
+
+<p>The WebEngine CLI provides an MCP-free integration path for organizations
+where MCP servers are not permitted. An agent invokes the <code>webengine</code> .NET
+tool through a skill. Each CLI invocation is short-lived; a local daemon owns
+the browser drivers and keeps sessions alive between commands.</p>
+<h2 id="architecture">Architecture</h2>
+<pre><code class="lang-text">Agent skill
+  -&gt; webengine CLI process
+  -&gt; local named-pipe protocol
+  -&gt; webengine daemon process
+  -&gt; Selenium WebDriver
+  -&gt; browser
+</code></pre>
+<p>The CLI package is <code>AxaFrance.WebEngine.Cli</code> and exposes the <code>webengine</code>
+command. The same executable runs as the client and as <code>webengine daemon run</code>,
+which keeps the client and daemon protocol versions aligned. The daemon is
+local-only and uses a per-user named pipe by default. Use <code>--pipe</code> to isolate
+development or test instances.</p>
+<p>The CLI does not contain an MCP manifest. The existing MCP server remains a
+separate distribution path.</p>
+<h2 id="installation">Installation</h2>
+<p>The standard tool package targets <code>net10.0</code> and requires the <strong>.NET 10 SDK
+10.0.100 or later</strong>. Modern Windows installations do not include the required
+SDK by default.</p>
+<pre><code class="lang-powershell">dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
+webengine daemon start --json
+webengine daemon status --json
+</code></pre>
+<p>Browser sessions require Chrome, Edge, or Firefox. Selenium Manager resolves
+the matching WebDriver when the browser is opened. The first browser launch
+may therefore require network access to obtain a driver.</p>
+<h2 id="daemon-lifecycle">Daemon lifecycle</h2>
+<pre><code class="lang-powershell">webengine daemon start --json
+webengine daemon status --json
+webengine daemon stop --json
+</code></pre>
+<p><code>stdout</code> contains one JSON response when <code>--json</code> is used. Diagnostics are
+written to <code>stderr</code>. A daemon started by <code>daemon start</code> is detached from the
+invoking CLI and remains available for later commands.</p>
+<h2 id="web-sessions">Web sessions</h2>
+<p>Open one explicit session and keep its returned ID for subsequent commands:</p>
+<pre><code class="lang-powershell">webengine web session open --headless --json
+webengine web session list --json
+</code></pre>
+<p>Navigate and inspect:</p>
+<pre><code class="lang-powershell">webengine web navigate --session &lt;id&gt; --url https://example.test --json
+webengine web inspect --session &lt;id&gt; --json
+webengine web html --session &lt;id&gt; --json
+</code></pre>
+<p><code>web inspect</code> returns visible form controls, links, buttons, ARIA roles, and
+references such as <code>ref=3</code>. References are valid only for the inspected DOM
+state and are invalidated after navigation or an action.</p>
+<p>Act on the latest inspection:</p>
+<pre><code class="lang-powershell">webengine web click --session &lt;id&gt; --ref ref=3 --json
+webengine web type --session &lt;id&gt; --selector '#query' --text 'example' --json
+webengine web type --session &lt;id&gt; --selector '#notes' --text-file .\notes.txt --json
+Get-Content .\notes.txt -Raw | webengine web type --session &lt;id&gt; --selector '#notes' --stdin --json
+webengine web key --session &lt;id&gt; --selector '#query' --key Enter --json
+webengine web select --session &lt;id&gt; --selector '#country' --text 'France' --json
+webengine web actions --session &lt;id&gt; --json
+</code></pre>
+<p>Each successful action records the actual element tag and available stable
+attributes in the session action log. This makes it possible to review which
+controls were touched without relying on guessed locators.</p>
+<p><code>web type</code> requires exactly one of <code>--text</code>, <code>--text-file</code>, or <code>--stdin</code>.
+<code>--text-file</code> reads UTF-8 text and both file and stdin input are sent as one
+value, preserving embedded CR/LF characters without putting the content in
+the daemon command line. These modes do not bypass the action log: only
+recognized password fields are redacted. Use <code>web key --key Enter</code> or another
+supported named key when a form requires an intentional key press; a newline
+in a single-line field is not an equivalent command.</p>
+<p>Close sessions explicitly:</p>
+<pre><code class="lang-powershell">webengine web session close --session &lt;id&gt; --json
+</code></pre>
+<h2 id="protocol-and-operational-boundaries">Protocol and operational boundaries</h2>
+<p>The CLI and daemon exchange newline-delimited JSON over the local named pipe.
+The protocol currently includes:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>daemon.ping</code></td>
+<td>Return protocol and process status</td>
+</tr>
+<tr>
+<td><code>daemon.shutdown</code></td>
+<td>Stop the daemon</td>
+</tr>
+<tr>
+<td><code>web.session.open</code></td>
+<td>Create a Chrome, Edge, or Firefox session</td>
+</tr>
+<tr>
+<td><code>web.session.list</code></td>
+<td>List active sessions</td>
+</tr>
+<tr>
+<td><code>web.session.close</code></td>
+<td>Quit a browser session</td>
+</tr>
+<tr>
+<td><code>web.navigate</code></td>
+<td>Navigate an existing session</td>
+</tr>
+<tr>
+<td><code>web.inspect</code></td>
+<td>Return actionable visible elements</td>
+</tr>
+<tr>
+<td><code>web.html</code></td>
+<td>Return bounded page source</td>
+</tr>
+<tr>
+<td><code>web.click</code></td>
+<td>Click an inspected ref or CSS selector</td>
+</tr>
+<tr>
+<td><code>web.type</code></td>
+<td>Type into an inspected ref or CSS selector</td>
+</tr>
+<tr>
+<td><code>web.key</code></td>
+<td>Send a supported named key to an inspected ref or CSS selector</td>
+</tr>
+<tr>
+<td><code>web.select</code></td>
+<td>Select a native <code>&lt;select&gt;</code> option</td>
+</tr>
+<tr>
+<td><code>web.actions</code></td>
+<td>Return the session's action log</td>
+</tr>
+</tbody>
+</table>
+<p>Errors use stable machine-readable codes such as <code>daemon_not_running</code>,
+<code>session_not_found</code>, <code>inspection_required</code>, <code>element_not_found</code>, and
+<code>web_driver_error</code>.</p>
+<p>The daemon is intentionally local-only. Keep browser sessions and named-pipe
+access scoped to the current user. Do not put passwords, tokens, encryption
+keys, payment data, or real personal data in command-line arguments or action
+logs. Exploratory workflows must stop before irreversible submissions.</p>
+<h2 id="current-limits-and-roadmap">Current limits and roadmap</h2>
+<p>The current CLI slice implements desktop web sessions and the daemon
+protocol. Mobile/Appium commands are not exposed yet, and the MCP and CLI
+adapters do not yet share a transport-neutral automation service. The next
+engineering phase should extract the existing Selenium/Appium managers and
+action models into that shared service, then add mobile commands and
+integration tests using a local test page.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/AxaFrance/webengine-dotnet/blob/develop/src/AxaFrance.WebEngine.Doc/articles/webengine-cli.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Copyright &reg; 2016-2025 AXA France, All rights reserved.
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

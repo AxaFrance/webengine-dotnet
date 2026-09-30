@@ -4,7 +4,7 @@
     "name": "AXA France"
   },
   "metadata": {
-    "description": "Web and mobile UI automation plugins powered by WebEngine MCP.",
+    "description": "Web and mobile UI automation plugins powered by WebEngine, with an MCP-free local CLI option.",
     "version": "1.0.0"
   },
   "plugins": [
@@ -19,6 +19,12 @@
       "description": "Observe and interact with Android and iOS apps through Appium and WebEngine MCP.",
       "version": "1.0.0",
       "source": "./plugins/webengine-mobile"
+    },
+    {
+      "name": "webengine-cli",
+      "description": "Use the WebEngine CLI and local daemon for persistent browser automation without MCP.",
+      "version": "0.1.0",
+      "source": "./plugins/webengine-cli"
     }
   ]
 }
