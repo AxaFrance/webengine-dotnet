@@ -73,6 +73,11 @@ dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
 webengine daemon start --json
 ```
 
+When the `webengine-cli` Copilot plugin is installed, its skill checks for the
+command and performs this installation automatically. It tries the stable
+NuGet package first and uses `--prerelease` only when no stable package is
+available.
+
 The current web command surface includes persistent sessions, navigation,
 DOM inspection, CSS/ref-based click and type actions, native `<select>`
 selection, and an action log:
