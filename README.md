@@ -82,18 +82,28 @@ The current web command surface includes persistent sessions, navigation,
 DOM inspection, CSS/ref-based click and type actions, native `<select>`
 selection, and an action log:
 
-```powershell
-webengine web session open --headless --json
-webengine web navigate --session <id> --url https://example.test --json
-webengine web inspect --session <id> --json
-webengine web click --session <id> --ref ref=3 --json
-webengine web type --session <id> --selector '#notes' --text-file .\notes.txt --json
-Get-Content .\notes.txt -Raw | webengine web type --session <id> --selector '#notes' --stdin --json
-webengine web key --session <id> --selector '#query' --key Enter --json
-webengine web actions --session <id> --json
-webengine web session close --session <id> --json
-webengine daemon stop --json
+```text
+webengine --json
+daemon start
+web session open
+web navigate --session <id> --url https://example.test
+web wait --session <id> --text "Ready"
+web inspect --session <id>
+web click --session <id> --ref ref=3
+web check --session <id> --id agreeTerms
+web uncheck --session <id> --name marketing
+web select --session <id> --name country --text France
+web actions --session <id>
+web session close --session <id>
+daemon stop
+exit
 ```
+
+The default shell keeps one CLI process and named-pipe connection in memory.
+Use `webengine -c "<command>"` for one-shot execution when a host cannot keep
+the shell process open. The default browser is visible for observation,
+test-authoring, and locator debugging; add `--headless` for CI/CD or cloud
+sessions without a desktop display.
 
 `web type` accepts exactly one of `--text`, `--text-file`, or `--stdin`.
 UTF-8 file and stdin input preserves embedded CR/LF characters as one value.
@@ -101,6 +111,8 @@ File and stdin input avoid command-line exposure but do not bypass the action
 log; only recognized password fields are redacted. Use the explicit
 `web key --key <name>` command for Enter, Tab, Escape,
 Backspace, Delete, Space, Home, End, PageUp, PageDown, or arrow keys.
+In the persistent shell, use `--text-file` for multiline values because stdin
+is the command channel. Reserve `--stdin` for one-shot direct commands.
 
 Use the `webengine-cli` plugin when MCP is prohibited:
 
@@ -108,8 +120,9 @@ Use the `webengine-cli` plugin when MCP is prohibited:
 copilot plugin install webengine-cli@webengine-plugins
 ```
 
-Browser commands currently target Chrome, Edge, and Firefox. Mobile/Appium
-commands and package publication are planned follow-up work. Do not submit
+Browser commands currently target Edge by default and also support Chrome and
+Firefox. Mobile/Appium commands and package publication are planned follow-up
+work. Do not submit
 real quotes, personal data, credentials, payment details, or other
 irreversible transactions during exploratory agent runs.
 

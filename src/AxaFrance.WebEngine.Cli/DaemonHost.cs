@@ -36,7 +36,18 @@ internal sealed class DaemonHost : IDisposable
                     PipeTransmissionMode.Byte,
                     PipeOptions.Asynchronous);
 
-                await server.WaitForConnectionAsync(linkedCancellation.Token);
+                try
+                {
+                    await server.WaitForConnectionAsync(linkedCancellation.Token);
+                }
+                catch (Exception ex) when (
+                    !linkedCancellation.IsCancellationRequested
+                    && ex is IOException or ObjectDisposedException)
+                {
+                    Console.Error.WriteLine($"WebEngine daemon pipe connection failed: {ex.Message}");
+                    continue;
+                }
+
                 await HandleConnectionAsync(server, linkedCancellation.Token, automation);
             }
         }
@@ -60,7 +71,16 @@ internal sealed class DaemonHost : IDisposable
 
         while (!cancellationToken.IsCancellationRequested)
         {
-            var line = await reader.ReadLineAsync(cancellationToken);
+            string? line;
+            try
+            {
+                line = await reader.ReadLineAsync(cancellationToken);
+            }
+            catch (Exception ex) when (ex is IOException or ObjectDisposedException)
+            {
+                return;
+            }
+
             if (line is null)
                 return;
 
@@ -83,7 +103,14 @@ internal sealed class DaemonHost : IDisposable
                     $"The request is not valid JSON: {ex.Message}");
             }
 
-            await writer.WriteLineAsync(JsonSerializer.Serialize(response, DaemonProtocol.JsonOptions));
+            try
+            {
+                await writer.WriteLineAsync(JsonSerializer.Serialize(response, DaemonProtocol.JsonOptions));
+            }
+            catch (Exception ex) when (ex is IOException or ObjectDisposedException)
+            {
+                return;
+            }
 
             if (_stopRequested.IsCancellationRequested)
                 return;
@@ -138,6 +165,15 @@ internal sealed class DaemonHost : IDisposable
                 "web.select" => DaemonProtocol.Success(
                     requestId,
                     automation.Select(ReadArguments<SelectArguments>(request))),
+                "web.check" => DaemonProtocol.Success(
+                    requestId,
+                    automation.SetChecked(ReadArguments<ElementActionArguments>(request), true)),
+                "web.uncheck" => DaemonProtocol.Success(
+                    requestId,
+                    automation.SetChecked(ReadArguments<ElementActionArguments>(request), false)),
+                "web.wait" => DaemonProtocol.Success(
+                    requestId,
+                    automation.Wait(ReadArguments<WaitArguments>(request))),
                 "web.actions" => DaemonProtocol.Success(
                     requestId,
                     automation.GetActions(ReadArguments<SessionIdArguments>(request).SessionId)),
@@ -199,25 +235,50 @@ internal sealed class DaemonHost : IDisposable
     }
 }
 
-internal sealed record SessionOpenArguments(string BrowserType = "Chrome", bool Headless = false);
+internal sealed record SessionOpenArguments(string BrowserType = "Edge", bool Headless = false);
 internal sealed record SessionIdArguments(string SessionId);
 internal sealed record NavigateArguments(string SessionId, string Url);
 internal sealed record InspectArguments(string SessionId, string Mode = "actionable", int Limit = 100);
-internal sealed record ElementActionArguments(string SessionId, string? Reference = null, string? Selector = null);
+internal sealed record ElementLocatorArguments(
+    string? Reference = null,
+    string? Selector = null,
+    string? Id = null,
+    string? Name = null,
+    string? TagName = null,
+    string? InnerText = null,
+    string? LinkText = null,
+    string? ClassName = null,
+    string? AriaLabel = null,
+    string? XPath = null,
+    int Index = 0);
+internal sealed record ElementActionArguments(
+    string SessionId,
+    ElementLocatorArguments? Locator = null,
+    string? Reference = null,
+    string? Selector = null);
 internal sealed record TypeArguments(
     string SessionId,
+    ElementLocatorArguments? Locator = null,
     string? Reference = null,
     string? Selector = null,
     string? Text = null,
     bool ClearFirst = true);
 internal sealed record KeyArguments(
     string SessionId,
+    ElementLocatorArguments? Locator = null,
     string? Key = null,
     string? Reference = null,
     string? Selector = null);
 internal sealed record SelectArguments(
     string SessionId,
+    ElementLocatorArguments? Locator = null,
     string? Reference = null,
     string? Selector = null,
     string? Text = null,
     string? Value = null);
+internal sealed record WaitArguments(
+    string SessionId,
+    string? Url = null,
+    string? Text = null,
+    string? Selector = null,
+    int TimeoutSeconds = 30);

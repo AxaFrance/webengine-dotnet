@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Text;
+using System.Text.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -21,9 +22,36 @@ internal sealed class WebAutomationService : IDisposable
         public DateTimeOffset CreatedAtUtc { get; } = DateTimeOffset.UtcNow;
         public DateTimeOffset LastActivityAtUtc { get; set; } = DateTimeOffset.UtcNow;
         public object SyncRoot { get; } = new();
-        public Dictionary<string, IWebElement> InspectionReferences { get; } = new(StringComparer.Ordinal);
+        public Dictionary<string, InspectionReference> InspectionReferences { get; } = new(StringComparer.Ordinal);
         public List<WebActionRecord> Actions { get; } = [];
     }
+
+    private sealed record InspectionReference(IWebElement Element, WebElementInfo Info);
+
+    private sealed record JavaScriptElementSnapshot(
+        int Index,
+        string TagName,
+        string? Id,
+        string? Name,
+        string? Type,
+        string? AriaLabel,
+        string? Role,
+        string? Placeholder,
+        string? TestId,
+        string? Text,
+        bool Enabled,
+        bool Selected,
+        string? Value,
+        bool? Checked,
+        bool? Expanded,
+        string? AccessibleName,
+        string? Label,
+        string? Href);
+
+    private sealed record PageState(string Url, string Title);
+
+    private const string ActionableSelector =
+        "input, textarea, select, button, a, label, [role='button'], [role='link'], [role='radio'], [role='checkbox'], [role='option'], [role='treeitem'], [role='alert'], [role='status'], [role='dialog'], [aria-expanded], [aria-selected], [contenteditable='true'], [tabindex]:not([tabindex='-1']), [data-testid], [onclick], [style*='cursor: pointer']";
 
     private readonly ConcurrentDictionary<string, SessionEntry> _sessions = new();
 
@@ -85,10 +113,11 @@ internal sealed class WebAutomationService : IDisposable
             entry.Driver.Navigate().GoToUrl(uri);
             WaitForDocumentReady(entry.Driver);
             InvalidateInspection(entry);
+            var page = ReadPageState(entry.Driver);
             return new WebNavigationResult(
                 arguments.SessionId,
-                entry.Driver.Url,
-                entry.Driver.Title);
+                page.Url,
+                page.Title);
         });
     }
 
@@ -105,12 +134,45 @@ internal sealed class WebAutomationService : IDisposable
             var elements = mode == "snapshot"
                 ? CaptureElements(entry, limit)
                 : CaptureElements(entry, limit);
+            var page = ReadPageState(entry.Driver);
 
             return new WebInspection(
                 arguments.SessionId,
-                entry.Driver.Url,
-                entry.Driver.Title,
+                page.Url,
+                page.Title,
                 elements);
+        });
+    }
+
+    public WebWaitResult Wait(WaitArguments arguments)
+    {
+        if (arguments.TimeoutSeconds < 1 || arguments.TimeoutSeconds > 300)
+            throw new ArgumentException("The wait timeout must be between 1 and 300 seconds.");
+
+        var conditions = (string.IsNullOrWhiteSpace(arguments.Url) ? 0 : 1)
+            + (string.IsNullOrWhiteSpace(arguments.Text) ? 0 : 1)
+            + (string.IsNullOrWhiteSpace(arguments.Selector) ? 0 : 1);
+        if (conditions != 1)
+            throw new ArgumentException("Wait requires exactly one URL, text, or CSS selector condition.");
+
+        return WithSession(arguments.SessionId, entry =>
+        {
+            var wait = new WebDriverWait(entry.Driver, TimeSpan.FromSeconds(arguments.TimeoutSeconds));
+            wait.Until(driver => MatchesWaitCondition(
+                driver,
+                arguments.Url,
+                arguments.Text,
+                arguments.Selector));
+
+            InvalidateInspection(entry);
+            var page = ReadPageState(entry.Driver);
+            return new WebWaitResult(
+                arguments.SessionId,
+                page.Url,
+                page.Title,
+                arguments.Url,
+                arguments.Text,
+                arguments.Selector);
         });
     }
 
@@ -129,7 +191,7 @@ internal sealed class WebAutomationService : IDisposable
         });
 
     public WebActionResult Click(ElementActionArguments arguments)
-        => WithElement(arguments.SessionId, arguments.Reference, arguments.Selector, (entry, element, info) =>
+        => WithElement(arguments.SessionId, MergeLocator(arguments.Locator, arguments.Reference, arguments.Selector), (entry, element, info) =>
         {
             element.Click();
             return RecordAction(entry, "click", element, info, null);
@@ -140,7 +202,7 @@ internal sealed class WebAutomationService : IDisposable
         if (arguments.Text is null)
             throw new ArgumentException("The text value is required.");
 
-        return WithElement(arguments.SessionId, arguments.Reference, arguments.Selector, (entry, element, info) =>
+        return WithElement(arguments.SessionId, MergeLocator(arguments.Locator, arguments.Reference, arguments.Selector), (entry, element, info) =>
         {
             if (arguments.ClearFirst)
                 element.Clear();
@@ -153,7 +215,7 @@ internal sealed class WebAutomationService : IDisposable
     public WebActionResult SendKey(KeyArguments arguments)
     {
         var key = ResolveKey(arguments.Key);
-        return WithElement(arguments.SessionId, arguments.Reference, arguments.Selector, (entry, element, info) =>
+        return WithElement(arguments.SessionId, MergeLocator(arguments.Locator, arguments.Reference, arguments.Selector), (entry, element, info) =>
         {
             element.SendKeys(key);
             return RecordAction(entry, "key", element, info, arguments.Key!.Trim());
@@ -165,7 +227,7 @@ internal sealed class WebAutomationService : IDisposable
         if (string.IsNullOrWhiteSpace(arguments.Text) && string.IsNullOrWhiteSpace(arguments.Value))
             throw new ArgumentException("Use either a visible option text or an option value.");
 
-        return WithElement(arguments.SessionId, arguments.Reference, arguments.Selector, (entry, element, info) =>
+        return WithElement(arguments.SessionId, MergeLocator(arguments.Locator, arguments.Reference, arguments.Selector), (entry, element, info) =>
         {
             var select = new SelectElement(element);
             if (!string.IsNullOrWhiteSpace(arguments.Text))
@@ -182,6 +244,27 @@ internal sealed class WebAutomationService : IDisposable
         });
     }
 
+    public WebActionResult SetChecked(ElementActionArguments arguments, bool desired)
+        => WithElement(arguments.SessionId, MergeLocator(arguments.Locator, arguments.Reference, arguments.Selector), (entry, element, info) =>
+        {
+            var type = element.GetAttribute("type");
+            if (!string.Equals(type, "checkbox", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(type, "radio", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("The target element must be a checkbox or radio button.");
+            }
+
+            if (element.Selected != desired)
+            {
+                if (!desired && string.Equals(type, "radio", StringComparison.OrdinalIgnoreCase))
+                    throw new ArgumentException("A selected radio button cannot be unchecked.");
+
+                element.Click();
+            }
+
+            return RecordAction(entry, desired ? "check" : "uncheck", element, info, null);
+        });
+
     public IReadOnlyList<WebActionRecord> GetActions(string sessionId)
         => WithSession(sessionId, entry =>
         {
@@ -196,16 +279,15 @@ internal sealed class WebAutomationService : IDisposable
 
     private WebActionResult WithElement(
         string sessionId,
-        string? reference,
-        string? selector,
+        ElementLocatorArguments locator,
         Func<SessionEntry, IWebElement, WebElementInfo, WebActionResult> action)
         => WithSession(sessionId, entry =>
         {
             try
             {
-                var element = ResolveElement(entry, reference, selector);
-                var info = DescribeElement(element, reference);
-                return action(entry, element, info);
+                var resolved = ResolveElement(entry, locator);
+                var info = resolved.Info ?? DescribeElement(entry.Driver, resolved.Element, locator.Reference);
+                return action(entry, resolved.Element, info);
             }
             finally
             {
@@ -230,50 +312,140 @@ internal sealed class WebAutomationService : IDisposable
         }
     }
 
-    private static IWebElement ResolveElement(
+    private static ResolvedElement ResolveElement(
         SessionEntry entry,
-        string? reference,
-        string? selector)
+        ElementLocatorArguments locator)
     {
-        if (!string.IsNullOrWhiteSpace(reference))
+        if (!string.IsNullOrWhiteSpace(locator.Reference))
         {
-            if (!entry.InspectionReferences.TryGetValue(reference, out var inspectedElement))
+            if (!entry.InspectionReferences.TryGetValue(locator.Reference, out var inspectedElement))
                 throw new WebAutomationException(
                     "inspection_required",
-                    $"Element reference '{reference}' is not available. Inspect the current page before acting.");
+                    $"Element reference '{locator.Reference}' is not available. Inspect the current page before acting.");
 
-            return inspectedElement;
+            return new ResolvedElement(inspectedElement.Element, inspectedElement.Info);
         }
 
-        if (string.IsNullOrWhiteSpace(selector))
-            throw new ArgumentException("Use either a reference from inspection or a CSS selector.");
-
-        var matches = entry.Driver.FindElements(By.CssSelector(selector));
-        if (matches.Count == 0)
+        var matches = FindMatchingElements(entry.Driver, locator);
+        if (matches.Count <= locator.Index)
             throw new WebAutomationException(
                 "element_not_found",
-                $"No element matched CSS selector '{selector}'.");
+                "No element matched the supplied WebEngine locator.");
 
-        return matches[0];
+        return new ResolvedElement(matches[locator.Index], null);
+    }
+
+    private static ElementLocatorArguments MergeLocator(
+        ElementLocatorArguments? locator,
+        string? reference,
+        string? selector)
+        => locator is null
+            ? new ElementLocatorArguments(Reference: reference, Selector: selector)
+            : locator with
+            {
+                Reference = locator.Reference ?? reference,
+                Selector = locator.Selector ?? selector
+            };
+
+    private static List<IWebElement> FindMatchingElements(
+        IWebDriver driver,
+        ElementLocatorArguments locator)
+    {
+        if (locator.Index < 0)
+            throw new ArgumentException("The locator index cannot be negative.");
+
+        List<IWebElement>? matches = null;
+
+        void Intersect(IEnumerable<IWebElement> candidates)
+        {
+            var candidateList = candidates.ToList();
+            matches = matches is null
+                ? candidateList
+                : matches
+                    .Where(current => candidateList.Any(candidate => candidate.Equals(current)))
+                    .ToList();
+        }
+
+        if (!string.IsNullOrWhiteSpace(locator.Selector))
+            Intersect(driver.FindElements(By.CssSelector(locator.Selector)));
+        if (!string.IsNullOrWhiteSpace(locator.Id))
+            Intersect(driver.FindElements(By.Id(locator.Id)));
+        if (!string.IsNullOrWhiteSpace(locator.Name))
+            Intersect(driver.FindElements(By.Name(locator.Name)));
+        if (!string.IsNullOrWhiteSpace(locator.TagName))
+            Intersect(driver.FindElements(By.TagName(locator.TagName)));
+        if (!string.IsNullOrWhiteSpace(locator.LinkText))
+            Intersect(driver.FindElements(By.LinkText(locator.LinkText)));
+        if (!string.IsNullOrWhiteSpace(locator.XPath))
+            Intersect(driver.FindElements(By.XPath(locator.XPath)));
+        if (!string.IsNullOrWhiteSpace(locator.AriaLabel))
+        {
+            Intersect(driver.FindElements(By.CssSelector(
+                $"[{EscapeCssAttribute("aria-label", locator.AriaLabel)}]")));
+        }
+        if (!string.IsNullOrWhiteSpace(locator.InnerText))
+        {
+            Intersect(driver.FindElements(By.XPath(
+                $"//*[normalize-space(.)={EscapeXPathLiteral(locator.InnerText)}]")));
+        }
+        if (!string.IsNullOrWhiteSpace(locator.ClassName))
+        {
+            foreach (var className in locator.ClassName.Split(
+                         ' ',
+                         StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+                Intersect(driver.FindElements(By.ClassName(className)));
+            }
+        }
+
+        if (matches is null)
+            throw new ArgumentException(
+                "Provide at least one native WebEngine locator property.");
+
+        return matches;
+    }
+
+    private static string EscapeXPathLiteral(string value)
+    {
+        if (!value.Contains('\'', StringComparison.Ordinal))
+            return $"'{value}'";
+        if (!value.Contains('"', StringComparison.Ordinal))
+            return $"\"{value}\"";
+
+        var parts = value.Split('\'');
+        var expression = new StringBuilder("concat(");
+        for (var index = 0; index < parts.Length; index++)
+        {
+            if (index > 0)
+                expression.Append(", \"'\", ");
+
+            expression.Append('\'');
+            expression.Append(parts[index]);
+            expression.Append('\'');
+        }
+
+        expression.Append(')');
+        return expression.ToString();
     }
 
     private static IReadOnlyList<WebElementInfo> CaptureElements(SessionEntry entry, int limit)
     {
-        var candidates = entry.Driver.FindElements(By.CssSelector(
-            "input, textarea, select, button, a, label, [role='button'], [role='link'], [role='radio'], [role='checkbox'], [role='option'], [contenteditable='true']"));
-        var result = new List<WebElementInfo>(Math.Min(candidates.Count, limit));
+        var candidates = entry.Driver.FindElements(By.CssSelector(ActionableSelector)).ToArray();
+        var snapshots = ReadElementSnapshots(entry.Driver, candidates, limit, visibleOnly: true);
+        var result = new List<WebElementInfo>(Math.Min(candidates.Length, limit));
 
-        foreach (var element in candidates)
+        foreach (var snapshot in snapshots)
         {
             if (result.Count >= limit)
                 break;
 
-            if (!IsVisible(element))
+            if ((uint)snapshot.Index >= (uint)candidates.Length)
                 continue;
 
             var reference = $"ref={result.Count + 1}";
-            entry.InspectionReferences[reference] = element;
-            result.Add(DescribeElement(element, reference));
+            var info = ToElementInfo(snapshot, reference);
+            entry.InspectionReferences[reference] = new(candidates[snapshot.Index], info);
+            result.Add(info);
         }
 
         return result;
@@ -286,6 +458,7 @@ internal sealed class WebAutomationService : IDisposable
         WebElementInfo info,
         string? value)
     {
+        var page = ReadPageState(entry.Driver);
         var record = new WebActionRecord(
             entry.Actions.Count + 1,
             DateTimeOffset.UtcNow,
@@ -296,40 +469,74 @@ internal sealed class WebAutomationService : IDisposable
 
         return new WebActionResult(
             action,
-            entry.Driver.Url,
-            entry.Driver.Title,
+            page.Url,
+            page.Title,
             info,
             value);
     }
 
-    private static WebElementInfo DescribeElement(IWebElement element, string? reference)
+    private static bool MatchesWaitCondition(
+        IWebDriver driver,
+        string? url,
+        string? text,
+        string? selector)
     {
-        var tagName = element.TagName;
-        var id = Attribute(element, "id");
-        var name = Attribute(element, "name");
-        var type = Attribute(element, "type");
-        var ariaLabel = Attribute(element, "aria-label");
-        var role = Attribute(element, "role");
-        var placeholder = Attribute(element, "placeholder");
-        var testId = Attribute(element, "data-testid");
-        var text = Trim(element.Text);
-        var selector = BuildSelector(tagName, id, name, testId, ariaLabel);
+        if (!string.IsNullOrWhiteSpace(url))
+        {
+            var currentUrl = driver.Url;
+            return string.Equals(currentUrl, url, StringComparison.OrdinalIgnoreCase)
+                || currentUrl.Contains(url, StringComparison.OrdinalIgnoreCase);
+        }
 
-        return new WebElementInfo(
-            reference,
-            tagName,
-            id,
-            name,
-            type,
-            ariaLabel,
-            role,
-            placeholder,
-            testId,
-            text,
-            selector,
-            IsEnabled(element),
-            IsSelected(element));
+        if (!string.IsNullOrWhiteSpace(selector))
+            return driver.FindElements(By.CssSelector(selector)).Any(IsVisible);
+
+        if (driver is not IJavaScriptExecutor scriptExecutor)
+            return driver.FindElement(By.TagName("body")).Text.Contains(
+                text!,
+                StringComparison.OrdinalIgnoreCase);
+
+        return Convert.ToBoolean(
+            scriptExecutor.ExecuteScript(
+                "return (document.body?.innerText || document.body?.textContent || '').toLowerCase().includes(String(arguments[0]).toLowerCase());",
+                text));
     }
+
+    private static WebElementInfo DescribeElement(
+        IWebDriver driver,
+        IWebElement element,
+        string? reference)
+    {
+        var snapshot = ReadElementSnapshots(driver, [element], 1, visibleOnly: false).SingleOrDefault()
+            ?? throw new WebAutomationException(
+                "element_not_found",
+                "The target element could not be described.");
+        return ToElementInfo(snapshot, reference);
+    }
+
+    private static WebElementInfo ToElementInfo(
+        JavaScriptElementSnapshot snapshot,
+        string? reference)
+        => new(
+            reference,
+            snapshot.TagName,
+            snapshot.Id,
+            snapshot.Name,
+            snapshot.Type,
+            snapshot.AriaLabel,
+            snapshot.Role,
+            snapshot.Placeholder,
+            snapshot.TestId,
+            snapshot.Text,
+            BuildSelector(snapshot.TagName, snapshot.Id, snapshot.Name, snapshot.TestId, snapshot.AriaLabel),
+            snapshot.Enabled,
+            snapshot.Selected,
+            snapshot.Value,
+            snapshot.Checked,
+            snapshot.Expanded,
+            snapshot.AccessibleName,
+            snapshot.Label,
+            snapshot.Href);
 
     private static string? BuildSelector(
         string tagName,
@@ -405,9 +612,6 @@ internal sealed class WebAutomationService : IDisposable
         => value.Replace("\\", "\\\\", StringComparison.Ordinal)
             .Replace("\"", "\\\"", StringComparison.Ordinal);
 
-    private static string? Attribute(IWebElement element, string name)
-        => Trim(element.GetAttribute(name));
-
     private static string? Trim(string? value)
         => string.IsNullOrWhiteSpace(value) ? null : value.Trim();
 
@@ -423,34 +627,139 @@ internal sealed class WebAutomationService : IDisposable
         }
     }
 
-    private static bool IsEnabled(IWebElement element)
+    private static IReadOnlyList<JavaScriptElementSnapshot> ReadElementSnapshots(
+        IWebDriver driver,
+        IReadOnlyList<IWebElement> elements,
+        int limit,
+        bool visibleOnly)
     {
-        try
-        {
-            return element.Enabled;
-        }
-        catch (StaleElementReferenceException)
-        {
-            return false;
-        }
-    }
+        if (driver is not IJavaScriptExecutor scriptExecutor)
+            throw new WebAutomationException(
+                "inspection_unavailable",
+                "The active browser does not support JavaScript inspection.");
 
-    private static bool IsSelected(IWebElement element)
-    {
-        try
-        {
-            return element.Selected;
-        }
-        catch (StaleElementReferenceException)
-        {
-            return false;
-        }
+        const string script =
+            """
+            const elements = arguments[0];
+            const limit = arguments[1];
+            const visibleOnly = arguments[2];
+            const trim = value => {
+                if (value === null || value === undefined) {
+                    return null;
+                }
+                const text = String(value).trim();
+                return text.length === 0 ? null : text;
+            };
+            const isVisible = element => {
+                if (!element.isConnected) {
+                    return false;
+                }
+                const style = window.getComputedStyle(element);
+                const rect = element.getBoundingClientRect();
+                return style.display !== 'none'
+                    && style.visibility !== 'hidden'
+                    && style.visibility !== 'collapse'
+                    && rect.width > 0
+                    && rect.height > 0;
+            };
+            const getLabel = element => {
+                if (element.labels && element.labels.length > 0) {
+                    return trim(element.labels[0].innerText || element.labels[0].textContent);
+                }
+
+                const id = element.getAttribute('id');
+                if (id) {
+                    const label = document.querySelector(`label[for="${CSS.escape(id)}"]`);
+                    if (label) {
+                        return trim(label.innerText || label.textContent);
+                    }
+                }
+
+                return null;
+            };
+            const describe = (element, index) => {
+                const visible = isVisible(element);
+                if (visibleOnly && !visible) {
+                    return null;
+                }
+
+                const label = getLabel(element);
+                const ariaLabel = trim(element.getAttribute('aria-label'));
+                const text = trim(element.innerText || element.textContent);
+                const type = trim(element.getAttribute('type'));
+                const expandedAttribute = element.getAttribute('aria-expanded');
+                return {
+                    index,
+                    tagName: element.tagName.toLowerCase(),
+                    id: trim(element.getAttribute('id')),
+                    name: trim(element.getAttribute('name')),
+                    type,
+                    ariaLabel,
+                    role: trim(element.getAttribute('role')),
+                    placeholder: trim(element.getAttribute('placeholder')),
+                    testId: trim(element.getAttribute('data-testid')),
+                    text,
+                    enabled: !element.matches(':disabled'),
+                    selected: element.selected === true,
+                    value: 'value' in element ? trim(element.value) : null,
+                    checked: type === 'checkbox' || type === 'radio'
+                        ? element.checked === true
+                        : null,
+                    expanded: expandedAttribute === null
+                        ? null
+                        : expandedAttribute.toLowerCase() === 'true',
+                    accessibleName: ariaLabel || label || text,
+                    label,
+                    href: trim(element.getAttribute('href')),
+                    visible
+                };
+            };
+            const described = [];
+            for (let index = 0; index < elements.length && described.length < limit; index++) {
+                const element = describe(elements[index], index);
+                if (element !== null) {
+                    described.push(element);
+                }
+            }
+            return JSON.stringify(described);
+            """;
+
+        var json = scriptExecutor.ExecuteScript(
+            script,
+            elements.ToArray(),
+            Math.Clamp(limit, 1, 500),
+            visibleOnly)?.ToString();
+
+        if (string.IsNullOrWhiteSpace(json))
+            return [];
+
+        return JsonSerializer.Deserialize<List<JavaScriptElementSnapshot>>(
+                   json,
+                   DaemonProtocol.JsonOptions)
+               ?? [];
     }
 
     private static bool IsSecretField(IWebElement element)
-        => string.Equals(Attribute(element, "type"), "password", StringComparison.OrdinalIgnoreCase)
-            || string.Equals(Attribute(element, "autocomplete"), "current-password", StringComparison.OrdinalIgnoreCase)
-            || string.Equals(Attribute(element, "autocomplete"), "new-password", StringComparison.OrdinalIgnoreCase);
+        => string.Equals(element.GetAttribute("type"), "password", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(element.GetAttribute("autocomplete"), "current-password", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(element.GetAttribute("autocomplete"), "new-password", StringComparison.OrdinalIgnoreCase);
+
+    private static PageState ReadPageState(IWebDriver driver)
+    {
+        if (driver is not IJavaScriptExecutor scriptExecutor)
+            return new(driver.Url, driver.Title);
+
+        const string script =
+            "return JSON.stringify({ url: window.location.href, title: document.title });";
+        var json = scriptExecutor.ExecuteScript(script)?.ToString();
+        if (string.IsNullOrWhiteSpace(json))
+            return new(driver.Url, driver.Title);
+
+        return JsonSerializer.Deserialize<PageState>(json, DaemonProtocol.JsonOptions)
+            ?? new(driver.Url, driver.Title);
+    }
+
+    private sealed record ResolvedElement(IWebElement Element, WebElementInfo? Info);
 
     private static string ResolveKey(string? key)
     {
@@ -509,7 +818,7 @@ internal sealed class WebAutomationService : IDisposable
 
     private static string NormalizeBrowser(string? browser)
     {
-        var normalized = string.IsNullOrWhiteSpace(browser) ? "Chrome" : browser.Trim();
+        var normalized = string.IsNullOrWhiteSpace(browser) ? "Edge" : browser.Trim();
         return normalized.ToLowerInvariant() switch
         {
             "chrome" => "Chrome",
@@ -613,6 +922,14 @@ internal sealed record WebInspection(
     string Title,
     IReadOnlyList<WebElementInfo> Elements);
 
+internal sealed record WebWaitResult(
+    string SessionId,
+    string Url,
+    string Title,
+    string? UrlCondition,
+    string? TextCondition,
+    string? SelectorCondition);
+
 internal sealed record WebPageSource(
     string SessionId,
     string Url,
@@ -633,7 +950,13 @@ internal sealed record WebElementInfo(
     string? Text,
     string? Selector,
     bool Enabled,
-    bool Selected);
+    bool Selected,
+    string? Value = null,
+    bool? Checked = null,
+    bool? Expanded = null,
+    string? AccessibleName = null,
+    string? Label = null,
+    string? Href = null);
 
 internal sealed record WebActionRecord(
     int Step,
