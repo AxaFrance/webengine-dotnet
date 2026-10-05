@@ -5,9 +5,9 @@ description: Use the local WebEngine CLI daemon for persistent browser automatio
 
 # WebEngine CLI
 
-Use the `webengine` command as a thin client to the local WebEngine daemon.
-Do not start a new browser process for every action and do not invoke internal
-daemon commands directly.
+Use the `webengine` command as a persistent shell over the local WebEngine
+daemon. Do not start a new browser process for every action and do not invoke
+internal daemon commands directly.
 
 ## Bootstrap the CLI
 
@@ -52,40 +52,105 @@ from the configured NuGet feeds. Do not hide SDK, permission, network, or
 other installation errors by retrying them as prerelease installations.
 Do not update an already installed CLI unless the user explicitly requests it.
 
+## Keep one shell process
+
+After the one-time bootstrap, prefer one long-lived JSON-lines shell for the
+whole workflow:
+
+```text
+webengine --json
+```
+
+Keep its standard input and output open. Send one command per input line,
+without the `webengine` prefix, and read exactly one JSON response line before
+sending the next command:
+
+```text
+daemon start
+web session open
+web navigate --session <id> --url https://example.test
+web wait --session <id> --text "Ready"
+web inspect --session <id>
+web click --session <id> --ref ref=3
+web session close --session <id>
+daemon stop
+exit
+```
+
+The shell keeps one named-pipe connection to the daemon, which avoids starting
+a new CLI process and reconnecting for every action. Use `webengine -c
+"<command>"` when the host cannot keep a process handle. Direct subcommands
+remain available for compatibility, but they are slower for multi-step
+workflows. A failed command returns a structured error and does not end the
+shell; report it and continue only when the next action is still valid.
+
+## Choose visible or headless mode deliberately
+
+The default browser session is visible. Do not add `--headless` when the user
+wants to observe the browser, inspect a workflow, build or maintain tests, or
+debug locators and actions:
+
+```text
+web session open
+```
+
+Use `--headless` for CI/CD pipelines, cloud or remote agent sessions without a
+desktop display, or when the user explicitly requests a background run:
+
+```text
+web session open --headless
+```
+
+Do not silently switch an observation or test-authoring workflow to headless.
+If a visible browser cannot be launched in the current environment, report
+that limitation and ask before switching to headless mode.
+
 ## Start and verify the daemon
 
 ```powershell
-webengine daemon start --json
-webengine daemon status --json
+daemon start
+daemon status
 ```
 
-The command returns one JSON response on stdout. Diagnostics belong on stderr.
-If the daemon is unavailable, report the structured error instead of silently
-starting an alternate implementation.
+In a JSON-lines shell, each command returns one JSON response on stdout.
+Diagnostics belong on stderr. If the daemon is unavailable, report the
+structured error instead of silently starting an alternate implementation.
 
 ## Web session workflow
 
 Use one explicit web session for a browser workflow:
 
-```powershell
-webengine web session open --headless --json
-webengine web navigate --session <id> --url https://example.test --json
-webengine web inspect --session <id> --json
-webengine web click --session <id> --ref ref=3 --json
-webengine web type --session <id> --selector '#query' --text 'example' --json
-webengine web type --session <id> --selector '#notes' --text-file .\notes.txt --json
-Get-Content .\notes.txt -Raw | webengine web type --session <id> --selector '#notes' --stdin --json
-webengine web key --session <id> --selector '#query' --key Enter --json
-webengine web actions --session <id> --json
-webengine web session close --session <id> --json
+```text
+web session open
+web navigate --session <id> --url https://example.test
+web inspect --session <id>
+web click --session <id> --ref ref=3
+web type --session <id> --selector '#query' --text 'example'
+web check --session <id> --id agreeTerms
+web uncheck --session <id> --name marketing
+web select --session <id> --name country --text France
+web type --session <id> --selector '#notes' --text-file .\notes.txt
+web key --session <id> --selector '#query' --key Enter
+web actions --session <id>
+web session close --session <id>
 ```
 
 1. Inspect the live page before every new action sequence.
 2. Prefer `--ref` values from the latest inspection; use a CSS selector only
    when the inspection returned a stable selector.
-3. Re-inspect after navigation, DOM mutation, or a failed action because refs
+3. Use `web wait` after navigation or asynchronous actions when the page has a
+   route, text, or selector that proves it is ready.
+4. Re-inspect after navigation, DOM mutation, or a failed action because refs
    are intentionally invalidated after every action.
-4. Close the session when the task is complete.
+5. Use the returned `label`, `accessibleName`, `value`, `checked`, and
+   `expanded` metadata before falling back to raw HTML.
+6. Close the session when the task is complete.
+
+Element actions accept the native WebEngine locator description. Prefer
+`--ref`, then semantic locators such as `--id`, `--name`, `--tag`,
+`--element-text`, `--link-text`, `--class`, `--aria-label`, or `--xpath`.
+Use `--selector` only when those locators are insufficient, and use
+`--index` when the description intentionally matches multiple elements.
 
 For `web type`, pass exactly one of `--text`, `--text-file`, or `--stdin`.
 Prefer `--text-file` or `--stdin` for multiline text so it is not exposed in
@@ -95,6 +160,10 @@ recognized password fields are redacted. Newlines are not a substitute for an
 intentional key press: use `web key --key Enter`, `Tab`,
 `Escape`, `Backspace`, `Delete`, `Space`, `Home`, `End`, `PageUp`, `PageDown`,
 or `ArrowUp`/`ArrowDown`/`ArrowLeft`/`ArrowRight` as appropriate.
+
+In the persistent shell, standard input is the command channel, so use
+`--text-file` for multiline values. Use `--stdin` only with a one-shot direct
+command or `webengine -c`, where standard input is dedicated to the text.
 
 The current CLI web surface supports Chrome, Edge, and Firefox. Mobile/Appium
 commands are not available yet.

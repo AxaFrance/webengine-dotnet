@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "webengine-cli",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Use the WebEngine CLI and local daemon for persistent browser automation without MCP.",
   "author": {
     "name": "AXA France"

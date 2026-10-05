@@ -6,6 +6,12 @@ internal static class CliRunner
 {
     public static async Task<int> RunAsync(CliOptions options)
     {
+        using var client = new DaemonClient(options.PipeName);
+        return await RunAsync(options, client);
+    }
+
+    internal static async Task<int> RunAsync(CliOptions options, DaemonClient client)
+    {
         if (options.Command == CliCommand.Error)
         {
             Console.Error.WriteLine(options.ErrorMessage);
@@ -40,13 +46,17 @@ internal static class CliRunner
             return 0;
         }
 
-        var client = new DaemonClient(options.PipeName);
         DaemonResponse response;
 
         try
         {
             var typeText = options.Command == CliCommand.WebType
                 ? await ResolveTypeTextAsync(options)
+                : null;
+            if (options.Command == CliCommand.WebWait)
+                ValidateWait(options);
+            var locator = RequiresElementLocator(options.Command)
+                ? RequireLocator(options)
                 : null;
 
             response = options.Command switch
@@ -65,7 +75,7 @@ internal static class CliRunner
                     "web.session.open",
                     Arguments(new
                     {
-                        browserType = options.Browser ?? "Chrome",
+                        browserType = options.Browser ?? "Edge",
                         headless = options.Headless
                     }),
                     TimeSpan.FromSeconds(60),
@@ -108,8 +118,7 @@ internal static class CliRunner
                     Arguments(new
                     {
                         sessionId = RequireSession(options),
-                        reference = RequireReferenceOrSelector(options).Reference,
-                        selector = RequireReferenceOrSelector(options).Selector
+                        locator
                     }),
                     TimeSpan.FromSeconds(30),
                     CancellationToken.None),
@@ -118,8 +127,7 @@ internal static class CliRunner
                     Arguments(new
                     {
                         sessionId = RequireSession(options),
-                        reference = RequireReferenceOrSelector(options).Reference,
-                        selector = RequireReferenceOrSelector(options).Selector,
+                        locator,
                         text = typeText,
                         clearFirst = true
                     }),
@@ -130,8 +138,7 @@ internal static class CliRunner
                     Arguments(new
                     {
                         sessionId = RequireSession(options),
-                        reference = RequireReferenceOrSelector(options).Reference,
-                        selector = RequireReferenceOrSelector(options).Selector,
+                        locator,
                         key = RequireValue(options.Key, "--key")
                     }),
                     TimeSpan.FromSeconds(30),
@@ -141,12 +148,41 @@ internal static class CliRunner
                     Arguments(new
                     {
                         sessionId = RequireSession(options),
-                        reference = RequireReferenceOrSelector(options).Reference,
-                        selector = RequireReferenceOrSelector(options).Selector,
+                        locator,
                         text = options.Text,
                         value = options.Value
                     }),
                     TimeSpan.FromSeconds(30),
+                    CancellationToken.None),
+                CliCommand.WebCheck => await client.RequestAsync(
+                    "web.check",
+                    Arguments(new
+                    {
+                        sessionId = RequireSession(options),
+                        locator
+                    }),
+                    TimeSpan.FromSeconds(30),
+                    CancellationToken.None),
+                CliCommand.WebUncheck => await client.RequestAsync(
+                    "web.uncheck",
+                    Arguments(new
+                    {
+                        sessionId = RequireSession(options),
+                        locator
+                    }),
+                    TimeSpan.FromSeconds(30),
+                    CancellationToken.None),
+                CliCommand.WebWait => await client.RequestAsync(
+                    "web.wait",
+                    Arguments(new
+                    {
+                        sessionId = RequireSession(options),
+                        url = options.Url,
+                        text = options.Text,
+                        selector = options.Selector,
+                        timeoutSeconds = options.TimeoutSeconds ?? 30
+                    }),
+                    TimeSpan.FromSeconds((options.TimeoutSeconds ?? 30) + 5),
                     CancellationToken.None),
                 CliCommand.WebActions => await client.RequestAsync(
                     "web.actions",
@@ -168,9 +204,227 @@ internal static class CliRunner
         {
             response = DaemonProtocol.Error(string.Empty, "daemon_unavailable", ex.Message);
         }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"WebEngine CLI command failed: {ex}");
+            response = DaemonProtocol.Error(string.Empty, "command_failed", ex.Message);
+        }
 
         WriteResponse(response, options.Json);
         return response.Ok ? 0 : 1;
+    }
+
+    public static async Task<int> RunCommandLineAsync(string commandLine)
+    {
+        IReadOnlyList<string> tokens;
+        try
+        {
+            tokens = CommandLineTokenizer.Tokenize(commandLine);
+        }
+        catch (FormatException ex)
+        {
+            Console.Error.WriteLine(ex.Message);
+            return 2;
+        }
+
+        if (tokens.Count == 0)
+        {
+            Console.Error.WriteLine("The -c option requires a command.");
+            return 2;
+        }
+
+        return await RunAsync(CliOptions.Parse(tokens.ToArray()));
+    }
+
+    public static async Task<int> RunShellAsync(ShellOptions shellOptions)
+    {
+        using var cancellation = new CancellationTokenSource();
+        Console.CancelKeyPress += (_, eventArgs) =>
+        {
+            eventArgs.Cancel = true;
+            cancellation.Cancel();
+        };
+
+        DaemonClient? client = null;
+        string? clientPipeName = null;
+        var shellPipeName = shellOptions.PipeName ?? DaemonEndpoint.DefaultPipeName;
+        var interactive = !shellOptions.Json
+            && !Console.IsInputRedirected
+            && !Console.IsOutputRedirected;
+
+        try
+        {
+            while (!cancellation.IsCancellationRequested)
+            {
+                if (interactive)
+                {
+                    Console.Write("webengine> ");
+                    Console.Out.Flush();
+                }
+
+                string? line;
+                try
+                {
+                    line = await Console.In.ReadLineAsync(cancellation.Token);
+                }
+                catch (OperationCanceledException) when (cancellation.IsCancellationRequested)
+                {
+                    break;
+                }
+                catch (Exception ex) when (ex is IOException or ObjectDisposedException)
+                {
+                    WriteShellError("shell_input_failed", ex.Message, shellOptions.Json);
+                    break;
+                }
+
+                if (line is null)
+                    break;
+
+                IReadOnlyList<string> tokens;
+                try
+                {
+                    tokens = CommandLineTokenizer.Tokenize(line);
+                }
+                catch (FormatException ex)
+                {
+                    WriteShellError("invalid_arguments", ex.Message, shellOptions.Json);
+                    continue;
+                }
+
+                if (tokens.Count == 0)
+                    continue;
+
+                if (tokens[0].Equals("webengine", StringComparison.OrdinalIgnoreCase))
+                    tokens = tokens.Skip(1).ToArray();
+
+                if (tokens.Count == 0)
+                {
+                    WriteShellError("invalid_arguments", "A shell command is required.", shellOptions.Json);
+                    continue;
+                }
+
+                if (tokens[0].Equals("exit", StringComparison.OrdinalIgnoreCase)
+                    || tokens[0].Equals("quit", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (shellOptions.Json)
+                    {
+                        WriteResponse(
+                            DaemonProtocol.Success(string.Empty, new { exiting = true }),
+                            json: true);
+                    }
+
+                    break;
+                }
+
+                if (tokens[0].Equals("help", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (shellOptions.Json)
+                    {
+                        WriteResponse(
+                            DaemonProtocol.Success(string.Empty, new { help = CliOptions.HelpText }),
+                            json: true);
+                    }
+                    else
+                    {
+                        Console.WriteLine(CliOptions.HelpText);
+                    }
+
+                    continue;
+                }
+
+                var options = CliOptions.Parse(tokens.ToArray());
+                if (options.Command == CliCommand.Error)
+                {
+                    WriteShellError(
+                        "invalid_arguments",
+                        options.ErrorMessage ?? "The command is invalid.",
+                        shellOptions.Json);
+                    continue;
+                }
+
+                if (options.Command == CliCommand.Help)
+                {
+                    if (shellOptions.Json)
+                    {
+                        WriteResponse(
+                            DaemonProtocol.Success(string.Empty, new { help = CliOptions.HelpText }),
+                            json: true);
+                    }
+                    else
+                    {
+                        Console.WriteLine(CliOptions.HelpText);
+                    }
+
+                    continue;
+                }
+
+                if (options.Command == CliCommand.Version)
+                {
+                    var version = typeof(Program).Assembly.GetName().Version?.ToString(3) ?? "0.1.0";
+                    if (shellOptions.Json)
+                    {
+                        WriteResponse(
+                            DaemonProtocol.Success(string.Empty, new { version }),
+                            json: true);
+                    }
+                    else
+                    {
+                        Console.WriteLine(version);
+                    }
+
+                    continue;
+                }
+
+                if (options.Command == CliCommand.DaemonRun)
+                {
+                    WriteShellError(
+                        "invalid_command",
+                        "Use daemon start in the shell. daemon run is a standalone command.",
+                        shellOptions.Json);
+                    continue;
+                }
+
+                if (options.Command == CliCommand.WebType && options.TextFromStdin)
+                {
+                    WriteShellError(
+                        "invalid_arguments",
+                        "Use --text-file for multiline input in the persistent shell. --stdin is available for one-shot commands.",
+                        shellOptions.Json);
+                    continue;
+                }
+
+                if (!HasOption(tokens, "--pipe"))
+                    options = options with { PipeName = shellPipeName };
+                if (shellOptions.Json)
+                    options = options with { Json = true };
+
+                if (client is null || !string.Equals(clientPipeName, options.PipeName, StringComparison.Ordinal))
+                {
+                    client?.Dispose();
+                    client = new DaemonClient(options.PipeName, keepConnection: true);
+                    clientPipeName = options.PipeName;
+                }
+
+                try
+                {
+                    await RunAsync(options, client);
+                }
+                catch (Exception ex)
+                {
+                    client.ResetConnection();
+                    Console.Error.WriteLine($"WebEngine shell command failed: {ex}");
+                    WriteShellError("command_failed", ex.Message, shellOptions.Json);
+                }
+                if (options.Command == CliCommand.DaemonStop)
+                    client.ResetConnection();
+            }
+        }
+        finally
+        {
+            client?.Dispose();
+        }
+
+        return 0;
     }
 
     private static JsonElement Arguments<T>(T value)
@@ -183,6 +437,55 @@ internal static class CliRunner
         => string.IsNullOrWhiteSpace(value)
             ? throw new ArgumentException($"The {option} option is required.")
             : value;
+
+    private static void ValidateWait(CliOptions options)
+    {
+        var conditions = (string.IsNullOrWhiteSpace(options.Url) ? 0 : 1)
+            + (string.IsNullOrWhiteSpace(options.Text) ? 0 : 1)
+            + (string.IsNullOrWhiteSpace(options.Selector) ? 0 : 1);
+
+        if (conditions != 1)
+            throw new ArgumentException("Use exactly one of --url, --text, or --selector with web wait.");
+    }
+
+    private static bool RequiresElementLocator(CliCommand command)
+        => command is CliCommand.WebClick
+            or CliCommand.WebType
+            or CliCommand.WebKey
+            or CliCommand.WebSelect
+            or CliCommand.WebCheck
+            or CliCommand.WebUncheck;
+
+    private static ElementLocatorArguments RequireLocator(CliOptions options)
+    {
+        if (string.IsNullOrWhiteSpace(options.Ref)
+            && string.IsNullOrWhiteSpace(options.Selector)
+            && string.IsNullOrWhiteSpace(options.Id)
+            && string.IsNullOrWhiteSpace(options.Name)
+            && string.IsNullOrWhiteSpace(options.TagName)
+            && string.IsNullOrWhiteSpace(options.ElementText)
+            && string.IsNullOrWhiteSpace(options.LinkText)
+            && string.IsNullOrWhiteSpace(options.ClassName)
+            && string.IsNullOrWhiteSpace(options.AriaLabel)
+            && string.IsNullOrWhiteSpace(options.XPath))
+        {
+            throw new ArgumentException(
+                "Provide an element locator: --ref, --selector, --id, --name, --tag, --element-text, --link-text, --class, --aria-label, or --xpath.");
+        }
+
+        return new ElementLocatorArguments(
+            options.Ref,
+            options.Selector,
+            options.Id,
+            options.Name,
+            options.TagName,
+            options.ElementText,
+            options.LinkText,
+            options.ClassName,
+            options.AriaLabel,
+            options.XPath,
+            options.LocatorIndex ?? 0);
+    }
 
     private static async Task<string> ResolveTypeTextAsync(CliOptions options)
     {
@@ -226,12 +529,18 @@ internal static class CliRunner
         }
     }
 
-    private static (string? Reference, string? Selector) RequireReferenceOrSelector(CliOptions options)
-    {
-        if (string.IsNullOrWhiteSpace(options.Ref) && string.IsNullOrWhiteSpace(options.Selector))
-            throw new ArgumentException("Use either --ref or --selector to identify the element.");
+    private static bool HasOption(IReadOnlyList<string> tokens, string option)
+        => tokens.Any(token => token.Equals(option, StringComparison.OrdinalIgnoreCase));
 
-        return (options.Ref, options.Selector);
+    private static void WriteShellError(string code, string message, bool json)
+    {
+        if (json)
+        {
+            WriteResponse(DaemonProtocol.Error(string.Empty, code, message), json: true);
+            return;
+        }
+
+        Console.Error.WriteLine($"{code}: {message}");
     }
 
     private static void WriteResponse(DaemonResponse response, bool json)

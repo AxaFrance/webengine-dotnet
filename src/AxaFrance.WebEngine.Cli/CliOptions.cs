@@ -18,6 +18,9 @@ internal enum CliCommand
     WebType,
     WebKey,
     WebSelect,
+    WebCheck,
+    WebUncheck,
+    WebWait,
     WebActions,
     Error
 }
@@ -40,13 +43,27 @@ internal sealed record CliOptions(
     int? Limit = null,
     string? TextFile = null,
     bool TextFromStdin = false,
-    string? Key = null)
+    string? Key = null,
+    int? TimeoutSeconds = null,
+    string? Id = null,
+    string? Name = null,
+    string? TagName = null,
+    string? ElementText = null,
+    string? LinkText = null,
+    string? ClassName = null,
+    string? AriaLabel = null,
+    string? XPath = null,
+    int? LocatorIndex = null)
 {
     public const string HelpText =
         """
         WebEngine CLI - persistent local browser and mobile automation
 
         Usage:
+          webengine
+          webengine --json
+          webengine -c "<command>"
+          webengine shell [--json] [--pipe <name>]
           webengine daemon start [--json] [--pipe <name>]
           webengine daemon run [--quiet] [--pipe <name>]
           webengine daemon status [--json] [--pipe <name>]
@@ -57,23 +74,43 @@ internal sealed record CliOptions(
           webengine web navigate --session <id> --url <url> [--json]
           webengine web inspect --session <id> [--mode <actionable|snapshot>] [--json]
           webengine web html --session <id> [--json]
-          webengine web click --session <id> (--ref <ref> | --selector <css>) [--json]
-          webengine web type --session <id> (--ref <ref> | --selector <css>) (--text <text> | --text-file <path> | --stdin) [--json]
-          webengine web key --session <id> (--ref <ref> | --selector <css>) --key <name> [--json]
-          webengine web select --session <id> (--ref <ref> | --selector <css>) (--text <text> | --value <value>) [--json]
+          webengine web click --session <id> [locator options] [--json]
+          webengine web type --session <id> [locator options] (--text <text> | --text-file <path> | --stdin) [--json]
+          webengine web key --session <id> [locator options] --key <name> [--json]
+          webengine web select --session <id> [locator options] (--text <text> | --value <value>) [--json]
+          webengine web check --session <id> [locator options] [--json]
+          webengine web uncheck --session <id> [locator options] [--json]
+          webengine web wait --session <id> (--url <url> | --text <text> | --selector <css>) [--timeout <seconds>] [--json]
           webengine web actions --session <id> [--json]
           webengine --version
+
+        Shell:
+          The default command starts a persistent shell. Send one command per
+          line and receive one response per command. Use --json for a
+          prompt-free JSON-lines shell. Use -c to run one command and exit.
 
         Options:
           --json          Emit a machine-readable response on stdout.
           --pipe <name>   Override the default per-user named pipe.
           --quiet         Suppress daemon lifecycle diagnostics.
           --session <id>  Target an existing web session.
-          --browser <name> Browser engine: Chrome, Edge, or Firefox.
+          --browser <name> Browser engine: Edge (default), Chrome, or Firefox.
           --headless      Start the browser without a visible window.
           --url <url>     URL to navigate to.
           --ref <ref>     Reference returned by the latest inspection.
-          --selector <css> CSS selector for an inspected element.
+          --selector <css> CSS selector for an element.
+          --id <id>       Native WebEngine locator: HTML id.
+          --name <name>   Native WebEngine locator: HTML name.
+          --tag <tag>     Native WebEngine locator: HTML tag name.
+          --element-text <text>
+                          Native WebEngine locator: exact visible element text.
+          --link-text <text>
+                          Native WebEngine locator: exact hyperlink text.
+          --class <name>  Native WebEngine locator: CSS class name.
+          --aria-label <text>
+                          Native WebEngine locator: aria-label.
+          --xpath <xpath> Native WebEngine locator: XPath expression.
+          --index <n>     Zero-based match index when a locator matches many.
           --text <text>   Text to type or visible option text to select.
           --text-file <path>
                           Read UTF-8 text from a file instead of the command line.
@@ -84,6 +121,7 @@ internal sealed record CliOptions(
           --value <value> Option value to select.
           --mode <mode>   Inspection mode: actionable or snapshot.
           --limit <n>     Maximum number of inspected elements.
+          --timeout <n>   Wait timeout in seconds (default: 30).
           -h, --help      Show this help.
         """;
 
@@ -106,6 +144,16 @@ internal sealed record CliOptions(
         string? textFile = null;
         var textFromStdin = false;
         string? key = null;
+        int? timeoutSeconds = null;
+        string? id = null;
+        string? name = null;
+        string? tagName = null;
+        string? elementText = null;
+        string? linkText = null;
+        string? className = null;
+        string? ariaLabel = null;
+        string? xpath = null;
+        int? locatorIndex = null;
 
         for (var index = 0; index < args.Length; index++)
         {
@@ -159,6 +207,67 @@ internal sealed record CliOptions(
                 if (selector is null)
                     return Error($"The {argument} option requires a non-empty value.");
             }
+            else if (argument.Equals("--id", StringComparison.OrdinalIgnoreCase))
+            {
+                id = ReadValue(args, ref index, argument);
+                if (id is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--name", StringComparison.OrdinalIgnoreCase))
+            {
+                name = ReadValue(args, ref index, argument);
+                if (name is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--tag", StringComparison.OrdinalIgnoreCase)
+                || argument.Equals("--tag-name", StringComparison.OrdinalIgnoreCase))
+            {
+                tagName = ReadValue(args, ref index, argument);
+                if (tagName is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--element-text", StringComparison.OrdinalIgnoreCase))
+            {
+                elementText = ReadValue(args, ref index, argument);
+                if (elementText is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--link-text", StringComparison.OrdinalIgnoreCase))
+            {
+                linkText = ReadValue(args, ref index, argument);
+                if (linkText is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--class", StringComparison.OrdinalIgnoreCase))
+            {
+                className = ReadValue(args, ref index, argument);
+                if (className is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--aria-label", StringComparison.OrdinalIgnoreCase))
+            {
+                ariaLabel = ReadValue(args, ref index, argument);
+                if (ariaLabel is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--xpath", StringComparison.OrdinalIgnoreCase))
+            {
+                xpath = ReadValue(args, ref index, argument);
+                if (xpath is null)
+                    return Error($"The {argument} option requires a non-empty value.");
+            }
+            else if (argument.Equals("--index", StringComparison.OrdinalIgnoreCase))
+            {
+                var indexText = ReadValue(args, ref index, argument);
+                if (indexText is null
+                    || !int.TryParse(indexText, out var parsedIndex)
+                    || parsedIndex < 0)
+                {
+                    return Error($"The {argument} option requires a non-negative integer.");
+                }
+
+                locatorIndex = parsedIndex;
+            }
             else if (argument.Equals("--text", StringComparison.OrdinalIgnoreCase))
             {
                 text = ReadValue(args, ref index, argument, allowEmpty: true);
@@ -200,6 +309,18 @@ internal sealed record CliOptions(
                     return Error($"The {argument} option requires a positive integer.");
 
                 limit = parsedLimit;
+            }
+            else if (argument.Equals("--timeout", StringComparison.OrdinalIgnoreCase))
+            {
+                var timeoutText = ReadValue(args, ref index, argument);
+                if (timeoutText is null
+                    || !int.TryParse(timeoutText, out var parsedTimeout)
+                    || parsedTimeout < 1)
+                {
+                    return Error($"The {argument} option requires a positive integer.");
+                }
+
+                timeoutSeconds = parsedTimeout;
             }
             else if (argument.Equals("--version", StringComparison.OrdinalIgnoreCase))
             {
@@ -253,7 +374,7 @@ internal sealed record CliOptions(
 
         var webCommand = ParseWebCommand(commandTokens);
         return webCommand == CliCommand.Error
-            ? Error("Use web session open/list/close, web navigate, web inspect, web html, web click, web type, web key, web select, or web actions.")
+            ? Error("Use web session open/list/close, web navigate, web inspect, web html, web click, web type, web key, web select, web check, web uncheck, web wait, or web actions.")
             : new(
                 webCommand,
                 json,
@@ -272,7 +393,17 @@ internal sealed record CliOptions(
                 limit,
                 textFile,
                 textFromStdin,
-                key);
+                key,
+                timeoutSeconds,
+                id,
+                name,
+                tagName,
+                elementText,
+                linkText,
+                className,
+                ariaLabel,
+                xpath,
+                locatorIndex);
     }
 
     private static CliCommand ParseWebCommand(IReadOnlyList<string> tokens)
@@ -301,6 +432,9 @@ internal sealed record CliOptions(
             "type" => CliCommand.WebType,
             "key" => CliCommand.WebKey,
             "select" => CliCommand.WebSelect,
+            "check" => CliCommand.WebCheck,
+            "uncheck" => CliCommand.WebUncheck,
+            "wait" => CliCommand.WebWait,
             "actions" => CliCommand.WebActions,
             _ => CliCommand.Error
         };

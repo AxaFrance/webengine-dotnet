@@ -67,8 +67,17 @@ NuGet tool automatically. If no stable package is available, it retries with
 `--prerelease`; SDK, permission, network, and other installation errors are
 reported directly. The CLI currently requires the .NET 10 SDK.
 
-The daemon lifecycle is the first implementation slice. Web session commands
-are now available for Chrome, Edge, and Firefox. For multiline text, use exactly one of
+After bootstrap, the skill starts one persistent JSON-lines shell with
+`webengine --json`. The agent sends one command per line and receives one
+response per line, avoiding a new CLI process for every browser action.
+`webengine -c "<command>"` remains available for hosts that cannot keep a
+process handle.
+
+The default browser is visible for observation, test authoring, and locator
+debugging. Use `--headless` for CI/CD or cloud sessions without a desktop
+display. The daemon lifecycle is the first implementation slice. Web session
+commands are now available for Chrome, Edge, and Firefox. For multiline text,
+use exactly one of
 `--text`, `--text-file`, or `--stdin`; use `web key --key Enter` when an
 intentional key press is required. Mobile/Appium commands will follow after
 the shared automation service is extracted from the MCP project.

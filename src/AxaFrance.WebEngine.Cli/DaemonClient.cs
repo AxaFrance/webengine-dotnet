@@ -5,13 +5,16 @@ using System.Text.Json;
 
 namespace AxaFrance.WebEngine.Cli;
 
-internal sealed class DaemonClient
+internal sealed class DaemonClient : IDisposable
 {
     private readonly string _pipeName;
+    private readonly bool _keepConnection;
+    private DaemonConnection? _connection;
 
-    public DaemonClient(string pipeName)
+    public DaemonClient(string pipeName, bool keepConnection = false)
     {
         _pipeName = pipeName;
+        _keepConnection = keepConnection;
     }
 
     public async Task<DaemonResponse> RequestAsync(
@@ -26,39 +29,31 @@ internal sealed class DaemonClient
         TimeSpan timeout,
         CancellationToken cancellationToken)
     {
-        using var timeoutCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        timeoutCancellation.CancelAfter(timeout);
+        if (_keepConnection)
+        {
+            var connection = _connection
+                ??= await DaemonConnection.ConnectAsync(_pipeName, timeout, cancellationToken);
+            try
+            {
+                return await connection.RequestAsync(command, arguments, timeout, cancellationToken);
+            }
+            catch (Exception ex) when (
+                ex is IOException
+                or InvalidDataException
+                or TimeoutException
+                or ObjectDisposedException)
+            {
+                ResetConnection();
+                throw;
+            }
+        }
 
-        using var client = new NamedPipeClientStream(
-            ".",
+        return await DaemonConnection.RequestOnceAsync(
             _pipeName,
-            PipeDirection.InOut,
-            PipeOptions.Asynchronous);
-
-        try
-        {
-            await client.ConnectAsync(timeoutCancellation.Token);
-
-            using var reader = new StreamReader(client);
-            using var writer = new StreamWriter(client) { AutoFlush = true };
-
-            var request = new DaemonRequest(Guid.NewGuid().ToString("N"), command, arguments);
-            await writer.WriteLineAsync(JsonSerializer.Serialize(request, DaemonProtocol.JsonOptions));
-
-            var line = await reader.ReadLineAsync(timeoutCancellation.Token);
-            if (line is null)
-                throw new IOException("The WebEngine daemon closed the connection without a response.");
-
-            var response = JsonSerializer.Deserialize<DaemonResponse>(line, DaemonProtocol.JsonOptions);
-            return response
-                ?? throw new InvalidDataException("The WebEngine daemon returned an empty response.");
-        }
-        catch (OperationCanceledException ex) when (!cancellationToken.IsCancellationRequested)
-        {
-            throw new TimeoutException(
-                $"The WebEngine daemon did not respond within {timeout.TotalMilliseconds:0} ms.",
-                ex);
-        }
+            command,
+            arguments,
+            timeout,
+            cancellationToken);
     }
 
     public async Task<DaemonResponse> StartAsync(CancellationToken cancellationToken)
@@ -100,6 +95,16 @@ internal sealed class DaemonClient
         {
             return null;
         }
+        catch (ObjectDisposedException)
+        {
+            return null;
+        }
+    }
+
+    public void ResetConnection()
+    {
+        _connection?.Dispose();
+        _connection = null;
     }
 
     private Process StartDaemonProcess()
@@ -159,5 +164,105 @@ internal sealed class DaemonClient
         {
             reader.Dispose();
         }
+    }
+
+    public void Dispose()
+    {
+        ResetConnection();
+    }
+}
+
+internal sealed class DaemonConnection : IDisposable
+{
+    private readonly NamedPipeClientStream _client;
+    private readonly StreamReader _reader;
+    private readonly StreamWriter _writer;
+
+    private DaemonConnection(NamedPipeClientStream client)
+    {
+        _client = client;
+        _reader = new StreamReader(client);
+        _writer = new StreamWriter(client) { AutoFlush = true };
+    }
+
+    public static async Task<DaemonConnection> ConnectAsync(
+        string pipeName,
+        TimeSpan timeout,
+        CancellationToken cancellationToken)
+    {
+        using var timeoutCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCancellation.CancelAfter(timeout);
+
+        var client = new NamedPipeClientStream(
+            ".",
+            pipeName,
+            PipeDirection.InOut,
+            PipeOptions.Asynchronous);
+
+        try
+        {
+            await client.ConnectAsync(timeoutCancellation.Token);
+            return new DaemonConnection(client);
+        }
+        catch (OperationCanceledException ex) when (!cancellationToken.IsCancellationRequested)
+        {
+            client.Dispose();
+            throw new TimeoutException(
+                $"The WebEngine daemon did not respond within {timeout.TotalMilliseconds:0} ms.",
+                ex);
+        }
+        catch
+        {
+            client.Dispose();
+            throw;
+        }
+    }
+
+    public static async Task<DaemonResponse> RequestOnceAsync(
+        string pipeName,
+        string command,
+        JsonElement? arguments,
+        TimeSpan timeout,
+        CancellationToken cancellationToken)
+    {
+        using var connection = await ConnectAsync(pipeName, timeout, cancellationToken);
+        return await connection.RequestAsync(command, arguments, timeout, cancellationToken);
+    }
+
+    public async Task<DaemonResponse> RequestAsync(
+        string command,
+        JsonElement? arguments,
+        TimeSpan timeout,
+        CancellationToken cancellationToken)
+    {
+        using var timeoutCancellation = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCancellation.CancelAfter(timeout);
+
+        var request = new DaemonRequest(Guid.NewGuid().ToString("N"), command, arguments);
+        await _writer.WriteLineAsync(JsonSerializer.Serialize(request, DaemonProtocol.JsonOptions));
+
+        try
+        {
+            var line = await _reader.ReadLineAsync(timeoutCancellation.Token);
+            if (line is null)
+                throw new IOException("The WebEngine daemon closed the connection without a response.");
+
+            var response = JsonSerializer.Deserialize<DaemonResponse>(line, DaemonProtocol.JsonOptions);
+            return response
+                ?? throw new InvalidDataException("The WebEngine daemon returned an empty response.");
+        }
+        catch (OperationCanceledException ex) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw new TimeoutException(
+                $"The WebEngine daemon did not respond within {timeout.TotalMilliseconds:0} ms.",
+                ex);
+        }
+    }
+
+    public void Dispose()
+    {
+        _writer.Dispose();
+        _reader.Dispose();
+        _client.Dispose();
     }
 }
