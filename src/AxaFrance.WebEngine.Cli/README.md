@@ -8,29 +8,50 @@ same session.
 ## Install
 
 ```powershell
-dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
+dotnet tool install --global AxaFrance.WebEngine.Cli
 ```
 
-The tool currently requires the .NET 10 SDK. Browser automation also requires
+Add `--prerelease` only when the stable package is absent from the configured
+NuGet feeds. To move an older installation to a newer version, run
+`dotnet tool update --global AxaFrance.WebEngine.Cli`.
+
+The tool requires the .NET 10 SDK. Browser automation also requires
 a supported browser. Selenium Manager resolves the matching WebDriver for
 Edge, Chrome, or Firefox when a session is opened. Edge is the default; use
 `--browser` to select another engine.
 
 ## Daemon lifecycle
 
+The daemon owns the browser sessions. It starts automatically when a web
+command needs it, serves every later command, and stops itself after an idle
+period (15 minutes by default) with no open session. Set
+`WEBENGINE_DAEMON_IDLE_MINUTES` to tune the timeout, or `0` to disable it:
+
 ```text
-webengine --json
-daemon start
-daemon status
+webengine -c "daemon status"
+webengine -c "daemon stop"
 ```
 
-The default `webengine` command starts an interactive shell. Use
-`webengine --json` for a prompt-free JSON-lines shell: send one command per
-line and read one response line before sending the next. The shell keeps one
-named-pipe connection open for the workflow. Use `webengine -c "<command>"`
-when a host cannot keep a process handle; direct subcommands remain available
-for compatibility. A command failure is returned as an error response and
-does not terminate the shell.
+Each command is a short-lived process. Use one command per shell invocation
+with `-c` (the equivalent direct subcommands also work):
+
+```text
+webengine -c "web session open"
+webengine -c "web navigate --session <id> --url https://example.test"
+webengine -c "web inspect --session <id>"
+webengine -c "web click --session <id> --ref ref=3"
+webengine -c "web session close --session <id>"
+```
+
+A command failure is returned as a structured error and a nonzero exit code.
+Because no command holds a process open, a timed-out command never kills the
+browser: the daemon keeps the session and the next command continues.
+
+The default `webengine` command starts a persistent shell, and
+`webengine --json` a prompt-free JSON-lines shell: send one command per line
+and read one response line before sending the next. These shells are useful
+for interactive debugging, but agent harnesses that cannot keep a process
+handle between tool calls should use `-c` instead.
 
 ## Web commands
 
@@ -73,8 +94,8 @@ value, so embedded CR/LF characters are preserved without being placed in the
 daemon command line. These modes do not bypass the action log: only recognized
 password fields are redacted. Use `web key` for intentional Enter, Tab, Escape,
 Backspace, Delete, Space, Home, End, PageUp, PageDown, or arrow-key actions.
-In the persistent shell, use `--text-file` for multiline values because stdin
-is the command channel. Reserve `--stdin` for one-shot direct commands.
+Prefer `--text-file` or `--stdin` for multiline values; in the `-c` form,
+`--stdin` consumes the command's standard input.
 
 Inspection references are invalidated after navigation and after every
 action. Inspect again before using another `--ref`. The action log records

@@ -89,6 +89,13 @@ internal sealed record CliOptions(
           line and receive one response per command. Use --json for a
           prompt-free JSON-lines shell. Use -c to run one command and exit.
 
+        Daemon:
+          The daemon owns the browser sessions. A web command starts it
+          automatically on first use, and every later command reuses it. It
+          stops itself after an idle period with no open session; set
+          WEBENGINE_DAEMON_IDLE_MINUTES to tune the timeout (0 disables it).
+          daemon start, daemon status, and daemon stop control it explicitly.
+
         Options:
           --json          Emit a machine-readable response on stdout.
           --pipe <name>   Override the default per-user named pipe.

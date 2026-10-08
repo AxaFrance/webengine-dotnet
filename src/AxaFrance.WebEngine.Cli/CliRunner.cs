@@ -59,6 +59,9 @@ internal static class CliRunner
                 ? RequireLocator(options)
                 : null;
 
+            if (RequiresDaemon(options.Command))
+                await EnsureDaemonAsync(client, CancellationToken.None);
+
             response = options.Command switch
             {
                 CliCommand.DaemonStart => await client.StartAsync(CancellationToken.None),
@@ -455,6 +458,32 @@ internal static class CliRunner
             or CliCommand.WebSelect
             or CliCommand.WebCheck
             or CliCommand.WebUncheck;
+
+    private static bool RequiresDaemon(CliCommand command)
+        => command is CliCommand.WebSessionOpen
+            or CliCommand.WebSessionList
+            or CliCommand.WebSessionClose
+            or CliCommand.WebNavigate
+            or CliCommand.WebInspect
+            or CliCommand.WebHtml
+            or CliCommand.WebClick
+            or CliCommand.WebType
+            or CliCommand.WebKey
+            or CliCommand.WebSelect
+            or CliCommand.WebCheck
+            or CliCommand.WebUncheck
+            or CliCommand.WebWait
+            or CliCommand.WebActions;
+
+    private static async Task EnsureDaemonAsync(
+        DaemonClient client,
+        CancellationToken cancellationToken)
+    {
+        if (await client.TryPingAsync(cancellationToken) is not null)
+            return;
+
+        await client.StartAsync(cancellationToken);
+    }
 
     private static ElementLocatorArguments RequireLocator(CliOptions options)
     {
