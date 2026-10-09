@@ -9,7 +9,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>webengine</ToolCommandName>
     <PackageId>AxaFrance.WebEngine.Cli</PackageId>
-    <Version>0.1.0</Version>
+    <Version>3.26.282.1</Version>
     <Authors>AxaFrance, Huaxing YUAN</Authors>
     <Company>AxaFrance</Company>
     <Copyright>AXA France</Copyright>

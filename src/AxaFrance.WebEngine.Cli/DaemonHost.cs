@@ -6,13 +6,23 @@ namespace AxaFrance.WebEngine.Cli;
 
 internal sealed class DaemonHost : IDisposable
 {
+    private const int MaxPipeInstances = 16;
+    private const int DefaultIdleMinutes = 15;
+    private const string IdleMinutesEnvironmentVariable = "WEBENGINE_DAEMON_IDLE_MINUTES";
+    private static readonly TimeSpan IdlePollInterval = TimeSpan.FromSeconds(1);
+    private static readonly TimeSpan ConnectionDrainTimeout = TimeSpan.FromSeconds(2);
+
     private readonly string _pipeName;
+    private readonly TimeSpan _idleShutdownAfter;
     private readonly DateTimeOffset _startedAtUtc = DateTimeOffset.UtcNow;
     private readonly CancellationTokenSource _stopRequested = new();
+    private readonly List<Task> _connectionTasks = new();
+    private long _lastActivityTicks = DateTime.UtcNow.Ticks;
 
     public DaemonHost(string pipeName)
     {
         _pipeName = pipeName;
+        _idleShutdownAfter = ReadIdleShutdownAfter();
     }
 
     public async Task RunAsync(CancellationToken cancellationToken, bool quiet)
@@ -21,34 +31,63 @@ internal sealed class DaemonHost : IDisposable
             cancellationToken,
             _stopRequested.Token);
         using var automation = new WebAutomationService();
+        using var singleInstance = AcquireSingleInstance(_pipeName);
+        if (singleInstance is null)
+        {
+            if (!quiet)
+            {
+                Console.Error.WriteLine(
+                    $"Another WebEngine daemon is already serving pipe '{_pipeName}'.");
+            }
+
+            return;
+        }
 
         if (!quiet)
             Console.Error.WriteLine($"WebEngine daemon listening on pipe '{_pipeName}'.");
+
+        var stoppedForIdle = false;
 
         try
         {
             while (!linkedCancellation.IsCancellationRequested)
             {
-                await using var server = new NamedPipeServerStream(
+                var server = new NamedPipeServerStream(
                     _pipeName,
                     PipeDirection.InOut,
-                    1,
+                    MaxPipeInstances,
                     PipeTransmissionMode.Byte,
                     PipeOptions.Asynchronous);
 
                 try
                 {
-                    await server.WaitForConnectionAsync(linkedCancellation.Token);
+                    using var idlePoll = CancellationTokenSource.CreateLinkedTokenSource(
+                        linkedCancellation.Token);
+                    idlePoll.CancelAfter(IdlePollInterval);
+                    await server.WaitForConnectionAsync(idlePoll.Token);
+                }
+                catch (OperationCanceledException) when (!linkedCancellation.IsCancellationRequested)
+                {
+                    await server.DisposeAsync();
+                    if (ShouldStopForIdle(automation))
+                    {
+                        stoppedForIdle = true;
+                        break;
+                    }
+
+                    continue;
                 }
                 catch (Exception ex) when (
                     !linkedCancellation.IsCancellationRequested
                     && ex is IOException or ObjectDisposedException)
                 {
+                    await server.DisposeAsync();
                     Console.Error.WriteLine($"WebEngine daemon pipe connection failed: {ex.Message}");
                     continue;
                 }
 
-                await HandleConnectionAsync(server, linkedCancellation.Token, automation);
+                TrackActivity();
+                TrackConnection(HandleConnectionAsync(server, linkedCancellation.Token, automation));
             }
         }
         catch (OperationCanceledException) when (linkedCancellation.IsCancellationRequested)
@@ -56,8 +95,14 @@ internal sealed class DaemonHost : IDisposable
         }
         finally
         {
+            await DrainConnectionsAsync();
             if (!quiet)
-                Console.Error.WriteLine("WebEngine daemon stopped.");
+            {
+                Console.Error.WriteLine(
+                    stoppedForIdle
+                        ? "WebEngine daemon stopped after the idle timeout."
+                        : "WebEngine daemon stopped.");
+            }
         }
     }
 
@@ -68,6 +113,7 @@ internal sealed class DaemonHost : IDisposable
     {
         using var reader = new StreamReader(server);
         using var writer = new StreamWriter(server) { AutoFlush = true };
+        using var serverScope = server;
 
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -83,6 +129,8 @@ internal sealed class DaemonHost : IDisposable
 
             if (line is null)
                 return;
+
+            TrackActivity();
 
             DaemonResponse response;
             try
@@ -201,8 +249,12 @@ internal sealed class DaemonHost : IDisposable
         }
         catch (WebDriverException ex)
         {
-            Console.Error.WriteLine($"WebEngine browser operation failed: {ex.Message}");
-            return DaemonProtocol.Error(requestId, "web_driver_error", ex.Message);
+            var detail = ex.InnerException is { } inner
+                ? $" {inner.GetType().Name}: {inner.Message}"
+                : string.Empty;
+
+            Console.Error.WriteLine($"WebEngine browser operation failed: {ex.Message}{detail}");
+            return DaemonProtocol.Error(requestId, "web_driver_error", ex.Message + detail);
         }
         catch (Exception ex)
         {
@@ -221,6 +273,100 @@ internal sealed class DaemonHost : IDisposable
 
         return arguments.Deserialize<T>(DaemonProtocol.JsonOptions)
             ?? throw new ArgumentException("Command arguments could not be parsed.");
+    }
+
+    private bool ShouldStopForIdle(WebAutomationService automation)
+    {
+        if (_idleShutdownAfter == Timeout.InfiniteTimeSpan)
+            return false;
+
+        var idleFor = DateTime.UtcNow
+            - new DateTime(Interlocked.Read(ref _lastActivityTicks), DateTimeKind.Utc);
+        if (idleFor < _idleShutdownAfter)
+            return false;
+
+        return automation.ListSessions().Count == 0;
+    }
+
+    private void TrackActivity()
+        => Interlocked.Exchange(ref _lastActivityTicks, DateTime.UtcNow.Ticks);
+
+    private void TrackConnection(Task connectionTask)
+    {
+        lock (_connectionTasks)
+        {
+            _connectionTasks.RemoveAll(task => task.IsCompleted);
+            _connectionTasks.Add(connectionTask);
+        }
+    }
+
+    private async Task DrainConnectionsAsync()
+    {
+        Task[] pending;
+        lock (_connectionTasks)
+        {
+            pending = _connectionTasks.ToArray();
+            _connectionTasks.Clear();
+        }
+
+        if (pending.Length == 0)
+            return;
+
+        try
+        {
+            await Task.WhenAll(pending).WaitAsync(ConnectionDrainTimeout);
+        }
+        catch
+        {
+            // The daemon is stopping and the remaining connections are abandoned.
+        }
+    }
+
+    private static TimeSpan ReadIdleShutdownAfter()
+    {
+        if (int.TryParse(
+                Environment.GetEnvironmentVariable(IdleMinutesEnvironmentVariable),
+                out var minutes)
+            && minutes >= 0)
+        {
+            return minutes == 0 ? Timeout.InfiniteTimeSpan : TimeSpan.FromMinutes(minutes);
+        }
+
+        return TimeSpan.FromMinutes(DefaultIdleMinutes);
+    }
+
+    private static Mutex? AcquireSingleInstance(string pipeName)
+    {
+        try
+        {
+            return TryAcquireMutex($"Global\\webengine-daemon-{pipeName}");
+        }
+        catch (UnauthorizedAccessException)
+        {
+            return TryAcquireMutex($"Local\\webengine-daemon-{pipeName}");
+        }
+    }
+
+    private static Mutex? TryAcquireMutex(string name)
+    {
+        var mutex = new Mutex(false, name);
+        try
+        {
+            if (mutex.WaitOne(0))
+                return mutex;
+
+            mutex.Dispose();
+            return null;
+        }
+        catch (AbandonedMutexException)
+        {
+            return mutex;
+        }
+        catch
+        {
+            mutex.Dispose();
+            throw;
+        }
     }
 
     private DaemonResponse Shutdown(string requestId)

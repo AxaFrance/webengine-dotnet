@@ -2,8 +2,9 @@
 
 The WebEngine CLI provides an MCP-free integration path for organizations
 where MCP servers are not permitted. An agent invokes the `webengine` .NET
-tool through a skill. The default shell stays in memory while a local daemon
-owns the browser drivers and keeps sessions alive between commands.
+tool through a skill. Each command is a short-lived client process while a
+local daemon owns the browser drivers and keeps sessions alive between
+commands.
 
 ## Architecture
 
@@ -32,8 +33,16 @@ The standard tool package targets `net10.0` and requires the **.NET 10 SDK
 SDK by default.
 
 ```powershell
-dotnet tool install --global AxaFrance.WebEngine.Cli --prerelease
+dotnet tool install --global AxaFrance.WebEngine.Cli
 ```
+
+Add `--prerelease` only when the stable package is absent from the configured
+NuGet feeds. The agent skill requires CLI version 3.26.282 or later (the
+package uses `major.YY.dayOfYear.revision` builds, so later day-of-year builds
+also satisfy this requirement): it reuses a
+satisfying installation and otherwise runs
+`dotnet tool update --global AxaFrance.WebEngine.Cli` before verifying the
+reported version.
 
 Browser sessions use Edge by default and also support Chrome and Firefox.
 Selenium Manager resolves the matching WebDriver when the browser is opened.
@@ -42,36 +51,48 @@ driver.
 
 ## Daemon lifecycle
 
-```text
-webengine --json
-daemon start
-daemon status
-```
-
-The default `webengine` command starts an interactive shell. Use
-`webengine --json` for a prompt-free JSON-lines shell. Send one command per
-input line and read one JSON response line before sending the next:
+The daemon owns the browser sessions. A web command starts the daemon
+automatically when it is not already running, and every later command reuses
+it, so a workflow never needs an explicit startup step:
 
 ```text
-daemon start
-web session open
-web navigate --session <id> --url https://example.test
-web wait --session <id> --text "Ready"
-web inspect --session <id>
-web click --session <id> --ref ref=3
-web check --session <id> --id agreeTerms
-web uncheck --session <id> --name marketing
-web select --session <id> --name country --text France
-web session close --session <id>
-daemon stop
-exit
+webengine -c "web session open"
 ```
 
-The shell keeps one CLI process and named-pipe connection in memory. Use
-`webengine -c "<command>"` when the host cannot keep a process handle.
-Direct subcommands remain available for compatibility. Diagnostics are written
-to `stderr`. Command failures return structured errors without terminating the
-shell, and an abrupt client disconnect does not terminate the daemon.
+The daemon stops itself after an idle period (15 minutes by default) with no
+open session. Set the `WEBENGINE_DAEMON_IDLE_MINUTES` environment variable to
+tune the timeout, or `0` to disable it. `daemon start`, `daemon status`, and
+`daemon stop` remain available to control it explicitly:
+
+```text
+webengine -c "daemon status"
+webengine -c "daemon start"
+webengine -c "daemon stop"
+```
+
+Each command is a short-lived process. Run one command per shell invocation
+with `-c` (the equivalent direct subcommands also work):
+
+```text
+webengine -c "web session open"
+webengine -c "web navigate --session <id> --url https://example.test"
+webengine -c "web wait --session <id> --text "Ready""
+webengine -c "web inspect --session <id>"
+webengine -c "web click --session <id> --ref ref=3"
+webengine -c "web session close --session <id>"
+```
+
+A command failure is returned as a structured error and a nonzero exit code.
+Because no command holds a process open, a timed-out command never kills the
+browser: the daemon keeps the session and the next command continues.
+
+The default `webengine` command starts an interactive shell, and
+`webengine --json` a prompt-free JSON-lines shell. Send one command per input
+line and read one JSON response line before sending the next. These shells are
+useful for interactive debugging, but agent harnesses that cannot keep a
+process handle between tool calls should use `-c` instead. Direct subcommands
+remain available for compatibility. Diagnostics are written to `stderr`, and an
+abrupt client disconnect does not terminate the daemon.
 
 ## Web sessions
 
@@ -143,7 +164,8 @@ recognized password fields are redacted. Use `web key --key Enter` or another
 supported named key when a form requires an intentional key press; a newline
 in a single-line field is not an equivalent command.
 In the persistent shell, use `--text-file` for multiline values because stdin
-is the command channel. Reserve `--stdin` for one-shot direct commands.
+is the command channel. Reserve `--stdin` for one-shot direct commands and the
+`-c` form, where standard input is dedicated to the text.
 
 Close sessions explicitly:
 

@@ -23,7 +23,7 @@
     {
       "name": "webengine-cli",
       "description": "Use the WebEngine CLI and local daemon for persistent browser automation without MCP.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "source": "./plugins/webengine-cli"
     }
   ]

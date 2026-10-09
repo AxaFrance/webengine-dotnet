@@ -4,27 +4,41 @@ This plugin provides agent skills for the `webengine` .NET tool and its local
 daemon. It deliberately contains no MCP configuration, for environments where
 MCP servers are not permitted.
 
-The skill checks for the `webengine` command on first use. If it is missing,
-the agent installs the stable NuGet package. When no stable package is
-available, it retries with `--prerelease`. Installation and SDK, permission,
-or network errors are reported instead of being hidden by an unconditional
-fallback.
+The skill requires CLI version 3.26.282 or later (`AxaFrance.WebEngine.Cli`
+uses `major.YY.dayOfYear.revision` builds, so later day-of-year builds also
+satisfy this requirement). On first use, the agent checks
+the installed `webengine` version: a satisfying version is reused, a missing or
+older tool is installed or updated, and the version is verified afterwards. The
+stable NuGet package is preferred; the agent retries with `--prerelease` only
+when no stable package is available. Installation and SDK, permission, or
+network errors are reported instead of being hidden by an unconditional
+fallback. The tool is only updated to satisfy the required version, never
+unprompted.
 
 ```powershell
 webengine --version
 ```
 
-After bootstrap, use one persistent JSON-lines shell for a workflow:
+Run one command per shell invocation with `-c`. The first web command starts
+the daemon automatically, later commands reuse it, and the daemon stops itself
+after an idle period with no open session:
 
 ```text
-webengine --json
+webengine -c "web session open"
+webengine -c "web navigate --session <id> --url https://example.test"
+webengine -c "web wait --session <id> --text ""Ready"""
+webengine -c "web inspect --session <id>"
+webengine -c "web click --session <id> --ref ref=3"
+webengine -c "web session close --session <id>"
 ```
 
-Send one command per input line and read one JSON response line before sending
-the next command. Use `webengine -c "<command>"` only when the host cannot keep
-a process handle. The daemon owns browser sessions and the shell owns one
-reusable named-pipe connection. Command failures are returned as structured
-errors; they do not terminate the shell.
+Direct subcommands (`webengine web inspect --session <id>`) are equivalent to
+the `-c` form. Command failures are returned as structured errors with a
+nonzero exit code; they do not end the workflow. Because no command holds a
+process open in the harness, a timed-out command never kills the browser: the
+daemon keeps the session and the next command continues. The persistent
+JSON-lines shell (`webengine --json`) remains available for interactive
+debugging, but prefer `-c` when the host cannot keep a process handle.
 
 The default browser session is visible, which is useful when observing a
 workflow, building tests, or debugging locators:
@@ -64,9 +78,9 @@ value, including CR/LF characters. Use `web key --key Enter` (or another
 supported named key) when a form action requires an intentional key press
 instead of relying on newline characters in a single-line input.
 File and stdin input avoid command-line exposure but do not bypass the action
-log; only recognized password fields are redacted.
-In the persistent shell, use `--text-file` for multiline values because stdin
-is the command channel. Reserve `--stdin` for one-shot direct commands.
+log; only recognized password fields are redacted. Prefer `--text-file` or
+`--stdin` for multiline values instead of nesting escaped quotes inside the
+`-c` command string.
 
 Mobile/Appium commands are not yet exposed by this plugin. Never place
 passwords, tokens, encryption keys, or real personal data in command-line
