@@ -27,6 +27,20 @@ namespace WebEngine.Test.UnitTests
         }
 
         [TestMethod]
+        public void LoadEnvironmentVariablesFromStream()
+        {
+            const string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "<EnvironmentVariables xmlns=\"http://www.axa.fr/WebEngine/2022\">" +
+                "<Variable><Name>STREAM_KEY</Name><Value>STREAM_VALUE</Value></Variable>" +
+                "</EnvironmentVariables>";
+
+            using var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(xml));
+            EnvironmentVariables.LoadFrom(stream);
+
+            Assert.AreEqual("STREAM_VALUE", EnvironmentVariables.Current.GetValue("STREAM_KEY"));
+        }
+
+        [TestMethod]
         public void LoadEnvironmentVariables()
         {
             EnvironmentVariables.LoadFrom("TestData\\ENV.XML");

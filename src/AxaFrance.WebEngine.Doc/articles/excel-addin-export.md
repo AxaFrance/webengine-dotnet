@@ -4,17 +4,16 @@ WebEngine Add-in allows you to export test data and environment variables to XML
 
 ![Excel Export](../images/excel-export.png)
 
-> ![IMPORTANT]
-> Test automation solutions build with WebEngine Framework does not handle excel file directly.
-> The test data must be exported as XML format.
-> When a test is launched via Excel, the Add-in exports the test data into a temporary directory in XML and consumes it during test execution.
+> [!IMPORTANT]
+> Test automation solutions built with WebEngine Framework do not read Excel files directly.
+> Test data must be exported as XML.
+> When a test is launched from Excel, the add-in writes the XML files to the configured export folder and passes them to WebRunner.
 
-In the group of "Export" buttons, you can:
-* **Export Selected**: Export selected tests to an XML formatted TestSuite Data file.
-* **Export All (current tab)**: This buttons exports all test cases of current data sheet. By default, the xml file has the same name as the current sheet.
-* **Export All (all tabs)**: This button export all test cases of every data sheet.
-* **Export with filter**: This function export test cases with a simple filter.
-For example, you want to execute tests where name contains "E2E", you can use E2E as filter 
+In the **Test data** group, you can:
+* **Export Selected**: Export the test cases in the selected columns to an XML TestSuite Data file.
+* **Export Current Sheet**: Export all test cases of the active data sheet. By default, the XML file has the same name as the current sheet.
+* **Export With Filter**: Export test cases matching include/exclude terms.
+For example, to execute tests whose name contains "E2E", use `E2E` as the filter:
  ![Excel Export Filter](../images/excel-export-filter.png)
-* **Export environment variables**: This function exports environment variables (test data related to test environment) from sheet named "ENV". and generates ENV.xml.
+* **Export Environment**: Export environment variables from the sheet named `ENV` and generate `ENV.xml`.
 

@@ -2,10 +2,9 @@
 You can launch a test directly with-in excel, once the [Settings](excel-addin-settings.md) is done. To launch a test, follow below instructions:
 
 ## 1. Select tests to be executed
-Select one or more tests to be executed.
-You can select any row but please AVOID selecting whole columns,
-because Add-in will calculate selected cells and determine test data to be exported.
-Select whole columns will lead to analyze all possible lines (that is 1 million rows)
+Select one or more test case columns (column C or later) in the active test data sheet.
+You can select any range inside those columns; the add-in uses the selected columns to determine which test cases to export.
+Selecting the whole sheet is supported but slower because every column is inspected.
 
 ![Excel Launch Select](../images/excel-launch-select.png)
 

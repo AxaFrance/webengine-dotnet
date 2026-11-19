@@ -73,10 +73,9 @@ namespace AxaFrance.WebEngine
         /// <returns>The filename (without path)</returns>
         public static string LoadFrom(string filePath)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteData));
-            using (StreamReader sr = new StreamReader(filePath))
+            using (var stream = File.OpenRead(filePath))
             {
-                _instance = (TestSuiteData)serializer.Deserialize(sr);
+                _instance = XmlSerialization.Deserialize<TestSuiteData>(stream);
             }
             FileInfo fi = new FileInfo(filePath);
             return fi.Name;

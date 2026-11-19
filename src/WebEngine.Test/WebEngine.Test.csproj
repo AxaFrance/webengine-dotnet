@@ -27,10 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="4.3.3" />
-    <PackageReference Include="MSTest.TestFramework" Version="4.3.3" />
-    <PackageReference Include="coverlet.collector" Version="10.0.1">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="4.5.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="4.5.3" />
+    <PackageReference Include="coverlet.collector" Version="10.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AxaFrance.AxeExtended.HtmlReport\AxaFrance.AxeExtended.HtmlReport.csproj" />
+    <ProjectReference Include="..\AxaFrance.WebEngine.ExcelAddin.Core\AxaFrance.WebEngine.ExcelAddin.Core.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.MobileApp\AxaFrance.WebEngine.MobileApp.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Runner\AxaFrance.WebEngine.Runner.csproj" />
     <ProjectReference Include="..\AxaFrance.WebEngine.Web\AxaFrance.WebEngine.Web.csproj" />

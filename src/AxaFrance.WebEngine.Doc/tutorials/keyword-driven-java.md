@@ -512,7 +512,7 @@ Then you can set breakpoint in the code to debug step by step.
 
 > [!NOTE]
 > When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
-> For more information about Excel Add-in, please refer to [Working with WebEngine Add-in for Excel](../articles/excel-addin.md)
+> For more information about the legacy Excel Add-in, please refer to [Working with WebEngine Add-in for Excel](../articles/excel-addin.md)
 
 ## Step 10: Visualize Reports
 After execution, the log will be generated in indicated folder. You can open it with Edge to see details and even screenshots:

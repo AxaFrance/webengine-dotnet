@@ -30,7 +30,7 @@ WebEngine is composed of **7 components**. Install only what you need.
 * `WebEngine Web` (`AxaFrance.WebEngine.Web`): Selenium WebDriver management, Web Element identification, Page Models and browser utilities for desktop and mobile browsers.
 * `WebEngine MobileApp` (`AxaFrance.WebEngine.MobileApp`): Appium WebDriver management, App Element identification and device connection for native Android and iOS applications.
 * `WebEngine MCP` (`AxaFrance.WebEngine.Mcp`): An MCP (Model Context Protocol) server that exposes live Selenium and Appium capabilities to AI assistants such as GitHub Copilot, enabling AI-driven browser and mobile automation.
-* `Excel Add-in`: Manage, export and launch test execution directly from Excel spreadsheets when using the Data-Driven approach.
+* `Excel Add-in` (`AxaFrance.WebEngine.ExcelAddin`): An Excel-DNA add-in to manage test data and launch data-driven test runs directly from Excel spreadsheets.
 * `Test Runner` (`WebRunner`): The command-line executable to run automated tests with a given configuration. Produces a structured XML report consumable by Report Viewer.
 * `Report Viewer`: A graphical viewer for test reports — synthetic overview and detailed step-level trace in one tool.
 

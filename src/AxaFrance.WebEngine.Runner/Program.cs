@@ -54,7 +54,10 @@ namespace AxaFrance.WebEngine.Runner
                 {
                     result.GenereteCSV(Path.Combine(reportFolder, "GlobalOutput.csv"), Settings.Instance.Separator, false);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    DebugLogger.WriteWarning("Unable to generate the CSV summary: " + ex.Message);
+                }
                 if (settings.ShowReportAfterTest)
                 {
                     try

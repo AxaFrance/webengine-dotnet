@@ -25,7 +25,7 @@ To run tests built with WebEngine Framework, you have to provide a compiled test
 
 ### Data-Driven Testing
 If your solution uses a Data-Driven approach, you can provide the following files:
-* `-data:<testdata>`: Test Data to be used for data-driven test execution, in XML format. The file can be exported via the `Excel Add-in`. If not provided, tests will run without test data.
+* `-data:<testdata>`: Test Data to be used for data-driven test execution, in XML format. If not provided, tests will run without test data.
 * `-env:<env_variable>`: Environment Variables in XML format, to store test environment-related test data, such as URLs, Hostnames, or Credentials.
 
 

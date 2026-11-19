@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Deque.AxeCore.Commons" Version="4.13.0" />
+    <PackageReference Include="Deque.AxeCore.Commons" Version="4.14.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">

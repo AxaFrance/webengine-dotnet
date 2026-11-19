@@ -1,22 +1,26 @@
 ﻿# Settings
 
 ## Settings dialog
-Before launching tests from WebEngine Add-in for Excel, 
-you should configurate the add-in and your test automation solution.
+Before launching tests from WebEngine Add-in for Excel, configure the add-in and your test automation solution.
+
+Open the **WebEngine** tab and click **Settings**.
 
 ![Excel Settings](../images/excel-settings.png)
 
 ## Parameters
-The settings, as shown as above, have 3 parameters:
 
-* `Export Directory`: This parameter indicates the path of Test Data and Environment Variables.
-* `WebRunner Directory`: This parameter indicates the path of your test automation solution and the WebRunner.
-* `Test Assembly`: The file name of your compiled test automation solution. Usually it's a DLL file (for .NET) and JAR file (for JAVA).
+* `Export folder`: Folder where `ENV.xml` and the test data XML files are written.
+* `WebRunner folder`: Folder containing `WebRunner.exe` (for .NET test projects) or `WebRunner.jar` (for Java test projects).
+* `Test assembly`: Compiled test project (`.dll`) or Java test archive (`.jar`).
+* `Default browser`: Browser preselected when the launch dialog opens.
+* `Excluded tabs`: Worksheets ignored by export commands (separated by semicolons). Defaults to `NOTE;DATA_TABLE;PARAMS;ENV`.
 
 > [!NOTE]
-> WebEngine Add-in for Excel automatically detects the version of the Framework used.
-> For TAS (Test Automation Solution) built with .NET, it will launch `WebRunner.exe`. For
-> TAS built with Java, it will launch `WebRunner.jar`.
+> WebEngine automatically selects the runner:
+> For a .NET test project it launches `WebRunner.exe`; for a Java test project it launches
+> `WebRunner.jar` with the bundled JRE when available.
 
-The settings will be saved for next use.
-If you are working with another TAS, you'll need to change these settings.
+Settings are stored in `%APPDATA%\AxaFrance.WebEngine\excelSetting.xml`, the same location used by the former VSTO add-in.
+They are reused the next time Excel starts.
+
+If you work with another test automation solution, update the paths and the test assembly.

@@ -56,9 +56,11 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     case Language.Spanish:
                         locale = PageReportBuilder.GetResource("report-es.json");
                         break;
+#pragma warning disable CS0618 // Kept for backward compatibility; axe-core marks the German locale as obsolete.
                     case Language.German:
                         locale = PageReportBuilder.GetResource("report-de.json");
                         break;
+#pragma warning restore CS0618
                     case Language.SimplifiedChinese:
                         locale = PageReportBuilder.GetResource("report-zhcn.json");
                         break;

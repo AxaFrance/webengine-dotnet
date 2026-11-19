@@ -16,7 +16,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml.Serialization;
 
 namespace AxaFrance.WebEngine.ReportViewer
 {
@@ -74,12 +73,7 @@ namespace AxaFrance.WebEngine.ReportViewer
             try
             {
 
-                XmlSerializer serializer = new XmlSerializer(typeof(AxaFrance.WebEngine.Report.TestSuiteReport));
-                using (StreamReader sr = new StreamReader(filename))
-                {
-                    xmlReport = sr.ReadToEnd();
-                }
-                currentReport = (TestSuiteReport)serializer.Deserialize(new StreamReader(filename));
+                currentReport = ReportHelper.LoadReport(filename, out xmlReport);
                 txtSystemOut.Text = currentReport.SystemOut + "\n" + currentReport.SystemError;
 
                 double totalSeconds = currentReport.Duration.TotalSeconds;

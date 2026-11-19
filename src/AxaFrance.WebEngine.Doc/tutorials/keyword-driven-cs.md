@@ -188,7 +188,7 @@ For more information about `WebRunner` please refers to [WebRunner](../articles/
 
 > [!NOTE]
 > When test data is externalized, you can run test cases dynamically from Excel via WebEngine Addin for Excel.
-> For more information about Excel Add-in, please refer to [Working with WebEngine Add-in for Excel](../articles/excel-addin.md)
+> For more information about the legacy Excel Add-in, please refer to [Working with WebEngine Add-in for Excel](../articles/excel-addin.md)
 
 ## Visualize Reports
 After execution, the log will be generated in indicated folder. You can open it with `ReportViewer` to see the structure, details and even screenshots:

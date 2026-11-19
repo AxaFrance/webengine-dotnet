@@ -58,10 +58,9 @@ namespace AxaFrance.WebEngine
         /// <param name="xmlFile">The path of the XML file </param>
         public static void LoadFrom(string xmlFile)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(EnvironmentVariables));
-            using (StreamReader sr = new StreamReader(xmlFile))
+            using (var stream = File.OpenRead(xmlFile))
             {
-                _instance = (EnvironmentVariables)serializer.Deserialize(sr);
+                _instance = XmlSerialization.Deserialize<EnvironmentVariables>(stream);
             }
         }
 
@@ -72,8 +71,7 @@ namespace AxaFrance.WebEngine
         /// <param name="stream">the stream which the environment variables are stored</param>
         public static void LoadFrom(System.IO.Stream stream)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteData));
-            _instance = (EnvironmentVariables)serializer.Deserialize(stream);
+            _instance = XmlSerialization.Deserialize<EnvironmentVariables>(stream);
         }
 
         /// <summary>

@@ -215,13 +215,8 @@ namespace AxaFrance.WebEngine.Report
         /// <returns>The report of type <see cref="TestSuiteReport"/></returns>
         public static TestSuiteReport LoadReport(string filename, out string content)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TestSuiteReport));
-            using (StreamReader sr = new StreamReader(filename))
-            {
-                content = sr.ReadToEnd();
-            }
-            TestSuiteReport ts = (TestSuiteReport)serializer.Deserialize(new StreamReader(filename));
-            return ts;
+            content = File.ReadAllText(filename);
+            return XmlSerialization.Deserialize<TestSuiteReport>(new StringReader(content));
         }
     }
 }

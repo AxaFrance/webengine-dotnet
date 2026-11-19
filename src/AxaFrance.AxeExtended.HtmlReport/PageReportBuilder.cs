@@ -140,11 +140,13 @@ namespace AxaFrance.AxeExtended.HtmlReport
                     //add or update the field "locale" in json object config, with the content of es.json
                     config["locale"] = JObject.Parse(localees);
                     break;
+#pragma warning disable CS0618 // Kept for backward compatibility; axe-core marks the German locale as obsolete.
                 case Language.German:
                     var localede = GetResource("axe-core-de.json");
                     //add or update the field "locale" in json object config, with the content of de.json
                     config["locale"] = JObject.Parse(localede);
                     break;
+#pragma warning restore CS0618
                 case Language.SimplifiedChinese:
                     var localezh = GetResource("axe-core-zhcn.json");
                     //add or update the field "locale" in json object config, with the content of zhcn.json
@@ -346,8 +348,6 @@ namespace AxaFrance.AxeExtended.HtmlReport
         /// Delegate to get screenshot of the given node. this function should be implemented according to test framework. such as Selenium.
         /// </summary>
         public GetScreenshotDelegate GetScreenshot { get; internal set; }
-
-        private JObject locale = null;
 
         /// <summary>
         /// Delegate to analyze the given context. this function should be implemented according to test framework. such as using Selenium.

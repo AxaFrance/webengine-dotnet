@@ -239,6 +239,24 @@ steps:
     }
   displayName: 'Verify WebEngine CLI package'
 
+- task: CopyFiles@2
+  displayName: 'Copy Excel add-in to artifact staging'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      **\bin\**\*-AddIn64-packed.xll
+      src\AxaFrance.WebEngine.ExcelAddin\README.md
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\excel-addin'
+    flattenFolders: true
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifact: excel-addin'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\excel-addin'
+    ArtifactName: excel-addin
+  condition: succeededOrFailed()
+
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:

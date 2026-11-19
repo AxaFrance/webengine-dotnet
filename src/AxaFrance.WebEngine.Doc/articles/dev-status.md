@@ -8,6 +8,7 @@
 |AxaFrance.WebEngine.Web|🟢|🟢|Provide functionalities to test Web based application on Desktop and Mobile browsers (Based on Selenium 4)|
 |AxaFrance.WebEngine.MobileApp|🟢|🔘|Provide functionalities to test Native and Hybrid mobile applications on Android and iOS (Based on Appium)|
 |AxaFrance.WebEngine.Mcp|🟢|🔘|MCP server exposing Selenium and Appium capabilities to AI assistants (e.g. GitHub Copilot)|
+|AxaFrance.WebEngine.ExcelAddin|??|??|Excel-DNA add-in to manage test data and launch data-driven WebRunner executions|
 |AxaFrance.WebEngine.Runner (WebRunner)|🟢|🟢|Run automated tests using Keyword driven testing approach|
 |AxaFrance.WebEngine.ReportViewer|🟢|🟢|View test reports (unique version for both .NET and Java version of the framework)|
 

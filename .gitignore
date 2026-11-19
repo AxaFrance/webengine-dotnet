@@ -365,5 +365,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /POC.Solaris
 *.cer
-/src/AxaFrance.WebEngine.ExcelUI/singingcertificate.cer
 /src/.vscode

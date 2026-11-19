@@ -40,7 +40,8 @@ namespace AxaFrance.WebEngine
         {
             SystemOutput.AppendLine(content);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            WriteLine(content);
+            System.Diagnostics.Debug.WriteLine(content);
+            Console.WriteLine(content);
             Console.ResetColor();
         }
 
@@ -77,7 +78,8 @@ namespace AxaFrance.WebEngine
         {
             SystemError.AppendLine(content);
             Console.ForegroundColor = ConsoleColor.Red;
-            WriteLine(content);
+            System.Diagnostics.Debug.WriteLine(content);
+            Console.WriteLine(content);
             Console.ResetColor();
         }
     }

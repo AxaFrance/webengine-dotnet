@@ -14,6 +14,8 @@ The modelling of Home Insurance Underwriting application may look like following
 
 > [!NOTE]
 > This tutorial is based on the outcome of [Keyword-Driven testing Approach (Java/Spring boot)](keyword-driven-java.md). If you don't have a working keyword-driven test project yet, please follow that article first.
+>
+> The Excel-based workflow described below relies on the retired WebEngine Add-in for Excel. The generated XML files can also be authored or produced by another tool.
 
 # Step 2: Identify variables
 In this step, we'll need to identify variables used in the test automation solution.

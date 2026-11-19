@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" loadImage="LoadImage">
+  <ribbon>
+    <tabs>
+      <tab id="tabWebEngine" label="WebEngine">
+        <group id="grpTestData" label="Test data">
+          <button id="btnExportSelected"
+                  label="Export Selected"
+                  size="large"
+                  imageMso="ExportXmlFile"
+                  onAction="OnExportSelected"
+                  screentip="Export selected test cases"
+                  supertip="Export the test cases in the selected columns to an XML file consumed by WebRunner." />
+          <button id="btnExportSheet"
+                  label="Export Current Sheet"
+                  size="large"
+                  imageMso="ExportSavedExports"
+                  onAction="OnExportSheet"
+                  screentip="Export every test case of the current sheet"
+                  supertip="Export all test case columns of the active worksheet to an XML file." />
+          <button id="btnExportFilter"
+                  label="Export With Filter"
+                  size="large"
+                  imageMso="ExportXmlFile"
+                  onAction="OnExportFilter"
+                  screentip="Export a filtered set of test cases"
+                  supertip="Keep or exclude test cases whose name matches one of the given terms." />
+          <button id="btnExportEnvironment"
+                  label="Export Environment"
+                  size="large"
+                  imageMso="ListPublish"
+                  onAction="OnExportEnvironment"
+                  screentip="Export environment variables"
+                  supertip="Export the ENV worksheet to the XML file consumed by WebRunner." />
+          <separator id="sepTools" />
+          <button id="btnCheckData"
+                  label="Check Test Data"
+                  imageMso="CheckWorkflow"
+                  onAction="OnCheckData"
+                  screentip="Check test data consistency"
+                  supertip="Compare parameters used in the active sheet with the PARAMS worksheet and detect duplicated test cases." />
+          <button id="btnSyncParameters"
+                  label="Sync With PARAMS"
+                  imageMso="SynchronizeAll"
+                  onAction="OnSyncParameters"
+                  screentip="Add missing parameters"
+                  supertip="Insert the parameters defined in PARAMS that are missing from the active worksheet." />
+          <menu id="mnuCodeGeneration" label="Code Generation" imageMso="AfterInsert" size="large">
+            <button id="btnCodeGenCSharp" label="C# parameter class" onAction="OnGenerateCSharp" />
+            <button id="btnCodeGenJava" label="Java parameter class" onAction="OnGenerateJava" />
+          </menu>
+        </group>
+        <group id="grpRun" label="Run">
+          <button id="btnLaunch"
+                  label="Launch Test"
+                  size="large"
+                  imageMso="PlayFromPage"
+                  onAction="OnLaunch"
+                  screentip="Export and launch the selected tests"
+                  supertip="Export the selected test cases and environment variables, then start WebRunner." />
+          <button id="btnStop"
+                  label="Stop Tests"
+                  size="large"
+                  image="WebEngineStop"
+                  onAction="OnStop"
+                  screentip="Stop running tests"
+                  supertip="Terminate any running WebRunner process." />
+        </group>
+        <group id="grpConfiguration" label="Configuration">
+          <button id="btnSettings"
+                  label="Settings"
+                  size="large"
+                  imageMso="AddInCommandsMenu"
+                  onAction="OnSettings"
+                  screentip="Configure the add-in"
+                  supertip="Set the export folder, WebRunner folder and test assembly." />
+          <button id="btnAbout" label="About" imageMso="Info" onAction="OnAbout" />
+          <button id="btnHelp" label="Help" imageMso="Help" onAction="OnHelp" />
+          <button id="btnFeedback" label="Feedback" imageMso="OmsEmoticonInsertGallery" onAction="OnFeedback" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

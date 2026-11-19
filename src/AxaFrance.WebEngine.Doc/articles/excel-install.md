@@ -1,58 +1,48 @@
 ﻿# Install WebEngine Add-in for Excel
 
-## How to install WebEngine Add-in
-* Download the Excel Add-in package from the [GitHub releases page](https://github.com/AxaFrance/webengine-dotnet/releases)
-* Close all Excel instances
-* Launch `Setup.exe`
+The add-in is an Excel-DNA `.xll` file. It does not use VSTO, a COM registration, or an installer.
 
-![Excel Install 1](../images/excel-install-1.png)
+## Prerequisites
 
-* Then click install to finish installation
-* Open Excel and now you can see WebEngine add-in showing in the ribbons.
+- **64-bit Excel** (Excel 2013 or later). The add-in targets 64-bit Office only.
+- **.NET 8 Desktop Runtime (x64)**: [download](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+## Install
 
-## Potential problems during installation.
-### I receive a security warning
+1. Download `AxaFrance.WebEngine.ExcelAddin-AddIn64-packed.xll` from the [GitHub releases page](https://github.com/AxaFrance/webengine-dotnet/releases).
 
-![Excel Install 2](../images/excel-install-2.png)
+> [!TIP]
+> Development builds are also published by the **Build Excel add-in** GitHub Actions workflow.
+> Open the latest successful run and download the `webengine-excel-addin-x64-*` artifact.
+2. If the file was downloaded from the internet, right-click it, open **Properties**, and select **Unblock**.
+3. In Excel, open **File > Options > Add-ins**.
+4. At the bottom, select **Excel Add-ins** in the **Manage** list and click **Go...**.
+5. Click **Browse...**, select the `.xll` file, and confirm.
+6. The **WebEngine** tab appears in the ribbon.
 
-If you are installing from a shared location, you may encounter this warning. Just click on run to continue the installation.
+## Verify the installation
 
-### The installation is forbidden because signature certificate is not trusted.
+Enter the following formula in any cell:
 
-![Excel Install 3](../images/excel-install-3.png)
+```text
+=WEBENGINE_ADDIN_VERSION()
+```
 
-If your organization forbids installation of unsigned Office Add-in, you'll need to:
-* Compile Excel add-in from source code and sign it with your organization's certificate.
-* Install the default certificate in trusted store
+It returns the installed add-in version. If the formula is not recognized, check the prerequisites and make sure the add-in is enabled in the Excel Add-ins dialog.
 
-### Install default certificate
-If you choose not the compile and sign yourself the Excel Add-in, you can trust install the default certificate.
+## Enterprise deployment
 
-Objectives:
-- Install certificate in `Trusted Root Certification Authorities` store
-- Install certificate in `Trusted Publishers` store
+For managed environments:
 
-To do it, following this procedure
-1. Open `Excel_certificate.cer` provided in the Add-in Package
+- Sign the XLL with your organization's code-signing certificate.
+- Distribute it with your usual software deployment tool (Intune, SCCM, MSI wrapper, etc.).
+- Add the XLL path to the user's Excel add-in list, or let users add it once through the Excel options.
 
-![Excel Install 4](../images/excel-install-4.png)
+## Troubleshooting
 
-2. Click `Install Certificate` and choose `Current User`
-
-![Excel Install 5](../images/excel-install-5.png)
-
-3. Choose `Place all certificates in the following store` and click on `Browse`
-
-![Excel Install 6](../images/excel-install-6.png)
-
-4. Select `Trusted Root Certification Authorities` and click `OK`
-
-![Excel Install 7](../images/excel-install-7.png)
-5. If the warning dialog shows like follow, accept it.
-
-![Excel Install 8](../images/excel-install-8.png)
-
-6. Repeat the same procedure to install the same certificate in the store `Trusted Publisher`
-
-After installation of the certificate, you should be able to install the WebEngine Add-in for Excel.
+| Symptom | Cause / fix |
+|---|---|
+| The WebEngine tab does not appear | The XLL is disabled in **File > Options > Add-ins > Manage: Disabled Items**. Re-enable it. |
+| "This file is blocked" | Unblock the XLL in its file properties. |
+| .NET runtime error when Excel starts | Install the .NET 8 Desktop Runtime (x64). |
+| The add-in does not load | Make sure Excel is 64-bit; the 32-bit XLL is not built. |

@@ -1,5 +1,9 @@
 ﻿# Working with WebEngine Add-in for Excel
 
+> [!NOTE]
+> The Excel Add-in is now built with **Excel-DNA** and targets 64-bit Excel on Windows.
+> It replaces the former VSTO add-in while keeping the same worksheet format and settings file.
+
 In many enterprises, Excel is used a lot to do data related works. Many test teams use it to manage Test Data for manual or Automated Tests.
 Web Engine Excel Add-in is built to easily manage test data and execute tests on local computer.
 
@@ -24,6 +28,8 @@ The Excel add-in enables you to:
 
 ## Install WebEngine Excel Add-in
 The latest version of the Excel Add-in can be found on the GitHub releases page: [https://github.com/AxaFrance/webengine-dotnet/releases](https://github.com/AxaFrance/webengine-dotnet/releases)
+
+See [Install Add-in](excel-install.md) for the XLL installation steps and the .NET 8 Desktop Runtime requirement.
 
 ## Example Test Data File
 You can download a copy of example test data file here: [WebEngine-TestData.xlsx](../files/WebEngine-TestData.xlsx), and follow articles listed in this chapter to understand the structure of the test data file.

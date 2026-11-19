@@ -44,6 +44,8 @@ If a parameter is provided in both side, the value provided in command-line will
 
 ## Options for browsers
 * `chromeOptions`, `firefoxOptions`, `edgeOptions` and `safariOptions`: Default launch options for each browser. When `BrowserFactory.GetDriver` is called, the options for the selected browser are applied automatically. For example, with the configuration above, Chrome will launch in `incognito` mode and Edge will launch in `inprivate` mode with the window maximized.
+* Chrome also accepts `binarylocation=<path>` and `userpreference=<json>` entries in `chromeOptions` to select the browser binary or set profile preferences.
+* Firefox uses an isolated temporary profile by default. Add `profile=<path>` to `firefoxOptions` to reuse a specific Firefox profile.
 
 > [!NOTE]
 > Modifying capabilities may affect the behavior for Web Mobile and App Mobile testing. Use only when necessary.

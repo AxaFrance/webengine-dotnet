@@ -441,20 +441,24 @@ namespace AxaFrance.WebEngine.Web
                 AcceptInsecureCertificates = true,
             };
 
+            var browserOptionList = (browserOptions ?? Array.Empty<string>()).ToList();
+
             // Handle binary location
             const string binaryLocationPrefix = "binarylocation=";
-            if (browserOptions.Any(x => x.ToLower().StartsWith(binaryLocationPrefix)))
+            var locationOption = browserOptionList.FirstOrDefault(
+                x => x.StartsWith(binaryLocationPrefix, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrEmpty(locationOption))
             {
-                var location = browserOptions.First(x => x.ToLower().StartsWith(binaryLocationPrefix));
-                options.BinaryLocation = location.Substring(binaryLocationPrefix.Length);
+                options.BinaryLocation = locationOption.Substring(binaryLocationPrefix.Length);
             }
 
             // Handle user preferences
             const string userPreferencePrefix = "userpreference=";
-            var userPrefOption = browserOptions.FirstOrDefault(x => x.ToLower().StartsWith("userPreferencePrefix"));
+            var userPrefOption = browserOptionList.FirstOrDefault(
+                x => x.StartsWith(userPreferencePrefix, StringComparison.OrdinalIgnoreCase));
             if (!string.IsNullOrEmpty(userPrefOption))
             {
-                var userPrefJson = userPrefOption.Substring("userPreferencePrefix".Length);
+                var userPrefJson = userPrefOption.Substring(userPreferencePrefix.Length);
                 try
                 {
                     var prefs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(userPrefJson);
@@ -481,7 +485,9 @@ namespace AxaFrance.WebEngine.Web
             options.AddArgument("disable-dev-shm-usage");
             options.AddArgument("no-default-browser-check");
             options.AddArgument("no-sandbox");
-            if (browserOptions != null) options.AddArguments(browserOptions);
+            options.AddArguments(browserOptionList.Where(
+                x => !x.StartsWith(binaryLocationPrefix, StringComparison.OrdinalIgnoreCase)
+                  && !x.StartsWith(userPreferencePrefix, StringComparison.OrdinalIgnoreCase)));
 
             OpenQA.Selenium.Chrome.ChromeDriver cd = new OpenQA.Selenium.Chrome.ChromeDriver(options);
             return cd;
@@ -489,15 +495,36 @@ namespace AxaFrance.WebEngine.Web
 
         private static WebDriver GetFirefoxDriver(IEnumerable<string> browserOptions)
         {
-            var directories = System.IO.Directory.GetDirectories($"{Environment.GetEnvironmentVariable("APPDATA")}\\Mozilla\\Firefox\\Profiles");
-            var d = directories.First(x => x.EndsWith("default"));
-            OpenQA.Selenium.Firefox.FirefoxProfile profile = new OpenQA.Selenium.Firefox.FirefoxProfile(d);
-            OpenQA.Selenium.Firefox.FirefoxOptions firefoxOptions = new OpenQA.Selenium.Firefox.FirefoxOptions();
-            firefoxOptions.AcceptInsecureCertificates = true;
-            firefoxOptions.Profile = profile;
-            if (browserOptions != null) firefoxOptions.AddArguments(browserOptions);
-            OpenQA.Selenium.Firefox.FirefoxDriver driver = new OpenQA.Selenium.Firefox.FirefoxDriver(firefoxOptions);
-            return driver;
+            var browserOptionList = (browserOptions ?? Array.Empty<string>()).ToList();
+            var firefoxOptions = new OpenQA.Selenium.Firefox.FirefoxOptions
+            {
+                AcceptInsecureCertificates = true,
+            };
+
+            // A user can opt in to a specific profile with "profile=<path>". Otherwise, use an
+            // isolated profile so automation never touches the user's session and is not blocked
+            // by first-run, migration or browser-update prompts.
+            const string profilePrefix = "profile=";
+            var profileOption = browserOptionList.FirstOrDefault(
+                x => x.StartsWith(profilePrefix, StringComparison.OrdinalIgnoreCase));
+            if (!string.IsNullOrEmpty(profileOption))
+            {
+                firefoxOptions.Profile = new OpenQA.Selenium.Firefox.FirefoxProfile(
+                    profileOption.Substring(profilePrefix.Length));
+            }
+            else
+            {
+                var profile = new OpenQA.Selenium.Firefox.FirefoxProfile();
+                profile.SetPreference("app.update.auto", false);
+                profile.SetPreference("app.update.enabled", false);
+                profile.SetPreference("browser.shell.checkDefaultBrowser", false);
+                firefoxOptions.Profile = profile;
+            }
+
+            firefoxOptions.AddArguments(browserOptionList.Where(
+                x => !x.StartsWith(profilePrefix, StringComparison.OrdinalIgnoreCase)));
+
+            return new OpenQA.Selenium.Firefox.FirefoxDriver(firefoxOptions);
         }
 
         /// <summary>

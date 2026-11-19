@@ -84,7 +84,7 @@ namespace Samples.LinearScripting
                 Log = "Navigated to Step 1 page successfully."
             };
 
-            testCaseReport.ActionReports.Add(step1Report);
+            testCaseReport!.ActionReports.Add(step1Report);
 
             //Create a page model for the Drink Selection page.
             DrinkSelectionPageModel page = new DrinkSelectionPageModel(driver);

@@ -165,7 +165,7 @@ Test Coverage without code change:
 └────────────────────┴──────────────────┴──────────────────┴──────────────────┘
 ```
 
-See [Data-Driven Testing (.NET)](../tutorials/data-driven-cs.md) and the [Excel Add-in](excel-addin.md) for details.
+See [Data-Driven Testing (.NET)](../tutorials/data-driven-cs.md) for details.
 
 ---
 

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <ExcelDnaCreate32BitAddIn>false</ExcelDnaCreate32BitAddIn>
+    <ExcelDnaCreate64BitAddIn>true</ExcelDnaCreate64BitAddIn>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>AxaFrance.WebEngine.ExcelAddin</AssemblyName>
+    <RootNamespace>AxaFrance.WebEngine.ExcelAddin</RootNamespace>
+    <Product>AXA WebEngine Excel Add-in</Product>
+    <Description>Excel-DNA add-in to manage WebEngine test data and launch data-driven test runs.</Description>
+    <Company>AxaFrance</Company>
+    <Copyright>AXA France</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDna.AddIn" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AxaFrance.WebEngine.ExcelAddin.Core\AxaFrance.WebEngine.ExcelAddin.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Ribbon.xml" />
+    <EmbeddedResource Include="Resources\*.png" />
+    <None Include="README.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

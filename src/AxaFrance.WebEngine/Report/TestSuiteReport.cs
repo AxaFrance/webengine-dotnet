@@ -117,7 +117,7 @@ namespace AxaFrance.WebEngine.Report
             string filename;
             if (uniqueName)
             {
-                reportFolder = path + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+                reportFolder = path + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
             }
             else
             {

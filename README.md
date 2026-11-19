@@ -15,7 +15,7 @@ WebEngine Framework resolves some common problems every test automation project 
 * Organizing Web Element in **Page Model** makes test scripts easy to read and to maintain.
 * Fully object-oriented and compatible with **Keyword-Driven** and **Data-driven** approach.
 * Compatible with other another Unit test frameworks such as NUnit, Cucumber
-* Easy configuration and Set-up for Execution: Run test directly from Excel, as well as on DevOps platforms
+* Easy configuration and Set-up for Execution: run tests from the command line or CI/CD pipelines
 * Graphical test report.
 * **Open Source**, free usage and let’s improve it together!
 
@@ -30,6 +30,13 @@ https://axafrance.github.io/webengine-dotnet/
 The Framework is distributed via Package Management:
 When using .NET, please find AxaFrance.WebEngine packages on nuget.org
 When using JAVA, these pacakges will be available on Maven
+
+## Excel Add-in
+
+The Excel-DNA add-in lets teams maintain data-driven test data in Excel and launch selected test cases directly with WebRunner.
+It requires 64-bit Excel and the .NET 8 Desktop Runtime.
+
+Project: `src/AxaFrance.WebEngine.ExcelAddin` — installation and usage are documented in the [Excel Add-in article](https://axafrance.github.io/webengine-dotnet/articles/excel-addin.html).
 
 ## MCP (Model Context Protocol) Integration
 

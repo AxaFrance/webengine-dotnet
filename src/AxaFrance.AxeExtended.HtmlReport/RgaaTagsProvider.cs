@@ -71,6 +71,7 @@ namespace AxaFrance.AxeExtended.HtmlReport
             {"table-fake-caption", new string[] {"RGAA 5.1.1"}},
         };
 
+        /// <inheritdoc/>
         public override IEnumerable<string> GetTagsByRule(AxeResultItem rule)
         {
             var ruleId = rule.Id;

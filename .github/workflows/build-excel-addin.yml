@@ -1,0 +1,130 @@
+name: Build Excel add-in
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/build-excel-addin.yml'
+      - 'src/AxaFrance.WebEngine.sln'
+      - 'src/AxaFrance.WebEngine.ExcelAddin/**'
+      - 'src/AxaFrance.WebEngine.ExcelAddin.Core/**'
+      - 'src/AxaFrance.WebEngine/**'
+      - 'src/AxaFrance.WebEngine.Web/**'
+      - 'src/AxaFrance.WebEngine.MobileApp/**'
+      - 'src/AxaFrance.WebEngine.Runner/**'
+      - 'src/AxaFrance.AxeExtended.HtmlReport/**'
+      - 'src/AxaFrance.AxeExtended.Selenium/**'
+      - 'src/Samples.LinearScripting/**'
+      - 'src/WebEngine.Test/**'
+  push:
+    branches:
+      - main
+      - develop
+    tags:
+      - 'v*'
+      - 'excel-v*'
+    paths:
+      - '.github/workflows/build-excel-addin.yml'
+      - 'src/AxaFrance.WebEngine.sln'
+      - 'src/AxaFrance.WebEngine.ExcelAddin/**'
+      - 'src/AxaFrance.WebEngine.ExcelAddin.Core/**'
+      - 'src/AxaFrance.WebEngine/**'
+      - 'src/AxaFrance.WebEngine.Web/**'
+      - 'src/AxaFrance.WebEngine.MobileApp/**'
+      - 'src/AxaFrance.WebEngine.Runner/**'
+      - 'src/AxaFrance.AxeExtended.HtmlReport/**'
+      - 'src/AxaFrance.AxeExtended.Selenium/**'
+      - 'src/Samples.LinearScripting/**'
+      - 'src/WebEngine.Test/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+            10.0.x
+          dotnet-quality: ga
+
+      - name: Determine add-in version
+        id: version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $version = if ($tag -match '^(excel-)?v(.+)$') { $Matches[2] } else { '1.0.0' }
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Add-in version: $version"
+
+      - name: Restore
+        run: dotnet restore src/AxaFrance.WebEngine.ExcelAddin/AxaFrance.WebEngine.ExcelAddin.csproj
+
+      - name: Build add-in
+        run: >-
+          dotnet build src/AxaFrance.WebEngine.ExcelAddin/AxaFrance.WebEngine.ExcelAddin.csproj
+          -c Release --no-restore /p:Version=${{ steps.version.outputs.version }}
+
+      - name: Run add-in core tests
+        run: >-
+          dotnet test src/WebEngine.Test/WebEngine.Test.csproj
+          -c Release --filter "FullyQualifiedName~ExcelAddinCoreTest"
+          /p:Version=${{ steps.version.outputs.version }}
+
+      - name: Stage artifact
+        shell: pwsh
+        run: |
+          $output = Join-Path $env:RUNNER_TEMP 'excel-addin'
+          New-Item -ItemType Directory -Force -Path $output | Out-Null
+
+          $xll = Get-ChildItem -Path 'src/AxaFrance.WebEngine.ExcelAddin/bin' -Recurse -Filter '*-AddIn64-packed.xll' |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+          if (-not $xll) {
+            throw 'Packed Excel add-in (XLL) was not produced.'
+          }
+
+          Copy-Item $xll.FullName (Join-Path $output 'AxaFrance.WebEngine.ExcelAddin-AddIn64-packed.xll')
+          Copy-Item 'src/AxaFrance.WebEngine.ExcelAddin/README.md' (Join-Path $output 'README.md')
+          Get-ChildItem $output | Format-Table Name, Length
+
+      - name: Upload GitHub Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webengine-excel-addin-x64-${{ steps.version.outputs.version }}
+          path: ${{ runner.temp }}/excel-addin/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Attach add-in to GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $output = Join-Path $env:RUNNER_TEMP 'excel-addin'
+
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --title $tag --generate-notes
+            if ($LASTEXITCODE -ne 0) {
+              throw "Unable to create release $tag."
+            }
+          }
+
+          gh release upload $tag `
+            (Join-Path $output 'AxaFrance.WebEngine.ExcelAddin-AddIn64-packed.xll') `
+            (Join-Path $output 'README.md') `
+            --clobber
+          if ($LASTEXITCODE -ne 0) {
+            throw "Unable to upload the add-in to release $tag."
+          }

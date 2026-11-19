@@ -19,8 +19,6 @@ namespace AxaFrance.WebEngine.Web
     /// </summary>
     public class WebElementDescription : ElementDescription
     {
-        private bool isInFrame;
-
         /// <summary>
         /// Initialize the Element. If the element is not created within a <see cref="PageModel"/>, you should use <see cref="ElementDescription.UseDriver(WebDriver)"/> before us the element.
         /// </summary>
