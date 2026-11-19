@@ -35,6 +35,9 @@ on:
       - 'src/AxaFrance.AxeExtended.Selenium/**'
       - 'src/Samples.LinearScripting/**'
       - 'src/WebEngine.Test/**'
+  release:
+    types:
+      - published
   workflow_dispatch:
 
 permissions:
@@ -112,10 +115,17 @@ jobs:
         run: |
           $tag = "${{ github.ref_name }}"
           $output = Join-Path $env:RUNNER_TEMP 'excel-addin'
+          $isExcelTag = $tag -match '^(excel-)?v(.+)$'
+          $title = if ($isExcelTag) { "WebEngine Excel Add-in $($Matches[2])" } else { $tag }
 
           gh release view $tag *> $null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag --title $tag --generate-notes
+            if ($isExcelTag) {
+              gh release create $tag --title $title --generate-notes --latest=false
+            }
+            else {
+              gh release create $tag --title $title --generate-notes
+            }
             if ($LASTEXITCODE -ne 0) {
               throw "Unable to create release $tag."
             }
