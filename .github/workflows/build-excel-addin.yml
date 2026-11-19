@@ -45,10 +45,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up .NET SDKs
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: |
             6.0.x
@@ -97,7 +97,7 @@ jobs:
           Get-ChildItem $output | Format-Table Name, Length
 
       - name: Upload GitHub Actions artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: webengine-excel-addin-x64-${{ steps.version.outputs.version }}
           path: ${{ runner.temp }}/excel-addin/*
@@ -128,3 +128,4 @@ jobs:
           if ($LASTEXITCODE -ne 0) {
             throw "Unable to upload the add-in to release $tag."
           }
+
